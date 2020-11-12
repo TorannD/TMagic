@@ -280,20 +280,27 @@ namespace TorannMagic
             bool hasValue = this.impactDamage.HasValue && hitThing != null && hitThing is Pawn;
             if (hasValue)
             {
+                Pawn hitPawn = hitThing as Pawn;
                 this.impactDamage.Value.SetAmount(this.impactDamage.Value.Amount * this.damageMultiplier);
-                hitThing.TakeDamage(this.impactDamage.Value);
-                if(distanceToTarget <= 6f && hitThing is Pawn)
+                try
                 {
-                    Pawn hitPawn = hitThing as Pawn;
-                    if (!hitPawn.DestroyedOrNull() && !hitPawn.Downed && !hitPawn.Dead)
+                    hitPawn.TakeDamage(this.impactDamage.Value);
+                    if (distanceToTarget <= 6f && hitThing is Pawn)
                     {
-                        Vector3 launchVector = TM_Calc.GetVector(this.origin, hitThing.Position.ToVector3());
-                        IntVec3 projectedPosition = hitThing.Position + ((10f - distanceToTarget) * (1 + (.15f * verVal)) * launchVector).ToIntVec3();
-                        if (projectedPosition.IsValid && projectedPosition.InBounds(hitThing.Map))
+                        if (!hitPawn.DestroyedOrNull() && !hitPawn.Downed && !hitPawn.Dead)
                         {
-                            LaunchFlyingObect(projectedPosition, hitPawn, Mathf.RoundToInt(10f - distanceToTarget));
+                            Vector3 launchVector = TM_Calc.GetVector(this.origin, hitThing.Position.ToVector3());
+                            IntVec3 projectedPosition = hitThing.Position + ((10f - distanceToTarget) * (1 + (.15f * verVal)) * launchVector).ToIntVec3();
+                            if (projectedPosition.IsValid && projectedPosition.InBounds(hitThing.Map))
+                            {
+                                LaunchFlyingObect(projectedPosition, hitPawn, Mathf.RoundToInt(10f - distanceToTarget));
+                            }
                         }
                     }
+                }
+                catch (NullReferenceException ex)
+                {
+
                 }
             }
             try

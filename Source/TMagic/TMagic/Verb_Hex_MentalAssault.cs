@@ -18,13 +18,14 @@ namespace TorannMagic
             Pawn pawn = this.currentTarget.Thing as Pawn;
 
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-            if(comp != null && comp.HexedPawns.Count > 0)
+            int verVal = TM_Calc.GetMagicSkillLevel(CasterPawn, comp.MagicData.MagicPowerSkill_Hex, "TM_Hex", "_ver", true);
+            if (comp != null && comp.HexedPawns.Count > 0)
             {
                 foreach(Pawn p in comp.HexedPawns)
                 {
                     if (p.mindState != null && p.mindState.mentalStateHandler != null)
                     {
-                        if (Rand.Chance(TM_Calc.GetSpellSuccessChance(caster, p, true) * .5f))
+                        if (Rand.Chance(TM_Calc.GetSpellSuccessChance(caster, p, true) * (.4f + (.1f * verVal))))
                         {
                             if (Rand.Chance(.3f) || p.RaceProps.Animal)
                             {

@@ -72,6 +72,8 @@ namespace TorannMagic.ModOptions
         public bool Chronomancer = Settings.Instance.Chronomancer;
         public bool Wanderer = Settings.Instance.Wanderer;
         public bool ChaosMage = Settings.Instance.ChaosMage;
+        public bool Brightmage = Settings.Instance.Brightmage;
+        public bool Shaman = Settings.Instance.Shaman;
 
         public bool Gladiator = Settings.Instance.Gladiator;
         public bool Bladedancer = Settings.Instance.Bladedancer;
@@ -84,6 +86,7 @@ namespace TorannMagic.ModOptions
         public bool Wayfarer = Settings.Instance.Wayfayer;
         public bool Commander = Settings.Instance.Commander;
         public bool SuperSoldier = Settings.Instance.SuperSoldier;
+        public bool Shadow = Settings.Instance.Shadow;
 
         public bool ArcaneConduit = Settings.Instance.ArcaneConduit;
         public bool ManaWell = Settings.Instance.ManaWell;

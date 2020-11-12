@@ -31,7 +31,7 @@ namespace TorannMagic
             {
                 this.levelMax = 6;
             }
-            else if (newLabel == "TM_global_regen_pwr" || newLabel == "TM_global_eff_pwr" || newLabel == "TM_EarthSprites_pwr" || newLabel == "TM_Prediction_pwr")
+            else if (newLabel == "TM_global_regen_pwr" || newLabel == "TM_global_eff_pwr" || newLabel == "TM_EarthSprites_pwr" || newLabel == "TM_Prediction_pwr" || newLabel == "TM_GuardianSpirit_pwr")
             {
                 this.levelMax = 5;
             }
@@ -44,7 +44,7 @@ namespace TorannMagic
                 this.levelMax = 50;
             }
             else if (newLabel == "TM_TechnoBit_pwr" || newLabel == "TM_TechnoBit_ver" || newLabel == "TM_TechnoBit_eff" || newLabel == "TM_TechnoTurret_pwr" || newLabel == "TM_TechnoTurret_ver" || newLabel == "TM_TechnoTurret_eff" || newLabel == "TM_TechnoWeapon_pwr" || newLabel == "TM_TechnoWeapon_ver" || newLabel == "TM_TechnoWeapon_eff" ||
-                 newLabel == "TM_Totems_pwr" || newLabel == "TM_Totems_eff" || newLabel == "TM_Totems_ver" || newLabel == "TM_Totems_pwr" || newLabel == "TM_Totems_eff" || newLabel == "TM_Totems_ver" ||
+                 newLabel == "TM_Cantrips_pwr" || newLabel == "TM_Cantrips_eff" || newLabel == "TM_Cantrips_ver" || newLabel == "TM_Totems_pwr" || newLabel == "TM_Totems_eff" || newLabel == "TM_Totems_ver" ||
                  newLabel == "TM_SpiritOfLight_pwr" || newLabel == "TM_SpiritOfLight_eff" || newLabel == "TM_SpiritOfLight_ver" || newLabel == "TM_Cantrips_pwr" || newLabel == "TM_Cantrips_eff" || newLabel == "TM_Cantrips_ver")
             {
                 this.levelMax = 15;

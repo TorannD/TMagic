@@ -1063,4 +1063,186 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
 	</graphicData>
   </ThingDef>
   
+<!--========================= Lightning Totem =============================-->
+  
+  <ThingDef ParentName="TM_BuildingBase">
+    <defName>TM_LightningTotem</defName>
+    <label>Lightning Totem</label>
+    <thingClass>TorannMagic.Building_TMTotem_Lightning</thingClass>
+    <graphicData>
+      <texPath>Other/totem_claw</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.5,2)</drawSize>
+	  <shadowData>
+          <volume>(0.3, 0.3, 0.3)</volume>
+          <offset>(0,0,-0.32)</offset>
+      </shadowData>
+<!--       <damageData>
+        <rect>(0,0,3,1.8)</rect>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData> -->
+    </graphicData>
+	<tickerType>Normal</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <blockWind>false</blockWind>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>0</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+	<tradeability>None</tradeability>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToBuild>8000</WorkToBuild>
+      <Flammability>1</Flammability>
+    </statBases>
+    <description>A shamanic totem decorated with elaborate, eccentric carvings and crackling with elemental lightning.</description>
+	<drawerType>MapMeshAndRealTime</drawerType>
+	<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+	<resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+	<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <size>(1,1)</size>
+    <costList>
+      <WoodLog>5</WoodLog>  
+    </costList>
+	<stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <hasInteractionCell>false</hasInteractionCell>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+<!--     <designationCategory>Misc</designationCategory> -->
+	<building>
+		<ai_chillDestination>false</ai_chillDestination>
+		<claimable>false</claimable>
+		<deconstructible>false</deconstructible>
+	</building>
+    <staticSunShadowHeight>0.0</staticSunShadowHeight>
+    <designationHotKey>Misc3</designationHotKey>
+	<comps>
+	  <li Class="TorannMagic.CompProperties_Summoned"></li>
+    </comps>  
+  </ThingDef>
+  
+  
+<!--========================= Healing Totem =============================-->
+  
+  <ThingDef ParentName="TM_BuildingBase">
+    <defName>TM_HealingTotem</defName>
+    <label>Healing Totem</label>
+    <thingClass>TorannMagic.Building_TMTotem_Healing</thingClass>
+    <graphicData>
+      <texPath>Other/totem_wing</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.5,1.5)</drawSize>
+	  <shadowData>
+          <volume>(0.3, 0.3, 0.3)</volume>
+          <offset>(0,0,-0.32)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0,0,3,1.8)</rect>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+	<tickerType>Normal</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <blockWind>false</blockWind>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>1</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+	<tradeability>None</tradeability>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>8000</WorkToBuild>
+      <Flammability>1</Flammability>
+    </statBases>
+    <description>A shamanic totem decorated with flowing, complimentary shapes. The healing totem is able to attract friendly spirits who will restore vigor and health to nearby allies.</description>
+	<drawerType>MapMeshAndRealTime</drawerType>
+	<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+	<resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+	<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <size>(1,1)</size>
+    <costList>
+      <WoodLog>5</WoodLog>  
+    </costList>
+	<stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <hasInteractionCell>false</hasInteractionCell>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+<!--     <designationCategory>Misc</designationCategory> -->
+	<building>
+		<ai_chillDestination>false</ai_chillDestination>
+		<claimable>false</claimable>
+		<deconstructible>false</deconstructible>
+	</building>
+    <staticSunShadowHeight>0.0</staticSunShadowHeight>
+    <designationHotKey>Misc3</designationHotKey>
+	<comps>
+	  <li Class="TorannMagic.CompProperties_Summoned"></li>
+    </comps> 
+  </ThingDef>
+  
+  
+<!--========================= Earth Totem =============================-->
+  
+  <ThingDef ParentName="TM_BuildingBase">
+    <defName>TM_EarthTotem</defName>
+    <label>Earth Totem</label>
+    <thingClass>TorannMagic.Building_TMTotem_Earth</thingClass>
+    <graphicData>
+      <texPath>Other/totem_monolith</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2.4,1.8)</drawSize>
+	  <shadowData>
+          <volume>(0.3, 0.3, 0.3)</volume>
+          <offset>(0,0,-0.32)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0,0,3,1.8)</rect>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+	<tickerType>Normal</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <blockWind>false</blockWind>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>1</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+	<tradeability>None</tradeability>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <WorkToBuild>8000</WorkToBuild>
+      <Flammability>1</Flammability>
+    </statBases>
+    <description>A shamanic totem decorated with symmetric carvings and exudes a sense of solidarity. The totem's connection to the earth allows it to cause seismic waves that stagger nearby enemies.</description>
+	<drawerType>MapMeshAndRealTime</drawerType>
+	<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+	<resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+	<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <size>(1,1)</size>
+    <costList>
+      <WoodLog>5</WoodLog>  
+    </costList>
+	<stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <hasInteractionCell>false</hasInteractionCell>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+<!--     <designationCategory>Misc</designationCategory> -->
+	<building>
+		<ai_chillDestination>false</ai_chillDestination>
+		<claimable>false</claimable>
+		<deconstructible>false</deconstructible>
+	</building>
+    <staticSunShadowHeight>0.0</staticSunShadowHeight>
+    <designationHotKey>Misc3</designationHotKey>
+	<comps>
+	  <li Class="TorannMagic.CompProperties_Summoned"></li>
+    </comps> 
+  </ThingDef>
+  
 </Defs>

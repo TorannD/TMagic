@@ -1,0 +1,60 @@
+﻿using Verse;
+using UnityEngine;
+using RimWorld;
+using System.Collections.Generic;
+using System;
+using System.Linq;
+using System.Threading;
+
+namespace TorannMagic
+{
+    [StaticConstructorOnStartup]
+    public class Building_TMTotem_Healing : Building
+    {
+
+        private int nextSearch = 0;
+        private float range = 40;
+        private bool initialized = false;
+        public int pwrVal = 0;
+        public int verVal = 0;
+        Pawn target = null;
+
+        public override void Tick()
+        {
+            if(!initialized)
+            {
+                this.nextSearch = Find.TickManager.TicksGame + Rand.Range(120, 150);
+                this.range = 20 + pwrVal;
+                initialized = true;
+            }
+            else if(Find.TickManager.TicksGame >= this.nextSearch)
+            {
+                this.nextSearch = Find.TickManager.TicksGame + Rand.Range(120, 150);
+
+                target = TM_Calc.FindNearbyInjuredPawn(this.Position, this.Map, this.Faction, (int)range, 0f, true);
+                if (target != null)
+                {
+                    TM_Action.DoAction_HealPawn(null, target, 1, Rand.Range(2f, 4f) * (1f + (.04f * pwrVal)));
+                    Vector3 totemPos = this.DrawPos;
+                    totemPos.z += .7f;
+                    TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Healing_Small, totemPos, this.Map, 1.3f, .6f, .1f, .6f, 0, 0, 0, 0);
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Vector3 pos = target.DrawPos;
+                        pos.x += Rand.Range(-.3f, .3f);
+                        pos.z += Rand.Range(-.25f, .5f);
+                        TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Healing_Small, pos, this.Map, (.2f * (1f + (i*.5f))), Rand.Range(.05f, .15f), Rand.Range(.05f, .25f), Rand.Range(.1f, .3f), 0, 0, 0, 0);
+                    }                    
+                }                               
+            }
+            base.Tick();
+        }
+
+        public override void ExposeData()
+        {
+            Scribe_Values.Look<int>(ref this.pwrVal, "pwrVal", 0, false);
+            Scribe_Values.Look<int>(ref this.verVal, "verVal", 0, false);
+            base.ExposeData();
+        }
+    }
+}

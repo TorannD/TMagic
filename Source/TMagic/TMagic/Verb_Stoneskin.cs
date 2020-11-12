@@ -111,10 +111,10 @@ namespace TorannMagic
         {
             if (comp != null && !pawn.DestroyedOrNull() && !pawn.Dead && pawn.Map != null)
             {
-                if (comp.stoneskinPawns.Count() < verVal + 2)
+                if (comp.StoneskinPawns.Count() < verVal + 2)
                 {
                     ApplyHediffs(pawn);
-                    if (!comp.stoneskinPawns.Contains(pawn))
+                    if (!comp.StoneskinPawns.Contains(pawn))
                     {
                         comp.stoneskinPawns.Add(pawn);
                     }
@@ -130,23 +130,26 @@ namespace TorannMagic
                 else
                 {
                     string stoneskinPawns = "";
-                    int count = comp.stoneskinPawns.Count();
+                    int count = comp.StoneskinPawns.Count();
                     for (int i = 0; i < count; i++)
                     {
                         if (i + 1 == count) //last name
                         {
-                            stoneskinPawns += comp.stoneskinPawns[i].LabelShort;
+                            stoneskinPawns += comp.StoneskinPawns[i].LabelShort;
                         }
                         else
                         {
-                            stoneskinPawns += comp.stoneskinPawns[i].LabelShort + " & ";
+                            stoneskinPawns += comp.StoneskinPawns[i].LabelShort + " & ";
                         }
                     }
-                    Messages.Message("TM_TooManyStoneskins".Translate(
-                                    caster.LabelShort,
-                                    verVal + 2,
-                                    stoneskinPawns
-                        ), MessageTypeDefOf.RejectInput);
+                    if (comp.Pawn.IsColonist)
+                    {
+                        Messages.Message("TM_TooManyStoneskins".Translate(
+                                        caster.LabelShort,
+                                        verVal + 2,
+                                        stoneskinPawns
+                            ), MessageTypeDefOf.RejectInput);
+                    }
                 }
             }
         }

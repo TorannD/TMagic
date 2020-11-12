@@ -400,6 +400,7 @@ namespace TorannMagic
                         this.magicDef.defName.Contains("TM_ShadowBolt") ||
                         this.magicDef.defName == "TM_BloodForBlood" || this.magicDef.defName == "TM_IgniteBlood" ||
                         this.magicDef.defName == "TM_Poison" ||
+                        this.magicDef == TorannMagicDefOf.TM_ChainLightning ||
                         this.magicDef == TorannMagicDefOf.TM_ArcaneBolt) )
                     {
                         reason = "TM_ShieldBlockingPowers".Translate(

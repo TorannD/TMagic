@@ -2,6 +2,20 @@
 <Defs>
 
  <ThingDef ParentName="MoteBase">
+    <defName>Mote_Healing_Small</defName>
+    <graphicData>
+      <texPath>Motes/HealingMote_small</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.5</solidTime>
+      <fadeOutTime>0.2</fadeOutTime>
+    </mote>
+  </ThingDef>
+ 
+
+ <ThingDef ParentName="MoteBase">
     <defName>Mote_SpiritWolf_North</defName>
     <graphicData>
       <texPath>Motes/spiritwolf_north</texPath>

@@ -51,7 +51,9 @@ namespace TorannMagic
         public static ThingDef BookOfShadow;
         public static ThingDef BookOfTheSun;
         public static ThingDef Torn_BookOfTheSun;
-        public static ThingDef SpellOf_SpiritOfLight;
+        public static ThingDef Torn_BookOfShamanism;
+        public static ThingDef BookOfShamanism;
+
         public static ThingDef BookOfQuestion;
 
         public static HediffDef TM_Uncertainty;        
@@ -109,6 +111,8 @@ namespace TorannMagic
         public static HediffDef TM_MageLightHD;
         public static ThingDef SpellOf_Ignite;
         public static ThingDef SpellOf_SnapFreeze;
+        public static ThingDef SpellOf_SpiritOfLight;
+        public static ThingDef SpellOf_GuardianSpirit;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;
@@ -647,8 +651,12 @@ namespace TorannMagic
         //Shaman
         public static TraitDef TM_Shaman;
 
-        public static TMAbilityDef TM_Totems;            
+        public static TMAbilityDef TM_Totems;
+        public static TMAbilityDef TM_SummonTotemLightning;
+        public static TMAbilityDef TM_SummonTotemEarth;
+        public static TMAbilityDef TM_SummonTotemHealing;
         public static TMAbilityDef TM_ChainLightning;
+        public static ThingDef Projectile_Lightning;
         public static TMAbilityDef TM_Enrage;
         public static HediffDef TM_EnrageHD;
         public static TMAbilityDef TM_Hex;
@@ -667,6 +675,15 @@ namespace TorannMagic
         public static ThingDef FlyingObject_SpiritWolves;
         public static TMAbilityDef TM_GuardianSpirit;
         public static TMAbilityDef TM_DismissGuardianSpirit;
+        public static ThingDef TM_LightningTotem;
+        public static ThingDef TM_EarthTotem;
+        public static ThingDef TM_HealingTotem;
+        public static ThingDef TM_SpiritBearR;
+        public static HediffDef TM_SpiritBondHD;
+        public static ThingDef TM_SpiritMongooseR;
+        public static ThingDef TM_SpiritCrowR;
+        public static HediffDef TM_CrowInsightHD;
+        public static HediffDef TM_BirdflightHD;
 
         //Shadow
         public static TraitDef TM_TheShadow;
@@ -958,6 +975,7 @@ namespace TorannMagic
         public static HediffDef TM_MuteHD;
         public static TMAbilityDef TM_Ignite;
         public static TMAbilityDef TM_SnapFreeze;
+        public static TMAbilityDef TM_Taunt;
         public static HediffDef TM_TauntHD;
 
         public static HediffDef TM_Sight;
@@ -1064,6 +1082,7 @@ namespace TorannMagic
         public static ThingDef Mote_SpiritWolf_North;
         public static ThingDef Mote_SpiritWolf_East;
         public static ThingDef Mote_SpiritWolf_West;
+        public static ThingDef Mote_Healing_Small;
 
         public static ThingDef Projectile_FogOfTorment;        
 

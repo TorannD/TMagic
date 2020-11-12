@@ -1166,7 +1166,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
     </comps>
 	<rotatable>false</rotatable>
     <graphicData>
-      <texPath>Books/shaman</texPath>
+      <texPath>Books/shaman2</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
   </ThingDef>

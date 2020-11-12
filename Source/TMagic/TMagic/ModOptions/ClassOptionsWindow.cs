@@ -28,7 +28,7 @@ namespace TorannMagic.ModOptions
         {
             int num = 0;
             float rowHeight = 28f;
-            Rect sRect = new Rect(inRect.x, inRect.y, inRect.width - 36f, inRect.height + 240f + TM_ClassUtility.CustomClasses().Count * 40);
+            Rect sRect = new Rect(inRect.x, inRect.y, inRect.width - 36f, inRect.height + 296f + TM_ClassUtility.CustomClasses().Count * 40);
             scrollPosition = GUI.BeginScrollView(inRect, scrollPosition, sRect, false, true);
             //GUI.BeginGroup(inRect);
             
@@ -69,6 +69,8 @@ namespace TorannMagic.ModOptions
             Rect slRect1ShiftRight = Controller.UIHelper.GetRowRect(slRect1, rowHeight, num);
             slRect1ShiftRight.x += slRect0.width + 20f;
             Settings.Instance.advFighterChance = Widgets.HorizontalSlider(slRect1ShiftRight, Settings.Instance.advFighterChance, 0f, 2f, false, "advFighterChance".Translate() + " " + Rarity(Settings.Instance.advFighterChance) + " " + TM_Calc.GetFighterSpawnChance().ToString("P1"), "0", "2", .01f);
+            num++;
+            Widgets.DrawLineHorizontal(inRect.x - 10f, rowHeight * num, inRect.width - 15f);
             num++;
             Rect rowRect0 = Controller.UIHelper.GetRowRect(classRect, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect0, "TM_Wanderer".Translate(), ref Settings.Instance.Wanderer, false);
@@ -138,6 +140,9 @@ namespace TorannMagic.ModOptions
             num++;
             Rect rowRect10 = Controller.UIHelper.GetRowRect(rowRect9, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect10, "TM_Necromancer".Translate(), ref Settings.Instance.Necromancer, false);
+            Rect rowRect10ShiftRight = Controller.UIHelper.GetRowRect(rowRect10, rowHeight, num);
+            rowRect10ShiftRight.x += rowRect.width + 98f;
+            Widgets.CheckboxLabeled(rowRect10ShiftRight, "TM_Shadow".Translate(), ref Settings.Instance.Shadow);
             num++;
             Rect rowRect11 = Controller.UIHelper.GetRowRect(rowRect10, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect11, "TM_Demonkin".Translate(), ref Settings.Instance.Demonkin, false);
@@ -157,23 +162,31 @@ namespace TorannMagic.ModOptions
             Rect rowRect16 = Controller.UIHelper.GetRowRect(rowRect15, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect16, "TM_ChaosMage".Translate(), ref Settings.Instance.ChaosMage, false);
             num++;
+            Rect rowRect17 = Controller.UIHelper.GetRowRect(rowRect16, rowHeight, num);
+            Widgets.CheckboxLabeled(rowRect17, "TM_Brightmage".Translate(), ref Settings.Instance.Brightmage, false);
+            num++;
+            Rect rowRect18 = Controller.UIHelper.GetRowRect(rowRect17, rowHeight, num);
+            Widgets.CheckboxLabeled(rowRect18, "TM_Shaman".Translate(), ref Settings.Instance.Shaman, false);
+            num++;
+            Widgets.DrawLineHorizontal(inRect.x - 10f, rowHeight * num, inRect.width - 15f);
             num++;
             Rect slRect2 = Controller.UIHelper.GetRowRect(slRect1, rowHeight, num);
             Settings.Instance.supportTraitChance = Widgets.HorizontalSlider(slRect2, Settings.Instance.supportTraitChance, 0f, 1f, false, "supportTraitChance".Translate() + " " + (Settings.Instance.supportTraitChance).ToString("P1"), "0", "1", .01f);
             //Rect slRect2ShiftRight = Controller.UIHelper.GetRowRect(slRect1, rowHeight, num);
             num++;
-            Rect rowRect17 = Controller.UIHelper.GetRowRect(rowRect16, rowHeight, num); ;
-            Widgets.CheckboxLabeled(rowRect17, "TM_ArcaneConduit".Translate(), ref Settings.Instance.ArcaneConduit, false);
-            Rect rowRect17ShiftRight = Controller.UIHelper.GetRowRect(rowRect17, rowHeight, num);
-            rowRect17ShiftRight.x += rowRect.width + 98f;
-            Widgets.CheckboxLabeled(rowRect17ShiftRight, "TM_Boundless".Translate(), ref Settings.Instance.Boundless, false);
+            Rect rowRect19 = Controller.UIHelper.GetRowRect(rowRect18, rowHeight, num); ;
+            Widgets.CheckboxLabeled(rowRect19, "TM_ArcaneConduit".Translate(), ref Settings.Instance.ArcaneConduit, false);
+            Rect rowRect19ShiftRight = Controller.UIHelper.GetRowRect(rowRect19, rowHeight, num);
+            rowRect19ShiftRight.x += rowRect.width + 98f;
+            Widgets.CheckboxLabeled(rowRect19ShiftRight, "TM_Boundless".Translate(), ref Settings.Instance.Boundless, false);
             num++;
-            Rect rowRect18 = Controller.UIHelper.GetRowRect(rowRect17, rowHeight, num); ;
-            Widgets.CheckboxLabeled(rowRect18, "TM_ManaWell".Translate(), ref Settings.Instance.ManaWell, false);
+            Rect rowRect20 = Controller.UIHelper.GetRowRect(rowRect19, rowHeight, num); ;
+            Widgets.CheckboxLabeled(rowRect20, "TM_ManaWell".Translate(), ref Settings.Instance.ManaWell, false);
             num++;
+            Widgets.DrawLineHorizontal(inRect.x - 10f, rowHeight * num, inRect.width - 15f);
             num++;
             GUI.color = Color.cyan;
-            Rect customRect = Controller.UIHelper.GetRowRect(rowRect18, rowHeight, num);
+            Rect customRect = Controller.UIHelper.GetRowRect(rowRect20, rowHeight, num);
             Widgets.Label(customRect, "TM_CustomClasses".Translate());
             GUI.color = Color.white;
             num++;
@@ -181,31 +194,46 @@ namespace TorannMagic.ModOptions
             {
                 TMDefs.TM_CustomClass cClass = TM_ClassUtility.CustomClasses()[i];
                 bool classEnabled = Settings.Instance.CustomClass[cClass.classTrait.ToString()];
-                if (cClass.isMage && cClass.isFighter)
+                if(cClass.classTrait == TorannMagicDefOf.TM_Brightmage)
                 {
-                    GUI.color = Color.yellow;
+                    classEnabled = Settings.Instance.Brightmage;
                 }
-                else if(cClass.isMage)
+                if(cClass.classTrait == TorannMagicDefOf.TM_Shaman)
                 {
-                    GUI.color = Color.magenta;
+                    classEnabled = Settings.Instance.Shaman;
                 }
-                else if(cClass.isFighter)
+                if(cClass.classTrait == TorannMagicDefOf.TM_TheShadow)
                 {
-                    GUI.color = Color.green;
+                    classEnabled = Settings.Instance.Shadow;
                 }
-                else
-                {
-                    GUI.color = Color.gray;
+                if (cClass.shouldShow)
+                {                    
+                    //if (cClass.isMage && cClass.isFighter)
+                    //{
+                    //    GUI.color = Color.yellow;
+                    //}
+                    //else if(cClass.isMage)
+                    //{
+                    //    GUI.color = Color.magenta;
+                    //}
+                    //else if(cClass.isFighter)
+                    //{
+                    //    GUI.color = Color.green;
+                    //}
+                    //else
+                    //{
+                    //    GUI.color = Color.gray;
+                    //}
+                    Rect customRect1 = Controller.UIHelper.GetRowRect(customRect, rowHeight, num);
+                    Widgets.CheckboxLabeled(customRect1, cClass.classTrait.degreeDatas.FirstOrDefault().label, ref classEnabled, false);                    
+                    num++;
                 }
-                Rect customRect1 = Controller.UIHelper.GetRowRect(customRect, rowHeight, num);                
-                Widgets.CheckboxLabeled(customRect1, cClass.classTrait.degreeDatas.FirstOrDefault().label, ref classEnabled, false);
                 if (classEnabled != Settings.Instance.CustomClass[cClass.classTrait.ToString()])
                 {
                     Settings.Instance.CustomClass.Remove(cClass.classTrait.ToString());
                     Settings.Instance.CustomClass.Add(cClass.classTrait.ToString(), classEnabled);
                 }
-                num++;
-                GUI.color = Color.white;
+                //GUI.color = Color.white;
             }
             
             //GUI.EndGroup();

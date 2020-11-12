@@ -102,48 +102,7 @@ namespace TorannMagic
 
             if (Find.TickManager.TicksGame % 6000 == 0)
             {
-                if (base.Pawn.RaceProps.Animal)
-                {
-                    if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Tameness).Accepted)
-                    {
-                        if(base.Pawn.training.CanBeTrained(TrainableDefOf.Tameness))
-                        {
-                            base.Pawn.training.Train(TrainableDefOf.Tameness, null);
-                        }
-                    }
-
-                    if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Obedience).Accepted)
-                    {
-                        if(base.Pawn.training.CanBeTrained(TrainableDefOf.Obedience))
-                        {
-                            base.Pawn.training.Train(TrainableDefOf.Obedience, null);
-                        }
-                    }
-
-                    if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Release).Accepted)
-                    {
-                        if(base.Pawn.training.CanBeTrained(TrainableDefOf.Release))
-                        {
-                            base.Pawn.training.Train(TrainableDefOf.Release, null);
-                        }
-                    }
-
-                    if (base.Pawn.training.CanAssignToTrain(TorannMagicDefOf.Haul).Accepted)
-                    {
-                        if(base.Pawn.training.CanBeTrained(TorannMagicDefOf.Haul))
-                        {
-                            base.Pawn.training.Train(TorannMagicDefOf.Haul, null);
-                        }
-                    }
-
-                    if (base.Pawn.training.CanAssignToTrain(TorannMagicDefOf.Rescue).Accepted)
-                    {
-                        if(base.Pawn.training.CanBeTrained(TorannMagicDefOf.Rescue))
-                        {
-                            base.Pawn.training.Train(TorannMagicDefOf.Rescue, null);
-                        }
-                    }
-                }
+                TM_Action.UpdateAnimalTraining(base.Pawn);                
             }
             bool flag4 = Find.TickManager.TicksGame % 600 == 0 && this.Pawn.def != TorannMagicDefOf.TM_SkeletonR && this.Pawn.def != TorannMagicDefOf.TM_GiantSkeletonR;
             if (flag4)

@@ -36,6 +36,7 @@ namespace TorannMagic.TMDefs
         public bool isUndead = false;
         public bool isAndroid = false;
         public bool isAdvancedClass = false;
+        public bool shouldShow = true;
 
         //Class Items
         public ThingDef tornScript = null;

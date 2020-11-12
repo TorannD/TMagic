@@ -59,8 +59,7 @@ namespace TorannMagic.ModOptions
             {
                 Rect rect = new Rect(64f, 64f, 480, 640);
                 ClassOptionsWindow newWindow = new ClassOptionsWindow();                
-                Find.WindowStack.Add(newWindow);                
-
+                Find.WindowStack.Add(newWindow);
             }
             Rect rowRectShiftRightPlus = UIHelper.GetRowRect(rowRect, rowHeight, num);
             rowRectShiftRightPlus.x += (rowRect.width+rowRectShiftRight.width) + 56f;
@@ -85,7 +84,6 @@ namespace TorannMagic.ModOptions
                 Rect rect = new Rect(64f, 64f, 400, 400);
                 EventOptionsWindow newWindow = new EventOptionsWindow();
                 Find.WindowStack.Add(newWindow);
-
             }
             num++;
             Rect rowRect21 = UIHelper.GetRowRect(rowRect2, rowHeight, num);

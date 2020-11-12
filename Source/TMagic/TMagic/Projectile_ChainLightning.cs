@@ -19,7 +19,7 @@ namespace TorannMagic
 
 		private int age = -1;
 
-        private int maxStrikes = 8;
+        private int maxStrikes = 5;
         private int maxForks = 3;
         private int strikeTick = 0;
 		private int strikeInt = 0;
@@ -70,6 +70,18 @@ namespace TorannMagic
                     verVal = TM_Calc.GetMagicSkillLevel(p, comp.MagicData.MagicPowerSkill_ChainLightning, "TM_ChainLightning", "_ver", true);
                     this.arcaneDmg = comp.arcaneDmg;
                 }
+                if(verVal >= 1)
+                {
+                    maxStrikes++;
+                }
+                if(verVal >= 2)
+                {
+                    maxForks++;
+                }
+                if(verVal >= 3)
+                {
+                    maxStrikes++;
+                }
                 newStrikeLocs = new List<IntVec3>();
                 newStrikeLocs.Clear();
                 strikeLocs = new List<IntVec3>();
@@ -100,7 +112,7 @@ namespace TorannMagic
                 Initialize(caster);
                 SoundInfo info = SoundInfo.InMap(new TargetInfo(base.Position, map, false), MaintenanceType.None);
                 info.pitchFactor = 1.1f;
-                info.volumeFactor = 1.3f;
+                info.volumeFactor = .8f;
                 TorannMagicDefOf.TM_Lightning.PlayOneShot(info);
                 initialized = true;
             }
@@ -144,7 +156,7 @@ namespace TorannMagic
                         for (int i = 0; i < this.maxForks; i++)
                         {
                             IntVec3 searchCell = (hopRadius * direction).ToIntVec3() + pos;
-                            Thing target = GetTargetAroundCell(searchCell, hopRadius);
+                            Thing target = GetTargetAroundCell(searchCell, hopRadius + verVal);
                             if (target != null)
                             {
                                 validStrikes.Add(pos);
@@ -187,7 +199,7 @@ namespace TorannMagic
                 List<Thing> thingList = c.GetThingList(this.Map);
                 if (thingList != null && thingList.Count > 0)
                 {
-                    int damage = Mathf.RoundToInt(Mathf.Max(Rand.Range(this.maxStrikes + pwrVal, (5 * maxStrikes) + pwrVal) - (2 * strikeInt) * arcaneDmg, 0));
+                    int damage = Mathf.RoundToInt(Mathf.Max(Rand.Range(this.maxStrikes + (2*pwrVal), (5 * (maxStrikes + pwrVal)) - (2 * strikeInt) * arcaneDmg), 0));
                     for (int i = 0; i < thingList.Count; i++)
                     {
                         Thing t = thingList[i];
@@ -211,12 +223,12 @@ namespace TorannMagic
             int rndStrikes = Rand.RangeInclusive(1, 3);
             for(int i = 0; i < rndStrikes; i++)
             {
-                Vector3 dir = (Quaternion.AngleAxis(Rand.Range(0, 180), Vector3.up) * this.direction);
+                Vector3 dir = (Quaternion.AngleAxis(Rand.Range(-90, 90), Vector3.up) * this.direction);
                 float range = Rand.Range(1f, 6f);
                 IntVec3 hitCell = from + (dir * range).ToIntVec3();
                 //Log.Message("random strike " + hitCell);
                 //DamageCell(hitCell, caster);
-                GenExplosion.DoExplosion(hitCell, this.Map, 1f, TMDamageDefOf.DamageDefOf.TM_Lightning, caster, Mathf.RoundToInt(Rand.Range(3 + pwrVal, 6 + pwrVal) * arcaneDmg), 1.2f); 
+                GenExplosion.DoExplosion(hitCell, this.Map, 1f, TMDamageDefOf.DamageDefOf.TM_Lightning, caster, Mathf.RoundToInt(Rand.Range(4 + pwrVal, 8 + pwrVal) * arcaneDmg), 1.2f); 
                 this.Map.weatherManager.eventHandler.AddEvent(new TM_WeatherEvent_MeshGeneric(this.Map, TM_MatPool.thinLightning, from, hitCell, 2f, AltitudeLayer.MoteLow, strikeDelay, strikeDelay, 2));
             }
         }

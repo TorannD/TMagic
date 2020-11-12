@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+  <ThingDef ParentName="ResourceBase" Name="UsableArtifactBase" Abstract="True">
+    <thingClass>ThingWithComps</thingClass>
+    <thingCategories>
+      <li>TM_MagicArtifacts</li>
+    </thingCategories>
+    <tradeTags>
+	  <li>Arcane</li>
+    </tradeTags>
+	<tradeability>All</tradeability>
+	<drawGUIOverlay>true</drawGUIOverlay>
+    <statBases>
+      <MarketValue>6000</MarketValue>
+      <MaxHitPoints>1000</MaxHitPoints>
+      <Mass>0.2</Mass>
+	  <Flammability>0.0</Flammability>
+	  <DeteriorationRate>0.0001</DeteriorationRate>
+	  <Beauty>4</Beauty>
+	  <SellPriceFactor>.4</SellPriceFactor>
+	</statBases>
+	<stackLimit>10</stackLimit>
+	<techLevel>Neolithic</techLevel>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseArtifact</useJob>
+        <useLabel>Use</useLabel>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="UsableArtifactBase">
+    <defName>MagicArtifact_RerollSpiritBond</defName>
+    <label>Scroll of Spirit Binding</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>This scroll may be used to change a spirit bond. The new bond will randomly select a new spirit type to bond.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>250</MarketValue>
+	</statBases>
+	<costList>
+		<RawMagicyte>20</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>500</workAmount>
+		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>6</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<comps>
+	  <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_UseEffect">
+        <compClass>TorannMagic.CompUseEffect_SpiritBinding</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+	  
+</Defs>
+  

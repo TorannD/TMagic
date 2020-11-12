@@ -64,44 +64,55 @@ namespace TorannMagic
                 //JobDriver curDriver = this.pawn.jobs.curDriver;
                 combatToil.initAction = delegate
                 {
-                    this.verb = combatToil.actor.jobs.curJob.verbToUse as Verb_UseAbility;                    
-                    this.duration = (int)((this.verb.verbProps.warmupTime * 60) * this.pawn.GetStatValue(StatDefOf.AimingDelayFactor, false));
-                    
-                    if (this.pawn.RaceProps.Humanlike)
+                    this.verb = combatToil.actor.jobs.curJob.verbToUse as Verb_UseAbility;
+                    if (verb != null && verb.verbProps != null)
                     {
-                        //if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-                        //{
-                        //    RemoveMimicAbility(verb);
-                        //}
+                        this.duration = (int)((this.verb.verbProps.warmupTime * 60) * this.pawn.GetStatValue(StatDefOf.AimingDelayFactor, false));
 
-                        if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+                        if (this.pawn.RaceProps.Humanlike)
                         {
-                            PsionicEnergyCost(verb);                            
-                        }
+                            //if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                            //{
+                            //    RemoveMimicAbility(verb);
+                            //}
 
-                        if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
-                        {
-                            HateCost(verb);
-                        }
-
-                        if (verb.Ability.CooldownTicksLeft != -1)
-                        {
-                            this.EndJobWith(JobCondition.Incompletable);
-                        }
-                    }                    
-                    
-                    LocalTargetInfo target = combatToil.actor.jobs.curJob.GetTarget(TargetIndex.A);
-                    verb.TryStartCastOn(target, false, true);
-                    using (IEnumerator<Hediff> enumerator = this.pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
-                    {
-                        while (enumerator.MoveNext())
-                        {
-                            Hediff rec = enumerator.Current;
-                            if (rec.def == TorannMagicDefOf.TM_PossessionHD || rec.def == TorannMagicDefOf.TM_DisguiseHD || rec.def == TorannMagicDefOf.TM_DisguiseHD_I || rec.def == TorannMagicDefOf.TM_DisguiseHD_II || rec.def == TorannMagicDefOf.TM_DisguiseHD_III)
+                            if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
                             {
-                                this.pawn.health.RemoveHediff(rec);
+                                PsionicEnergyCost(verb);
+                            }
+
+                            if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
+                            {
+                                HateCost(verb);
+                            }
+
+                            if (verb.Ability?.CooldownTicksLeft != -1)
+                            {
+                                this.EndJobWith(JobCondition.Incompletable);
                             }
                         }
+
+
+                        LocalTargetInfo target = combatToil.actor.jobs.curJob.GetTarget(TargetIndex.A);
+                        if (target != null)
+                        {
+                            verb.TryStartCastOn(target, false, true);
+                        }
+                        using (IEnumerator<Hediff> enumerator = this.pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                        {
+                            while (enumerator.MoveNext())
+                            {
+                                Hediff rec = enumerator.Current;
+                                if (rec.def == TorannMagicDefOf.TM_PossessionHD || rec.def == TorannMagicDefOf.TM_DisguiseHD || rec.def == TorannMagicDefOf.TM_DisguiseHD_I || rec.def == TorannMagicDefOf.TM_DisguiseHD_II || rec.def == TorannMagicDefOf.TM_DisguiseHD_III)
+                                {
+                                    this.pawn.health.RemoveHediff(rec);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        this.EndJobWith(JobCondition.Errored);
                     }
                 };
                 combatToil.tickAction = delegate
@@ -182,7 +193,7 @@ namespace TorannMagic
             }
             else
             {                
-                if ((pawn.Position - TargetLocA).LengthHorizontal < verb.verbProps.range)
+                if (verb != null && verb.verbProps != null && (pawn.Position - TargetLocA).LengthHorizontal < verb.verbProps.range)
                 {
                     if (TargetLocA.IsValid && TargetLocA.InBounds(pawn.Map) && !TargetLocA.Fogged(pawn.Map))  //&& TargetLocA.Walkable(pawn.Map)
                     {
@@ -221,7 +232,7 @@ namespace TorannMagic
                                         PsionicEnergyCost(verb);
                                     }
 
-                                    if (verb.Ability.CooldownTicksLeft != -1)
+                                    if (verb.Ability?.CooldownTicksLeft != -1)
                                     {
                                         this.EndJobWith(JobCondition.Incompletable);
                                     }
@@ -229,7 +240,10 @@ namespace TorannMagic
                                 }
                                 LocalTargetInfo target = toil.actor.jobs.curJob.GetTarget(TargetIndex.A); //TargetLocA;  //
                                 bool canFreeIntercept2 = false;
-                                verb.TryStartCastOn(target, false, canFreeIntercept2);
+                                if (target != null)
+                                {
+                                    verb.TryStartCastOn(target, false, canFreeIntercept2);
+                                }
                                 using (IEnumerator<Hediff> enumerator = this.pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
                                 {
                                     while (enumerator.MoveNext())

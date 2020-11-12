@@ -165,17 +165,17 @@ namespace TorannMagic
             CompAbilityUserMagic comp = caster.TryGetComp<CompAbilityUserMagic>();
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             bool destroyThingAtEnd = false;
-            if(thing != null && comp != null)
+            if (thing != null && comp != null)
             {
                 comp.technoWeaponThingDef = thing.def;
                 CompQuality cq = thing.TryGetComp<CompQuality>();
-                if(cq != null)
+                if (cq != null)
                 {
                     comp.technoWeaponQC = cq.Quality;
                 }
             }
 
-            if(thing == null && td != null)
+            if (thing == null && td != null)
             {
                 destroyThingAtEnd = true;
                 thing = ThingMaker.MakeThing(td);
@@ -185,7 +185,7 @@ namespace TorannMagic
                     cq.SetQuality(_qc, ArtGenerationContext.Colony);
                 }
             }
-            
+
 
             if (thing != null && thing.def != null && thing.def.IsRangedWeapon && (thing.def.techLevel >= TechLevel.Industrial || settingsRef.unrestrictedWeaponCopy) && (thing.def.Verbs.FirstOrDefault().verbClass.ToString() == "Verse.Verb_Shoot" || settingsRef.unrestrictedWeaponCopy))
             {
@@ -264,7 +264,7 @@ namespace TorannMagic
             {
                 Log.Message("cannot copy target thing or unable to restore techno weapon");
             }
-            if(destroyThingAtEnd)
+            if (destroyThingAtEnd)
             {
                 thing.Destroy(DestroyMode.Vanish);
             }
@@ -522,7 +522,7 @@ namespace TorannMagic
                 newThingDef.SetStatBaseValue(StatDefOf.AccuracyShort, thing.GetStatValue(StatDefOf.AccuracyShort) * (1 + .015f * pwrVal));
                 newThingDef.SetStatBaseValue(StatDefOf.AccuracyMedium, thing.GetStatValue(StatDefOf.AccuracyMedium) * (1 + .005f * pwrVal));
                 newThingDef.SetStatBaseValue(StatDefOf.AccuracyLong, thing.GetStatValue(StatDefOf.AccuracyLong));
-                                
+
                 newThingDef.Verbs.FirstOrDefault().defaultProjectile = thing.def.Verbs.FirstOrDefault().defaultProjectile;
                 newThingDef.Verbs.FirstOrDefault().range = thing.def.Verbs.FirstOrDefault().range * (1f + .01f * pwrVal);
                 newThingDef.Verbs.FirstOrDefault().warmupTime = thing.def.Verbs.FirstOrDefault().warmupTime * (1f - .03f * pwrVal);
@@ -546,12 +546,12 @@ namespace TorannMagic
                 {
                     for (int i = 0; i < thing.AllComps.Count; i++)
                     {
-                        
-                        if(specWeapon.AllComps[i] is CompEquippable)
+
+                        if (specWeapon.AllComps[i] is CompEquippable)
                         {
                             //CompEquippable ce = thing.AllComps[i] as CompEquippable;
                             //ce.PrimaryVerb.loadID = String.Concat(ce.PrimaryVerb.loadID, "1");
-                            
+
                         }
                         else
                         {
@@ -729,7 +729,7 @@ namespace TorannMagic
             }
         }
 
-        public static Thing SingleSpawnLoop(Pawn caster, SpawnThings spawnables, IntVec3 position, Map map, int duration, bool temporary, bool hostile = false, Faction spawnableFaction = null, bool hasFaction = true)
+        public static Thing SingleSpawnLoop(Pawn caster, SpawnThings spawnables, IntVec3 position, Map map, int duration, bool temporary, bool hostile = false, Faction spawnableFaction = null, bool hasFaction = true, ThingDef makeFromStuff = null)
         {
             bool flag = spawnables.def != null;
             Thing thing = null;
@@ -760,7 +760,14 @@ namespace TorannMagic
                     bool madeFromStuff = def.MadeFromStuff;
                     if (madeFromStuff)
                     {
-                        stuff = ThingDefOf.Steel;
+                        if (makeFromStuff != null)
+                        {
+                            stuff = makeFromStuff;
+                        }
+                        else
+                        {
+                            stuff = ThingDefOf.Steel;
+                        }
                     }
                     thing = ThingMaker.MakeThing(def, stuff);
                     if (thing != null)
@@ -999,7 +1006,7 @@ namespace TorannMagic
                                 if (lord != null)
                                 {
                                     LordJob_AssaultColony lordJob = new LordJob_AssaultColony(faction, false, false, false, false);
-                                    lord = LordMaker.MakeNewLord(faction, lordJob, original.Map, null);                                    
+                                    lord = LordMaker.MakeNewLord(faction, lordJob, original.Map, null);
                                 }
                             }
 
@@ -1150,7 +1157,7 @@ namespace TorannMagic
             {
                 for (int i = 0; i < pawn.health.hediffSet.hediffs.Count; i++)
                 {
-                    if (!pawn.health.hediffSet.hediffs[i].IsPermanent() && pawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_MagicUserHD && !pawn.health.hediffSet.hediffs[i].def.defName.Contains("TM_HediffEnchantment") && 
+                    if (!pawn.health.hediffSet.hediffs[i].IsPermanent() && pawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_MagicUserHD && !pawn.health.hediffSet.hediffs[i].def.defName.Contains("TM_HediffEnchantment") &&
                         !pawn.health.hediffSet.hediffs[i].def.defName.Contains("TM_Artifact") && pawn.health.hediffSet.hediffs[i].def.defName != "PsychicAmplifier" && pawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_MightUserHD &&
                         pawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_BloodHD && pawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_ChiHD && pawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_PsionicHD)
                     {
@@ -1265,34 +1272,34 @@ namespace TorannMagic
 
         public static void ForceFactionDiscoveryAndRelation(FactionDef fDef)
         {
-            foreach(FactionDef allDefs in DefDatabase<FactionDef>.AllDefs)
+            foreach (FactionDef allDefs in DefDatabase<FactionDef>.AllDefs)
             {
-                if(allDefs == fDef)
+                if (allDefs == fDef)
                 {
                     List<Faction> allFactions = Find.FactionManager.AllFactions.ToList();
                     bool flagList = false;
                     bool flagRelation = false;
-                    for(int i = 0; i < allFactions.Count;i++)
+                    for (int i = 0; i < allFactions.Count; i++)
                     {
                         if (allFactions[i].def.defName == fDef.defName)
                         {
                             flagList = true;
-                            if(allFactions[i].RelationWith(Faction.OfPlayer, true) != null)
+                            if (allFactions[i].RelationWith(Faction.OfPlayer, true) != null)
                             {
                                 flagRelation = true;
                             }
                         }
                     }
-                    if(!flagList)
+                    if (!flagList)
                     {
                         Faction f = FactionGenerator.NewGeneratedFaction(fDef);
-                        Find.FactionManager.Add(f);                        
+                        Find.FactionManager.Add(f);
                         //foreach (Map map in Find.Maps)
                         //{
                         //    map.pawnDestinationReservationManager.RegisterFaction(f);
                         //}
                     }
-                    if(!flagRelation)
+                    if (!flagRelation)
                     {
                         Faction f = Find.FactionManager.FirstFactionOfDef(fDef);
                         if (fDef.CanEverBeNonHostile)
@@ -1488,7 +1495,7 @@ namespace TorannMagic
                         ModOptions.Constants.SetPawnInFlight(true);
                         bool draftFlag = p.Drafted;
                         IntVec3 initPos = p.Position;
-                        Map map = p.Map;                                               
+                        Map map = p.Map;
                         IntVec3 moveTo = TM_Calc.TryFindSafeCell(p, p.Position, 16, 3, 10);
                         p.DeSpawn();
                         if (moveTo != default(IntVec3))
@@ -1499,7 +1506,7 @@ namespace TorannMagic
                         {
                             GenSpawn.Spawn(p, initPos, map);
                         }
-                        p.drafter.Drafted = draftFlag;                        
+                        p.drafter.Drafted = draftFlag;
                         if (p.IsColonist)
                         {
                             p.drafter.Drafted = true;
@@ -1509,12 +1516,12 @@ namespace TorannMagic
                         ModOptions.Constants.SetPawnInFlight(false);
                         break;
                     case 1:
-                        if(target != null && target != p && target.Cell != null && target.Cell.IsValid && target.Cell != default(IntVec3))
+                        if (target != null && target != p && target.Cell != null && target.Cell.IsValid && target.Cell != default(IntVec3))
                         {
                             float angle = (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(p.Position, target.Cell)).ToAngleFlat();
                             for (int i = 0; i < 6; i++)
-                            {                                
-                                TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Flowers, p.DrawPos, p.Map, Rand.Range(.3f, 1f), Rand.Range(1f, 1.5f), .1f, Rand.Range(.2f, .5f), Rand.Range(-100,100),Rand.Range(1,3), angle, Rand.Range(0,360));
+                            {
+                                TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Flowers, p.DrawPos, p.Map, Rand.Range(.3f, 1f), Rand.Range(1f, 1.5f), .1f, Rand.Range(.2f, .5f), Rand.Range(-100, 100), Rand.Range(1, 3), angle, Rand.Range(0, 360));
                                 MoteMaker.ThrowLightningGlow(p.DrawPos, p.Map, Rand.Range(.5f, 1f));
                                 TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, p.DrawPos, p.Map, Rand.Range(.5f, 1f), 3f, .1f, Rand.Range(.5f, 1f), Rand.Range(-20, 20), Rand.Range(.5f, .8f), angle, Rand.Range(0, 360));
                             }
@@ -1539,7 +1546,7 @@ namespace TorannMagic
                             {
                                 for (int i = 0; i < allPawns.Count; i++)
                                 {
-                                    if(allPawns[i].needs != null && allPawns[i].needs.food != null)
+                                    if (allPawns[i].needs != null && allPawns[i].needs.food != null)
                                     {
                                         HealthUtility.AdjustSeverity(allPawns[i], HediffDefOf.FoodPoisoning, Rand.Range(.3f, .7f));
                                     }
@@ -1559,7 +1566,7 @@ namespace TorannMagic
                                     if (allPawns[i].needs != null && allPawns[i].needs.rest != null)
                                     {
                                         Need need = allPawns[i].needs.TryGetNeed(NeedDefOf.Rest);
-                                        if(need != null)
+                                        if (need != null)
                                         {
                                             need.CurLevel = 0;
                                         }
@@ -1592,7 +1599,7 @@ namespace TorannMagic
                     flyingObject.duration = duration;
                     flyingObject.Launch(caster, targetCell, pawn);
                 }
-            }       
+            }
         }
 
         private static void RemoveFireAt(IntVec3 position, Map map)
@@ -1679,7 +1686,7 @@ namespace TorannMagic
                 {
                     thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality + 1, ArtGenerationContext.Colony);
                     caster.mindState.inspirationHandler.EndInspiration(caster.Inspiration);
-                    if(compQual.Quality == QualityCategory.Legendary && thing.HitPoints == thing.MaxHitPoints)
+                    if (compQual.Quality == QualityCategory.Legendary && thing.HitPoints == thing.MaxHitPoints)
                     {
                         thing.SetForbidden(true, false);
                     }
@@ -1743,7 +1750,7 @@ namespace TorannMagic
                     transmutateThing.SplitOff(transStackCount).Destroy(DestroyMode.Vanish);
                 }
                 Thing thing = null;
-                ThingDef newThingDef = enumerable.RandomElement();                
+                ThingDef newThingDef = enumerable.RandomElement();
                 newMatCount = Mathf.Max(transStackValue / newThingDef.BaseMarketValue, 1);
                 thing = ThingMaker.MakeThing(newThingDef);
                 thing.stackCount = Mathf.RoundToInt((.7f + (.05f * pwrVal)) * newMatCount);
@@ -1938,7 +1945,7 @@ namespace TorannMagic
             List<IntVec3> targets = new List<IntVec3>();
             List<Pawn> pawns = new List<Pawn>();
             int rnd = Rand.RangeInclusive(0, 6);
-            switch(rnd)
+            switch (rnd)
             {
                 case 0: //Death explosion
                     IntVec3 curCell;
@@ -2009,18 +2016,18 @@ namespace TorannMagic
                     break;
                 case 2: //Summon 4x firestorm skyfallers
                     Pawn targetF = TM_Calc.FindNearbyEnemy(pos, pawn.Map, pawn.Faction, 60, 10);
-                    if(targetF != null)
+                    if (targetF != null)
                     {
-                        for(int i = 0; i < 4; i++)
+                        for (int i = 0; i < 4; i++)
                         {
                             IntVec3 cell = targetF.Position;
                             cell.x += Rand.Range(-2, 2);
                             cell.z += Rand.Range(-2, 2);
-                            if(Rand.Chance(.6f))
+                            if (Rand.Chance(.6f))
                             {
                                 SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Tiny, cell, pawn.Map);
                             }
-                            else if(Rand.Chance(.4f))
+                            else if (Rand.Chance(.4f))
                             {
                                 SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Small, cell, pawn.Map);
                             }
@@ -2070,7 +2077,7 @@ namespace TorannMagic
                     AbilityUser.SpawnThings tempPod = new SpawnThings();
                     tempPod.def = ThingDef.Named("TM_ManaMine_III");
                     tempPod.spawnCount = 1;
-                    Projectile_SummonExplosive.SingleSpawnLoop(tempPod, pos, pawn.Map, pawn, 15000);                    
+                    Projectile_SummonExplosive.SingleSpawnLoop(tempPod, pos, pawn.Map, pawn, 15000);
                     break;
                 case 6:  //Healing wave
                     Effecter healEffect = TorannMagicDefOf.TM_ChiBurstED.Spawn();
@@ -2092,7 +2099,7 @@ namespace TorannMagic
                     }
                     break;
             }
-            if(settingsRef.deathRetaliationIsLethal && rnd < 6)
+            if (settingsRef.deathRetaliationIsLethal && rnd < 6)
             {
                 KillPawnByMindBurn(pawn);
             }
@@ -2102,7 +2109,7 @@ namespace TorannMagic
         {
             if (pawn != null && !pawn.Dead)
             {
-                for(int i =0; i < 4; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     TM_MoteMaker.ThrowBloodSquirt(pawn.DrawPos, pawn.Map, Rand.Range(.3f, .6f));
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_ArcaneFlame, pawn.DrawPos, pawn.Map, Rand.Range(.2f, .3f), .1f, .05f, .2f, 0, Rand.Range(1.5f, 2f), Rand.Range(-60, 60), 0);
@@ -2194,7 +2201,7 @@ namespace TorannMagic
                         yayo.Ingested(pawn, 0f);
                     }
                     TM_Action.DoAction_HealPawn(pawn, pawn, 2, 10f);
-                    break;                
+                    break;
             }
             if (settingsRef.deathRetaliationIsLethal && rnd < 4)
             {
@@ -2208,7 +2215,7 @@ namespace TorannMagic
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    TM_MoteMaker.ThrowBloodSquirt(pawn.DrawPos, pawn.Map, Rand.Range(.5f, .7f));                    
+                    TM_MoteMaker.ThrowBloodSquirt(pawn.DrawPos, pawn.Map, Rand.Range(.5f, .7f));
                 }
                 DamageInfo dinfo2;
                 BodyPartRecord vitalPart = null;
@@ -2231,6 +2238,95 @@ namespace TorannMagic
             {
                 return TM_Calc.FindWalkableCellNextTo(c, pawn.Map).Cell;
             }
-        }        
+        }
+
+        public static void TrainAnimalFull(Pawn animal, Pawn trainer)
+        {
+            if (animal.training.CanBeTrained(TrainableDefOf.Tameness))
+            {
+                while (!animal.training.HasLearned(TrainableDefOf.Tameness))
+                {
+                    animal.training.Train(TrainableDefOf.Tameness, trainer);
+                }
+            }
+
+            if (animal.training.CanBeTrained(TrainableDefOf.Obedience))
+            {
+                while (!animal.training.HasLearned(TrainableDefOf.Obedience))
+                {
+                    animal.training.Train(TrainableDefOf.Obedience, trainer);
+                }
+            }
+
+            if (animal.training.CanBeTrained(TrainableDefOf.Release))
+            {
+                while (!animal.training.HasLearned(TrainableDefOf.Release))
+                {
+                    animal.training.Train(TrainableDefOf.Release, trainer);
+                }
+            }
+
+            if (animal.training.CanBeTrained(TorannMagicDefOf.Haul))
+            {
+                while (!animal.training.HasLearned(TorannMagicDefOf.Haul))
+                {
+                    animal.training.Train(TorannMagicDefOf.Haul, trainer);
+                }
+            }
+
+            if (animal.training.CanBeTrained(TorannMagicDefOf.Rescue))
+            {
+                while (!animal.training.HasLearned(TorannMagicDefOf.Rescue))
+                {
+                    animal.training.Train(TorannMagicDefOf.Rescue, trainer);
+                }
+            }
+        }
+
+        public static void UpdateAnimalTraining(Pawn p)
+        {
+            if (p.RaceProps.Animal)
+            {
+                if (p.training.CanAssignToTrain(TrainableDefOf.Tameness).Accepted)
+                {
+                    if (p.training.CanBeTrained(TrainableDefOf.Tameness))
+                    {
+                        p.training.Train(TrainableDefOf.Tameness, null);
+                    }
+                }
+
+                if (p.training.CanAssignToTrain(TrainableDefOf.Obedience).Accepted)
+                {
+                    if (p.training.CanBeTrained(TrainableDefOf.Obedience))
+                    {
+                        p.training.Train(TrainableDefOf.Obedience, null);
+                    }
+                }
+
+                if (p.training.CanAssignToTrain(TrainableDefOf.Release).Accepted)
+                {
+                    if (p.training.CanBeTrained(TrainableDefOf.Release))
+                    {
+                        p.training.Train(TrainableDefOf.Release, null);
+                    }
+                }
+
+                if (p.training.CanAssignToTrain(TorannMagicDefOf.Haul).Accepted)
+                {
+                    if (p.training.CanBeTrained(TorannMagicDefOf.Haul))
+                    {
+                        p.training.Train(TorannMagicDefOf.Haul, null);
+                    }
+                }
+
+                if (p.training.CanAssignToTrain(TorannMagicDefOf.Rescue).Accepted)
+                {
+                    if (p.training.CanBeTrained(TorannMagicDefOf.Rescue))
+                    {
+                        p.training.Train(TorannMagicDefOf.Rescue, null);
+                    }
+                }
+            }
+        }
     }
 }

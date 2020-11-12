@@ -371,10 +371,10 @@ namespace TorannMagic
                         20
                     );
                 }
-                else if (mightUser.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ChiHD, false) && (mightAbilityDef == TorannMagicDefOf.TM_TigerStrike || mightAbilityDef == TorannMagicDefOf.TM_DragonStrike || mightAbilityDef == TorannMagicDefOf.TM_ThunderStrike))
-                {
-                    //displays ability damage for active/passive attacks
-                }
+                //else if (mightUser.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ChiHD, false) && (mightAbilityDef == TorannMagicDefOf.TM_TigerStrike || mightAbilityDef == TorannMagicDefOf.TM_DragonStrike || mightAbilityDef == TorannMagicDefOf.TM_ThunderStrike))
+                //{
+                //    //displays ability damage for active/passive attacks
+                //}
                 
 
                 if (mightAbilityDef.chiCost != 0)

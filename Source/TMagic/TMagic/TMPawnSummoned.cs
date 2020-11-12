@@ -224,6 +224,11 @@ namespace TorannMagic
             base.DeSpawn(mode);
         }
 
+        public override void Draw()
+        {
+            base.Draw();
+        }
+
         public override void ExposeData()
         {
             base.ExposeData();

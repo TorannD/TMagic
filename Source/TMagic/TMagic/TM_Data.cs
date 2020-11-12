@@ -39,6 +39,7 @@ namespace TorannMagic
             masterSpellList.Add(TorannMagicDefOf.SpellOf_Shapeshift);
             masterSpellList.Add(TorannMagicDefOf.SpellOf_Recall);
             masterSpellList.Add(TorannMagicDefOf.SpellOf_SpiritOfLight);
+            masterSpellList.Add(TorannMagicDefOf.SpellOf_GuardianSpirit);
             return masterSpellList;
         }
 
@@ -76,6 +77,7 @@ namespace TorannMagic
                 restricted.Add(TorannMagicDefOf.SpellOf_TechnoShield);
                 restricted.Add(TorannMagicDefOf.SpellOf_WetGround);
                 restricted.Add(TorannMagicDefOf.SpellOf_SpiritOfLight);
+                restricted.Add(TorannMagicDefOf.SpellOf_GuardianSpirit);
                 return restricted;
             }
         }
@@ -164,6 +166,8 @@ namespace TorannMagic
                 magicTraits.Add(TorannMagicDefOf.BloodMage);
                 magicTraits.Add(TorannMagicDefOf.TM_Wanderer);
                 magicTraits.Add(TorannMagicDefOf.TM_Gifted);
+                magicTraits.Add(TorannMagicDefOf.TM_Brightmage);
+                magicTraits.Add(TorannMagicDefOf.TM_Shaman);
                 return magicTraits;
             }
         }

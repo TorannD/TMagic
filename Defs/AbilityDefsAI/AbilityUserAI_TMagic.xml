@@ -3208,5 +3208,217 @@ Document made by ChJees
 			<li>LightBurst</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
+	
+	<!-- shaman -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="ShamanMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<!-- Decision tree which helps pick ability to use. -->
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.8</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>HealingTotem</li>										
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+							<tags>
+								<li>Enrage</li>
+							</tags>
+						</li>							
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+									<maxDistance>48.0</maxDistance>
+									<minDistance>20.0</minDistance>
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>ChainLightning</li>
+											</tags>
+										</li>
+									</subNodes>
+								</li>	
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+									<maxDistance>25.0</maxDistance>
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>LightningTotem</li>
+											</tags>
+										</li>
+									</subNodes>
+								</li>
+								<!-- Using ranged weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>30.0</maxDistance>
+											<minDistance>10.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>EarthTotem</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+								<!-- Using melee weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>50.0</maxDistance>
+											<minDistance>25</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>SpiritWolves</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>25.0</maxDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>EnrageSelf</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>	
+									</subNodes>
+								</li>																							
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Shaman -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="ShamanMagicAbilityUserAI">
+		<defName>TMagic_Shaman</defName>
+		<matchingTraits>
+			<li>TM_Shaman</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_ChainLightning</li>
+			<li>TMagic_EarthTotem</li>
+			<li>TMagic_LightningTotem</li>
+			<li>TMagic_HealingTotem</li>
+			<li>TMagic_SpiritWolves</li>
+			<li>TMagic_Enrage</li>
+			<li>TMagic_EnrageSelf</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Shaman Abilities -->	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_ChainLightning</defName>
+		<ability>TM_ChainLightning</ability>
+		<minRange>5.0</minRange>
+		<power>5.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>ChainLightning</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_EarthTotem</defName>
+		<ability>TM_SummonTotemEarth</ability>
+		<abilityRadius>4</abilityRadius>
+		<minRange>10.0</minRange>
+		<maxRange>20.0</maxRange>
+		<power>3</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_AreaOfEffect</workerClass>
+		<tags>
+			<li>EarthTotem</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_LightningTotem</defName>
+		<ability>TM_SummonTotemLightning</ability>
+		<minRange>10.0</minRange>
+		<maxRange>28.0</maxRange>
+		<power>5</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>LightningTotem</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_HealingTotem</defName>
+		<ability>TM_SummonTotemHealing</ability>
+		<maxRange>28.0</maxRange>
+		<power>5</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_HealAlly</workerClass>
+		<needEnemyTarget>false</needEnemyTarget>
+		<tags>
+			<li>HealingTotem</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_SpiritWolves</defName>
+		<ability>TM_SpiritWolves</ability>
+		<abilityRadius>4</abilityRadius>
+		<maxRange>48.0</maxRange>
+		<minRange>5.0</minRange>
+		<power>3.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_AreaOfEffect</workerClass>
+		<tags>
+			<li>SpiritWolves</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Enrage</defName>
+		<ability>TM_Enrage</ability>
+		<maxRange>25.0</maxRange>
+		<power>2</power>
+		<needSeeingTarget>false</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_HealAlly</workerClass>
+		<canTargetAlly>true</canTargetAlly>
+		<needEnemyTarget>false</needEnemyTarget>
+		<tags>
+			<li>Enrage</li>
+		</tags>
+		<appliedHediffs>
+			<li>TM_EnrageHD</li>
+		</appliedHediffs>
+	</AbilityUserAI.AbilityAIDef>	
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_EnrageSelf</defName>
+		<ability>TM_Enrage</ability>
+		<power>5</power>
+		<needSeeingTarget>false</needSeeingTarget>
+		<canTargetAlly>false</canTargetAlly>
+		<needEnemyTarget>false</needEnemyTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>EnrageSelf</li>
+		</tags>
+		<appliedHediffs>
+			<li>TM_EnrageHD</li>
+		</appliedHediffs>
+	</AbilityUserAI.AbilityAIDef>	
 
 </Defs>

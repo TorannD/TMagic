@@ -729,7 +729,7 @@ namespace TorannMagic
                                 skill.level++;
                                 compMight.MightData.MightAbilityPoints -= 1;
                             }
-                            if (enumerator.Current.abilityDef.defName == "TM_DisablingShot" || enumerator.Current.abilityDef.defName == "TM_DisablingShot_I" || enumerator.Current.abilityDef.defName == "TM_DisablingShot_II")
+                            if (enumerator.Current.abilityDef.defName == "TM_DisablingShot" || enumerator.Current.abilityDef.defName == "TM_DisablingShot_I" || enumerator.Current.abilityDef.defName == "TM_DisablingShot_II" || enumerator.Current.abilityDef.defName == "TM_DisablingShot_III")
                             {
                                 compMight.LevelUpSkill_DisablingShot(skill.label);
                                 skill.level++;

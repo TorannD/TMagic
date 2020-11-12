@@ -25,6 +25,10 @@ namespace TorannMagic
         public bool damageLaunched = true;
         public bool explosion = false;
 
+        private int verVal = 0;
+        private int pwrVal = 0;
+        private float arcaneDmg = 1f;
+
         public override void ExposeData()
         {
             base.ExposeData();
@@ -36,6 +40,9 @@ namespace TorannMagic
             Scribe_References.Look<Pawn>(ref this.pawn, "pawn", false);
             Scribe_References.Look<Thing>(ref this.assignedTarget, "assignedTarget", false);
             Scribe_References.Look<Thing>(ref this.flyingThing, "flyingThing", false);
+            Scribe_Values.Look<int>(ref this.verVal, "verVal", 0, false);
+            Scribe_Values.Look<int>(ref this.pwrVal, "pwrVal", 0, false);
+            Scribe_Values.Look<float>(ref this.arcaneDmg, "arcaneDmg", 1f, false);
         }
 
         protected new int StartingTicksToImpact
@@ -94,6 +101,13 @@ namespace TorannMagic
                 MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
                 GetVector();
                 this.angle = (Quaternion.AngleAxis(90, Vector3.up) * this.direction).ToAngleFlat();
+                CompAbilityUserMagic comp = pawn.TryGetComp<CompAbilityUserMagic>();
+                if(comp != null && comp.IsMagicUser)
+                {
+                    verVal = TM_Calc.GetMagicSkillLevel(pawn, comp.MagicData.MagicPowerSkill_SpiritWolves, "TM_SpiritWolves", "_ver", true);
+                    pwrVal = TM_Calc.GetMagicSkillLevel(pawn, comp.MagicData.MagicPowerSkill_SpiritWolves, "TM_SpiritWolves", "_pwr", true);
+                    arcaneDmg = comp.arcaneDmg;
+                }
             }
         }
 
@@ -140,9 +154,9 @@ namespace TorannMagic
 
         public override void Tick()
         {            
-            if (this.ticksToImpact >= 0)
+            if (this.ticksToImpact >= 0 && Find.TickManager.TicksGame % 3 == 0)
             {
-                IEnumerable<IntVec3> effectRadial = GenRadial.RadialCellsAround(this.ExactPosition.ToIntVec3(), 2, true);
+                IEnumerable<IntVec3> effectRadial = GenRadial.RadialCellsAround(this.ExactPosition.ToIntVec3(), 2 + (.2f * verVal), true);
                 DrawEffects(effectRadial);
                 DoEffects(effectRadial);
                 this.lastRadial = effectRadial;
@@ -172,16 +186,16 @@ namespace TorannMagic
 
         public void DrawEffects(IEnumerable<IntVec3> effectRadial)
         {
-            if (lastRadial != null)
+            if (effectRadial != null && effectRadial.Count() > 0)
             {
-                IntVec3 curCell = effectRadial.Except(this.lastRadial).RandomElement();
+                IntVec3 curCell = effectRadial.RandomElement();
 
                 bool flag2 = Find.TickManager.TicksGame % 3 == 0;
                 float fadeIn = .2f;
                 float fadeOut = .25f;
                 float solidTime = .05f;
                 if (this.direction.ToAngleFlat() >= -135 && this.direction.ToAngleFlat() < -45)
-                {                    
+                {
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_SpiritWolf_North, curCell.ToVector3(), base.Map, .8f, solidTime, fadeIn, fadeOut, 0, Rand.Range(5, 8), this.angle + Rand.Range(-20, 20), 0);
                     if (flag2)
                     {
@@ -192,26 +206,26 @@ namespace TorannMagic
                 }
                 else if (this.direction.ToAngleFlat() >= 45 && this.direction.ToAngleFlat() < 135)
                 {
-                   TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_SpiritWolf_South, curCell.ToVector3(), base.Map, .8f, solidTime, fadeIn, fadeOut, 0, Rand.Range(5, 8), this.angle + Rand.Range(-20, 20), 0);
+                    TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_SpiritWolf_South, curCell.ToVector3(), base.Map, .8f, solidTime, fadeIn, fadeOut, 0, Rand.Range(5, 8), this.angle + Rand.Range(-20, 20), 0);
                     if (flag2)
                     {
                         IEnumerable<IntVec3> effectRadialSmall = GenRadial.RadialCellsAround(this.ExactPosition.ToIntVec3(), 1, true);
-                        curCell = effectRadialSmall.RandomElement();                        
+                        curCell = effectRadialSmall.RandomElement();
                         TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_SpiritWolf_South, curCell.ToVector3(), base.Map, .8f, solidTime, fadeIn, fadeOut, 0, Rand.Range(10, 15), this.angle + Rand.Range(-20, 20), 0);
                     }
                 }
                 else if (this.direction.ToAngleFlat() >= -45 && this.direction.ToAngleFlat() < 45)
-                {                    
+                {
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_SpiritWolf_East, curCell.ToVector3(), base.Map, .8f, solidTime, fadeIn, fadeOut, 0, Rand.Range(5, 8), this.angle + Rand.Range(-20, 20), 0);
                     if (flag2)
                     {
                         IEnumerable<IntVec3> effectRadialSmall = GenRadial.RadialCellsAround(this.ExactPosition.ToIntVec3(), 1, true);
                         curCell = effectRadialSmall.RandomElement();
-                        TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_SpiritWolf_East, curCell.ToVector3(), base.Map, .8f, solidTime, fadeIn, fadeOut, 0, Rand.Range(10, 15), this.angle + Rand.Range(-20, 20), 0);                        
+                        TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_SpiritWolf_East, curCell.ToVector3(), base.Map, .8f, solidTime, fadeIn, fadeOut, 0, Rand.Range(10, 15), this.angle + Rand.Range(-20, 20), 0);
                     }
                 }
                 else
-                {                    
+                {
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_SpiritWolf_West, curCell.ToVector3(), base.Map, .8f, solidTime, fadeIn, fadeOut, 0, Rand.Range(5, 8), this.angle + Rand.Range(-20, 20), 0);
                     if (flag2)
                     {
@@ -221,20 +235,23 @@ namespace TorannMagic
                     }
                 }
 
-                curCell = lastRadial.RandomElement();
-                if (curCell.InBounds(base.Map) && curCell.IsValid)
+                if (lastRadial != null && lastRadial.Count() > 0)
                 {
-                    ThingDef moteSmoke = ThingDef.Named("Mote_Smoke");
-                    if (Rand.Chance(.5f))
-                    {                        
-                        TM_MoteMaker.ThrowGenericMote(moteSmoke, curCell.ToVector3(), base.Map, Rand.Range(1.2f, 1.5f), moteSmoke.mote.solidTime, moteSmoke.mote.fadeInTime, moteSmoke.mote.fadeOutTime, Rand.Range(-2, 2), Rand.Range(.3f, .4f), this.direction.ToAngleFlat(), Rand.Range(0, 360));
-                    }
-                    else
-                    {                        
-                        TM_MoteMaker.ThrowGenericMote(moteSmoke, curCell.ToVector3(), base.Map, Rand.Range(1.2f, 1.5f), moteSmoke.mote.solidTime, moteSmoke.mote.fadeInTime, moteSmoke.mote.fadeOutTime, Rand.Range(-2, 2), Rand.Range(.3f, .4f), 180+this.direction.ToAngleFlat(), Rand.Range(0, 360));
+                    curCell = lastRadial.RandomElement();
+                    if (curCell.InBounds(base.Map) && curCell.IsValid)
+                    {
+                        ThingDef moteSmoke = ThingDef.Named("Mote_Smoke");
+                        if (Rand.Chance(.5f))
+                        {
+                            TM_MoteMaker.ThrowGenericMote(moteSmoke, curCell.ToVector3(), base.Map, Rand.Range(1.2f, 1.5f), moteSmoke.mote.solidTime, moteSmoke.mote.fadeInTime, moteSmoke.mote.fadeOutTime, Rand.Range(-2, 2), Rand.Range(.3f, .4f), this.direction.ToAngleFlat(), Rand.Range(0, 360));
+                        }
+                        else
+                        {
+                            TM_MoteMaker.ThrowGenericMote(moteSmoke, curCell.ToVector3(), base.Map, Rand.Range(1.2f, 1.5f), moteSmoke.mote.solidTime, moteSmoke.mote.fadeInTime, moteSmoke.mote.fadeOutTime, Rand.Range(-2, 2), Rand.Range(.3f, .4f), 180 + this.direction.ToAngleFlat(), Rand.Range(0, 360));
+                        }
                     }
                 }
-            }
+            }            
         }
 
         public void DoEffects(IEnumerable<IntVec3> effectRadial1)
@@ -243,28 +260,61 @@ namespace TorannMagic
             IEnumerable<IntVec3> effectRadial = effectRadial1.Except(effectRadial2);
             IntVec3 curCell;
             List<Thing> hitList = new List<Thing>();
-            for (int i = 0; i < effectRadial.Count(); i++)
+            bool shouldAddAbilities = false;
+            bool addAbilities = false;
+            if (pawn != null)
             {
-                curCell = effectRadial.ToArray<IntVec3>()[i];
-                if (curCell.InBounds(base.Map) && curCell.IsValid)
+                CompAbilityUserMagic comp = pawn.TryGetComp<CompAbilityUserMagic>();
+                for (int i = 0; i < effectRadial.Count(); i++)
                 {
-                    hitList = curCell.GetThingList(base.Map);
-                    for (int j = 0; j < hitList.Count; j++)
+                    curCell = effectRadial.ToArray<IntVec3>()[i];
+                    if (curCell.InBounds(base.Map) && curCell.IsValid)
                     {
-                        if (hitList[j] is Pawn && hitList[j].Faction != pawn.Faction)
+                        hitList = curCell.GetThingList(base.Map);
+                        for (int j = 0; j < hitList.Count; j++)
                         {
-                            DamageEntities(hitList[j]);
+                            if (hitList[j] is Pawn && hitList[j].Faction != pawn.Faction)
+                            {
+                                DamageEntities(hitList[j]);
+                                if (verVal >= 3 && !hitList[j].DestroyedOrNull() && Rand.Chance(.5f))
+                                {
+                                    if (comp != null)
+                                    {
+                                        shouldAddAbilities = comp.HexedPawns.Count <= 0;
+                                        Pawn newPawn = hitList[j] as Pawn;
+                                        if (newPawn.RaceProps.IsFlesh && !TM_Calc.IsUndead(newPawn) && !newPawn.Destroyed && !newPawn.Dead)
+                                        {
+                                            if (Rand.Chance(.3f) && !newPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HexHD))
+                                            {
+                                                HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_HexHD, 1f);
+                                                if (!comp.HexedPawns.Contains(newPawn))
+                                                {
+                                                    comp.HexedPawns.Add(newPawn);
+                                                }
+                                                addAbilities = true;
+                                                TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Hex, newPawn.DrawPos, newPawn.Map, .6f, .1f, .2f, .2f, 0, 0, 0, 0);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
+                }
+                if (shouldAddAbilities && addAbilities)
+                {
+                    comp.AddPawnAbility(TorannMagicDefOf.TM_Hex_CriticalFail);
+                    comp.AddPawnAbility(TorannMagicDefOf.TM_Hex_Pain);
+                    comp.AddPawnAbility(TorannMagicDefOf.TM_Hex_MentalAssault);
                 }
             }
         }
 
         public void DamageEntities(Thing e)
         {
-            int amt = Mathf.RoundToInt(Rand.Range(this.def.projectile.GetDamageAmount(1, null) * .75f, this.def.projectile.GetDamageAmount(1, null) * 1.25f));
-            DamageInfo dinfo = new DamageInfo(DamageDefOf.Stun, amt, 0, (float)-1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
-            DamageInfo dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Spirit, Mathf.RoundToInt(amt * .1f), 0, (float)-1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            int amt = Mathf.RoundToInt(Rand.Range(this.def.projectile.GetDamageAmount(1, null) * .9f, this.def.projectile.GetDamageAmount(1, null) * 1.4f) + pwrVal);
+            DamageInfo dinfo = new DamageInfo(DamageDefOf.Stun, amt, 5, (float)-1, pawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            DamageInfo dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Spirit, Mathf.RoundToInt(amt *.15f), 5, (float)-1, pawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
             bool flag = e != null;
             if (flag)
             {

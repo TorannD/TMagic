@@ -42,102 +42,110 @@ namespace TorannMagic
 			StringBuilder stringBuilder = new StringBuilder();
 			stringBuilder.AppendLine(this.GetDescription());
 			return stringBuilder.ToString();
-		} 
-        
+		}
+
+        private bool cacheRestriction = true;
+        private int nextRestrictionCheckTick = 0;
         public bool IsRestrictedByEquipment(Pawn p)
-        {
-            if(requiredWeaponsOrCategories != null && requiredWeaponsOrCategories.Count > 0)
-            {
-                foreach(string str in requiredWeaponsOrCategories)
+        {             
+            if (requiredWeaponsOrCategories != null && requiredWeaponsOrCategories.Count > 0)
+            {                
+                if (Find.TickManager.TicksGame >= nextRestrictionCheckTick)
                 {
-                    if(str == "Unarmed")
+                    nextRestrictionCheckTick = Find.TickManager.TicksGame + Rand.Range(59, 61);
+                    cacheRestriction = true;
+                    foreach (string str in requiredWeaponsOrCategories)
                     {
-                        if(p.equipment != null && p.equipment.Primary == null)
+                        if (str == "Unarmed")
                         {
-                            return false;
-                        }
-                        return true;
-                    }
-                    else if (str == "MeleeAndUnarmed")
-                    {
-                        if (TM_Calc.IsUsingMelee(p))
-                        {
-                            return false;
-                        }
-                        return true;
-                    }
-                    else if(str == "Melee")
-                    {
-                        if (p.equipment != null && p.equipment.Primary == null)
-                        {
+                            if (p.equipment != null && p.equipment.Primary == null)
+                            {
+                                return (cacheRestriction = false);
+                            }
                             return true;
                         }
-                        if (TM_Calc.IsUsingMelee(p))
+                        else if (str == "MeleeAndUnarmed")
                         {
-                            return false;
-                        }
-                        return true;
-                    }
-                    else if(str == "Ranged")
-                    {
-                        if (TM_Calc.IsUsingRanged(p))
-                        {
-                            return false;
-                        }
-                        return true;
-                    }
-                    else if(str == "Bows")
-                    {
-                        if (TM_Calc.IsUsingBow(p))
-                        {
-                            return false;
-                        }
-                        return true;
-                    }
-                    else if (str == "Pistols")
-                    {
-                        if (TM_Calc.IsUsingPistol(p))
-                        {
-                            return false;
-                        }
-                        return true;
-                    }
-                    else if (str == "Rifles")
-                    {
-                        if (TM_Calc.IsUsingRifle(p))
-                        {
-                            return false;
-                        }
-                        return true;
-                    }
-                    else if (str == "Shotguns")
-                    {
-                        if (TM_Calc.IsUsingShotgun(p))
-                        {
-                            return false;
-                        }
-                        return true;
-                    }
-                    else if (str == "MagicalFoci")
-                    {
-                        if (TM_Calc.IsUsingMagicalFoci(p))
-                        {
-                            return false;
-                        }
-                        return true;
-                    }
-                    else
-                    {                        
-                        if(p.equipment != null && p.equipment.Primary != null)
-                        {
-                            if(p.equipment.Primary.def.defName == str)
+                            if (TM_Calc.IsUsingMelee(p))
                             {
-                                return false;
+                                return (cacheRestriction = false);
+                            }
+                            return true;
+                        }
+                        else if (str == "Melee")
+                        {
+                            if (p.equipment != null && p.equipment.Primary == null)
+                            {
+                                return true;
+                            }
+                            if (TM_Calc.IsUsingMelee(p))
+                            {
+                                return (cacheRestriction = false);
+                            }
+                            return true;
+                        }
+                        else if (str == "Ranged")
+                        {
+                            if (TM_Calc.IsUsingRanged(p))
+                            {
+                                return (cacheRestriction = false);
+                            }
+                            return true;
+                        }
+                        else if (str == "Bows")
+                        {
+                            if (TM_Calc.IsUsingBow(p))
+                            {
+                                return (cacheRestriction = false);
+                            }
+                            return true;
+                        }
+                        else if (str == "Pistols")
+                        {
+                            if (TM_Calc.IsUsingPistol(p))
+                            {
+                                return (cacheRestriction = false);
+                            }
+                            return true;
+                        }
+                        else if (str == "Rifles")
+                        {
+                            if (TM_Calc.IsUsingRifle(p))
+                            {
+                                return (cacheRestriction = false);
+                            }
+                            return true;
+                        }
+                        else if (str == "Shotguns")
+                        {
+                            if (TM_Calc.IsUsingShotgun(p))
+                            {
+                                return (cacheRestriction = false);
+                            }
+                            return true;
+                        }
+                        else if (str == "MagicalFoci")
+                        {
+                            if (TM_Calc.IsUsingMagicalFoci(p))
+                            {
+                                return (cacheRestriction = false);
+                            }
+                            return true;
+                        }
+                        else
+                        {
+                            if (p.equipment != null && p.equipment.Primary != null)
+                            {
+                                if (p.equipment.Primary.def.defName == str)
+                                {
+                                    return (cacheRestriction = false);
+                                }
                             }
                         }
                     }
+                    return true;
                 }
-                return true;
+                return cacheRestriction;
             }
             return false;
         }

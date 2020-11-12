@@ -58,7 +58,7 @@ namespace TorannMagic
             bool flag = base.Pawn.DestroyedOrNull();
             if (!flag)
             {
-                if (base.Pawn.Spawned && !base.Pawn.Dead && !base.Pawn.Downed && this.Pawn.needs != null)
+                if (base.Pawn.Spawned && this.Pawn.needs != null)
                 {
                     if(Find.TickManager.TicksGame % 8 == 0)
                     {
@@ -94,6 +94,10 @@ namespace TorannMagic
                                 shouldRemove = true;
                             }
                         }
+                    }
+                    if(base.Pawn.Dead || base.Pawn.Downed)
+                    {
+                        this.shouldRemove = true;
                     }
                 }
             }

@@ -177,7 +177,7 @@ namespace TorannMagic
                 }
                 else
                 {
-                    if (Rand.Chance((.5f + verVal) * TM_Calc.GetSpellSuccessChance(this.CasterPawn, pawn, false)))
+                    if (pawn.Faction == this.CasterPawn.Faction || (Rand.Chance((.5f + verVal) * TM_Calc.GetSpellSuccessChance(this.CasterPawn, pawn, false))))
                     {
                         if(isBad)
                         {

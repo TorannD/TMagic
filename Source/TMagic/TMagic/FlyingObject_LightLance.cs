@@ -233,7 +233,10 @@ namespace TorannMagic
             {
                 if ((filteredTargets[i].DrawPos - this.ExactPosition).magnitude < this.radius)
                 {
-                    targets.Add(filteredTargets[i]);
+                    if (!(filteredTargets[i].Faction == Faction.OfPlayer && (filteredTargets[i].DrawPos - origin).magnitude > 2f))
+                    {
+                        targets.Add(filteredTargets[i]);
+                    }
                 }
             }
             if(targets.Count > 0)

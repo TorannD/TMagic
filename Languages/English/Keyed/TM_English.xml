@@ -68,6 +68,7 @@
 <TM_TooManyTraps>{0} is limited to {1} traps, removing oldest trap.</TM_TooManyTraps>
 <TM_SummonedCreatureLimitExceeded>{0} has exceeded the max number of summoned creatures, dismissing oldest summon.</TM_SummonedCreatureLimitExceeded>
 <TM_NoMinionToDismiss>{0} has no summoned minions.</TM_NoMinionToDismiss>
+<TM_NoGuardianSpiritToDismiss>{0} has no guardian spirit to dismiss.</TM_NoGuardianSpiritToDismiss>
 <TM_NoValidUndeadToDismiss>Target is not a valid target for dismiss undead.</TM_NoValidUndeadToDismiss>
 <TM_CannotUseGemOfInsight>{0} already possesses an arcane or combat trait, or is an undead, and cannot make use of this gemstone.</TM_CannotUseGemOfInsight>
 <TM_ItemUseFailed>Attempted to use an item and failed, reason: {0}</TM_ItemUseFailed>
@@ -180,6 +181,7 @@
 <TM_SelectTargetOnMap>{0}: select target on map...</TM_SelectTargetOnMap>
 <TM_AbandoningMap>Your pawns are abandoning {0}, do you want to remove the map?</TM_AbandoningMap>
 <TM_IncompatibleWeaponType>{0} cannot use {1} - incompatible weapon.</TM_IncompatibleWeaponType>
+<TM_SpiritAnimalChange>{0}'s spirit animal has changed from {1} to {2}.</TM_SpiritAnimalChange>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -280,6 +282,9 @@
 <TM_ArcaneConduit>Arcane Conduit</TM_ArcaneConduit>
 <TM_ManaWell>Mana Well</TM_ManaWell>
 <TM_Boundless>Boundless</TM_Boundless>
+<TM_Brightmage>Brightmage</TM_Brightmage>
+<TM_Shaman>Shaman</TM_Shaman>
+<TM_Shadow>Shadow</TM_Shadow>
 <TM_CustomClasses>Custom Classes</TM_CustomClasses>
 
 <!-- Mod Settings event options -->
@@ -1211,47 +1216,49 @@ SoL: reduces light energy costs for the Spirit of Light by 1% per skill level.</
 <TM_SpiritOfLight_eff>Sustainment</TM_SpiritOfLight_eff>
 <TM_SpiritOfLight_ver>Absorption</TM_SpiritOfLight_ver>
 
-<TM_Totems_pwr_desc></TM_Totems_pwr_desc>
-<TM_Totems_eff_desc></TM_Totems_eff_desc>
-<TM_Totems_ver_desc></TM_Totems_ver_desc>
-<TM_ChainLightning_pwr_desc></TM_ChainLightning_pwr_desc>
-<TM_ChainLightning_eff_desc></TM_ChainLightning_eff_desc>
-<TM_ChainLightning_ver_desc></TM_ChainLightning_ver_desc>
-<TM_Enrage_pwr_desc>Increases the light density of each flash causing a 15% improvement to the effective radius, sensory damage, and disorientation of each burst for each skill point.</TM_Enrage_pwr_desc>
-<TM_Enrage_eff_desc>Reduces mana cost by 8% per skill point.</TM_Enrage_eff_desc>
-<TM_Enrage_ver_desc>Increases the number of light bursts and modifies the burst to affect mechanoid sensors.
-Level 0: 2 light bursts
-Level 1: 3 light bursts
-Level 2: 3 light bursts, affects mechanoids
-Level 3: 4 light bursts, affects mechanoids</TM_Enrage_ver_desc>
-<TM_Hex_pwr_desc></TM_Hex_pwr_desc>
-<TM_Hex_eff_desc></TM_Hex_eff_desc>
-<TM_Hex_ver_desc></TM_Hex_ver_desc>
-<TM_SpiritWolves_pwr_desc></TM_SpiritWolves_pwr_desc>
-<TM_SpiritWolves_eff_desc></TM_SpiritWolves_eff_desc>
-<TM_SpiritWolves_ver_desc></TM_SpiritWolves_ver_desc>
-<TM_GuardianSpirit_pwr_desc></TM_GuardianSpirit_pwr_desc>
-<TM_GuardianSpirit_eff_desc></TM_GuardianSpirit_eff_desc>
-<TM_GuardianSpirit_ver_desc></TM_GuardianSpirit_ver_desc>
+<TM_Totems_pwr_desc>Increases the power of totems by 3%
+Lightning Totem: Increases range and damage
+Earth Totem: Increases stagger frequency and duration
+Healing Totem: Increases range and heal amount</TM_Totems_pwr_desc>
+<TM_Totems_eff_desc>Reduces the mana cost to create a totem by 2% per skill level.</TM_Totems_eff_desc>
+<TM_Totems_ver_desc>Increases the duration of totems by 5% per skill point; base duration is 1 game hour.</TM_Totems_ver_desc>
+<TM_ChainLightning_pwr_desc>Increases Chain Lighting damage by 10% per skill point.</TM_ChainLightning_pwr_desc>
+<TM_ChainLightning_eff_desc>Reduces mana cost by 6% per skill point.</TM_ChainLightning_eff_desc>
+<TM_ChainLightning_ver_desc>Increases the number of times chain lightning will fork or bounce by 1 per skill point.</TM_ChainLightning_ver_desc>
+<TM_Enrage_pwr_desc>Increases the severity of Enrage by .05 per skill point. Base severity is .25, max severity is .5</TM_Enrage_pwr_desc>
+<TM_Enrage_eff_desc>Reduces mana cost of Enrage by 6% per skill point.</TM_Enrage_eff_desc>
+<TM_Enrage_ver_desc>Reduces the amount of emotions consumed by Enrage; at level 3, Enrage can also consume Joy (Recreation) to greatly increase its duration.</TM_Enrage_ver_desc>
+<TM_Hex_pwr_desc>Increases chance to apply hex by 10%, base 40% chance.</TM_Hex_pwr_desc>
+<TM_Hex_eff_desc>Reduces mana cost of Hex by 6% per skill point.</TM_Hex_eff_desc>
+<TM_Hex_ver_desc>Increases the power of effects applied to hexed targets.</TM_Hex_ver_desc>
+<TM_SpiritWolves_pwr_desc>Pack damage is increased by 15% per skill point.</TM_SpiritWolves_pwr_desc>
+<TM_SpiritWolves_eff_desc>Reduces mana cost to manifest Spirit Wolves by 8% per skill point.</TM_SpiritWolves_eff_desc>
+<TM_SpiritWolves_ver_desc>Larger wolf pack increasing the effective area by 10%; at skill level 3, any damage applied by spirit wolves also has a 30% chance to apply hex.</TM_SpiritWolves_ver_desc>
+<TM_GuardianSpirit_pwr_desc>Increases the potency of Guardian Spirit abilities:
+Spirit Bear: Increased taunt targets (4 -> 9), taunt chance (60% -> 78%), and taunt range (15 -> 21); increase damage mitigation (4 -> 7)
+Spirit Mongoose: Increases shadow strike damage (11 -> 16) and crit chance (40% -> 65%); increases duration of invisibility (1.5s -> 2.5s) and haste (2s -> 3s) following a shadow strike
+Spirit Crow: Increases hex chance (50% -> 75%); increases the effectiveness of "Crows Insight" mental buff Psychic Sensitivity and Research speed (20% -> 30%)</TM_GuardianSpirit_pwr_desc>
+<TM_GuardianSpirit_eff_desc>Reduces casing cost, max MP upkeep cost, and mana regeneration cost of the Spirit Guardian by 6% per skill point.</TM_GuardianSpirit_eff_desc>
+<TM_GuardianSpirit_ver_desc>Increases the effectiveness of the Spirit Guardian's spirit bond to increase movement, manipulation, healing rate, ignore pain, and dodge rate by 10% per skill point.</TM_GuardianSpirit_ver_desc>
 
-<TM_Totems_pwr>Pri</TM_Totems_pwr>
-<TM_Totems_eff>Riv</TM_Totems_eff>
-<TM_Totems_ver>Thi</TM_Totems_ver>
-<TM_ChainLightning_pwr>So</TM_ChainLightning_pwr>
-<TM_ChainLightning_eff>Su</TM_ChainLightning_eff>
-<TM_ChainLightning_ver>Su</TM_ChainLightning_ver>
-<TM_Enrage_pwr>Lux</TM_Enrage_pwr>
-<TM_Enrage_eff>Lens</TM_Enrage_eff>
-<TM_Enrage_ver>Lumen</TM_Enrage_ver>
-<TM_Hex_pwr>Rewrite History</TM_Hex_pwr>
-<TM_Hex_eff>Reverse Manipulator</TM_Hex_eff>
-<TM_Hex_ver>Reverse Manipulator</TM_Hex_ver>
-<TM_SpiritWolves_pwr>Time Loop</TM_SpiritWolves_pwr>
-<TM_SpiritWolves_eff>Good Timing</TM_SpiritWolves_eff> 
-<TM_SpiritWolves_ver>Time Catcher</TM_SpiritWolves_ver>
-<TM_GuardianSpirit_pwr>Insurance</TM_GuardianSpirit_pwr>
-<TM_GuardianSpirit_eff>Perfect GuardianSpirit</TM_GuardianSpirit_eff>
-<TM_GuardianSpirit_ver>Impression</TM_GuardianSpirit_ver>
+<TM_Totems_pwr>Totem Master</TM_Totems_pwr>
+<TM_Totems_eff>Totem Bearer</TM_Totems_eff>
+<TM_Totems_ver>Durability</TM_Totems_ver>
+<TM_ChainLightning_pwr>Storm Father</TM_ChainLightning_pwr>
+<TM_ChainLightning_eff>Electric Atmosphere</TM_ChainLightning_eff>
+<TM_ChainLightning_ver>Laced Lightning</TM_ChainLightning_ver>
+<TM_Enrage_pwr>Unstoppable Rage</TM_Enrage_pwr>
+<TM_Enrage_eff>Provocateur</TM_Enrage_eff>
+<TM_Enrage_ver>Cold Rage</TM_Enrage_ver>
+<TM_Hex_pwr>Hexer</TM_Hex_pwr>
+<TM_Hex_eff>Incantations</TM_Hex_eff>
+<TM_Hex_ver>Manifest Iao</TM_Hex_ver>
+<TM_SpiritWolves_pwr>Pack Leader</TM_SpiritWolves_pwr>
+<TM_SpiritWolves_eff>Spirit Howl</TM_SpiritWolves_eff> 
+<TM_SpiritWolves_ver>Northern Haunt</TM_SpiritWolves_ver>
+<TM_GuardianSpirit_pwr>Manifest Guardian</TM_GuardianSpirit_pwr>
+<TM_GuardianSpirit_eff>Spirit Link</TM_GuardianSpirit_eff>
+<TM_GuardianSpirit_ver>Spirit Bond</TM_GuardianSpirit_ver>
 
 <!-- Might Ability Point Descriptions -->
 

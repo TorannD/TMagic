@@ -12,6 +12,7 @@ using AbilityUser;
 using TorannMagic.Enchantment;
 using System.Text;
 using TorannMagic.TMDefs;
+using TorannMagic.ModOptions;
 
 namespace TorannMagic
 {
@@ -31,7 +32,8 @@ namespace TorannMagic
                 mageClasses.Clear();
                 for(int i = 0; i < CustomClasses().Count; i++)
                 {
-                    if(CustomClasses()[i].isMage && ModOptions.Settings.Instance.CustomClass[CustomClasses()[i].classTrait.ToString()])
+                    bool classEnabled = Settings.Instance.CustomClass[CustomClasses()[i].classTrait.ToString()];
+                    if (CustomClasses()[i].isMage && ModOptions.Settings.Instance.CustomClass[CustomClasses()[i].classTrait.ToString()] && classEnabled)
                     {
                         mageClasses.Add(CustomClasses()[i]);
                     }
@@ -67,6 +69,18 @@ namespace TorannMagic
                     {
                         return i;
                     }
+                }
+            }
+            return -2;
+        }
+
+        public static int CustomClassIndexOfTraitDef(TraitDef trait)
+        {
+            for (int i = 0; i < CustomClasses().Count; i++)
+            {
+                if (CustomClasses()[i].classTrait.defName == trait.defName)
+                {
+                    return i;
                 }
             }
             return -2;

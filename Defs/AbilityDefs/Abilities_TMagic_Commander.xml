@@ -25,7 +25,7 @@
 		<abilityDef>TM_ProvisionerAura</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Default</defaultProjectile>
-        <warmupTime>0</warmupTime>
+        <warmupTime>.1</warmupTime>
         <SecondsToRecharge>120.0</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
@@ -64,7 +64,7 @@
 		<abilityDef>TM_TaskMasterAura</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Default</defaultProjectile>
-        <warmupTime>0</warmupTime>
+        <warmupTime>.1</warmupTime>
         <SecondsToRecharge>120.0</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
@@ -103,7 +103,7 @@
 		<abilityDef>TM_CommanderAura</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Default</defaultProjectile>
-        <warmupTime>0</warmupTime>
+        <warmupTime>.1</warmupTime>
         <SecondsToRecharge>300.0</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
@@ -147,7 +147,7 @@ Commands do not affect the commander.</description>
 		<abilityDef>TM_StayAlert</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Default</defaultProjectile>
-        <warmupTime>0</warmupTime>
+        <warmupTime>.5</warmupTime>
         <SecondsToRecharge>120</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
@@ -197,7 +197,7 @@ Commands do not affect the commander.</description>
 		<abilityDef>TM_StayAlert_I</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Default</defaultProjectile>
-        <warmupTime>0</warmupTime>
+        <warmupTime>.5</warmupTime>
         <SecondsToRecharge>110</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
@@ -247,7 +247,7 @@ Commands do not affect the commander.</description>
 		<abilityDef>TM_StayAlert_II</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Default</defaultProjectile>
-        <warmupTime>0</warmupTime>
+        <warmupTime>.5</warmupTime>
         <SecondsToRecharge>100</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
@@ -297,7 +297,7 @@ Commands do not affect the commander.</description>
 		<abilityDef>TM_StayAlert_III</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Default</defaultProjectile>
-        <warmupTime>0</warmupTime>
+        <warmupTime>.5</warmupTime>
         <SecondsToRecharge>90</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
@@ -349,7 +349,7 @@ Commands do not affect the commander.</description>
 		<abilityDef>TM_MoveOut</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Default</defaultProjectile>
-        <warmupTime>0</warmupTime>
+        <warmupTime>.5</warmupTime>
         <SecondsToRecharge>120</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
@@ -399,7 +399,7 @@ Commands do not affect the commander.</description>
 		<abilityDef>TM_MoveOut_I</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Default</defaultProjectile>
-        <warmupTime>0</warmupTime>
+        <warmupTime>.5</warmupTime>
         <SecondsToRecharge>110</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
@@ -449,7 +449,7 @@ Commands do not affect the commander.</description>
 		<abilityDef>TM_MoveOut_II</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Default</defaultProjectile>
-        <warmupTime>0</warmupTime>
+        <warmupTime>.5</warmupTime>
         <SecondsToRecharge>100</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
@@ -499,7 +499,7 @@ Commands do not affect the commander.</description>
 		<abilityDef>TM_MoveOut_III</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Default</defaultProjectile>
-        <warmupTime>0</warmupTime>
+        <warmupTime>.5</warmupTime>
         <SecondsToRecharge>90</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
@@ -552,7 +552,7 @@ Commands do not affect the commander.</description>
 		<abilityDef>TM_HoldTheLine</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Default</defaultProjectile>
-        <warmupTime>0</warmupTime>
+        <warmupTime>.5</warmupTime>
         <SecondsToRecharge>200</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
@@ -602,7 +602,7 @@ Commands do not affect the commander.</description>
 		<abilityDef>TM_HoldTheLine_I</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Default</defaultProjectile>
-        <warmupTime>0</warmupTime>
+        <warmupTime>.5</warmupTime>
         <SecondsToRecharge>180</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
@@ -652,7 +652,7 @@ Commands do not affect the commander.</description>
 		<abilityDef>TM_HoldTheLine_II</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Default</defaultProjectile>
-        <warmupTime>0</warmupTime>
+        <warmupTime>.5</warmupTime>
         <SecondsToRecharge>160</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
@@ -702,7 +702,7 @@ Commands do not affect the commander.</description>
 		<abilityDef>TM_HoldTheLine_III</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Default</defaultProjectile>
-        <warmupTime>0</warmupTime>
+        <warmupTime>.5</warmupTime>
         <SecondsToRecharge>150</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>

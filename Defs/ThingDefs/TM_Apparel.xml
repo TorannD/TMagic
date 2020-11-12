@@ -226,15 +226,15 @@ Augmented by Phantom Shift: 20% chance to avoid an attack</description>
   
   <ThingDef ParentName="TMTailoredApparelBase">
     <defName>DarkRobe</defName>
-    <label>Dark Robe</label>    
-    <description>Robes worn by the heralds of dark magic. Wearers of this robe are willing to sacrifice their sanity in return for increased power.
+    <label>Mage Robe</label>    
+    <description>Robes worn by the heralds of magic. Wearers of this robe demonstrate a willingness to make physical sacrifices to increase their innate power.
 	
-Dark robes are enchanted and provide additional benefits to trained mages and fighters:
+Mage robes are enchanted and provide additional benefits to trained mages and fighters:
 Max Energy: +17.5%
 Energy Regen: +10%
 Ability Cooldown: -15%
 Energy Costs: -15%
-Class XP Gain: -25%
+Class XP Gain: +10%
 Arcane Res: +10%</description>
     <graphicData> 
 		<texPath>Equipment/darkrobe</texPath>
@@ -248,14 +248,14 @@ Arcane Res: +10%</description>
 <!-- 		<MarketValue>2500</MarketValue> -->
 		<ArmorRating_Blunt>0.07</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
-		<ArmorRating_Heat>0.25</ArmorRating_Heat>
+		<ArmorRating_Heat>0.15</ArmorRating_Heat>
 		<ArmorRating_Alignment>0.1</ArmorRating_Alignment>
-		<StuffEffectMultiplierArmor>0.3</StuffEffectMultiplierArmor>
+		<StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor>
         <StuffEffectMultiplierInsulation_Cold>1</StuffEffectMultiplierInsulation_Cold>
         <StuffEffectMultiplierInsulation_Heat>1</StuffEffectMultiplierInsulation_Heat>
 	</statBases>
 	<equippedStatOffsets>
-		<PsychicSensitivity>0.40</PsychicSensitivity>
+		<PsychicSensitivity>0.25</PsychicSensitivity>
 		<MentalBreakThreshold>0.12</MentalBreakThreshold>
 	</equippedStatOffsets>
 		<recipeMaker>
@@ -268,7 +268,7 @@ Arcane Res: +10%</description>
 		</researchPrerequisite>
     </recipeMaker>
 	<costList>
-		<RawMagicyte>350</RawMagicyte>
+		<RawMagicyte>400</RawMagicyte>
 	</costList>
 	<costStuffCount>100</costStuffCount>
 	<stuffCategories>
@@ -335,8 +335,8 @@ Arcane Res: +10%</description>
 		<coolDownTier>Major</coolDownTier>
 		<mpCost>-0.15</mpCost>
 		<mpCostTier>Major</mpCostTier>
-		<xpGain>-0.25</xpGain>
-		<xpGainTier>Negative</xpGainTier>
+		<xpGain>0.1</xpGain>
+		<xpGainTier>Standard</xpGainTier>
 		<arcaneRes>0.10</arcaneRes>
 		<arcaneResTier>Minor</arcaneResTier>
 	  </li>

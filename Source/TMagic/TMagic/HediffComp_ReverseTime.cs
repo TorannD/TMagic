@@ -37,7 +37,7 @@ namespace TorannMagic
                 {
                     return base.CompLabelInBracketsExtra + " (warped)";
                 }
-                return base.CompLabelInBracketsExtra;
+                return base.CompLabelInBracketsExtra + " " + (this.durationTicks/60) + "s";
             }
         }
         
@@ -116,6 +116,7 @@ namespace TorannMagic
         private void ReverseHediff(Pawn pawn, int ticks)
         {
             float totalBleedRate = 0;
+            int totalHDremoved = 0;
             using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
             {
                 while (enumerator.MoveNext())
@@ -195,6 +196,7 @@ namespace TorannMagic
                                 {
                                     if (rec.def.isBad && rec.def != TorannMagicDefOf.TM_ResurrectionHD)
                                     {
+                                        totalHDremoved++;
                                         this.Pawn.health.RemoveHediff(rec);
                                         break;
                                     }
@@ -233,7 +235,8 @@ namespace TorannMagic
                                         {
                                             goto IgnoreHediff;
                                         }
-                                    }                                    
+                                    }
+                                    totalHDremoved++;
                                     this.Pawn.health.RemoveHediff(rec);
                                     i = hediffList.Count;
                                     break;
@@ -248,6 +251,7 @@ namespace TorannMagic
                     }
                 }
             }
+            ReduceReverseTime(totalHDremoved);
             //using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
             //{
             //    while (enumerator.MoveNext())
@@ -276,6 +280,11 @@ namespace TorannMagic
             //        }
             //    }
             //}
+        }
+
+        public void ReduceReverseTime(int removedCount)
+        {
+            this.durationTicks -= Mathf.RoundToInt(removedCount * Rand.Range(8f,12f) * tickPeriod);
         }
 
         public void ReverseEffects(Pawn pawn, int intensity)

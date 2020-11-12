@@ -59,6 +59,15 @@ namespace TorannMagic
                                 break;
                             }
                         }
+                        CompAbilityUserMagic compMagic = mapPawns[i].GetComp<CompAbilityUserMagic>();
+                        if(compMagic.IsMagicUser && compMagic.bondedSpirit != null)
+                        {
+                            if(compMagic.bondedSpirit == this.Pawn)
+                            {
+                                this.bonderPawn = compMagic.Pawn;
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -105,7 +114,7 @@ namespace TorannMagic
                                     bool flag5 = current.CanHealNaturally() && !current.IsPermanent();
                                     if (flag5)
                                     {
-                                        current.Heal(1.0f);
+                                        current.Heal(1.0f + this.parent.Severity/3f);
                                         num--;
                                         num2--;
                                     }
@@ -128,6 +137,15 @@ namespace TorannMagic
                 else
                 {
                     this.Pawn.health.RemoveHediff(this.Pawn.health.hediffSet.GetFirstHediffOfDef(this.parent.def));
+                    if(this.Pawn.def.thingClass == typeof(TMPawnSummoned))
+                    {
+                        if (this.Pawn.Map != null)
+                        {
+                            MoteMaker.ThrowSmoke(this.Pawn.DrawPos, this.Pawn.Map, 1f);
+                            TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Ghost, this.Pawn.DrawPos, this.Pawn.Map, 1.3f, .25f, .1f, .45f, 0, Rand.Range(1f, 2f), 0, 0);
+                        }
+                        this.Pawn.Destroy(DestroyMode.Vanish);                        
+                    }
                     //this.Pawn.SetFactionDirect(null);
                 }
             }
@@ -135,52 +153,23 @@ namespace TorannMagic
 
         private void UpdateBond()
         {
+            int verVal = 0;
             CompAbilityUserMight comp = this.bonderPawn.GetComp<CompAbilityUserMight>();
-            MightPowerSkill ver = comp.MightData.MightPowerSkill_AnimalFriend.FirstOrDefault((MightPowerSkill x) => x.label == "TM_AnimalFriend_ver");
-            this.parent.Severity = .5f + ver.level;
+            if (comp != null && comp.IsMightUser)
+            {
+                verVal = comp.MightData.MightPowerSkill_AnimalFriend.FirstOrDefault((MightPowerSkill x) => x.label == "TM_AnimalFriend_ver").level;
+            }
+            CompAbilityUserMagic compMagic = this.bonderPawn.GetComp<CompAbilityUserMagic>();
+            if(compMagic != null && compMagic.IsMagicUser)
+            {
+                verVal = compMagic.MagicData.MagicPowerSkill_GuardianSpirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_GuardianSpirit_ver").level;
+            }
+            this.parent.Severity = .5f + verVal;
         }
 
         public void RefreshBond()
         {
-            if (this.Pawn.training.CanBeTrained(TrainableDefOf.Tameness))
-            {
-                while (!this.Pawn.training.HasLearned(TrainableDefOf.Tameness))
-                {
-                    this.Pawn.training.Train(TrainableDefOf.Tameness, this.bonderPawn);
-                }
-            }
-
-            if (this.Pawn.training.CanBeTrained(TrainableDefOf.Obedience))
-            {
-                while (!this.Pawn.training.HasLearned(TrainableDefOf.Obedience))
-                {
-                    this.Pawn.training.Train(TrainableDefOf.Obedience, this.bonderPawn);
-                }
-            }
-
-            if (this.Pawn.training.CanBeTrained(TrainableDefOf.Release))
-            {
-                while (!this.Pawn.training.HasLearned(TrainableDefOf.Release))
-                {
-                    this.Pawn.training.Train(TrainableDefOf.Release, this.bonderPawn);
-                }
-            }
-
-            if (this.Pawn.training.CanBeTrained(TorannMagicDefOf.Haul))
-            {
-                while (!this.Pawn.training.HasLearned(TorannMagicDefOf.Haul))
-                {
-                    this.Pawn.training.Train(TorannMagicDefOf.Haul, this.bonderPawn);
-                }
-            }
-
-            if (this.Pawn.training.CanBeTrained(TorannMagicDefOf.Rescue))
-            {
-                while (!this.Pawn.training.HasLearned(TorannMagicDefOf.Rescue))
-                {
-                    this.Pawn.training.Train(TorannMagicDefOf.Rescue, this.bonderPawn);
-                }
-            }
+            TM_Action.UpdateAnimalTraining(this.Pawn);
         }
     }
 }

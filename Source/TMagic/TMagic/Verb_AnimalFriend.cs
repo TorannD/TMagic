@@ -123,45 +123,7 @@ namespace TorannMagic
                                 HealthUtility.AdjustSeverity(animal, TorannMagicDefOf.TM_RangerBondHD, .5f + ver.level);
                                 comp.bondedPet = animal;
                                 MoteMaker.MakeInteractionBubble(animal, pawn, InteractionDefOf.Nuzzle.interactionMote, InteractionDefOf.Nuzzle.Symbol);
-                                if (animal.training.CanBeTrained(TrainableDefOf.Tameness))
-                                {
-                                    while (!animal.training.HasLearned(TrainableDefOf.Tameness))
-                                    {
-                                        animal.training.Train(TrainableDefOf.Tameness, pawn);
-                                    }
-                                }
-
-                                if (animal.training.CanBeTrained(TrainableDefOf.Obedience)) 
-                                {
-                                    while (!animal.training.HasLearned(TrainableDefOf.Obedience)) 
-                                    {
-                                        animal.training.Train(TrainableDefOf.Obedience, pawn);
-                                    }
-                                }
-
-                                if (animal.training.CanBeTrained(TrainableDefOf.Release))
-                                {
-                                    while (!animal.training.HasLearned(TrainableDefOf.Release))
-                                    {
-                                        animal.training.Train(TrainableDefOf.Release, pawn);
-                                    }
-                                }
-
-                                if (animal.training.CanBeTrained(TorannMagicDefOf.Haul))
-                                {
-                                    while (!animal.training.HasLearned(TorannMagicDefOf.Haul))
-                                    {
-                                        animal.training.Train(TorannMagicDefOf.Haul, pawn);
-                                    }
-                                }
-
-                                if (animal.training.CanBeTrained(TorannMagicDefOf.Rescue))
-                                {
-                                    while (!animal.training.HasLearned(TorannMagicDefOf.Rescue))
-                                    {
-                                        animal.training.Train(TorannMagicDefOf.Rescue, pawn);
-                                    }
-                                }                               
+                                TM_Action.TrainAnimalFull(animal, pawn);                           
                             }
                             else
                             {

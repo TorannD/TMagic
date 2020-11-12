@@ -50,6 +50,7 @@
 															<!-- class with undead hediffs will instantly die if no necromancer is available to sustain -->
 			<isAndroid>false</isAndroid>					<!-- class counts as an android for various spell checks -->
 			<isAdvancedClass>false</isAdvancedClass>		<!-- shifts all class related functions into a separate, advanced tab (WIP/future use) -->
+			<shouldShow>false</shouldShow>
 		  </li>		  
 		  <!-- Brightmage -->
 		  <li>		  
@@ -87,7 +88,8 @@
 			<isNecromancer>false</isNecromancer>			
 			<isUndead>false</isUndead>											
 			<isAndroid>false</isAndroid>					
-			<isAdvancedClass>false</isAdvancedClass>		
+			<isAdvancedClass>false</isAdvancedClass>	
+			<shouldShow>false</shouldShow>			
 		  </li>	
 		  <!-- Shaman -->
 		  <li>		  
@@ -104,6 +106,9 @@
 				<li>TM_Totems</li>
 				<li>TM_Enrage</li>
 				<li>TM_Hex</li>
+				<li>TM_Hex_I</li>
+				<li>TM_Hex_II</li>
+				<li>TM_Hex_III</li>
 				<li>TM_ChainLightning</li>
 				<li>TM_SpiritWolves</li>
 				<li>TM_SpiritWolves_I</li>
@@ -111,7 +116,8 @@
 				<li>TM_SpiritWolves_III</li>
 				<li>TM_GuardianSpirit</li>
 			</classMageAbilities>
-			<learnableSpells>								
+			<learnableSpells>		
+				<li>SpellOf_GuardianSpirit</li>			
 			</learnableSpells>								
 			
 			<classFighterAbilities>							
@@ -125,6 +131,7 @@
 			<isUndead>false</isUndead>										
 			<isAndroid>false</isAndroid>					
 			<isAdvancedClass>false</isAdvancedClass>		
+			<shouldShow>false</shouldShow>
 		  </li>	
 		</customClasses>			
 	</TorannMagic.TM_CustomClassDef>		

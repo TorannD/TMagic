@@ -17,11 +17,12 @@ namespace TorannMagic
             Pawn pawn = this.currentTarget.Thing as Pawn;
 
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-            if(comp != null && comp.HexedPawns.Count > 0)
+            int verVal = TM_Calc.GetMagicSkillLevel(CasterPawn, comp.MagicData.MagicPowerSkill_Hex, "TM_Hex", "_ver", true);
+            if (comp != null && comp.HexedPawns.Count > 0)
             {
                 foreach(Pawn p in comp.HexedPawns)
                 {
-                    TM_Action.DamageEntities(p, null, Rand.Range(1f, 4f), TMDamageDefOf.DamageDefOf.TM_PainDD, caster);
+                    TM_Action.DamageEntities(p, null, Rand.Range(2f, 4f) * (1f + (.1f * verVal)), 2, TMDamageDefOf.DamageDefOf.TM_PainDD, caster);
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_BloodMist, p.DrawPos, p.Map, .7f, .2f, .2f, .3f, Rand.Range(-50, 50), Rand.Range(.5f, 1f), Rand.Range(-90, 90), Rand.Range(0, 360));
                 }
             }

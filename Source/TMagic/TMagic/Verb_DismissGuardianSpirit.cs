@@ -10,7 +10,7 @@ using UnityEngine;
 namespace TorannMagic
 {
     public class Verb_DismissGuardianSpirit : Verb_UseAbility
-    {
+    {        
         protected override bool TryCastShot()
         {
             Pawn caster = base.CasterPawn;
@@ -19,14 +19,14 @@ namespace TorannMagic
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
             if(comp.IsMagicUser)
             {
-                if(comp.summonedMinions.Count > 0)
+                if(comp.bondedSpirit != null)
                 {
-                    TMPawnSummoned minion = (TMPawnSummoned)comp.summonedMinions[0];
-                    minion.TicksLeft = 1;
+                    comp.bondedSpirit.SetFaction(Find.FactionManager.FirstFactionOfDef(TorannMagicDefOf.TM_SkeletalFaction), null);
+                    comp.bondedSpirit.Kill(null);                    
                 }
                 else
                 {
-                    Messages.Message("TM_NoMinionToDismiss".Translate(
+                    Messages.Message("TM_NoGuardianSpiritToDismiss".Translate(
                             this.CasterPawn.LabelShort
                         ), MessageTypeDefOf.RejectInput);
                 }

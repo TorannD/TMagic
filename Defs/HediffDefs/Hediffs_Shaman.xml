@@ -36,7 +36,7 @@
 			  <offset>0.2</offset>
           </li>
 		</capMods>
-				  <statOffsets>
+		  <statOffsets>
 			<PainShockThreshold>+0.20</PainShockThreshold>
 	      </statOffsets>
       </li>
@@ -197,7 +197,7 @@
 	<isBad>true</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-36</severityPerDay>
+        <severityPerDay>-24</severityPerDay>
       </li>
     </comps>
     <stages>
@@ -212,6 +212,218 @@
 		</capMods>
       </li>     
     </stages>
+  </HediffDef>
+  
+  
+    <!-- Spirit Bond -->
+  <HediffDef>
+    <defName>TM_SpiritBondHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Spirit Bond</label>
+	<description>Represents the bond this animal spirit shares with a shaman. Increases physical attributes and enhances healing.</description>
+    <defaultLabelColor>(0,0.8,0.0)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<minSeverity>0.001</minSeverity>
+	<maxSeverity>4.0</maxSeverity>
+	<initialSeverity>0.95</initialSeverity>
+	<isBad>false</isBad>
+	<comps>
+	  <li>
+        <compClass>TorannMagic.HediffComp_RangerBond</compClass>
+      </li>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>0.0</severityPerDay>
+      </li>	  
+    </comps>
+	<stages>
+      <li>
+	    <label>I</label>
+		<minSeverity>.001</minSeverity>
+		<painOffset>-0.5</painOffset>	    
+        <capMods>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.2</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>0.2</offset>
+          </li>
+        </capMods>
+		<statOffsets>
+		  <PainShockThreshold>+0.05</PainShockThreshold>
+		  <MeleeDodgeChance>+15</MeleeDodgeChance>
+	    </statOffsets>
+      </li>
+	  <li>
+	    <label>II</label>
+		<minSeverity>1</minSeverity>
+		<painOffset>-0.6</painOffset>	    
+        <capMods>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.3</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>0.3</offset>
+          </li>
+		  <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.2</offset>
+          </li>
+        </capMods>
+		<statOffsets>
+		  <PainShockThreshold>+0.10</PainShockThreshold>
+		  <MeleeDodgeChance>+20</MeleeDodgeChance>
+	    </statOffsets>
+      </li>
+	  <li>
+	    <label>III</label>
+		<minSeverity>2</minSeverity>
+		<painOffset>-0.7</painOffset>	    
+        <capMods>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.4</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>0.4</offset>
+          </li>
+		  <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.3</offset>
+          </li>
+        </capMods>
+		<statOffsets>
+		  <PainShockThreshold>+0.15</PainShockThreshold>
+		  <MeleeDodgeChance>+27</MeleeDodgeChance>
+	    </statOffsets>
+      </li>
+	  <li>
+	    <label>IV</label>
+		<minSeverity>3</minSeverity>
+		<painOffset>-0.8</painOffset>	    
+        <capMods>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.5</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>0.5</offset>
+          </li>
+		  <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.4</offset>
+          </li>
+        </capMods>
+		<statOffsets>
+		  <PainShockThreshold>+0.20</PainShockThreshold>
+		  <MeleeDodgeChance>+35</MeleeDodgeChance>
+	    </statOffsets>
+      </li>
+	  </stages>
+  </HediffDef>
+  
+  
+    <!-- Spirit Bond -->
+  <HediffDef>
+    <defName>TM_CrowInsightHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Crows Insight</label>
+	<description>Insight gained from the spirit crow - enhances research speed and psychic sensitivity.</description>
+    <defaultLabelColor>(0,0.8,0.0)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<minSeverity>0.001</minSeverity>
+	<maxSeverity>4.0</maxSeverity>
+	<initialSeverity>0.95</initialSeverity>
+	<isBad>false</isBad>
+	<stages>
+      <li>
+	    <label>I</label>
+		<minSeverity>.001</minSeverity>    
+		<statOffsets>
+		  <ResearchSpeed>0.20</ResearchSpeed>
+		  <PsychicSensitivity>0.20</PsychicSensitivity>
+		  <GlobalLearningFactor>0.10</GlobalLearningFactor>
+	    </statOffsets>
+      </li>
+	  <li>
+	    <label>II</label>
+		<minSeverity>1</minSeverity>
+		<statOffsets>
+		  <ResearchSpeed>0.24</ResearchSpeed>
+		  <PsychicSensitivity>0.24</PsychicSensitivity>
+		  <GlobalLearningFactor>0.12</GlobalLearningFactor>
+	    </statOffsets>
+      </li>
+	  <li>
+	    <label>III</label>
+		<minSeverity>2</minSeverity>
+		<statOffsets>
+		  <ResearchSpeed>0.27</ResearchSpeed>
+		  <PsychicSensitivity>0.27</PsychicSensitivity>
+		  <GlobalLearningFactor>0.14</GlobalLearningFactor>
+	    </statOffsets>
+      </li>
+	  <li>
+	    <label>IV</label>
+		<minSeverity>3</minSeverity>
+		<statOffsets>
+		  <ResearchSpeed>0.3</ResearchSpeed>
+		  <PsychicSensitivity>0.3</PsychicSensitivity>
+		  <GlobalLearningFactor>0.15</GlobalLearningFactor>
+	    </statOffsets>
+      </li>
+	</stages>
+  </HediffDef>
+  
+    <!-- Bird flight graphics -->
+  <HediffDef>
+    <defName>TM_BirdflightHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>flying</label>
+	<description>Increased movement while flying.</description>
+    <defaultLabelColor>(0,0.8,0.0)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<minSeverity>0.001</minSeverity>
+	<maxSeverity>4.0</maxSeverity>
+	<initialSeverity>0.5</initialSeverity>
+	<isBad>false</isBad>
+	<stages>
+	  <li>
+	    <label></label>
+		<minSeverity>.001</minSeverity>    
+		<becomeVisible>false</becomeVisible>
+      </li>
+	  <li>
+	    <label></label>
+		<minSeverity>1</minSeverity>    
+		<becomeVisible>false</becomeVisible>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>0.6</offset>
+          </li>
+        </capMods>
+      </li>
+	</stages>
+	<comps>
+	  <li>
+        <compClass>TorannMagic.HediffComp_LowFlight</compClass>
+      </li> 
+    </comps>
   </HediffDef>
   
   

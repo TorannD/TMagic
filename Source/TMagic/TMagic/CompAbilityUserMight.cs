@@ -4177,6 +4177,14 @@ namespace TorannMagic
                                         {
                                             continue;
                                         }
+                                        if(targetThing is Pawn)
+                                        {
+                                            Pawn targetPawn = targetThing as Pawn;
+                                            if(targetPawn.IsPrisoner)
+                                            {
+                                                continue;
+                                            }
+                                        }
                                         if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
                                         {
                                             continue;
@@ -4258,6 +4266,14 @@ namespace TorannMagic
                                         if (!(TE || TN || TF))
                                         {
                                             continue;
+                                        }
+                                        if (targetThing is Pawn)
+                                        {
+                                            Pawn targetPawn = targetThing as Pawn;
+                                            if (targetPawn.IsPrisoner)
+                                            {
+                                                continue;
+                                            }
                                         }
                                         if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
                                         {

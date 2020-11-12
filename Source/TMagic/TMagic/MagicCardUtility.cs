@@ -1792,6 +1792,16 @@ namespace TorannMagic
                                     compMagic.AddPawnAbility(TorannMagicDefOf.TM_NanoStimulant);
                                     compMagic.MagicData.MagicPowersStandalone.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_NanoStimulant).learned = true;
                                 }
+                                if(abilityLearned.childAbilities != null && abilityLearned.childAbilities.Count > 0)
+                                {
+                                    for (int c = 0; c < abilityLearned.childAbilities.Count; c++)
+                                    {
+                                        if (abilityLearned.childAbilities[c].shouldInitialize)
+                                        {
+                                            compMagic.AddPawnAbility(abilityLearned.childAbilities[c]);
+                                        }
+                                    }
+                                }
                                 compMagic.MagicData.MagicAbilityPoints -= enumerator.Current.learnCost;
                             }
                         }

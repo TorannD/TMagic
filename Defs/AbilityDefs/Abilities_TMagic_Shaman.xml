@@ -7,13 +7,18 @@
   <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
     <defName>TM_Totems</defName>
     <label>Totems</label>
-    <uiIconPath>UI/defense_pylon</uiIconPath>
-    <description>Totems are a form of magic that anchors an elemental spirit to the physical world and allows it to influence objects near the totem. This ability increases control over all types of totems.</description>
+    <uiIconPath>UI/totem_icon</uiIconPath>
+    <description>Totems are a form of magic that anchors an elemental spirit to the physical world allowing it to influence objects near the totem. This ability increases control over all types of totems.</description>
     <manaCost>0</manaCost>
-	<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+	<efficiencyReductionPercent>.02</efficiencyReductionPercent>
 	<learnChance>.7</learnChance>
 	<canCopy>false</canCopy>
 	<shouldInitialize>false</shouldInitialize>
+	<childAbilities>
+		<li>TM_SummonTotemLightning</li>
+		<li>TM_SummonTotemEarth</li>
+		<li>TM_SummonTotemHealing</li>
+	</childAbilities>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -42,6 +47,140 @@
     </MainVerb>
  </TorannMagic.TMAbilityDef>
  
+ 
+<!-- Create lightning totem -->
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_SummonTotemLightning</defName>
+    <label>Totem: Lightning</label>
+    <uiIconPath>Other/totem_claw</uiIconPath>
+    <description>Creates a lightning totem at the target location. Lasts 1 game hr and discharges electrical bolts at enemies within 40m every 2-3 seconds.</description>
+    <manaCost>0.40</manaCost>
+	<efficiencyReductionPercent>.02</efficiencyReductionPercent>
+	<canCopy>false</canCopy>
+	<shouldInitialize>true</shouldInitialize>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SummonTotemLightning</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+		<abilityDef>TM_SummonTotemLightning</abilityDef>
+        <warmupTime>3</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>30</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ <!-- Create earth totem -->
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_SummonTotemEarth</defName>
+    <label>Totem: Earth</label>
+    <uiIconPath>Other/totem_monolith</uiIconPath>
+    <description>Creates an earth totem at the target location. Lasts 1 game hour and causes tremors every 3-4 seconds that stagger all pawns within 5 cells.</description>
+    <manaCost>0.35</manaCost>
+	<efficiencyReductionPercent>.02</efficiencyReductionPercent>
+	<canCopy>false</canCopy>
+	<shouldInitialize>true</shouldInitialize>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SummonTotemEarth</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+		<abilityDef>TM_SummonTotemEarth</abilityDef>
+        <warmupTime>3</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>30</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ <!-- Create healing totem -->
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_SummonTotemHealing</defName>
+    <label>Totem: Healing</label>
+    <uiIconPath>Other/totem_wing</uiIconPath>
+    <description>Creates a healing totem at the target location. Lasts 1 game hour and periodically heals nearby pawns.</description>
+    <manaCost>0.30</manaCost>
+	<efficiencyReductionPercent>.02</efficiencyReductionPercent>
+	<canCopy>false</canCopy>
+	<shouldInitialize>true</shouldInitialize>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SummonTotemHealing</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+		<abilityDef>TM_SummonTotemHealing</abilityDef>
+        <warmupTime>3</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>30</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ <!-- lightning -->
+ 
+ 	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Lightning</thingClass>
+	    <defName>Projectile_Lightning</defName>
+        <label>lightning</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Lightning</damageDef>
+            <damageAmountBase>16</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+ 
  <!-- Chain Lightning -->	
 	
 	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
@@ -64,13 +203,13 @@
     <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
         <defName>TM_ChainLightning</defName>
         <label>Chain Lightning</label>
-        <uiIconPath>PawnKind/gargoyle_south</uiIconPath>
-        <description>Bolt of lightning that forks after striking its first target.</description>
-		<manaCost>0.0050</manaCost>
+        <uiIconPath>UI/chain_lightning</uiIconPath>
+        <description>A powerful bolt of lightning that forks after striking its first target.</description>
+		<manaCost>0.40</manaCost>
 		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
 		<learnChance>.3</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_SB</verbClass>
+            <verbClass>AbilityUser.Verb_UseAbility</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
@@ -78,8 +217,8 @@
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_ChainLightning</defaultProjectile>
             <abilityDef>TM_ChainLightning</abilityDef>
-            <warmupTime>.25</warmupTime>
-            <SecondsToRecharge>1</SecondsToRecharge>
+            <warmupTime>.5</warmupTime>
+            <SecondsToRecharge>10</SecondsToRecharge>
             <range>50</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
@@ -104,7 +243,9 @@
         <defName>TM_Enrage</defName>
         <label>Enrage</label>
         <uiIconPath>UI/enrage</uiIconPath>
-        <description>Places a hex on a target that causes their emotions to become fuel for battle rage. The hex will burn itself out once all emotions have been consumed. Hostile targets will immediately become berserk if their mind is susceptible.</description>
+        <description>Places a hex on a target that causes their emotions (Mood) to become fuel for battle rage. The hex will burn itself out once all emotions have been consumed. Hostile targets will immediately become berserk if their mind is susceptible.
+
+An enraged pawn gains increased movement and manipulation, increased pain resistance, cannot be staggered, and increases melee damage by the percent equal to the severity of enrage (20-50% damage bonus).</description>
 		<manaCost>0.15</manaCost>
 		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
 		<learnChance>.6</learnChance>
@@ -127,6 +268,7 @@
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
+			<requiresLineOfSight>false</requiresLineOfSight>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>
                 <canTargetBuildings>false</canTargetBuildings>
@@ -142,7 +284,7 @@
         <defName>TM_Hex</defName>
         <label>Hex</label>
         <uiIconPath>UI/hex</uiIconPath>
-        <description>Hex (I)
+        <description>Hex (I) - places a hex on pawns, additional effects may be applied to hexed targets. Wears off after 6 game hours.
 
 Max targets: 4
 Radius: 3
@@ -192,7 +334,7 @@ Cast time: 1s</description>
         <defName>TM_Hex_I</defName>
         <label>Hex</label>
         <uiIconPath>UI/hex</uiIconPath>
-        <description>Hex (II)
+        <description>Hex (II) - places a hex on pawns, additional effects may be applied to hexed targets. Wears off after 6 game hours.
 
 Max targets: 5
 Radius: 3
@@ -243,7 +385,7 @@ Cast time: .8s</description>
         <defName>TM_Hex_II</defName>
         <label>Hex</label>
         <uiIconPath>UI/hex</uiIconPath>
-        <description>Hex (III)
+        <description>Hex (III) - places a hex on pawns, additional effects may be applied to hexed targets. Wears off after 6 game hours.
 
 Max targets: 5
 Radius: 4
@@ -294,7 +436,7 @@ Cast time: .7s</description>
         <defName>TM_Hex_III</defName>
         <label>Hex</label>
         <uiIconPath>UI/hex</uiIconPath>
-        <description>Hex (IV)
+        <description>Hex (IV) - places a hex on pawns, additional effects may be applied to hexed targets. Wears off after 6 game hours.
 
 Max targets: 6
 Radius: 4
@@ -345,8 +487,8 @@ Cast time: .6s</description>
         <defName>TM_Hex_Pain</defName>
         <label>Pain (Hex)</label>
         <uiIconPath>UI/hex_pain</uiIconPath>
-        <description>Causes severe pain on all hexed targets.</description>
-		<manaCost>0.15</manaCost>
+        <description>All hexed pawns suffer extreme pain.</description>
+		<manaCost>0.12</manaCost>
 		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
 		<learnChance>0</learnChance>
 		<shouldInitialize>false</shouldInitialize>
@@ -360,8 +502,8 @@ Cast time: .6s</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_Hex_Pain</abilityDef>
-            <warmupTime>1</warmupTime>
-            <SecondsToRecharge>15</SecondsToRecharge>
+            <warmupTime>.5</warmupTime>
+            <SecondsToRecharge>5</SecondsToRecharge>
             <range>0</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
@@ -384,7 +526,7 @@ Cast time: .6s</description>
         <label>Critical Fail (Hex)</label>
         <uiIconPath>UI/hex_criticalfail</uiIconPath>
         <description>Places a short lived curse on all hexed targets that causes extremely bad luck.</description>
-		<manaCost>0.20</manaCost>
+		<manaCost>0.15</manaCost>
 		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
 		<learnChance>0</learnChance>
 		<shouldInitialize>false</shouldInitialize>
@@ -550,7 +692,11 @@ Cast time: .6s</description>
         <defName>TM_SpiritWolves</defName>
         <label>Spirit Wolves</label>
         <uiIconPath>UI/spiritwolf</uiIconPath>
-        <description>Calls a pack of spirit wolves into battle.</description>
+        <description>Manifests a charging pack of spirit wolves. Spirit wolves apply spirit damage which ignores armor and stuns; once trained spirit damage can also be used to hex enemies. Spirit wolves are able to distinguish friend from foe.
+
+Range: 50
+Cast time: 3s
+Cooldown: 120s</description>
         <manaCost>0.45</manaCost>
 		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<learnChance>.3</learnChance>
@@ -572,7 +718,7 @@ Cast time: .6s</description>
 			<soundCastTail>GunTail_Heavy</soundCastTail>
             <muzzleFlashScale>2</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-            <isPrimary>true</isPrimary>
+            <isPrimary>false</isPrimary>
 			<isViolent>true</isViolent>
 			<targetParams>
 				<canTargetItems>false</canTargetItems>
@@ -588,7 +734,11 @@ Cast time: .6s</description>
         <defName>TM_SpiritWolves_I</defName>
         <label>Spirit Wolves (I)</label>
         <uiIconPath>UI/spiritwolf</uiIconPath>
-        <description>Calls a pack of spirit wolves into battle.</description>
+        <description>Manifests a charging pack of spirit wolves. Spirit wolves apply spirit damage which ignores armor and stuns; once trained spirit damage can also be used to hex enemies. Spirit wolves are able to distinguish friend from foe
+
+Range: 55
+Cast time: 2.7s
+Cooldown: 110s</description>
         <manaCost>0.45</manaCost>
 		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<shouldInitialize>false</shouldInitialize>
@@ -601,15 +751,15 @@ Cast time: .6s</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_SpiritWolves_I</defaultProjectile>
             <abilityDef>TM_SpiritWolves_I</abilityDef>
-            <warmupTime>3</warmupTime>
-            <SecondsToRecharge>120</SecondsToRecharge>
+            <warmupTime>2.7</warmupTime>
+            <SecondsToRecharge>110</SecondsToRecharge>
             <range>55</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_WolfHowl</soundCast>
 			<soundCastTail>GunTail_Heavy</soundCastTail>
             <muzzleFlashScale>2</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-            <isPrimary>true</isPrimary>
+            <isPrimary>false</isPrimary>
 			<isViolent>true</isViolent>
 			<targetParams>
 				<canTargetItems>false</canTargetItems>
@@ -625,7 +775,11 @@ Cast time: .6s</description>
         <defName>TM_SpiritWolves_II</defName>
         <label>Spirit Wolves (II)</label>
         <uiIconPath>UI/spiritwolf</uiIconPath>
-        <description>Calls a pack of spirit wolves into battle.</description>
+        <description>Manifests a charging pack of spirit wolves. Spirit wolves apply spirit damage which ignores armor and stuns; once trained spirit damage can also be used to hex enemies. Spirit wolves are able to distinguish friend from foe
+
+Range: 60
+Cast time: 2.5s
+Cooldown: 100s</description>
         <manaCost>0.45</manaCost>
 		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<shouldInitialize>false</shouldInitialize>
@@ -638,15 +792,15 @@ Cast time: .6s</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_SpiritWolves_II</defaultProjectile>
             <abilityDef>TM_SpiritWolves_II</abilityDef>
-            <warmupTime>3</warmupTime>
-            <SecondsToRecharge>120</SecondsToRecharge>
+            <warmupTime>2.5</warmupTime>
+            <SecondsToRecharge>100</SecondsToRecharge>
             <range>60</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_WolfHowl</soundCast>
 			<soundCastTail>GunTail_Heavy</soundCastTail>
             <muzzleFlashScale>2</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-            <isPrimary>true</isPrimary>
+            <isPrimary>false</isPrimary>
 			<isViolent>true</isViolent>
 			<targetParams>
 				<canTargetItems>false</canTargetItems>
@@ -662,7 +816,11 @@ Cast time: .6s</description>
         <defName>TM_SpiritWolves_III</defName>
         <label>Spirit Wolves (III)</label>
         <uiIconPath>UI/spiritwolf</uiIconPath>
-        <description>Calls a pack of spirit wolves into battle.</description>
+        <description>Manifests a charging pack of spirit wolves. Spirit wolves apply spirit damage which ignores armor and stuns; once trained spirit damage can also be used to hex enemies. Spirit wolves are able to distinguish friend from foe
+		
+Range: 65
+Cast time: 2.4s
+Cooldown: 90s</description>
         <manaCost>0.45</manaCost>
 		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<shouldInitialize>false</shouldInitialize>
@@ -675,15 +833,15 @@ Cast time: .6s</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_SpiritWolves_III</defaultProjectile>
             <abilityDef>TM_SpiritWolves_III</abilityDef>
-            <warmupTime>3</warmupTime>
-            <SecondsToRecharge>120</SecondsToRecharge>
+            <warmupTime>2.3</warmupTime>
+            <SecondsToRecharge>90</SecondsToRecharge>
             <range>65</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_WolfHowl</soundCast>
 			<soundCastTail>GunTail_Heavy</soundCastTail>
             <muzzleFlashScale>2</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-            <isPrimary>true</isPrimary>
+            <isPrimary>false</isPrimary>
 			<isViolent>true</isViolent>
 			<targetParams>
 				<canTargetItems>false</canTargetItems>
@@ -697,36 +855,28 @@ Cast time: .6s</description>
 	
 	<!-- Guardian Spirit -->	
 	
-	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
-		<thingClass>TorannMagic.Projectile_GuardianSpirit</thingClass>
-	    <defName>Projectile_GuardianSpirit</defName>
-        <label>guardian spirit projectile</label>
-        <graphicData>
-			<texPath>Spells/invis</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>TransparentPostLight</shaderType>
-        </graphicData>
-        <projectile>
-			<flyOverhead>true</flyOverhead>
-            <damageDef>TM_Holy</damageDef>
-            <damageAmountBase>0</damageAmountBase>
-            <speed>999</speed>
-        </projectile>
-    </ThingDef>
-
     <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
         <defName>TM_GuardianSpirit</defName>
         <label>Guardian Spirit</label>
-        <uiIconPath>PawnKind/gargoyle_south</uiIconPath>
-        <description>Summons a guardian spirit for a limited duration.</description>
+        <uiIconPath>UI/spiritanimals</uiIconPath>
+        <description>Summons a guardian spirit. Guardian spirits manifest as powerful animals with unique strengths and abilities.
+
+Spirit Bear - represents defense and fortitude; will issue a challenging roar against any that think to ignore this dangerous beast
+
+Spirit Mongoose - represents cunning and agility; able to slip through the spirit realm to deliver a lethal, hidden attack
+
+Spirit Crow - represents magic and insight; will place a hex on enemies and enhances the wisdom of its ward
+		
+Once determined, a guardian spirit type remains the same, however, this can be forcibly changed using a scroll of spirit binding.</description>
 		<manaCost>0.40</manaCost>
 		<upkeepEnergyCost>.40</upkeepEnergyCost>
-		<upkeepEfficiencyPercent>.40</upkeepEfficiencyPercent>
+		<upkeepRegenCost>.40</upkeepRegenCost>
+		<upkeepEfficiencyPercent>.06</upkeepEfficiencyPercent>
 		<learnChance>.05</learnChance>
 		<canCopy>false</canCopy>
 		<learnItem>SpellOf_GuardianSpirit</learnItem>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_SB</verbClass>
+            <verbClass>TorannMagic.Verb_SummonGuardianSpirit</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
@@ -742,7 +892,7 @@ Cast time: .6s</description>
 			<soundCastTail>TM_VibrationLow</soundCastTail>
             <muzzleFlashScale>8</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-            <isPrimary>true</isPrimary>
+            <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
 			<targetParams>
 				<canTargetItems>false</canTargetItems>
@@ -757,8 +907,8 @@ Cast time: .6s</description>
 	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
     <defName>TM_DismissGuardianSpirit</defName>
     <label>Dismiss Guardian Spirit</label>
-    <uiIconPath>UI/shattersentinel</uiIconPath>
-    <description>All guardian spirits maintained by this pawn return to the spirit realm.</description>
+    <uiIconPath>UI/dismiss_spiritanimals</uiIconPath>
+    <description>Releases the guardian spirit to return to the spirit realm.</description>
     <manaCost>0.0</manaCost>
 	<shouldInitialize>false</shouldInitialize>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">

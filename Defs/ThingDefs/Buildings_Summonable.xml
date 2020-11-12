@@ -21,6 +21,9 @@
     <building>
 	  <expandHomeArea>false</expandHomeArea>
       <hasFuelingPort>true</hasFuelingPort>
+	  <ai_chillDestination>false</ai_chillDestination>
+		<claimable>false</claimable>
+		<deconstructible>false</deconstructible>
     </building>
     <statBases>
       <MaxHitPoints>2</MaxHitPoints>
@@ -80,6 +83,9 @@
     <building>
 	  <expandHomeArea>false</expandHomeArea>
       <hasFuelingPort>true</hasFuelingPort>
+	  <ai_chillDestination>false</ai_chillDestination>
+		<claimable>false</claimable>
+		<deconstructible>false</deconstructible>
     </building>
     <statBases>
       <MaxHitPoints>2</MaxHitPoints>
@@ -138,6 +144,9 @@
     <building>
 	  <expandHomeArea>false</expandHomeArea>
       <hasFuelingPort>true</hasFuelingPort>
+	  <ai_chillDestination>false</ai_chillDestination>
+		<claimable>false</claimable>
+		<deconstructible>false</deconstructible>
     </building>
     <statBases>
       <MaxHitPoints>2</MaxHitPoints>
@@ -196,6 +205,9 @@
     <building>
 	  <expandHomeArea>false</expandHomeArea>
       <hasFuelingPort>true</hasFuelingPort>
+	  <ai_chillDestination>false</ai_chillDestination>
+		<claimable>false</claimable>
+		<deconstructible>false</deconstructible>
     </building>
     <statBases>
       <MaxHitPoints>2</MaxHitPoints>
@@ -221,7 +233,7 @@
         <autoRefuelPercent>100</autoRefuelPercent>
         <showFuelGizmo>true</showFuelGizmo>
         <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
-				<drawFuelGaugeInMap>true</drawFuelGaugeInMap>
+		<drawFuelGaugeInMap>true</drawFuelGaugeInMap>
       </li>
     </comps>
     <placeWorkers>
@@ -251,6 +263,9 @@
     <fillPercent>0.5</fillPercent>
 	<building>
 		<expandHomeArea>false</expandHomeArea>
+	  <ai_chillDestination>false</ai_chillDestination>
+		<claimable>false</claimable>
+		<deconstructible>false</deconstructible>
 	</building>
     <statBases>
       <MaxHitPoints>25</MaxHitPoints>
@@ -258,7 +273,6 @@
       <Flammability>0</Flammability>
     </statBases>
     <costList>
-
     </costList>
 	<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 	<resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
@@ -293,6 +307,9 @@
     <fillPercent>0.5</fillPercent>
 	<building>
 		<expandHomeArea>false</expandHomeArea>
+	  <ai_chillDestination>false</ai_chillDestination>
+		<claimable>false</claimable>
+		<deconstructible>false</deconstructible>
 	</building>
     <statBases>
       <MaxHitPoints>25</MaxHitPoints>
@@ -336,6 +353,9 @@
     <fillPercent>0.5</fillPercent>
 	<building>
 		<expandHomeArea>false</expandHomeArea>
+	  <ai_chillDestination>false</ai_chillDestination>
+		<claimable>false</claimable>
+		<deconstructible>false</deconstructible>
 	</building>
     <statBases>
       <MaxHitPoints>25</MaxHitPoints>
@@ -379,6 +399,9 @@
     <fillPercent>0.5</fillPercent>
 	<building>
 		<expandHomeArea>false</expandHomeArea>
+	  <ai_chillDestination>false</ai_chillDestination>
+		<claimable>false</claimable>
+		<deconstructible>false</deconstructible>
 	</building>
     <statBases>
       <MaxHitPoints>25</MaxHitPoints>
@@ -518,6 +541,7 @@
     <building>
       <isMealSource>true</isMealSource>
       <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		<deconstructible>false</deconstructible>
     </building>
 
     <!-- <constructionSkillPrerequisite>3</constructionSkillPrerequisite> -->
@@ -751,6 +775,7 @@ As you drawn near the statue, an eerie glint from the eyes of the stone sentinel
 		<ai_chillDestination>false</ai_chillDestination>
 		<claimable>false</claimable>
 		<deconstructible>false</deconstructible>
+		<expandHomeArea>false</expandHomeArea>
 	</building>
     <staticSunShadowHeight>0.0</staticSunShadowHeight>
     <designationHotKey>Misc3</designationHotKey>
@@ -820,6 +845,7 @@ As you drawn near the statue, an eerie glint from the eyes of the stone sentinel
     <fillPercent>0.5</fillPercent>
 	<building>
 		<expandHomeArea>false</expandHomeArea>
+		<deconstructible>false</deconstructible>
 	</building>
     <statBases>
       <MaxHitPoints>10</MaxHitPoints>

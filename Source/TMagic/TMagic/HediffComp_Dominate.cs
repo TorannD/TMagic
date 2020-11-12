@@ -10,7 +10,6 @@ namespace TorannMagic
     [StaticConstructorOnStartup]
     class HediffComp_Dominate : HediffComp
     {
-
         private bool initialized = false;
         private int age = 0;
         private int infectionRate = 240;
@@ -66,7 +65,7 @@ namespace TorannMagic
             bool spawned = base.Pawn.Spawned;
             this.minimumSev = .3f * (.03f * effVal);
             this.infectionRadius = 3 + verVal;
-            
+
             if (spawned)
             {
                 MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 1f);
@@ -107,11 +106,11 @@ namespace TorannMagic
             }
             this.age++;
 
-            if(Find.TickManager.TicksGame % 60 ==0)
+            if (Find.TickManager.TicksGame % 60 == 0)
             {
                 HealthUtility.AdjustSeverity(base.Pawn, this.Def, -0.1f);
             }
-            
+
             if (age > (lastInfection + infectionRate) && this.parent.Severity > this.minimumSev)
             {
                 bool infectionFlag = false;
@@ -119,7 +118,7 @@ namespace TorannMagic
                 this.lastInfection = this.age;
                 Pawn pawn = base.Pawn as Pawn;
                 Map map = pawn.Map;
-                if(!pawn.DestroyedOrNull() && pawn.Map != null)
+                if (!pawn.DestroyedOrNull() && pawn.Map != null)
                 {
                     IntVec3 curCell;
                     Pawn victim = null;
@@ -145,7 +144,7 @@ namespace TorannMagic
                             infectionFlag = true;
                             float angle = GetAngleFromTo(pawn.Position.ToVector3(), victim.Position.ToVector3());
                             HealthUtility.AdjustSeverity(victim, this.Def, this.parent.Severity);
-                            for(int j=0; j < 3; j++)
+                            for (int j = 0; j < 3; j++)
                             {
                                 TM_MoteMaker.ThrowShadowMote(pawn.DrawPos, map, Rand.Range(.6f, 1f), Rand.Range(50, 80), Rand.Range(1f, 2f), angle + Rand.Range(-20, 20));
                             }
@@ -153,7 +152,7 @@ namespace TorannMagic
                     }
 
                 }
-                
+
             }
         }
 
@@ -186,6 +185,6 @@ namespace TorannMagic
             Scribe_Values.Look<int>(ref this.effVal, "effVal", 0, false);
             Scribe_Values.Look<int>(ref this.verVal, "verVal", 0, false);
         }
-
+        
     }
 }

@@ -3084,7 +3084,7 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_GuardianSpirit
-                        }),
+                        }, true),
                     };
                 }
                 return this.magicPowerShaman;
@@ -3101,7 +3101,7 @@ namespace TorannMagic
                     {
                         new MagicPowerSkill("TM_Totems_pwr", "TM_Totems_pwr_desc"), // power of totems
                         new MagicPowerSkill("TM_Totems_eff", "TM_Totems_eff_desc"), // mana cost 
-                        new MagicPowerSkill("TM_Totems_ver", "TM_Totems_ver_desc")  // effect radius, effects
+                        new MagicPowerSkill("TM_Totems_ver", "TM_Totems_ver_desc")  // duration
                     };
                 }
                 return this.magicPowerSkill_Totems;

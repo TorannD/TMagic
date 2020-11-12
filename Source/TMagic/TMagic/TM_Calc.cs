@@ -655,19 +655,19 @@ namespace TorannMagic
             }
         }
 
-        public static Pawn FindNearbyInjuredPawn(Pawn pawn, int radius, float minSeverity)
+        public static Pawn FindNearbyInjuredPawn(IntVec3 center, Map map, Faction fac, int radius, float minSeverity, bool includeAnimals = false)
         {
-            List<Pawn> mapPawns = pawn.Map.mapPawns.AllPawnsSpawned;
+            List<Pawn> mapPawns = map.mapPawns.AllPawnsSpawned;
             List<Pawn> pawnList = new List<Pawn>();
             Pawn targetPawn = null;
             pawnList.Clear();
             for (int i = 0; i < mapPawns.Count; i++)
             {
                 targetPawn = mapPawns[i];
-                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !TM_Calc.IsUndead(targetPawn) && targetPawn.Faction != null && targetPawn.Faction == pawn.Faction)
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !TM_Calc.IsUndead(targetPawn) && targetPawn.Faction != null && targetPawn.Faction == fac)
                 {
                     ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                    if ((targetPawn.RaceProps.Humanlike || settingsRef.autocastAnimals) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
+                    if ((targetPawn.RaceProps.Humanlike || settingsRef.autocastAnimals || includeAnimals) && (center - targetPawn.Position).LengthHorizontal <= radius)
                     {
                         float injurySeverity = 0;
                         using (IEnumerator<BodyPartRecord> enumerator = targetPawn.health.hediffSet.GetInjuredParts().GetEnumerator())
@@ -685,8 +685,8 @@ namespace TorannMagic
                                     if (flag5)
                                     {
                                         injurySeverity += current.Severity;
-                                    }                                        
-                                }                                
+                                    }
+                                }
                             }
                         }
                         if (minSeverity != 0)
@@ -719,6 +719,11 @@ namespace TorannMagic
             {
                 return null;
             }
+        }
+
+        public static Pawn FindNearbyInjuredPawn(Pawn pawn, int radius, float minSeverity, bool includeAnimals = false)
+        {
+            return FindNearbyInjuredPawn(pawn.Position, pawn.Map, pawn.Faction, radius, minSeverity, includeAnimals);
         }
 
         public static Pawn FindNearbyInjuredPawnOther(Pawn pawn, int radius, float minSeverity)
@@ -3577,7 +3582,7 @@ namespace TorannMagic
                         }
                         else
                         {
-                            if (p.Faction != caster.Faction)
+                            if (p.Faction != caster.Faction && !p.IsPrisoner)
                             {
                                 if (autocasting.targetNeutral && !p.Faction.HostileTo(caster.Faction))
                                 {
