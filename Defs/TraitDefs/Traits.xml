@@ -1633,13 +1633,13 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		<degreeDatas>	
 		  <li>
 			<label>Shaman</label>
-			<description>*not implemented, do not use* Shamans take a more harmonious approach to arcane powers than most mages, choosing to pursue a path that works with the ebb and flow of magic to offset or enhance the natural order. [PAWN_nameDef] is kin to the spirit realm and more attuned to nature.</description>
+			<description>Shamans take a more harmonious approach to arcane powers than most mages, choosing to pursue a path that works with the ebb and flow of magic to offset or enhance the natural order. [PAWN_nameDef] is kin to the spirit realm and more attuned to nature and its elements.</description>
 			<degree>4</degree>
 			<statOffsets>
 				<PsychicSensitivity>0.2</PsychicSensitivity>
-				<ToxicSensitivity>-.30</ToxicSensitivity>
+				<ToxicSensitivity>.30</ToxicSensitivity>
 				<ImmunityGainSpeed>0.10</ImmunityGainSpeed>
-				<TameAnimalChance>.4</TameAnimalChance>
+				<TameAnimalChance>.3</TameAnimalChance>
 				<TrainAnimalChance>.3</TrainAnimalChance>
 				<GlobalLearningFactor>-0.1</GlobalLearningFactor>
 				<WorkSpeedGlobal>-0.10</WorkSpeedGlobal>		

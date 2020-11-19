@@ -63,6 +63,9 @@ Arcane Resistance: +5%</description>
 	<apparel>
 	 <tags>
 	   <li>Arcane</li>
+	   <li>Cape</li>
+        <li>Royal</li>
+        <li>RoyalTier2</li>
 	 </tags>
 	 <wornGraphicPath>Equipment/opencloak</wornGraphicPath>
 		<layers>
@@ -173,6 +176,10 @@ Augmented by Phantom Shift: 20% chance to avoid an attack</description>
 	 <tags>
 	   <li>Arcane</li>
 	   <li>SeerEliteApparel</li>
+	   <li>Cape</li>
+        <li>Royal</li>
+        <li>RoyalTier2</li>
+        <li>RoyalTier5</li>
 	 </tags>
 	 <wornGraphicPath>Equipment/demonlordcloakc</wornGraphicPath>
 		<layers>
@@ -612,6 +619,7 @@ Arcane Res: +10%</description>
 	   <li>SeerEliteApparel</li>
 	   <li>Royal</li>
        <li>RoyalTier6</li>
+	   <li>RoyalRobe</li>
 	 </tags>
 	 <wornGraphicPath>Equipment/archmage</wornGraphicPath>
 		<layers>
@@ -809,7 +817,9 @@ Arcane Resistance: +10%</description>
 	<apparel>
 	 <tags>
 	   <li>Arcane</li>
-	 </tags>
+        <li>Royal</li>
+        <li>RoyalTier2</li>
+      </tags>
 	 <wornGraphicPath>Equipment/hoodofmadness</wornGraphicPath>
 		<layers>
 			<li>Overhead</li>
@@ -892,7 +902,10 @@ Arcane Resistance: 30%</description>
 	<apparel>
 	 <tags>
 	   <li>Arcane</li>
-	 </tags>
+        <li>Royal</li>
+        <li>RoyalTier2</li>
+        <li>RoyalTier3</li>
+      </tags>
 	 <wornGraphicPath>Equipment/hoodofmadness_eyes</wornGraphicPath>
 		<layers>
 			<li>Overhead</li>

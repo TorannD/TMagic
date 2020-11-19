@@ -1238,7 +1238,7 @@ Healing Totem: Increases range and heal amount</TM_Totems_pwr_desc>
 Spirit Bear: Increased taunt targets (4 -> 9), taunt chance (60% -> 78%), and taunt range (15 -> 21); increase damage mitigation (4 -> 7)
 Spirit Mongoose: Increases shadow strike damage (11 -> 16) and crit chance (40% -> 65%); increases duration of invisibility (1.5s -> 2.5s) and haste (2s -> 3s) following a shadow strike
 Spirit Crow: Increases hex chance (50% -> 75%); increases the effectiveness of "Crows Insight" mental buff Psychic Sensitivity and Research speed (20% -> 30%)</TM_GuardianSpirit_pwr_desc>
-<TM_GuardianSpirit_eff_desc>Reduces casing cost, max MP upkeep cost, and mana regeneration cost of the Spirit Guardian by 6% per skill point.</TM_GuardianSpirit_eff_desc>
+<TM_GuardianSpirit_eff_desc>Reduces casting cost, max MP upkeep cost, and mana regeneration cost of the Spirit Guardian by 6% per skill point.</TM_GuardianSpirit_eff_desc>
 <TM_GuardianSpirit_ver_desc>Increases the effectiveness of the Spirit Guardian's spirit bond to increase movement, manipulation, healing rate, ignore pain, and dodge rate by 10% per skill point.</TM_GuardianSpirit_ver_desc>
 
 <TM_Totems_pwr>Totem Master</TM_Totems_pwr>

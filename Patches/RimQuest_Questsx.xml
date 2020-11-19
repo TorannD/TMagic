@@ -3,7 +3,7 @@
 
   <!-- TMagic quests-->
 
-  <Operation Class="PatchOperationSequence">
+<!--   <Operation Class="PatchOperationSequence">
 	<success>Always</success>
 	<operations>
 		<li Class="PatchOperationTest">
@@ -16,6 +16,6 @@
 			</value>
 	  </li>
 	 </operations>
-  </Operation>	  
+  </Operation>	 -->  
   
 </Patch>

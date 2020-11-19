@@ -871,6 +871,7 @@ Once determined, a guardian spirit type remains the same, however, this can be f
 		<manaCost>0.40</manaCost>
 		<upkeepEnergyCost>.40</upkeepEnergyCost>
 		<upkeepRegenCost>.40</upkeepRegenCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
 		<upkeepEfficiencyPercent>.06</upkeepEfficiencyPercent>
 		<learnChance>.05</learnChance>
 		<canCopy>false</canCopy>

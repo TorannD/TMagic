@@ -177,29 +177,42 @@ namespace TorannMagic
 
         public void DoSunfireActions()
         {
-            for(int i = 0; i < this.sfBeams.Count; i++)
+            List<int> removedIndex = new List<int>();
+            removedIndex.Clear();
+            try
             {
-                if(sfBeamsStep[i] <= 0)
+                for (int i = 0; i < this.sfBeams.Count; i++)
                 {
-                    this.sfBeamsCurve.Remove(sfBeamsCurve[i]);
-                    this.sfBeamsDest.Remove(sfBeamsDest[i]);
-                    this.sfBeamsROM.Remove(sfBeamsROM[i]);
-                    this.sfBeamsStartTick.Remove(sfBeamsStartTick[i]);
-                    this.sfBeamsStep.Remove(sfBeamsStep[i]);
-                    this.sfBeams.Remove(sfBeams[i]);
-                    i--;
-                }
-                else
-                {
-                    if (sfBeamsStartTick[i] <= this.age)
+                    if (sfBeamsStep[i] <= 0)
                     {
-                        sfBeamsStep[i]--;
-                        SunfireDamage(sfBeams[i].ToIntVec3());                           
-                        TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_DustPuff, sfBeams[i], this.Map, .4f, .2f, .1f, .2f, Rand.Range(-100, 100), 2f, Rand.Range(0, 360), 0);
-                        sfBeams[i] += sfBeamsROM[i];
-                        sfBeamsROM[i] += (sfBeamsCurve[i] * (20f - sfBeamsStep[i]));
+                        removedIndex.Add(i);
+                    }
+                    else
+                    {
+                        if (sfBeamsStartTick[i] <= this.age)
+                        {
+                            sfBeamsStep[i]--;
+                            SunfireDamage(sfBeams[i].ToIntVec3());
+                            TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_DustPuff, sfBeams[i], this.Map, .4f, .2f, .1f, .2f, Rand.Range(-100, 100), 2f, Rand.Range(0, 360), 0);
+                            sfBeams[i] += sfBeamsROM[i];
+                            sfBeamsROM[i] += (sfBeamsCurve[i] * (20f - sfBeamsStep[i]));
+                        }
                     }
                 }
+                for (int i = 0; i < removedIndex.Count; i++)
+                {
+                    this.sfBeamsCurve.Remove(this.sfBeamsCurve[removedIndex[i]]);
+                    this.sfBeamsDest.Remove(sfBeamsDest[removedIndex[i]]);
+                    this.sfBeamsROM.Remove(sfBeamsROM[removedIndex[i]]);
+                    this.sfBeamsStartTick.Remove(sfBeamsStartTick[removedIndex[i]]);
+                    this.sfBeamsStep.Remove(sfBeamsStep[removedIndex[i]]);
+                    this.sfBeams.Remove(sfBeams[removedIndex[i]]);
+                }
+            }
+            catch
+            {
+                this.ignoreAge = true;
+                Destroy(DestroyMode.Vanish);
             }
         }
 

@@ -277,6 +277,7 @@ namespace TorannMagic
         private Effecter powerEffecter = null;
         private int powerModifier = 0;
         private int maxPower = 10;
+        private int previousHexedPawns = 0;
         public int nextEntertainTick = -1;
         public int nextSuccubusLovinTick = -1;
 
@@ -395,12 +396,25 @@ namespace TorannMagic
         {
             get
             {
-                if(this.hexedPawns == null)
+                if(hexedPawns == null)
                 {
                     this.hexedPawns = new List<Pawn>();
                     this.hexedPawns.Clear();
                 }
-                return hexedPawns;
+                List<Pawn> validPawns = new List<Pawn>();
+                validPawns.Clear();
+                foreach (Pawn p in this.hexedPawns)
+                {
+                    if (p != null && !p.Destroyed && !p.Dead)
+                    {
+                        if (p.health != null && p.health.hediffSet != null && p.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HexHD))
+                        {
+                            validPawns.Add(p);
+                        }
+                    }
+                }
+                this.hexedPawns = validPawns;
+                return this.hexedPawns;
             }
         }
 
@@ -1847,19 +1861,6 @@ namespace TorannMagic
                                     ResolveSpiritOfLight();
                                     ResolveChronomancerTimeMark();
                                 }
-                                if (this.Mana.CurLevel < 0)
-                                {
-                                    this.Mana.CurLevel = 0;
-                                }
-                                else if (this.Mana.CurLevel > (this.Mana.MaxLevel + .01f))
-                                {
-                                    this.Mana.CurLevel -= .005f;
-                                }
-                                else if (this.Mana.CurLevel > (this.Mana.MaxLevel))
-                                {
-                                    this.Mana.CurLevel = this.Mana.MaxLevel;
-                                }
-
                             }
                             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                             if (this.autocastTick < Find.TickManager.TicksGame)  //180 default
@@ -6146,7 +6147,7 @@ namespace TorannMagic
                         if (magicPower.learned && magicPower.autocast && !this.Pawn.CurJob.playerForced && this.summonedMinions.Count() < 4)
                         {
                             PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_SummonMinion);
-                            AutoCast.MagicAbility_OnSelf.Evaluate(this, TorannMagicDefOf.TM_SummonMinion, ability, magicPower, out castSuccess);
+                            AutoCast.MagicAbility_OnSelfPosition.Evaluate(this, TorannMagicDefOf.TM_SummonMinion, ability, magicPower, out castSuccess);
                             if (castSuccess) goto AutoCastExit;
                         }
                     }
@@ -7597,24 +7598,17 @@ namespace TorannMagic
                 }
             }
 
-            if(this.hexedPawns != null && this.hexedPawns.Count > 0)
+
+            if(HexedPawns != null && HexedPawns.Count <= 0 && previousHexedPawns > 0)
             {
-                List<Pawn> removePawns = new List<Pawn>();
-                removePawns.Clear();
-                foreach(Pawn p in this.hexedPawns)
+                if (HexedPawns.Count > 0)
                 {
-                    if(!p.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HexHD))
-                    {
-                        removePawns.Add(p);
-                    }
+                    previousHexedPawns = HexedPawns.Count;
                 }
-                foreach(Pawn x in removePawns)
-                {
-                    this.hexedPawns.Remove(x);
-                }
-                if(this.hexedPawns.Count <= 0)
+                else if (previousHexedPawns > 0)
                 {
                     //remove abilities
+                    previousHexedPawns = 0;
                     RemovePawnAbility(TorannMagicDefOf.TM_Hex_Pain);
                     RemovePawnAbility(TorannMagicDefOf.TM_Hex_MentalAssault);
                     RemovePawnAbility(TorannMagicDefOf.TM_Hex_CriticalFail);

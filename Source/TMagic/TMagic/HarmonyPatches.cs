@@ -2144,7 +2144,7 @@ namespace TorannMagic
                 CompAbilityUserMagic compMagic = __instance.GetComp<CompAbilityUserMagic>();
                 CompAbilityUserMight compMight = __instance.GetComp<CompAbilityUserMight>();                
                 var gizmoList = __result.ToList();
-
+                bool canBecomeClassless = false;
                 if (settingsRef.Wanderer && __instance.story.traits.HasTrait(TorannMagicDefOf.TM_Gifted))
                 {
                     //Pawn p = __instance;
@@ -2162,6 +2162,7 @@ namespace TorannMagic
                     Command_Action itemWanderer = (Command_Action)compMagic.GetGizmoCommands("wanderer");
                     if (itemWanderer != null)
                     {
+                        canBecomeClassless = true;
                         gizmoList.Add(itemWanderer);
                     }
                 }
@@ -2184,6 +2185,7 @@ namespace TorannMagic
                     Command_Action itemWayfarer = (Command_Action)compMight.GetGizmoCommands("wayfarer");
                     if (itemWayfarer != null)
                     {
+                        canBecomeClassless = true;
                         gizmoList.Add(itemWayfarer);
                     }
                 }
@@ -2205,21 +2207,24 @@ namespace TorannMagic
                     {
                         return;
                     }
-                    if (!compMagic.IsMagicUser && !compMight.IsMightUser && itemComp == null)
+                    if (!compMagic.IsMagicUser && !compMight.IsMightUser && itemComp == null && !canBecomeClassless)
                     {
                         return;
                     }
 
-                    Gizmo_EnergyStatus energyGizmo = new Gizmo_EnergyStatus
+                    if (!canBecomeClassless)
                     {
-                        //All gizmo properties done in Gizmo_EnergyStatus
-                        //Make it the first thing you see
-                        pawn = __instance,
-                        iComp = itemComp,
-                        order = -101f
-                    };
+                        Gizmo_EnergyStatus energyGizmo = new Gizmo_EnergyStatus
+                        {
+                            //All gizmo properties done in Gizmo_EnergyStatus
+                            //Make it the first thing you see
+                            pawn = __instance,
+                            iComp = itemComp,
+                            order = -101f
+                        };
 
-                    gizmoList.Add(energyGizmo);
+                        gizmoList.Add(energyGizmo);
+                    }
 
                 }
                 if (__instance.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_Cleave, null, compMight))
@@ -3132,24 +3137,25 @@ namespace TorannMagic
         [HarmonyPatch(typeof(Verb), "TryCastNextBurstShot", null)]
         public static class TryCastNextBurstShot_Monk_Patch
         {
-            public static void Postfix(Verb __instance, LocalTargetInfo ___currentTarget)
+            public static void Postfix(Verb __instance, LocalTargetInfo ___currentTarget, int ___burstShotsLeft)
             {                
                 if (__instance.CasterIsPawn)
                 {
                     CompAbilityUserMight comp = __instance.CasterPawn.TryGetComp<CompAbilityUserMight>();
-                    if (comp != null && __instance.CasterPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MindOverBodyHD, false))
+                    if (comp != null && __instance.CasterPawn.health != null && __instance.CasterPawn.health.hediffSet != null)
                     {
-                        LocalTargetInfo currentTarget = Traverse.Create(root: __instance).Field(name: "currentTarget").GetValue<LocalTargetInfo>();
-                        int burstShotsLeft = Traverse.Create(root: __instance).Field(name: "burstShotsLeft").GetValue<int>();
-                        if (__instance.CasterPawn.equipment.Primary == null && burstShotsLeft <= 0)
+                        if (__instance.CasterPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MindOverBodyHD, false) && comp.MightData != null && __instance.CasterPawn.equipment.Primary == null && ___burstShotsLeft <= 0)
                         {
+                            
+                            //LocalTargetInfo currentTarget = Traverse.Create(root: __instance).Field(name: "currentTarget").GetValue<LocalTargetInfo>();
+                            //int burstShotsLeft = Traverse.Create(root: __instance).Field(name: "burstShotsLeft").GetValue<int>();
                             MightPowerSkill pwr = comp.MightData.MightPowerSkill_TigerStrike.FirstOrDefault((MightPowerSkill x) => x.label == "TM_TigerStrike_pwr");
                             MightPowerSkill eff = comp.MightData.MightPowerSkill_TigerStrike.FirstOrDefault((MightPowerSkill x) => x.label == "TM_TigerStrike_eff");
                             MightPowerSkill globalSkill = comp.MightData.MightPowerSkill_global_seff.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_seff_pwr");
                             float actualStaminaCost = .06f * (1 - (.1f * eff.level) * (1 - (.03f * globalSkill.level)));
                             if (comp != null && comp.Stamina.CurLevel >= actualStaminaCost && Rand.Chance(.3f + (.05f * pwr.level)))
                             {
-                                Vector3 strikeEndVec = currentTarget.CenterVector3;
+                                Vector3 strikeEndVec = ___currentTarget.CenterVector3;
                                 strikeEndVec.x += Rand.Range(-.2f, .2f);
                                 strikeEndVec.z += Rand.Range(-.2f, .2f);
                                 Vector3 strikeStartVec = __instance.CasterPawn.DrawPos;
@@ -3157,19 +3163,19 @@ namespace TorannMagic
                                 strikeStartVec.x += Rand.Range(-.2f, .2f);
                                 Vector3 angle = TM_Calc.GetVector(strikeStartVec, strikeEndVec);
                                 TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Strike, strikeStartVec, __instance.CasterPawn.Map, .2f, .08f, .03f, .05f, 0, 8f, (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat());
-                                __instance.CasterPawn.stances.SetStance(new Stance_Cooldown(5, currentTarget, __instance));
+                                __instance.CasterPawn.stances.SetStance(new Stance_Cooldown(5, ___currentTarget, __instance));
                                 comp.Stamina.CurLevel -= actualStaminaCost;
                                 comp.MightUserXP += (int)(.06f * 180);
                             }
+                            
                         }
                     }
-                    if ((__instance.CasterPawn.story != null && __instance.CasterPawn.story.traits != null && __instance.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier)) || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_PistolSpec, null, comp))
+                    if (comp.MightData != null && comp.Stamina != null && (__instance.CasterPawn.story != null && __instance.CasterPawn.story.traits != null && __instance.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier)) || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_PistolSpec, null, comp))
                     {
-                        LocalTargetInfo currentTarget = Traverse.Create(root: __instance).Field(name: "currentTarget").GetValue<LocalTargetInfo>();
-                        int burstShotsLeft = Traverse.Create(root: __instance).Field(name: "burstShotsLeft").GetValue<int>();
-                        if (__instance.CasterPawn.equipment.Primary != null && burstShotsLeft <= 0)
+                        //LocalTargetInfo currentTarget = Traverse.Create(root: __instance).Field(name: "currentTarget").GetValue<LocalTargetInfo>();
+                        //int burstShotsLeft = Traverse.Create(root: __instance).Field(name: "burstShotsLeft").GetValue<int>();
+                        if (__instance.CasterPawn.equipment != null && __instance.CasterPawn.equipment.Primary != null && ___burstShotsLeft <= 0)
                         {
-
                             if (comp.specWpnRegNum != -1 && comp.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PistolSpec).learned)
                             {
                                 int doubleTapPwr = comp.MightData.MightPowerSkill_PistolSpec.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PistolSpec_eff").level;
@@ -3177,26 +3183,26 @@ namespace TorannMagic
                                 float actualStaminaCost = .03f * (1 - (.1f * doubleTapPwr) * (1 - (.03f * globalSkill.level)));
                                 if (comp != null && comp.Stamina.CurLevel >= actualStaminaCost && Rand.Chance(.25f + (.05f * doubleTapPwr)))
                                 {
-                                    __instance.CasterPawn.stances.SetStance(new Stance_Cooldown(5, currentTarget, __instance));
+                                    __instance.CasterPawn.stances.SetStance(new Stance_Cooldown(5, ___currentTarget, __instance));
                                     comp.Stamina.CurLevel -= actualStaminaCost;
                                     comp.MightUserXP += (int)(.03f * 180);
                                 }
                             }
                         }
                     }
-                    if (__instance.CasterPawn.RaceProps.Humanlike && __instance.CasterPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HasteHD))
+                    if (__instance.CasterPawn.stances != null && __instance.CasterPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HasteHD))
                     {
-                        LocalTargetInfo currentTarget = Traverse.Create(root: __instance).Field(name: "currentTarget").GetValue<LocalTargetInfo>();
+                        //LocalTargetInfo currentTarget = Traverse.Create(root: __instance).Field(name: "currentTarget").GetValue<LocalTargetInfo>();
                         int ticksRemaining = 30;
                         if (__instance.CasterPawn.stances.curStance is Stance_Busy)
                         {
                             Stance_Busy st = (Stance_Busy)__instance.CasterPawn.stances.curStance;
                             ticksRemaining = Mathf.RoundToInt(st.ticksLeft / 2f);
                         }
-                        __instance.CasterPawn.stances.SetStance(new Stance_Cooldown(ticksRemaining, currentTarget, __instance));
+                        __instance.CasterPawn.stances.SetStance(new Stance_Cooldown(ticksRemaining, ___currentTarget, __instance));
                     }
 
-                    if (__instance.CasterPawn.RaceProps.Humanlike && __instance.CasterPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnrageHD))
+                    if (__instance.CasterPawn.stances != null && __instance.CasterPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnrageHD))
                     {
                         int ticksRemaining = 30;
                         if (__instance.CasterPawn.stances.curStance is Stance_Busy)

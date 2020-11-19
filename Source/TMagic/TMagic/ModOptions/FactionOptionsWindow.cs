@@ -39,7 +39,7 @@ namespace TorannMagic.ModOptions
             int scrollCount = 256;
             if(factions.Count > 8)
             {
-                scrollCount = factions.Count * 32;
+                scrollCount = factions.Count * 40;
             }
             Rect sRect = new Rect(inRect.x, inRect.y, inRect.width - 36f, inRect.height + scrollCount);
             scrollPosition = GUI.BeginScrollView(inRect, scrollPosition, sRect, false, true);
