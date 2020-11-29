@@ -442,4 +442,43 @@ Class XP Gain: -20%</description>
   </RecipeDef>
   
   
+  <RecipeDef>
+	<jobString>Infusing chunk with mana.</jobString>
+    <defName>ArcaneForge_ChunkToMagicyte</defName>
+    <label>Infuse chunk</label>
+    <description>Infuses stone chunks with mana to create magicyte</description>
+    <workSpeedStat>ResearchSpeed</workSpeedStat>
+    <effectWorking>Smelt</effectWorking>
+    <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+    <workAmount>4000</workAmount>
+	<workSkillLearnFactor>1.1</workSkillLearnFactor>
+	<recipeUsers>
+		<li>TableArcaneForge</li>
+	</recipeUsers>
+        <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>StoneChunks</li>
+          </categories>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <categories>
+        <li>StoneChunks</li>
+      </categories>
+    </fixedIngredientFilter>
+    <products>
+      <RawMagicyte>16</RawMagicyte>
+    </products>
+    <skillRequirements>
+	  <Intellectual>2</Intellectual>
+	  <Crafting>4</Crafting>
+    </skillRequirements>
+    <workSkill>Crafting</workSkill>
+  </RecipeDef>
+  
+  
 </Defs>

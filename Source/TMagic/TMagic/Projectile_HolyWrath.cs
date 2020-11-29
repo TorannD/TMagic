@@ -103,7 +103,7 @@ namespace TorannMagic
                     TM_MoteMaker.MakePowerBeamMoteColor(smitePos[j], base.Map, this.radius * 3f, 2f, .5f, .1f, .5f, colorInt.ToColor);
                     this.caster = this.launcher as Pawn;
                     CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
-                    GenExplosion.DoExplosion(smitePos[j], map, 2.4f, TMDamageDefOf.DamageDefOf.TM_Overwhelm, this.launcher as Pawn, Mathf.RoundToInt((10 + TMDamageDefOf.DamageDefOf.TM_Overwhelm.defaultDamage + 3*pwrVal) * this.arcaneDmg), 0, TorannMagicDefOf.TM_Lightning, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                    GenExplosion.DoExplosion(smitePos[j], map, 3f, TMDamageDefOf.DamageDefOf.TM_Overwhelm, this.launcher as Pawn, Mathf.RoundToInt((12 + TMDamageDefOf.DamageDefOf.TM_Overwhelm.defaultDamage + 3*pwrVal) * this.arcaneDmg), 0, TorannMagicDefOf.TM_Lightning, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
                 }
             }
         }
@@ -136,7 +136,13 @@ namespace TorannMagic
                 {
                     if(verVal >= 1)
                     {
-                        HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_HediffTimedInvulnerable"), 1f);
+                        HealthUtility.AdjustSeverity(victim, TorannMagicDefOf.TM_HediffTimedInvulnerable, 1f);
+                        Hediff hd = victim.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_HediffTimedInvulnerable);
+                        HediffComp_Disappears hdc = hd.TryGetComp<HediffComp_Disappears>();
+                        if (hdc != null)
+                        {
+                            hdc.ticksToDisappear += 360;
+                        }
                     }
                     if (verVal >= 2)
                     {

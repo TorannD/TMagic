@@ -282,7 +282,7 @@ namespace TorannMagic
             }        
             if(hitThing != null)
             {
-                damageEntities(hitThing, Mathf.RoundToInt(Rand.Range(this.def.projectile.GetDamageAmount(1,null) * .75f, this.def.projectile.GetDamageAmount(1,null) * 1.25f) * this.arcaneDmg));
+                damageEntities(hitThing, Mathf.RoundToInt(Rand.Range(this.def.projectile.GetDamageAmount(1,null) * .8f, this.def.projectile.GetDamageAmount(1,null) * 1.4f) * this.arcaneDmg));
             }
             TM_MoteMaker.ThrowShadowCleaveMote(this.ExactPosition, this.Map, 2f + (.4f * pwrVal), .05f, .1f, .3f, 0, (5f+ pwrVal), this.directionAngle);
             TorannMagicDefOf.TM_SoftExplosion.PlayOneShot(new TargetInfo(this.ExactPosition.ToIntVec3(), this.pawn.Map, false));
@@ -358,7 +358,7 @@ namespace TorannMagic
                 {
                     if (hitList[j] is Pawn && hitList[j] != this.pawn && hitList[j].Faction != this.pawn.Faction)
                     {
-                        damageEntities(hitList[j], Mathf.RoundToInt((Rand.Range(this.def.projectile.GetDamageAmount(1,null) * .4f, this.def.projectile.GetDamageAmount(1,null) * .3f)) * this.arcaneDmg));
+                        damageEntities(hitList[j], Mathf.RoundToInt((Rand.Range(this.def.projectile.GetDamageAmount(1,null) * .4f, this.def.projectile.GetDamageAmount(1,null) * .6f)) * this.arcaneDmg));
                         TM_MoteMaker.ThrowShadowCleaveMote(this.ExactPosition, this.Map, Rand.Range(.2f, .4f), .01f, .2f, .4f, 500, 0, 0);
                         TorannMagicDefOf.TM_Vibration.PlayOneShot(new TargetInfo(this.ExactPosition.ToIntVec3(), pawn.Map, false));
                     }

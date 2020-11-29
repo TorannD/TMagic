@@ -79,22 +79,22 @@ namespace TorannMagic
                         {
                             if (pwrVal == 3)
                             {
-                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_SDDominateHD_III, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_SDDominateHD_III, Rand.Range(1.5f + verVal, 3f + verVal));
                                 hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_SDDominateHD_III);
                             }
                             else if (pwrVal == 2)
                             {
-                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_SDDominateHD_II, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_SDDominateHD_II, Rand.Range(1.5f + verVal, 3f + verVal));
                                 hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_SDDominateHD_II);
                             }
                             else if (pwrVal == 1)
                             {
-                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_SDDominateHD_I, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_SDDominateHD_I, Rand.Range(1.5f + verVal, 3f + verVal));
                                 hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_SDDominateHD_I);
                             }
                             else
                             {
-                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_SDDominateHD, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_SDDominateHD, Rand.Range(1.5f + verVal, 3f + verVal));
                                 hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_SDDominateHD);
                             }
                             for (int i = 0; i < 4; i++)
@@ -106,22 +106,22 @@ namespace TorannMagic
                         {
                             if (pwrVal == 3)
                             {
-                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_WDDominateHD_III, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_WDDominateHD_III, Rand.Range(1.5f + verVal, 3f + verVal));
                                 hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_WDDominateHD_III);
                             }
                             else if (pwrVal == 2)
                             {
-                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_WDDominateHD_II, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_WDDominateHD_II, Rand.Range(1.5f + verVal, 3f + verVal));
                                 hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_WDDominateHD_II);
                             }
                             else if (pwrVal == 1)
                             {
-                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_WDDominateHD_I, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_WDDominateHD_I, Rand.Range(1.5f + verVal, 3f + verVal));
                                 hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_WDDominateHD_I);
                             }
                             else
                             {
-                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_WDDominateHD, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_WDDominateHD, Rand.Range(1.5f + verVal, 3f + verVal));
                                 hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_WDDominateHD);
                             }
                         }

@@ -19,8 +19,8 @@ namespace TorannMagic
 
 		private int age = -1;
 
-        private int maxStrikes = 5;
-        private int maxForks = 3;
+        private int maxStrikes = 4;
+        private int maxForks = 2;
         private int strikeTick = 0;
 		private int strikeInt = 0;
         private float hopRadius = 4f;
@@ -70,18 +70,7 @@ namespace TorannMagic
                     verVal = TM_Calc.GetMagicSkillLevel(p, comp.MagicData.MagicPowerSkill_ChainLightning, "TM_ChainLightning", "_ver", true);
                     this.arcaneDmg = comp.arcaneDmg;
                 }
-                if(verVal >= 1)
-                {
-                    maxStrikes++;
-                }
-                if(verVal >= 2)
-                {
-                    maxForks++;
-                }
-                if(verVal >= 3)
-                {
-                    maxStrikes++;
-                }
+                maxStrikes += verVal;
                 newStrikeLocs = new List<IntVec3>();
                 newStrikeLocs.Clear();
                 strikeLocs = new List<IntVec3>();

@@ -2749,6 +2749,11 @@ namespace TorannMagic
                         //Log.Message("Initializing Paladin Abilities");
                         if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
                         {
+                            if(Rand.Chance(TorannMagicDefOf.TM_P_RayofHope.learnChance))
+                            {
+                                this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope).learned = true;
+                                this.AddPawnAbility(TorannMagicDefOf.TM_P_RayofHope);
+                            }
                             if (Rand.Chance(.5f))
                             {
                                 this.AddPawnAbility(TorannMagicDefOf.TM_Heal);
@@ -2782,6 +2787,7 @@ namespace TorannMagic
                             this.AddPawnAbility(TorannMagicDefOf.TM_Shield);
                             this.AddPawnAbility(TorannMagicDefOf.TM_ValiantCharge);
                             this.AddPawnAbility(TorannMagicDefOf.TM_Overwhelm);
+                            this.AddPawnAbility(TorannMagicDefOf.TM_P_RayofHope);
                             this.spell_Heal = true;
 
                             if (!abilityUser.IsColonist)
@@ -3467,6 +3473,7 @@ namespace TorannMagic
                             this.AddPawnAbility(TorannMagicDefOf.TM_Teleport);
                         }
                     }
+                    
                     if (this.spell_Heal == true && !abilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin))
                     {
                         if (!abilityUser.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
@@ -3876,6 +3883,7 @@ namespace TorannMagic
                         this.RemovePawnAbility(TorannMagicDefOf.TM_Ignite);
                         this.AddPawnAbility(TorannMagicDefOf.TM_Ignite);
                     }
+                    
                     if (this.IsMagicUser && this.MagicData.MagicPowersCustom != null && this.MagicData.MagicPowersCustom.Count > 0)
                     {
                         for (int j = 0; j < this.MagicData.MagicPowersCustom.Count; j++)
@@ -8692,6 +8700,25 @@ namespace TorannMagic
                                         else
                                         {
                                             base.AddPawnAbility(TorannMagicDefOf.TM_Shield_III);
+                                        }
+                                    }
+                                    if (current7.learned == true && (current7.abilityDef == TorannMagicDefOf.TM_P_RayofHope || current7.abilityDef == TorannMagicDefOf.TM_P_RayofHope_I || current7.abilityDef == TorannMagicDefOf.TM_P_RayofHope_II || current7.abilityDef == TorannMagicDefOf.TM_P_RayofHope_III))
+                                    {
+                                        if (current7.level == 0)
+                                        {
+                                            base.AddPawnAbility(TorannMagicDefOf.TM_P_RayofHope);
+                                        }
+                                        else if (current7.level == 1)
+                                        {
+                                            base.AddPawnAbility(TorannMagicDefOf.TM_P_RayofHope_I);
+                                        }
+                                        else if (current7.level == 2)
+                                        {
+                                            base.AddPawnAbility(TorannMagicDefOf.TM_P_RayofHope_II);
+                                        }
+                                        else
+                                        {
+                                            base.AddPawnAbility(TorannMagicDefOf.TM_P_RayofHope_III);
                                         }
                                     }
                                 }

@@ -85,9 +85,9 @@
 		
 Range: 65
 Recharge: 80s
-Max Targets: 3
-AoE Size: 5</description>
-        <manaCost>0.40</manaCost>
+Max Targets: 4
+AoE Size: 7</description>
+        <manaCost>0.35</manaCost>
 		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 		<learnChance>.5</learnChance>
 		<canCopy>true</canCopy>
@@ -117,8 +117,8 @@ AoE Size: 5</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>3</maxTargets>
-                <range>5</range>
+                <maxTargets>4</maxTargets>
+                <range>7</range>
             </TargetAoEProperties>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>
@@ -137,9 +137,9 @@ AoE Size: 5</description>
 		
 Range: 70
 Recharge: 75s
-Max Targets: 4
-AoE Size: 6</description>
-		<manaCost>0.40</manaCost>
+Max Targets: 6
+AoE Size: 8</description>
+		<manaCost>0.35</manaCost>
 		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -168,8 +168,8 @@ AoE Size: 6</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>4</maxTargets>
-                <range>6</range>
+                <maxTargets>6</maxTargets>
+                <range>8</range>
             </TargetAoEProperties>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>
@@ -188,9 +188,9 @@ AoE Size: 6</description>
 		
 Range: 75
 Recharge: 68s
-Max Targets: 5
-AoE Size: 7</description>
-		<manaCost>0.40</manaCost>
+Max Targets: 7
+AoE Size: 9</description>
+		<manaCost>0.35</manaCost>
 		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -219,8 +219,8 @@ AoE Size: 7</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>5</maxTargets>
-                <range>7</range>
+                <maxTargets>7</maxTargets>
+                <range>9</range>
             </TargetAoEProperties>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>
@@ -239,9 +239,9 @@ AoE Size: 7</description>
 		
 Range: 80
 Recharge: 60s
-Max Targets: 6
-AoE Size: 8</description>
-		<manaCost>0.40</manaCost>
+Max Targets: 7
+AoE Size: 10</description>
+		<manaCost>0.35</manaCost>
 		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -270,8 +270,8 @@ AoE Size: 8</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>6</maxTargets>
-                <range>8</range>
+                <maxTargets>7</maxTargets>
+                <range>10</range>
             </TargetAoEProperties>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>
@@ -365,7 +365,7 @@ AoE Size: 8</description>
         <label>Cure Disease</label>
         <uiIconPath>UI/curedisease</uiIconPath>
         <description>Potential to cure most diseases and infections.</description>
-        <manaCost>0.35</manaCost>
+        <manaCost>0.45</manaCost>
 		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 		<learnChance>.35</learnChance>
 		<canCopy>true</canCopy>
@@ -379,7 +379,7 @@ AoE Size: 8</description>
             <defaultProjectile>Projectile_CureDisease</defaultProjectile>
             <abilityDef>TM_CureDisease</abilityDef>
             <warmupTime>5</warmupTime>
-            <SecondsToRecharge>30</SecondsToRecharge>
+            <SecondsToRecharge>60</SecondsToRecharge>
             <range>15</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>ThrowMolotovCocktail</soundCast>

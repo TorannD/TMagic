@@ -71,7 +71,7 @@
     </inspectorTabs>
     <race>
       <body>TM_Skeletal</body>
-	  <deathActionWorkerClass>TorannMagic.Skeletal_DeathWorker</deathActionWorkerClass>
+	  <deathActionWorkerClass>TorannMagic.DeathWorker_Skeletal</deathActionWorkerClass>
       <needsRest>false</needsRest>
       <hasGenders>false</hasGenders>
       <foodType>None</foodType>

@@ -260,7 +260,7 @@ namespace TorannMagic
 
             if (caster.equipment.Primary != null && caster.equipment.Primary.def.IsRangedWeapon)
             {
-                dmgNum = Mathf.RoundToInt(dmgNum * (TorannMagicDefOf.TM_Whirlwind.weaponDamageFactor/2f));
+                dmgNum = Mathf.RoundToInt(dmgNum * TorannMagicDefOf.TM_Whirlwind.weaponDamageFactor);
             }
 
             dmgNum = Mathf.RoundToInt(dmgNum * (1 + (.08f * pwrVal)));

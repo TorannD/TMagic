@@ -156,7 +156,7 @@ namespace TorannMagic
         {
             Hediff invul = new Hediff();
             invul.def = TorannMagicDefOf.TM_HediffInvulnerable;
-            invul.Severity = 5;
+            invul.Severity = .2f;
             bool spawned = flyingThing.Spawned;
             this.pawn = launcher as Pawn;
             pawn.health.AddHediff(invul, null, null);
@@ -395,8 +395,11 @@ namespace TorannMagic
                 }
 
                 GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
+
                 ModOptions.Constants.SetPawnInFlight(false);
                 Pawn p = this.flyingThing as Pawn;
+                TM_Action.SearchAndTaunt(p, 3f, 5, .7f);
+                HealthUtility.AdjustSeverity(p, TorannMagicDefOf.TM_HediffShield, .25f);
                 RemoveInvul(p);
                 if (p.IsColonist)
                 {

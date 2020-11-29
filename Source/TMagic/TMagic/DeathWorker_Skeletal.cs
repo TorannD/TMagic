@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace TorannMagic
 {
-    public class Skeletal_DeathWorker : DeathActionWorker
+    public class DeathWorker_Skeletal : DeathActionWorker
     {
         public override void PawnDied(Corpse corpse)
         {

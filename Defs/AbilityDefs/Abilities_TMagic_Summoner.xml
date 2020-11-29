@@ -130,7 +130,7 @@
         <defaultProjectile>Projectile_SummonPylon</defaultProjectile>
 		<abilityDef>TM_SummonPylon</abilityDef>
         <warmupTime>2</warmupTime>
-        <SecondsToRecharge>40</SecondsToRecharge>
+        <SecondsToRecharge>20</SecondsToRecharge>
 		<burstShotCount>1</burstShotCount>
         <range>70</range>
 		<isViolent>false</isViolent>
@@ -186,7 +186,7 @@
         <defaultProjectile>Projectile_SummonExplosive</defaultProjectile>
 		<abilityDef>TM_SummonExplosive</abilityDef>
         <warmupTime>2</warmupTime>
-        <SecondsToRecharge>30</SecondsToRecharge>
+        <SecondsToRecharge>20</SecondsToRecharge>
 		<burstShotCount>1</burstShotCount>
         <range>60</range>
 		<isViolent>false</isViolent>

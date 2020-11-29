@@ -205,6 +205,28 @@ namespace TorannMagic
                     ));
                 }
             }
+            if(this.def == TorannMagicDefOf.TM_SpiritWolfR)
+            {
+                try
+                {
+                    if(base.Map != null)
+                    {
+                        MoteMaker.ThrowSmoke(this.DrawPos, base.Map, Rand.Range(1f, 3f));
+                        MoteMaker.ThrowSmoke(this.DrawPos, base.Map, Rand.Range(1f, 2f));
+                        TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Ghost, this.DrawPos, base.Map, 1f, .25f, 0f, .25f, 0, Rand.Range(1f, 2f), 0, 0);
+                    }
+                    else
+                    {
+                        this.holdingOwner.Remove(this);
+                    }                
+                }
+                catch
+                {
+                    Log.Message("TM_ExceptionClose".Translate(
+                            this.def.defName
+                    ));
+                }
+            }
             if(this.original != null)
             {
                 //Log.Message("pre destroy");

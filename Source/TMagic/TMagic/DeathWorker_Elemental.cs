@@ -4,7 +4,7 @@ using Verse;
 
 namespace TorannMagic
 {
-    public class Demon_DeathWorker : DeathActionWorker
+    public class DeathWorker_Elemental : DeathActionWorker
     {
         public override void PawnDied(Corpse corpse)
         {
@@ -15,7 +15,7 @@ namespace TorannMagic
                     MoteMaker.ThrowSmoke(corpse.DrawPos, corpse.Map, Rand.Range(.5f, 1.1f));
                 }
                 MoteMaker.ThrowHeatGlow(corpse.Position, corpse.Map, 1f);
-                corpse.Map.weatherManager.eventHandler.AddEvent(new TM_WeatherEvent_MeshFlash(corpse.Map, corpse.Position, TM_MatPool.blackLightning));
+                corpse.Destroy();
             }
         }
     }

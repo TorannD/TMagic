@@ -12,7 +12,7 @@ namespace TorannMagic
     {
         private bool initialized = false;
         private int age = 0;
-        private int infectionRate = 240;
+        private int infectionRate = 120;
         private int lastInfection = 240;
         private int hediffPwr = 0;
         private int infectionRadius = 3;
@@ -63,7 +63,7 @@ namespace TorannMagic
         private void Initialize()
         {
             bool spawned = base.Pawn.Spawned;
-            this.minimumSev = .3f * (.03f * effVal);
+            this.minimumSev = .3f - (.03f * effVal);
             this.infectionRadius = 3 + verVal;
 
             if (spawned)

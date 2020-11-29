@@ -200,6 +200,38 @@ namespace TorannMagic
                     this.hediffDef = TorannMagicDefOf.SoothingBreeze_III;
                 }
             }
+            if (parent.def == TorannMagicDefOf.TM_InnerFire_AuraHD && comp != null)
+            {
+                abilityPower = comp.MagicData.MagicPowersP.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope);
+                if (abilityPower == null)
+                {
+                    abilityPower = comp.MagicData.MagicPowersP.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope_I);
+                    if (abilityPower == null)
+                    {
+                        abilityPower = comp.MagicData.MagicPowersP.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope_II);
+                        if (abilityPower == null)
+                        {
+                            abilityPower = comp.MagicData.MagicPowersP.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope_III);
+                        }
+                    }
+                }
+                if (abilityPower.level == 0)
+                {
+                    this.hediffDef = TorannMagicDefOf.InnerFireHD;
+                }
+                else if (abilityPower.level == 1)
+                {
+                    this.hediffDef = TorannMagicDefOf.InnerFire_IHD;
+                }
+                else if (abilityPower.level == 2)
+                {
+                    this.hediffDef = TorannMagicDefOf.InnerFire_IIHD;
+                }
+                else
+                {
+                    this.hediffDef = TorannMagicDefOf.InnerFire_IIIHD;
+                }
+            }
             if (abilityPower != null)
             {
                 this.parent.Severity = .5f + abilityPower.level;

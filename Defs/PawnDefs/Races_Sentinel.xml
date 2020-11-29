@@ -28,7 +28,7 @@
     </inspectorTabs>
     <race>
       <body>Sentinel</body>
-	  <deathActionWorkerClass>TorannMagic.Sentinel_DeathWorker</deathActionWorkerClass>
+	  <deathActionWorkerClass>TorannMagic.DeathWorker_Sentinel</deathActionWorkerClass>
       <needsRest>false</needsRest>
       <hasGenders>false</hasGenders>
 	  <fleshType>TM_StoneFlesh</fleshType>

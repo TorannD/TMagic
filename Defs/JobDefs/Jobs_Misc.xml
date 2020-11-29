@@ -104,4 +104,11 @@
     <casualInterruptible>false</casualInterruptible>
   </JobDef>
   
+  <JobDef>
+    <defName>JobDriver_Discord</defName>
+    <driverClass>TorannMagic.JobDriver_Channel_Discord</driverClass>
+    <reportString>creating discord</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  
 </Defs>

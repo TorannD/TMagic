@@ -31,7 +31,7 @@
     <race>
 	  <fleshType>TM_StoneFlesh</fleshType>
       <body>Elemental</body>
-	  <deathActionWorkerClass>TorannMagic.Elemental_DeathWorker</deathActionWorkerClass>
+	  <deathActionWorkerClass>TorannMagic.DeathWorker_Elemental</deathActionWorkerClass>
       <needsRest>false</needsRest>
       <hasGenders>false</hasGenders>
 	  <herdMigrationAllowed>false</herdMigrationAllowed>

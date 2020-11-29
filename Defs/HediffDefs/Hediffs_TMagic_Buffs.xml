@@ -285,17 +285,12 @@
 	    <label>I</label>
 		<minSeverity>.001</minSeverity>
         <restFallFactor>0.9</restFallFactor>
-		<hungerRateFactor>0.9</hungerRateFactor>
 		<socialFightChanceFactor>0.9</socialFightChanceFactor>
 		<painOffset>-0.1</painOffset>
         <capMods>
-          <li>
-            <capacity>Manipulation</capacity>
-            <offset>0.1</offset>
-          </li>
 		  <li>
             <capacity>Consciousness</capacity>
-            <offset>0.05</offset>
+            <offset>0.10</offset>
           </li>
         </capMods>
       </li>
@@ -315,18 +310,13 @@
       <li>
 	    <label>II</label>
 		<minSeverity>.001</minSeverity>
-        <restFallFactor>0.85</restFallFactor>
-		<hungerRateFactor>0.9</hungerRateFactor>
+        <restFallFactor>0.88</restFallFactor>
 		<socialFightChanceFactor>0.9</socialFightChanceFactor>
-		<painOffset>-0.15</painOffset>
+		<painOffset>-0.12</painOffset>
         <capMods>
-          <li>
-            <capacity>Manipulation</capacity>
-            <offset>0.15</offset>
-          </li>
 		  <li>
             <capacity>Consciousness</capacity>
-            <offset>0.1</offset>
+            <offset>0.12</offset>
           </li>
         </capMods>
       </li>
@@ -346,18 +336,13 @@
       <li>
 	    <label>III</label>
 		<minSeverity>.001</minSeverity>
-        <restFallFactor>0.8</restFallFactor>
-		<hungerRateFactor>0.85</hungerRateFactor>
+        <restFallFactor>0.86</restFallFactor>
 		<socialFightChanceFactor>0.85</socialFightChanceFactor>
-		<painOffset>-0.2</painOffset>
+		<painOffset>-0.14</painOffset>
         <capMods>
-          <li>
-            <capacity>Manipulation</capacity>
-            <offset>0.2</offset>
-          </li>
 		  <li>
             <capacity>Consciousness</capacity>
-            <offset>0.15</offset>
+            <offset>0.14</offset>
           </li>
         </capMods>
       </li>
@@ -377,15 +362,10 @@
       <li>
 	    <label>IV</label>
 		<minSeverity>.001</minSeverity>
-        <restFallFactor>0.75</restFallFactor>
-		<hungerRateFactor>0.8</hungerRateFactor>
+        <restFallFactor>0.85</restFallFactor>
 		<socialFightChanceFactor>0.8</socialFightChanceFactor>
-		<painOffset>-0.25</painOffset>
+		<painOffset>-0.15</painOffset>
         <capMods>
-          <li>
-            <capacity>Manipulation</capacity>
-            <offset>0.2</offset>
-          </li>
 		  <li>
             <capacity>Consciousness</capacity>
             <offset>0.2</offset>
@@ -451,14 +431,152 @@
     </stages>
   </ThoughtDef>
   
-  <!-- Ray of Hope -->
+  
+  <!-- (Fire Mage) Inner Fire -->
+  
+  <HediffDef>
+    <defName>TM_InnerFire_AuraHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Aura of Warmth</label>
+	<description>An aura that generates and bestows warmth and confidence.</description>
+    <defaultLabelColor>(.9,.2,0)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<minSeverity>0.001</minSeverity>
+	<maxSeverity>4.0</maxSeverity>
+	<initialSeverity>0.5</initialSeverity>
+	<isBad>false</isBad>
+	<comps>
+	  <li>
+        <compClass>TorannMagic.HediffComp_Aura</compClass>
+      </li>  
+    </comps>
+	<stages>
+      <li>
+	    <label>I</label>
+		<minSeverity>.001</minSeverity>
+      </li>
+	  <li>
+	    <label>II</label>
+		<minSeverity>1</minSeverity>
+      </li>
+		<li>
+	    <label>III</label>
+		<minSeverity>2</minSeverity>
+      </li>
+		<li>
+	    <label>IV</label>
+		<minSeverity>3</minSeverity>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="MediumShortBuffBase">
+    <defName>InnerFireHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Inner Fire</label>
+	<description>Fortifies the spirit, giving the pawn increased endurance and resistances.</description>
+	<defaultLabelColor>(.9,.2,0)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
+    <stages>
+      <li>
+	    <label>I</label>
+		<minSeverity>.001</minSeverity>
+		<restFallFactor>.9</restFallFactor>
+		<hungerRateFactor>.9</hungerRateFactor>
+		<naturalHealingFactor>1.2</naturalHealingFactor>
+		<statOffsets>
+		  <MentalBreakThreshold>-0.03</MentalBreakThreshold>
+		  <ComfyTemperatureMin>-6</ComfyTemperatureMin>
+	    </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="MediumShortBuffBase">
+    <defName>InnerFire_IHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Inner Fire</label>
+	<description>Fortifies the spirit, giving the pawn increased endurance and resistances.</description>
+	<defaultLabelColor>(.9,.2,0)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
+    <stages>
+      <li>
+	    <label>II</label>
+		<minSeverity>.001</minSeverity>
+		<restFallFactor>.86</restFallFactor>
+		<hungerRateFactor>.86</hungerRateFactor>
+		<naturalHealingFactor>1.25</naturalHealingFactor>
+		<statOffsets>
+		  <MentalBreakThreshold>-0.04</MentalBreakThreshold>
+		  <ComfyTemperatureMin>-8</ComfyTemperatureMin>
+	    </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+  
+   <HediffDef ParentName="MediumBuffBase">
+    <defName>InnerFire_IIHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Inner Fire</label>
+	<description>Fortifies the spirit, giving the pawn increased endurance and resistances.</description>
+	<defaultLabelColor>(.9,.2,0)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
+    <stages>
+      <li>
+	    <label>III</label>
+		<minSeverity>.001</minSeverity>
+		<restFallFactor>.83</restFallFactor>
+		<hungerRateFactor>.83</hungerRateFactor>
+		<naturalHealingFactor>1.28</naturalHealingFactor>
+		<statOffsets>
+		  <MentalBreakThreshold>-0.04</MentalBreakThreshold>
+		  <ComfyTemperatureMin>-9</ComfyTemperatureMin>
+	    </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+  
+   <HediffDef ParentName="MediumBuffBase">
+    <defName>InnerFire_IIIHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Inner Fire</label>
+	<description>Fortifies the spirit, giving the pawn increased endurance and resistances.</description>
+	<defaultLabelColor>(.9,.2,0)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
+    <stages>
+      <li>
+	    <label>IV</label>
+		<minSeverity>.001</minSeverity>
+		<restFallFactor>.8</restFallFactor>
+		<hungerRateFactor>.8</hungerRateFactor>
+		<naturalHealingFactor>1.3</naturalHealingFactor>
+		<statOffsets>
+		  <MentalBreakThreshold>-0.05</MentalBreakThreshold>
+		  <ComfyTemperatureMin>-10</ComfyTemperatureMin>
+	    </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <!-- (Paladin) Ray of Hope -->
   
   <HediffDef>
     <defName>TM_RayOfHope_AuraHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Aura of Hope</label>
 	<description>An aura that generates and bestows an uplifting presence.</description>
-    <defaultLabelColor>(1,.8,0.6)</defaultLabelColor>
+    <defaultLabelColor>(1,1,.7)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
@@ -497,7 +615,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Ray of Hope</label>
 	<description>An uplifting presence that enlivens the spirit.</description>
-	<defaultLabelColor>(1,.8,0.6)</defaultLabelColor>
+	<defaultLabelColor>(1,1,0.7)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
 	<isBad>false</isBad>
@@ -508,19 +626,11 @@
         <capMods>
           <li>
             <capacity>Manipulation</capacity>
-            <offset>0.1</offset>
+            <offset>0.15</offset>
           </li>
           <li>
             <capacity>Moving</capacity>
-            <offset>0.1</offset>
-          </li>
-          <li>
-            <capacity>BloodPumping</capacity>
-            <offset>0.1</offset>
-          </li>
-		  <li>
-            <capacity>Consciousness</capacity>
-            <offset>0.05</offset>
+            <offset>0.15</offset>
           </li>
         </capMods>
       </li>
@@ -532,7 +642,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Ray of Hope</label>
 	<description>An uplifting presence that enlivens the spirit.</description>
-	<defaultLabelColor>(1,.8,0.6)</defaultLabelColor>
+	<defaultLabelColor>(1,1,0.7)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
 	<isBad>false</isBad>
@@ -543,19 +653,11 @@
         <capMods>
           <li>
             <capacity>Manipulation</capacity>
-            <offset>0.15</offset>
+            <offset>0.18</offset>
           </li>
           <li>
             <capacity>Moving</capacity>
-            <offset>0.15</offset>
-          </li>
-          <li>
-            <capacity>BloodPumping</capacity>
-            <offset>0.1</offset>
-          </li>
-		  <li>
-            <capacity>Consciousness</capacity>
-            <offset>0.1</offset>
+            <offset>0.18</offset>
           </li>
         </capMods>
       </li>
@@ -567,7 +669,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Ray of Hope</label>
 	<description>An uplifting presence that enlivens the spirit.</description>
-	<defaultLabelColor>(1,.8,0.6)</defaultLabelColor>
+	<defaultLabelColor>(1,1,0.7)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
 	<isBad>false</isBad>
@@ -584,14 +686,6 @@
             <capacity>Moving</capacity>
             <offset>0.20</offset>
           </li>
-          <li>
-            <capacity>BloodPumping</capacity>
-            <offset>0.1</offset>
-          </li>
-		  <li>
-            <capacity>Consciousness</capacity>
-            <offset>0.1</offset>
-          </li>
         </capMods>
       </li>
     </stages>
@@ -602,7 +696,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Ray of Hope</label>
 	<description>An uplifting presence that enlivens the spirit.</description>
-	<defaultLabelColor>(1,.8,0.6)</defaultLabelColor>
+	<defaultLabelColor>(1,1,0.7)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
 	<isBad>false</isBad>
@@ -613,19 +707,11 @@
         <capMods>
           <li>
             <capacity>Manipulation</capacity>
-            <offset>0.25</offset>
+            <offset>0.22</offset>
           </li>
           <li>
             <capacity>Moving</capacity>
-            <offset>0.25</offset>
-          </li>
-          <li>
-            <capacity>BloodPumping</capacity>
-            <offset>0.1</offset>
-          </li>
-		  <li>
-            <capacity>Consciousness</capacity>
-            <offset>0.1</offset>
+            <offset>0.22</offset>
           </li>
         </capMods>
       </li>
@@ -641,7 +727,7 @@
       <li>
         <label>Shadow of hope</label>
         <description>Where there's shadow, there's light</description>
-        <baseMoodEffect>4</baseMoodEffect>
+        <baseMoodEffect>3</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>
@@ -655,7 +741,7 @@
       <li>
         <label>Glimmer of hope</label>
         <description>I have this glimmer of hope that wasn't there before!</description>
-        <baseMoodEffect>5</baseMoodEffect>
+        <baseMoodEffect>4</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>
@@ -669,7 +755,7 @@
       <li>
         <label>Ray of hope</label>
         <description>Theres a ray of light breaking through this dark mood, I finally feel like we have a chance.</description>
-        <baseMoodEffect>6</baseMoodEffect>
+        <baseMoodEffect>5</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>
@@ -683,7 +769,7 @@
       <li>
         <label>Beacon of hope</label>
         <description>All the misfortune that's befallen us is being burned away by a brilliant light, I have a burst of energy and feel amazing!</description>
-        <baseMoodEffect>7</baseMoodEffect>
+        <baseMoodEffect>5</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>
@@ -1504,11 +1590,27 @@
         <severityPerDay>-1.5</severityPerDay>
       </li>	  
     </comps>
-<!--       <stages>
-        <li>
-          <restFallFactor>1.33</restFallFactor>
-        </li>
-      </stages>	 -->
+  </HediffDef>
+  
+    <!-- Magic Shield (same thing as shield but can be applied to any pawn) -->
+  
+   <HediffDef>
+    <defName>TM_MagicShieldHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Shield</label>
+	<description>Absorbs damage.</description>
+    <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>3.0</maxSeverity>	
+	<isBad>false</isBad>
+	<comps>
+      <li>
+        <compClass>TorannMagic.HediffComp_MagicShield</compClass>
+      </li>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1.5</severityPerDay>
+      </li>	  
+    </comps>
   </HediffDef>
   
 <!-- Sprint -->
@@ -1667,14 +1769,12 @@
 	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_Disappears">
+		<showRemainingTime>True</showRemainingTime>
         <disappearsAfterTicks>
-          <min>360</min>
-          <max>370</max>
+          <min>1</min>
+          <max>10</max>
         </disappearsAfterTicks>
       </li>
-      <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-10</severityPerDay>
-      </li>	  
     </comps>
   </HediffDef>
   
@@ -2756,6 +2856,61 @@
 	    </statOffsets>
       </li>
     </stages>
+  </HediffDef>
+  
+  
+  <HediffDef>
+    <defName>TM_ShadowSlayerCloakHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.6, 0.6, 0.6)</defaultLabelColor>
+    <label>Shadow Slayer Cloak</label>
+	<description>Shadow slayer cloaking field is active - performing actions that the predictive engine is unable to track will rapidly erode the cloaking field.</description>
+    <maxSeverity>80</maxSeverity>
+	<isBad>false</isBad>
+	<comps>
+	  <li>
+        <compClass>TorannMagic.HediffComp_ShadowSlayerCloak</compClass>
+      </li>	
+      <li Class="HediffCompProperties_Disappears">
+        <showRemainingTime>True</showRemainingTime>
+      </li> 
+      <li Class="HediffCompProperties">
+        <compClass>HediffComp_Invisibility</compClass>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label></label>
+        <minSeverity>.1</minSeverity>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef>
+    <defName>TM_SeverityHasteHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Haste</label>
+	<description>Attack rate is doubled.</description>
+    <defaultLabelColor>(1,.4,0)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<maxSeverity>1</maxSeverity>
+	<isBad>false</isBad>
+	<initialSeverity>.05</initialSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1</severityPerDay>
+      </li> 
+    </comps>
+	<stages>
+      <li>
+        <label></label>
+        <minSeverity>0</minSeverity>
+		<becomeVisible>true</becomeVisible>
+      </li>	  
+	</stages>
   </HediffDef>
   
 </Defs>

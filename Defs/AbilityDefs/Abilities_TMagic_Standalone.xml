@@ -300,7 +300,7 @@
 		<damageDef>Burn</damageDef>
 		<damageAmountBase>0</damageAmountBase>
 		<speed>1000</speed>
-		<explosionRadius>14</explosionRadius>
+		<explosionRadius>5.8</explosionRadius>
 		<postExplosionSpawnChance>1</postExplosionSpawnChance>
    </projectile>   
  </ThingDef>
@@ -1947,6 +1947,46 @@ This attack only works when the weapon equipped is not normally consumed after u
                 <canTargetBuildings>false</canTargetBuildings>
                 <canTargetSelf>false</canTargetSelf>
                 <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	
+	  <!-- discord -->	
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Discord</defName>
+        <label>Discord</label>
+        <uiIconPath>UI/discordance</uiIconPath>
+        <description>A channeled ability that continually assaults the senses of the victim with random and jarring signals. This sensory overload will gradually weaken mental stability and eventually the mental harmony of the target will collapse altogether. The results of this ability vary, but will grow stronger with each iteration. 
+		
+Effects include dizziness, nausea, vision and hearing loss, vomiting, inability to determine friend from foe, can no longer maths, dislike of other pawns, loss of motor skills, loss of reason, urge to discuss politics, paroxysm, brain hemorrhaging and cranial detonation. Results may vary when targeting friendly pawns. Consult your therapist channel before using.</description>
+		<manaCost>0.02</manaCost>
+		<learnItem>SpellOf_Discord</learnItem>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Discord</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Discord</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>60.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
             </targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>

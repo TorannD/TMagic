@@ -322,6 +322,39 @@ namespace TorannMagic
         //    return false;
         //}
 
+        [HarmonyPatch(typeof(Building_MusicalInstrument), "Tick", null)]
+        public class BardPlaysMusicalInstrument_Patch
+        {
+            public static void Postfix(Building_MusicalInstrument __instance, Pawn ___currentPlayer)
+            {
+                if(__instance != null && ___currentPlayer != null && Find.TickManager.TicksGame % 131 == 0)
+                {
+                    CompAbilityUserMagic comp = ___currentPlayer.TryGetComp<CompAbilityUserMagic>();
+                    if(comp != null && comp.MagicData != null && comp.IsMagicUser)
+                    {
+                        if(comp.MagicData.MagicPowersB.FirstOrDefault((MagicPower x ) => x.abilityDef == TorannMagicDefOf.TM_Entertain).learned)
+                        {
+                            foreach (Pawn p in __instance.Map.mapPawns.AllPawnsSpawned)
+                            {                                
+                                if (p.RaceProps.Humanlike && Building_MusicalInstrument.IsAffectedByInstrument(__instance.def, __instance.Position, p.Position, __instance.Map))
+                                {
+                                    CompAbilityUserMagic compListener = p.TryGetComp<CompAbilityUserMagic>();
+                                    if(compListener != null && compListener.IsMagicUser && compListener.Mana != null)
+                                    {
+                                        compListener.Mana.CurLevel += .0075f;
+                                    }
+                                    if(p.needs != null && p.needs.joy != null)
+                                    {
+                                        p.needs.joy.CurLevel += .01f;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         [HarmonyPriority (2000)] //Go first to make sure the right verb is copied
         private static void TryStartCastOn_Prefix(Verb __instance)
         {
@@ -1601,9 +1634,9 @@ namespace TorannMagic
             return true;
         }
 
-        public static bool PawnRenderer_Blur_Prefix(PawnRenderer __instance, ref Vector3 drawLoc, ref RotDrawMode bodyDrawType, bool headStump, bool invisible)
+        public static bool PawnRenderer_Blur_Prefix(PawnRenderer __instance, ref Vector3 drawLoc, ref RotDrawMode bodyDrawType, bool headStump, bool invisible, Pawn ___pawn)
         {
-            Pawn pawn = Traverse.Create(root: __instance).Field(name: "pawn").GetValue<Pawn>();
+            Pawn pawn = ___pawn; // Traverse.Create(root: __instance).Field(name: "pawn").GetValue<Pawn>();
             if (!pawn.DestroyedOrNull() && !pawn.Dead && !pawn.Downed)
             {
                 if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BlurHD))
@@ -1623,6 +1656,18 @@ namespace TorannMagic
                         Vector3 blurLoc = drawLoc;
                         blurLoc.x += Rand.Range(-.03f, .03f) * blurMagnitude;
                         //blurLoc.z += Rand.Range(-.01f, .01f) * blurMagnitude;
+                        drawLoc = blurLoc;
+                    }
+                }
+
+                if(pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DiscordHD))
+                {
+                    Hediff hd = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_DiscordHD);
+                    if(hd.Severity > 6f)
+                    {
+                        float blurMagnitude = (hd.Severity - 5f) * .03f; 
+                        Vector3 blurLoc = drawLoc;
+                        blurLoc.x += Rand.Range(-blurMagnitude, blurMagnitude);
                         drawLoc = blurLoc;
                     }
                 }
@@ -1656,9 +1701,9 @@ namespace TorannMagic
             return true;
         }
 
-        public static bool PawnRenderer_Undead_Prefix(PawnRenderer __instance, Vector3 drawLoc, ref RotDrawMode bodyDrawType, bool headStump, bool invisible)
+        public static bool PawnRenderer_Undead_Prefix(PawnRenderer __instance, Vector3 drawLoc, ref RotDrawMode bodyDrawType, bool headStump, bool invisible, Pawn ___pawn)
         {
-            Pawn pawn = Traverse.Create(root: __instance).Field(name: "pawn").GetValue<Pawn>();
+            Pawn pawn = ___pawn; // Traverse.Create(root: __instance).Field(name: "pawn").GetValue<Pawn>();
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadStageHD")))
             {
@@ -2308,7 +2353,7 @@ namespace TorannMagic
                 {
                     __instance.SetFaction(null, null);
                 }
-                if(__instance != null && __instance.RaceProps != null && __instance.RaceProps.DeathActionWorker.GetType() == typeof(Poppi_DeathWorker))
+                if(__instance != null && __instance.RaceProps != null && __instance.RaceProps.DeathActionWorker.GetType() == typeof(DeathWorker_Poppi))
                 {
                     __instance.SetFaction(null, null);
                 }
@@ -2603,7 +2648,27 @@ namespace TorannMagic
                             }
                         }
 
-
+                        Pawn shadowSlayer = dinfo.Instigator as Pawn;
+                        if (shadowSlayer != null)
+                        {
+                            CompAbilityUserMight compMight = shadowSlayer.TryGetComp<CompAbilityUserMight>();
+                            if (shadowSlayer.IsInvisible() && compMight != null && compMight.IsMightUser && compMight.MightData != null)
+                            {
+                                if (ranger.equipment?.Primary != null)
+                                {
+                                    Thing wpn = ranger.equipment.Primary;
+                                    if (wpn.def.IsRangedWeapon)
+                                    {
+                                        MightPowerSkill mps = compMight.MightData.GetSkill_Power(TorannMagicDefOf.TM_ShadowSlayer);
+                                        if (mps != null)
+                                        {
+                                            int skillLevel = (2*mps.level);
+                                            dinfo.SetAmount(dinfo.Amount + skillLevel);
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 return true;
@@ -2671,6 +2736,13 @@ namespace TorannMagic
                     if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HTLShieldHD, false))
                     {
                         HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_HTLShieldHD, -dinfo.Amount);
+                        TM_Action.DisplayShieldHit(pawn, dinfo);
+                        absorbed = true;
+                        return false;
+                    }
+                    if(pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MagicShieldHD, false))
+                    {
+                        HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_MagicShieldHD, -(dinfo.Amount *.004f));
                         TM_Action.DisplayShieldHit(pawn, dinfo);
                         absorbed = true;
                         return false;
@@ -2800,7 +2872,7 @@ namespace TorannMagic
                                 int lifestealEff = comp.MightData.MightPowerSkill_LifeSteal.FirstOrDefault((MightPowerSkill x) => x.label == "TM_LifeSteal_eff").level;
                                 int lifestealVer = comp.MightData.MightPowerSkill_LifeSteal.FirstOrDefault((MightPowerSkill x) => x.label == "TM_LifeSteal_ver").level;
 
-                                TM_Action.DoAction_HealPawn(attacker, attacker, 1, dinfo.Amount * (.20f + .04f * lifestealPwr));
+                                TM_Action.DoAction_HealPawn(attacker, attacker, 1, dinfo.Amount * (TorannMagicDefOf.TM_LifeSteal.weaponDamageFactor + (.02f * lifestealPwr)));
                                 TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Siphon"), attacker.DrawPos, attacker.Map, 1f, .1f, .15f, .5f, 600, 0, 0, Rand.Range(0, 360));
                                 TM_MoteMaker.ThrowSiphonMote(attacker.DrawPos, attacker.Map, 1f);
 
@@ -2814,7 +2886,7 @@ namespace TorannMagic
                                     Pawn ally = TM_Calc.FindNearbyInjuredPawnOther(attacker, 3, 0);
                                     if (ally != null)
                                     {
-                                        TM_Action.DoAction_HealPawn(attacker, ally, 1, dinfo.Amount * (.20f * lifestealVer));
+                                        TM_Action.DoAction_HealPawn(attacker, ally, 1, dinfo.Amount * ((TorannMagicDefOf.TM_LifeSteal.weaponDamageFactor - .05f) + (.01f *lifestealVer)));
                                         TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Siphon"), ally.DrawPos, ally.Map, 1f, .1f, .15f, .5f, 600, 0, 0, Rand.Range(0, 360));
                                     }
                                 }
@@ -2871,10 +2943,10 @@ namespace TorannMagic
         {
             public static FieldInfo pawn = typeof(Pawn_HealthTracker).GetField("pawn", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.GetField);
 
-            public static void Postfix(Pawn_HealthTracker __instance, DamageInfo dinfo)
+            public static void Postfix(Pawn_HealthTracker __instance, DamageInfo dinfo, Pawn ___pawn)
             {
-                Traverse traverse = Traverse.Create(__instance);
-                Pawn pawn = (Pawn)PostApplyDamage_Patch.pawn.GetValue(__instance);
+                //Traverse traverse = Traverse.Create(__instance);
+                Pawn pawn = ___pawn;
                 if (dinfo.Def != null)
                 {                    
                     if (dinfo.Instigator != null && pawn != null && dinfo.Instigator != pawn && !pawn.Destroyed && !pawn.Dead && pawn.Map != null)
@@ -3058,7 +3130,17 @@ namespace TorannMagic
 
                         if(instigator != null && instigator.equipment != null && instigator.equipment.Primary != null && instigator.equipment.Primary.def.IsMeleeWeapon)
                         {
-                            //Log.Message("checking instigator melee bonus ");
+                            //Log.Message("checking instigator melee bonus ");                            
+                            if(Rand.Chance(.2f) && instigator.story != null && instigator.story.traits != null && instigator.story.traits.HasTrait(TorannMagicDefOf.Paladin))
+                            {
+                                CompAbilityUserMagic comp = instigator.GetComp<CompAbilityUserMagic>();
+                                if (comp != null)
+                                {
+                                    float amount = Rand.Range(2f, 4f) + Rand.Range(0f, .1f * comp.MagicUserLevel);
+                                    DamageInfo dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Holy, amount, 0, dinfo.Angle, instigator, dinfo.HitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                                    TM_Action.DamageUndead(pawn, amount, instigator);
+                                }
+                            }
                             if (instigator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffFightersFocus) && Rand.Chance(.2f))
                             {
                                 CompAbilityUserMight comp = instigator.GetComp<CompAbilityUserMight>();
@@ -3142,18 +3224,17 @@ namespace TorannMagic
                 if (__instance.CasterIsPawn)
                 {
                     CompAbilityUserMight comp = __instance.CasterPawn.TryGetComp<CompAbilityUserMight>();
-                    if (comp != null && __instance.CasterPawn.health != null && __instance.CasterPawn.health.hediffSet != null)
+                    if (comp != null && comp.MightData != null && comp.Stamina != null && __instance.CasterPawn.health != null && __instance.CasterPawn.health.hediffSet != null)
                     {
-                        if (__instance.CasterPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MindOverBodyHD, false) && comp.MightData != null && __instance.CasterPawn.equipment.Primary == null && ___burstShotsLeft <= 0)
+                        if (__instance.CasterPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MindOverBodyHD, false) && __instance.CasterPawn.equipment.Primary == null && ___burstShotsLeft <= 0)
                         {
-                            
                             //LocalTargetInfo currentTarget = Traverse.Create(root: __instance).Field(name: "currentTarget").GetValue<LocalTargetInfo>();
                             //int burstShotsLeft = Traverse.Create(root: __instance).Field(name: "burstShotsLeft").GetValue<int>();
                             MightPowerSkill pwr = comp.MightData.MightPowerSkill_TigerStrike.FirstOrDefault((MightPowerSkill x) => x.label == "TM_TigerStrike_pwr");
                             MightPowerSkill eff = comp.MightData.MightPowerSkill_TigerStrike.FirstOrDefault((MightPowerSkill x) => x.label == "TM_TigerStrike_eff");
                             MightPowerSkill globalSkill = comp.MightData.MightPowerSkill_global_seff.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_seff_pwr");
                             float actualStaminaCost = .06f * (1 - (.1f * eff.level) * (1 - (.03f * globalSkill.level)));
-                            if (comp != null && comp.Stamina.CurLevel >= actualStaminaCost && Rand.Chance(.3f + (.05f * pwr.level)))
+                            if (comp.Stamina != null && comp.Stamina.CurLevel >= actualStaminaCost && Rand.Chance(.3f + (.05f * pwr.level)))
                             {
                                 Vector3 strikeEndVec = ___currentTarget.CenterVector3;
                                 strikeEndVec.x += Rand.Range(-.2f, .2f);
@@ -3167,30 +3248,30 @@ namespace TorannMagic
                                 comp.Stamina.CurLevel -= actualStaminaCost;
                                 comp.MightUserXP += (int)(.06f * 180);
                             }
-                            
                         }
-                    }
-                    if (comp.MightData != null && comp.Stamina != null && (__instance.CasterPawn.story != null && __instance.CasterPawn.story.traits != null && __instance.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier)) || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_PistolSpec, null, comp))
-                    {
-                        //LocalTargetInfo currentTarget = Traverse.Create(root: __instance).Field(name: "currentTarget").GetValue<LocalTargetInfo>();
-                        //int burstShotsLeft = Traverse.Create(root: __instance).Field(name: "burstShotsLeft").GetValue<int>();
-                        if (__instance.CasterPawn.equipment != null && __instance.CasterPawn.equipment.Primary != null && ___burstShotsLeft <= 0)
+
+                        if ((__instance.CasterPawn.story != null && __instance.CasterPawn.story.traits != null && __instance.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier)) || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_PistolSpec, null, comp))
                         {
-                            if (comp.specWpnRegNum != -1 && comp.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PistolSpec).learned)
+                            //LocalTargetInfo currentTarget = Traverse.Create(root: __instance).Field(name: "currentTarget").GetValue<LocalTargetInfo>();
+                            //int burstShotsLeft = Traverse.Create(root: __instance).Field(name: "burstShotsLeft").GetValue<int>();
+                            if (__instance.CasterPawn.equipment != null && __instance.CasterPawn.equipment.Primary != null && ___burstShotsLeft <= 0)
                             {
-                                int doubleTapPwr = comp.MightData.MightPowerSkill_PistolSpec.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PistolSpec_eff").level;
-                                MightPowerSkill globalSkill = comp.MightData.MightPowerSkill_global_seff.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_seff_pwr");
-                                float actualStaminaCost = .03f * (1 - (.1f * doubleTapPwr) * (1 - (.03f * globalSkill.level)));
-                                if (comp != null && comp.Stamina.CurLevel >= actualStaminaCost && Rand.Chance(.25f + (.05f * doubleTapPwr)))
+                                if (comp.specWpnRegNum != -1 && comp.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PistolSpec).learned)
                                 {
-                                    __instance.CasterPawn.stances.SetStance(new Stance_Cooldown(5, ___currentTarget, __instance));
-                                    comp.Stamina.CurLevel -= actualStaminaCost;
-                                    comp.MightUserXP += (int)(.03f * 180);
+                                    int doubleTapPwr = comp.MightData.MightPowerSkill_PistolSpec.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PistolSpec_eff").level;
+                                    MightPowerSkill globalSkill = comp.MightData.MightPowerSkill_global_seff.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_seff_pwr");
+                                    float actualStaminaCost = .03f * (1 - (.1f * doubleTapPwr) * (1 - (.03f * globalSkill.level)));
+                                    if (comp.Stamina.CurLevel >= actualStaminaCost && Rand.Chance(.25f + (.05f * doubleTapPwr)))
+                                    {
+                                        __instance.CasterPawn.stances.SetStance(new Stance_Cooldown(5, ___currentTarget, __instance));
+                                        comp.Stamina.CurLevel -= actualStaminaCost;
+                                        comp.MightUserXP += (int)(.03f * 180);
+                                    }
                                 }
                             }
                         }
                     }
-                    if (__instance.CasterPawn.stances != null && __instance.CasterPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HasteHD))
+                    if (__instance.CasterPawn.stances != null && (__instance.CasterPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HasteHD) || __instance.CasterPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_SeverityHasteHD)))
                     {
                         //LocalTargetInfo currentTarget = Traverse.Create(root: __instance).Field(name: "currentTarget").GetValue<LocalTargetInfo>();
                         int ticksRemaining = 30;
@@ -3275,6 +3356,7 @@ namespace TorannMagic
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_SoL_CreateLight" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_Enrage" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_Hex" ||
+                    __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_Discord" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_AdvancedHeal")
                 {
                     //Ignores line of sight
@@ -6175,7 +6257,11 @@ namespace TorannMagic
                         if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_RayofHope || __instance.pawnAbility.Def == TorannMagicDefOf.TM_RayofHope_I || __instance.pawnAbility.Def == TorannMagicDefOf.TM_RayofHope_II || __instance.pawnAbility.Def == TorannMagicDefOf.TM_RayofHope_III)
                         {
                             magicPower = comp.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);
-                        }                        
+                        }
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_P_RayofHope || __instance.pawnAbility.Def == TorannMagicDefOf.TM_P_RayofHope_I || __instance.pawnAbility.Def == TorannMagicDefOf.TM_P_RayofHope_II || __instance.pawnAbility.Def == TorannMagicDefOf.TM_P_RayofHope_III)
+                        {
+                            magicPower = comp.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);
+                        }
                         if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_Soothe || __instance.pawnAbility.Def == TorannMagicDefOf.TM_Soothe_I || __instance.pawnAbility.Def == TorannMagicDefOf.TM_Soothe_II || __instance.pawnAbility.Def == TorannMagicDefOf.TM_Soothe_III)
                         {
                             magicPower = comp.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);

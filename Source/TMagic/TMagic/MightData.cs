@@ -53,16 +53,19 @@ namespace TorannMagic
                         } 
                         
                         bool hasSkills = false;
-                        foreach (TM_CustomSkill skill in current.customPower.skills)
+                        if (current.customPower.skills != null)
                         {
-                            MightPowerSkill mps = new MightPowerSkill(skill.label, skill.description);
-                            mps.levelMax = skill.levelMax;
-                            mps.costToLevel = skill.costToLevel;
-                            if (!AllMightPowerSkills.Any(b => b.label == mps.label) && !MightPowerSkill_Custom.Any(b => b.label == mps.label))
+                            foreach (TM_CustomSkill skill in current.customPower.skills)
                             {
-                                MightPowerSkill_Custom.Add(mps);
+                                MightPowerSkill mps = new MightPowerSkill(skill.label, skill.description);
+                                mps.levelMax = skill.levelMax;
+                                mps.costToLevel = skill.costToLevel;
+                                if (!AllMightPowerSkills.Any(b => b.label == mps.label) && !MightPowerSkill_Custom.Any(b => b.label == mps.label))
+                                {
+                                    MightPowerSkill_Custom.Add(mps);
+                                }
+                                hasSkills = true;
                             }
-                            hasSkills = true;
                         }
                         if (newPower)
                         {
@@ -1320,11 +1323,13 @@ namespace TorannMagic
         public List<MightPowerSkill> mightPowerSkill_Headshot;
         public List<MightPowerSkill> mightPowerSkill_DisablingShot;
         public List<MightPowerSkill> mightPowerSkill_AntiArmor;
+        public List<MightPowerSkill> mightPowerSkill_ShadowSlayer;
 
         public List<MightPower> MightPowersS
         {
             get
             {
+                bool sniperHasSS = false;
                 bool flag = this.mightPowerS == null;
                 if (flag)
                 {
@@ -1349,7 +1354,30 @@ namespace TorannMagic
                         {
                             TorannMagicDefOf.TM_AntiArmor
                         }),
+                        new MightPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_ShadowSlayer
+                        }),
                     };
+                }
+                if (!sniperHasSS)
+                {
+                    foreach (MightPower p in mightPowerS)
+                    {
+                        if (p.abilityDef == TorannMagicDefOf.TM_ShadowSlayer)
+                        {
+                            sniperHasSS = true;
+                        }
+                    }
+                    if (!sniperHasSS)
+                    {
+                        MightPower pSS = new MightPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_ShadowSlayer
+                        });
+                        this.mightPowerS.Add(pSS);
+                        sniperHasSS = true;
+                    }
                 }
                 return this.mightPowerS;
             }
@@ -1417,6 +1445,23 @@ namespace TorannMagic
                     };
                 }
                 return this.mightPowerSkill_AntiArmor;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_ShadowSlayer
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_ShadowSlayer == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_ShadowSlayer = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_ShadowSlayer_pwr", "TM_ShadowSlayer_pwr_desc"),
+                        new MightPowerSkill("TM_ShadowSlayer_eff", "TM_ShadowSlayer_eff_desc"),
+                        new MightPowerSkill("TM_ShadowSlayer_ver", "TM_ShadowSlayer_ver_desc")
+                    };
+                }
+                return this.mightPowerSkill_ShadowSlayer;
             }
         }
 
@@ -1926,6 +1971,7 @@ namespace TorannMagic
                     allMightPowerSkills.AddRange(this.MightPowerSkill_Reversal);
                     allMightPowerSkills.AddRange(this.MightPowerSkill_RifleSpec);
                     allMightPowerSkills.AddRange(this.MightPowerSkill_SeismicSlash);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_ShadowSlayer);                   
                     allMightPowerSkills.AddRange(this.MightPowerSkill_ShotgunSpec);
                     allMightPowerSkills.AddRange(this.MightPowerSkill_Shroud);
                     allMightPowerSkills.AddRange(this.MightPowerSkill_SniperFocus);
@@ -2240,6 +2286,7 @@ namespace TorannMagic
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Headshot, "mightPowerSkill_Headshot", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_DisablingShot, "mightPowerSkill_DisablingShot", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_AntiArmor, "mightPowerSkill_AntiArmor", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_ShadowSlayer, "mightPowerSkill_ShadowSlayer", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPower>(ref this.mightPowerB, "mightPowerB", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_BladeFocus, "mightPowerSkill_BladeFocus", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_BladeArt, "mightPowerSkill_BladeArt", (LookMode)2, new object[0]);

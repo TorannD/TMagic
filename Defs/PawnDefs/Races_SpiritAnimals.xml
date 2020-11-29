@@ -34,16 +34,18 @@
 	  <thinkTreeMain>Animal</thinkTreeMain>
       <thinkTreeConstant>AnimalConstant</thinkTreeConstant>	  
 	  <deathActionWorkerClass>TorannMagic.Spirit_DeathWorker</deathActionWorkerClass>
-      <petness>1</petness>
       <baseHungerRate>0</baseHungerRate>
       <nameOnTameChance>1</nameOnTameChance>
 	  <nameGenerator>NamerAnimalGenericMale</nameGenerator>
       <nameGeneratorFemale>NamerAnimalGenericFemale</nameGeneratorFemale>
       <trainability>Advanced</trainability>
-      <wildness>1</wildness>
+      <wildness>10</wildness>
       <manhunterOnTameFailChance>0</manhunterOnTameFailChance>
       <manhunterOnDamageChance>1</manhunterOnDamageChance>
       <lifeExpectancy>100</lifeExpectancy>
+	  <herdMigrationAllowed>false</herdMigrationAllowed>  
+	  <packAnimal>false</packAnimal>
+	  <herdAnimal>false</herdAnimal>
     </race>
 	<comps>
 	  <li>
@@ -139,7 +141,6 @@
       <body>QuadrupedAnimalWithPaws</body>
       <maxPreyBodySize>3.3</maxPreyBodySize>
 	  <baseBodySize>1</baseBodySize>
-      <petness>1</petness>
       <baseHungerRate>1</baseHungerRate>
       <foodType>CarnivoreAnimal</foodType>
       <leatherDef>Leather_Bear</leatherDef>
@@ -294,7 +295,6 @@
       <body>QuadrupedAnimalWithPawsAndTail</body>
 	  <baseBodySize>.9</baseBodySize>
       <baseHealthScale>0.8</baseHealthScale>
-      <petness>1</petness>
       <baseHungerRate>1</baseHungerRate>
       <foodType>VegetarianRoughAnimal</foodType>
       <leatherDef>Leather_Light</leatherDef>
@@ -418,7 +418,6 @@
       <body>Bird</body>
 	  <baseBodySize>0.8</baseBodySize>
       <baseHealthScale>0.6</baseHealthScale>
-      <petness>1</petness>
       <baseHungerRate>1</baseHungerRate>
       <foodType>VegetarianRoughAnimal</foodType>
       <leatherDef>Leather_Bird</leatherDef>

@@ -54,6 +54,7 @@ namespace TorannMagic
             if(!initialized)
             {
                 Initialize(pawn);
+                TM_Action.InvulnerableAoEFor(pawn.Position, map, 3 + verVal, Mathf.RoundToInt((90 + (10 * pwrVal)) * arcaneDmg), pawn.Faction);
             }
 
             if (pawn != null)
@@ -74,7 +75,7 @@ namespace TorannMagic
                 Destroy();
             }
 
-        }
+        }        
 
         private void DoBurstExplosion(Pawn pawn, Map map)
         {            
@@ -146,7 +147,7 @@ namespace TorannMagic
             explosion.postExplosionSpawnChance = postExplosionSpawnChance;
             explosion.postExplosionSpawnThingCount = postExplosionSpawnThingCount;
             explosion.applyDamageToExplosionCellsNeighbors = applyDamageToExplosionCellsNeighbors;
-            explosion.StartExplosion(explosionSound, null);
+            explosion.StartExplosion(explosionSound, null);            
         }
 
         private void DoPatternExplosion(Pawn pawn, Map map)

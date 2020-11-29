@@ -153,7 +153,7 @@ Succubi and Warlocks form distinct types of soul bonds - warlocks bonds are ment
         </graphicData>
         <projectile>
             <damageDef>TM_Shadow</damageDef>
-            <damageAmountBase>15</damageAmountBase>
+            <damageAmountBase>16</damageAmountBase>
             <speed>35</speed>
 			<explosionRadius>2</explosionRadius>
 			<postExplosionSpawnChance>1</postExplosionSpawnChance>
@@ -171,7 +171,7 @@ Succubi and Warlocks form distinct types of soul bonds - warlocks bonds are ment
 	   <projectile>
 			<flyOverhead>true</flyOverhead>
 			<damageDef>TM_Shadow</damageDef>
-			<damageAmountBase>15</damageAmountBase>
+			<damageAmountBase>16</damageAmountBase>
 			<speed>35</speed>
 			<explosionRadius>2</explosionRadius>
 			<postExplosionSpawnChance>1</postExplosionSpawnChance>

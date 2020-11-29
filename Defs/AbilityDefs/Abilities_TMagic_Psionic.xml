@@ -86,7 +86,7 @@ A well trained psionic is able to achieve incredible physical feats using a blen
 		<damageDef>TM_PsionicInjury</damageDef>
 		<damageAmountBase>0</damageAmountBase>
 		<speed>999</speed>
-		<explosionRadius>2</explosionRadius>
+		<explosionRadius>2.8</explosionRadius>
 		<postExplosionSpawnChance>1</postExplosionSpawnChance>
    </projectile>
  </ThingDef>

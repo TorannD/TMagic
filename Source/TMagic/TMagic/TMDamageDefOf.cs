@@ -103,6 +103,7 @@ namespace TorannMagic
             public static DamageDef TM_BurningLight;
 
             public static DamageDef TM_PainDD;
+            public static DamageDef TM_DistortionDD;
         }
     }
 }

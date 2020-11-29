@@ -51,7 +51,7 @@
     </inspectorTabs>
     <race>
       <body>TM_Demon</body>
-	  <deathActionWorkerClass>TorannMagic.Demon_DeathWorker</deathActionWorkerClass>
+	  <deathActionWorkerClass>TorannMagic.DeathWorker_Demon</deathActionWorkerClass>
       <needsRest>false</needsRest>
       <hasGenders>false</hasGenders>
       <predator>true</predator>

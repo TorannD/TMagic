@@ -210,15 +210,15 @@ namespace TorannMagic
 		//Fire
 		public static TraitDef InnerFire;
 
-        public static TMAbilityDef TM_RayofHope;
-        public static HediffDef RayofHope;
-        public static TMAbilityDef TM_RayofHope_I;
-        public static HediffDef RayofHope_I;
-        public static TMAbilityDef TM_RayofHope_II;
-        public static HediffDef RayofHope_II;
-        public static TMAbilityDef TM_RayofHope_III;
-        public static HediffDef RayofHope_III;
-        public static HediffDef TM_RayOfHope_AuraHD;
+        public static HediffDef InnerFireHD;
+        public static HediffDef InnerFire_IHD;
+        public static HediffDef InnerFire_IIHD;
+        public static HediffDef InnerFire_IIIHD;
+        public static HediffDef TM_InnerFire_AuraHD;
+        public static TMAbilityDef TM_RayofHope;        
+        public static TMAbilityDef TM_RayofHope_I;        
+        public static TMAbilityDef TM_RayofHope_II;        
+        public static TMAbilityDef TM_RayofHope_III;        
         public static TMAbilityDef TM_Firebolt;
         public static TMAbilityDef TM_Fireball;
 		public static TMAbilityDef TM_Fireclaw;
@@ -303,14 +303,26 @@ namespace TorannMagic
         //Holy (Paladin)
         public static TraitDef Paladin;
 
+        public static TMAbilityDef TM_P_RayofHope;
+        public static HediffDef RayofHope;
+        public static TMAbilityDef TM_P_RayofHope_I;
+        public static HediffDef RayofHope_I;
+        public static TMAbilityDef TM_P_RayofHope_II;
+        public static HediffDef RayofHope_II;
+        public static TMAbilityDef TM_P_RayofHope_III;
+        public static HediffDef RayofHope_III;
+        public static HediffDef TM_RayOfHope_AuraHD;
         public static TMAbilityDef TM_Heal;
         public static TMAbilityDef TM_Shield;
         public static TMAbilityDef TM_Shield_I;
         public static TMAbilityDef TM_Shield_II;
         public static TMAbilityDef TM_Shield_III;
         public static HediffDef TM_HediffShield;
+        public static TMAbilityDef TM_ShieldOther;
+        public static HediffDef TM_MagicShieldHD;
         public static TMAbilityDef TM_ValiantCharge;
         public static HediffDef TM_HediffInvulnerable;
+        public static HediffDef TM_HediffTimedInvulnerable;
         public static TMAbilityDef TM_Overwhelm;
         public static HediffDef TM_Blind;
         public static TMAbilityDef TM_HolyWrath;
@@ -684,6 +696,8 @@ namespace TorannMagic
         public static ThingDef TM_SpiritCrowR;
         public static HediffDef TM_CrowInsightHD;
         public static HediffDef TM_BirdflightHD;
+        public static PawnKindDef TM_SpiritWolf;
+        public static ThingDef TM_SpiritWolfR;
 
         //Shadow
         public static TraitDef TM_TheShadow;
@@ -752,6 +766,8 @@ namespace TorannMagic
         public static TMAbilityDef TM_DisablingShot_III;
         public static HediffDef TM_DisablingShot_HD;
         public static TMAbilityDef TM_AntiArmor;
+        public static TMAbilityDef TM_ShadowSlayer;
+        public static HediffDef TM_ShadowSlayerCloakHD;
 
         //Bladedancer
         public static TraitDef Bladedancer;
@@ -977,6 +993,7 @@ namespace TorannMagic
         public static TMAbilityDef TM_SnapFreeze;
         public static TMAbilityDef TM_Taunt;
         public static HediffDef TM_TauntHD;
+        public static TMAbilityDef TM_Discord;
 
         public static HediffDef TM_Sight;
         public static HediffDef TM_Breathing;
@@ -1000,6 +1017,9 @@ namespace TorannMagic
         public static HediffDef TM_BurningFuryHD;
         public static TMAbilityDef TM_PommelStrike;
         public static HediffDef TM_DisablingBlowHD;
+        public static HediffDef TM_DiscordHD;
+        public static HediffDef TM_DiscordSafeHD;
+        public static HediffDef TM_SeverityHasteHD;
 
         public static TMAbilityDef TM_Explosion;
 
@@ -1155,6 +1175,7 @@ namespace TorannMagic
         public static JobDef JobDriver_TM_Teach;
         public static JobDef JobDriver_TM_GotoAndWait;
         public static JobDef JobDriver_GotoAndCast;
+        public static JobDef JobDriver_Discord;
 
         //Things
         public static ThingDef RawMagicyte;

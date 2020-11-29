@@ -85,7 +85,7 @@
     </tools>
     <race>
       <body>TM_QuadrupedAnimalWithPawsAndTail</body>
-      <deathActionWorkerClass>TorannMagic.Poppi_DeathWorker</deathActionWorkerClass>
+      <deathActionWorkerClass>TorannMagic.DeathWorker_Poppi</deathActionWorkerClass>
 	  <needsRest>false</needsRest>
       <baseBodySize>0.2</baseBodySize>
       <baseHealthScale>0.6</baseHealthScale>

@@ -97,10 +97,6 @@ If things get too tough for them or they get bored, they'll flee back to whereve
         <li>
           <def>TM_Minion_Lifestage</def>
           <minAge>0</minAge>
-          <soundWounded>Pawn_Warg_Wounded</soundWounded>
-          <soundDeath>Pawn_Warg_Death</soundDeath>
-          <soundCall>Pawn_Warg_Call</soundCall>
-          <soundAngry>Pawn_Warg_Angry</soundAngry>
         </li>
       </lifeStageAges>
 	  <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
@@ -179,10 +175,6 @@ If things get too tough for them or they get bored, they'll flee back to whereve
         <li>
           <def>TM_GreaterMinion_Lifestage</def>
           <minAge>5</minAge>
-          <soundWounded>Pawn_Warg_Wounded</soundWounded>
-          <soundDeath>Pawn_Warg_Death</soundDeath>
-          <soundCall>Pawn_Warg_Call</soundCall>
-          <soundAngry>Pawn_Warg_Angry</soundAngry>
         </li>
       </lifeStageAges>
 	  <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>

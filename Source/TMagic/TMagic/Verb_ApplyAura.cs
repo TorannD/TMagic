@@ -33,7 +33,7 @@ namespace TorannMagic
             for (int h = 0; h < this.CasterPawn.health.hediffSet.hediffs.Count; h++)
             {
                 if (this.CasterPawn.health.hediffSet.hediffs[h].def == TorannMagicDefOf.TM_Shadow_AuraHD || this.CasterPawn.health.hediffSet.hediffs[h].def == TorannMagicDefOf.TM_RayOfHope_AuraHD ||
-                    this.CasterPawn.health.hediffSet.hediffs[h].def == TorannMagicDefOf.TM_SoothingBreeze_AuraHD)
+                    this.CasterPawn.health.hediffSet.hediffs[h].def == TorannMagicDefOf.TM_SoothingBreeze_AuraHD || this.CasterPawn.health.hediffSet.hediffs[h].def == TorannMagicDefOf.TM_InnerFire_AuraHD)
                 {
                     hediff = this.CasterPawn.health.hediffSet.hediffs[h];
                     this.CasterPawn.health.RemoveHediff(hediff);
@@ -66,19 +66,19 @@ namespace TorannMagic
                 {
                     HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_Shadow_AuraHD, 3.5f);
                 }
-                else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope)
+                else if (this.Ability.Def == TorannMagicDefOf.TM_P_RayofHope)
                 {
                     HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_RayOfHope_AuraHD, .5f);
                 }
-                else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope_I)
+                else if (this.Ability.Def == TorannMagicDefOf.TM_P_RayofHope_I)
                 {
                     HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_RayOfHope_AuraHD, 1.5f);
                 }
-                else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope_II)
+                else if (this.Ability.Def == TorannMagicDefOf.TM_P_RayofHope_II)
                 {
                     HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_RayOfHope_AuraHD, 2.5f);
                 }
-                else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope_III)
+                else if (this.Ability.Def == TorannMagicDefOf.TM_P_RayofHope_III)
                 {
                     HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_RayOfHope_AuraHD, 3.5f);
                 }
@@ -97,6 +97,22 @@ namespace TorannMagic
                 else if (this.Ability.Def == TorannMagicDefOf.TM_Soothe_III)
                 {
                     HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_SoothingBreeze_AuraHD, 3.5f);
+                }
+                else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_InnerFire_AuraHD, .5f);
+                }
+                else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope_I)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_InnerFire_AuraHD, 1.5f);
+                }
+                else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope_II)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_InnerFire_AuraHD, 2.5f);
+                }
+                else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope_III)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_InnerFire_AuraHD, 3.5f);
                 }
             }
             else
@@ -160,6 +176,22 @@ namespace TorannMagic
             else if (this.Ability.Def == TorannMagicDefOf.TM_Soothe_III)
             {
                 magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe_II);
+            }
+            else if (this.Ability.Def == TorannMagicDefOf.TM_P_RayofHope)
+            {
+                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope);
+            }
+            else if (this.Ability.Def == TorannMagicDefOf.TM_P_RayofHope_I)
+            {
+                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope);
+            }
+            else if (this.Ability.Def == TorannMagicDefOf.TM_P_RayofHope_II)
+            {
+                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope_I);
+            }
+            else if (this.Ability.Def == TorannMagicDefOf.TM_P_RayofHope_III)
+            {
+                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope_II);
             }
 
             if (magicPower != null)

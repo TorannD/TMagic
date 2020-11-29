@@ -209,60 +209,77 @@ namespace TorannMagic
                             float maxRange = 25 + this.PwrVal;
                             Thing targetThing = this.Pawn.TargetCurrentlyAimingAt.Thing;
                             float targetDistance = (this.Pawn.Position - targetThing.Position).LengthHorizontal;
+                            float acc = 15f + (PwrVal / 3f);
                             if (TM_Calc.HasLoSFromTo(this.Pawn.Position, this.Pawn.TargetCurrentlyAimingAt.Thing, this.Pawn as Thing, 2f, maxRange) && targetThing.Map != null && this.bitGrenadeCount > 0)
-                            {                                
+                            {                              
                                 IntVec3 rndTargetCell = targetThing.Position;
-                                rndTargetCell.x += (int)Rand.Range(-targetDistance / 8f, targetDistance / 8f);
-                                rndTargetCell.z += (int)Rand.Range(-targetDistance / 8f, targetDistance / 8f);
+                                rndTargetCell.x += Mathf.RoundToInt(Rand.Range(-targetDistance / acc, targetDistance / acc)); //grenades were 8
+                                rndTargetCell.z += Mathf.RoundToInt(Rand.Range(-targetDistance / acc, targetDistance / acc));
                                 LocalTargetInfo ltiTarget = rndTargetCell;
-                                if (this.bitGrenadeCount == 2)
+                                //if (this.bitGrenadeCount == 2)
+                                //{
+                                //    //launch emp grenade
+                                //    Projectile projectile = (Projectile)GenSpawn.Spawn(ThingDef.Named("Projectile_TMEMPGrenade"), this.Pawn.Position, this.Pawn.Map, WipeMode.Vanish);
+                                //    float launchAngle = (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(this.Pawn.Position, ltiTarget.Cell)).ToAngleFlat();
+                                //    for (int m = 0; m < 4; m++)
+                                //    {
+                                //        TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, comp.bitPosition, this.Pawn.Map, Rand.Range(.4f, .7f), Rand.Range(.2f, .3f), .05f, Rand.Range(.4f, .6f), Rand.Range(-20, 20), Rand.Range(3f, 5f), launchAngle += Rand.Range(-25, 25), Rand.Range(0, 360));
+                                //    }
+                                //    SoundInfo info = SoundInfo.InMap(new TargetInfo(this.Pawn.Position, this.Pawn.Map, false), MaintenanceType.None);
+                                //    info.pitchFactor = 2f;
+                                //    info.volumeFactor = .6f;
+                                //    SoundDef.Named("Mortar_LaunchA").PlayOneShot(info);
+                                //    projectile.def.projectile.speed = 20 + PwrVal;
+                                //    projectile.def.projectile.explosionDelay = Rand.Range(80, 120) - (4 * PwrVal);                                    
+                                //    projectile.Launch(this.Pawn, comp.bitPosition, ltiTarget, targetThing, ProjectileHitFlags.All, null, null);
+                                //}
+                                //else
+                                //{
+                                //    //fire he grenade
+                                //    Projectile projectile = (Projectile)GenSpawn.Spawn(ThingDef.Named("Projectile_TMFragGrenade"), this.Pawn.Position, this.Pawn.Map, WipeMode.Vanish);
+                                //    float launchAngle = (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(this.Pawn.Position, ltiTarget.Cell)).ToAngleFlat();
+                                //    for (int m = 0; m < 4; m++)
+                                //    {
+                                //        TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, comp.bitPosition, this.Pawn.Map, Rand.Range(.4f, .7f), Rand.Range(.2f, .3f), .05f, Rand.Range(.4f, .6f), Rand.Range(-20, 20), Rand.Range(3f, 5f), launchAngle += Rand.Range(-25, 25), Rand.Range(0, 360));
+                                //    }
+                                //    SoundInfo info = SoundInfo.InMap(new TargetInfo(this.Pawn.Position, this.Pawn.Map, false), MaintenanceType.None);
+                                //    info.pitchFactor = 1.4f;
+                                //    info.volumeFactor = .5f;
+                                //    SoundDef.Named("Mortar_LaunchA").PlayOneShot(info);
+                                //    projectile.def.projectile.speed = 20 + PwrVal;
+                                //    projectile.def.projectile.explosionDelay = Rand.Range(80, 120) - (4 * PwrVal);
+                                //    projectile.Launch(this.Pawn, comp.bitPosition, ltiTarget, targetThing, ProjectileHitFlags.All, null, null);
+                                //}
+                                Projectile p = (Projectile)(GenSpawn.Spawn(ThingDef.Named("Projectile_TM_BitTechLaser"), this.Pawn.Position, this.Pawn.Map, WipeMode.Vanish));
+                                //float launchAngle = (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(this.Pawn.Position, ltiTarget.Cell)).ToAngleFlat();
+                                
+                                SoundInfo info = SoundInfo.InMap(new TargetInfo(this.Pawn.Position, this.Pawn.Map, false), MaintenanceType.None);
+                                info.pitchFactor = 1.5f;
+                                info.volumeFactor = .9f;
+                                SoundDef.Named("Shot_ChargeBlaster").PlayOneShot(info);
+                                
+                                if (rndTargetCell == targetThing.Position)
                                 {
-                                    //launch emp grenade
-                                    Projectile projectile = (Projectile)GenSpawn.Spawn(ThingDef.Named("Projectile_TMEMPGrenade"), this.Pawn.Position, this.Pawn.Map, WipeMode.Vanish);
-                                    float launchAngle = (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(this.Pawn.Position, ltiTarget.Cell)).ToAngleFlat();
-                                    for (int m = 0; m < 4; m++)
-                                    {
-                                        TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, comp.bitPosition, this.Pawn.Map, Rand.Range(.4f, .7f), Rand.Range(.2f, .3f), .05f, Rand.Range(.4f, .6f), Rand.Range(-20, 20), Rand.Range(3f, 5f), launchAngle += Rand.Range(-25, 25), Rand.Range(0, 360));
-                                    }
-                                    SoundInfo info = SoundInfo.InMap(new TargetInfo(this.Pawn.Position, this.Pawn.Map, false), MaintenanceType.None);
-                                    info.pitchFactor = 2f;
-                                    info.volumeFactor = .6f;
-                                    SoundDef.Named("Mortar_LaunchA").PlayOneShot(info);
-                                    projectile.def.projectile.speed = 20 + PwrVal;
-                                    projectile.def.projectile.explosionDelay = Rand.Range(80, 120) - (4 * PwrVal);                                    
-                                    projectile.Launch(this.Pawn, comp.bitPosition, ltiTarget, targetThing, ProjectileHitFlags.All, null, null);
+                                    p.Launch(this.Pawn, comp.bitPosition, targetThing, targetThing, ProjectileHitFlags.IntendedTarget, null, null);
                                 }
                                 else
                                 {
-                                    //fire he grenade
-                                    Projectile projectile = (Projectile)GenSpawn.Spawn(ThingDef.Named("Projectile_TMFragGrenade"), this.Pawn.Position, this.Pawn.Map, WipeMode.Vanish);
-                                    float launchAngle = (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(this.Pawn.Position, ltiTarget.Cell)).ToAngleFlat();
-                                    for (int m = 0; m < 4; m++)
-                                    {
-                                        TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, comp.bitPosition, this.Pawn.Map, Rand.Range(.4f, .7f), Rand.Range(.2f, .3f), .05f, Rand.Range(.4f, .6f), Rand.Range(-20, 20), Rand.Range(3f, 5f), launchAngle += Rand.Range(-25, 25), Rand.Range(0, 360));
-                                    }
-                                    SoundInfo info = SoundInfo.InMap(new TargetInfo(this.Pawn.Position, this.Pawn.Map, false), MaintenanceType.None);
-                                    info.pitchFactor = 1.4f;
-                                    info.volumeFactor = .5f;
-                                    SoundDef.Named("Mortar_LaunchA").PlayOneShot(info);
-                                    projectile.def.projectile.speed = 20 + PwrVal;
-                                    projectile.def.projectile.explosionDelay = Rand.Range(80, 120) - (4 * PwrVal);
-                                    projectile.Launch(this.Pawn, comp.bitPosition, ltiTarget, targetThing, ProjectileHitFlags.All, null, null);
+                                    p.Launch(this.Pawn, comp.bitPosition, ltiTarget, targetThing, ProjectileHitFlags.All, null, null);
                                 }
-                                this.nextBitGrenade = 18 + Find.TickManager.TicksGame;
+                                this.nextBitGrenade = 3 + Find.TickManager.TicksGame;
                                 this.bitGrenadeCount--;
                                 if (this.bitGrenadeCount == 0)
                                 {
-                                    this.bitGrenadeCount = 1 + (int)((this.PwrVal) / 5);
-                                    this.nextBitGrenade = Find.TickManager.TicksGame + (600 - 6*PwrVal);
-                                    comp.Mana.CurLevel -= (.08f - (.001f * this.PwrVal));
-                                    comp.MagicUserXP += Rand.Range(12, 18);
+                                    this.bitGrenadeCount = 3 + (int)((this.PwrVal) / 5);
+                                    this.nextBitGrenade = Find.TickManager.TicksGame + (180 - 3*PwrVal);
+                                    comp.Mana.CurLevel -= (.06f - (.001f * this.PwrVal));
+                                    comp.MagicUserXP += Rand.Range(8, 12);
                                 }
                             }
                             else if (this.nextBitGrenade < Find.TickManager.TicksGame && this.bitGrenadeCount <= 0)
                             {
-                                this.bitGrenadeCount = 1 + (int)((this.PwrVal) / 5);
-                                this.nextBitGrenade = Find.TickManager.TicksGame + (600 - 6 * PwrVal);
+                                this.bitGrenadeCount = 3 + (int)((this.PwrVal) / 5);
+                                this.nextBitGrenade = Find.TickManager.TicksGame + (180 - 3 * PwrVal);
                             }
                         }                        
                     }

@@ -2307,7 +2307,60 @@ Produces 400Wd adjusted by ability power.</description>
       <texPath>Books/scroll_fire</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-
+  </ThingDef>
+  
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Discord</defName>
+    <label>Bard Spell: Discord</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a bard how to distort the mental harmony of a target pawn.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>760</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>96</RawMagicyte>
+		<DevilstrandCloth>40</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_power</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<modExtensions>
+      <li Class="TorannMagic.DefModExtension_LearnAbilityRequiredTraits">    
+        <traits>
+            <li>TM_Bard</li>
+        </traits>
+      </li>
+    </modExtensions>
   </ThingDef>
   
     <ThingDef ParentName="ArcaneSpellBase">
@@ -2546,6 +2599,60 @@ Produces 400Wd adjusted by ability power.</description>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
 
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_ShieldOther</defName>
+    <label>Holy Caster Spell: Shield Other</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a holy caster (paladin, priest, etc) how to shield another from damage.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>760</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>96</RawMagicyte>
+		<DevilstrandCloth>40</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_holy</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<modExtensions>
+      <li Class="TorannMagic.DefModExtension_LearnAbilityRequiredTraits">    
+        <traits>
+            <li>Paladin</li>
+			<li>Priest</li>
+        </traits>
+      </li>
+    </modExtensions>
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">

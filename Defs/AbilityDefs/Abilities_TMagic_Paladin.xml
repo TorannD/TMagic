@@ -2,6 +2,210 @@
 
 <Defs>
 
+<!-- Ray of Hope start -->	
+
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_P_RayofHope</defName>
+        <label>Ray of Hope</label>
+        <uiIconPath>UI/rayofhope</uiIconPath>
+        <description>Creates an aura of hope around the caster that periodically buffs an ally.
+		
+Ray of Hope: Arcane augmentation that assists the worker, improving their physical capacities and mood
+	
+Application Frequency: 	80-90s	
+Duration:  200-223s
+Manipulation, Moving:  +15%
+Mood increase:	+3
+
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+		<manaCost>0</manaCost>
+		<upkeepEnergyCost>.4</upkeepEnergyCost>
+		<upkeepRegenCost>.3</upkeepRegenCost>
+		<upkeepEfficiencyPercent>.08</upkeepEfficiencyPercent>
+		<abilityHediff>TM_RayOfHope_AuraHD</abilityHediff>
+		<learnChance>.3</learnChance>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_P_RayofHope</abilityDef>
+            <warmupTime>6</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Message_PositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_P_RayofHope_I</defName>
+        <label>Ray of Hope</label>
+        <uiIconPath>UI/rayofhope</uiIconPath>
+        <description>Creates an aura of hope around the caster that periodically buffs an ally.
+		
+Ray of Hope: Arcane augmentation that assists the worker, improving their physical capacities and mood
+	
+Application Frequency: 	80-90s	
+Duration: 200-223s
+Manipulation, Moving: +18%
+Mood increase:	+4
+
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+		<manaCost>0</manaCost>
+		<upkeepEnergyCost>.4</upkeepEnergyCost>
+		<upkeepRegenCost>.3</upkeepRegenCost>
+		<upkeepEfficiencyPercent>.08</upkeepEfficiencyPercent>
+		<abilityHediff>TM_RayOfHope_AuraHD</abilityHediff>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Buff_RayofHope</defaultProjectile>
+            <abilityDef>TM_P_RayofHope_I</abilityDef>
+            <warmupTime>5</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Message_PositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_P_RayofHope_II</defName>
+        <label>Ray of Hope</label>
+        <uiIconPath>UI/rayofhope</uiIconPath>
+        <description>Creates an aura of hope around the caster that periodically buffs an ally.
+		
+Ray of Hope: Arcane augmentation that assists the worker, improving their physical capacities and mood
+	
+Application Frequency: 80-90s	
+Duration: 500-600s
+Manipulation, Moving: +20%
+Mood increase:	+5
+
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+		<manaCost>0</manaCost>
+		<upkeepEnergyCost>.4</upkeepEnergyCost>
+		<upkeepRegenCost>.3</upkeepRegenCost>
+		<upkeepEfficiencyPercent>.08</upkeepEfficiencyPercent>
+		<abilityHediff>TM_RayOfHope_AuraHD</abilityHediff>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_P_RayofHope_II</abilityDef>
+            <warmupTime>4</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Message_PositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_P_RayofHope_III</defName>
+        <label>Ray of Hope</label>
+        <uiIconPath>UI/rayofhope</uiIconPath>
+        <description>Creates an aura of hope around the caster that periodically buffs an ally.
+		
+Ray of Hope: Arcane augmentation that assists the worker, improving their physical capacities and mood
+	
+Application Frequency: 	80-90s	
+Duration:	500-600s
+Manipulation, Moving:  +22%
+Mood increase:	+5
+
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+		<manaCost>0</manaCost>
+		<upkeepEnergyCost>.4</upkeepEnergyCost>
+		<upkeepRegenCost>.3</upkeepRegenCost>
+		<upkeepEfficiencyPercent>.08</upkeepEfficiencyPercent>
+		<abilityHediff>TM_RayOfHope_AuraHD</abilityHediff>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Buff_RayofHope</defaultProjectile>
+            <abilityDef>TM_P_RayofHope_III</abilityDef>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Message_PositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- Ray of Hope End -->
+	
 <!-- Heal start-->
   
   <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
@@ -16,7 +220,7 @@
 		<flyOverhead>true</flyOverhead>
 		<damageDef>TM_Heal_I</damageDef>
 		<damageAmountBase>0</damageAmountBase>
-		<speed>100</speed>
+		<speed>999</speed>
    </projectile>
    <HealFailChance>0.0</HealFailChance>
  </ThingDef>
@@ -28,7 +232,7 @@
     <label>Heal</label>
     <uiIconPath>UI/Heal</uiIconPath>
     <description>Invokes holy power to heal the wounds of a target. Base heal restores 8 health for up to 3 wounds. Cannot heal injuries of missing bodyparts.</description>
-    <manaCost>0.15</manaCost>
+    <manaCost>0.20</manaCost>
 	<efficiencyReductionPercent>.07</efficiencyReductionPercent>
 		<learnItem>SpellOf_Heal</learnItem>
 		<learnChance>.5</learnChance>
@@ -43,7 +247,7 @@
 		<abilityDef>TM_Heal</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>TM_Paladin_Heal</defaultProjectile>
-        <warmupTime>.6</warmupTime>
+        <warmupTime>.3</warmupTime>
         <SecondsToRecharge>15.0</SecondsToRecharge>
         <range>12</range>
         <soundCast>Message_PositiveEvent</soundCast>
@@ -117,7 +321,7 @@ Absorbs up to 100 damage.</description>
 	      <li>
 	        <hediffDef>TM_HediffShield</hediffDef>
 	        <applyChance>1.0</applyChance>
-			<severity>0.2</severity>
+			<severity>0.4</severity>
 	      </li>
         </hediffsToApply>
     </MainVerb>
@@ -128,7 +332,7 @@ Absorbs up to 100 damage.</description>
     <label>Shield</label>
     <uiIconPath>UI/Shield</uiIconPath>
     <description>Protects the paladin from damage for 50s or until the shield is broken.
-Absorbs up to 120 damage.
+Absorbs up to 125 damage.
 Reduces recharge to 30s.</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
     <manaCost>0.30</manaCost>
@@ -161,7 +365,7 @@ Reduces recharge to 30s.</description>
 	      <li>
 	        <hediffDef>TM_HediffShield</hediffDef>
 	        <applyChance>1.0</applyChance>
-			<severity>0.45</severity>
+			<severity>0.5</severity>
 	      </li>
         </hediffsToApply>
     </MainVerb>
@@ -205,7 +409,7 @@ Reduces recharge to 27s.</description>
 	      <li>
 	        <hediffDef>TM_HediffShield</hediffDef>
 	        <applyChance>1.0</applyChance>
-			<severity>0.75</severity>
+			<severity>0.54</severity>
 	      </li>
         </hediffsToApply>
     </MainVerb>
@@ -249,7 +453,7 @@ Reduces recharge to 25s.</description>
 	      <li>
 	        <hediffDef>TM_HediffShield</hediffDef>
 	        <applyChance>1.0</applyChance>
-			<severity>1.0</severity>
+			<severity>.6</severity>
 	      </li>
         </hediffsToApply>
     </MainVerb>

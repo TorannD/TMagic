@@ -144,15 +144,19 @@
     <Compile Include="CompProperties_AnimalController.cs" />
     <Compile Include="CompAnimalController.cs" />
     <Compile Include="CompUseEffect_SpiritBinding.cs" />
+    <Compile Include="DeathWorker_Spirit.cs" />
     <Compile Include="DefModExtension_LearnAbilityRequiredTraits.cs" />
     <Compile Include="Enchantment\EnchantmentAction.cs" />
     <Compile Include="HediffComp_AbilityResource.cs" />
     <Compile Include="HediffComp_Enrage.cs" />
     <Compile Include="HediffComp_Dominate.cs" />
+    <Compile Include="HediffComp_ShadowSlayerCloak.cs" />
     <Compile Include="HediffComp_Medigel.cs" />
+    <Compile Include="HediffComp_MagicShield.cs" />
     <Compile Include="HediffComp_Taunt.cs" />
     <Compile Include="HediffComp_LightCapacitance.cs" />
     <Compile Include="HediffComp_DiseaseImmunity.cs" />
+    <Compile Include="JobDriver_Channel_Discord.cs" />
     <Compile Include="ModCheck\SS.cs" />
     <Compile Include="Projectile_Lightning.cs" />
     <Compile Include="Projectile_LightSkipMass.cs" />
@@ -166,6 +170,8 @@
     <Compile Include="TM_AutocastConditionDef.cs" />
     <Compile Include="TM_CustomPowerDef.cs" />
     <Compile Include="TM_WeatherEvent_MeshGeneric.cs" />
+    <Compile Include="Verb_Discord.cs" />
+    <Compile Include="Verb_SummonSpiritWolves.cs" />
     <Compile Include="Verb_SummonTotemHealing.cs" />
     <Compile Include="Verb_SummonTotemEarth.cs" />
     <Compile Include="Verb_SummonGuardianSpirit.cs" />
@@ -180,6 +186,8 @@
     <Compile Include="Verb_LightSkipGlobal.cs" />
     <Compile Include="Verb_MedicalSupply.cs" />
     <Compile Include="Verb_Taunt.cs" />
+    <Compile Include="Verb_ShieldOther.cs" />
+    <Compile Include="Verb_ShadowSlayerCloak.cs" />
     <Compile Include="WorldTransport\TM_DelayedDestroyMap.cs" />
     <Compile Include="WorldTransport\TM_ActiveDropPod.cs" />
     <Compile Include="WorldTransport\TM_DropPodIncoming.cs" />
@@ -260,7 +268,7 @@
     <Compile Include="ModOptions\EventOptionsWindow.cs" />
     <Compile Include="Need_Travel.cs" />
     <Compile Include="Projectile_TempestStrike.cs" />
-    <Compile Include="Skeletal_DeathWorker.cs" />
+    <Compile Include="DeathWorker_Skeletal.cs" />
     <Compile Include="JobDriver_DoMagicBill.cs" />
     <Compile Include="JobDriver_AssistMagicCircle.cs" />
     <Compile Include="MagicRecipeDef.cs" />
@@ -408,7 +416,7 @@
     <Compile Include="Gizmo_EnergyStatus.cs" />
     <Compile Include="CompSentinel.cs" />
     <Compile Include="Projectile_Sentinel.cs" />
-    <Compile Include="Sentinel_DeathWorker.cs" />
+    <Compile Include="DeathWorker_Sentinel.cs" />
     <Compile Include="TM_Calc.cs" />
     <Compile Include="HediffComp_Stoneskin.cs" />
     <Compile Include="Projectile_Encase.cs" />
@@ -426,7 +434,7 @@
     <Compile Include="TM_WeatherEvent_BloodMoon.cs" />
     <Compile Include="CompAIController.cs" />
     <Compile Include="CompProperties_AIController.cs" />
-    <Compile Include="Demon_DeathWorker.cs" />
+    <Compile Include="DeathWorker_Demon.cs" />
     <Compile Include="FlyingObject_Advanced.cs" />
     <Compile Include="FlyingObject_DemonFlight.cs" />
     <Compile Include="HediffComp_Demon.cs" />
@@ -449,7 +457,7 @@
     <Compile Include="JobGiver_AIClean.cs" />
     <Compile Include="HediffComp_BattleHymn.cs" />
     <Compile Include="HediffComp_SpellMending.cs" />
-    <Compile Include="Elemental_DeathWorker.cs" />
+    <Compile Include="DeathWorker_Elemental.cs" />
     <Compile Include="Projectile_Scorn.cs" />
     <Compile Include="Projectile_Repulsion.cs" />
     <Compile Include="Projectile_FertileLands.cs" />
@@ -498,7 +506,7 @@
     <Compile Include="Thoughts\Inspiration_MagicUser.cs" />
     <Compile Include="JobDriver_SleepNow.cs" />
     <Compile Include="ModOptions\Constants.cs" />
-    <Compile Include="Poppi_DeathWorker.cs" />
+    <Compile Include="DeathWorker_Poppi.cs" />
     <Compile Include="CompLeaper.cs" />
     <Compile Include="CompProperties_Leaper.cs" />
     <Compile Include="Effect_DeathBolt.cs" />

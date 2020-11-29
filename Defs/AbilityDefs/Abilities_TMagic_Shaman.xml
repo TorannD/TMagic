@@ -611,10 +611,9 @@ Cast time: .6s</description>
         </graphicData>
         <projectile>
             <damageDef>TM_BurningLight</damageDef>
-            <damageAmountBase>6</damageAmountBase>
+            <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
-			<explosionRadius>2.5</explosionRadius>
-			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+			<explosionRadius>3</explosionRadius>
         </projectile>
     </ThingDef>
 	
@@ -629,10 +628,9 @@ Cast time: .6s</description>
         </graphicData>
         <projectile>
             <damageDef>TM_BurningLight</damageDef>
-            <damageAmountBase>6</damageAmountBase>
+            <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
-			<explosionRadius>3</explosionRadius>
-			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+			<explosionRadius>3.5</explosionRadius>
         </projectile>
     </ThingDef>
 	
@@ -647,10 +645,9 @@ Cast time: .6s</description>
         </graphicData>
         <projectile>
             <damageDef>TM_BurningLight</damageDef>
-            <damageAmountBase>6</damageAmountBase>
+            <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
-			<explosionRadius>3.5</explosionRadius>
-			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+			<explosionRadius>4</explosionRadius>
         </projectile>
     </ThingDef>
 	
@@ -665,10 +662,9 @@ Cast time: .6s</description>
         </graphicData>
         <projectile>
             <damageDef>TM_BurningLight</damageDef>
-            <damageAmountBase>6</damageAmountBase>
+            <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
 			<explosionRadius>4</explosionRadius>
-			<postExplosionSpawnChance>1</postExplosionSpawnChance>
         </projectile>
     </ThingDef>
 	
@@ -692,7 +688,7 @@ Cast time: .6s</description>
         <defName>TM_SpiritWolves</defName>
         <label>Spirit Wolves</label>
         <uiIconPath>UI/spiritwolf</uiIconPath>
-        <description>Manifests a charging pack of spirit wolves. Spirit wolves apply spirit damage which ignores armor and stuns; once trained spirit damage can also be used to hex enemies. Spirit wolves are able to distinguish friend from foe.
+        <description>Manifests a pack of spirit wolves. Spirit wolves apply spirit damage which ignores armor and stuns.
 
 Range: 50
 Cast time: 3s
@@ -702,7 +698,7 @@ Cooldown: 120s</description>
 		<learnChance>.3</learnChance>
 		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Effect_SpiritWolves</verbClass>
+            <verbClass>TorannMagic.Verb_SummonSpiritWolves</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
@@ -734,7 +730,7 @@ Cooldown: 120s</description>
         <defName>TM_SpiritWolves_I</defName>
         <label>Spirit Wolves (I)</label>
         <uiIconPath>UI/spiritwolf</uiIconPath>
-        <description>Manifests a charging pack of spirit wolves. Spirit wolves apply spirit damage which ignores armor and stuns; once trained spirit damage can also be used to hex enemies. Spirit wolves are able to distinguish friend from foe
+        <description>Manifests a pack of spirit wolves. Spirit wolves apply spirit damage which ignores armor and stuns.
 
 Range: 55
 Cast time: 2.7s
@@ -743,7 +739,7 @@ Cooldown: 110s</description>
 		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Effect_SpiritWolves</verbClass>
+            <verbClass>TorannMagic.Verb_SummonSpiritWolves</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
@@ -775,7 +771,7 @@ Cooldown: 110s</description>
         <defName>TM_SpiritWolves_II</defName>
         <label>Spirit Wolves (II)</label>
         <uiIconPath>UI/spiritwolf</uiIconPath>
-        <description>Manifests a charging pack of spirit wolves. Spirit wolves apply spirit damage which ignores armor and stuns; once trained spirit damage can also be used to hex enemies. Spirit wolves are able to distinguish friend from foe
+        <description>Manifests a pack of spirit wolves. Spirit wolves apply spirit damage which ignores armor and stuns.
 
 Range: 60
 Cast time: 2.5s
@@ -784,7 +780,7 @@ Cooldown: 100s</description>
 		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Effect_SpiritWolves</verbClass>
+            <verbClass>TorannMagic.Verb_SummonSpiritWolves</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
@@ -812,6 +808,49 @@ Cooldown: 100s</description>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 	
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SpiritWolves_III</defName>
+        <label>Spirit Wolves (III)</label>
+        <uiIconPath>UI/spiritwolf</uiIconPath>
+        <description>Manifests a pack of spirit wolves. Spirit wolves apply spirit damage which ignores armor and stuns.
+		
+Range: 65
+Cast time: 2.4s
+Cooldown: 90s</description>
+        <manaCost>0.45</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SummonSpiritWolves</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_SpiritWolves_III</defaultProjectile>
+            <abilityDef>TM_SpiritWolves_III</abilityDef>
+            <warmupTime>2.3</warmupTime>
+            <SecondsToRecharge>90</SecondsToRecharge>
+            <range>65</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_WolfHowl</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- 
 	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
         <defName>TM_SpiritWolves_III</defName>
         <label>Spirit Wolves (III)</label>
@@ -851,7 +890,7 @@ Cooldown: 90s</description>
                 <canTargetLocations>true</canTargetLocations>
             </targetParams>
         </MainVerb>
-    </TorannMagic.TMAbilityDef>
+    </TorannMagic.TMAbilityDef> -->
 	
 	<!-- Guardian Spirit -->	
 	

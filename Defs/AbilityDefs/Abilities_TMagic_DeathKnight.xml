@@ -289,6 +289,7 @@ Range: 30</description>
     <description>Leach spirit from enemies struck in melee combat to restore life and energy to the death knight.</description>
     <staminaCost>0.00</staminaCost>
 	<shouldInitialize>false</shouldInitialize>
+	<weaponDamageFactor>.15</weaponDamageFactor>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

@@ -64,4 +64,18 @@
 			</autocastCondition>
 		</TorannMagic.TM_AutocastConditionDef>
 		
+		<TorannMagic.TM_AutocastConditionDef>							<!-- a condition check that looks for any regenerate hediff on the target -->
+		    <defName>TM_TargetDrafted</defName>					
+			<autocastCondition>
+				<conditionClass>TargetDrafted</conditionClass>				<!-- type of condition: DamageTaken, HasNeed, HasHediff, EnemiesInRange, AlliesInRange, TargetDrafted -->
+				<hediffDefs>
+				</hediffDefs>											
+				<needDefs></needDefs>									
+				<valueA></valueA>										<!-- no values needed since this is only a boolean check -->
+				<valueB></valueB>										
+				<valueC></valueC>										
+				<invert>false</invert>									<!-- returns "true" if the target has any of the listed hediffs, need to invert to fail condition if a hediff is present -->
+			</autocastCondition>
+		</TorannMagic.TM_AutocastConditionDef>
+		
 </Defs>

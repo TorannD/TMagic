@@ -46,66 +46,10 @@ namespace TorannMagic
                 Effecter RageWave = TorannMagicDefOf.TM_RageWaveED.Spawn();
                 RageWave.Trigger(new TargetInfo(caster.Position, caster.Map, false), new TargetInfo(caster.Position, caster.Map, false));
                 RageWave.Cleanup();
-                SearchAndTaunt();
-                
+                TM_Action.SearchAndTaunt(caster, this.radius, targetsMax, tauntChance);                
             }
 
             return true;
-        }
-
-        public void SearchAndTaunt()
-        {
-            List<Pawn> mapPawns = this.caster.Map.mapPawns.AllPawnsSpawned;
-            List<Pawn> tauntTargets = new List<Pawn>();
-            tauntTargets.Clear();
-            if (mapPawns != null && mapPawns.Count > 0)
-            {
-                for (int i = 0; i < mapPawns.Count; i++)
-                {
-                    Pawn victim = mapPawns[i];
-                    if (!victim.DestroyedOrNull() && !victim.Dead && victim.Map != null && !victim.Downed && victim.mindState != null && !victim.InMentalState && victim.jobs != null)
-                    {
-                        if (caster.Faction.HostileTo(victim.Faction) && (victim.Position - caster.Position).LengthHorizontal < this.radius)
-                        {
-                            tauntTargets.Add(victim);
-                        }
-                    }
-                    if(tauntTargets.Count >= targetsMax)
-                    {
-                        break;
-                    }
-                }
-                for(int i = 0; i < tauntTargets.Count; i++)
-                {
-                    if (Rand.Chance(tauntChance))
-                    {
-
-                        //Log.Message("taunting " + threatPawns[i].LabelShort + " doing job " + threatPawns[i].CurJobDef.defName + " with follow radius of " + threatPawns[i].CurJob.followRadius);
-                        if (tauntTargets[i].CurJobDef == JobDefOf.Follow || tauntTargets[i].CurJobDef == JobDefOf.FollowClose)
-                        {
-                            Job job = new Job(JobDefOf.AttackMelee, this.CasterPawn);
-                            tauntTargets[i].jobs.TryTakeOrderedJob(job, JobTag.Misc);
-                        }
-                        HealthUtility.AdjustSeverity(tauntTargets[i], TorannMagicDefOf.TM_TauntHD, 1);
-                        Hediff hd = tauntTargets[i].health?.hediffSet?.GetFirstHediffOfDef(TorannMagicDefOf.TM_TauntHD);
-                        HediffComp_Disappears comp_d = hd.TryGetComp<HediffComp_Disappears>();
-                        if(comp_d != null)
-                        {
-                            comp_d.ticksToDisappear = 600;
-                        }
-                        HediffComp_Taunt comp_t = hd.TryGetComp<HediffComp_Taunt>();
-                        if(comp_t != null)
-                        {
-                            comp_t.tauntTarget = CasterPawn;
-                        }
-                        MoteMaker.ThrowText(tauntTargets[i].DrawPos, tauntTargets[i].Map, "Taunted!", -1);
-                    }
-                    else
-                    {
-                        MoteMaker.ThrowText(tauntTargets[i].DrawPos, tauntTargets[i].Map, "TM_ResistedSpell".Translate(), -1);
-                    }
-                }
-            }            
-        }
+        }        
     }
 }

@@ -54,16 +54,19 @@ namespace TorannMagic
                         }
                         
                         bool hasSkills = false;
-                        foreach(TM_CustomSkill skill in current.customPower.skills)
+                        if (current.customPower.skills != null)
                         {
-                            MagicPowerSkill mps = new MagicPowerSkill(skill.label, skill.description);
-                            mps.levelMax = skill.levelMax;
-                            mps.costToLevel = skill.costToLevel;
-                            if (!MagicPowerSkill_Custom.Any(b => b.label == mps.label) && !AllMagicPowerSkills.Any(b => b.label == mps.label))
+                            foreach (TM_CustomSkill skill in current.customPower.skills)
                             {
-                                MagicPowerSkill_Custom.Add(mps);
+                                MagicPowerSkill mps = new MagicPowerSkill(skill.label, skill.description);
+                                mps.levelMax = skill.levelMax;
+                                mps.costToLevel = skill.costToLevel;
+                                if (!MagicPowerSkill_Custom.Any(b => b.label == mps.label) && !AllMagicPowerSkills.Any(b => b.label == mps.label))
+                                {
+                                    MagicPowerSkill_Custom.Add(mps);
+                                }
+                                hasSkills = true;
                             }
-                            hasSkills = true;
                         }
                         if (newPower)
                         {
@@ -148,7 +151,7 @@ namespace TorannMagic
 
         public List<MagicPowerSkill> magicPowerSkill_WandererCraft;
         public List<MagicPowerSkill> magicPowerSkill_Cantrips;
-
+        
         public List<MagicPowerSkill> magicPowerSkill_RayofHope;
         public List<MagicPowerSkill> magicPowerSkill_Firebolt;
         public List<MagicPowerSkill> magicPowerSkill_Fireball;
@@ -175,6 +178,7 @@ namespace TorannMagic
         public List<MagicPowerSkill> magicPowerSkill_Teleport;
         public List<MagicPowerSkill> magicPowerSkill_FoldReality;
 
+        public List<MagicPowerSkill> magicPowerSkill_P_RayofHope;
         public List<MagicPowerSkill> magicPowerSkill_Heal;
         public List<MagicPowerSkill> magicPowerSkill_Shield;
         public List<MagicPowerSkill> magicPowerSkill_ValiantCharge;
@@ -593,6 +597,7 @@ namespace TorannMagic
                 return this.magicPowerIF;
             }
         }
+
         public List<MagicPowerSkill> MagicPowerSkill_RayofHope
         {
             get
@@ -1082,15 +1087,23 @@ namespace TorannMagic
             }
         }
 
+        bool hasPaladinBuff = false;
         public List<MagicPower> MagicPowersP
         {
             get
-            {
+            {                
                 bool flag = this.magicPowerP == null;
                 if (flag)
                 {
                     this.magicPowerP = new List<MagicPower>
                     {
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_P_RayofHope,
+                            TorannMagicDefOf.TM_P_RayofHope_I,
+                            TorannMagicDefOf.TM_P_RayofHope_II,
+                            TorannMagicDefOf.TM_P_RayofHope_III
+                        }),
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Heal
@@ -1117,7 +1130,48 @@ namespace TorannMagic
 
                     };
                 }
+                if (!hasPaladinBuff)
+                {
+                    foreach (MagicPower p in magicPowerP)
+                    {
+                        if(p.abilityDef == TorannMagicDefOf.TM_P_RayofHope)
+                        {
+                            hasPaladinBuff = true;
+                        }                        
+                    }
+                    if(!hasPaladinBuff)
+                    {                        
+                        MagicPower pBuff = new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_P_RayofHope,
+                            TorannMagicDefOf.TM_P_RayofHope_I,
+                            TorannMagicDefOf.TM_P_RayofHope_II,
+                            TorannMagicDefOf.TM_P_RayofHope_III
+                        });
+                        List<MagicPower> oldList = new List<MagicPower>();
+                        oldList.Add(pBuff);
+                        oldList.AddRange(magicPowerP);
+                        //magicPowerP.Add(pBuff);
+                        this.magicPowerP = oldList;
+                        hasPaladinBuff = true;
+                    }
+                }
                 return this.magicPowerP;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_P_RayofHope
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_P_RayofHope == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_P_RayofHope = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_P_RayofHope_eff", "TM_P_RayofHope_eff_desc")
+                    };
+                }
+                return this.magicPowerSkill_P_RayofHope;
             }
         }
         public List<MagicPowerSkill> MagicPowerSkill_Heal
@@ -3749,6 +3803,7 @@ namespace TorannMagic
                     allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_Rainmaker);
                     allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_RaiseUndead);
                     allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_RayofHope);
+                    allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_P_RayofHope);
                     allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_Recall);
                     allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_Regenerate);
                     allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_RegrowLimb);
@@ -3898,6 +3953,7 @@ namespace TorannMagic
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Teleport, "magicPowerSkill_Teleport", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_FoldReality, "magicPowerSkill_FoldReality", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPower>(ref this.magicPowerP, "magicPowerP", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_P_RayofHope, "magicPowerSkill_P_RayofHope", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Heal, "magicPowerSkill_Heal", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Shield, "magicPowerSkill_Shield", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_ValiantCharge, "magicPowerSkill_ValiantCharge", LookMode.Deep, new object[0]);

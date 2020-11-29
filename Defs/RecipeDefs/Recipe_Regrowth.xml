@@ -50,7 +50,7 @@
 						<li>ManaPotion</li>
 					</thingDefs>
 				</filter>
-				<count>2</count>
+				<count>4</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>

@@ -1622,22 +1622,22 @@ namespace TorannMagic
 
         public static void DisplayShieldHit(Pawn shieldedPawn, DamageInfo dinfo)
         {
-            DisplayShield(shieldedPawn, dinfo);
+            DisplayShield(shieldedPawn, dinfo.Amount, dinfo.Angle);
         }
 
-        private static void DisplayShield(Pawn shieldedPawn, DamageInfo dinfo)
+        public static void DisplayShield(Pawn shieldedPawn, float amount, float angle = 0f)
         {
             Vector3 impactAngleVect;
             SoundDefOf.EnergyShield_AbsorbDamage.PlayOneShot(new TargetInfo(shieldedPawn.Position, shieldedPawn.Map, false));
-            impactAngleVect = Vector3Utility.HorizontalVectorFromAngle(dinfo.Angle);
+            impactAngleVect = Vector3Utility.HorizontalVectorFromAngle(angle);
             Vector3 loc = shieldedPawn.TrueCenter() + impactAngleVect.RotatedBy(180f) * 0.5f;
-            float num = Mathf.Min(10f, 2f + (float)dinfo.Amount / 10f);
+            float num = Mathf.Min(10f, 2f + amount / 10f);
             MoteMaker.MakeStaticMote(loc, shieldedPawn.Map, ThingDefOf.Mote_ExplosionFlash, num);
             int num2 = (int)num;
             for (int i = 0; i < num2; i++)
             {
                 MoteMaker.ThrowDustPuff(loc, shieldedPawn.Map, Rand.Range(0.8f, 1.2f));
-                DrawShieldHit(shieldedPawn, dinfo.Amount, impactAngleVect);
+                DrawShieldHit(shieldedPawn, amount, impactAngleVect);
             }
         }
 
@@ -1654,7 +1654,7 @@ namespace TorannMagic
                 Vector3 s = new Vector3(1.7f, 1f, 1.7f);
                 Matrix4x4 matrix = default(Matrix4x4);
                 matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
-                if (shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffShield) || shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HTLShieldHD))
+                if (shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffShield) || shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HTLShieldHD) || shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MagicShieldHD))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.whiteShieldMat, 0);
                 }
@@ -1730,7 +1730,7 @@ namespace TorannMagic
                 int transStackValue = Mathf.RoundToInt(transStackCount * transmutateThing.def.BaseMarketValue);
                 float newMatCount = 0;
                 IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
-                                                   where (def != transmutateThing.def && ((def.stuffProps != null && def.stuffProps.categories != null && def.stuffProps.categories.Count > 0) || def.defName == "RawMagicyte") || def.IsWithinCategory(ThingCategoryDefOf.ResourcesRaw) || def.IsWithinCategory(ThingCategoryDefOf.Leathers))
+                                                   where (def.BaseMarketValue > .1f && def.BaseMarketValue <= 100 && def != transmutateThing.def && ((def.stuffProps != null && def.stuffProps.categories != null && def.stuffProps.categories.Count > 0) || def.defName == "RawMagicyte") || def.IsWithinCategory(ThingCategoryDefOf.ResourcesRaw) || def.IsWithinCategory(ThingCategoryDefOf.Leathers))
                                                    select def;
 
                 foreach (ThingDef current in enumerable)
@@ -2324,6 +2324,88 @@ namespace TorannMagic
                     if (p.training.CanBeTrained(TorannMagicDefOf.Rescue))
                     {
                         p.training.Train(TorannMagicDefOf.Rescue, null);
+                    }
+                }
+            }
+        }
+
+        public static void InvulnerableAoEFor(IntVec3 center, Map map, float radius, int durationTicks, Faction forFaction = null)
+        {
+            if(map != null && center != default(IntVec3))
+            {
+                List<Pawn> pawnList = map.mapPawns.AllPawnsSpawned;
+                if(pawnList != null)
+                {
+                    foreach(Pawn p in pawnList)
+                    {
+                        if((forFaction == null || (p.Faction == forFaction)) && (p.Position - center).LengthHorizontal <= radius)
+                        {
+                            if(p.health != null && p.health.hediffSet != null)
+                            {
+                                HealthUtility.AdjustSeverity(p, TorannMagicDefOf.TM_HediffTimedInvulnerable, 1f);
+                                Hediff hd = p.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_HediffTimedInvulnerable);
+                                HediffComp_Disappears hdc = hd.TryGetComp<HediffComp_Disappears>();
+                                if(hdc != null)
+                                {
+                                    hdc.ticksToDisappear += durationTicks;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public static void SearchAndTaunt(Pawn caster, float radius, int maxTargets, float tauntChance)
+        {
+            List<Pawn> mapPawns = caster.Map.mapPawns.AllPawnsSpawned;
+            List<Pawn> tauntTargets = new List<Pawn>();
+            tauntTargets.Clear();
+            if (mapPawns != null && mapPawns.Count > 0)
+            {
+                for (int i = 0; i < mapPawns.Count; i++)
+                {
+                    Pawn victim = mapPawns[i];
+                    if (!victim.DestroyedOrNull() && !victim.Dead && victim.Map != null && !victim.Downed && victim.mindState != null && !victim.InMentalState && victim.jobs != null)
+                    {
+                        if (caster.Faction.HostileTo(victim.Faction) && (victim.Position - caster.Position).LengthHorizontal < radius)
+                        {
+                            tauntTargets.Add(victim);
+                        }
+                    }
+                    if (tauntTargets.Count >= maxTargets)
+                    {
+                        break;
+                    }
+                }
+                for (int i = 0; i < tauntTargets.Count; i++)
+                {
+                    if (Rand.Chance(tauntChance))
+                    {
+
+                        //Log.Message("taunting " + threatPawns[i].LabelShort + " doing job " + threatPawns[i].CurJobDef.defName + " with follow radius of " + threatPawns[i].CurJob.followRadius);
+                        if (tauntTargets[i].CurJobDef == JobDefOf.Follow || tauntTargets[i].CurJobDef == JobDefOf.FollowClose)
+                        {
+                            Job job = new Job(JobDefOf.AttackMelee, caster);
+                            tauntTargets[i].jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                        }
+                        HealthUtility.AdjustSeverity(tauntTargets[i], TorannMagicDefOf.TM_TauntHD, 1);
+                        Hediff hd = tauntTargets[i].health?.hediffSet?.GetFirstHediffOfDef(TorannMagicDefOf.TM_TauntHD);
+                        HediffComp_Disappears comp_d = hd.TryGetComp<HediffComp_Disappears>();
+                        if (comp_d != null)
+                        {
+                            comp_d.ticksToDisappear = 600;
+                        }
+                        HediffComp_Taunt comp_t = hd.TryGetComp<HediffComp_Taunt>();
+                        if (comp_t != null)
+                        {
+                            comp_t.tauntTarget = caster;
+                        }
+                        MoteMaker.ThrowText(tauntTargets[i].DrawPos, tauntTargets[i].Map, "Taunted!", -1);
+                    }
+                    else
+                    {
+                        MoteMaker.ThrowText(tauntTargets[i].DrawPos, tauntTargets[i].Map, "TM_ResistedSpell".Translate(), -1);
                     }
                 }
             }

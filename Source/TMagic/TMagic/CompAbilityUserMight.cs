@@ -38,6 +38,7 @@ namespace TorannMagic
         private List<IntVec3> deathRing = new List<IntVec3>();
         public float weaponDamage = 1f;
         public float weaponCritChance = 0f;
+        public bool shouldDrawPsionicShield = false;
 
         private float G_Sprint_eff = 0.20f;
         private float G_Grapple_eff = 0.10f;
@@ -185,6 +186,20 @@ namespace TorannMagic
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.burningFuryMat, 0);
                 }
+            }
+
+            if(shouldDrawPsionicShield)
+            {
+                float radius = 2.5f;
+                radius = 2.5f + (.75f * TM_Calc.GetMightSkillLevel(this.Pawn, this.MightData.MightPowerSkill_PsionicBarrier, "TM_PsionicBarrier", "_ver", true));
+                float drawRadius = radius * .23f;
+                float num = Mathf.Lerp(drawRadius, 9.5f, drawRadius);
+                Vector3 vector = this.Pawn.CurJob.targetA.CenterVector3;
+                vector.y = Altitudes.AltitudeFor(AltitudeLayer.VisEffects);
+                Vector3 s = new Vector3(num, 9.5f, num);
+                Matrix4x4 matrix = default(Matrix4x4);
+                matrix.SetTRS(vector, Quaternion.AngleAxis(Rand.Range(0, 360), Vector3.up), s);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_MatPool.PsionicBarrier, 0);
             }
         }
 
@@ -1574,6 +1589,8 @@ namespace TorannMagic
                     this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_DisablingShot_III).learned = true;
                     this.AddPawnAbility(TorannMagicDefOf.TM_AntiArmor);
                     this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_AntiArmor).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_ShadowSlayer);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_ShadowSlayer).learned = true;
                 }
                 flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Bladedancer);
                 if (flag2)
@@ -3039,7 +3056,7 @@ namespace TorannMagic
                             MightPowerSkill pwr = this.MightData.MightPowerSkill_Fortitude.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Fortitude_pwr");
                             MightPowerSkill ver = this.MightData.MightPowerSkill_Fortitude.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Fortitude_ver");
                             absorbed = true;
-                            int mitigationAmt = 2 + (2 * pwr.level);
+                            int mitigationAmt = 5 + pwr.level;
                             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                             if (settingsRef.AIHardMode && !abilityUser.IsColonist)
                             {
@@ -5293,6 +5310,7 @@ namespace TorannMagic
                         //this.AddPawnAbility(TorannMagicDefOf.TM_SniperFocus);
                         this.AddPawnAbility(TorannMagicDefOf.TM_Headshot);
                         this.AddPawnAbility(TorannMagicDefOf.TM_AntiArmor);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_ShadowSlayer);
                     }
                     bool flag42 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Bladedancer);
                     if (flag42)

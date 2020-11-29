@@ -67,6 +67,7 @@
 		<explosionColorCenter>(1, 1, 1)</explosionColorCenter>
 		<explosionColorEdge>(1, 0.85, 0.8)</explosionColorEdge>
 		<soundExplosion>Explosion_Flame</soundExplosion>
+		<buildingDamageFactor>0</buildingDamageFactor>
 	</DamageDef>
 	
 	<DamageDef ParentName="TM_LocalInjuryBase">
@@ -149,6 +150,7 @@
 		<explosionColorCenter>(0, .1, .2)</explosionColorCenter>
 		<explosionColorEdge>(.8, 0.9, 1)</explosionColorEdge>
 		<soundExplosion>TM_SoftExplosion</soundExplosion>
+		<buildingDamageFactor>0</buildingDamageFactor>
 	</DamageDef>
 	
 	<DamageDef ParentName="TM_LocalInjuryBase">
@@ -178,6 +180,7 @@
 				<severityPerDamageDealt>.3</severityPerDamageDealt>
 			</li>
 		</additionalHediffs>
+		<buildingDamageFactor>0</buildingDamageFactor>
 	</DamageDef>
 	
 	<DamageDef ParentName="TM_LocalInjuryBase">
@@ -245,6 +248,7 @@
 				<severityPerDamageDealt>.05</severityPerDamageDealt>
 			</li>
 		</additionalHediffs>
+		<buildingDamageFactor>0</buildingDamageFactor>
 	</DamageDef>
   
   <DamageDef>
@@ -1069,6 +1073,19 @@
 		<armorCategory>Dark</armorCategory>
 		<isExplosive>false</isExplosive>
 		<makesBlood>false</makesBlood>
+	</DamageDef>
+	
+	<DamageDef ParentName="TM_LocalInjuryBase">
+		<defName>TM_DistortionDD</defName>
+		<label>distortion</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed.</deathMessage>
+		<hediff>TM_ArcaneHD</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<defaultDamage>10</defaultDamage>
+		<armorCategory>Dark</armorCategory>
+		<defaultArmorPenetration>1.5</defaultArmorPenetration>
+		<buildingDamageFactor>0</buildingDamageFactor>
 	</DamageDef>
   
 </Defs>

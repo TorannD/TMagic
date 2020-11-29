@@ -339,4 +339,41 @@ Recharge 40s</description>
     </MainVerb>
   </TorannMagic.TMAbilityDef>
   
+    <!-- Shadow slayer -->
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_ShadowSlayer</defName>
+    <label>Shadow Slayer</label>
+    <uiIconPath>UI/shadowslayer</uiIconPath>
+    <description>A trained sniper is an expert at stealth and positioning, and knows the right time and place to strike. 
+
+The shadow slayer cloaking field is a long duration form of invisibility. Unlike normal cloaking technology, this stealth field relies heavily on a form of predictive cloaking that rapidly wears off when the user performs rapid or violent actions (such as firing a weapon).</description>
+    <staminaCost>0.30</staminaCost>
+	<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+	<shouldInitialize>true</shouldInitialize>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_ShadowSlayerCloak</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_ShadowSlayer</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_SniperFocus</defaultProjectile>
+        <warmupTime>0.5</warmupTime>
+        <SecondsToRecharge>120.0</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>TM_FastReleaseSD</soundCast>
+        <muzzleFlashScale>0</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
 </Defs>

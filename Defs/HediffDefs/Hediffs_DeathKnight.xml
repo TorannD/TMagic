@@ -28,10 +28,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.05</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.1</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.1</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.1</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.1</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.2</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.2</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.2</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.2</ArmorRating_Alignment>
 			  <MoveSpeed>-.15</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -41,10 +41,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.075</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.2</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.2</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.2</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.2</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.25</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.25</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.25</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.25</ArmorRating_Alignment>
 			  <MoveSpeed>-.35</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -67,10 +67,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.125</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.4</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.4</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.4</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.4</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.35</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.35</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.35</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.35</ArmorRating_Alignment>
 			  <MoveSpeed>-1.5</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -80,10 +80,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.15</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.5</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.5</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.5</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.5</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.4</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.4</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.4</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.4</ArmorRating_Alignment>
 			  <MoveSpeed>-2</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -116,10 +116,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.06</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.125</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.125</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.125</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.125</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.225</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.225</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.225</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.225</ArmorRating_Alignment>
 			  <MoveSpeed>-.1</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -129,10 +129,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.09</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.25</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.25</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.25</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.25</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.275</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.275</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.275</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.275</ArmorRating_Alignment>
 			  <MoveSpeed>-.25</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -142,10 +142,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.12</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.4</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.4</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.4</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.4</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.325</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.325</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.325</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.325</ArmorRating_Alignment>
 			  <MoveSpeed>-.50</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -155,10 +155,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.15</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.5</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.5</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.5</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.5</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.375</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.375</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.375</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.375</ArmorRating_Alignment>
 			  <MoveSpeed>-1</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -168,10 +168,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.18</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.6</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.6</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.6</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.6</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.425</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.425</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.425</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.425</ArmorRating_Alignment>
 			  <MoveSpeed>-1.6</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -204,10 +204,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.07</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.15</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.15</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.15</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.15</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.25</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.25</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.25</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.25</ArmorRating_Alignment>
 			  <MoveSpeed>-.1</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -230,10 +230,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.13</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.45</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.45</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.45</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.45</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.35</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.35</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.35</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.35</ArmorRating_Alignment>
 			  <MoveSpeed>-.50</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -243,10 +243,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.16</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.55</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.55</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.55</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.55</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.40</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.4</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.4</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.4</ArmorRating_Alignment>
 			  <MoveSpeed>-1</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -256,10 +256,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.19</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.65</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.65</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.65</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.65</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.45</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.45</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.45</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.45</ArmorRating_Alignment>
 			  <MoveSpeed>-1.6</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -292,10 +292,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.08</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.2</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.2</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.2</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.2</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.275</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.275</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.275</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.275</ArmorRating_Alignment>
 			  <MoveSpeed>-.1</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -305,10 +305,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.11</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.35</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.35</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.35</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.35</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.325</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.325</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.325</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.325</ArmorRating_Alignment>
 			  <MoveSpeed>-.25</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -318,10 +318,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.14</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.5</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.5</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.5</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.5</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.375</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.375</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.375</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.375</ArmorRating_Alignment>
 			  <MoveSpeed>-.50</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -331,10 +331,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.17</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.6</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.6</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.6</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.6</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.425</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.425</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.425</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.425</ArmorRating_Alignment>
 			  <MoveSpeed>-1</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -344,10 +344,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.2</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.7</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.7</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.7</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.7</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.475</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.475</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.475</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.475</ArmorRating_Alignment>
 			  <MoveSpeed>-1.6</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -380,10 +380,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.09</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.25</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.25</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.25</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.25</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.3</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.3</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.3</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.3</ArmorRating_Alignment>
 			  <MoveSpeed>-.1</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -393,10 +393,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.12</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.4</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.4</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.4</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.4</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.35</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.35</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.35</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.35</ArmorRating_Alignment>
 			  <MoveSpeed>-.25</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -406,10 +406,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.15</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.55</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.55</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.55</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.55</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.4</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.4</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.4</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.4</ArmorRating_Alignment>
 			  <MoveSpeed>-.50</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -419,10 +419,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.18</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.65</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.65</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.65</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.65</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.45</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.45</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.45</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.45</ArmorRating_Alignment>
 			  <MoveSpeed>-1</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -432,10 +432,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.21</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.75</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.75</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.75</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.75</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.5</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.5</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.5</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.5</ArmorRating_Alignment>
 			  <MoveSpeed>-1.6</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -468,10 +468,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.1</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.3</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.3</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.3</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.3</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.35</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.35</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.35</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.35</ArmorRating_Alignment>
 			  <MoveSpeed>-.1</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -481,10 +481,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.13</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.45</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.45</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.45</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.45</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.4</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.4</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.4</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.4</ArmorRating_Alignment>
 			  <MoveSpeed>-.25</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -494,10 +494,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.16</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.6</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.6</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.6</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.6</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.45</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.45</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.45</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.45</ArmorRating_Alignment>
 			  <MoveSpeed>-.50</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -507,10 +507,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.19</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.7</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.7</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.7</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.7</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.5</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.5</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.5</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.5</ArmorRating_Alignment>
 			  <MoveSpeed>-1</MoveSpeed>	
 		</statOffsets>
       </li>
@@ -520,10 +520,10 @@
 		<becomeVisible>true</becomeVisible>
 		<statOffsets>
 			  <MeleeWeapon_DamageMultiplier>0.22</MeleeWeapon_DamageMultiplier>
-			  <ArmorRating_Blunt>.8</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.8</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.8</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.8</ArmorRating_Alignment>
+			  <ArmorRating_Blunt>.55</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.55</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.55</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.55</ArmorRating_Alignment>
 			  <MoveSpeed>-1.5</MoveSpeed>	
 		</statOffsets>
       </li>

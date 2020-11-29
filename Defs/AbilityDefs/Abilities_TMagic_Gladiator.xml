@@ -222,7 +222,7 @@
     <label>Fortitude</label>
     <uiIconPath>UI/fortitude</uiIconPath>
     <description>Mitigates a set amount of damage each hit.
-Base mitigation: 2</description>
+Base mitigation: 5</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
     <staminaCost>0.0</staminaCost>
 	<shouldInitialize>false</shouldInitialize>
@@ -273,7 +273,7 @@ Base mitigation: 2</description>
         <projectile>
             <damageDef>Stun</damageDef>
             <damageAmountBase>5</damageAmountBase>
-            <speed>35</speed>
+            <speed>40</speed>
         </projectile>
         <preFiringInitialIntensity>0</preFiringInitialIntensity>
         <preFiringFinalIntensity>100</preFiringFinalIntensity>
@@ -290,7 +290,7 @@ Base mitigation: 2</description>
         <description>Forcefully hooks and yanks an opponent to the Gladiator, followed by a violent leg sweep, knocking the opponent down.
 		
 Casting time: 1s
-Range: 12</description>
+Range: 15</description>
         <staminaCost>0.08</staminaCost>		
 		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 		<canCopy>true</canCopy>
@@ -308,7 +308,7 @@ Range: 12</description>
             </targetParams>
             <warmupTime>1.0</warmupTime>
             <SecondsToRecharge>6.0</SecondsToRecharge>
-            <range>12</range>
+            <range>15</range>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
@@ -324,7 +324,7 @@ Range: 12</description>
         <uiIconPath>UI/grapplinghook</uiIconPath>
         <description>Forcefully hooks and yanks an opponent to the Gladiator, followed by a violent leg sweep, knocking the opponent down.
 Casting time: .6s
-Range: 14</description>
+Range: 17</description>
         <staminaCost>0.08</staminaCost>
 		<shouldInitialize>false</shouldInitialize>
 		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
@@ -341,7 +341,7 @@ Range: 14</description>
             </targetParams>
             <warmupTime>0.6</warmupTime>
             <SecondsToRecharge>5.0</SecondsToRecharge>
-            <range>14</range>
+            <range>17</range>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
@@ -358,7 +358,7 @@ Range: 14</description>
         <description>Forcefully hooks and yanks an opponent to the Gladiator, followed by a violent leg sweep, knocking the opponent down.
 		
 Casting time: .4s
-Range: 17</description>
+Range: 20</description>
         <staminaCost>0.08</staminaCost>
 		<shouldInitialize>false</shouldInitialize>
 		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
@@ -375,7 +375,7 @@ Range: 17</description>
             </targetParams>
             <warmupTime>0.4</warmupTime>
             <SecondsToRecharge>4.0</SecondsToRecharge>
-            <range>17</range>
+            <range>20</range>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
@@ -392,7 +392,7 @@ Range: 17</description>
         <description>Forcefully hooks and yanks an opponent to the Gladiator, followed by a violent leg sweep, knocking the opponent down.
 		
 Casting time: .2s
-Range: 20</description>
+Range: 23</description>
         <staminaCost>0.08</staminaCost>
 		<shouldInitialize>false</shouldInitialize>
 		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
@@ -409,7 +409,7 @@ Range: 20</description>
             </targetParams>
             <warmupTime>0.2</warmupTime>
             <SecondsToRecharge>3.0</SecondsToRecharge>
-            <range>20</range>
+            <range>23</range>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>

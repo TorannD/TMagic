@@ -273,7 +273,7 @@
     <rotatable>false</rotatable>
 	<tradeability>None</tradeability>
     <statBases>
-      <MaxHitPoints>65</MaxHitPoints>
+      <MaxHitPoints>120</MaxHitPoints>
       <Flammability>1.0</Flammability>
       <WorkToBuild>25000</WorkToBuild>
       <Mass>5</Mass>
@@ -339,8 +339,8 @@
     <statBases>
       <AccuracyTouch>0.65</AccuracyTouch>
       <AccuracyShort>0.50</AccuracyShort>
-      <AccuracyMedium>0.32</AccuracyMedium>
-      <AccuracyLong>0.24</AccuracyLong>
+      <AccuracyMedium>0.44</AccuracyMedium>
+      <AccuracyLong>0.30</AccuracyLong>
       <RangedWeapon_Cooldown>0.6</RangedWeapon_Cooldown>
 	  <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -356,8 +356,8 @@
         <defaultProjectile>Bullet_DefensePylon</defaultProjectile>
         <warmupTime>1.5</warmupTime>
         <range>32</range>
-        <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
-        <burstShotCount>1</burstShotCount>
+        <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+        <burstShotCount>4</burstShotCount>
         <soundCast>GunShotA</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>3</muzzleFlashScale>
@@ -396,7 +396,7 @@
     <rotatable>false</rotatable>
 	<tradeability>None</tradeability>
     <statBases>
-      <MaxHitPoints>80</MaxHitPoints>
+      <MaxHitPoints>140</MaxHitPoints>
       <Flammability>1.0</Flammability>
       <WorkToBuild>25000</WorkToBuild>
       <Mass>5</Mass>
@@ -430,7 +430,7 @@
     <building>
 			<ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Launcher_DefensePylon_I</turretGunDef>
-      <turretBurstCooldownTime>1.8</turretBurstCooldownTime>
+      <turretBurstCooldownTime>1.6</turretBurstCooldownTime>
       <!-- <turretTopGraphicPath>Other/defense_pylon_top</turretTopGraphicPath> -->
 	  <expandHomeArea>false</expandHomeArea>
 	  <deconstructible>false</deconstructible>
@@ -460,10 +460,10 @@
     <destroyOnDrop>true</destroyOnDrop>
     <useHitPoints>false</useHitPoints>
     <statBases>
-      <AccuracyTouch>0.65</AccuracyTouch>
-      <AccuracyShort>0.50</AccuracyShort>
-      <AccuracyMedium>0.32</AccuracyMedium>
-      <AccuracyLong>0.24</AccuracyLong>
+      <AccuracyTouch>0.67</AccuracyTouch>
+      <AccuracyShort>0.52</AccuracyShort>
+      <AccuracyMedium>0.46</AccuracyMedium>
+      <AccuracyLong>0.32</AccuracyLong>
       <RangedWeapon_Cooldown>0.6</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
 	  <Flammability>0</Flammability>
@@ -479,8 +479,8 @@
         <defaultProjectile>Bullet_DefensePylon</defaultProjectile>
         <warmupTime>1.5</warmupTime>
         <range>36</range>
-        <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-        <burstShotCount>3</burstShotCount>
+        <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+        <burstShotCount>5</burstShotCount>
         <soundCast>GunShotA</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>4</muzzleFlashScale>
@@ -505,7 +505,7 @@
     <rotatable>false</rotatable>
 	<tradeability>None</tradeability>
     <statBases>
-      <MaxHitPoints>100</MaxHitPoints>
+      <MaxHitPoints>160</MaxHitPoints>
       <Flammability>1.0</Flammability>
       <WorkToBuild>25000</WorkToBuild>
       <Mass>5</Mass>
@@ -539,7 +539,7 @@
     <building>
 			<ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Launcher_DefensePylon_II</turretGunDef>
-      <turretBurstCooldownTime>2.2</turretBurstCooldownTime>
+      <turretBurstCooldownTime>1.6</turretBurstCooldownTime>
       <!-- <turretTopGraphicPath>Other/defense_pylon_top</turretTopGraphicPath> -->
 	  <expandHomeArea>false</expandHomeArea>
 	  <deconstructible>false</deconstructible>
@@ -568,10 +568,10 @@
     <destroyOnDrop>true</destroyOnDrop>
     <useHitPoints>false</useHitPoints>
     <statBases>
-      <AccuracyTouch>0.65</AccuracyTouch>
-      <AccuracyShort>0.50</AccuracyShort>
-      <AccuracyMedium>0.32</AccuracyMedium>
-      <AccuracyLong>0.24</AccuracyLong>
+      <AccuracyTouch>0.69</AccuracyTouch>
+      <AccuracyShort>0.54</AccuracyShort>
+      <AccuracyMedium>0.48</AccuracyMedium>
+      <AccuracyLong>0.34</AccuracyLong>
       <RangedWeapon_Cooldown>0.6</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
 	  <Flammability>0</Flammability>
@@ -587,8 +587,8 @@
         <defaultProjectile>Bullet_DefensePylon</defaultProjectile>
         <warmupTime>1.5</warmupTime>
         <range>40</range>
-        <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-        <burstShotCount>4</burstShotCount>
+        <ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+        <burstShotCount>6</burstShotCount>
         <soundCast>GunShotA</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>5</muzzleFlashScale>
@@ -613,7 +613,7 @@
     <rotatable>false</rotatable>
 	<tradeability>None</tradeability>
     <statBases>
-      <MaxHitPoints>120</MaxHitPoints>
+      <MaxHitPoints>180</MaxHitPoints>
       <Flammability>1.0</Flammability>
       <WorkToBuild>25000</WorkToBuild>
       <Mass>5</Mass>
@@ -647,7 +647,7 @@
     <building>
 			<ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Launcher_DefensePylon_III</turretGunDef>
-      <turretBurstCooldownTime>2.4</turretBurstCooldownTime>
+      <turretBurstCooldownTime>1.6</turretBurstCooldownTime>
       <!-- <turretTopGraphicPath>Other/defense_pylon_top</turretTopGraphicPath> -->
 	  <expandHomeArea>false</expandHomeArea>
 	  <deconstructible>false</deconstructible>
@@ -678,10 +678,10 @@
     <destroyOnDrop>true</destroyOnDrop>
     <useHitPoints>false</useHitPoints>
     <statBases>
-      <AccuracyTouch>0.65</AccuracyTouch>
-      <AccuracyShort>0.50</AccuracyShort>
-      <AccuracyMedium>0.32</AccuracyMedium>
-      <AccuracyLong>0.24</AccuracyLong>
+      <AccuracyTouch>0.71</AccuracyTouch>
+      <AccuracyShort>0.56</AccuracyShort>
+      <AccuracyMedium>0.50</AccuracyMedium>
+      <AccuracyLong>0.36</AccuracyLong>
       <RangedWeapon_Cooldown>0.6</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
 	  <Flammability>0</Flammability>
@@ -697,8 +697,8 @@
         <defaultProjectile>Bullet_DefensePylon</defaultProjectile>
         <warmupTime>1.5</warmupTime>
         <range>44</range>
-        <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-        <burstShotCount>5</burstShotCount>
+        <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+        <burstShotCount>7</burstShotCount>
         <soundCast>GunShotA</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>6</muzzleFlashScale>
@@ -1115,6 +1115,7 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
 		<ai_chillDestination>false</ai_chillDestination>
 		<claimable>false</claimable>
 		<deconstructible>false</deconstructible>
+		<expandHomeArea>false</expandHomeArea>
 	</building>
     <staticSunShadowHeight>0.0</staticSunShadowHeight>
     <designationHotKey>Misc3</designationHotKey>
@@ -1176,6 +1177,7 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
 		<ai_chillDestination>false</ai_chillDestination>
 		<claimable>false</claimable>
 		<deconstructible>false</deconstructible>
+		<expandHomeArea>false</expandHomeArea>
 	</building>
     <staticSunShadowHeight>0.0</staticSunShadowHeight>
     <designationHotKey>Misc3</designationHotKey>
@@ -1237,6 +1239,7 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
 		<ai_chillDestination>false</ai_chillDestination>
 		<claimable>false</claimable>
 		<deconstructible>false</deconstructible>
+		<expandHomeArea>false</expandHomeArea>
 	</building>
     <staticSunShadowHeight>0.0</staticSunShadowHeight>
     <designationHotKey>Misc3</designationHotKey>

@@ -127,7 +127,6 @@ namespace TorannMagic
 
                 if (base.Pawn.Spawned && !this.Pawn.Downed && base.Pawn.Map != null && comp != null)
                 {                    
-
                     if (this.doPsionicAttack)
                     {
                         this.ticksTillPsionicStrike--;
@@ -208,7 +207,7 @@ namespace TorannMagic
                         {
                             if (Find.TickManager.TicksGame % 180 == 0 && (this.Pawn.Drafted || !this.Pawn.IsColonist) && ((this.Pawn.equipment.Primary != null && !this.Pawn.equipment.Primary.def.IsRangedWeapon) || this.Pawn.equipment.Primary == null))
                             {
-                                if (this.Pawn.CurJob.targetA != null && this.Pawn.CurJob.targetA.Thing != null && this.Pawn.CurJob.targetA.Thing is Pawn)
+                                if (this.Pawn.CurJob.targetA != null && this.Pawn.CurJob.targetA.Thing != null && this.Pawn.CurJob.targetA.Thing is Pawn && this.Pawn.CurJobDef == JobDefOf.AttackMelee)
                                 {
                                     //Log.Message("performing psionic dash - curjob " + this.Pawn.CurJob);
                                     //Log.Message("curjob def " + this.Pawn.CurJob.def.defName);

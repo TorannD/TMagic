@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <Defs>
+
+  <ThingDef Name="BaseBitLaserProjectile" Abstract="True">
+    <category>Projectile</category>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <thingClass>Bullet</thingClass>
+    <label>laser</label>
+    <tickerType>Normal</tickerType>
+    <useHitPoints>False</useHitPoints>
+    <neverMultiSelect>True</neverMultiSelect>
+    <graphicData>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+    <projectile>
+      <speed>90</speed>
+    </projectile>
+  </ThingDef>
+  
+   	<ThingDef ParentName="BaseBitLaserProjectile">
+		<defName>Projectile_TM_BitTechLaser</defName>
+		<label>tech micro laser</label>
+		<graphicData>
+			<texPath>Spells/tech_laser</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Burn</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+		</projectile>
+	</ThingDef>
  
   <ThingDef Name="BaseBitGrenadeProjectile" Abstract="True">
     <category>Projectile</category>
@@ -60,7 +89,7 @@
 	
 Undrafted: the techno-bit assists in crafting, mining and construction tasks. It will also repair nearby buildings, androids, and mechanoids.
 
-Drafted: uses its anti-gravity system to propel small, time delayed explosives at the technomancer's target.  Performs accelerated repairs to nearby robotic pawns or buildings.</description>
+Drafted: uses an internal focus-LED to fire micro lasers at the technomancers target. Performs accelerated repairs to nearby robotic pawns or buildings.</description>
     <manaCost>0.00</manaCost>
 		<learnChance>0</learnChance>
 		<shouldInitialize>false</shouldInitialize>

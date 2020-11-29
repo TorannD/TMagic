@@ -115,8 +115,8 @@
     <letterDef>ThreatBig</letterDef>
     <baseChance>0.6</baseChance>
     <minRefireDays>10</minRefireDays>
-	<earliestDay>21</earliestDay>
-	<minPopulation>4</minPopulation>
+	<earliestDay>40</earliestDay>
+	<minPopulation>5</minPopulation>
     <durationDays>
       <min>.18</min>
       <max>.25</max>

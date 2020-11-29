@@ -167,11 +167,11 @@ namespace TorannMagic
                             Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
                             if (pawn.GetComp<CompAbilityUserMagic>().spell_HolyWrath == true)
                             {
-                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Heal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ValiantCharge, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overwhelm, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_HolyWrath, null, TexButton.TMTex_SkillPointUsed);
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_P_RayofHope, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Heal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ValiantCharge, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overwhelm, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_HolyWrath, TexButton.TMTex_SkillPointUsed);
                             }
                             else
                             {
-                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Heal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ValiantCharge, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overwhelm, null, null, TexButton.TMTex_SkillPointUsed);
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_P_RayofHope, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Heal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ValiantCharge, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overwhelm, null, TexButton.TMTex_SkillPointUsed);
                             }
                         }
                         if (pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
@@ -803,7 +803,7 @@ namespace TorannMagic
                             (power.abilityDef == TorannMagicDefOf.TM_BloodMoon && MagicPowerSkill6 == null) ||
                             (power.abilityDef == TorannMagicDefOf.TM_Shapeshift && MagicPowerSkill6 == null) ||
                             (power.abilityDef == TorannMagicDefOf.TM_Recall && MagicPowerSkill6 == null) ||
-                            (power.abilityDef == TorannMagicDefOf.TM_HolyWrath && MagicPowerSkill5 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_HolyWrath && MagicPowerSkill6 == null) ||
                             (power.abilityDef == TorannMagicDefOf.TM_Resurrection && MagicPowerSkill5 == null))
                         {
                             Rect rectMasterLock = new Rect(rect.xMax - 23f - "TM_MasterSpellLocked".Translate().Length * 4, rect.yMin + MagicCardUtility.MagicButtonSize + 4f, "TM_MasterSpellLocked".Translate().Length * 8, MagicCardUtility.TextSize * 3);
@@ -898,6 +898,12 @@ namespace TorannMagic
                                 break;
                             }
                             if (enumerator.Current.abilityDef.defName == "TM_RayofHope" || enumerator.Current.abilityDef.defName == "TM_RayofHope_I" || enumerator.Current.abilityDef.defName == "TM_RayofHope_II" || enumerator.Current.abilityDef.defName == "TM_RayofHope_III")
+                            {
+                                compMagic.LevelUpSkill_RayofHope(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_P_RayofHope" || enumerator.Current.abilityDef.defName == "TM_P_RayofHope_I" || enumerator.Current.abilityDef.defName == "TM_P_RayofHope_II" || enumerator.Current.abilityDef.defName == "TM_P_RayofHope_III")
                             {
                                 compMagic.LevelUpSkill_RayofHope(skill.label);
                                 skill.level++;

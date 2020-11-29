@@ -200,6 +200,92 @@
 				</li>
 			</skills>										
 		</customPower>
+	</TorannMagic.TM_CustomPowerDef>
+	
+	<TorannMagic.TM_CustomPowerDef ParentName="CustomPower">
+		<defName>TM_ShieldOther</defName>	
+		<customPower>	
+			<forMage>true</forMage>
+			<abilityDefs>									
+				<li>TM_ShieldOther</li>							
+			</abilityDefs>		
+			<skills>
+				<li>
+					<label>TM_Shield_eff</label>
+					<description>TM_Shield_eff_desc</description>
+					<levelMax>3</levelMax>
+					<costToLevel>1</costToLevel>
+				</li>
+			</skills>	
+			<autocasting>										<!-- limited autocast functionality -->
+				<type>OnNearby</type>							<!-- valid types are: OnTarget, OnCell, OnNearby, OnSelf, Null -->
+				<targetType>Pawn</targetType>				<!-- matches the class type valid for the target, options: Thing (default), ThingWithComps, Pawn, Building, Corpse, LocalTargetInfo -->
+				<mightUser>false</mightUser>				<!-- determines if autocast is checked for might users -->
+				<magicUser>true</magicUser>				<!-- determines if autocast is checked for magic users -->
+				<drafted>true</drafted>					<!-- determines if autocasting will be attempted if the pawn is drafted -->
+				<undrafted>false</undrafted>				<!-- determines if autocasting will be attempted if the pawn is not drafted (can be both drafted and undrafted) -->
+															<!-- targets can match any or all criteria but must be valid for at least 1 -->
+				<targetFriendly>true</targetFriendly>		<!-- target is valid if Friendly (same faction) -->
+				<targetNeutral>false</targetNeutral>			<!-- target is valid if Neutral (non-hostile) -->
+				<targetEnemy>false</targetEnemy>			<!-- target is valid if Enemy (hostile) -->
+				<requiresLoS>true</requiresLoS>				<!-- checks LOS -->
+				<AIUsable>true</AIUsable>					<!-- WIP - limited functionality for AI casting -->
+				<includeSelf>false</includeSelf>			<!-- valid targets can include the caster -->
+				<advancedConditionDefs>						<!-- list of advanced condition checks; entries are the defName of one or more TM_AutocastConditionDef -->
+					<li>TM_BelowMaxHealth</li>
+					<li>TM_TargetDrafted</li>
+				</advancedConditionDefs>					<!-- must match all conditions; review TM_AutocastConditionDefs.xml for examples and detailed instructions -->
+															<!-- valid condition classes are: DamageTaken, HasHediff, HasNeed, EnemiesInRange, AlliesInRange, TargetDrafted, Null -->
+			</autocasting>			
+		</customPower>
 	</TorannMagic.TM_CustomPowerDef>	
+	
+	<TorannMagic.TM_CustomPowerDef ParentName="CustomPower">
+		<defName>TM_Discord</defName>	
+		<customPower>	
+			<forMage>true</forMage>
+			<abilityDefs>									<!-- only 1 ability so max level is 0 -->
+				<li>TM_Discord</li>
+			</abilityDefs>
+			<skills>
+				<li>
+					<label>TM_Discord_eff</label>
+					<description>TM_Discord_eff_desc</description>
+					<levelMax>3</levelMax>
+					<costToLevel>1</costToLevel>
+				</li>
+			</skills>										
+		</customPower>
+	</TorannMagic.TM_CustomPowerDef>
+	
+<!-- 	<TorannMagic.TM_CustomPowerDef ParentName="CustomPower">
+		<defName>TM_ShadowSlayer</defName>	
+		<customPower>	
+			<forFighter>true</forFighter>
+			<abilityDefs>								
+				<li>TM_ShadowSlayer</li>
+			</abilityDefs>
+			<skills>
+				<li>										
+					<label>TM_ShadowSlayer_pwr</label>
+					<description>TM_ShadowSlayer_pwr_desc</description>
+					<levelMax>5</levelMax>
+					<costToLevel>1</costToLevel>
+				</li>
+				<li>
+					<label>TM_ShadowSlayer_eff</label>
+					<description>TM_ShadowSlayer_eff_desc</description>
+					<levelMax>5</levelMax>
+					<costToLevel>1</costToLevel>
+				</li>
+				<li>
+					<label>TM_ShadowSlayer_ver</label>
+					<description>TM_ShadowSlayer_ver_desc</description>
+					<levelMax>5</levelMax>
+					<costToLevel>1</costToLevel>
+				</li>
+			</skills>										
+		</customPower>
+	</TorannMagic.TM_CustomPowerDef> -->
   
 </Defs>

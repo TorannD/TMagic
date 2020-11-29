@@ -27,7 +27,7 @@
     <label>Advanced Heal</label>
     <uiIconPath>UI/advancedheal</uiIconPath>
     <description>Invokes holy power to greatly heal the wounds of a target. Base heal restores 14 health for up to 3 wounds. Will immediately seal the bleeding of wounds from missing bodyparts.</description>
-    <manaCost>0.24</manaCost>
+    <manaCost>0.28</manaCost>
 	<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<learnChance>.4</learnChance>
 		<canCopy>true</canCopy>
@@ -64,8 +64,8 @@
     <label>Purify</label>
     <uiIconPath>UI/purify</uiIconPath>
     <description>Invokes holy power to purify scars on the body, mind, and soul.</description>
-    <manaCost>0.70</manaCost>
-	<efficiencyReductionPercent>.07</efficiencyReductionPercent>
+    <manaCost>0.80</manaCost>
+	<efficiencyReductionPercent>.06</efficiencyReductionPercent>
 		<learnChance>.3</learnChance>
 		<canCopy>true</canCopy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -535,7 +535,7 @@ Pain:		-70%</description>
     <label>Resurrection</label>
     <uiIconPath>UI/resurrection</uiIconPath>
     <description>Resurrection restores the life of a recently deceased pawn. This places an immense demand on the Priest and resurrected pawn and both will be weak for several days while their strength recovers. Resurrection comes at a price; the resurrected pawn will forfeit up to 20% of their skills and may develop detrimental health conditions.</description>
-    <manaCost>0.95</manaCost>
+    <manaCost>1</manaCost>
 	<efficiencyReductionPercent>.05</efficiencyReductionPercent>
 		<learnItem>SpellOf_Resurrection</learnItem>
 		<learnChance>.02</learnChance>

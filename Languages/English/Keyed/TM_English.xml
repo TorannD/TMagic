@@ -368,8 +368,8 @@ Level 15: Teleport, Heal, and Summon Minion gain versatility level 3 class impro
 <TM_Cantrips_eff>Cantrips Efficiency</TM_Cantrips_eff>
 <TM_Cantrips_ver>Cantrips Versatility</TM_Cantrips_ver>
 
-<TM_RayofHope_eff>Ray of Hope Efficiency</TM_RayofHope_eff>
-<TM_RayofHope_eff_desc>Decreases the mana upkeep cost of Ray of Hope by 8% per level.</TM_RayofHope_eff_desc>
+<TM_RayofHope_eff>Inner Fire Efficiency</TM_RayofHope_eff>
+<TM_RayofHope_eff_desc>Decreases the mana upkeep cost of Inner Fire by 8% per level.</TM_RayofHope_eff_desc>
 <TM_Firebolt_pwr_desc>Increases Firebolt damage by 5 per level.</TM_Firebolt_pwr_desc>
 <TM_Firebolt_eff_desc>Decreases mana cost of Firebolt by 10% per level.</TM_Firebolt_eff_desc>
 <TM_Fireclaw_pwr_desc>Increases damage done by each strand of Fireclaw by 4 per skill level.
@@ -489,6 +489,7 @@ Allows the portal to be held open 20s longer per level.</TM_Teleport_ver_desc>
 <TM_Teleport_ver>Teleport Versatility</TM_Teleport_ver>
 <TM_FoldReality_eff>Fold Reality Efficiency</TM_FoldReality_eff>
 
+<TM_P_RayofHope_eff_desc>Decreases the mana upkeep cost of Ray of Hope by 8% per level.</TM_P_RayofHope_eff_desc>
 <TM_Heal_eff_desc>Decreases mana cost of Heal by 7% of base mana cost.</TM_Heal_eff_desc>
 <TM_Heal_pwr_desc>Increases the amount each wound is healed by 2 points per level.</TM_Heal_pwr_desc>
 <TM_Heal_ver_desc>Increases the maximum number of wounds that can be healed per spell by 1 per level.</TM_Heal_ver_desc>
@@ -509,6 +510,7 @@ Level 2: allies are healed for a small amount
 Level 3: Holy Wrath bestows might to all allies within the effect</TM_HolyWrath_ver_desc>
 
 
+<TM_P_RayofHope_eff>Ray of Hope Efficiency</TM_P_RayofHope_eff>
 <TM_Heal_eff>Heal Efficiency</TM_Heal_eff>
 <TM_Heal_pwr>Heal Power</TM_Heal_pwr>
 <TM_Heal_ver>Heal Versatility</TM_Heal_ver>
@@ -663,7 +665,7 @@ Level 3: 33-50; Spreading Darkness: 21-33</TM_DeathBolt_pwr_desc>
 <TM_AdvancedHeal_eff_desc>Reduces mana cost of Advanced Heal by 8% per level.</TM_AdvancedHeal_eff_desc>
 <TM_AdvancedHeal_ver_desc>Increases the maximum number of wounds healed by 1 per level.</TM_AdvancedHeal_ver_desc>
 <TM_AdvancedHeal_pwr_desc>Increases the amount each wound is healed by 3 points per level.</TM_AdvancedHeal_pwr_desc>
-<TM_Purify_eff_desc>Reduces the mana cost of Purify by 7% per level.</TM_Purify_eff_desc>
+<TM_Purify_eff_desc>Reduces the mana cost of Purify by 6% per level.</TM_Purify_eff_desc>
 <TM_Purify_ver_desc>Increases number of ailments that can be cured per use. Skill increase expands the types of ailments that can be purified:
 Level 0: 
 Physical - Cataracts, Hearing Loss, Toxic buildup
@@ -876,10 +878,11 @@ Level 3: 45%</TM_Meteor_ver_desc>
 <TM_Meteor_eff>Earth Shaker</TM_Meteor_eff>
 <TM_Meteor_ver>Heart of Gold</TM_Meteor_ver>
 
-<TM_TechnoBit_pwr_desc>The techno-bit propels small explosives at the technomancer's target. Each skill level increases the range and decreases the delay of the explosive and mana cost per attack.
-Level 5: adds an EMP grenade
-Level 10: adds a second explosive grenade
-Level 15: adds a third explosive grenade</TM_TechnoBit_pwr_desc>
+<TM_TechnoBit_pwr_desc>The techno-bit converts mana from the technomancer fire bursts of micro lasers at the technomancer's target. Each skill level increases the range and decreases firing delay and mana cost per attack.
+Level 0: 25 range, 3 shots every 3s, 6 mana
+Level 5: 30 range, 4 shots every 2.75s, 5.5 mana
+Level 10: 35 range, 5 shots every 2.5s, 5 mana
+Level 15: 40 range, 6 shots every 2.25s, 4.5 mana</TM_TechnoBit_pwr_desc>
 <TM_TechnoBit_eff_desc>Increases the amount, frequency, and search radius of repairs while decreasing the mana cost to perform repairs.
 
 Repair frequency is increased while drafted.</TM_TechnoBit_eff_desc>
@@ -1231,9 +1234,9 @@ Healing Totem: Increases range and heal amount</TM_Totems_pwr_desc>
 <TM_Hex_pwr_desc>Increases chance to apply hex by 10%, base 40% chance.</TM_Hex_pwr_desc>
 <TM_Hex_eff_desc>Reduces mana cost of Hex by 6% per skill point.</TM_Hex_eff_desc>
 <TM_Hex_ver_desc>Increases the power of effects applied to hexed targets.</TM_Hex_ver_desc>
-<TM_SpiritWolves_pwr_desc>Pack damage is increased by 15% per skill point.</TM_SpiritWolves_pwr_desc>
-<TM_SpiritWolves_eff_desc>Reduces mana cost to manifest Spirit Wolves by 8% per skill point.</TM_SpiritWolves_eff_desc>
-<TM_SpiritWolves_ver_desc>Larger wolf pack increasing the effective area by 10%; at skill level 3, any damage applied by spirit wolves also has a 30% chance to apply hex.</TM_SpiritWolves_ver_desc>
+<TM_SpiritWolves_pwr_desc>Spirit wolves gain enrage when summoned. Each skill point increases the effects of enrage.</TM_SpiritWolves_pwr_desc>
+<TM_SpiritWolves_eff_desc>Reduces mana cost to manifest Spirit Wolves by 6% and increases duration by 2s per skill point.</TM_SpiritWolves_eff_desc>
+<TM_SpiritWolves_ver_desc>Increases the number of wolves summoned by 1 per skill level.</TM_SpiritWolves_ver_desc>
 <TM_GuardianSpirit_pwr_desc>Increases the potency of Guardian Spirit abilities:
 Spirit Bear: Increased taunt targets (4 -> 9), taunt chance (60% -> 78%), and taunt range (15 -> 21); increase damage mitigation (4 -> 7)
 Spirit Mongoose: Increases shadow strike damage (11 -> 16) and crit chance (40% -> 65%); increases duration of invisibility (1.5s -> 2.5s) and haste (2s -> 3s) following a shadow strike
@@ -1253,9 +1256,9 @@ Spirit Crow: Increases hex chance (50% -> 75%); increases the effectiveness of "
 <TM_Hex_pwr>Hexer</TM_Hex_pwr>
 <TM_Hex_eff>Incantations</TM_Hex_eff>
 <TM_Hex_ver>Manifest Iao</TM_Hex_ver>
-<TM_SpiritWolves_pwr>Pack Leader</TM_SpiritWolves_pwr>
+<TM_SpiritWolves_pwr>Northern Haunt</TM_SpiritWolves_pwr>
 <TM_SpiritWolves_eff>Spirit Howl</TM_SpiritWolves_eff> 
-<TM_SpiritWolves_ver>Northern Haunt</TM_SpiritWolves_ver>
+<TM_SpiritWolves_ver>Pack Leader</TM_SpiritWolves_ver>
 <TM_GuardianSpirit_pwr>Manifest Guardian</TM_GuardianSpirit_pwr>
 <TM_GuardianSpirit_eff>Spirit Link</TM_GuardianSpirit_eff>
 <TM_GuardianSpirit_ver>Spirit Bond</TM_GuardianSpirit_ver>
@@ -1320,7 +1323,7 @@ Level 0: speed +30%, tiredness +40%
 Level 1: speed +40%, tiredness +45%
 Level 2: speed +50%, tiredness +50%
 Level 3: speed +60%, tiredness +55%</TM_Sprint_pwr_desc>
-<TM_Fortitude_pwr_desc>Increases the amount of damage mitigation by 2 per skill level.</TM_Fortitude_pwr_desc>
+<TM_Fortitude_pwr_desc>Increases the amount of damage mitigation by 1 per skill level.</TM_Fortitude_pwr_desc>
 <TM_Fortitude_ver_desc>Increases damage to stamina conversion by .5 stamina per dmage for each level.
 Conversion occurs pre mitigation.
 Base conversion rate is 1 stamina for 1 damage.</TM_Fortitude_ver_desc>
@@ -1371,6 +1374,9 @@ Level 3: 30% stamina restored</TM_Headshot_ver_desc>
 <TM_AntiArmor_pwr_desc>Improves the nanites used in Anti Armor rounds, increasing damage to armored targets by an additional 50% per skill point.</TM_AntiArmor_pwr_desc>
 <TM_AntiArmor_eff_desc>Decreases stamina cost of Anti Armor by 10% of base cost per skill level.</TM_AntiArmor_eff_desc>
 <TM_AntiArmor_ver_desc>Increases the number and power of fragments caused by explosive rounds. Rounds do not explode if the target is not armored.</TM_AntiArmor_ver_desc>
+<TM_ShadowSlayer_pwr_desc>Increases the damage each shot deals by 2 per skill level while invisibility is active.</TM_ShadowSlayer_pwr_desc>
+<TM_ShadowSlayer_eff_desc>Decreases stamina cost to activate the shadow slayer cloak by 6% per skill level.</TM_ShadowSlayer_eff_desc>
+<TM_ShadowSlayer_ver_desc>Increases duration of the shadow slayer cloaking field by 3 seconds per skill level. 40s default duration.</TM_ShadowSlayer_ver_desc>
 
 <TM_SniperFocus_pwr>Sniper Training</TM_SniperFocus_pwr>
 <TM_DisablingShot_eff>Stamina Cost</TM_DisablingShot_eff>
@@ -1381,6 +1387,9 @@ Level 3: 30% stamina restored</TM_Headshot_ver_desc>
 <TM_AntiArmor_pwr>Nanites</TM_AntiArmor_pwr>
 <TM_AntiArmor_eff>Stamina Cost</TM_AntiArmor_eff>
 <TM_AntiArmor_ver>Explosive Rounds</TM_AntiArmor_ver>
+<TM_ShadowSlayer_pwr>Stealth Advantage</TM_ShadowSlayer_pwr>
+<TM_ShadowSlayer_eff>Prediction Caching</TM_ShadowSlayer_eff>
+<TM_ShadowSlayer_ver>Software Upgrade</TM_ShadowSlayer_ver>
 
 <TM_BladeFocus_pwr_desc>Advances training as a bladedancer. Each level requires 2 skill points to train and upgrades the class trait.
 Level 0: Melee Hit Chance +3, Movement +0.15, Mental Break Threshold -3%
@@ -1521,7 +1530,7 @@ Level 1: 15%
 Level 2: 30%
 Level 3: 45%</TM_PsionicBarrier_pwr_desc>
 <TM_PsionicBarrier_eff_desc>Reduces the amount of psionic energy drained when deflecting a projectile by 10% per skill point.</TM_PsionicBarrier_eff_desc>
-<TM_PsionicBarrier_ver_desc>Increases the radius of barrier by half a cell per skill point. Default radius is 2 cells.</TM_PsionicBarrier_ver_desc>
+<TM_PsionicBarrier_ver_desc>Increases the radius of barrier by 3/4th a cell per skill point. Default radius is 2.5 cells.</TM_PsionicBarrier_ver_desc>
 <TM_PsionicBlast_pwr_desc>Power up psi blast, each level increases damage by 15%.</TM_PsionicBlast_pwr_desc>
 <TM_PsionicBlast_eff_desc>Decreases stamina cost of Psionic Blast by 8% per level of base stamina cost.</TM_PsionicBlast_eff_desc>
 <TM_PsionicBlast_ver_desc>Increases the chance to project multiple blasts by 4% per level and reduces the psionic energy drained for each additional blast by 1.</TM_PsionicBlast_ver_desc>
@@ -1571,15 +1580,17 @@ Level 0: 0%
 Level 1: 15%
 Level 2: 30%
 Level 3: 45%</TM_Spite_ver_desc>
-<TM_LifeSteal_pwr_desc>Melee attacks steal life proportional to the damage dealt; each skill level increases the amount by 5%
-Base amount: 25%</TM_LifeSteal_pwr_desc>
+<TM_LifeSteal_pwr_desc>Melee attacks life steal 15% of the damage dealt; each skill level increases the amount by 2%</TM_LifeSteal_pwr_desc>
 <TM_LifeSteal_eff_desc>Steals stamina and generates hate proportional to damage dealt.
 Level 0: 0%
 Level 1: 5%
 Level 2: 10%
 Level 3: 15%</TM_LifeSteal_eff_desc>
-<TM_LifeSteal_ver_desc>Each strike can heal a nearby ally (within 3 cells) by 20% of damage dealt per skill level.
-Base amount: 0%</TM_LifeSteal_ver_desc>
+<TM_LifeSteal_ver_desc>Each strike can heal a nearby ally (within 3 cells) by a % of damage dealt per skill level.
+Level 0: 0%
+Level 1: 11%
+Level 2: 12%
+Level 3: 13%</TM_LifeSteal_ver_desc>
 <TM_GraveBlade_pwr_desc>Increases the damage of each grave blade by 12% per skill level.</TM_GraveBlade_pwr_desc>
 <TM_GraveBlade_eff_desc>Reduces the stamina cost of Grave Blade by 8% per skill level.</TM_GraveBlade_eff_desc>
 <TM_GraveBlade_ver_desc>Each strike has a 10% chance per skill point heal the caster by half the damage dealt and/or induce fear in the target.</TM_GraveBlade_ver_desc>

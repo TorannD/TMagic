@@ -5,7 +5,7 @@ using AbilityUser;
 
 namespace TorannMagic
 {
-    public class Sentinel_DeathWorker : DeathActionWorker
+    public class DeathWorker_Sentinel : DeathActionWorker
     {
         public override void PawnDied(Corpse corpse)
         {

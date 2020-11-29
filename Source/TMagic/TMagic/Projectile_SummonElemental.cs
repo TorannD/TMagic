@@ -92,8 +92,8 @@ namespace TorannMagic
                     {
                         for (int i = 0; i < 2; i++)
                         {
-                            spawnThing.def = TorannMagicDefOf.TM_LesserEarth_ElementalR;
-                            spawnThing.kindDef = PawnKindDef.Named("TM_LesserEarth_Elemental");
+                            spawnThing.def = TorannMagicDefOf.TM_Earth_ElementalR;
+                            spawnThing.kindDef = PawnKindDef.Named("TM_Earth_Elemental");
                             SingleSpawnLoop(spawnThing, centerCell, map);
                         }
                         spawnThing.def = TorannMagicDefOf.TM_GreaterEarth_ElementalR;
@@ -101,16 +101,34 @@ namespace TorannMagic
                     }
                     else if (pwrVal == 2)
                     {
+                        for (int i = 0; i < 2; i++)
+                        {
+                            spawnThing.def = TorannMagicDefOf.TM_LesserEarth_ElementalR;
+                            spawnThing.kindDef = PawnKindDef.Named("TM_LesserEarth_Elemental");
+                            SingleSpawnLoop(spawnThing, centerCell, map);
+                        }
                         spawnThing.def = TorannMagicDefOf.TM_GreaterEarth_ElementalR;
                         spawnThing.kindDef = PawnKindDef.Named("TM_GreaterEarth_Elemental");
                     }
                     else if (pwrVal == 1)
                     {
+                        for (int i = 0; i < 2; i++)
+                        {
+                            spawnThing.def = TorannMagicDefOf.TM_LesserEarth_ElementalR;
+                            spawnThing.kindDef = PawnKindDef.Named("TM_LesserEarth_Elemental");
+                            SingleSpawnLoop(spawnThing, centerCell, map);
+                        }
                         spawnThing.def = TorannMagicDefOf.TM_Earth_ElementalR;
                         spawnThing.kindDef = PawnKindDef.Named("TM_Earth_Elemental");
                     }
                     else
                     {
+                        for (int i = 0; i < 1; i++)
+                        {
+                            spawnThing.def = TorannMagicDefOf.TM_LesserEarth_ElementalR;
+                            spawnThing.kindDef = PawnKindDef.Named("TM_LesserEarth_Elemental");
+                            SingleSpawnLoop(spawnThing, centerCell, map);
+                        }
                         spawnThing.def = TorannMagicDefOf.TM_LesserEarth_ElementalR;
                         spawnThing.kindDef = PawnKindDef.Named("TM_LesserEarth_Elemental");
                     }
@@ -128,8 +146,8 @@ namespace TorannMagic
                     {
                         for (int i = 0; i < 2; i++)
                         {
-                            spawnThing.def = TorannMagicDefOf.TM_LesserFire_ElementalR;
-                            spawnThing.kindDef = PawnKindDef.Named("TM_LesserFire_Elemental");
+                            spawnThing.def = TorannMagicDefOf.TM_Fire_ElementalR;
+                            spawnThing.kindDef = PawnKindDef.Named("TM_Fire_Elemental");
                             SingleSpawnLoop(spawnThing, centerCell, map);
                         }
                         spawnThing.def = TorannMagicDefOf.TM_GreaterFire_ElementalR;
@@ -137,16 +155,34 @@ namespace TorannMagic
                     }
                     else if (pwrVal == 2)
                     {
+                        for (int i = 0; i < 2; i++)
+                        {
+                            spawnThing.def = TorannMagicDefOf.TM_LesserFire_ElementalR;
+                            spawnThing.kindDef = PawnKindDef.Named("TM_LesserFire_Elemental");
+                            SingleSpawnLoop(spawnThing, centerCell, map);
+                        }
                         spawnThing.def = TorannMagicDefOf.TM_GreaterFire_ElementalR;
                         spawnThing.kindDef = PawnKindDef.Named("TM_GreaterFire_Elemental");
                     }
                     else if (pwrVal == 1)
                     {
+                        for (int i = 0; i < 2; i++)
+                        {
+                            spawnThing.def = TorannMagicDefOf.TM_LesserFire_ElementalR;
+                            spawnThing.kindDef = PawnKindDef.Named("TM_LesserFire_Elemental");
+                            SingleSpawnLoop(spawnThing, centerCell, map);
+                        }
                         spawnThing.def = TorannMagicDefOf.TM_Fire_ElementalR;
                         spawnThing.kindDef = PawnKindDef.Named("TM_Fire_Elemental");
                     }
                     else
                     {
+                        for (int i = 0; i < 1; i++)
+                        {
+                            spawnThing.def = TorannMagicDefOf.TM_LesserFire_ElementalR;
+                            spawnThing.kindDef = PawnKindDef.Named("TM_LesserFire_Elemental");
+                            SingleSpawnLoop(spawnThing, centerCell, map);
+                        }
                         spawnThing.def = TorannMagicDefOf.TM_LesserFire_ElementalR;
                         spawnThing.kindDef = PawnKindDef.Named("TM_LesserFire_Elemental");
                     }
@@ -165,8 +201,8 @@ namespace TorannMagic
                     {
                         for (int i = 0; i < 2; i++)
                         {
-                            spawnThing.def = TorannMagicDefOf.TM_LesserWater_ElementalR;
-                            spawnThing.kindDef = PawnKindDef.Named("TM_LesserWater_Elemental");
+                            spawnThing.def = TorannMagicDefOf.TM_Water_ElementalR;
+                            spawnThing.kindDef = PawnKindDef.Named("TM_Water_Elemental");
                             SingleSpawnLoop(spawnThing, centerCell, map);
                         }
                         spawnThing.def = TorannMagicDefOf.TM_GreaterWater_ElementalR;
@@ -174,16 +210,34 @@ namespace TorannMagic
                     }
                     else if (pwrVal == 2)
                     {
+                        for (int i = 0; i < 2; i++)
+                        {
+                            spawnThing.def = TorannMagicDefOf.TM_LesserWater_ElementalR;
+                            spawnThing.kindDef = PawnKindDef.Named("TM_LesserWater_Elemental");
+                            SingleSpawnLoop(spawnThing, centerCell, map);
+                        }
                         spawnThing.def = TorannMagicDefOf.TM_GreaterWater_ElementalR;
                         spawnThing.kindDef = PawnKindDef.Named("TM_GreaterWater_Elemental");
                     }
                     else if (pwrVal == 1)
                     {
+                        for (int i = 0; i < 2; i++)
+                        {
+                            spawnThing.def = TorannMagicDefOf.TM_LesserWater_ElementalR;
+                            spawnThing.kindDef = PawnKindDef.Named("TM_LesserWater_Elemental");
+                            SingleSpawnLoop(spawnThing, centerCell, map);
+                        }
                         spawnThing.def = TorannMagicDefOf.TM_Water_ElementalR;
                         spawnThing.kindDef = PawnKindDef.Named("TM_Water_Elemental");
                     }
                     else
                     {
+                        for (int i = 0; i < 1; i++)
+                        {
+                            spawnThing.def = TorannMagicDefOf.TM_LesserWater_ElementalR;
+                            spawnThing.kindDef = PawnKindDef.Named("TM_LesserWater_Elemental");
+                            SingleSpawnLoop(spawnThing, centerCell, map);
+                        }
                         spawnThing.def = TorannMagicDefOf.TM_LesserWater_ElementalR;
                         spawnThing.kindDef = PawnKindDef.Named("TM_LesserWater_Elemental");
                     }
@@ -204,7 +258,7 @@ namespace TorannMagic
                         for (int i = 0; i < 2; i++)
                         {
                             spawnThing.def = TorannMagicDefOf.TM_LesserWind_ElementalR;
-                            spawnThing.kindDef = PawnKindDef.Named("TM_LesserWind_Elemental");
+                            spawnThing.kindDef = PawnKindDef.Named("TM_Wind_Elemental");
                             SingleSpawnLoop(spawnThing, centerCell, map);
                         }
                         spawnThing.def = TorannMagicDefOf.TM_GreaterWind_ElementalR;
@@ -212,16 +266,34 @@ namespace TorannMagic
                     }
                     else if (pwrVal == 2)
                     {
+                        for (int i = 0; i < 2; i++)
+                        {
+                            spawnThing.def = TorannMagicDefOf.TM_LesserWind_ElementalR;
+                            spawnThing.kindDef = PawnKindDef.Named("TM_LesserWind_Elemental");
+                            SingleSpawnLoop(spawnThing, centerCell, map);
+                        }
                         spawnThing.def = TorannMagicDefOf.TM_GreaterWind_ElementalR;
                         spawnThing.kindDef = PawnKindDef.Named("TM_GreaterWind_Elemental");
                     }
                     else if (pwrVal == 1)
                     {
+                        for (int i = 0; i < 2; i++)
+                        {
+                            spawnThing.def = TorannMagicDefOf.TM_LesserWind_ElementalR;
+                            spawnThing.kindDef = PawnKindDef.Named("TM_LesserWind_Elemental");
+                            SingleSpawnLoop(spawnThing, centerCell, map);
+                        }
                         spawnThing.def = TorannMagicDefOf.TM_Wind_ElementalR;
                         spawnThing.kindDef = PawnKindDef.Named("TM_Wind_Elemental");
                     }
                     else
                     {
+                        for (int i = 0; i < 1; i++)
+                        {
+                            spawnThing.def = TorannMagicDefOf.TM_LesserWind_ElementalR;
+                            spawnThing.kindDef = PawnKindDef.Named("TM_LesserWind_Elemental");
+                            SingleSpawnLoop(spawnThing, centerCell, map);
+                        }
                         spawnThing.def = TorannMagicDefOf.TM_LesserWind_ElementalR;
                         spawnThing.kindDef = PawnKindDef.Named("TM_LesserWind_Elemental");
                     }

@@ -4,7 +4,7 @@ using Verse;
 
 namespace TorannMagic
 {
-    public class Poppi_DeathWorker : DeathActionWorker
+    public class DeathWorker_Poppi : DeathActionWorker
     {
         public override void PawnDied(Corpse corpse)
         {

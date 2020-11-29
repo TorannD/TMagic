@@ -117,7 +117,7 @@ namespace TorannMagic
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
                     {
                         Rect inRect3 = new Rect(rect.x, rect11.y, MightCardUtility.PowersColumnWidth, MightCardUtility.PowersColumnHeight);
-                        MightCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMight>(), pawn.GetComp<CompAbilityUserMight>().MightData.MightPowersS, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_SniperFocus, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Headshot, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_DisablingShot, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_AntiArmor, null, null, TexButton.TMTex_SkillPointUsed);
+                        MightCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMight>(), pawn.GetComp<CompAbilityUserMight>().MightData.MightPowersS, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_SniperFocus, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Headshot, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_DisablingShot, comp.MightData.MightPowerSkill_AntiArmor, comp.MightData.MightPowerSkill_ShadowSlayer, null, TexButton.TMTex_SkillPointUsed);
                     }
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
                     {
@@ -738,6 +738,12 @@ namespace TorannMagic
                             if (enumerator.Current.abilityDef.defName == "TM_AntiArmor")
                             {
                                 compMight.LevelUpSkill_AntiArmor(skill.label);
+                                skill.level++;
+                                compMight.MightData.MightAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_ShadowSlayer")
+                            {
+                                //compMight.LevelUpSkill_AntiArmor(skill.label);
                                 skill.level++;
                                 compMight.MightData.MightAbilityPoints -= 1;
                             }
