@@ -1872,7 +1872,7 @@ namespace TorannMagic
                                         this.autocastTick = Find.TickManager.TicksGame + (int)Rand.Range(.8f * settingsRef.autocastEvaluationFrequency, 1.2f * settingsRef.autocastEvaluationFrequency);
                                         ResolveAutoCast();
                                     }
-                                    else if(!this.Pawn.IsPrisoner || this.Pawn.IsFighting())
+                                    else if(settingsRef.AICasting && (!this.Pawn.IsPrisoner || this.Pawn.IsFighting()))
                                     {
                                         float tickMult = settingsRef.AIAggressiveCasting ? 1f : 2f;
                                         this.autocastTick = Find.TickManager.TicksGame + (int)(Rand.Range(.8f * settingsRef.autocastEvaluationFrequency, 1.2f * settingsRef.autocastEvaluationFrequency) * tickMult);

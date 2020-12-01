@@ -138,16 +138,16 @@ namespace TorannMagic
             }
             if (parent.def == TorannMagicDefOf.TM_RayOfHope_AuraHD && comp != null)
             {
-                abilityPower = comp.MagicData.MagicPowersIF.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope);
+                abilityPower = comp.MagicData.MagicPowersP.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope);
                 if (abilityPower == null)
                 {
-                    abilityPower = comp.MagicData.MagicPowersIF.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope_I);
+                    abilityPower = comp.MagicData.MagicPowersP.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope_I);
                     if (abilityPower == null)
                     {
-                        abilityPower = comp.MagicData.MagicPowersIF.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope_II);
+                        abilityPower = comp.MagicData.MagicPowersP.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope_II);
                         if (abilityPower == null)
                         {
-                            abilityPower = comp.MagicData.MagicPowersIF.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope_III);
+                            abilityPower = comp.MagicData.MagicPowersP.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope_III);
                         }
                     }
                 }
@@ -202,16 +202,16 @@ namespace TorannMagic
             }
             if (parent.def == TorannMagicDefOf.TM_InnerFire_AuraHD && comp != null)
             {
-                abilityPower = comp.MagicData.MagicPowersP.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope);
+                abilityPower = comp.MagicData.MagicPowersIF.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope);
                 if (abilityPower == null)
                 {
-                    abilityPower = comp.MagicData.MagicPowersP.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope_I);
+                    abilityPower = comp.MagicData.MagicPowersIF.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope_I);
                     if (abilityPower == null)
                     {
-                        abilityPower = comp.MagicData.MagicPowersP.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope_II);
+                        abilityPower = comp.MagicData.MagicPowersIF.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope_II);
                         if (abilityPower == null)
                         {
-                            abilityPower = comp.MagicData.MagicPowersP.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope_III);
+                            abilityPower = comp.MagicData.MagicPowersIF.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope_III);
                         }
                     }
                 }

@@ -135,15 +135,15 @@ namespace TorannMagic
             }
             else if (this.Ability.Def == TorannMagicDefOf.TM_Shadow_I)
             {
-                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow);
+                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow_I);
             }
             else if (this.Ability.Def == TorannMagicDefOf.TM_Shadow_II)
             {
-                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow_I);
+                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow_II);
             }
             else if (this.Ability.Def == TorannMagicDefOf.TM_Shadow_III)
             {
-                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow_II);
+                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow_III);
             }
             else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope)
             {
@@ -151,15 +151,15 @@ namespace TorannMagic
             }
             else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope_I)
             {
-                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope);
+                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope_I);
             }
             else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope_II)
             {
-                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope_I);
+                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope_II);
             }
             else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope_III)
             {
-                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope_II);
+                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope_III);
             }
             else if (this.Ability.Def == TorannMagicDefOf.TM_Soothe)
             {
@@ -167,15 +167,15 @@ namespace TorannMagic
             }
             else if (this.Ability.Def == TorannMagicDefOf.TM_Soothe_I)
             {
-                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe);
+                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe_I);
             }
             else if (this.Ability.Def == TorannMagicDefOf.TM_Soothe_II)
             {
-                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe_I);
+                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe_II);
             }
             else if (this.Ability.Def == TorannMagicDefOf.TM_Soothe_III)
             {
-                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe_II);
+                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe_III);
             }
             else if (this.Ability.Def == TorannMagicDefOf.TM_P_RayofHope)
             {
@@ -183,15 +183,15 @@ namespace TorannMagic
             }
             else if (this.Ability.Def == TorannMagicDefOf.TM_P_RayofHope_I)
             {
-                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope);
+                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope_I);
             }
             else if (this.Ability.Def == TorannMagicDefOf.TM_P_RayofHope_II)
             {
-                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope_I);
+                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope_II);
             }
             else if (this.Ability.Def == TorannMagicDefOf.TM_P_RayofHope_III)
             {
-                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope_II);
+                magicPower = this.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_P_RayofHope_III);
             }
 
             if (magicPower != null)
