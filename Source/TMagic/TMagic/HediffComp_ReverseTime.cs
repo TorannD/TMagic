@@ -194,7 +194,7 @@ namespace TorannMagic
                             {
                                 if (rec.def.defName.Contains("TM_"))
                                 {
-                                    if (rec.def.isBad && rec.def != TorannMagicDefOf.TM_ResurrectionHD)
+                                    if (rec.def.isBad && rec.def != TorannMagicDefOf.TM_ResurrectionHD && rec.def != TorannMagicDefOf.TM_DeathReversalHD)
                                     {
                                         totalHDremoved++;
                                         this.Pawn.health.RemoveHediff(rec);
@@ -236,7 +236,7 @@ namespace TorannMagic
                                             goto IgnoreHediff;
                                         }
                                     }
-                                    totalHDremoved++;
+                                    totalHDremoved +=2;
                                     this.Pawn.health.RemoveHediff(rec);
                                     i = hediffList.Count;
                                     break;
@@ -284,7 +284,7 @@ namespace TorannMagic
 
         public void ReduceReverseTime(int removedCount)
         {
-            this.durationTicks -= Mathf.RoundToInt(removedCount * Rand.Range(8f,12f) * tickPeriod);
+            this.durationTicks -= Mathf.RoundToInt(removedCount * Rand.Range(20f, 30f) * tickPeriod);
         }
 
         public void ReverseEffects(Pawn pawn, int intensity)

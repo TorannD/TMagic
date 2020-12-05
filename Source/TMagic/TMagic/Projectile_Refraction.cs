@@ -97,7 +97,7 @@ namespace TorannMagic
                 {
                     HediffComp_LightCapacitance hd = caster.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_LightCapacitanceHD).TryGetComp<HediffComp_LightCapacitance>();
                     this.wallEnergy *= hd.LightPotency;
-                    hd.LightEnergy -= 40f;
+                    hd.LightEnergy -= 20f;
                 }
             }
         }

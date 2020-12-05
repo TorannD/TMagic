@@ -154,7 +154,7 @@ namespace TorannMagic
                         hdComp.verVal = verVal;
                     }
                 }
-                if(pwrVal >= 3)
+                if(verVal >= 3)
                 {
                     float sev = 1.15f;
                     bool flag = true;
@@ -171,7 +171,7 @@ namespace TorannMagic
                             HediffComp_EnergyRegen hd2 = p.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_EnergyRegenHD, false).TryGetComp<HediffComp_EnergyRegen>();
                             if (hd2 != null)
                             {
-                                hd2.duration += 10;
+                                hd2.duration += 10 + pwrVal;
                             }
                         }
                     }
@@ -181,7 +181,7 @@ namespace TorannMagic
                         HediffComp_EnergyRegen hd2 = p.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_EnergyRegenHD, false).TryGetComp<HediffComp_EnergyRegen>();
                         if (hd2 != null)
                         {
-                            hd2.duration = 20;
+                            hd2.duration = 20 + pwrVal*2;
                         }
 
                     }

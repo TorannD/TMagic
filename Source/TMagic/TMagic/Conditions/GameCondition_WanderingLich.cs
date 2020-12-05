@@ -260,7 +260,7 @@ namespace TorannMagic.Conditions
             {
                 faction = Find.FactionManager.RandomEnemyFaction(true, true, true, TechLevel.Undefined);
             }
-            this.thing = TM_Action.SingleSpawnLoop(null, spawnables, edgeLocation.ToIntVec3, this.SingleMap, 0, false, true, faction);
+            this.thing = TM_Action.SingleSpawnLoop(null, spawnables, edgeLocation.ToIntVec3, this.SingleMap, 0, false, false, faction);
             CalculateWealthModifier();
             SpawnSkeletonMinions(edgeLocation.ToIntVec3, areaRadius, faction);
         }

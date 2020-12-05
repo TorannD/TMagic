@@ -1132,13 +1132,10 @@ namespace TorannMagic
                 }
                 if (!hasPaladinBuff)
                 {
-                    foreach (MagicPower p in magicPowerP)
+                    if(this.magicPowerP.Count >= 6)
                     {
-                        if(p.abilityDef == TorannMagicDefOf.TM_P_RayofHope)
-                        {
-                            hasPaladinBuff = true;
-                        }                        
-                    }
+                        hasPaladinBuff = true;
+                    }                       
                     if(!hasPaladinBuff)
                     {                        
                         MagicPower pBuff = new MagicPower(new List<AbilityUser.AbilityDef>

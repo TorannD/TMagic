@@ -697,7 +697,7 @@ Level 3: 16 health
 Level 4: 18 health</TM_HealingCircle_pwr_desc>
 <TM_BestowMight_eff_desc>Reduces mana cost of Bestow Might by 8% per skill point.</TM_BestowMight_eff_desc>
 <TM_Resurrection_eff_desc>Reduces mana cost of Resurrection by 5% per skill level and reduces the amount of skill experience lost by 2% per skill level.</TM_Resurrection_eff_desc>
-<TM_Resurrection_ver_desc>Increases the chance to prevent resurrection side effects by 10% per level.</TM_Resurrection_ver_desc>
+<TM_Resurrection_ver_desc>Increases the chance to prevent resurrection side effects by 10% and reduces skill loss by 10% per skill level.</TM_Resurrection_ver_desc>
 
 <TM_AdvancedHeal_eff>Efficient Healing</TM_AdvancedHeal_eff>
 <TM_AdvancedHeal_ver>Deep Healing</TM_AdvancedHeal_ver>

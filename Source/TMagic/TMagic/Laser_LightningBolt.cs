@@ -49,11 +49,11 @@ namespace TorannMagic
             if (flag)
             {
                 int DamageAmount = Mathf.RoundToInt(this.def.projectile.GetDamageAmount(1,null) + (pwrVal * 6)* this.arcaneDmg);
-                DamageInfo dinfo = new DamageInfo(this.def.projectile.damageDef, DamageAmount, 0, this.ExactRotation.eulerAngles.y, this.launcher, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
+                DamageInfo dinfo = new DamageInfo(this.def.projectile.damageDef, DamageAmount, 1, this.ExactRotation.eulerAngles.y, this.launcher, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
                 hitThing.TakeDamage(dinfo);
                 if(Rand.Chance(.6f))
                 {
-                    DamageInfo dinfo2 = new DamageInfo(DamageDefOf.Stun, DamageAmount/4, 0, this.ExactRotation.eulerAngles.y, this.launcher, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
+                    DamageInfo dinfo2 = new DamageInfo(DamageDefOf.Stun, DamageAmount/4, 1, this.ExactRotation.eulerAngles.y, this.launcher, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
                     hitThing.TakeDamage(dinfo2);
                 }
 

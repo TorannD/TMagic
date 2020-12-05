@@ -6,6 +6,7 @@
 
   <DamageDef Name="TM_LocalInjuryBase" Abstract="True">
     <workerClass>DamageWorker_AddInjury</workerClass>
+	<defaultArmorPenetration>1</defaultArmorPenetration>
   </DamageDef>
   
 <!--   	<DamageDef Name="StunBase" Abstract="True">
@@ -477,7 +478,7 @@
 		<hediff>TM_Lightning</hediff>
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
 		<defaultDamage>6</defaultDamage>
-		<armorCategory>Heat</armorCategory>
+		<armorCategory>Light</armorCategory>
 		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
 		<explosionCellMote>Mote_BlastEMP</explosionCellMote>
 		<explosionColorCenter>(0.8, 0.7, 1.0, 0.8)</explosionColorCenter>
@@ -495,7 +496,7 @@
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
 		<defaultDamage>6</defaultDamage>
 		<impactSoundType>Electric</impactSoundType>
-		<armorCategory>Heat</armorCategory>
+		<armorCategory>Light</armorCategory>
 		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
 		<explosionCellMote>Mote_SparkFlash</explosionCellMote>
 		<explosionColorEdge>(0.8, 0.7, 1.0, 0.8)</explosionColorEdge>

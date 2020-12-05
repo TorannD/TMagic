@@ -142,22 +142,24 @@ namespace TorannMagic
                     int mapTime = GenLocalDate.HourOfDay(this.Pawn.Map);
                     if (mapTime < 20 && mapTime > 5)
                     {
+                        float amt = 0;
                         if (mapTime >= 13)
                         {
-                            return ((float)Mathf.Abs(24f - mapTime) * val);
+                            amt = ((float)Mathf.Abs(24f - mapTime) * val);
                         }
                         else if (mapTime <= 11)
                         {
-                            return ((float)Mathf.Abs(mapTime) * val);
+                            amt = ((float)Mathf.Abs(mapTime) * val);
                         }
                         else
                         {
-                            return (val * 12f);
+                            amt = (val * 12f);
                         }
+                        return (amt/1.5f);
                     }
-                    return ((val * 2f) - .04f);
+                    return ((val * 2f) - .05f);
                 }
-                return (val * 3f);
+                return (val * 2f);
             }
         }
 

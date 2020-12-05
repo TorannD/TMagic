@@ -192,8 +192,8 @@ namespace TorannMagic
                                     }
                                 }
                                 HealthUtility.AdjustSeverity(deadPawn, HediffDef.Named("TM_ResurrectionHD"), 1f);
-                                ReduceSkillsOfPawn(deadPawn, (.2f - .02f * pwrVal));
-                                ApplyHealthDefects(deadPawn, .5f - (.05f * verVal), .3f - .03f * verVal);
+                                ReduceSkillsOfPawn(deadPawn, (.35f - .035f * pwrVal));
+                                ApplyHealthDefects(deadPawn, .6f - (.06f * verVal), .3f - .03f * verVal);
                             }
                             if (deadPawn.kindDef.RaceProps.Animal)
                             {

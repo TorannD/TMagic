@@ -199,22 +199,24 @@ namespace TorannMagic
                     int mapTime = GenLocalDate.HourOfDay(pawn.Map);
                     if (mapTime < 20 && mapTime > 5)
                     {
+                        float amt = 0;
                         if (mapTime >= 13)
                         {
-                            return ((float)Mathf.Abs(24f - mapTime) * val);
+                            amt =((float)Mathf.Abs(24f - mapTime) * val);
                         }
                         else if (mapTime <= 11)
                         {
-                            return ((float)Mathf.Abs(mapTime) * val);
+                            amt = ((float)Mathf.Abs(mapTime) * val);
                         }
                         else
                         {
-                            return (val * 12f);
+                            amt = (val * 12f);
                         }
+                        return (amt / 1.3f);
                     }
-                    return ((val * 2f) - .04f);
+                    return ((val * 2f) - .05f);
                 }
-                return (val * 3f);
+                return (val * 2f);
             }
         }
 
@@ -439,7 +441,7 @@ namespace TorannMagic
             }
             if (this.glower != null && glower.parent != null && this.Map != null)
             {
-                Log.Message("glower not null, glow center " + glowCenter);
+                //Log.Message("glower not null, glow center " + glowCenter);
                 if (this.glowCenter != default(IntVec3) && this.pawn.Spawned)
                 {
                     this.Map.mapDrawer.MapMeshDirty(glowCenter, MapMeshFlag.Things);
@@ -489,7 +491,7 @@ namespace TorannMagic
                 this.glowing = false;
                 //this.shouldGlow = false;
                 this.initialized = true;
-                Log.Message("initializing sol, glowing: " + glowing + " glow center: " + glowCenter);
+                //Log.Message("initializing sol, glowing: " + glowing + " glow center: " + glowCenter);
             }            
         }
 

@@ -190,6 +190,7 @@
     <race>TM_SpiritBearR</race>
 	<combatPower>600</combatPower>
     <ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <lifeStages>
       <li>
         <bodyGraphicData>
@@ -332,6 +333,7 @@
     <race>TM_SpiritMongooseR</race>
 	<combatPower>500</combatPower>
     <ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <lifeStages>
       <li>
         <bodyGraphicData>
@@ -471,6 +473,7 @@
     <race>TM_SpiritCrowR</race>
 	<combatPower>100</combatPower>
     <ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <lifeStages>
 	  <li>
         <label>flight1</label>
