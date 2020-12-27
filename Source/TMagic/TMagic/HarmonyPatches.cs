@@ -6108,26 +6108,29 @@ namespace TorannMagic
             }
         }
 
-        [HarmonyPatch(typeof(Command), "GizmoOnGUIInt", null)]
-        public static class Command_PawnAbility_Order_Patch
-        {
-            public static void Postfix(Command __instance, Rect butRect, bool shrunk, ref GizmoResult __result)
-            {
-                ModOptions.Constants.IconAnchor(butRect);
-            }
-        }
+        //[HarmonyPatch(typeof(Command), "GizmoOnGUIInt", null)]
+        //public static class Command_PawnAbility_Order_Patch
+        //{
+        //    public static void Postfix(Command __instance, Rect butRect, bool shrunk, ref GizmoResult __result)
+        //    {
+        //        ModOptions.Constants.IconAnchor(butRect);
+        //    }
+        //}
 
         [HarmonyPatch(typeof(Command), "GizmoOnGUIInt", null)]
         public static class GizmoOnGUIInt_Prefix_Patch
         {
             public static bool Prefix(Command __instance, Rect butRect, ref GizmoResult __result, bool shrunk = false)
             {
-                Command_PawnAbility com = __instance as Command_PawnAbility;
-                if(com != null && com.pawnAbility != null && com.pawnAbility.Def.defName.Contains("TM_"))
+                if (ModOptions.Settings.Instance.autocastEnabled)
                 {
-                    //Log.Message("patching command for pawn ability with butRect " + butRect.x + " " + butRect.y + " " + butRect.width + " " + butRect.height + " shrunk: " + shrunk);
-                    __result = TM_Action.DrawAutoCastForGizmo(com, butRect, shrunk, __result);
-                    return false;
+                    Command_PawnAbility com = __instance as Command_PawnAbility;
+                    if (com != null && com.pawnAbility != null && com.pawnAbility.Def.defName.Contains("TM_"))
+                    {
+                        //Log.Message("patching command for pawn ability with butRect " + butRect.x + " " + butRect.y + " " + butRect.width + " " + butRect.height + " shrunk: " + shrunk);
+                        __result = TM_Action.DrawAutoCastForGizmo(com, butRect, shrunk, __result);
+                        return false;
+                    }
                 }
                 return true;
             }
