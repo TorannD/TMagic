@@ -1884,8 +1884,9 @@ namespace TorannMagic
                     if (mpsList.Count > 0)
                     {
                         CustomSkillHandler(num2, compMagic, power, enumerator, mpsList, rect3);
-                        itnum++;
+                        
                     }
+                    itnum++;
                     num += MagicCardUtility.MagicButtonSize + MagicCardUtility.TextSize + 4f;//MagicCardUtility.SpacingOffset; //was 4f                    
                 }
             }

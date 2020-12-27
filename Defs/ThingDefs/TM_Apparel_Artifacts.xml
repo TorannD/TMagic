@@ -6,7 +6,6 @@
     <thingClass>Apparel</thingClass>
     <category>Item</category>
 	<thingCategories>
-	  <li>Apparel</li>
 	  <li>TM_MagicArtifacts</li>
 	</thingCategories>
     <selectable>True</selectable>
@@ -91,7 +90,7 @@
     <description>A pendant enchanted with silver essence. Known as a quicksilver pendant, this expensive artifact is said to grant increased agility to its wearer.</description>
     <graphicData> 
 		<texPath>Items/artifact_quicksilver</texPath>
-		<graphicClass>Graphic_Single</graphicClass> 
+		<graphicClass>Graphic_Single</graphicClass>
 	</graphicData>
 	<statBases>
 		<Mass>.05</Mass>
@@ -404,7 +403,8 @@
     <description>A ring enchanted with the essence of jade. This ring increases the rate its wearer recovers from arcane weakness.</description>
     <graphicData> 
 		<texPath>Items/artifact_magicring</texPath>
-		<graphicClass>Graphic_Single</graphicClass> 
+		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>(.5, .5)</drawSize>
 	</graphicData>
 	<statBases>
 		<Mass>.05</Mass>
@@ -438,6 +438,7 @@
     <graphicData> 
 		<texPath>Items/artifact_goldring</texPath>
 		<graphicClass>Graphic_Single</graphicClass> 
+		<drawSize>(.5, .5)</drawSize>
 	</graphicData>
 	<statBases>
 		<Mass>.05</Mass>
@@ -472,7 +473,8 @@
     <description>A ring enchanted with the essence of magicyte. This ring improves learning speed.</description>
     <graphicData> 
 		<texPath>Items/artifact_magicring</texPath>
-		<graphicClass>Graphic_Single</graphicClass> 
+		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>(.5, .5)</drawSize>
 	</graphicData>
 	<statBases>
 		<Mass>.05</Mass>
@@ -508,7 +510,8 @@
     <description>A ring enchanted with the essence of wood. The wearer of this ring will not be slowed by terrain and has improved foraging while in a caravan.</description>
     <graphicData> 
 		<texPath>Items/artifact_naturering</texPath>
-		<graphicClass>Graphic_Single</graphicClass> 
+		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>(.5, .5)</drawSize>
 	</graphicData>
 	<statBases>
 		<Mass>.05</Mass>

@@ -47,6 +47,10 @@ namespace TorannMagic
         {
             comp.recallHediffList = new List<Hediff>();
             comp.recallHediffList.Clear();
+            comp.recallHediffDefSeverityList = new List<float>();
+            comp.recallHediffDefSeverityList.Clear();
+            comp.recallHediffDefTicksRemainingList = new List<int>();
+            comp.recallHediffDefTicksRemainingList.Clear();
             comp.recallInjuriesList = new List<Hediff_Injury>();
             comp.recallInjuriesList.Clear();
             for (int i = 0; i < this.CasterPawn.health.hediffSet.hediffs.Count; i++)
@@ -83,18 +87,62 @@ namespace TorannMagic
                     }
                     else
                     {
-                        Hediff rhd = this.CasterPawn.health.hediffSet.hediffs[i];
+                        Hediff rhd = this.CasterPawn.health.hediffSet.hediffs[i] as Hediff;
                         //Log.Message("sev def is " + rhd.def.defName);
-                        Hediff hediff = new Hediff();
-                        //hediff = TM_Calc.Clone<Hediff>(this.CasterPawn.health.hediffSet.hediffs[i]);
-                        hediff.def = rhd.def;
-                        hediff.Part = rhd.Part;
-                        Traverse.Create(root: hediff).Field(name: "visible").SetValue(rhd.Visible);
-                        Traverse.Create(root: hediff).Field(name: "severityInt").SetValue(rhd.Severity);
-                        hediff.Severity = rhd.Severity;
-                        hediff.ageTicks = rhd.ageTicks;
-                        
-                        comp.recallHediffList.Add(hediff);
+                        if (rhd != null)
+                        {
+                            Hediff hediff = new Hediff();                            
+                            //hediff = TM_Calc.Clone<Hediff>(this.CasterPawn.health.hediffSet.hediffs[i]);
+                            hediff.def = rhd.def;
+                            hediff.loadID = rhd.loadID;
+                            hediff.Part = rhd.Part;
+                            //foreach(HediffComp hdc in rhd.comps)
+                            //{                            
+                            //    if(hdc is HediffComp_Disappears)
+                            //    {
+                            //        HediffComp_Disappears rhd_comp = hdc as HediffComp_Disappears;
+                            //        HediffComp_Disappears hdc_d = new HediffComp_Disappears();
+                            //        hdc_d.ticksToDisappear = rhd_comp.ticksToDisappear;
+                            //        hediff.comps.Add(hdc_d);
+                            //    }
+                            //    else
+                            //    {
+                            //        hediff.comps.Add(hdc);
+                            //    }
+                            //}
+                            //Traverse.Create(root: hediff).Field(name: "visible").SetValue(rhd.Visible);
+                            //Traverse.Create(root: hediff).Field(name: "severityInt").SetValue(rhd.Severity);
+                            hediff.ageTicks = rhd.ageTicks;
+                            //Log.Message("saving hediff " + hediff.def.defName + " with severity " + rhd.Severity);
+                            comp.recallHediffList.Add(hediff);
+                            comp.recallHediffDefSeverityList.Add(rhd.Severity);
+                            HediffComp_Disappears hdc_d = rhd.TryGetComp<HediffComp_Disappears>();
+                            if(hdc_d != null)
+                            {
+                                //Log.Message("hediff has disappears at ticks " + hdc_d.ticksToDisappear);
+                                comp.recallHediffDefTicksRemainingList.Add(hdc_d.ticksToDisappear);
+                            }
+                            else
+                            {
+                                comp.recallHediffDefTicksRemainingList.Add(-1);
+                            }
+                        }
+                        //else
+                        //{
+                        //    Hediff _rhd = this.CasterPawn.health.hediffSet.hediffs[i];
+                        //    if(_rhd != null)
+                        //    {
+                        //        HediffWithComps hediff = new HediffWithComps();
+                        //        hediff.def = rhd.def;
+                        //        hediff.loadID = rhd.loadID;
+                        //        hediff.Part = rhd.Part;
+                        //        Traverse.Create(root: hediff).Field(name: "visible").SetValue(rhd.Visible);
+                        //        Traverse.Create(root: hediff).Field(name: "severityInt").SetValue(rhd.Severity);
+                        //        hediff.Severity = rhd.Severity;
+                        //        hediff.ageTicks = rhd.ageTicks;
+                        //        comp.recallHediffList.Add(hediff);
+                        //    }
+                        //}
                     }
                     //Log.Message("adding " + this.CasterPawn.health.hediffSet.hediffs[i].def + " at severity " + this.CasterPawn.health.hediffSet.hediffs[i].Severity);
                 }

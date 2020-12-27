@@ -34,18 +34,58 @@
     </ThingCategoryDef>
 	
 	<ThingCategoryDef>
+      <defName>TM_MagicEquipment</defName>
+      <label>magic equipment</label>
+      <parent>Apparel</parent>
+      <iconPath>Equipment/darkrobe</iconPath>
+      <resourceReadoutRoot>true</resourceReadoutRoot>
+    </ThingCategoryDef>
+	
+	<ThingCategoryDef>
       <defName>TM_MagicArtifacts</defName>
       <label>magic artifacts</label>
-      <parent>TM_MagicItems</parent>
+      <parent>TM_MagicEquipment</parent>
       <iconPath>Items/artifact_magicring</iconPath>
       <resourceReadoutRoot>true</resourceReadoutRoot>
     </ThingCategoryDef>
 	
 	<ThingCategoryDef>
-      <defName>TM_MagicEquipment</defName>
-      <label>magic equipment</label>
-      <parent>TM_MagicItems</parent>
+      <defName>TM_MagicApparel</defName>
+      <label>magic apparel</label>
+      <parent>TM_MagicEquipment</parent>
+      <iconPath>Equipment/archmage_Female_south</iconPath>
+      <resourceReadoutRoot>true</resourceReadoutRoot>
+    </ThingCategoryDef>
+	
+	<ThingCategoryDef>
+      <defName>TM_MagicWeapons</defName>
+      <label>magic weapons</label>
+      <parent>Weapons</parent>
       <iconPath>Items/weapons/staff_blazingpower_256</iconPath>
+      <resourceReadoutRoot>true</resourceReadoutRoot>
+    </ThingCategoryDef>
+	
+	<ThingCategoryDef>
+      <defName>TM_MagicWeaponsMelee</defName>
+      <label>melee</label>
+      <parent>TM_MagicWeapons</parent>
+      <iconPath>Items/weapons/thrumboaxe</iconPath>
+      <resourceReadoutRoot>true</resourceReadoutRoot>
+    </ThingCategoryDef>
+	
+	<ThingCategoryDef>
+      <defName>TM_MagicWeaponsRanged</defName>
+      <label>ranged</label>
+      <parent>TM_MagicWeapons</parent>
+      <iconPath>Items/weapons/thrumbow</iconPath>
+      <resourceReadoutRoot>true</resourceReadoutRoot>
+    </ThingCategoryDef>
+	
+	<ThingCategoryDef>
+      <defName>TM_MagicWeaponsFoci</defName>
+      <label>magic foci</label>
+      <parent>TM_MagicWeapons</parent>
+      <iconPath>Items/weapons/wand_arc</iconPath>
       <resourceReadoutRoot>true</resourceReadoutRoot>
     </ThingCategoryDef>
 	

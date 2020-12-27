@@ -5,6 +5,7 @@ using RimWorld;
 using AbilityUser;
 using Verse;
 using UnityEngine;
+using HarmonyLib;
 
 
 namespace TorannMagic
@@ -38,9 +39,9 @@ namespace TorannMagic
         {
             Pawn caster = base.CasterPawn;
             Pawn pawn = this.currentTarget.Thing as Pawn;
-
-            bool flag = pawn != null;
-            if (flag)
+            CompAbilityUserMagic comp = caster.TryGetComp<CompAbilityUserMagic>();
+            bool flag = pawn != null && pawn.health != null && pawn.health.hediffSet != null && pawn.health.hediffSet.GetInjuredParts() != null;
+            if (flag && comp != null)
             {
                 Enumerate:
                 using (IEnumerator<BodyPartRecord> enumerator = pawn.health.hediffSet.GetInjuredParts().GetEnumerator())
@@ -59,7 +60,7 @@ namespace TorannMagic
                             bool flag5 = current.CanHealNaturally() && !current.IsPermanent() && current.TendableNow();
                             if (flag5)
                             {
-                                if (Rand.Chance(.25f / pawn.TryGetComp<CompAbilityUserMagic>().arcaneDmg))
+                                if (Rand.Chance(.25f / comp.arcaneDmg))
                                 {
                                     DamageInfo dinfo;
                                     dinfo = new DamageInfo(DamageDefOf.Burn, Mathf.RoundToInt(current.Severity/2), 0, (float)-1, this.CasterPawn, rec, null, DamageInfo.SourceCategory.ThingOrUnknown);
@@ -72,10 +73,22 @@ namespace TorannMagic
                                 }
                                 else
                                 {
-                                    current.Tended(1, 1);
+                                    //current.Tended(1, 1);
+                                    current.Tended_NewTemp(1f, 1f);
                                     TM_MoteMaker.ThrowFlames(pawn.DrawPos, pawn.Map, Rand.Range(.1f, .4f));
                                 }                                
                             }                           
+                        }                        
+                    }
+                }
+                using (IEnumerator<Hediff> enumerator1 = pawn.health.hediffSet.GetHediffsTendable().GetEnumerator())
+                {
+                    while (enumerator1.MoveNext())
+                    {
+                        Hediff rec1 = enumerator1.Current;
+                        if (rec1.TendableNow() && rec1.Bleeding && rec1 is Hediff_MissingPart)
+                        {
+                            Traverse.Create(root: rec1).Field(name: "isFreshInt").SetValue(false);
                         }                        
                     }
                 }

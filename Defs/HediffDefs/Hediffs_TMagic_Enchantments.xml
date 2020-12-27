@@ -12,6 +12,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>
 	<isBad>false</isBad>	
 	<comps>
@@ -22,12 +23,7 @@
 	<stages>
       <li>
         <label></label>
-        <minSeverity>0.001</minSeverity>
-		<becomeVisible>false</becomeVisible>
-      </li>
-	  <li>
-        <label></label>
-        <minSeverity>0.3</minSeverity>
+        <minSeverity>0</minSeverity>
 		<becomeVisible>true</becomeVisible>
       </li>
 	</stages>
@@ -42,6 +38,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>	
 	<isBad>false</isBad>
 	<comps>
@@ -52,12 +49,7 @@
 	<stages>
       <li>
         <label></label>
-        <minSeverity>0.001</minSeverity>
-		<becomeVisible>false</becomeVisible>
-      </li>
-	  <li>
-        <label></label>
-        <minSeverity>0.3</minSeverity>
+        <minSeverity>0</minSeverity>
 		<becomeVisible>true</becomeVisible>
       </li>
 	</stages>
@@ -71,6 +63,7 @@
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
+	<minSeverity>-1</minSeverity>
 	<tendable>false</tendable>
     <maxSeverity>1</maxSeverity>
 	<isBad>false</isBad>	
@@ -82,12 +75,7 @@
 	<stages>
       <li>
         <label></label>
-        <minSeverity>0.001</minSeverity>
-		<becomeVisible>false</becomeVisible>
-      </li>
-	  <li>
-        <label></label>
-        <minSeverity>0.3</minSeverity>
+        <minSeverity>0</minSeverity>
 		<becomeVisible>true</becomeVisible>
       </li>
 	</stages>
@@ -102,6 +90,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>
 	<isBad>false</isBad>	
 	<comps>
@@ -112,13 +101,8 @@
 	<stages>
       <li>
         <label></label>
-        <minSeverity>0.001</minSeverity>
+        <minSeverity>0</minSeverity>
 		<becomeVisible>false</becomeVisible>
-      </li>
-	  <li>
-        <label></label>
-        <minSeverity>0.3</minSeverity>
-		<becomeVisible>true</becomeVisible>
       </li>
 	</stages>
    </HediffDef>   
@@ -132,6 +116,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>	
 	<isBad>false</isBad>
 	<comps>
@@ -142,13 +127,8 @@
 	<stages>
       <li>
         <label></label>
-        <minSeverity>0.001</minSeverity>
+        <minSeverity>0</minSeverity>
 		<becomeVisible>false</becomeVisible>
-      </li>
-	  <li>
-        <label></label>
-        <minSeverity>0.3</minSeverity>
-		<becomeVisible>true</becomeVisible>
       </li>
 	</stages>
    </HediffDef>
@@ -162,6 +142,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>	
 	<isBad>false</isBad>
 	<comps>
@@ -172,13 +153,8 @@
 	<stages>
       <li>
         <label></label>
-        <minSeverity>0.001</minSeverity>
+        <minSeverity>0</minSeverity>
 		<becomeVisible>false</becomeVisible>
-      </li>
-	  <li>
-        <label></label>
-        <minSeverity>0.3</minSeverity>
-		<becomeVisible>true</becomeVisible>
       </li>
 	</stages>
    </HediffDef>
@@ -192,6 +168,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>	
 	<isBad>false</isBad>
 	<comps>
@@ -202,13 +179,8 @@
 	<stages>
       <li>
         <label></label>
-        <minSeverity>0.001</minSeverity>
+        <minSeverity>0</minSeverity>
 		<becomeVisible>false</becomeVisible>
-      </li>
-	  <li>
-        <label></label>
-        <minSeverity>0.3</minSeverity>
-		<becomeVisible>true</becomeVisible>
       </li>
 	</stages>
    </HediffDef>
@@ -222,6 +194,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>	
 	<isBad>false</isBad>
 	<comps>
@@ -232,12 +205,7 @@
 	<stages>
       <li>
         <label></label>
-        <minSeverity>0.001</minSeverity>
-		<becomeVisible>false</becomeVisible>
-      </li>
-	  <li>
-        <label></label>
-        <minSeverity>0.3</minSeverity>
+        <minSeverity>0</minSeverity>
 		<becomeVisible>true</becomeVisible>
       </li>
 	</stages>
@@ -254,6 +222,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>
 	<isBad>false</isBad>	
 	<comps>
@@ -264,7 +233,7 @@
 	<stages>
       <li>
         <label></label>
-        <minSeverity>0.001</minSeverity>
+        <minSeverity>0</minSeverity>
       </li>
 	</stages>
    </HediffDef>
@@ -278,6 +247,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>
 	<isBad>false</isBad>	
 	<comps>
@@ -288,7 +258,7 @@
 	<stages>
       <li>
         <label></label>
-        <minSeverity>0.001</minSeverity>
+        <minSeverity>0</minSeverity>
       </li>
 	</stages>
    </HediffDef>
@@ -302,6 +272,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>	
 	<isBad>false</isBad>
 	<comps>
@@ -326,6 +297,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>
 	<isBad>false</isBad>	
 	<comps>
@@ -350,6 +322,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>
 	<isBad>false</isBad>	
 	<comps>
@@ -374,6 +347,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>
 	<isBad>false</isBad>	
 	<comps>
@@ -398,6 +372,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>
 	<isBad>false</isBad>	
 	<comps>
@@ -422,6 +397,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>	
 	<isBad>false</isBad>
 	<comps>
@@ -449,6 +425,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>	
 	<isBad>false</isBad>
 	<comps>
@@ -476,6 +453,7 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
+	<minSeverity>-1</minSeverity>
     <maxSeverity>1</maxSeverity>	
 	<isBad>false</isBad>
 	<comps>

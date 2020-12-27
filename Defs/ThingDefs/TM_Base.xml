@@ -99,7 +99,7 @@
     <thingClass>Apparel</thingClass>
     <category>Item</category>
 	<thingCategories>
-		<li>TM_MagicEquipment</li>
+		<li>TM_MagicApparel</li>
 	</thingCategories>
     <selectable>True</selectable>
     <pathCost>10</pathCost>

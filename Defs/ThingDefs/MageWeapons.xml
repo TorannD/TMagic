@@ -62,7 +62,30 @@
 	<techLevel>Neolithic</techLevel>
 	<smeltable>true</smeltable>
 	<thingCategories>
-      <li>WeaponsRanged</li>
+      <li>TM_MagicWeaponsRanged</li>
+    </thingCategories>
+    <inspectorTabs>
+      <li>ITab_Art</li>
+	  <li>TorannMagic.Enchantment.ITab_Enchantment</li>
+    </inspectorTabs>
+    <comps>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtWeaponGun</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+	<equippedAngleOffset>40</equippedAngleOffset>
+  </ThingDef>  
+  
+  <ThingDef Name="TM_BaseRangedMageFoci" Abstract="True" ParentName="BaseMageWeapon">
+	<techLevel>Neolithic</techLevel>
+	<smeltable>true</smeltable>
+	<thingCategories>
+      <li>TM_MagicWeaponsFoci</li>
     </thingCategories>
     <inspectorTabs>
       <li>ITab_Art</li>
@@ -85,7 +108,7 @@
 	<techLevel>Neolithic</techLevel>
 	<smeltable>true</smeltable>
     <thingCategories>
-      <li>WeaponsMelee</li>
+      <li>TM_MagicWeaponsMelee</li>
     </thingCategories>
     <inspectorTabs>
       <li>ITab_Art</li>
@@ -108,7 +131,7 @@
 	<techLevel>Neolithic</techLevel>
 	<smeltable>true</smeltable>
 	<thingCategories>
-      <li>WeaponsRanged</li>
+      <li>TM_MagicWeaponsFoci</li>
     </thingCategories>
     <inspectorTabs>
       <li>ITab_Art</li>
@@ -1223,7 +1246,7 @@ Damage Boost: +15%</description>
     </tools>
   </ThingDef>
 
-  <ThingDef ParentName="TM_BaseRangedMageWeapon">
+  <ThingDef ParentName="TM_BaseRangedMageFoci">
     <defName>TM_DefenderStaff</defName>
     <label>Staff of the Defender</label>
     <description>A staff crafted from an ancient design bearing a palpable aura of wisdom. This staff is able to tap into the spirit realm and allow the wielder to communicate with their ancestral spirits who can manifest their power in the form of a physical barrier. The energy to perform this action comes from the spirits themselves and does not draw energy from the user, though the spirits require time to rest between requests.
@@ -1363,7 +1386,7 @@ Augmentation adds ability: Arcane Barrier</description>
   </ThingDef>
 
 
-  <ThingDef ParentName="TM_BaseRangedMageWeapon">
+  <ThingDef ParentName="TM_BaseRangedMageFoci">
     <defName>TM_BlazingPowerStaff</defName>
     <label>Staff of Blazing Power</label>
     <description>A staff that creates a mental link with the wielder to harness focused energy that can be used to launch a stream of blazing projectiles or create a hardened barrier around the wielder that can deflect projectiles. Mages gain tremendous boosts to magical spells while wielding this staff but to a mundane pawn it is nothing but a blunt weapon.

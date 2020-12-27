@@ -56,7 +56,14 @@ namespace TorannMagic
                 {
                     if(Rand.Chance(TM_Calc.GetSpellSuccessChance(caster, hitPawn, true)))
                     {
-                        hitPawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk, null, true, false, caster);                        
+                        try
+                        {
+                            hitPawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk, null, true, false, caster);
+                        }
+                        catch
+                        {
+                            MoteMaker.ThrowText(hitPawn.DrawPos, hitPawn.Map, "Failed", -1);
+                        }
                     }
                     else
                     {

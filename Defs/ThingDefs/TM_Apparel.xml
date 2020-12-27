@@ -56,9 +56,6 @@ Arcane Resistance: +5%</description>
 	<costList>
       <RawMagicyte>100</RawMagicyte>
     </costList>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0.001</generateCommonality>
 	<apparel>
 	 <tags>
@@ -168,9 +165,6 @@ Augmented by Phantom Shift: 20% chance to avoid an attack</description>
 		<li>Fabric</li>
 		<li>Leathery</li>
 	</stuffCategories>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0.001</generateCommonality>
 	<apparel>
 	 <tags>
@@ -282,9 +276,6 @@ Arcane Res: +10%</description>
 		<li>Fabric</li>
 		<li>Leathery</li>
 	</stuffCategories>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0.001</generateCommonality>
 	<apparel>
 	 <tags>
@@ -405,9 +396,6 @@ Augmented by Arcane Spectre: 50% chance to deal 20% bonus damage</description>
 	  <Silver>10</Silver>
 	  <Cloth>50</Cloth>
     </costList>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0.001</generateCommonality>
 	<apparel>
 	 <tags>
@@ -519,9 +507,6 @@ Class XP Gain: +10%</description>
 	  <Silver>20</Silver>
 	  <Gold>5</Gold>
     </costList>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<comps>
 	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
 		<hasEnchantment>true</hasEnchantment>
@@ -549,6 +534,97 @@ Class XP Gain: +10%</description>
 			<li>Legs</li>
 		</bodyPartGroups>
 	</apparel>
+  </ThingDef>
+  
+   
+  <ThingDef ParentName="TM_ApparelBase">
+    <defName>TM_DreamcatcherBuckskin</defName>
+    <label>Dreamcatcher Buckskin</label>    
+    <description>A patchwork buckskin of threaded leather adorned with animal memento. Primarily worn by tribal mystic leaders, the dreamcatcher buckskin represents the dream-like connection between nature and spirits. Mystics derive additional power from the symbolism decorating this outfit.</description>
+    <graphicData> 
+		<texPath>Equipment/dreamcatcher_Female_south</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>CutoutComplex</shaderType>
+		<drawSize>1</drawSize>
+	</graphicData>
+	<statBases>
+		<WorkToMake>30000</WorkToMake>
+		<Mass>0.5</Mass>
+		<MaxHitPoints>200</MaxHitPoints>
+<!-- 		<MarketValue>6250</MarketValue> -->
+		<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+		<ArmorRating_Sharp>0.15</ArmorRating_Sharp>
+		<ArmorRating_Heat>0.4</ArmorRating_Heat>
+		<ArmorRating_Alignment>0.2</ArmorRating_Alignment>
+		<Insulation_Cold>8</Insulation_Cold>
+		<Insulation_Heat>6</Insulation_Heat>
+		<StuffEffectMultiplierArmor>0.25</StuffEffectMultiplierArmor>
+        <StuffEffectMultiplierInsulation_Cold>0.3</StuffEffectMultiplierInsulation_Cold>
+        <StuffEffectMultiplierInsulation_Heat>0.3</StuffEffectMultiplierInsulation_Heat>
+	</statBases>
+	<equippedStatOffsets>
+		<SocialImpact>0.2</SocialImpact>
+		<NegotiationAbility>0.05</NegotiationAbility>
+		<TradePriceImprovement>0.05</TradePriceImprovement>
+	</equippedStatOffsets>
+	<recipeMaker>
+      <workAmount>30000</workAmount>
+	  <skillRequirements>
+			<Intellectual>6</Intellectual>
+	  </skillRequirements>
+	  <researchPrerequisite>
+			<li>TM_ArcaneCrafting</li>
+		</researchPrerequisite>
+    </recipeMaker>
+	<costList>
+	  <RawMagicyte>200</RawMagicyte>
+	</costList>
+	<costStuffCount>150</costStuffCount>
+	<stuffCategories>
+		<li>Fabric</li>
+		<li>Leathery</li>
+	</stuffCategories>
+	<generateCommonality>0.001</generateCommonality>
+	<apparel>	
+	 <tags>
+	   <li>Arcane</li>
+	   <li>SeerEliteApparel</li>
+	 </tags>
+	 <useWornGraphicMask>true</useWornGraphicMask>
+	 <wornGraphicPath>Equipment/dreamcatcher</wornGraphicPath>
+		<layers>
+			<li>Middle</li>
+			<li>Shell</li>
+		</layers>
+		<bodyPartGroups>
+			<li>Torso</li>
+			<li>Shoulders</li>
+			<li>Arms</li>
+			<li>Legs</li>
+			<li>Waist</li>
+		</bodyPartGroups>
+	</apparel>
+	<colorGenerator Class="ColorGenerator_StandardApparel" />
+	<comps>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		<hasEnchantment>true</hasEnchantment>
+		<maxMP>0.1</maxMP>
+		<maxMPTier>Standard</maxMPTier>
+		<mpRegenRate>0.1</mpRegenRate>
+		<mpRegenRateTier>Standard</mpRegenRateTier>
+		<mpCost>-0.05</mpCost>
+		<mpCostTier>Standard</mpCostTier>
+		<xpGain>0.1</xpGain>
+		<xpGainTier>Standard</xpGainTier>
+		<arcaneRes>0.10</arcaneRes>
+		<arcaneResTier>Minor</arcaneResTier>
+	  </li>
+	</comps>
+	<!-- remove and replace parent with TMTailoredApparelBase for release -->
+	<inspectorTabs>
+      <li>TorannMagic.Enchantment.ITab_Enchantment</li>
+    </inspectorTabs>
+	
   </ThingDef>
   
   <ThingDef ParentName="TMTailoredApparelBase">
@@ -608,9 +684,6 @@ Arcane Res: +10%</description>
 		<li>Fabric</li>
 		<li>Leathery</li>
 	</stuffCategories>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0.001</generateCommonality>
 	<apparel>
 	 <tags>
@@ -722,9 +795,6 @@ Arcane Power: +5%</description>
 	<costList>
 		<RawMagicyte>30</RawMagicyte>
     </costList>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<comps>
 	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
 		<hasEnchantment>true</hasEnchantment>
@@ -798,9 +868,6 @@ Arcane Resistance: +10%</description>
 	<costList>
 		<RawMagicyte>60</RawMagicyte>
     </costList>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<comps>
 	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
 		<hasEnchantment>true</hasEnchantment>
@@ -885,9 +952,6 @@ Arcane Resistance: 30%</description>
 	<costList>
 	  <RawMagicyte>75</RawMagicyte>
     </costList>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<comps>
 	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
 		<hasEnchantment>true</hasEnchantment>
@@ -967,9 +1031,6 @@ Class XP Gain: +10%</description>
 	  <Silver>10</Silver>
 	  <Gold>2</Gold>
     </costList>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<comps>
 	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
 		<hasEnchantment>true</hasEnchantment>
@@ -1047,9 +1108,6 @@ Arcane Res: +10%</description>
 	  <Silver>15</Silver>
 	  <Gold>3</Gold>
     </costList>
-	<thingCategories>
-	  <li>Apparel</li>	  
-	</thingCategories>
 	<comps>
 	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
 		<hasEnchantment>true</hasEnchantment>

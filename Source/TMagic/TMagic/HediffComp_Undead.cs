@@ -63,14 +63,22 @@ namespace TorannMagic
             if(this.linkedPawn != null)
             {
                 CompAbilityUserMagic comp = linkedPawn.TryGetComp<CompAbilityUserMagic>();
-                if(comp != null)
+                try
                 {
-                    int ver = TM_Calc.GetMagicSkillLevel(linkedPawn, comp.MagicData.MagicPowerSkill_RaiseUndead, "TM_RaiseUndead", "_ver");
-                    if(this.parent.Severity != ver + .5f)
+                    if (comp != null)
                     {
-                        this.parent.Severity = .5f + ver;
+                        int ver = TM_Calc.GetMagicSkillLevel(linkedPawn, comp.MagicData.MagicPowerSkill_RaiseUndead, "TM_RaiseUndead", "_ver");
+                        if (this.parent.Severity != ver + .5f)
+                        {
+                            this.parent.Severity = .5f + ver;
+                        }
                     }
                 }
+                catch
+                {
+                    base.Pawn.Kill(null, null);
+                }
+
             }
         }
 

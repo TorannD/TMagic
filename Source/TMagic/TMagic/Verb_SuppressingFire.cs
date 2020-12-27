@@ -15,26 +15,33 @@ namespace TorannMagic
         protected override bool TryCastShot()
         {
             Pawn pawn = this.CasterPawn;
-
-            IntVec3 targetVariation = this.currentTarget.Cell;
-            targetVariation.x += Mathf.RoundToInt(Rand.Range(-.15f, .15f) * Vector3.Distance(pawn.DrawPos, this.currentTarget.CenterVector3) + Rand.Range(-1f, 1f));
-            targetVariation.z += Mathf.RoundToInt(Rand.Range(-.15f, .15f) * Vector3.Distance(pawn.DrawPos, this.currentTarget.CenterVector3) + Rand.Range(-1f, 1f));
-
-            if (!initialized)
+            if (this.currentTarget != null && pawn.equipment != null && pawn.equipment.Primary != null)
             {
-                initialized = true;
-                shotcount = GetShotCount(pawn);
-            }
+                IntVec3 targetVariation = this.currentTarget.Cell;
+                targetVariation.x += Mathf.RoundToInt(Rand.Range(-.15f, .15f) * Vector3.Distance(pawn.DrawPos, this.currentTarget.CenterVector3) + Rand.Range(-1f, 1f));
+                targetVariation.z += Mathf.RoundToInt(Rand.Range(-.15f, .15f) * Vector3.Distance(pawn.DrawPos, this.currentTarget.CenterVector3) + Rand.Range(-1f, 1f));
 
-            Vector3 drawPos = pawn.DrawPos + (TM_Calc.GetVector(pawn.Position, targetVariation) * .5f);
-            MoteMaker.ThrowSmoke(drawPos, pawn.Map, Rand.Range(.4f, .7f));
-            TM_CopyAndLaunchProjectile.CopyAndLaunchThing(pawn.equipment.Primary.def.Verbs.FirstOrDefault().defaultProjectile, pawn, targetVariation, targetVariation, ProjectileHitFlags.All, pawn.equipment.Primary);
-            shotcount--;
-            if (shotcount <= 0)
-            {
-                initialized = false;
+                if (!initialized)
+                {
+                    initialized = true;
+                    shotcount = GetShotCount(pawn);
+                }
+
+                Vector3 drawPos = pawn.DrawPos + (TM_Calc.GetVector(pawn.Position, targetVariation) * .5f);
+                MoteMaker.ThrowSmoke(drawPos, pawn.Map, Rand.Range(.4f, .7f));
+                TM_CopyAndLaunchProjectile.CopyAndLaunchThing(pawn.equipment.Primary.def.Verbs.FirstOrDefault().defaultProjectile, pawn, targetVariation, targetVariation, ProjectileHitFlags.All, pawn.equipment.Primary);
+                shotcount--;
+                if (shotcount <= 0)
+                {
+                    initialized = false;
+                }
+                return (shotcount > 0);
             }
-            return (shotcount > 0);
+            else
+            {
+                Log.Warning("Target or weapon was null when using suppressing fire.");
+            }
+            return false;
         }
 
         public static int GetShotCount(Pawn pawn)

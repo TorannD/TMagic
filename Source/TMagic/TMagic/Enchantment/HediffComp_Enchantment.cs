@@ -114,11 +114,11 @@ namespace TorannMagic.Enchantment
                 }
                 else if (IsMagicUser)
                 {
-                    DisplayEnchantments(compMagic.maxMP, 0f);
+                    DisplayEnchantments(compMagic.maxMP, 1f);
                 }
                 else if (IsMightUser)
                 {
-                    DisplayEnchantments(0f, compMight.maxSP);
+                    DisplayEnchantments(1f, compMight.maxSP);
                 }
                 else
                 {
@@ -133,11 +133,11 @@ namespace TorannMagic.Enchantment
                 }
                 else if (IsMagicUser)
                 {
-                    DisplayEnchantments(compMagic.coolDown, 0f);
+                    DisplayEnchantments(compMagic.coolDown, 1f);
                 }
                 else if (IsMightUser)
                 {
-                    DisplayEnchantments(0f, compMight.coolDown);
+                    DisplayEnchantments(1f, compMight.coolDown);
                 }
                 else
                 {
@@ -152,11 +152,11 @@ namespace TorannMagic.Enchantment
                 }
                 else if (IsMagicUser)
                 {
-                    DisplayEnchantments(compMagic.mpCost, 0f);
+                    DisplayEnchantments(compMagic.mpCost, 1f);
                 }
                 else if (IsMightUser)
                 {
-                    DisplayEnchantments(0f, compMight.spCost);
+                    DisplayEnchantments(1f, compMight.spCost);
                 }
                 else
                 {
@@ -171,11 +171,11 @@ namespace TorannMagic.Enchantment
                 }
                 else if (IsMagicUser)
                 {
-                    DisplayEnchantments(compMagic.mpRegenRate, 0f);
+                    DisplayEnchantments(compMagic.mpRegenRate, 1f);
                 }
                 else if (IsMightUser)
                 {
-                    DisplayEnchantments(0f, compMight.spRegenRate);
+                    DisplayEnchantments(1f, compMight.spRegenRate);
                 }
                 else
                 {
@@ -190,11 +190,11 @@ namespace TorannMagic.Enchantment
                 }
                 else if (IsMagicUser)
                 {
-                    DisplayEnchantments(compMagic.xpGain, 0f);
+                    DisplayEnchantments(compMagic.xpGain, 1f);
                 }
                 else if (IsMightUser)
                 {
-                    DisplayEnchantments(0f, compMight.xpGain);
+                    DisplayEnchantments(1f, compMight.xpGain);
                 }
                 else
                 {
@@ -209,11 +209,11 @@ namespace TorannMagic.Enchantment
                 }
                 else if (IsMagicUser)
                 {
-                    DisplayEnchantments(compMagic.arcaneRes, 0f);
+                    DisplayEnchantments(compMagic.arcaneRes, 1f);
                 }
                 else if (IsMightUser)
                 {
-                    DisplayEnchantments(0f, compMight.arcaneRes);
+                    DisplayEnchantments(1f, compMight.arcaneRes);
                 }
                 else
                 {
@@ -228,11 +228,11 @@ namespace TorannMagic.Enchantment
                 }
                 else if (IsMagicUser)
                 {
-                    DisplayEnchantments(compMagic.arcaneDmg, 0f);
+                    DisplayEnchantments(compMagic.arcaneDmg, 1f);
                 }
                 else if (IsMightUser)
                 {
-                    DisplayEnchantments(0f, compMight.mightPwr);
+                    DisplayEnchantments(1f, compMight.mightPwr);
                 }
                 else
                 {
@@ -247,11 +247,11 @@ namespace TorannMagic.Enchantment
                 }
                 else if (IsMagicUser)
                 {
-                    DisplayEnchantments(compMagic.arcalleumCooldown, 0f);
+                    DisplayEnchantments(compMagic.arcalleumCooldown, 1f);
                 }
                 else if (IsMightUser)
                 {
-                    DisplayEnchantments(0f, compMight.arcalleumCooldown);
+                    DisplayEnchantments(1f, compMight.arcalleumCooldown);
                 }
                 else
                 {
@@ -274,16 +274,16 @@ namespace TorannMagic.Enchantment
 
         }
 
-        private void DisplayEnchantments(float magVal = 0f, float mitVal = 0f)
+        private void DisplayEnchantments(float magVal = 1f, float mitVal = 1f)
         {
             string txtMagic = "";
             string txtMight = "";
 
-            if (magVal != 0)
+            if (magVal != 1f)
             {
                 txtMagic = (magVal * 100).ToString("0.##") + "%";
             }
-            if (mitVal != 0)
+            if (mitVal != 1f)
             {
                 txtMight = (mitVal* 100).ToString("0.##") + "%";                 
             }

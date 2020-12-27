@@ -152,7 +152,7 @@ namespace TorannMagic
                 {
                     pawn = curCell.GetFirstPawn(map);
                 }
-                if (pawn != null && (pawn.Faction == caster.Faction || pawn.Faction == null || (pawn.Faction != null && !pawn.Faction.HostileTo(caster.Faction))) && !TM_Calc.IsUndead(pawn))
+                if (pawn != null && (pawn.Faction == caster.Faction || pawn.IsPrisoner || pawn.Faction == null || (pawn.Faction != null && !pawn.Faction.HostileTo(caster.Faction))) && !TM_Calc.IsUndead(pawn))
                 {
                     Heal(pawn);
                 }

@@ -153,6 +153,15 @@ namespace TorannMagic.Enchantment
                     InitializeAbilities(this.parent as Apparel);
                 }
 
+                if(this.parent.def == TorannMagicDefOf.TM_MagicArtifact_MagicEssence && this.magicEssence == 0)
+                {
+                    this.magicEssence = Rand.Range(200, 500);
+                }
+                if(this.parent.def == TorannMagicDefOf.TM_MagicArtifact_MightEssence && this.mightEssence == 0)
+                {
+                    this.mightEssence = Rand.Range(200, 500);
+                }
+
                 this.initialized = true;
             }
         }
@@ -366,6 +375,16 @@ namespace TorannMagic.Enchantment
             {
                 text += "Necrotic Energy: " + this.NecroticEnergy.ToString("N1");
             }
+            bool flag5 = this.mightEssence != 0;
+            if(flag5)
+            {
+                text += "Might Essence: " + this.mightEssence;
+            }
+            bool flag6 = this.magicEssence != 0;
+            if (flag6)
+            {
+                text += "Magic Essence: " + this.magicEssence;
+            }
             return text;
         }
 
@@ -405,6 +424,9 @@ namespace TorannMagic.Enchantment
         public bool phantomShift = false;
 
         public float arcalleumCooldown = 0f;
+
+        public int mightEssence = 0;
+        public int magicEssence = 0;
 
         //Hediffs
         public HediffDef hediff = null;

@@ -1190,6 +1190,9 @@ namespace TorannMagic
         public static ThingDef TM_Manaweave;
         public static ThingDef TM_Demonhide;
         public static ThingDef TM_Demonscale;
+        public static ThingDef TM_Artifact_ClassExtraction;
+        public static ThingDef TM_MagicArtifact_MightEssence;
+        public static ThingDef TM_MagicArtifact_MagicEssence;
 
         //Sounds
         public static SoundDef ItemEnchanted;

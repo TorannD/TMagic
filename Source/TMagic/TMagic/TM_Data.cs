@@ -201,6 +201,7 @@ namespace TorannMagic
                 allClassTraits.Clear();
                 allClassTraits.AddRange(MightTraits);
                 allClassTraits.AddRange(MagicTraits);
+                allClassTraits.AddRange(TM_ClassUtility.CustomClassTraitDefs);
                 return allClassTraits;
             }
         }

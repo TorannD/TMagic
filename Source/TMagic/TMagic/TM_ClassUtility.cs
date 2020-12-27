@@ -24,6 +24,19 @@ namespace TorannMagic
             return TM_CustomClassDef.Named("TM_CustomClasses").customClasses;
         }
 
+        public static List<TraitDef> CustomClassTraitDefs
+        {
+            get
+            {
+                List<TraitDef> customTraits = new List<TraitDef>();
+                for(int i = 0; i < CustomClasses().Count; i++)
+                {
+                    customTraits.Add(CustomClasses()[i].classTrait);
+                }
+                return customTraits;
+            }            
+        }
+
         public static List<TM_CustomClass> CustomMageClasses
         {
             get

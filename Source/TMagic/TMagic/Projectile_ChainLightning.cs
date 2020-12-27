@@ -196,11 +196,13 @@ namespace TorannMagic
                         {
                             TM_Action.DamageEntities(t, null, damage, TMDamageDefOf.DamageDefOf.TM_Lightning, caster);
                             chainedThings.Add(t);
+                            break;
                         }
-                        else if (t is Building)
+                        else if (t is Building && t.Faction != null)
                         {
                             TM_Action.DamageEntities(t, null, damage * 2, TMDamageDefOf.DamageDefOf.TM_Lightning, caster);
                             chainedThings.Add(t);
+                            break;
                         }
                     }
                 }

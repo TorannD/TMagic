@@ -3642,7 +3642,10 @@ namespace TorannMagic
                     allMagicPowersForChaosMageList.AddRange(this.MagicPowersC.Except(MagicPowersC.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Recall)));
                     allMagicPowersForChaosMageList.Add((this.MagicPowersShadow.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowWalk)));
                     allMagicPowersForChaosMageList.AddRange(this.MagicPowersBrightmage.Except(MagicPowersBrightmage.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SpiritOfLight)));
-                    allMagicPowersForChaosMageList.AddRange(this.MagicPowersShaman.Except(MagicPowersShaman.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_GuardianSpirit)));
+                    tmpList.Add(MagicPowersShaman.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_GuardianSpirit));
+                    //tmpList.Add(this.MagicPowersShaman.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Totems));
+                    allMagicPowersForChaosMageList.AddRange(this.MagicPowersShaman.Except(tmpList));
+                    tmpList.Clear();
                 }
                 return allMagicPowersForChaosMageList;
             }

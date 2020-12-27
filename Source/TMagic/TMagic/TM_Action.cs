@@ -1173,7 +1173,26 @@ namespace TorannMagic
                 for (int i = 0; i < comp.recallHediffList.Count; i++)
                 {
                     //Log.Message("adding " + comp.recallHediffList[i].Label + " at severity " + comp.recallHediffList[i].Severity);
-                    pawn.health.AddHediff(comp.recallHediffList[i]);
+                    Hediff hdwc = comp.recallHediffList[i];
+                    pawn.health.AddHediff(hdwc.def, hdwc.Part, null, null);
+                    //Log.Message("adding hediff of " + hdwc.def.defName + " + with severity " + comp.recallHediffDefSeverityList[i]);
+                    Hediff hd = pawn.health.hediffSet.GetFirstHediffOfDef(hdwc.def);
+                    hd.Severity = comp.recallHediffDefSeverityList[i];
+                    //Log.Message("verifying hd severity is " + hd.Severity);
+                    if(comp.recallHediffDefTicksRemainingList[i] > 0)
+                    {
+                        HediffComp_Disappears hdc_d = hd.TryGetComp<HediffComp_Disappears>();
+                        if(hdc_d != null)
+                        {
+                            //Log.Message("hediff has disappears comp, loading disappear tick of " + comp.recallHediffDefTicksRemainingList[i]);
+                            hdc_d.ticksToDisappear = comp.recallHediffDefTicksRemainingList[i];
+                        }
+                    }
+                    //HediffDef hdDef = comp.recallHediffList[i].def;
+                    //foreach (HediffComp hdc in hdwc.comps)
+                    //{
+                    //    if (hdwc.comps)
+                    //}
                 }
                 for (int i = 0; i < comp.recallInjuriesList.Count; i++)
                 {
@@ -2409,6 +2428,753 @@ namespace TorannMagic
                     }
                 }
             }
+        }
+
+        public static GizmoResult DrawAutoCastForGizmo(Command_PawnAbility com, Rect rect, bool shrink, GizmoResult oldResult)
+        {
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            if (settingsRef.autocastEnabled && com.pawnAbility.Def.defName.Contains("TM_"))
+            {
+                CompAbilityUserMagic comp = com.pawnAbility.Pawn.GetComp<CompAbilityUserMagic>();
+                CompAbilityUserMight mightComp = com.pawnAbility.Pawn.GetComp<CompAbilityUserMight>();
+                MagicPower magicPower = null;
+                MightPower mightPower = null;
+                TMAbilityDef tmAbilityDef = com.pawnAbility.Def as TMAbilityDef;
+                Text.Font = GameFont.Tiny;
+                bool flag = false;
+                //Rect rect = new Rect(topLeft.x, topLeft.y, com.GetWidth(maxWidth), 75f);
+                //if (shrink)
+                //{
+                //    Traverse.Create(root: com).Field(name: "order").SetValue(200);
+                //    topLeft = new Vector2(ModOptions.Constants.GetIconVector().x, ModOptions.Constants.GetIconVector().y);
+                //    rect = new Rect(topLeft.x + (ModOptions.Constants.GetGizmoCount(com.pawnAbility.Pawn, com.pawnAbility) * 38f), topLeft.y, 36f, 36f);
+                //}
+                if (Mouse.IsOver(rect))
+                {
+                    flag = true;
+                    GUI.color = GenUI.MouseoverColor;
+                }
+
+                MouseoverSounds.DoRegion(rect, SoundDefOf.Mouseover_Command);
+                Material material = com.disabled ? TexUI.GrayscaleGUI : null;
+                //GUI.DrawTexture(rect, Command.BGTex);
+                GenUI.DrawTextureWithMaterial(rect, shrink ? Command.BGTexShrunk : Command.BGTex, material);
+
+                Texture2D texture2D = com.icon;
+                if (texture2D == null)
+                {
+                    texture2D = BaseContent.BadTex;
+                }
+                GUI.color = com.IconDrawColor;
+                rect.position += new Vector2(com.iconOffset.x * rect.size.x, com.iconOffset.y * rect.size.y);
+                Widgets.DrawTextureFitted(rect, texture2D, com.iconDrawScale * 0.85f, com.iconProportions, com.iconTexCoords, com.iconAngle, material);
+                GUI.color = Color.white;
+                bool flag2 = false;
+                KeyCode keyCode = (com.hotKey != null) ? com.hotKey.MainKey : KeyCode.None;
+                if (keyCode != 0 && !GizmoGridDrawer.drawnHotKeys.Contains(keyCode))
+                {
+                    Rect rect2 = new Rect(rect.x + 5f, rect.y + 5f, rect.width - 10f, 18f);
+                    Widgets.Label(rect2, keyCode.ToStringReadable());
+                    GizmoGridDrawer.drawnHotKeys.Add(keyCode);
+                    if (com.hotKey.KeyDownEvent)
+                    {
+                        flag2 = true;
+                        Event.current.Use();
+                    }
+                }
+                if (Widgets.ButtonInvisible(rect))
+                {
+                    flag2 = true;
+                }
+                string labelCap = com.LabelCap;
+                if (!labelCap.NullOrEmpty() && !shrink)
+                {
+                    Text.Font = GameFont.Tiny;
+                    float num = Text.CalcHeight(labelCap, rect.width);
+                    num -= 2f;
+                    Rect rect3 = new Rect(rect.x, rect.yMax - num + 12f, rect.width, num);
+                    GUI.DrawTexture(rect3, TexUI.GrayTextBG);
+                    GUI.color = Color.white;
+                    Text.Anchor = TextAnchor.UpperCenter;
+                    Widgets.Label(rect3, labelCap);
+                    Text.Anchor = TextAnchor.UpperLeft;
+                    GUI.color = Color.white;
+                }
+                GUI.color = Color.white;
+                if (Mouse.IsOver(rect))
+                {
+                    TipSignal tipSignal = com.Desc;
+                    if (com.disabled && !com.disabledReason.NullOrEmpty())
+                    {
+                        tipSignal.text = tipSignal.text + "\n" + StringsToTranslate.AU_DISABLED + ": " + com.disabledReason;
+                    }
+                    TooltipHandler.TipRegion(rect, tipSignal);
+                }
+                if (com.pawnAbility.CooldownTicksLeft != -1 && com.pawnAbility.CooldownTicksLeft < com.pawnAbility.MaxCastingTicks)
+                {
+                    float fillPercent = (float)com.curTicks / (float)com.pawnAbility.MaxCastingTicks;
+                    Widgets.FillableBar(rect, fillPercent, AbilityButtons.FullTex, AbilityButtons.EmptyTex, doBorder: false);
+                }
+                if (!com.HighlightTag.NullOrEmpty() && (Find.WindowStack.FloatMenu == null || !Find.WindowStack.FloatMenu.windowRect.Overlaps(rect)))
+                {
+                    UIHighlighter.HighlightOpportunity(rect, com.HighlightTag);
+                }
+                if (comp != null && comp.MagicData != null && tmAbilityDef != null)
+                {
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Blink || com.pawnAbility.Def == TorannMagicDefOf.TM_Blink_I || com.pawnAbility.Def == TorannMagicDefOf.TM_Blink_II || com.pawnAbility.Def == TorannMagicDefOf.TM_Blink_III)
+                    {
+                        magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect)) //__result.State == GizmoState.Mouseover)
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Summon || com.pawnAbility.Def == TorannMagicDefOf.TM_Summon_I || com.pawnAbility.Def == TorannMagicDefOf.TM_Summon_II || com.pawnAbility.Def == TorannMagicDefOf.TM_Summon_III)
+                    {
+                        magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Firebolt)
+                    {
+                        magicPower = comp.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Icebolt)
+                    {
+                        magicPower = comp.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_LightningBolt)
+                    {
+                        magicPower = comp.MagicData.MagicPowersSB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_FrostRay || com.pawnAbility.Def == TorannMagicDefOf.TM_FrostRay_I || com.pawnAbility.Def == TorannMagicDefOf.TM_FrostRay_II || com.pawnAbility.Def == TorannMagicDefOf.TM_FrostRay_III)
+                    {
+                        magicPower = comp.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_MagicMissile || com.pawnAbility.Def == TorannMagicDefOf.TM_MagicMissile_I || com.pawnAbility.Def == TorannMagicDefOf.TM_MagicMissile_II || com.pawnAbility.Def == TorannMagicDefOf.TM_MagicMissile_III)
+                    {
+                        magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Entertain)
+                    {
+                        magicPower = comp.MagicData.MagicPowersB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Entertain);
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_EnchantedAura)
+                    {
+                        magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedAura);
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_EnchantedBody)
+                    {
+                        magicPower = comp.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedBody);
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Shadow || com.pawnAbility.Def == TorannMagicDefOf.TM_Shadow_I || com.pawnAbility.Def == TorannMagicDefOf.TM_Shadow_II || com.pawnAbility.Def == TorannMagicDefOf.TM_Shadow_III)
+                    {
+                        magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_RayofHope || com.pawnAbility.Def == TorannMagicDefOf.TM_RayofHope_I || com.pawnAbility.Def == TorannMagicDefOf.TM_RayofHope_II || com.pawnAbility.Def == TorannMagicDefOf.TM_RayofHope_III)
+                    {
+                        magicPower = comp.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_P_RayofHope || com.pawnAbility.Def == TorannMagicDefOf.TM_P_RayofHope_I || com.pawnAbility.Def == TorannMagicDefOf.TM_P_RayofHope_II || com.pawnAbility.Def == TorannMagicDefOf.TM_P_RayofHope_III)
+                    {
+                        magicPower = comp.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Soothe || com.pawnAbility.Def == TorannMagicDefOf.TM_Soothe_I || com.pawnAbility.Def == TorannMagicDefOf.TM_Soothe_II || com.pawnAbility.Def == TorannMagicDefOf.TM_Soothe_III)
+                    {
+                        magicPower = comp.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Prediction)
+                    {
+                        magicPower = comp.MagicData.MagicPowersC.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Prediction);
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Poison)
+                    {
+                        magicPower = comp.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Poison);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Regenerate)
+                    {
+                        magicPower = comp.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Regenerate);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_CureDisease)
+                    {
+                        magicPower = comp.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_CureDisease);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Heal)
+                    {
+                        magicPower = comp.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Heal);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Shield || com.pawnAbility.Def == TorannMagicDefOf.TM_Shield_I | com.pawnAbility.Def == TorannMagicDefOf.TM_Shield_II || com.pawnAbility.Def == TorannMagicDefOf.TM_Shield_III)
+                    {
+                        magicPower = comp.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_AdvancedHeal)
+                    {
+                        magicPower = comp.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_AdvancedHeal);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_TransferMana)
+                    {
+                        magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TransferMana);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_SiphonMana)
+                    {
+                        magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SiphonMana);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_CauterizeWound)
+                    {
+                        magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_CauterizeWound);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_SpellMending)
+                    {
+                        magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SpellMending);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_TeachMagic)
+                    {
+                        magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TeachMagic);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_ShadowBolt || com.pawnAbility.Def == TorannMagicDefOf.TM_ShadowBolt_I || com.pawnAbility.Def == TorannMagicDefOf.TM_ShadowBolt_II || com.pawnAbility.Def == TorannMagicDefOf.TM_ShadowBolt_III)
+                    {
+                        if (comp.Pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
+                        {
+                            magicPower = comp.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);
+                        }
+                        else
+                        {
+                            magicPower = comp.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmAbilityDef);
+                        }
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Purify)
+                    {
+                        magicPower = comp.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Purify);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_SummonMinion)
+                    {
+                        magicPower = comp.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonMinion);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_MechaniteReprogramming)
+                    {
+                        magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_MechaniteReprogramming);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_DirtDevil)
+                    {
+                        magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_DirtDevil);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_ArcaneBolt)
+                    {
+                        magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ArcaneBolt);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_TimeMark)
+                    {
+                        magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TimeMark);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Transmutate)
+                    {
+                        magicPower = comp.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Transmutate);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_RegrowLimb)
+                    {
+                        magicPower = comp.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RegrowLimb);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            magicPower.AutoCast = !magicPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (comp.MagicData.MagicPowersCustom != null)
+                    {
+                        foreach (MagicPower mp in comp.MagicData.MagicPowersCustom)
+                        {
+                            if (mp.autocasting != null && mp.autocasting.type != TMDefs.AutocastType.Null && (mp.autocasting.drafted || mp.autocasting.undrafted))
+                            {
+                                if (mp.TMabilityDefs.Contains(com.pawnAbility.Def))
+                                {
+                                    magicPower = mp;
+                                    if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                                    {
+                                        magicPower.AutoCast = !magicPower.AutoCast;
+                                        return new GizmoResult(GizmoState.Mouseover, null);
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (mightComp != null && mightComp.MightData != null && com.pawnAbility.Def != null)
+                {
+                    //might abilities
+                    if (mightComp.MightData.MightPowersCustom != null)
+                    {
+                        foreach (MightPower mp in mightComp.MightData.MightPowersCustom)
+                        {
+                            if (mp.autocasting != null && mp.autocasting.type != TMDefs.AutocastType.Null && (mp.autocasting.drafted || mp.autocasting.undrafted))
+                            {
+                                if (mp.TMabilityDefs.Contains(com.pawnAbility.Def))
+                                {
+                                    mightPower = mp;
+                                    if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                                    {
+                                        mightPower.AutoCast = !mightPower.AutoCast;
+                                        return new GizmoResult(GizmoState.Mouseover, null);
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Grapple || com.pawnAbility.Def == TorannMagicDefOf.TM_Grapple_I || com.pawnAbility.Def == TorannMagicDefOf.TM_Grapple_II || com.pawnAbility.Def == TorannMagicDefOf.TM_Grapple_III)
+                    {
+                        mightPower = mightComp.MightData.MightPowersG.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == tmAbilityDef);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_BladeSpin)
+                    {
+                        mightPower = mightComp.MightData.MightPowersB.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_BladeSpin);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_PhaseStrike || com.pawnAbility.Def == TorannMagicDefOf.TM_PhaseStrike_I || com.pawnAbility.Def == TorannMagicDefOf.TM_PhaseStrike_II || com.pawnAbility.Def == TorannMagicDefOf.TM_PhaseStrike_III)
+                    {
+                        mightPower = mightComp.MightData.MightPowersB.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == tmAbilityDef);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_ArrowStorm || com.pawnAbility.Def == TorannMagicDefOf.TM_ArrowStorm_I || com.pawnAbility.Def == TorannMagicDefOf.TM_ArrowStorm_II || com.pawnAbility.Def == TorannMagicDefOf.TM_ArrowStorm_III)
+                    {
+                        mightPower = mightComp.MightData.MightPowersR.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == tmAbilityDef);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_DisablingShot || com.pawnAbility.Def == TorannMagicDefOf.TM_DisablingShot_I || com.pawnAbility.Def == TorannMagicDefOf.TM_DisablingShot_II || com.pawnAbility.Def == TorannMagicDefOf.TM_DisablingShot_III)
+                    {
+                        mightPower = mightComp.MightData.MightPowersS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == tmAbilityDef);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Spite || com.pawnAbility.Def == TorannMagicDefOf.TM_Spite_I || com.pawnAbility.Def == TorannMagicDefOf.TM_Spite_II || com.pawnAbility.Def == TorannMagicDefOf.TM_Spite_III)
+                    {
+                        mightPower = mightComp.MightData.MightPowersDK.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == tmAbilityDef);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Headshot)
+                    {
+                        mightPower = mightComp.MightData.MightPowersS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Headshot);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_AntiArmor)
+                    {
+                        mightPower = mightComp.MightData.MightPowersS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_AntiArmor);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_ThrowingKnife)
+                    {
+                        mightPower = mightComp.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ThrowingKnife);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_PommelStrike)
+                    {
+                        mightPower = mightComp.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PommelStrike);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_TempestStrike)
+                    {
+                        mightPower = mightComp.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_TempestStrike);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_TigerStrike)
+                    {
+                        mightPower = mightComp.MightData.MightPowersM.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_TigerStrike);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_ThunderStrike)
+                    {
+                        mightPower = mightComp.MightData.MightPowersM.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ThunderStrike);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_ProvisionerAura)
+                    {
+                        mightPower = mightComp.MightData.MightPowersC.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ProvisionerAura);
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_TaskMasterAura)
+                    {
+                        mightPower = mightComp.MightData.MightPowersC.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_TaskMasterAura);
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_CommanderAura)
+                    {
+                        mightPower = mightComp.MightData.MightPowersC.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_CommanderAura);
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_PistolWhip)
+                    {
+                        mightPower = mightComp.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PistolWhip);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_SuppressingFire)
+                    {
+                        mightPower = mightComp.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_SuppressingFire);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Buckshot)
+                    {
+                        mightPower = mightComp.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Buckshot);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_FirstAid)
+                    {
+                        mightPower = mightComp.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_FirstAid);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Meditate)
+                    {
+                        mightPower = mightComp.MightData.MightPowersM.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Meditate);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_Nightshade)
+                    {
+                        mightPower = mightComp.MightData.MightPowersShadow.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Nightshade);
+                    }
+                    if (com.pawnAbility.Def == TorannMagicDefOf.TM_TeachMight)
+                    {
+                        mightPower = mightComp.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_TeachMight);
+
+                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                        {
+                            mightPower.AutoCast = !mightPower.AutoCast;
+                            return new GizmoResult(GizmoState.Mouseover, null);
+                            
+                        }
+                    }
+                }
+                if (magicPower != null && comp != null && comp.Mana != null)
+                {
+                    //Rect rect = new Rect(topLeft.x, topLeft.y, com.GetWidth(maxWidth), 75f);
+                    Rect position = new Rect(rect.x + rect.width - 24f, rect.y, 24f, 24f);
+                    if (shrink)
+                    {
+                        position = new Rect(rect.x + rect.width - 14f, rect.y, 14f, 14f);
+                    }
+                    Texture2D image = (!magicPower.AutoCast) ? Widgets.CheckboxOffTex : Widgets.CheckboxOnTex;
+                    GUI.DrawTexture(position, image);
+                }
+                if (mightPower != null && mightComp != null && mightComp.Stamina != null)
+                {
+                    //Rect rect = new Rect(topLeft.x, topLeft.y, com.GetWidth(maxWidth), 75f);
+                    Rect position = new Rect(rect.x + rect.width - 24f, rect.y, 24f, 24f);
+                    if (shrink)
+                    {
+                        position = new Rect(rect.x + rect.width - 14f, rect.y, 14f, 14f);
+                    }
+                    Texture2D image = (!mightPower.AutoCast) ? Widgets.CheckboxOffTex : Widgets.CheckboxOnTex;
+                    GUI.DrawTexture(position, image);
+                }
+                if (flag2 && !Input.GetMouseButtonDown(1) && !Input.GetMouseButtonUp(1))
+                {
+                    if (com.disabled)
+                    {
+                        if (!com.disabledReason.NullOrEmpty())
+                        {
+                            Messages.Message(com.disabledReason, MessageTypeDefOf.RejectInput);
+                        }
+                        return new GizmoResult(GizmoState.Mouseover, null);
+                        
+                    }
+                    if (!TutorSystem.AllowAction(com.TutorTagSelect))
+                    {
+                        return new GizmoResult(GizmoState.Mouseover, null);
+                        
+                    }
+                    return new GizmoResult(GizmoState.Interacted, Event.current);
+                    
+                }
+
+                if (flag)
+                {
+                    return new GizmoResult(GizmoState.Mouseover, null);
+                    
+                }
+                return new GizmoResult(GizmoState.Clear, null);
+                
+            }
+            return oldResult;
         }
     }
 }

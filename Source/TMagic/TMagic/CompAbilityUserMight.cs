@@ -147,59 +147,63 @@ namespace TorannMagic
                 }
                 return this.mightData;
             }
-        }        
+        }
 
+        public bool shouldDraw = true;
         public override void PostDraw()
         {
-            base.PostDraw();
-            if(this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_I, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_II, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_III, false) ||
-                this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_I, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_II, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_III, false))
+            if (shouldDraw)
             {
-                DrawDeceptionTicker(true);
-            }
-            else if(this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_I, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_II, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_III, false))
-            {
-                DrawDeceptionTicker(false);
-            }
-
-            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            if (settingsRef.AIFriendlyMarking && this.AbilityUser.IsColonist && this.IsMightUser)
-            {
-                DrawFighterMark();                
-            }
-            if (settingsRef.AIMarking && !base.AbilityUser.IsColonist && this.IsMightUser)
-            {
-                DrawFighterMark();                
-            }
-
-            if(this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BurningFuryHD, false))
-            {
-                float num = Mathf.Lerp(1.2f, 1.55f, 1f);
-                Vector3 vector = this.Pawn.Drawer.DrawPos;
-                vector.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
-
-                float angle = (float)Rand.Range(0, 360);
-                Vector3 s = new Vector3(1.7f, 1f, 1.7f);
-                Matrix4x4 matrix = default(Matrix4x4);
-                matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
-                if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BurningFuryHD))
+                base.PostDraw();
+                if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_I, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_II, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_III, false) ||
+                    this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_I, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_II, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_III, false))
                 {
-                    Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.burningFuryMat, 0);
+                    DrawDeceptionTicker(true);
                 }
-            }
+                else if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_I, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_II, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_III, false))
+                {
+                    DrawDeceptionTicker(false);
+                }
 
-            if(shouldDrawPsionicShield)
-            {
-                float radius = 2.5f;
-                radius = 2.5f + (.75f * TM_Calc.GetMightSkillLevel(this.Pawn, this.MightData.MightPowerSkill_PsionicBarrier, "TM_PsionicBarrier", "_ver", true));
-                float drawRadius = radius * .23f;
-                float num = Mathf.Lerp(drawRadius, 9.5f, drawRadius);
-                Vector3 vector = this.Pawn.CurJob.targetA.CenterVector3;
-                vector.y = Altitudes.AltitudeFor(AltitudeLayer.VisEffects);
-                Vector3 s = new Vector3(num, 9.5f, num);
-                Matrix4x4 matrix = default(Matrix4x4);
-                matrix.SetTRS(vector, Quaternion.AngleAxis(Rand.Range(0, 360), Vector3.up), s);
-                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_MatPool.PsionicBarrier, 0);
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                if (settingsRef.AIFriendlyMarking && this.AbilityUser != null && this.AbilityUser.IsColonist && this.IsMightUser)
+                {
+                    DrawFighterMark();
+                }
+                if (settingsRef.AIMarking && base.AbilityUser != null && !base.AbilityUser.IsColonist && this.IsMightUser)
+                {
+                    DrawFighterMark();
+                }
+
+                if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BurningFuryHD, false))
+                {
+                    float num = Mathf.Lerp(1.2f, 1.55f, 1f);
+                    Vector3 vector = this.Pawn.Drawer.DrawPos;
+                    vector.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
+
+                    float angle = (float)Rand.Range(0, 360);
+                    Vector3 s = new Vector3(1.7f, 1f, 1.7f);
+                    Matrix4x4 matrix = default(Matrix4x4);
+                    matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
+                    if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BurningFuryHD))
+                    {
+                        Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.burningFuryMat, 0);
+                    }
+                }
+
+                if (shouldDrawPsionicShield)
+                {
+                    float radius = 2.5f;
+                    radius = 2.5f + (.75f * TM_Calc.GetMightSkillLevel(this.Pawn, this.MightData.MightPowerSkill_PsionicBarrier, "TM_PsionicBarrier", "_ver", true));
+                    float drawRadius = radius * .23f;
+                    float num = Mathf.Lerp(drawRadius, 9.5f, drawRadius);
+                    Vector3 vector = this.Pawn.CurJob.targetA.CenterVector3;
+                    vector.y = Altitudes.AltitudeFor(AltitudeLayer.VisEffects);
+                    Vector3 s = new Vector3(num, 9.5f, num);
+                    Matrix4x4 matrix = default(Matrix4x4);
+                    matrix.SetTRS(vector, Quaternion.AngleAxis(Rand.Range(0, 360), Vector3.up), s);
+                    Graphics.DrawMesh(MeshPool.plane10, matrix, TM_MatPool.PsionicBarrier, 0);
+                }
             }
         }
 
@@ -1992,6 +1996,14 @@ namespace TorannMagic
                         MightPower mp = this.MightData.AllMightPowers[i];
                         for (int j = 0; j < mp.TMabilityDefs.Count; j++)
                         {
+                            TMAbilityDef tmad = mp.TMabilityDefs[j] as TMAbilityDef;
+                            if (tmad.childAbilities != null && tmad.childAbilities.Count > 0)
+                            {
+                                for (int k = 0; k < tmad.childAbilities.Count; k++)
+                                {
+                                    this.RemovePawnAbility(tmad.childAbilities[k]);
+                                }
+                            }
                             this.RemovePawnAbility(mp.TMabilityDefs[j]);
                         }
                         mp.learned = false;

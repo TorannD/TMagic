@@ -143,6 +143,8 @@
     <Compile Include="Building_ExplosiveProximityTrap.cs" />
     <Compile Include="CompProperties_AnimalController.cs" />
     <Compile Include="CompAnimalController.cs" />
+    <Compile Include="CompUseEffect_Essence.cs" />
+    <Compile Include="CompUseEffect_ClassExtraction.cs" />
     <Compile Include="CompUseEffect_SpiritBinding.cs" />
     <Compile Include="DeathWorker_Spirit.cs" />
     <Compile Include="DefModExtension_LearnAbilityRequiredTraits.cs" />
@@ -158,6 +160,7 @@
     <Compile Include="HediffComp_DiseaseImmunity.cs" />
     <Compile Include="JobDriver_Channel_Discord.cs" />
     <Compile Include="ModCheck\SS.cs" />
+    <Compile Include="ModOptions\TM_DebugTools.cs" />
     <Compile Include="Projectile_Lightning.cs" />
     <Compile Include="Projectile_LightSkipMass.cs" />
     <Compile Include="Projectile_Explosion.cs" />

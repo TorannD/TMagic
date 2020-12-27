@@ -86,53 +86,56 @@ namespace TorannMagic
 		{			         
             Map map = base.Map;
             IntVec3 strikePos = default(IntVec3);
-            if (!initialized)
+            if (!this.launcher.DestroyedOrNull())
             {
-                if (hitThing != null && hitThing.Position != base.Position)
+                if (!initialized)
                 {
-                    strikePos = hitThing.Position;
+                    if (hitThing != null && hitThing.Position != base.Position)
+                    {
+                        strikePos = hitThing.Position;
+                    }
+                    else
+                    {
+                        strikePos = base.Position;
+                    }
+                    this.direction = TM_Calc.GetVector(this.launcher.Position, strikePos);
+                    Initialize(this.launcher);
+                    //SoundInfo info = SoundInfo.InMap(new TargetInfo(base.Position, map, false), MaintenanceType.None);
+                    //info.pitchFactor = 1f;
+                    //info.volumeFactor = .6f;
+                    //TorannMagicDefOf.TM_Lightning.PlayOneShot(info);
+                    initialized = true;
                 }
-                else
+                if (Find.TickManager.TicksGame < (lastStrikeTick + strikeDelay))
                 {
-                    strikePos = base.Position;
+                    for (int i = 0; i < strikeLocs.Count; i++)
+                    {
+                        Vector3 dir = TM_Calc.GetVector(strikeLocs[i], newStrikeLocs[i]);
+                        float angle = (Quaternion.AngleAxis(90, Vector3.up) * dir).ToAngleFlat();
+                        DrawBolt(strikeMeshes[i], TM_MatPool.standardLightning, strikeLocs[i], angle, GetFadedBrightness);
+                    }
                 }
-                this.direction = TM_Calc.GetVector(this.launcher.Position, strikePos);                
-                Initialize(this.launcher);
-                //SoundInfo info = SoundInfo.InMap(new TargetInfo(base.Position, map, false), MaintenanceType.None);
-                //info.pitchFactor = 1f;
-                //info.volumeFactor = .6f;
-                //TorannMagicDefOf.TM_Lightning.PlayOneShot(info);
-                initialized = true;
-            }
-            if(Find.TickManager.TicksGame < (lastStrikeTick + strikeDelay))
-            {
-                for (int i =0; i < strikeLocs.Count; i++)
+                if (strikeLocs != null && strikeInt < maxStrikes)
                 {
-                    Vector3 dir = TM_Calc.GetVector(strikeLocs[i], newStrikeLocs[i]);
-                    float angle = (Quaternion.AngleAxis(90, Vector3.up) * dir).ToAngleFlat();
-                    DrawBolt(strikeMeshes[i], TM_MatPool.standardLightning, strikeLocs[i], angle, GetFadedBrightness);
-                }
-            }
-            if (!this.launcher.DestroyedOrNull() && strikeLocs != null && strikeInt < maxStrikes)
-            {
-                lastStrikeTick = Find.TickManager.TicksGame;
-                if (strikeInt == 0)
-                {
-                    Vector3 dir = this.direction;
-                    float angle = (Quaternion.AngleAxis(90, Vector3.up) * dir).ToAngleFlat();
-                    IntVec3 origin = this.launcher.Position;
-                    strikeLocs.Add(origin);
-                    float range = (strikePos - origin).LengthHorizontal;
-                    Mesh mesh = RandomBoltMesh(range);
-                    strikeMeshes.Add(mesh);
                     lastStrikeTick = Find.TickManager.TicksGame;
-                    DrawBolt(mesh, TM_MatPool.standardLightning, origin, angle, GetFadedBrightness);
-                    DamageCell(strikePos, this.launcher);
-                    GenExplosion.DoExplosion(strikePos, this.Map, 2f, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(3 + pwrVal, 6 + pwrVal) * arcaneDmg), 1.2f, null);
-                    newStrikeLocs.Add(strikePos);
+                    if (strikeInt == 0)
+                    {
+                        Vector3 dir = this.direction;
+                        float angle = (Quaternion.AngleAxis(90, Vector3.up) * dir).ToAngleFlat();
+                        IntVec3 origin = this.launcher.Position;
+                        strikeLocs.Add(origin);
+                        float range = (strikePos - origin).LengthHorizontal;
+                        Mesh mesh = RandomBoltMesh(range);
+                        strikeMeshes.Add(mesh);
+                        lastStrikeTick = Find.TickManager.TicksGame;
+                        DrawBolt(mesh, TM_MatPool.standardLightning, origin, angle, GetFadedBrightness);
+                        DamageCell(strikePos, this.launcher);
+                        GenExplosion.DoExplosion(strikePos, this.Map, 2f, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(3 + pwrVal, 6 + pwrVal) * arcaneDmg), 1.2f, null);
+                        newStrikeLocs.Add(strikePos);
+                    }
+                    RandomStrikes(base.Position, this.launcher);
+                    strikeInt++;
                 }
-                RandomStrikes(base.Position, this.launcher);
-                strikeInt++;
             }
             Destroy();
         }

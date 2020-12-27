@@ -91,7 +91,7 @@ namespace TorannMagic
                     {
                         for (int i = 0; i < hds.Count; i++)
                         {
-                            if (hds[i].def == TorannMagicDefOf.TM_RayOfHope_AuraHD || hds[i].def == TorannMagicDefOf.TM_SoothingBreeze_AuraHD || hds[i].def == TorannMagicDefOf.TM_Shadow_AuraHD ||
+                            if (hds[i].def == TorannMagicDefOf.TM_RayOfHope_AuraHD || hds[i].def == TorannMagicDefOf.TM_SoothingBreeze_AuraHD || hds[i].def == TorannMagicDefOf.TM_Shadow_AuraHD || hds[i].def == TorannMagicDefOf.TM_InnerFire_AuraHD ||
                                 hds[i].def == TorannMagicDefOf.TM_TechnoBitHD || hds[i].def == TorannMagicDefOf.TM_EnchantedAuraHD || hds[i].def == TorannMagicDefOf.TM_EnchantedBodyHD || 
                                 hds[i].def == TorannMagicDefOf.TM_PredictionHD || hds[i].def == TorannMagicDefOf.TM_SDSoulBondPhysicalHD || hds[i].def == TorannMagicDefOf.TM_WDSoulBondMentalHD)                                
                             {

@@ -2271,9 +2271,9 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		<degreeDatas>	
 		  <li>
 			<label>Psionic</label>
-			<description>[PAWN_nameDef] is a Psionic - able to manifest mental willpower into raw energy without the use of a psychic amplifier. [PAWN_pronoun] is able to project psionic energy but finds it easier and more efficient to apply it as an extension and augmentation of [PAWN_possessive] body. For this reason, [PAWN_pronoun] prefers to be free of encumbering weapons.
+			<description>[PAWN_nameDef] is a Psionic - able to manifest mental willpower into raw energy without the use of a psychic amplifier. [PAWN_pronoun] is able to project psionic energy but finds it easier and more efficient to apply it as an extension of [PAWN_possessive] body. For this reason, [PAWN_pronoun] prefers to be free of encumbering weapons when manifesting psionic energy.
 
-[PAWN_nameDef] has become less social since developing psionic powers since [PAWN_objective] can perform any task on [PAWN_possessive] own and can do without the jealousy of others.
+[PAWN_nameDef] has become less social since developing psionic powers, preferring to be unhindered by other pawns.
 
 *The regeneration rate of psionic energy is based on psychic sensitivity - reducing sensitivity to 0 will prevent psionic energy from regenerating.</description>
 			<degree>4</degree>

@@ -322,6 +322,36 @@ namespace TorannMagic
         //    return false;
         //}
 
+        [HarmonyPatch(typeof(PawnUtility), "GainComfortFromThingIfPossible", null)]
+        public class GainComfortFromThingIfPossible_Manaweave_Patch
+        {
+            public static void Postfix(Pawn p, Thing from)
+            {
+                float statValue = from.GetStatValue(StatDefOf.Comfort);
+                CompAbilityUserMagic comp = p.TryGetComp<CompAbilityUserMagic>();
+                if(statValue >= 0f && comp != null && comp.Mana != null)
+                {
+                    comp.Mana.CurLevel += .0001f * statValue;
+                }                
+            }
+        }
+
+        [HarmonyPatch(typeof(Need_Rest), "NeedInterval", null)]
+        public class RestReduceArcaneWeakness_Patch
+        {
+            public static void Postfix(Need_Rest __instance, Pawn ___pawn, int ___lastRestTick)
+            {
+                if(Find.TickManager.TicksGame < (___lastRestTick +2) && ___pawn != null && ___pawn.health != null && ___pawn.health.hediffSet != null)
+                {
+                    Hediff hd = ___pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ArcaneWeakness);
+                    if(hd != null)
+                    {
+                        hd.Severity -= .01f;
+                    }
+                }                
+            }
+        }
+
         [HarmonyPatch(typeof(Building_MusicalInstrument), "Tick", null)]
         public class BardPlaysMusicalInstrument_Patch
         {
@@ -6057,12 +6087,49 @@ namespace TorannMagic
             }
         }
 
+        public static float sX = 0;
+        [HarmonyPatch(typeof(GizmoGridDrawer), "DrawGizmoGrid", null)]
+        public static class DrawGizmo_Patch
+        {
+            private static bool Prefix(IEnumerable<Gizmo> gizmos, float startX)//, out Gizmo mouseoverGizmo)
+            {
+                // Log.Message("startx: " + startX + " count: " + gizmos.Count());
+                foreach(Gizmo g in gizmos)
+                {
+                    Command_PawnAbility com = g as Command_PawnAbility;
+                    if(com != null)
+                    {
+                        com.shrinkable = true;
+                    }
+                }
+                sX = startX;
+                //GizmoGridDrawerMod.DrawGizmoGrid(gizmos, startX, out mouseoverGizmo);
+                return true;
+            }
+        }
+
         [HarmonyPatch(typeof(Command), "GizmoOnGUIInt", null)]
         public static class Command_PawnAbility_Order_Patch
         {
             public static void Postfix(Command __instance, Rect butRect, bool shrunk, ref GizmoResult __result)
             {
                 ModOptions.Constants.IconAnchor(butRect);
+            }
+        }
+
+        [HarmonyPatch(typeof(Command), "GizmoOnGUIInt", null)]
+        public static class GizmoOnGUIInt_Prefix_Patch
+        {
+            public static bool Prefix(Command __instance, Rect butRect, ref GizmoResult __result, bool shrunk = false)
+            {
+                Command_PawnAbility com = __instance as Command_PawnAbility;
+                if(com != null && com.pawnAbility != null && com.pawnAbility.Def.defName.Contains("TM_"))
+                {
+                    //Log.Message("patching command for pawn ability with butRect " + butRect.x + " " + butRect.y + " " + butRect.width + " " + butRect.height + " shrunk: " + shrunk);
+                    __result = TM_Action.DrawAutoCastForGizmo(com, butRect, shrunk, __result);
+                    return false;
+                }
+                return true;
             }
         }
 
@@ -6074,6 +6141,9 @@ namespace TorannMagic
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 if (settingsRef.autocastEnabled && __instance.pawnAbility.Def.defName.Contains("TM_"))
                 {
+                    Rect rect = new Rect(topLeft.x, topLeft.y, __instance.GetWidth(maxWidth), 75f);
+                    __result = TM_Action.DrawAutoCastForGizmo(__instance, rect, false, __result);
+                    return false;
                     CompAbilityUserMagic comp = __instance.pawnAbility.Pawn.GetComp<CompAbilityUserMagic>();
                     CompAbilityUserMight mightComp = __instance.pawnAbility.Pawn.GetComp<CompAbilityUserMight>();
                     MagicPower magicPower = null;
@@ -6082,7 +6152,7 @@ namespace TorannMagic
                     bool shrink = settingsRef.shrinkIcons;
                     Text.Font = GameFont.Tiny;
                     bool flag = false;
-                    Rect rect = new Rect(topLeft.x, topLeft.y, __instance.GetWidth(maxWidth), 75f);
+                    
                     if(shrink)
                     {
                         Traverse.Create(root: __instance).Field(name: "order").SetValue(200);

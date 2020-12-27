@@ -267,6 +267,8 @@ namespace TorannMagic
         public List<string> recallNeedDefnames = null;
         public List<float> recallNeedValues = null;
         public List<Hediff> recallHediffList = null;
+        public List<float> recallHediffDefSeverityList = null;
+        public List<int> recallHediffDefTicksRemainingList = null;
         public List<Hediff_Injury> recallInjuriesList = null;
         public bool recallSet = false;
         public int recallExpiration = 0;
@@ -418,9 +420,10 @@ namespace TorannMagic
             }
         }
 
+        public bool shouldDraw = true;
         public override void PostDraw()
         {
-            if (IsMagicUser)
+            if (shouldDraw && IsMagicUser)
             {
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 if (settingsRef.AIFriendlyMarking && base.AbilityUser.IsColonist && this.IsMagicUser)
@@ -3913,6 +3916,14 @@ namespace TorannMagic
                         MagicPower mp = this.MagicData.AllMagicPowers[i];
                         for (int j = 0; j < mp.TMabilityDefs.Count; j++)
                         {
+                            TMAbilityDef tmad = mp.TMabilityDefs[j] as TMAbilityDef;
+                            if(tmad.childAbilities != null && tmad.childAbilities.Count > 0)
+                            {
+                                for(int k = 0; k < tmad.childAbilities.Count; k++)
+                                {
+                                    this.RemovePawnAbility(tmad.childAbilities[k]);
+                                }
+                            }
                             this.RemovePawnAbility(mp.TMabilityDefs[j]);
                         }
                         mp.learned = false;
@@ -3931,6 +3942,16 @@ namespace TorannMagic
                         if (current.abilityDef != TorannMagicDefOf.TM_ChaosTradition)
                         {
                             current.learned = false;
+                            foreach (TMAbilityDef tmad in current.TMabilityDefs)
+                            {
+                                if (tmad.childAbilities != null && tmad.childAbilities.Count > 0)
+                                {
+                                    for (int k = 0; k < tmad.childAbilities.Count; k++)
+                                    {
+                                        this.RemovePawnAbility(tmad.childAbilities[k]);
+                                    }
+                                }
+                            }
                             this.RemovePawnAbility(current.abilityDef);
                         }
                     }
@@ -8381,6 +8402,8 @@ namespace TorannMagic
             Scribe_Collections.Look<string>(ref this.recallNeedDefnames, "recallNeedDefnames", LookMode.Value);
             Scribe_Collections.Look<float>(ref this.recallNeedValues, "recallNeedValues", LookMode.Value);
             Scribe_Collections.Look<Hediff>(ref this.recallHediffList, "recallHediffList", LookMode.Deep);
+            Scribe_Collections.Look<float>(ref this.recallHediffDefSeverityList, "recallHediffSeverityList", LookMode.Value);
+            Scribe_Collections.Look<int>(ref this.recallHediffDefTicksRemainingList, "recallHediffDefTicksRemainingList", LookMode.Value);
             Scribe_Collections.Look<Hediff_Injury>(ref this.recallInjuriesList, "recallInjuriesList", LookMode.Deep);
             Scribe_References.Look<FlyingObject_SpiritOfLight>(ref SoL, "SoL", false);
             Scribe_Defs.Look<ThingDef>(ref this.guardianSpiritType, "guardianSpiritType");
@@ -9598,6 +9621,29 @@ namespace TorannMagic
                                 if (i < count)
                                 {
                                     this.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)learnedList[i].GetAbilityDef(0), TM_ClassUtility.GetAssociatedMagicPowerSkill(this, learnedList[i])));
+                                    foreach(MagicPower mp in learnedList)
+                                    {
+                                        for (int j = 0; j < mp.TMabilityDefs.Count; j++)
+                                        {
+                                            TMAbilityDef tmad = mp.TMabilityDefs[j] as TMAbilityDef;
+                                            if(tmad.shouldInitialize)
+                                            {
+                                                RemovePawnAbility(tmad);
+                                                AddPawnAbility(tmad);
+                                            }
+                                            if(tmad.childAbilities != null && tmad.childAbilities.Count > 0)
+                                            {
+                                                foreach(TMAbilityDef ad in tmad.childAbilities)
+                                                {
+                                                    if(ad.shouldInitialize)
+                                                    {
+                                                        RemovePawnAbility(ad);
+                                                        AddPawnAbility(ad);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                                 else
                                 {

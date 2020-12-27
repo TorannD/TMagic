@@ -182,6 +182,7 @@
 <TM_AbandoningMap>Your pawns are abandoning {0}, do you want to remove the map?</TM_AbandoningMap>
 <TM_IncompatibleWeaponType>{0} cannot use {1} - incompatible weapon.</TM_IncompatibleWeaponType>
 <TM_SpiritAnimalChange>{0}'s spirit animal has changed from {1} to {2}.</TM_SpiritAnimalChange>
+<TM_InvalidAction>{0} cannot use {1} - invalid parameters.</TM_InvalidAction>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>

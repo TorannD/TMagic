@@ -1274,10 +1274,9 @@ namespace TorannMagic
 
                     if (mpsList.Count > 0)
                     {
-                        CustomSkillHandler(num2, compMight, power, enumerator, mpsList, rect3);
-                        itnum++;
+                        CustomSkillHandler(num2, compMight, power, enumerator, mpsList, rect3);                       
                     }
-                    
+                    itnum++;
                     num += MightCardUtility.MagicButtonSize + MightCardUtility.TextSize + 4f;
                 }
             }
