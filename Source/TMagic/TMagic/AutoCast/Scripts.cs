@@ -1234,10 +1234,10 @@ namespace TorannMagic.AutoCast
                 caster.pather.StartPath(pathEndTarget, pem);
                 //GenClamor.DoClamor(caster, 2f, ClamorDefOf.Ability);
 
-                if (caster.kindDef != PawnKindDef.Named("TM_Dire_Wolf"))
+                if (casterComp != null && casterComp.IsMagicUser)
                 {
                     ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                    casterComp.MagicUserXP -= (int)((casterComp.ActualManaCost(abilitydef) * 300 * .85f * casterComp.xpGain * settingsRef.xpMultiplier));
+                    casterComp.MagicUserXP -= (int)((casterComp.ActualManaCost(abilitydef) * 300 * .7f * casterComp.xpGain * settingsRef.xpMultiplier));
                     ability.PostAbilityAttempt();
                 }
                 if(selectCaster)

@@ -6094,15 +6094,18 @@ namespace TorannMagic
             private static bool Prefix(IEnumerable<Gizmo> gizmos, float startX)//, out Gizmo mouseoverGizmo)
             {
                 // Log.Message("startx: " + startX + " count: " + gizmos.Count());
-                foreach(Gizmo g in gizmos)
+                if (ModOptions.Settings.Instance.shrinkIcons)
                 {
-                    Command_PawnAbility com = g as Command_PawnAbility;
-                    if(com != null)
+                    foreach (Gizmo g in gizmos)
                     {
-                        com.shrinkable = true;
+                        Command_PawnAbility com = g as Command_PawnAbility;
+                        if (com != null)
+                        {
+                            com.shrinkable = true;
+                        }
                     }
+                    sX = startX;
                 }
-                sX = startX;
                 //GizmoGridDrawerMod.DrawGizmoGrid(gizmos, startX, out mouseoverGizmo);
                 return true;
             }
