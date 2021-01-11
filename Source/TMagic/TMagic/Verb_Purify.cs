@@ -144,10 +144,10 @@ namespace TorannMagic
                         // Is the heal amount just a chance to fully remove?
                         if (healableParameters.isRemovalChance)
                         {
-                            Log.Message(String.Format("{0}: {1} heal chance {2}", pawn, hediff.def.defName, healAmount));
+                            //Log.Message(String.Format("{0}: {1} heal chance {2}", pawn, hediff.def.defName, healAmount));
                             if (Rand.Chance(healAmount))
                             {
-                                Log.Message(String.Format("{0}: {1} heal successful!", pawn, hediff.def.defName));
+                                //Log.Message(String.Format("{0}: {1} heal successful!", pawn, hediff.def.defName));
                                 pawn.health.RemoveHediff(hediff);
                             }
                         }
@@ -160,12 +160,12 @@ namespace TorannMagic
                                 Hediff firstHediffOfDef = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named(healableParameters.alsoRemoveOnFullHeal));
                                 if (firstHediffOfDef != null)
                                 {
-                                    Log.Message(String.Format("{0}: {1} removed", pawn, healableParameters.alsoRemoveOnFullHeal));
+                                    //Log.Message(String.Format("{0}: {1} removed", pawn, healableParameters.alsoRemoveOnFullHeal));
                                     pawn.health.RemoveHediff(firstHediffOfDef);
                                 }
                             }
 
-                            Log.Message(String.Format("{0}: {1} being healed by {2}", pawn, hediff.def.defName, healAmount));
+                            //Log.Message(String.Format("{0}: {1} being healed by {2}", pawn, hediff.def.defName, healAmount));
                             hediff.Heal(healAmount);
                         }
 
@@ -175,96 +175,6 @@ namespace TorannMagic
                         --numberOfThingsToHeal;
                     }
                 }
-                //if (pawn.RaceProps.Humanlike)
-                //{
-                //using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
-                //{
-                //    while (enumerator.MoveNext())
-                //    {
-                //        Hediff rec = enumerator.Current;
-                //        bool flag2 = num > 0;
-                //        if (flag2)
-                //        {
-                //            if (rec.def.defName == "Cataract" || rec.def.defName == "HearingLoss" || rec.def.defName.Contains("ToxicBuildup"))
-                //            {
-                //                rec.Heal(.4f + .3f * pwrVal);
-                //                num--;
-                //            }
-                //            if ((rec.def.defName == "Blindness" || rec.def.defName.Contains("Asthma") || rec.def.defName == "Cirrhosis" || rec.def.defName == "ChemicalDamageModerate") && verVal >= 1)
-                //            {
-                //                rec.Heal(.3f + .2f * pwrVal);
-                //                if (rec.def.defName.Contains("Asthma"))
-                //                {
-                //                    pawn.health.RemoveHediff(rec);
-                //                }
-                //                num--;
-                //            }
-                //            if ((rec.def.defName == "Frail" || rec.def.defName == "BadBack" || rec.def.defName.Contains("Carcinoma") || rec.def.defName == "ChemicalDamageSevere") && verVal >= 2)
-                //            {
-                //                rec.Heal(.25f + .2f * pwrVal);
-                //                num--;
-                //            }
-                //            if ((rec.def.defName.Contains("Alzheimers") || rec.def.defName == "Dementia" || rec.def.defName.Contains("HeartArteryBlockage") || rec.def.defName == "PsychicShock" || rec.def.defName == "CatatonicBreakdown") && verVal >= 3)
-                //            {
-                //                rec.Heal(.15f + .15f * pwrVal);
-                //                num--;
-                //            }
-                //            if(rec.def.defName.Contains("Abasia") && verVal >= 3)
-                //            {
-                //                if(Rand.Chance(.25f + (.05f * pwrVal)))
-                //                {
-                //                    pawn.health.RemoveHediff(pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("Abasia")));
-                //                    num--;
-                //                }
-                //                else
-                //                {
-                //                    MoteMaker.ThrowText(pawn.DrawPos, pawn.Map, "Failed to remove Abasia...");
-                //                }
-                //            }
-                //            TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);
-                //            TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);
-                //        }
-                //    }
-                //}
-                ////}
-                //using (IEnumerator<Hediff_Addiction> enumerator = pawn.health.hediffSet.GetHediffs<Hediff_Addiction>().GetEnumerator())
-                //{
-                //    while (enumerator.MoveNext())
-                //    {
-                //        Hediff_Addiction rec = enumerator.Current;
-                //        bool flag2 = num > 0;
-                //        if (flag2)
-                //        {
-                //            if (rec.Chemical.defName == "Alcohol" || rec.Chemical.defName == "Smokeleaf")
-                //            {
-                //                rec.Severity -= ((.3f + .3f * pwrVal)*arcaneDmg);
-                //                num--;
-                //            }
-                //            if ((rec.Chemical.defName == "GoJuice" || rec.Chemical.defName == "WakeUp") && verVal >= 1)
-                //            {
-                //                rec.Severity -= ((.25f + .25f * pwrVal)*arcaneDmg);
-                //                num--;
-                //            }
-                //            if (rec.Chemical.defName == "Psychite" && verVal >= 2)
-                //            {
-                //                rec.Severity -= ((.25f + .25f * pwrVal)*arcaneDmg);
-                //                num--;
-                //            }
-                //            if (verVal >= 3)
-                //            {
-                //                if (rec.Chemical.defName == "Luciferium" && (rec.Severity - ((.15f + .15f * pwrVal)*arcaneDmg) < 0))
-                //                {
-                //                    Hediff luciHigh = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("LuciferiumHigh"), false);
-                //                    pawn.health.RemoveHediff(luciHigh);
-                //                }
-                //                rec.Severity -= ((.15f + .15f * pwrVal) * arcaneDmg);
-                //                num--;                                
-                //            }
-                //            TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);
-                //            TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);
-                //        }
-                //    }
-                //}
             }
             return true;
         }
