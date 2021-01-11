@@ -173,6 +173,7 @@
     <Compile Include="TM_AutocastConditionDef.cs" />
     <Compile Include="TM_CustomPowerDef.cs" />
     <Compile Include="TM_WeatherEvent_MeshGeneric.cs" />
+    <Compile Include="VerbProperties_Purify.cs" />
     <Compile Include="Verb_Discord.cs" />
     <Compile Include="Verb_SummonSpiritWolves.cs" />
     <Compile Include="Verb_SummonTotemHealing.cs" />
