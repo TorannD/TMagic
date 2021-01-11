@@ -68,7 +68,7 @@
 	<efficiencyReductionPercent>.06</efficiencyReductionPercent>
 		<learnChance>.3</learnChance>
 		<canCopy>true</canCopy>
-    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+    <MainVerb Class="TorannMagic.VerbProperties_Purify">
         <verbClass>TorannMagic.Verb_Purify</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
@@ -91,6 +91,107 @@
 		  <canTargetSelf>true</canTargetSelf>
 		  <canTargetLocations>false</canTargetLocations>
 		</targetParams>
+		<healableHediffs>
+		  <li>
+			<hediffs>
+			  <li>Cataract</li>
+			  <li>HearingLoss</li>
+			  <li>ToxicBuildup</li>
+			</hediffs>
+			<minLevel>0</minLevel>
+			<baseAmount>0.4</baseAmount>
+			<amountPerLevel>0.3</amountPerLevel>
+		  </li>
+		  <li>
+			<hediffs>
+			  <li>Asthma</li>
+			</hediffs>
+			<minLevel>1</minLevel>
+			<baseAmount>10</baseAmount>
+			<alsoRemoveOnFullHeal>Asthma</alsoRemoveOnFullHeal>
+		  </li>
+		  <li>
+			<hediffs>
+			  <li>Blindness</li>
+			  <li>Cirrhosis</li>
+			  <li>ChemicalDamageModerate</li>
+			</hediffs>
+			<minLevel>1</minLevel>
+			<baseAmount>0.3</baseAmount>
+			<amountPerLevel>0.2</amountPerLevel>
+		  </li>
+		  <li>
+			<hediffs>
+			  <li>Frail</li>
+			  <li>BadBack</li>
+			  <li>Carcinoma</li>
+			  <li>ChemicalDamageSevere</li>
+			</hediffs>
+			<minLevel>2</minLevel>
+			<baseAmount>0.25</baseAmount>
+			<amountPerLevel>0.2</amountPerLevel>
+		  </li>
+		  <li>
+			<hediffs>
+			  <li>Alzheimers</li>
+			  <li>Dementia</li>
+			  <li>HeartArteryBlockage</li>
+			  <li>PsychicShock</li>
+			  <li>CatatonicBreakdown</li>
+			</hediffs>
+			<minLevel>3</minLevel>
+			<baseAmount>0.15</baseAmount>
+			<amountPerLevel>0.15</amountPerLevel>
+		  </li>
+		  <li>
+			<hediffs>
+			  <li>Abasia</li>
+			</hediffs>
+			<minLevel>3</minLevel>
+			<isRemovalChance>true</isRemovalChance>
+			<baseAmount>0.25</baseAmount>
+			<amountPerLevel>0.05</amountPerLevel>
+		  </li>
+		  <li>
+			<hediffs>
+			  <li>AlcoholAddiction</li>
+			  <li>SmokeleafAddiction</li>
+			</hediffs>
+			<minLevel>0</minLevel>
+			<baseAmount>0.3</baseAmount>
+			<amountPerLevel>0.3</amountPerLevel>
+			<useArcaneDamage>true</useArcaneDamage>
+		  </li>
+		  <li>
+		    <hediffs>
+			  <li>GoJuiceAddiction</li>
+			  <li>WakeUpAddiction</li>
+			</hediffs>
+			<minLevel>1</minLevel>
+			<baseAmount>0.25</baseAmount>
+			<amountPerLevel>0.25</amountPerLevel>
+			<useArcaneDamage>true</useArcaneDamage>
+		  </li>
+		  <li>
+		    <hediffs>
+			  <li>PsychiteAddiction</li>
+			</hediffs>
+			<minLevel>2</minLevel>
+			<baseAmount>0.25</baseAmount>
+			<amountPerLevel>0.25</amountPerLevel>
+			<useArcaneDamage>true</useArcaneDamage>
+		  </li>
+		  <li>
+		    <hediffs>
+			  <li>LuciferiumAddiction</li>
+			</hediffs>
+			<minLevel>3</minLevel>
+			<baseAmount>0.15</baseAmount>
+			<amountPerLevel>0.15</amountPerLevel>
+			<useArcaneDamage>true</useArcaneDamage>
+			<alsoRemoveOnFullHeal>LuciferiumHigh</alsoRemoveOnFullHeal>
+		  </li>
+		</healableHediffs>
     </MainVerb>
   </TorannMagic.TMAbilityDef>
   
