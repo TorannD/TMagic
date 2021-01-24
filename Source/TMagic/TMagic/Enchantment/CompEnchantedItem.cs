@@ -193,7 +193,11 @@ namespace TorannMagic.Enchantment
                         else
                         {                            
                             HealthUtility.AdjustSeverity(artifact.Wearer, hediff, hediffSeverity);
-                            artifact.Wearer.health.hediffSet.GetFirstHediffOfDef(hediff, false).TryGetComp<HediffComp_EnchantedItem>().enchantedItem = artifact;
+                            HediffComp_EnchantedItem hdc = artifact.Wearer.health.hediffSet.GetFirstHediffOfDef(hediff, false).TryGetComp<HediffComp_EnchantedItem>();
+                            if (hdc != null)
+                            {
+                                hdc.enchantedItem = artifact;
+                            }
                             //HediffComp_EnchantedItem comp = diff.TryGetComp<HediffComp_EnchantedItem>();
                         }
                     }

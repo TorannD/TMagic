@@ -98,7 +98,7 @@ namespace TorannMagic
 
                 if (true)
                 {
-                    this.Pawn.ageTracker.AgeBiologicalTicks -= 25000;
+                    this.Pawn.ageTracker.AgeBiologicalTicks -= Mathf.RoundToInt(15000f * this.Pawn.ageTracker.AgeBiologicalYearsFloat/10f);
                     if (this.Pawn.ageTracker.AgeBiologicalTicks < 0 && this.Pawn.ageTracker.AgeBiologicalYears > -10)
                     {
                         Messages.Message("TM_CeaseToExist".Translate(this.Pawn.LabelShort), MessageTypeDefOf.NeutralEvent);

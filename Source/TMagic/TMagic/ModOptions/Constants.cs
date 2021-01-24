@@ -201,6 +201,15 @@ namespace TorannMagic.ModOptions
             Constants.cloaks.Add(MaterialPool.MatFrom("Equipment/demonlordcloakc_Thin_south").mainTexture);
             Constants.cloaks.Add(MaterialPool.MatFrom("Equipment/demonlordcloakc_Male_east").mainTexture);
             Constants.cloaks.Add(MaterialPool.MatFrom("Equipment/demonlordcloakc_Male_south").mainTexture);
+            if(ModsConfig.IsActive("ssulunge.BBBodySupport"))
+            {
+                Constants.cloaks.Add(MaterialPool.MatFrom("Equipment/demonlordcloakc_FemaleBB_east").mainTexture);
+                Constants.cloaks.Add(MaterialPool.MatFrom("Equipment/demonlordcloakc_FemaleBB_south").mainTexture);
+                Constants.cloaks.Add(MaterialPool.MatFrom("Equipment/demonlordcloakc_FemaleBB_north").mainTexture);
+                Constants.cloaks.Add(MaterialPool.MatFrom("Equipment/opencloak_FemaleBB_east").mainTexture);
+                Constants.cloaks.Add(MaterialPool.MatFrom("Equipment/opencloak_FemaleBB_south").mainTexture);
+                Constants.cloaks.Add(MaterialPool.MatFrom("Equipment/opencloak_FemaleBB_south").mainTexture);
+            }
             Constants.cloaks.AddRange(cloaksNorth);
         }
 

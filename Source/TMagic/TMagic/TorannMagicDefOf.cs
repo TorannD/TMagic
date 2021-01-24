@@ -113,6 +113,8 @@ namespace TorannMagic
         public static ThingDef SpellOf_SnapFreeze;
         public static ThingDef SpellOf_SpiritOfLight;
         public static ThingDef SpellOf_GuardianSpirit;
+        public static ThingDef SpellOf_ShieldOther;
+        public static ThingDef SpellOf_Discord;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;

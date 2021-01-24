@@ -53,7 +53,7 @@
   <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
     <defName>TM_SummonTotemLightning</defName>
     <label>Totem: Lightning</label>
-    <uiIconPath>Other/totem_claw</uiIconPath>
+    <uiIconPath>UI/totem_lightning_icon</uiIconPath>
     <description>Creates a lightning totem at the target location. Lasts 1 game hr and discharges electrical bolts at enemies within 40m every 2-3 seconds.</description>
     <manaCost>0.40</manaCost>
 	<efficiencyReductionPercent>.02</efficiencyReductionPercent>
@@ -91,7 +91,7 @@
   <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
     <defName>TM_SummonTotemEarth</defName>
     <label>Totem: Earth</label>
-    <uiIconPath>Other/totem_monolith</uiIconPath>
+    <uiIconPath>UI/totem_earth_icon</uiIconPath>
     <description>Creates an earth totem at the target location. Lasts 1 game hour and causes tremors every 3-4 seconds that stagger all pawns within 5 cells.</description>
     <manaCost>0.35</manaCost>
 	<efficiencyReductionPercent>.02</efficiencyReductionPercent>
@@ -129,7 +129,7 @@
   <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
     <defName>TM_SummonTotemHealing</defName>
     <label>Totem: Healing</label>
-    <uiIconPath>Other/totem_wing</uiIconPath>
+    <uiIconPath>UI/totem_heal_icon</uiIconPath>
     <description>Creates a healing totem at the target location. Lasts 1 game hour and periodically heals nearby pawns.</description>
     <manaCost>0.30</manaCost>
 	<efficiencyReductionPercent>.02</efficiencyReductionPercent>

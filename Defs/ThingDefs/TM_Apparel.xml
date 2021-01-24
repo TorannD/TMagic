@@ -290,7 +290,6 @@ Arcane Res: +10%</description>
 		<bodyPartGroups>
 			<li>Torso</li>
 			<li>Shoulders</li>
-			<li>Arms</li>
 			<li>Legs</li>
 			<li>Waist</li>
 		</bodyPartGroups>
@@ -534,41 +533,51 @@ Class XP Gain: +10%</description>
 			<li>Legs</li>
 		</bodyPartGroups>
 	</apparel>
-  </ThingDef>
-  
+  </ThingDef>  
    
-  <ThingDef ParentName="TM_ApparelBase">
+  <ThingDef ParentName="TMTailoredApparelBase">
     <defName>TM_DreamcatcherBuckskin</defName>
     <label>Dreamcatcher Buckskin</label>    
-    <description>A patchwork buckskin of threaded leather adorned with animal memento. Primarily worn by tribal mystic leaders, the dreamcatcher buckskin represents the dream-like connection between nature and spirits. Mystics derive additional power from the symbolism decorating this outfit.</description>
+    <description>A patchwork buckskin of threaded leather adorned with animal memento and permeated with mystical energies. Primarily worn by tribal mystic leaders, the dreamcatcher buckskin represents the dream-like connection between nature and spirits. 
+	
+Mystics derive additional power from the symbolism of this outfit:
+Max Energy: +40
+Class XP Gain: +30%
+Arcane Res: +25%</description>
     <graphicData> 
-		<texPath>Equipment/dreamcatcher_Female_south</texPath>
+		<texPath>Equipment/dreamcatcher</texPath>
 		<graphicClass>Graphic_Single</graphicClass>
 		<shaderType>CutoutComplex</shaderType>
 		<drawSize>1</drawSize>
 	</graphicData>
 	<statBases>
-		<WorkToMake>30000</WorkToMake>
-		<Mass>0.5</Mass>
-		<MaxHitPoints>200</MaxHitPoints>
+		<WorkToMake>40000</WorkToMake>
+		<Mass>1.2</Mass>
+		<MaxHitPoints>250</MaxHitPoints>
 <!-- 		<MarketValue>6250</MarketValue> -->
-		<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
-		<ArmorRating_Sharp>0.15</ArmorRating_Sharp>
-		<ArmorRating_Heat>0.4</ArmorRating_Heat>
-		<ArmorRating_Alignment>0.2</ArmorRating_Alignment>
+		<ArmorRating_Blunt>0.22</ArmorRating_Blunt>
+		<ArmorRating_Sharp>0.25</ArmorRating_Sharp>
+		<ArmorRating_Heat>0.27</ArmorRating_Heat>
+		<ArmorRating_Alignment>0.25</ArmorRating_Alignment>
 		<Insulation_Cold>8</Insulation_Cold>
 		<Insulation_Heat>6</Insulation_Heat>
-		<StuffEffectMultiplierArmor>0.25</StuffEffectMultiplierArmor>
+		<StuffEffectMultiplierArmor>0.4</StuffEffectMultiplierArmor>
         <StuffEffectMultiplierInsulation_Cold>0.3</StuffEffectMultiplierInsulation_Cold>
         <StuffEffectMultiplierInsulation_Heat>0.3</StuffEffectMultiplierInsulation_Heat>
 	</statBases>
 	<equippedStatOffsets>
+		<IncomingDamageFactor>-.1</IncomingDamageFactor>
 		<SocialImpact>0.2</SocialImpact>
-		<NegotiationAbility>0.05</NegotiationAbility>
-		<TradePriceImprovement>0.05</TradePriceImprovement>
+		<DrugSynthesisSpeed>0.25</DrugSynthesisSpeed>
+		<MedicalTendSpeed>0.25</MedicalTendSpeed>
+		<MedicalTendQuality>0.15</MedicalTendQuality>
+		<MedicalSurgerySuccessChance>.1</MedicalSurgerySuccessChance>
+		<PsychicSensitivity>.25</PsychicSensitivity>
+		<GlobalLearningFactor>-.1</GlobalLearningFactor>
+		<ResearchSpeed>-.2</ResearchSpeed>
 	</equippedStatOffsets>
 	<recipeMaker>
-      <workAmount>30000</workAmount>
+      <workAmount>40000</workAmount>
 	  <skillRequirements>
 			<Intellectual>6</Intellectual>
 	  </skillRequirements>
@@ -577,9 +586,9 @@ Class XP Gain: +10%</description>
 		</researchPrerequisite>
     </recipeMaker>
 	<costList>
-	  <RawMagicyte>200</RawMagicyte>
+	  <RawMagicyte>400</RawMagicyte>
 	</costList>
-	<costStuffCount>150</costStuffCount>
+	<costStuffCount>200</costStuffCount>
 	<stuffCategories>
 		<li>Fabric</li>
 		<li>Leathery</li>
@@ -608,23 +617,14 @@ Class XP Gain: +10%</description>
 	<comps>
 	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
 		<hasEnchantment>true</hasEnchantment>
-		<maxMP>0.1</maxMP>
-		<maxMPTier>Standard</maxMPTier>
-		<mpRegenRate>0.1</mpRegenRate>
-		<mpRegenRateTier>Standard</mpRegenRateTier>
-		<mpCost>-0.05</mpCost>
-		<mpCostTier>Standard</mpCostTier>
-		<xpGain>0.1</xpGain>
-		<xpGainTier>Standard</xpGainTier>
-		<arcaneRes>0.10</arcaneRes>
-		<arcaneResTier>Minor</arcaneResTier>
+		<maxMP>0.4</maxMP>
+		<maxMPTier>Crafted</maxMPTier>
+		<xpGain>0.30</xpGain>
+		<xpGainTier>Major</xpGainTier>
+		<arcaneRes>0.25</arcaneRes>
+		<arcaneResTier>Standard</arcaneResTier>
 	  </li>
 	</comps>
-	<!-- remove and replace parent with TMTailoredApparelBase for release -->
-	<inspectorTabs>
-      <li>TorannMagic.Enchantment.ITab_Enchantment</li>
-    </inspectorTabs>
-	
   </ThingDef>
   
   <ThingDef ParentName="TMTailoredApparelBase">
@@ -633,12 +633,12 @@ Class XP Gain: +10%</description>
     <description>Robes designed by a superior race that are meant for the highest class of magic users who are worthy of additional power and insight. These lightweight, flowing robes seem to propel the wearer as if carried by a great winged beast.
 
 Robes of the Archmage are enchanted and provide additional benefits to trained mages and fighters:
-Max Energy: +25%
-Energy Regen: +20%
+Max Energy: +25
+Energy Regen: +25%
 Ability Cooldown: -20%
 Energy Costs: -10%
-Class XP Gain: +25%
-Arcane Res: +10%</description>
+Arcane Res: +15%
+Ability Damage: +20%</description>
     <graphicData> 
 		<texPath>Equipment/archmage</texPath>
 		<graphicClass>Graphic_Single</graphicClass>
@@ -738,7 +738,7 @@ Arcane Res: +10%</description>
 		<hasEnchantment>true</hasEnchantment>
 		<maxMP>0.25</maxMP>
 		<maxMPTier>Crafted</maxMPTier>
-		<mpRegenRate>0.20</mpRegenRate>
+		<mpRegenRate>0.25</mpRegenRate>
 		<mpRegenRateTier>Crafted</mpRegenRateTier>
 		<coolDown>-0.20</coolDown>
 		<coolDownTier>Crafted</coolDownTier>
@@ -746,8 +746,10 @@ Arcane Res: +10%</description>
 		<mpCostTier>Crafted</mpCostTier>
 		<xpGain>0.25</xpGain>
 		<xpGainTier>Crafted</xpGainTier>
-		<arcaneRes>0.10</arcaneRes>
+		<arcaneRes>0.15</arcaneRes>
 		<arcaneResTier>Minor</arcaneResTier>
+		<arcaneDmg>0.10</arcaneDmg>
+		<arcaneDmgTier>Minor</arcaneDmgTier>
 	  </li>
 	</comps>
   </ThingDef>
@@ -1133,6 +1135,91 @@ Arcane Res: +10%</description>
       </layers>
 		<bodyPartGroups>
 			<li>FullHead</li>
+		</bodyPartGroups>
+	</apparel>
+  </ThingDef>
+  
+  <ThingDef ParentName="TMTailoredHatBase">
+    <defName>TM_DreamcatcherCoronet</defName>
+    <label>Dreamcatcher Coronet</label>    
+    <description>A patchwork headdress of animal leather topped with a majestic crown of antlers. This hood marks the bearer as the spiritual leader of a tribe. The dreamcatcher raiment is said to grant gifted users with the ability to view nature through the eyes of their spirit animal.
+
+Mystics derive additional power from the symbolism of this outfit:
+Max Energy: +25
+Class XP Gain: +20%
+Arcane Res: +20%</description>
+    <graphicData> 
+		<texPath>Equipment/dreamcatcher_hood</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>CutoutComplex</shaderType>
+		<drawSize>1</drawSize>
+	</graphicData>
+	<statBases>
+		<WorkToMake>18000</WorkToMake>
+		<Mass>1</Mass>
+		<MaxHitPoints>120</MaxHitPoints>
+<!-- 		<MarketValue>1260</MarketValue> -->
+		<ArmorRating_Blunt>0.18</ArmorRating_Blunt>
+		<ArmorRating_Sharp>0.25</ArmorRating_Sharp>
+		<ArmorRating_Heat>0.22</ArmorRating_Heat>
+		<ArmorRating_Alignment>0.25</ArmorRating_Alignment>
+		<Insulation_Cold>4</Insulation_Cold>
+		<Insulation_Heat>4</Insulation_Heat>
+		<StuffEffectMultiplierArmor>0.25</StuffEffectMultiplierArmor>
+        <StuffEffectMultiplierInsulation_Cold>0.25</StuffEffectMultiplierInsulation_Cold>
+        <StuffEffectMultiplierInsulation_Heat>0.25</StuffEffectMultiplierInsulation_Heat>		
+	</statBases>
+	<equippedStatOffsets>
+		<IncomingDamageFactor>-.1</IncomingDamageFactor>
+		<SocialImpact>.1</SocialImpact>
+		<DrugSynthesisSpeed>0.15</DrugSynthesisSpeed>
+		<MedicalTendSpeed>0.15</MedicalTendSpeed>
+		<MedicalTendQuality>0.1</MedicalTendQuality>
+		<MedicalSurgerySuccessChance>.1</MedicalSurgerySuccessChance>
+		<PsychicSensitivity>.15</PsychicSensitivity>
+		<GlobalLearningFactor>-.1</GlobalLearningFactor>
+		<ResearchSpeed>-.1</ResearchSpeed>
+		<MentalBreakThreshold>-.03</MentalBreakThreshold>
+	</equippedStatOffsets>
+	<recipeMaker>
+      <workAmount>18000</workAmount>
+	  <skillRequirements>
+			<Intellectual>6</Intellectual>
+	  </skillRequirements>
+	  <researchPrerequisite>
+			<li>TM_ArcaneCrafting</li>
+		</researchPrerequisite>
+    </recipeMaker>
+	<costStuffCount>120</costStuffCount>
+	<stuffCategories>
+		<li>Fabric</li>
+		<li>Leathery</li>
+	</stuffCategories>
+	<costList>
+	  <RawMagicyte>300</RawMagicyte>
+    </costList>
+	<comps>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		<hasEnchantment>true</hasEnchantment>
+		<maxMP>0.25</maxMP>
+		<maxMPTier>Standard</maxMPTier>
+		<xpGain>0.20</xpGain>
+		<xpGainTier>Crafted</xpGainTier>
+		<arcaneRes>0.20</arcaneRes>
+		<arcaneResTier>Crafted</arcaneResTier>
+	  </li>
+	</comps>
+	<apparel>
+	 <tags>
+	    <li>Arcane</li>
+      </tags>
+	 <wornGraphicPath>Equipment/dreamcatcher_hood</wornGraphicPath>
+		<layers>
+			<li>Overhead</li>
+		</layers>
+		<bodyPartGroups>
+			<li>FullHead</li>
+			<li>Eyes</li>
 		</bodyPartGroups>
 	</apparel>
   </ThingDef>

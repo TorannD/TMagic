@@ -201,6 +201,11 @@ namespace TorannMagic
                     typeof(IntVec3),
                     typeof(Map)
                 }, null), new HarmonyMethod(typeof(TorannMagicMod), "IntVec3Inbounds_NullCheck_Prefix", null), null);
+            harmonyInstance.Patch(AccessTools.Method(typeof(GenGrid), "InBounds", new Type[]
+                {
+                    typeof(IntVec3),
+                    typeof(Map)
+                }, null), new HarmonyMethod(typeof(TorannMagicMod), "IntVec3Inbounds_NullCheck_Prefix", null), null);
             //harmonyInstance.Patch(AccessTools.Method(typeof(AbilityUser.PawnAbility), "GetJob"),
             //    new HarmonyMethod(typeof(TorannMagicMod), "PawnAbility_GetJob_Prefix"));
             //harmonyInstance.Patch(AccessTools.Method(typeof(QuestNode_RaceProperty), "Matches", new Type[]
@@ -225,8 +230,7 @@ namespace TorannMagic
             //        typeof(int),
             //        typeof(int)
             //    }, null), null, new HarmonyMethod(typeof(TorannMagicMod), "EstimatedTicksToArrive_Wayfarer_Postfix", null), null);
-
-
+        
             #region PrisonLabor
             {
                 try
@@ -1492,6 +1496,10 @@ namespace TorannMagic
                 if (mesh != null && loc != null && quat != null && mat != null)
                 {
                     //Log.Message("item is " + mat.mainTexture.ToString() + " at y: " + loc.y);
+                    //if (mat.mainTexture != null && mat.mainTexture.name != null)
+                    //{
+                    //    Log.Message("thing: " + mat.mainTexture.name + " at loc.y:" + loc.y);
+                    //}
                     if (mat.mainTexture != null && ModOptions.Constants.GetCloaks().Contains(mat.mainTexture))//mat.mainTexture.name != null && mat.mainTexture.ToString() != null && (mat.mainTexture.ToString().Contains("demonlordcloak") || mat.mainTexture.name.Contains("opencloak")))
                     {
                         //Log.Message("main texture is: " + mat.mainTexture);
@@ -1516,10 +1524,6 @@ namespace TorannMagic
                         }
                         return false;
                     }
-                    //if(mat.mainTexture != null && mat.mainTexture.name != null && loc.y > 7.9961f)
-                    //{
-                    //    Log.Message("thing: " + mat.mainTexture.name + " at loc.y:" + loc.y);
-                    //}
                 }
                 return true;
             }
@@ -4925,7 +4929,7 @@ namespace TorannMagic
                 {
                     string labelShort = equipment.LabelShort;
                     FloatMenuOption nve_option;
-                    if(!(pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || pawn.story.DisabledWorkTagsBackstoryAndTraits == WorkTags.Violent))
+                    if(!(pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || pawn.story.DisabledWorkTagsBackstoryAndTraits.HasFlag(WorkTags.Violent)))
                     {
                         for(int j = 0; j< opts.Count; j++)
                         {
@@ -6123,7 +6127,7 @@ namespace TorannMagic
         [HarmonyPatch(typeof(Command), "GizmoOnGUIInt", null)]
         public static class GizmoOnGUIInt_Prefix_Patch
         {
-            public static bool Prefix(Command __instance, Rect butRect, ref GizmoResult __result, bool shrunk = false)
+            public static bool Prefix(Command __instance, Rect butRect, ref GizmoResult __result, bool shrunk)
             {
                 if (ModOptions.Settings.Instance.autocastEnabled)
                 {

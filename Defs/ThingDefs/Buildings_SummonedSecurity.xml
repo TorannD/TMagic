@@ -1072,7 +1072,8 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
     <graphicData>
       <texPath>Other/totem_claw</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(1.5,2)</drawSize>
+	  <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1.6,2.4)</drawSize>
 	  <shadowData>
           <volume>(0.3, 0.3, 0.3)</volume>
           <offset>(0,0,-0.32)</offset>
@@ -1134,7 +1135,8 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
     <graphicData>
       <texPath>Other/totem_wing</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(1.5,1.5)</drawSize>
+	  <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1.6,2.4)</drawSize>
 	  <shadowData>
           <volume>(0.3, 0.3, 0.3)</volume>
           <offset>(0,0,-0.32)</offset>
@@ -1196,7 +1198,8 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
     <graphicData>
       <texPath>Other/totem_monolith</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(2.4,1.8)</drawSize>
+	  <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1.6,2.4)</drawSize>
 	  <shadowData>
           <volume>(0.3, 0.3, 0.3)</volume>
           <offset>(0,0,-0.32)</offset>

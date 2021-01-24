@@ -1382,7 +1382,7 @@ namespace TorannMagic
         }
 
 
-        public static IntVec3 GetEmptyCellForNewBuilding(IntVec3 pos, Map map, float radius, bool useCenter, float exludeInnerRadius = 0)
+        public static IntVec3 GetEmptyCellForNewBuilding(IntVec3 pos, Map map, float radius, bool useCenter, float exludeInnerRadius = 0, bool allowRoofed = false)
         {
             List<IntVec3> outerCells = GenRadial.RadialCellsAround(pos, radius, useCenter).ToList();
             if (exludeInnerRadius != 0)
@@ -1394,7 +1394,7 @@ namespace TorannMagic
             for (int k = 0; k < outerCells.Count; k++)
             {
                 IntVec3 wall = outerCells[k];
-                if (wall.IsValid && wall.InBounds(map) && !wall.Fogged(map) && wall.Standable(map) && !wall.Roofed(map))
+                if (wall.IsValid && wall.InBounds(map) && !wall.Fogged(map) && wall.Standable(map) && (!wall.Roofed(map) || allowRoofed))
                 {
                     List<Thing> cellList = new List<Thing>();
                     try

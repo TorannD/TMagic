@@ -1868,7 +1868,7 @@ namespace TorannMagic
                             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                             if (this.autocastTick < Find.TickManager.TicksGame)  //180 default
                             {
-                                if (!this.Pawn.Dead && !this.Pawn.Downed && this.Pawn.Map != null && this.Pawn.story != null && this.Pawn.story.traits != null && this.MagicData != null && this.AbilityData != null)
+                                if (!this.Pawn.Dead && !this.Pawn.Downed && this.Pawn.Map != null && this.Pawn.story != null && this.Pawn.story.traits != null && this.MagicData != null && this.AbilityData != null && !this.Pawn.InMentalState)
                                 {
                                     if (this.Pawn.IsColonist)
                                     {
@@ -6644,7 +6644,8 @@ namespace TorannMagic
         public void ResolveAIAutoCast()
         {
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            if (settingsRef.autocastEnabled && this.Pawn.jobs != null && this.Pawn.CurJob != null && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilityVerb && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilitySelf && this.Pawn.CurJob.def != JobDefOf.Ingest && this.Pawn.CurJob.def != JobDefOf.ManTurret && this.Pawn.GetPosture() == PawnPosture.Standing)
+            if (settingsRef.autocastEnabled && this.Pawn.jobs != null && this.Pawn.CurJob != null && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilityVerb && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilitySelf && 
+                this.Pawn.CurJob.def != JobDefOf.Ingest && this.Pawn.CurJob.def != JobDefOf.ManTurret && this.Pawn.GetPosture() == PawnPosture.Standing)
             {
                 //Log.Message("pawn " + this.Pawn.LabelShort + " current job is " + this.Pawn.CurJob.def.defName);
                 bool castSuccess = false;
@@ -7090,12 +7091,19 @@ namespace TorannMagic
         {
             if (supportedUndead != null)
             {
-                foreach (Pawn current in supportedUndead)
+                List<Thing> tmpList = new List<Thing>();
+                tmpList.Clear();
+                for(int i =0; i < supportedUndead.Count; i++)
                 {
-                    if (current.DestroyedOrNull() || current.Dead)
+                    Pawn p = supportedUndead[i] as Pawn;
+                    if(p.DestroyedOrNull() || p.Dead)
                     {
-                        supportedUndead.Remove(current);
+                        tmpList.Add(p);
                     }
+                }
+                for(int i = 0; i < tmpList.Count; i++)
+                {
+                    supportedUndead.Remove(tmpList[i]);
                 }
                 if (this.supportedUndead.Count > 0 && this.dismissUndeadSpell == false)
                 {
@@ -8169,8 +8177,8 @@ namespace TorannMagic
             _maxMP += (.04f * this.MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr").level);
             _mpRegenRate += (.05f * this.MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr").level);
             _mpCost -= (.025f * this.MagicData.MagicPowerSkill_global_eff.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_eff_pwr").level);
-            _arcaneRes += ((1 - this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false)) / 2);
-            _arcaneDmg += ((this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false) - 1) / 4);
+            _arcaneRes += ((1f - this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false)) / 2f);
+            _arcaneDmg += ((this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false) - 1f) / 4f);
 
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_BoundlessTD))
             {

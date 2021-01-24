@@ -48,6 +48,7 @@ namespace TorannMagic
         {
             Pawn caster = base.CasterPawn;
             Map map = caster.Map;
+            cellList.Clear();
             List<IntVec3> tmpList = GenRadial.RadialCellsAround(currentTarget.Cell, this.Projectile.projectile.explosionRadius, true).ToList();
             CompAbilityUserMagic comp = caster.TryGetComp<CompAbilityUserMagic>();
             pwrVal = TM_Calc.GetMagicSkillLevel(caster, comp.MagicData.MagicPowerSkill_SpiritWolves, "TM_SpiritWolves", "_pwr", true);

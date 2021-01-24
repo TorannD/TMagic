@@ -78,6 +78,8 @@ namespace TorannMagic
                 restricted.Add(TorannMagicDefOf.SpellOf_WetGround);
                 restricted.Add(TorannMagicDefOf.SpellOf_SpiritOfLight);
                 restricted.Add(TorannMagicDefOf.SpellOf_GuardianSpirit);
+                restricted.Add(TorannMagicDefOf.SpellOf_Discord);
+                restricted.Add(TorannMagicDefOf.SpellOf_ShieldOther);
                 return restricted;
             }
         }

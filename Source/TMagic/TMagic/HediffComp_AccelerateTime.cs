@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using HarmonyLib;
+using System.Reflection;
 
 
 namespace TorannMagic
@@ -193,6 +194,47 @@ namespace TorannMagic
                             Traverse.Create(root: tickComp).Field(name: "ticksToDisappear").SetValue(ticksToDisappear - (Mathf.RoundToInt(60 * this.parent.Severity)));                            
                         }
                     }
+                    Hediff_Pregnant hdp = this.Pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("Pregnant")) as Hediff_Pregnant;
+                    if(hdp != null)
+                    {
+                        hdp.Severity += (1f / (this.Pawn.RaceProps.gestationPeriodDays * (2500f /this.parent.Severity)));
+                    }
+                    CompEggLayer eggComp = this.Pawn.TryGetComp<CompEggLayer>();
+                    if (eggComp != null)
+                    {
+                        float eggProgress = Traverse.Create(root: eggComp).Field(name: "eggProgress").GetValue<float>();
+                        bool isActive = Active(eggComp);
+                        if (isActive)
+                        {
+                            eggProgress += (1f / (eggComp.Props.eggLayIntervalDays * (2500f / this.parent.Severity)));
+                            Traverse.Create(root: eggComp).Field(name: "eggProgress").SetValue(eggProgress);
+                        }
+                    }
+                    //CompHasGatherableBodyResource gatherComp = this.Pawn.TryGetComp<CompHasGatherableBodyResource>();                    
+                    //if (gatherComp != null)
+                    //{
+                    //    float gatherProgress = gatherComp.Fullness;          
+                        
+                    //    int rate = Traverse.Create(root: gatherComp).Field(name: "GatherResourcesIntervalDays").GetValue<int>();
+                    //    bool isActive = Active();
+                    //    if (isActive)
+                    //    {
+                    //        gatherProgress += (1f / ((float)(rate * (2500f / this.parent.Severity))));
+                    //        Traverse.Create(root: gatherComp).Field(name: "fullness").SetValue(gatherProgress);
+                    //    }
+                    //}
+                    CompMilkable milkComp = this.Pawn.TryGetComp<CompMilkable>();
+                    if (milkComp != null)
+                    {
+                        float milkProgress = milkComp.Fullness;
+                        int rate = milkComp.Props.milkIntervalDays;
+                        bool isActive = Active(milkComp);
+                        if (isActive)
+                        {
+                            milkProgress += (1f / ((float)(rate * (2500f / this.parent.Severity))));
+                            Traverse.Create(root: milkComp).Field(name: "fullness").SetValue(milkProgress);
+                        }
+                    }
                     if (rec.Bleeding)
                     {
                         totalBleedRate += rec.BleedRate;
@@ -203,6 +245,53 @@ namespace TorannMagic
                     HealthUtility.AdjustSeverity(pawn, HediffDefOf.BloodLoss, (totalBleedRate * 60 * this.parent.Severity) / (24 * 2500));
                 }
             }
+        }
+
+        public bool Active(CompMilkable comp)
+        {
+            if(!Active())
+            {
+                return false;
+            }
+            if(Pawn.gender != Gender.Female && comp.Props.milkFemaleOnly)
+            {
+                return false;
+            }
+            if(!Pawn.ageTracker.CurLifeStage.milkable)
+            {
+                return false;
+            }
+            return true;            
+        }
+
+        public bool Active(CompEggLayer comp)
+        {
+            if (!Active())
+            {
+                return false;
+            }
+            if (Pawn.gender != Gender.Female && comp.Props.eggLayFemaleOnly)
+            {
+                return false;
+            }
+            if (!Pawn.ageTracker.CurLifeStage.milkable)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool Active()
+        {
+            if (this.Pawn.Faction == null)
+            {
+                return false;
+            }
+            if (this.Pawn.Suspended)
+            {
+                return false;
+            }
+            return true;
         }
 
         public override bool CompShouldRemove

@@ -8,11 +8,11 @@ namespace TorannMagic
 {
     class Projectile_CorpseExplosion : Projectile_AbilityBase
     {
-        int age = 360;
+        int age = 300;
         int verVal = 0;
         int pwrVal = 0;
         float arcaneDmg = 1;
-        float radius = 2.4f;
+        float radius = 3f;
         bool initialized = false;
         Corpse targetCorpse = null;
         Pawn targetPawn = null;
@@ -34,7 +34,7 @@ namespace TorannMagic
 
         public void Initialize()
         {
-            radius = 2.4f + (.24f * (verVal+pwrVal));
+            radius = 3f + (.3f * (verVal+pwrVal));
             age = age - (60 * verVal);
             this.initialized = true;
         }
@@ -152,7 +152,7 @@ namespace TorannMagic
                             this.targetPawn.Destroy();
                         }
                     }
-                    GenExplosion.DoExplosion(this.targetPawn.Position, map, this.radius, TMDamageDefOf.DamageDefOf.TM_CorpseExplosion, this.launcher, Mathf.RoundToInt((Rand.Range(18f, 30f) + (5f * pwrVal)) * this.arcaneDmg), 0, this.def.projectile.soundExplode, def, this.equipmentDef, null, null, 0f, 01, false, null, 0f, 0, 0.0f, true);
+                    GenExplosion.DoExplosion(this.targetPawn.Position, map, this.radius, TMDamageDefOf.DamageDefOf.TM_CorpseExplosion, this.launcher, Mathf.RoundToInt((Rand.Range(22f, 36f) + (5f * pwrVal)) * this.arcaneDmg), 0, this.def.projectile.soundExplode, def, this.equipmentDef, null, null, 0f, 01, false, null, 0f, 0, 0.0f, true);
 
                 }
             }

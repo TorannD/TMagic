@@ -1015,7 +1015,7 @@ namespace TorannMagic
                         ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                         if (this.autocastTick < Find.TickManager.TicksGame)  //180 default
                         {
-                            if ( !this.Pawn.Dead && !this.Pawn.Downed && this.Pawn.Map != null && this.Pawn.story != null && this.Pawn.story.traits != null && this.MightData != null && this.AbilityData != null)
+                            if ( !this.Pawn.Dead && !this.Pawn.Downed && this.Pawn.Map != null && this.Pawn.story != null && this.Pawn.story.traits != null && this.MightData != null && this.AbilityData != null && !this.Pawn.InMentalState)
                             {
                                 if (this.Pawn.IsColonist)
                                 {
@@ -5010,8 +5010,8 @@ namespace TorannMagic
             _spRegenRate += (.05f * this.MightData.MightPowerSkill_global_refresh.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_refresh_pwr").level);
             _spCost += (-.025f * this.MightData.MightPowerSkill_global_seff.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_seff_pwr").level);
             _arcaneDmg += (.05f * this.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr").level);
-            _arcaneRes += ((1 - this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false)) / 2);
-            _arcaneDmg += ((this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false) - 1) / 4);
+            _arcaneRes += ((1f - this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false)) / 2f);
+            _arcaneDmg += ((this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false) - 1f) / 4f);
 
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_BoundlessTD))
             {

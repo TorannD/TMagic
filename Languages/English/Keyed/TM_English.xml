@@ -82,8 +82,8 @@
 <TM_CritChance>{0} critical hit: {1}</TM_CritChance>
 <TM_AntiArmorDamage>{0} damage: {1}; additional damage to mechanoids: {2}</TM_AntiArmorDamage>
 <TM_ArrowStormDamage>{0} damage: {1}; accuracy: {2}&#37;</TM_ArrowStormDamage>
-<TM_LastManaGainPct>Mana Gain: {0}&#37; /5s</TM_LastManaGainPct>
-<TM_LastStaminaGainPct>Stamina Gain: {0}&#37; /5s</TM_LastStaminaGainPct>
+<TM_LastManaGainPct>Mana Gain: {0}/5s</TM_LastManaGainPct>
+<TM_LastStaminaGainPct>Stamina Gain: {0}/5s</TM_LastStaminaGainPct>
 <TM_AssaultPending>Elementals are coming through the rift!</TM_AssaultPending>
 <TM_MimicFailed>{0} is unable to copy an ability from this target.</TM_MimicFailed>
 <TM_CannotPossess>It is not possible for {0} to possess a {1}.</TM_CannotPossess>

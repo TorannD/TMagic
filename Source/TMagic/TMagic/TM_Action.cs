@@ -610,7 +610,7 @@ namespace TorannMagic
                             IntVec3 intVec = target.PositionHeld + GenAdj.AdjacentCells[i];
                             Pawn cleaveVictim = new Pawn();
                             cleaveVictim = intVec.GetFirstPawn(map);
-                            if (cleaveVictim != null && cleaveVictim.Faction != caster.Faction)
+                            if (cleaveVictim != null && cleaveVictim.Faction != caster.Faction && cleaveVictim.HostileTo(caster.Faction))
                             {
                                 cleaveVictim.TakeDamage(dinfo);
                                 MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);

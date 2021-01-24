@@ -102,7 +102,7 @@
       <li>
         <label></label>
         <minSeverity>0</minSeverity>
-		<becomeVisible>false</becomeVisible>
+		<becomeVisible>true</becomeVisible>
       </li>
 	</stages>
    </HediffDef>   
@@ -128,7 +128,7 @@
       <li>
         <label></label>
         <minSeverity>0</minSeverity>
-		<becomeVisible>false</becomeVisible>
+		<becomeVisible>true</becomeVisible>
       </li>
 	</stages>
    </HediffDef>
@@ -154,7 +154,7 @@
       <li>
         <label></label>
         <minSeverity>0</minSeverity>
-		<becomeVisible>false</becomeVisible>
+		<becomeVisible>true</becomeVisible>
       </li>
 	</stages>
    </HediffDef>
@@ -180,7 +180,7 @@
       <li>
         <label></label>
         <minSeverity>0</minSeverity>
-		<becomeVisible>false</becomeVisible>
+		<becomeVisible>true</becomeVisible>
       </li>
 	</stages>
    </HediffDef>
