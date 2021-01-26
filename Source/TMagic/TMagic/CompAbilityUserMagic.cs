@@ -5294,6 +5294,11 @@ namespace TorannMagic
                 {
                     adjustedManaCost *= 1f - (magicDef.efficiencyReductionPercent * this.MagicData.GetSkill_Efficiency(TorannMagicDefOf.TM_Hex).level);
                 }
+                else if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                {
+                    CompAbilityUserMight compMight = this.Pawn.TryGetComp<CompAbilityUserMight>();
+                    adjustedManaCost *= 1f - (magicDef.efficiencyReductionPercent * compMight.MightData.GetSkill_Efficiency(TorannMagicDefOf.TM_Mimic).level);
+                }
                 else
                 {
                     MagicPowerSkill mps = this.MagicData.GetSkill_Efficiency(magicDef);

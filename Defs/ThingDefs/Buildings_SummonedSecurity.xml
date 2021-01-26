@@ -857,7 +857,7 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
     <defName>TM_TechnoTurret_Base_RL</defName>    
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
-      <turretGunDef>Gun_Mark-IV</turretGunDef>
+      <turretGunDef>Gun_Mark-IV_RL</turretGunDef>
       <turretBurstCooldownTime>4</turretBurstCooldownTime>
       <!-- <turretTopGraphicPath>Other/TechnoTurret_RL</turretTopGraphicPath> -->
 	  <turretTopDrawSize>1.8</turretTopDrawSize>
@@ -873,7 +873,7 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
     <defName>TM_TechnoTurret_Base_RL_MTR</defName>    
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
-      <turretGunDef>Gun_Mark-IV</turretGunDef>
+      <turretGunDef>Gun_Mark-IV_RL_MTR</turretGunDef>
       <turretBurstCooldownTime>3.8</turretBurstCooldownTime>
       <!-- <turretTopGraphicPath>Other/TechnoTurret_RL_MTR</turretTopGraphicPath> -->
 	  <turretTopDrawSize>1.8</turretTopDrawSize>
@@ -903,7 +903,7 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
     <defName>Gun_Mark-IV</defName>
     <label>Mark-IV weapon system</label>
     <graphicData>
-      <texPath>Other/TechnoTurret</texPath>
+      <texPath>Other/TechnoTurret1</texPath>
       <graphicClass>Graphic_Single</graphicClass>
 	  <drawSize>(3,3)</drawSize>
     </graphicData>
@@ -944,7 +944,7 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
   <ThingDef ParentName="TM_BaseTechnoTurret">
     <defName>Gun_Mark-IV_RL</defName>
     <graphicData>
-      <texPath>Other/TechnoTurret</texPath>
+      <texPath>Other/TechnoTurret_RL</texPath>
       <graphicClass>Graphic_Single</graphicClass>
 	  <drawSize>(3,3)</drawSize>
     </graphicData>    
@@ -953,7 +953,7 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
   <ThingDef ParentName="TM_BaseTechnoTurret">
     <defName>Gun_Mark-IV_RL_MTR</defName>
     <graphicData>
-      <texPath>Other/TechnoTurret</texPath>
+      <texPath>Other/TechnoTurret_RL_MTR</texPath>
       <graphicClass>Graphic_Single</graphicClass>
 	  <drawSize>(3,3)</drawSize>
     </graphicData>    
@@ -978,10 +978,10 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
     </graphicData>
     <thingClass>Projectile_Explosive</thingClass>
     <projectile>
-      <damageDef>Bomb</damageDef>
+      <damageDef>TM_PersonnelBombDD</damageDef>
       <!-- damage amount is the damage def default -->
-      <speed>45</speed>
-      <explosionRadius>2.5</explosionRadius>
+      <speed>60</speed>
+      <explosionRadius>2</explosionRadius>
       <flyOverhead>true</flyOverhead>
       <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
       <soundExplode>MortarBomb_Explode</soundExplode>

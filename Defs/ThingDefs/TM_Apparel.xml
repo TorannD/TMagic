@@ -1212,7 +1212,8 @@ Arcane Res: +20%</description>
 	<apparel>
 	 <tags>
 	    <li>Arcane</li>
-      </tags>
+     </tags>
+	 <useWornGraphicMask>true</useWornGraphicMask>
 	 <wornGraphicPath>Equipment/dreamcatcher_hood</wornGraphicPath>
 		<layers>
 			<li>Overhead</li>

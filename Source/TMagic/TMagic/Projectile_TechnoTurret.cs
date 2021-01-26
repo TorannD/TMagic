@@ -4,6 +4,8 @@ using Verse;
 using System.Linq;
 using Verse.AI;
 using UnityEngine;
+using HarmonyLib;
+using System.Reflection;
 
 namespace TorannMagic
 {
@@ -44,6 +46,7 @@ namespace TorannMagic
 
                 tempPod.def = ThingDef.Named("TM_TechnoTurret_Base");
                 Thing turretGun = new Thing();
+
                 turretGun.def = ThingDef.Named("Gun_Mark-IV");
                 if (this.verVal >= 5)
                 {
@@ -70,8 +73,12 @@ namespace TorannMagic
                 tempPod.spawnCount = 1;
                 try
                 {
-                    this.turret = TM_Action.SingleSpawnLoop(pawn, tempPod, base.Position, map, 6000, true, false, pawn.Faction);
+                    this.turret = TM_Action.SingleSpawnLoop(pawn, tempPod, base.Position, map, 6000, true, false, pawn.Faction, true);
                     this.turret.def.building.turretBurstCooldownTime = 4.5f - (.1f * pwrVal);
+
+                    Building_TechnoTurret b_tt = this.turret as Building_TechnoTurret;
+                    b_tt.manPawn = pawn;
+                    b_tt.iCell = this.launcher.Position;
 
                     for (int i = 0; i < 4; i++)
                     {
@@ -105,9 +112,11 @@ namespace TorannMagic
 
             if ((turret != null && turret.Spawned && turret.Position.IsValid))
             {
-                turret.def.interactionCellOffset = (this.launcher.Position - base.Position);
+                //turret.def.interactionCellOffset = (this.launcher.Position - base.Position);          
+                
                 Job job = new Job(JobDefOf.ManTurret, turret);
                 pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                
                 //this.Ability.PostAbilityAttempt();
             }
             else

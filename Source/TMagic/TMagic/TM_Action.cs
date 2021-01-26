@@ -776,6 +776,10 @@ namespace TorannMagic
                         {
                             thing.SetFaction(faction, null);
                         }
+                        else if(faction != null)
+                        {
+                            thing.SetFaction(faction, null);
+                        }
                         CompSummoned bldgComp = thing.TryGetComp<CompSummoned>();
                         if (bldgComp != null)
                         {

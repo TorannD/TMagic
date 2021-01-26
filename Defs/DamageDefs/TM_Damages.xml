@@ -1088,5 +1088,22 @@
 		<defaultArmorPenetration>1.5</defaultArmorPenetration>
 		<buildingDamageFactor>0</buildingDamageFactor>
 	</DamageDef>
+	
+   <DamageDef ParentName="Bomb">
+    <defName>TM_PersonnelBombDD</defName>
+	<defaultDamage>35</defaultDamage>
+    <minDamageToFragment>10</minDamageToFragment>
+    <defaultStoppingPower>0.7</defaultStoppingPower>
+    <defaultArmorPenetration>0.25</defaultArmorPenetration>
+    <buildingDamageFactor>.1</buildingDamageFactor>
+    <plantDamageFactor>.1</plantDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>5</explosionHeatEnergyPerCell>
+    <explosionCellMote>Mote_BlastDry</explosionCellMote>
+    <explosionColorCenter>(.6, 1, 0.2)</explosionColorCenter>
+    <explosionColorEdge>(0.6, 0.5, 0.4)</explosionColorEdge>
+    <soundExplosion>Explosion_Bomb</soundExplosion>
+    <combatLogRules>Damage_Bomb</combatLogRules>
+  </DamageDef>
   
 </Defs>

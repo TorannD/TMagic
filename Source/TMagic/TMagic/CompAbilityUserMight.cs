@@ -2634,6 +2634,11 @@ namespace TorannMagic
                 {
                     adjustedStaminaCost *= 1f - (mightDef.efficiencyReductionPercent * this.MightData.GetSkill_Versatility(TorannMagicDefOf.TM_ShotgunSpec).level);
                 }
+                else if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) && (mightDef != TorannMagicDefOf.TM_Possess && mightDef != TorannMagicDefOf.TM_Disguise && mightDef != TorannMagicDefOf.TM_Transpose &&
+                    mightDef != TorannMagicDefOf.TM_Transpose_I && mightDef != TorannMagicDefOf.TM_Transpose_II && mightDef != TorannMagicDefOf.TM_Transpose_III && mightDef != TorannMagicDefOf.TM_Mimic && mightDef != TorannMagicDefOf.TM_Reversal))
+                {
+                    adjustedStaminaCost *= 1f - (mightDef.efficiencyReductionPercent * this.mightData.GetSkill_Efficiency(TorannMagicDefOf.TM_Mimic).level);
+                }
                 else if(mightDef == TorannMagicDefOf.TM_AnimalFriend)
                 {
                     return .5f * mightDef.staminaCost;

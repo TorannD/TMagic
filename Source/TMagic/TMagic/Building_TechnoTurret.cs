@@ -15,7 +15,7 @@ namespace TorannMagic
     [StaticConstructorOnStartup]
     public class Building_TechnoTurret : Building_TurretGun
     {
-        int mortarMaxRange = 150;
+        int mortarMaxRange = 180;
         int mortarMinRange = 40;
         int mortarTicksToFire = 900;
         float mortarManaCost = .08f;
@@ -42,7 +42,11 @@ namespace TorannMagic
         private bool IsMortarOrProjectileFliesOverhead => AttackVerb.ProjectileFliesOverhead() || IsMortar;
         private bool initialized = false;
 
+        public IntVec3 iCell = new IntVec3();
+        public override IntVec3 InteractionCell => iCell;
+
         CompAbilityUserMagic comp;
+        public Pawn manPawn = null;
 
         public override void ExposeData()
         {
@@ -55,13 +59,16 @@ namespace TorannMagic
             Scribe_Values.Look<int>(ref this.rocketTicksToFire, "rocketTicksToFire", 600, false);
             Scribe_Values.Look<float>(ref this.rocketManaCost, "rocketManaCost", 0.05f, false);
             Scribe_Values.Look<float>(ref this.mortarManaCost, "mortarManaCost", 0.1f, false);
+            Scribe_Values.Look<Pawn>(ref this.manPawn, "manPawn");
+            Scribe_Values.Look<IntVec3>(ref this.iCell, "iCell");
         }
 
         public override void Tick()
         {
             base.Tick();
 
-            if (Manned)
+            //if (!manPawn.DestroyedOrNull() && !manPawn.Dead && !manPawn.Downed && manPawn.Position == this.InteractionCell)
+            if(Manned)
             {
 
                 if (!initialized)
@@ -70,20 +77,19 @@ namespace TorannMagic
                     this.verVal = mannableComp.ManningPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoTurret.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoTurret_ver").level;
                     this.pwrVal = mannableComp.ManningPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoTurret.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoTurret_pwr").level;
                     this.effVal = mannableComp.ManningPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoTurret.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoTurret_eff").level;
-
+                    
                     if (this.verVal >= 5)
                     {
                         this.rocketTicksToFire = 600 - ((verVal - 5) * 20);
                         this.rocketCount = verVal / 5;
-                        this.rocketManaCost = .055f - (.001f * this.effVal);
+                        this.rocketManaCost = .04f - (.001f * this.effVal);
                     }
                     if (this.verVal >= 10)
                     {
                         this.mortarTicksToFire = 900 - ((verVal - 10) * 40);
                         this.mortarMaxRange += ((verVal - 10) * 5);
-                        this.mortarManaCost = .1f - (.002f * effVal);
-                    }
-                    
+                        this.mortarManaCost = .08f - (.002f * effVal);
+                    }                    
                     this.initialized = true;
                 }
 
@@ -101,7 +107,7 @@ namespace TorannMagic
                                     def = ThingDef.Named("FlyingObject_RocketSmall")
                                 };
                                 FlyingObject_Advanced flyingObject = (FlyingObject_Advanced)GenSpawn.Spawn(ThingDef.Named("FlyingObject_RocketSmall"), this.Position, this.Map);
-                                flyingObject.AdvancedLaunch(this, ThingDef.Named("Mote_Smoke"), 1, Rand.Range(5, 25), false, this.DrawPos, this.TargetCurrentlyAimingAt.Cell, launchedThing, Rand.Range(32, 38), true, Rand.Range(16, 22), 2, DamageDefOf.Bomb, null);
+                                flyingObject.AdvancedLaunch(this, ThingDef.Named("Mote_Smoke"), 1, Rand.Range(5, 25), false, this.DrawPos, this.TargetCurrentlyAimingAt.Cell, launchedThing, Rand.Range(32, 38), true, Mathf.RoundToInt(Rand.Range(22f, 30f) * comp.arcaneDmg), 2, TMDamageDefOf.DamageDefOf.TM_PersonnelBombDD, null);
                                 this.rocketCount--;
                                 SoundInfo info = SoundInfo.InMap(new TargetInfo(this.Position, this.Map, false), MaintenanceType.None);
                                 info.pitchFactor = 1.3f;
@@ -126,16 +132,19 @@ namespace TorannMagic
                     {
                         this.mortarTicksToFire = Find.TickManager.TicksGame + (900 - ((verVal - 10) * 40));
                         Pawn target = TM_Calc.FindNearbyEnemy(this.Position, this.Map, this.Faction, this.mortarMaxRange, this.mortarMinRange);
-                        if (target != null && target.Position.IsValid && target.Position.DistanceToEdge(this.Map) > 5)
+                        if (target != null && target.Position.DistanceToEdge(this.Map) > 8)
                         {
                             bool flag = target.Position != default(IntVec3);
                             if (flag)
                             {
-                                IntVec3 rndTarget = target.Position;
-                                rndTarget.x += Rand.RangeInclusive(-4, 4);
-                                rndTarget.z += Rand.RangeInclusive(-4, 4);
-                                Projectile newProjectile = (Projectile)GenSpawn.Spawn(ThingDef.Named("Bullet_Shell_TechnoTurretExplosive"), this.Position, this.Map, WipeMode.Vanish);
-                                newProjectile.Launch(this, rndTarget, target, ProjectileHitFlags.All, null);
+                                for (int i = 0; i < 5; i++)
+                                {
+                                    IntVec3 rndTarget = target.Position;
+                                    rndTarget.x += Rand.RangeInclusive(-6, 6);
+                                    rndTarget.z += Rand.RangeInclusive(-6, 6);
+                                    Projectile newProjectile = (Projectile)GenSpawn.Spawn(ThingDef.Named("Bullet_Shell_TechnoTurretExplosive"), this.Position, this.Map, WipeMode.Vanish);
+                                    newProjectile.Launch(this, rndTarget, target, ProjectileHitFlags.All, null);
+                                }
                             }                            
                             SoundInfo info = SoundInfo.InMap(new TargetInfo(this.Position, this.Map, false), MaintenanceType.None);
                             info.pitchFactor = 1.3f;
