@@ -574,7 +574,7 @@ Ability Cooldown: -10%
 Damage Boost: +10%
 Haste on hit (25%)</description>
 		<graphicData>
-			<texPath>Items/weapons/thrumbo_saber</texPath>
+			<texPath>Items/weapons/thrumbo_saber_held</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>.8</drawSize>
 		</graphicData>

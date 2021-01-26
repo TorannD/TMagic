@@ -354,7 +354,7 @@ Augmented by Arcane Spectre: 50% chance to deal 20% bonus damage</description>
     <graphicData> 
 		<texPath>Equipment/ancientmail</texPath>
 		<graphicClass>Graphic_Single</graphicClass>
-		<drawSize>1.5</drawSize>
+		<drawSize>1.4</drawSize>
 	</graphicData>
 	<statBases>
 		<WorkToMake>20000</WorkToMake>
@@ -466,7 +466,7 @@ Class XP Gain: +10%</description>
     <graphicData> 
 		<texPath>Equipment/royalarmor</texPath>
 		<graphicClass>Graphic_Single</graphicClass>
-		<drawSize>2.0</drawSize>
+		<drawSize>1.2</drawSize>
 	</graphicData>
 	<statBases>
 		<WorkToMake>50000</WorkToMake>
@@ -642,7 +642,7 @@ Ability Damage: +20%</description>
     <graphicData> 
 		<texPath>Equipment/archmage</texPath>
 		<graphicClass>Graphic_Single</graphicClass>
-		<drawSize>1.5</drawSize>
+		<drawSize>1.4</drawSize>
 	</graphicData>
 	<statBases>
 		<WorkToMake>60000</WorkToMake>
@@ -993,7 +993,7 @@ Class XP Gain: +10%</description>
     <graphicData> 
 		<texPath>Equipment/royalhelm_east</texPath>
 		<graphicClass>Graphic_Single</graphicClass>
-		<drawSize>2.0</drawSize>
+		<drawSize>1.2</drawSize>
 	</graphicData>
 	<statBases>
 		<WorkToMake>15000</WorkToMake>
@@ -1070,7 +1070,7 @@ Arcane Res: +10%</description>
     <graphicData> 
 		<texPath>Equipment/royalhelm_streamer_east</texPath>
 		<graphicClass>Graphic_Single</graphicClass>
-		<drawSize>2.0</drawSize>
+		<drawSize>1.2</drawSize>
 	</graphicData>
 	<statBases>
 		<WorkToMake>25000</WorkToMake>
