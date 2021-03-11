@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs> 
+ 
+  <!-- Wayfarer -->
+  <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_WayfarerCraft</defName>
+    <label>O Wayfarer</label>
+    <uiIconPath>UI/wayfarer</uiIconPath>
+    <description>Aumente os atributos por meio de treinamento e trabalho árduo. Veja as habilidades para mais detalhes.</description>
+    <staminaCost>0.0</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_WayfarerCraft</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>0</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+    <!-- Field Training -->
+  <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_FieldTraining</defName>
+    <label>Treino de combate</label>
+    <uiIconPath>UI/combattraining</uiIconPath>
+    <description>Os Wayfarers não têm habilidades específicas de classe, em vez disso, eles se destacam no combate geral.
+
+As técnicas gerais de combate são descartadas pela maioria dos lutadores como habilidades suplementares que não requerem nenhum treinamento de habilidade adicional. O viajante faz outra abordagem; ao investir tempo e esforço para compreender essas habilidades de combate, o viajante é capaz de melhorar quase todas as habilidades gerais em utilidade, potência e eficiência.
+
+Veja as habilidades para mais detalhes.</description>
+    <staminaCost>0.0</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_FieldTraining</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <SecondsToRecharge>60</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>30</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+</Defs>

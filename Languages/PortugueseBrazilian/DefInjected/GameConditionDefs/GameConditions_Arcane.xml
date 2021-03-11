@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <GameConditionDef>
+    <defName>ManaDrain</defName>
+    <conditionClass>TorannMagic.GameCondition_ManaDrain</conditionClass>
+    <label>drenar mana</label>
+    <description>O alinhamento celestial do planeta está causando uma diminuição no mana. Todas as criaturas sintonizadas com poderes mágicos perderão lentamente o poder.</description>
+    <endMessage>A magia está voltando ao normal.</endMessage>
+    <letterText>O alinhamento celestial do planeta está mudando, causando uma diminuição no mana.\n\nTodas as criaturas sintonizadas com poderes mágicos perderão mana lentamente e ficarão fisicamente doentes se não tiverem mana restante.</letterText>
+	<letterDef>NegativeEvent</letterDef>
+    <exclusiveConditions>
+      <li>ManaSurge</li>
+    </exclusiveConditions>
+    <canBePermanent>true</canBePermanent>
+  </GameConditionDef>
+  
+  <IncidentDef>
+    <defName>ManaDrain</defName>
+    <label>drenar mana</label>
+		<category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>IncidentWorker_MakeGameCondition</workerClass>
+    <gameCondition>ManaDrain</gameCondition>
+    <letterLabel>Drenar Mana</letterLabel>
+    <letterText>O alinhamento celestial do planeta está mudando, causando uma diminuição no mana.\n\nTodas as criaturas sintonizadas com poderes mágicos perderão mana lentamente.\n\nAs criaturas podem ficar fisicamente doentes se não tiverem mana restante.</letterText>
+    <letterDef>NegativeEvent</letterDef>
+    <baseChance>1.3</baseChance>
+    <minRefireDays>15</minRefireDays>
+    <durationDays>
+      <min>1</min>
+      <max>1.1</max>
+    </durationDays>
+  </IncidentDef>
+  
+   <GameConditionDef>
+    <defName>ManaSurge</defName>
+    <conditionClass>TorannMagic.GameCondition_ManaSurge</conditionClass>
+    <label>Ganhar mana</label>
+    <description>O alinhamento celestial do planeta está causando uma onda de mana. Todas as criaturas sintonizadas com poderes mágicos ganharão mana em uma taxa aumentada.</description>
+    <endMessage>A magia está voltando ao normal.</endMessage>
+    <letterText>O alinhamento celestial do planeta mudou, causando uma onda de mana. Todas as criaturas sintonizadas com poderes mágicos ganharão mana em uma taxa aumentada.</letterText>
+    <letterDef>PositiveEvent</letterDef>
+    <exclusiveConditions>
+      <li>ManaDrain</li>
+    </exclusiveConditions>
+    <canBePermanent>true</canBePermanent>
+  </GameConditionDef>
+  
+  	<IncidentDef>
+    <defName>ManaSurge</defName>
+    <label>Ganhar Mana</label>
+		<category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>IncidentWorker_MakeGameCondition</workerClass>
+    <gameCondition>ManaSurge</gameCondition>
+	<letterLabel>Ganhar Mana</letterLabel>
+	<letterText>O alinhamento celestial do planeta mudou, causando uma onda de mana. Todas as criaturas sintonizadas com poderes mágicos ganharão mana em uma taxa aumentada.</letterText>
+    <letterDef>PositiveEvent</letterDef>
+    <baseChance>1.5</baseChance>
+    <minRefireDays>15</minRefireDays>
+    <durationDays>
+      <min>1.2</min>
+      <max>1.8</max>
+    </durationDays>
+  </IncidentDef>
+
+  
+  <IncidentDef>
+    <defName>Disease_ManaSickness</defName>
+    <label>doença de mana</label>
+	<workerClass>TorannMagic.IncidentWorker_ArcaneSickness</workerClass>
+	<letterLabel>Doença de mana</letterLabel>
+    <letterText>{0} ficou doente de {1}.\n\nCertifique-se de que você tem uma cama médica e um médico. Certifique-se de que {2} recebe tratamento adequado e passa o máximo de tempo possível na cama.  Durante este período {0} não será capaz de ganhar mana.</letterText>
+    <letterDef>NegativeEvent</letterDef>
+	<category>DiseaseHuman</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+      <li>Map_TempIncident</li>
+      <li>Caravan</li>
+    </targetTags>
+	  <diseaseIncident>TM_ArcaneSickness</diseaseIncident>
+    <diseaseVictimFractionRange>
+      <min>0.1</min>
+      <max>0.2</max>
+    </diseaseVictimFractionRange>
+  </IncidentDef>
+  
+  <GameConditionDef>
+    <defName>ElementalAssault</defName>
+    <conditionClass>TorannMagic.Conditions.GameCondition_ElementalAssault</conditionClass>
+    <label>agressão elementar</label>
+    <description>Elementais hostis criaram uma brecha em seu mundo e estão se preparando para enviar equipes de assalto pela fenda!\n\nFendas causam caos na atmosfera conforme a energia vaza pela fenda para o seu mundo. Os seguintes efeitos ocorrem para cada elemento da fenda:\n\nFissura do fogo: chuvas de meteoros e ondas de calor.\nFenda da Terra: fumaça tóxica e faz com que os animais fiquem furiosos\n Fenda do gelo: tempestades de granizo e rápido declínio da temperatura\nFenda do ar: tempestades com raios</description>
+    <endMessage>A fenda foi fechada.</endMessage>
+    <letterText>Elementais hostis criaram uma brecha em seu mundo e estão se preparando para enviar equipes de assalto pela fenda!\n\nFendas causam caos na atmosfera conforme a energia vaza pela fenda para o seu mundo. Os seguintes efeitos ocorrem para cada elemento da fenda:\n\nFissura do fogo: chuvas de meteoros e ondas de calor. \nFenda da Terra: gases tóxicos e faz com que os animais fiquem furiosos \nFenda do gelo: tempestades de granizo e rápido declínio da temperatura \nFenda do ar: tempestades com raios \n\nDestrua a fenda para acabar com este pesadelo!</letterText>
+    <letterDef>ThreatBig</letterDef>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  
+  	<IncidentDef>
+    <defName>ElementalAssault</defName>
+    <label>agressão elementar</label>
+		<category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>TorannMagic.Conditions.IncidentWorker_ElementalAssault</workerClass>
+    <gameCondition>ElementalAssault</gameCondition>
+	<letterLabel>Ataque Elemental</letterLabel>    
+	<letterText>Elementais hostis criaram uma brecha em seu mundo e estão se preparando para enviar equipes de assalto pela fenda! \n\nFendas causam caos na atmosfera conforme a energia vaza pela fenda para o seu mundo. Os seguintes efeitos ocorrem para cada elemento da fenda: \n\nFissura do fogo: chuvas de meteoros e ondas de calor. \nFenda da Terra: gases tóxicos e faz com que os animais fiquem furiosos \nFenda do gelo: tempestades de granizo e rápido declínio da temperatura \nFenda do ar: tempestades com raios \n\nDestrua a fenda para acabar com este pesadelo!</letterText>
+    <letterDef>ThreatBig</letterDef>
+    <baseChance>0.6</baseChance>
+    <minRefireDays>10</minRefireDays>
+	<earliestDay>40</earliestDay>
+	<minPopulation>5</minPopulation>
+    <durationDays>
+      <min>.18</min>
+      <max>.25</max>
+    </durationDays>
+  </IncidentDef>
+  
+    <GameConditionDef>
+    <defName>WanderingLich</defName>
+    <conditionClass>TorannMagic.Conditions.GameCondition_WanderingLich</conditionClass>
+    <label>Lich errante</label>
+    <description>Um antigo lich vagou pela área e está se preparando para atacar sua colônia. \n\nLichs são criaturas poderosas por si mesmas, mas sua verdadeira força reside em sua capacidade de criar mortos-vivos animados a partir dos cadáveres dos mortos. \n\nEste lich é um ser antigo que despreza toda a vida, e seu alegre bando de seres vivos até agora resistiu a ser extinto. Ele tentará ativamente encerrar sua história de sobrevivência criando uma horda de mortos-vivos para dominar suas defesas. \n\nO lich criará periodicamente novos guerreiros esqueletos para atacar a colônia; permitir que o lich complete um ritual perto de um cadáver exposto aumentará a chance de gigantes esqueletos serem criados. No final das contas, o lich atacará a própria colônia, se ondas de mortos-vivos forem incapazes de completar a tarefa primeiro.</description>
+    <endMessage>O assalto do lich está acabando.</endMessage>
+    <letterText>Um antigo lich vagou pela área e está se preparando para atacar sua colônia.\n\nLichs são criaturas poderosas por si mesmas, mas sua verdadeira força reside em sua capacidade de criar mortos-vivos animados a partir dos cadáveres dos mortos.\n\nEste lich é um ser antigo que despreza toda a vida, e seu alegre bando de seres vivos até agora resistiu a ser extinto. Ele tentará ativamente encerrar sua história de sobrevivência criando uma horda de mortos-vivos para dominar suas defesas.\n\nO lich criará periodicamente novos guerreiros esqueletos para atacar a colônia; permitir que o lich complete um ritual perto de um cadáver exposto aumentará a chance de gigantes esqueletos serem criados. No final das contas, o lich atacará a própria colônia, se ondas de mortos-vivos forem incapazes de completar a tarefa primeiro.</letterText>
+    <letterDef>ThreatBig</letterDef>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  
+  	<IncidentDef>
+    <defName>WanderingLich</defName>
+    <label>Lich errante</label>
+		<category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>TorannMagic.Conditions.IncidentWorker_WanderingLich</workerClass>
+    <gameCondition>WanderingLich</gameCondition>
+	<letterLabel>Lich errante</letterLabel>
+<letterText>Um antigo lich vagou pela área e está se preparando para atacar sua colônia.\n\nLichs são criaturas poderosas por si mesmas, mas sua verdadeira força reside em sua capacidade de criar mortos-vivos animados a partir dos cadáveres dos mortos.\n\nEste lich é um ser antigo que despreza toda a vida, e seu alegre bando de seres vivos até agora resistiu a ser extinto. Ele tentará ativamente encerrar sua história de sobrevivência criando uma horda de mortos-vivos para dominar suas defesas.\n\nO lich criará periodicamente novos guerreiros esqueletos para atacar a colônia; permitir que o lich complete um ritual perto de um cadáver exposto aumentará a chance de gigantes esqueletos serem criados. No final das contas, o lich vai atacar a própria colônia, se ondas de mortos-vivos forem incapazes de completar a tarefa primeiro.</letterText>
+    <letterDef>ThreatBig</letterDef>	
+    <baseChance>0.4</baseChance>
+    <minRefireDays>10</minRefireDays>
+	<earliestDay>90</earliestDay>
+	<minPopulation>6</minPopulation>
+    <durationDays>
+      <min>.4</min>
+      <max>.6</max>
+    </durationDays>
+  </IncidentDef>
+  
+  <GameConditionDef>
+    <defName>DarkClouds</defName>
+    <label>nuvens escuras</label>
+	<conditionClass>TorannMagic.Conditions.GameCondition_DarkClouds</conditionClass>
+    <description>Uma sombra de mau presságio foi lançada sobre a terra; há uma presença sinistra na sombra escura dessas nuvens que amaldiçoa os vivos.</description>
+    <endMessage>As nuvens escuras estão se dispersando.</endMessage>
+    <letterText>Uma sombra de mau presságio foi lançada sobre a terra; há uma presença sinistra na sombra escura dessas nuvens que amaldiçoa os vivos.</letterText>
+    <letterDef>NegativeEvent</letterDef>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  
+    <GameConditionDef>
+    <defName>DarkThunderstorm</defName>
+    <label>Tempestade violenta</label>
+	<conditionClass>TorannMagic.Conditions.GameCondition_DarkThunderstorm</conditionClass>
+    <description>Existe uma energia maliciosa escondida dentro dessas nuvens escuras.</description>
+    <endMessage>A violenta tempestade está diminuindo.</endMessage>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  
+  <GameConditionDef>
+    <defName>TargetedPredatorInsanity</defName>
+    <conditionClass>TorannMagic.Conditions.GameCondition_TargetedPredatorInsanity</conditionClass>
+    <label>insanidade de predador</label>
+    <description>Um pulso psíquico enfurece predadores próximos ... e os empurra para humanos agressivos.</description>
+    <endMessage>O pulso do predador desaparece.</endMessage>
+    <letterText>Você enfureceu todos os predadores próximos e os concentrou em seus inimigos. Esteja avisado, os animais enfurecidos continuarão a caçar mesmo depois que seus inimigos forem embora.</letterText>
+	<letterDef>PositiveEvent</letterDef>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  
+  <GameConditionDef>
+    <defName>DivineBlessing</defName>
+    <conditionClass>TorannMagic.Conditions.GameCondition_DivineBlessing</conditionClass>
+    <label>benção divina</label>
+    <description>Um poder superior responde ao seu pedido de misericórdia.</description>
+    <endMessage>A presença benevolente desaparece.</endMessage>
+    <letterText>Seu pedido de misericórdia foi respondido por um poder superior. Várias bênçãos foram concedidas para contestar as doenças existentes.</letterText>
+	<letterDef>PositiveEvent</letterDef>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  
+  <GameConditionDef>
+    <defName>DemonAssault</defName>
+    <conditionClass>TorannMagic.Conditions.GameCondition_DemonAssault</conditionClass>
+    <label>ataque de demônio</label>
+    <description>O fim está próximo - demônios violentos estão atacando sua colônia!\nComo um arauto da desgraça iminente, fogo e cinzas começaram a cair dos céus.\n\nEstes seres infernais têm uma variedade de ataques e táticas desafiadoras.\nNo entanto, os demônios estão incapaz de permanecer neste reino por longos períodos e será forçado a retornar ao seu plano infernal em cerca de 3 horas. Derrote ou sobreviva a este pesadelo.\nHá muito pouco tempo para se preparar.\n\nBoa sorte!</description>
+    <endMessage>Os demônios voltaram ao seu plano infernal.</endMessage>
+    <letterText>O fim está próximo - demônios violentos estão atacando sua colônia!\nComo um arauto da desgraça iminente, fogo e cinzas começaram a cair dos céus.\n\nEstes seres infernais têm uma variedade de ataques e táticas desafiadoras.\nNo entanto, os demônios estão incapaz de permanecer neste reino por longos períodos e será forçado a retornar ao seu plano infernal em cerca de 3 horas. Derrote ou sobreviva a este pesadelo.\nHá muito pouco tempo para se preparar.\n\nBoa sorte!</letterText>
+    <letterDef>ThreatBig</letterDef>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  
+  	<IncidentDef>
+    <defName>DemonAssault</defName>
+    <label>ataque de demônio</label>
+	<category>ThreatBig</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>TorannMagic.Conditions.IncidentWorker_DemonAssault</workerClass>
+    <gameCondition>DemonAssault</gameCondition>
+	<letterLabel>Ataque de demônio</letterLabel>    
+	<letterText>O fim está próximo - demônios violentos estão atacando sua colônia!\nComo um arauto da desgraça iminente, fogo e cinzas começaram a cair dos céus.\n\nEstes seres infernais têm uma variedade de ataques e táticas desafiadoras.\nNo entanto, os demônios estão incapaz de permanecer neste reino por longos períodos e será forçado a retornar ao seu plano infernal em cerca de 3 horas. Derrote ou sobreviva a este pesadelo.\nHá muito pouco tempo para se preparar.\n\nBoa sorte!</letterText>
+    <letterDef>ThreatBig</letterDef>
+    <baseChance>0.25</baseChance>
+    <minRefireDays>12</minRefireDays>
+	<earliestDay>120</earliestDay>
+	<minPopulation>8</minPopulation>
+    <durationDays>
+      <min>.5</min>
+      <max>1</max>
+    </durationDays>
+  </IncidentDef>
+
+</Defs>

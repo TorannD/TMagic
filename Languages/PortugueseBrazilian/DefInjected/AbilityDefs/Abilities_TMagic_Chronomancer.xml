@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+<!-- Prediction -->
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_Prediction</defName>
+    <label>Predição</label>
+    <uiIconPath>UI/prediction</uiIconPath>
+    <description>Permite Predição - um esforço consciente dedicado a decifrar eventos futuros. A previsão tem dois componentes.
+
+O primeiro componente é a autoconsciência e a intuição que tornam o cronomante estranhamente difícil de ferir; no entanto, isso divide a atenção do cronomante e reduz sua acuidade física e velocidade.
+
+O segundo componente se concentra na previsão de eventos significativos. Indicadores como vôo de pássaros, nuvem de poeira, som do vento são destacados para o cronomante e tecidos juntos em uma tapeçaria que retrata um futuro possível.
+
+Nenhum dos métodos é infalível, mas a prática pode melhorar a precisão da previsão e reduzir o foco necessário para sustentá-la.
+
+Esta habilidade reduz a regeneração de mana em 50%.</description>
+    <manaCost>0.0</manaCost>
+	<abilityHediff>TM_PredictionHD</abilityHediff>
+	<upkeepRegenCost>.5</upkeepRegenCost>
+	<upkeepEfficiencyPercent>.1</upkeepEfficiencyPercent>
+	<learnChance>.4</learnChance>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_Prediction</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_Prediction</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <SecondsToRecharge>10.0</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>TM_VibrationLow</soundCast>
+        <muzzleFlashScale>10</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+  <!-- Alter Fate -->
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_AlterFate</defName>
+    <label>Alterar o destino</label>
+    <uiIconPath>UI/alterfate</uiIconPath>
+    <description>Altere o fluxo do tempo para evitar desastres previstos. Essa capacidade depende de previsões precisas para moldar o futuro. Cronomantes altamente qualificados podem reverter as condições ambientais mesmo depois que elas ocorrem.
+
+Alter Fate é mais eficaz contra as condições ambientais. Essa habilidade pode sair pela culatra, no entanto, fazendo com que o evento mude, se torne mais grave ou desencadeie o infame "efeito borboleta".</description>
+    <manaCost>0.6</manaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<learnChance>.3</learnChance>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_AlterFate</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_AlterFate</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+        <warmupTime>5</warmupTime>
+        <SecondsToRecharge>600.0</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>TM_Gong</soundCast>
+		<soundCastTail>TM_Thunder_OffMap</soundCastTail>
+        <muzzleFlashScale>30</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+  <!-- Accelerate Time -->	
+  
+  <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_AccelerateTime</thingClass>
+	    <defName>Projectile_AccelerateTime</defName>
+        <label>acelerar o tempo</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>TM_Shadow</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>3</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_AccelerateTime</defName>
+        <label>Acelerar o tempo</label>
+        <uiIconPath>UI/acceleratetime</uiIconPath>
+        <description>Acelerar o tempo aplica um campo ao redor do alvo onde toda a matéria física envelhece rapidamente.
+
+Quando aplicado a objetos inanimados, o efeito é instantâneo e irá deteriorar os itens significativamente; isso pode fazer com que um item se desmonte em seus componentes básicos. Não há área de efeito para esta função, apenas o objeto no centro será afetado.
+
+O tecido vivo resiste à mudança instantânea e requer uma abordagem mais gradual. Qualquer peão vivo afetado terá maior velocidade de movimento e manipulação. Os elementos neutros (plantas) terão um crescimento rápido.
+
+Quando usado em um local ou em um inimigo hostil, todos os inimigos na área serão amaldiçoados com envelhecimento rápido. Isso drenará o descanso e a energia do alvo, acelera outras condições de saúde e pode causar doenças relacionadas à idade.
+
+Quando usado em peões aliados, não há área de efeito, apenas o alvo principal será afetado. O processo de envelhecimento para peões amigos é muito mais gradual e pode ser cancelado pelo Reverse Time.</description>
+        <manaCost>0.35</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.4</learnChance>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_AccelerateTime</defaultProjectile>
+            <abilityDef>TM_AccelerateTime</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>60</SecondsToRecharge> 
+            <range>45</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>1</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+				<canTargetItems>true</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Reverse Time -->	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ReverseTime</defName>
+        <label>Tempo reverso</label>
+        <uiIconPath>UI/reversetime</uiIconPath>
+        <description>Reverse Time aplica um campo ao redor do alvo onde toda a matéria física reverte sua decadência natural. Reverter os efeitos do tempo é mais difícil - requer mais energia do que acelerar o tempo e só pode ser aplicado a um único alvo por vez.
+
+Quando aplicado a objetos inanimados, o efeito é instantâneo e irá regenerar itens e restaurar o material a um estado anterior. Reverse Time pode ser usado para restaurar comida podre, equipamento em decomposição e material contaminado.
+
+O tecido vivo resiste à mudança instantânea e requer uma abordagem mais gradual. Qualquer peão vivo afetado terá velocidade de movimento e manipulação diminuída e seu envelhecimento biológico será revertido. Isso pode remover muitas doenças que foram causadas recentemente quando o tecido foi restaurado a um estado anterior à doença; isso inclui feridas, doenças e enfermidades relacionadas à idade que ocorreram dentro da janela de reversão do tempo.
+
+Reverse Time pode ser dissipado neutralizando os efeitos com Accelerate Time.</description>
+        <manaCost>0.50</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.4</learnChance>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ReverseTime</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_ReverseTime</abilityDef>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>60</SecondsToRecharge>
+            <range>30</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>1</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+				<canTargetItems>true</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>	
+
+   <!-- Chronostatic Field -->
+   
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_ChronostaticField</thingClass>
+	    <defName>Projectile_ChronostaticField</defName>
+        <label>bolha do tempo</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_Shadow</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>3</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_ChronostaticField</thingClass>
+	    <defName>Projectile_ChronostaticField_I</defName>
+        <label>bolha do tempo</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_Shadow</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>3.5</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_ChronostaticField</thingClass>
+	    <defName>Projectile_ChronostaticField_II</defName>
+        <label>bolha do tempo</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_Shadow</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>4</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_ChronostaticField</thingClass>
+	    <defName>Projectile_ChronostaticField_III</defName>
+        <label>bolha do tempo</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_Shadow</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>4.5</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Name="FlyingObject_TimeDelay">
+	   <defName>FlyingObject_TimeDelay</defName>
+	   <thingClass>TorannMagic.FlyingObject_TimeDelay</thingClass>
+	   <label>bolha do tempo</label>
+	   <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	   <projectile>
+			<flyOverhead>true</flyOverhead>
+			<damageDef>TM_Shadow</damageDef>
+			<damageAmountBase>0</damageAmountBase>
+			<speed>0</speed>
+	   </projectile>
+	</ThingDef>
+   
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ChronostaticField</defName>
+        <label>Campo Cronostático</label>
+        <uiIconPath>UI/timebubble</uiIconPath>
+        <description>O Campo Cronostático (também conhecido como bolha do tempo) coloca todas as criaturas vivas dentro da área afetada fora de fase com o fluxo do tempo. A interação com as criaturas afetadas é impossível até que elas retornem ao fluxo natural do tempo.
+
+Raio: 3
+Alcance: 40
+Tempo de conjuração: 1s</description>
+		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ChronostaticField</defaultProjectile>
+            <abilityDef>TM_ChronostaticField</abilityDef>
+            <warmupTime>1</warmupTime>
+            <SecondsToRecharge>600</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ChronostaticField_I</defName>
+        <label>Campo Cronostático (I)</label>
+        <uiIconPath>UI/timebubble</uiIconPath>
+        <description>O Campo Cronostático (também conhecido como bolha do tempo) coloca todas as criaturas vivas dentro da área afetada fora de fase com o fluxo do tempo. A interação com as criaturas afetadas é impossível até que elas retornem ao fluxo natural do tempo.
+
+Raio: 3,5
+Alcance: 44
+Tempo de conjuração: 0,8 s</description>
+		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ChronostaticField_I</defaultProjectile>
+            <abilityDef>TM_ChronostaticField_I</abilityDef>
+            <warmupTime>.8</warmupTime>
+            <SecondsToRecharge>600</SecondsToRecharge>
+            <range>44</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ChronostaticField_II</defName>
+        <label>Campo Cronostático (II)</label>
+        <uiIconPath>UI/timebubble</uiIconPath>
+        <description>O Campo Cronostático (também conhecido como bolha do tempo) coloca todas as criaturas vivas dentro da área afetada fora de fase com o fluxo do tempo. A interação com as criaturas afetadas é impossível até que elas retornem ao fluxo natural do tempo.
+
+Raio: 4
+Alcance: 48
+Tempo de conjuração: 0,6 s</description>
+		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ChronostaticField_II</defaultProjectile>
+            <abilityDef>TM_ChronostaticField_II</abilityDef>
+            <warmupTime>.6</warmupTime>
+            <SecondsToRecharge>600</SecondsToRecharge>
+            <range>48</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ChronostaticField_III</defName>
+        <label>Campo Cronostático (III)</label>
+        <uiIconPath>UI/timebubble</uiIconPath>
+        <description>O Campo Cronostático (também conhecido como bolha do tempo) coloca todas as criaturas vivas dentro da área afetada fora de fase com o fluxo do tempo. A interação com as criaturas afetadas é impossível até que elas retornem ao fluxo natural do tempo.
+
+Raio: 4,5
+Alcance: 50
+Tempo de conjuração: 0,5 s</description>
+		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ChronostaticField_III</defaultProjectile>
+            <abilityDef>TM_ChronostaticField_III</abilityDef>
+            <warmupTime>.5</warmupTime>
+            <SecondsToRecharge>600</SecondsToRecharge>
+            <range>50</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Time Mark (set recall point) -->
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_TimeMark</defName>
+    <label>Marca de Tempo</label>
+    <uiIconPath>UI/markrecall</uiIconPath>
+    <description>O cronomante é capaz de capturar seu status em um ponto específico no tempo e retornar a esse ponto. Esta habilidade não muda o tempo ou afeta qualquer outra coisa além do cronomante. O cronomancer reterá todas as memórias que tiver no momento em que a recuperação for ativada; a ativação automática de um golpe mortal pode causar interrupções mentais, já que o cronomante se lembrará de sua morte.
+
+A recuperação tem um período efetivo limitado (~ 1 dia) antes que o marcador de tempo expire e deve ser reaplicado. Quando o marcador de tempo está ativo, o MP máximo é reduzido em 40 mana e a regeneração de mana é reduzida em 30%.
+
+Quando definido para autocast, o cronomancer tentará manter um marcador de chamada o tempo todo - isso não afeta os gatilhos de ativação (abatidos / mortos) que sempre serão ativados se a habilidade for aprendida e o tempo for marcado.
+
+Para manter a coesão física durante um recall, o lançador manterá todas as condições com permanência (partes do corpo ausentes ou adicionadas, lesões permanentes). Todos os feitiços do cronomante são reiniciados após uma Chamada, exceto a própria Chamada.</description>
+    <manaCost>0.0</manaCost>
+	<shouldInitialize>true</shouldInitialize>
+	<learnChance>0</learnChance>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_TimeMark</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_TimeMark</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>600.0</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>TM_Vibration</soundCast>
+        <muzzleFlashScale>30</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+  	<!-- Activate Recall -->
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_Recall</defName>
+    <label>Lembrar</label>
+    <uiIconPath>UI/recall</uiIconPath>
+    <description>Retorna o lançador a um ponto anterior no tempo. Não pode ser usado sem um marcador de tempo ativo.</description>
+    <manaCost>0.00</manaCost>
+	<upkeepEnergyCost>.4</upkeepEnergyCost>
+	<upkeepRegenCost>.3</upkeepRegenCost>
+	<upkeepEfficiencyPercent>.08</upkeepEfficiencyPercent>
+	<learnChance>.1</learnChance>
+	<learnItem>SpellOf_Recall</learnItem>
+	<shouldInitialize>false</shouldInitialize>
+	<childAbilities>
+		<li>TM_TimeMark</li>
+	</childAbilities>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_Recall</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_Recall</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+        <warmupTime>.25</warmupTime>
+        <SecondsToRecharge>600.0</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>TM_Vibration</soundCast>
+        <muzzleFlashScale>30</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+  
+</Defs>

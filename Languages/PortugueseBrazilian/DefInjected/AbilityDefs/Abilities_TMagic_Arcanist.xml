@@ -1,0 +1,914 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	    <!-- Shadow start -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	    <defName>Buff_Shadow</defName>
+        <label>Sombra</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>Shadow</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>1000</speed>
+			<explosionRadius>4</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Shadow</defName>
+        <label>Sombra</label>
+        <uiIconPath>UI/shadow</uiIconPath>
+        <description>Cria uma aura sombria ao redor do lançador que periodicamente buffs um aliado.
+
+Sombra: aumento misterioso que ajuda o trabalhador a melhorar sua capacidade física, mas causa uma diminuição do humor.
+
+Frequência de aplicação: 80-90s
+Duração: 500-600s
+Manipulação, visão, audição, filtração de sangue: + 10%
+Movendo-se, Consciência: + 5%
+Diminuição de humor: -3
+
+Requer 40 mana para manter e reduz a regeneração de mana em 30%; lançar novamente para desativar. O lançador ganha XP cada vez que um aliado é aprimorado.</description>
+		<manaCost>0.0</manaCost>
+		<upkeepEnergyCost>.4</upkeepEnergyCost>
+		<upkeepRegenCost>.3</upkeepRegenCost>
+		<upkeepEfficiencyPercent>.08</upkeepEfficiencyPercent>
+		<learnChance>.3</learnChance>
+		<abilityHediff>TM_Shadow_AuraHD</abilityHediff>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Buff_Shadow</defaultProjectile>
+            <abilityDef>TM_Shadow</abilityDef>
+            <warmupTime>6</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Message_PositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Shadow_I</defName>
+        <label>Sombra</label>
+        <uiIconPath>UI/shadow</uiIconPath>
+        <description>Cria uma aura sombria ao redor do lançador que periodicamente buffs um aliado.
+
+Sombra: aumento misterioso que ajuda o trabalhador a melhorar sua capacidade física, mas causa uma diminuição do humor.
+
+Frequência de aplicação: 80-90s
+Duração: 500-600s
+Manipulação, visão, audição, fala: + 20%
+Movimento, Consciência, Metabolismo, Filtração de sangue: + 10%
+Diminuição do humor: -4
+
+Requer 40 mana para manter e reduz a regeneração de mana em 30%; lançar novamente para desativar. O lançador ganha XP cada vez que um aliado é aprimorado.</description>
+		<manaCost>0</manaCost>
+		<upkeepEnergyCost>.4</upkeepEnergyCost>
+		<upkeepRegenCost>.3</upkeepRegenCost>
+		<upkeepEfficiencyPercent>.08</upkeepEfficiencyPercent>
+		<abilityHediff>TM_Shadow_AuraHD</abilityHediff>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Buff_Shadow</defaultProjectile>
+            <abilityDef>TM_Shadow_I</abilityDef>
+            <warmupTime>5</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Message_PositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Shadow_II</defName>
+        <label>Sombra</label>
+        <uiIconPath>UI/shadow</uiIconPath>
+        <description>Cria uma aura sombria ao redor do lançador que periodicamente buffs um aliado.
+
+Sombra: aumento misterioso que ajuda o trabalhador a melhorar sua capacidade física, mas causa uma diminuição do humor.
+
+Frequência de aplicação: 80-90s
+Duração: 1100-1250s
+Manipulação, visão, audição, fala: + 25%
+Movimento, metabolismo, filtração de sangue: + 15%
+Consciência: + 10%
+Diminuição de humor: -6
+
+Requer 40 mana para manter e reduz a regeneração de mana em 30%; lançar novamente para desativar. O lançador ganha XP cada vez que um aliado é aprimorado.</description>
+		<manaCost>0</manaCost>
+		<upkeepEnergyCost>.4</upkeepEnergyCost>
+		<upkeepRegenCost>.3</upkeepRegenCost>
+		<upkeepEfficiencyPercent>.08</upkeepEfficiencyPercent>
+		<abilityHediff>TM_Shadow_AuraHD</abilityHediff>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Buff_Shadow</defaultProjectile>
+            <abilityDef>TM_Shadow_II</abilityDef>
+            <warmupTime>4</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Message_PositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Shadow_III</defName>
+        <label>Sombra</label>
+        <uiIconPath>UI/shadow</uiIconPath>
+        <description>Cria uma aura sombria ao redor do lançador que periodicamente buffs um aliado.
+
+Sombra: aumento misterioso que ajuda o trabalhador a melhorar sua capacidade física, mas causa uma diminuição do humor.
+
+Frequência de aplicação: 80-90s
+Duração: 1100-1250s
+Manipulação, visão, audição, fala: + 25%
+Movimento, metabolismo, filtração de sangue: + 20%
+Consciência: + 15%
+Diminuição de humor: -8
+
+Requer 40 mana para manter e reduz a regeneração de mana em 30%; lançar novamente para desativar. O lançador ganha XP cada vez que um aliado é aprimorado.</description>
+		<manaCost>0</manaCost>
+		<upkeepEnergyCost>.4</upkeepEnergyCost>
+		<upkeepRegenCost>.3</upkeepRegenCost>
+		<upkeepEfficiencyPercent>.08</upkeepEfficiencyPercent>
+		<abilityHediff>TM_Shadow_AuraHD</abilityHediff>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Buff_Shadow</defaultProjectile>
+            <abilityDef>TM_Shadow_III</abilityDef>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Message_PositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- Shadow End -->
+	
+	<!-- Magic Missile -->
+	
+	 <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+        <thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+        <defName>Projectile_MagicMissile</defName>
+        <label>Míssil Mágico</label>
+        <graphicData>
+            <texPath>Spells/MagicMissile</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <flyOverhead>false</flyOverhead>
+            <damageDef>TM_MagicMissile</damageDef>
+            <damageAmountBase>4</damageAmountBase>
+            <speed>55</speed>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_MagicMissile</defName>
+        <label>Míssil Mágico</label>
+        <uiIconPath>Spells/MagicMissile</uiIconPath>
+        <description>Dispare uma onda de mísseis mágicos contra os inimigos.
+
+Chance de confundir: 3%
+Tempo de conjuração: 2,5 s
+Alcance: 24
+Projéteis: 14 sobre 2.8s
+Dano: 4</description>
+        <manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
+		<learnChance>.5</learnChance>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_MagicMissile</defaultProjectile>
+            <abilityDef>TM_MagicMissile</abilityDef>
+            <warmupTime>2.5</warmupTime>
+            <SecondsToRecharge>45.0</SecondsToRecharge>
+            <range>24</range>
+            <forcedMissRadius>4.5</forcedMissRadius>
+            <burstShotCount>14</burstShotCount>
+            <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
+            <isPrimary>false</isPrimary>
+			<soundCast>InfernoCannon_Fire</soundCast>
+            <soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+            <AlwaysHits>false</AlwaysHits>
+			<extraDamages>
+			  <li>
+				<damage>4</damage>
+				<damageDef>TM_MagicMissile</damageDef>
+				<chance>1</chance>
+			  </li>
+			</extraDamages>	
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_MagicMissile_I</defName>
+        <label>Míssil Mágico</label>
+        <uiIconPath>Spells/MagicMissile</uiIconPath>
+        <description>Dispare uma onda de mísseis mágicos contra os inimigos.
+
+Chance de confundir: 5%
+Tempo de conjuração: 2s
+Alcance: 28
+Projéteis: 17 sobre 2.83s
+Dano: 5</description>
+        <manaCost>0.24</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_MagicMissile</defaultProjectile>
+            <abilityDef>TM_MagicMissile_I</abilityDef>
+            <warmupTime>2.0</warmupTime>
+            <SecondsToRecharge>40.0</SecondsToRecharge>
+            <range>28</range>
+            <forcedMissRadius>4.0</forcedMissRadius>
+            <burstShotCount>17</burstShotCount>
+            <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+            <isPrimary>false</isPrimary>
+            <soundCast>InfernoCannon_Fire</soundCast>
+            <soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>6</muzzleFlashScale>
+            <AlwaysHits>false</AlwaysHits>
+			<extraDamages>
+			  <li>
+				<damage>5</damage>
+				<damageDef>TM_MagicMissile</damageDef>
+				<chance>1</chance>
+			  </li>
+			</extraDamages>	
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_MagicMissile_II</defName>
+        <label>Míssil Mágico</label>
+        <uiIconPath>Spells/MagicMissile</uiIconPath>
+        <description>Dispare uma onda de mísseis mágicos contra os inimigos.
+
+Chance de confundir: 7%
+Tempo de conjuração: 1,5 s
+Alcance: 32
+Projéteis: 20 sobre 2.67s
+Dano: 6</description>
+        <manaCost>0.28</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_MagicMissile</defaultProjectile>
+            <abilityDef>TM_MagicMissile_II</abilityDef>
+            <warmupTime>1.5</warmupTime>
+            <SecondsToRecharge>30.0</SecondsToRecharge>
+            <range>32</range>
+            <forcedMissRadius>3.5</forcedMissRadius>
+            <burstShotCount>20</burstShotCount>
+            <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+            <isPrimary>false</isPrimary>
+            <soundCast>InfernoCannon_Fire</soundCast>
+            <soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>9</muzzleFlashScale>
+            <AlwaysHits>false</AlwaysHits>
+			<extraDamages>
+			  <li>
+				<damage>6</damage>
+				<damageDef>TM_MagicMissile</damageDef>
+				<chance>1</chance>
+			  </li>
+			</extraDamages>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_MagicMissile_III</defName>
+        <label>Míssil Mágico</label>
+        <uiIconPath>Spells/MagicMissile</uiIconPath>
+        <description>Dispare uma onda de mísseis mágicos contra os inimigos.
+
+Chance de confundir: 9%
+Tempo de conjuração: 1s
+Alcance: 36
+Projéteis: 24 sobre 2.4s
+Dano: 7</description>
+        <manaCost>0.32</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_MagicMissile</defaultProjectile>
+            <abilityDef>TM_MagicMissile_III</abilityDef>
+            <warmupTime>1.0</warmupTime>
+            <SecondsToRecharge>20.0</SecondsToRecharge>
+            <range>36</range>
+            <forcedMissRadius>3.0</forcedMissRadius>
+            <burstShotCount>24</burstShotCount>
+            <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+            <isPrimary>false</isPrimary>
+            <soundCast>InfernoCannon_Fire</soundCast>
+            <soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>12</muzzleFlashScale>
+            <AlwaysHits>false</AlwaysHits>
+			<extraDamages>
+			  <li>
+				<damage>7</damage>
+				<damageDef>TM_MagicMissile</damageDef>
+				<chance>1</chance>
+			  </li>
+			</extraDamages>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Magic Missile end-->
+	
+		<!-- Teleport start  -->
+	
+  <ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+   <thingClass>TorannMagic.Projectile_Teleport</thingClass>
+   <defName>Projectile_Teleport</defName>
+   <label>teleporte</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>TransparentPostLight</shaderType>
+	</graphicData>
+   <projectile>
+		<flyOverhead>true</flyOverhead>
+		<explosionRadius>4</explosionRadius>
+		<damageDef>Burn</damageDef>
+		<damageAmountBase>0</damageAmountBase>
+		<speed>1000</speed>
+		<postExplosionSpawnChance>1</postExplosionSpawnChance>
+   </projectile>
+ </ThingDef>
+
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_Teleport</defName>
+    <label>teleporte</label>
+    <uiIconPath>UI/teleport</uiIconPath>
+    <description>Feitiço de teletransporte em massa. Cria um método temporário de transporte de longo alcance; ser avisado, o portal desmorona após um breve período, causando uma explosão de feedback no ponto em que o portal foi criado.</description>
+    <manaCost>0.45</manaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<learnChance>.25</learnChance>
+	<learnItem>SpellOf_Teleport</learnItem>
+	<canCopy>true</canCopy>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Teleport</defaultProjectile>
+		<abilityDef>TM_Teleport</abilityDef>
+        <warmupTime>3</warmupTime>
+        <SecondsToRecharge>1800</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>40</range>
+		<isViolent>false</isViolent>
+        <soundCast>ThrowGrenade</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+         <isPrimary>false</isPrimary>
+		 <targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ 	<!-- Teleport end -->
+	
+	    <!-- Blink Start -->
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+        <thingClass>AbilityUser.Projectile_Ability</thingClass>
+		<defName>Projectile_Blink</defName>
+        <label>Piscar</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+			<alwaysFreeIntercept>false</alwaysFreeIntercept>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>9999</speed>
+        </projectile>
+    </ThingDef>
+
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Blink</defName>
+        <label>Piscar</label>
+        <uiIconPath>UI/blink</uiIconPath>
+        <description>Move instantaneamente o lançador para o local alvo.
+
+Tempo de conjuração: 0,5s
+Tempo de recarga: 10s
+alcance: 30</description>
+        <manaCost>0.15</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
+		<learnItem>SpellOf_Blink</learnItem>
+		<learnChance>.1</learnChance>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Blink</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Blink</defaultProjectile>
+            <abilityDef>TM_Blink</abilityDef>
+            <!-- <AbilityTargetCategory>TargetLocation</AbilityTargetCategory> -->
+            <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+            <warmupTime>.5</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>30</range>
+			<isViolent>false</isViolent>
+			<requiresLineOfSight>false</requiresLineOfSight>
+			<stopBurstWithoutLos>false</stopBurstWithoutLos>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>Message_PositiveEvent</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Blink_I</defName>
+        <label>Piscar</label>
+        <uiIconPath>UI/blink</uiIconPath>
+        <description>Move instantaneamente o lançador para o local alvo.
+
+Tempo de conjuração: 0,3s
+Tempo de recarga: 8s
+Alcance: 50</description>
+        <manaCost>0.15</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Blink</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Blink</defaultProjectile>
+            <abilityDef>TM_Blink_I</abilityDef>
+            <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+            <warmupTime>0.3</warmupTime>
+            <SecondsToRecharge>8.0</SecondsToRecharge>
+            <range>50</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>Message_PositiveEvent</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Blink_II</defName>
+        <label>Piscar</label>
+        <uiIconPath>UI/blink</uiIconPath>
+        <description>Move instantaneamente o lançador para o local alvo.
+
+Tempo de conjuração: .1s
+Tempo de recarga: 6s
+Alcance: 70</description>
+        <manaCost>0.15</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Blink</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Blink</defaultProjectile>
+            <abilityDef>TM_Blink_II</abilityDef>
+            <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+            <warmupTime>0.1</warmupTime>
+            <SecondsToRecharge>6.0</SecondsToRecharge>
+            <range>70</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>Message_PositiveEvent</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Blink_III</defName>
+        <label>Piscar</label>
+        <uiIconPath>UI/blink</uiIconPath>
+        <description>Move instantaneamente o lançador para o local alvo.
+
+Tempo de conjuração: 0s
+Tempo de recarga: 5s
+Alcance: 90</description>
+        <manaCost>0.15</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Blink</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Blink</defaultProjectile>
+            <abilityDef>TM_Blink_III</abilityDef>
+            <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+            <warmupTime>0</warmupTime>
+            <SecondsToRecharge>5.0</SecondsToRecharge>
+            <range>90</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>Message_PositiveEvent</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+    <!-- Blink End-->
+	
+		    <!-- Summon Start -->
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_AbilityLaser">
+        <thingClass>AbilityUser.Projectile_AbilityLaser</thingClass>
+		<defName>Projectile_Summon</defName>
+        <label>Convocar</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>400</speed>
+        </projectile>
+        <preFiringInitialIntensity>0</preFiringInitialIntensity>
+        <preFiringFinalIntensity>20</preFiringFinalIntensity>
+        <postFiringInitialIntensity>20</postFiringInitialIntensity>
+        <postFiringFinalIntensity>0</postFiringFinalIntensity>
+        <preFiringDuration>10</preFiringDuration>
+        <postFiringDuration>83</postFiringDuration>
+    </ThingDef>
+
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Summon</defName>
+        <label>Convocar</label>
+        <uiIconPath>UI/summon</uiIconPath>
+        <description>Convocar objetos para o local dos lançadores.
+
+Tempo de conjuração: 3s
+Tempo de recarga: 20s
+Alcance: 70</description>
+        <manaCost>0.24</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Summon</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Summon</defaultProjectile>
+            <abilityDef>TM_Summon</abilityDef>
+            <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>true</canTargetItems>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>3.0</warmupTime>
+            <SecondsToRecharge>20.0</SecondsToRecharge>
+            <range>70</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>TM_Gong</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Summon_I</defName>
+        <label>Convocar</label>
+        <uiIconPath>UI/summon</uiIconPath>
+        <description>Convocar objetos para o local dos lançadores.
+
+Tempo de conjuração: 2.7s
+Tempo de recarga: 18s
+Alcance: 80</description>
+        <manaCost>0.25</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Summon</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Summon</defaultProjectile>
+            <abilityDef>TM_Summon_I</abilityDef>
+            <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>true</canTargetItems>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>2.7</warmupTime>
+            <SecondsToRecharge>18.0</SecondsToRecharge>
+            <range>80</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>TM_Gong</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Summon_II</defName>
+        <label>Convocar</label>
+        <uiIconPath>UI/summon</uiIconPath>
+        <description>Convocar objetos para o local dos lançadores.
+
+Tempo de conjuração: 2,5 s
+Tempo de recarga: 16s
+Alcance: 90</description>
+        <manaCost>0.26</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Summon</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Summon</defaultProjectile>
+            <abilityDef>TM_Summon_II</abilityDef>
+            <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>true</canTargetItems>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>2.5</warmupTime>
+            <SecondsToRecharge>16.0</SecondsToRecharge>
+            <range>90</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>TM_Gong</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Summon_III</defName>
+        <label>Convocar</label>
+        <uiIconPath>UI/summon</uiIconPath>
+        <description>Convocar objetos para o local dos lançadores.
+
+Tempo de conjuração: 2.4s
+Tempo de recarga: 15s
+Alcance: 100</description>
+        <manaCost>0.28</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Summon</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Summon</defaultProjectile>
+            <abilityDef>TM_Summon_III</abilityDef>
+            <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>true</canTargetItems>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>2.4</warmupTime>
+            <SecondsToRecharge>15.0</SecondsToRecharge>
+            <range>100</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>Message_PositiveEvent</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+  <ThingDef ParentName="BaseBullet" Name="TM_SummonedPawn">
+   <defName>TM_SummonedPawn</defName>
+   <thingClass>AbilityUser.FlyingObject</thingClass>
+   <label>objeto voador</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+	</graphicData>
+   <projectile>
+		<flyOverhead>true</flyOverhead>
+		<damageDef>Stun</damageDef>
+		<damageAmountBase>0</damageAmountBase>
+		<speed>250</speed>
+   </projectile>
+ </ThingDef>
+ 
+   <ThingDef ParentName="BaseBullet" Name="MovingObject">
+   <defName>MovingObject</defName>
+   <thingClass>TorannMagic.MovingObject</thingClass>
+   <label>objeto em movimento</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+	</graphicData>
+   <projectile> 
+		<flyOverhead>true</flyOverhead>
+		<damageDef>Stun</damageDef>
+		<damageAmountBase>0</damageAmountBase>
+		<speed>250</speed>
+   </projectile>
+ </ThingDef>
+ 
+
+    <!-- Summon End-->
+
+	 <!-- Fold Reality -->
+	 
+	 <ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+	   <thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	   <defName>Projectile_FoldReality</defName>
+	   <label>dobrar a realidade</label>
+	   <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+	   <projectile>
+			<flyOverhead>true</flyOverhead>
+			<explosionRadius>5</explosionRadius>
+			<damageDef>Burn</damageDef>
+			<damageAmountBase>0</damageAmountBase>
+			<speed>1000</speed>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+	   </projectile>
+	 </ThingDef>
+ 
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_FoldReality</defName>
+        <label>Porta de entrada</label>
+        <uiIconPath>UI/gateway2</uiIconPath>
+        <description>Dobra a realidade para abrir um portal para outro local controlado pelo jogador e move instantaneamente todos os peões e itens em um raio de 7 células ao redor da célula alvo para o lançador.</description>
+        <manaCost>0.80</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnItem>SpellOf_FoldReality</learnItem>
+		<learnChance>.1</learnChance>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_FoldReality</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_FoldReality</defaultProjectile>
+            <abilityDef>TM_FoldReality</abilityDef>
+            <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+            <targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>2400</SecondsToRecharge>
+            <range>0</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>Message_PositiveEvent</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+
+</Defs>

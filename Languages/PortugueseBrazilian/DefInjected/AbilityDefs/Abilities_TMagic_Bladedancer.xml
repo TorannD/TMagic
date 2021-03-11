@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+ <!-- blade focus -->
+  <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+   <defName>Projectile_BladeFocus</defName>
+   <thingClass>AbilityUser.Projectile_Ability</thingClass>
+   <label>Foco da lâmina</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+   </graphicData>
+   <projectile>
+		<flyOverhead>true</flyOverhead>
+		<damageDef>TM_Heal_I</damageDef>
+		<damageAmountBase>0</damageAmountBase>
+		<speed>100</speed>
+   </projectile>
+ </ThingDef>
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_BladeFocus</defName>
+    <label>Treinamento de lâmina</label>
+    <uiIconPath>UI/bladeart</uiIconPath>
+    <description>Treinamento que melhora a técnica e habilidade com armas brancas e aumenta o status do bladedancer. Cada nível mudará a característica do bladedancer para refletir seu nível de habilidade.
+
+Ranks:
+Espadachim: Velocidade + 0,15c / s, MBT -3%, chance de acerto + 3%, esquiva + 5%, acerto de tiro -20%, velocidade de trabalho global -10%
+Mestre da lâmina: Velocidade + 0,2 c / s, MBT -5%, chance de acerto + 6%, esquiva + 10%, acerto de tiro -25%, velocidade de trabalho global -8%
+Bladedancer: Velocidade + 0,3c / s, MBT -8%, chance de acerto + 10%, esquiva + 15%, acerto de tiro -28%, velocidade de trabalho global -6%, limiar de dor + 5%
+Lendário Bladedancer: Velocidade + 0,4c / s, MBT -10%, chance de acerto + 15%, esquiva + 20%, acerto de tiro -30%, velocidade de trabalho global -5%, limiar de dor + 10%</description>
+    <staminaCost>0.01</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_BladeFocus</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_BladeFocus</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_BladeFocus</defaultProjectile>
+        <warmupTime>0.1</warmupTime>
+        <SecondsToRecharge>10.0</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>10</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+   
+     <!-- blade art start-->
+  
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+   <defName>Projectile_BladeArt</defName>
+   <thingClass>AbilityUser.Projectile_Ability</thingClass>
+   <label>Treinamento Corporal</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+   </graphicData>
+   <projectile>
+		<flyOverhead>true</flyOverhead>
+		<damageDef>TM_Heal_I</damageDef>
+		<damageAmountBase>0</damageAmountBase>
+		<speed>100</speed>
+   </projectile>
+ </ThingDef>
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_BladeArt</defName>
+    <label>Treinamento Corporal</label>
+    <uiIconPath>UI/bodytraining</uiIconPath>
+    <description>Treinamento que aprimora as capacidades físicas.
+
+Nível 0: Movimentação + 10%, Manipulação + 10%
+Nível 1: Movimentação + 15%, Manipulação + 15%
+Nível 2: Movimento + 20%, Manipulação + 20%, Respiração + 10%
+Nível 3: Movimento + 25%, Manipulação + 25%, Respiração + 15%, bombeamento de sangue + 10%, filtração de sangue + 10%</description>
+    <staminaCost>0.01</staminaCost>
+	<abilityHediff>TM_BladeArtHD</abilityHediff>
+	<shouldInitialize>false</shouldInitialize>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_BladeArt</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_BladeArt</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_BladeArt</defaultProjectile>
+        <warmupTime>0.1</warmupTime>
+        <SecondsToRecharge>60</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+
+  
+  <!-- BladeSpin Start -->
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_AbilityLaser">
+        <thingClass>AbilityUser.Projectile_AbilityLaser</thingClass>
+		<defName>Projectile_BladeSpin</defName>
+        <label>Rotaçâo da Lâmina</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>400</speed>
+        </projectile>
+        <preFiringInitialIntensity>0</preFiringInitialIntensity>
+        <preFiringFinalIntensity>100</preFiringFinalIntensity>
+        <postFiringInitialIntensity>100</postFiringInitialIntensity>
+        <postFiringFinalIntensity>0</postFiringFinalIntensity>
+        <preFiringDuration>20</preFiringDuration>
+        <postFiringDuration>80</postFiringDuration>
+    </ThingDef>
+
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_BladeSpin</defName>
+        <label>Rotaçâo da Lâmina</label>
+        <uiIconPath>UI/bladespin</uiIconPath>
+        <description>O mestre das lâminas parece embaçar por uma fração de segundo, atingindo todos os alvos próximos com uma rajada de aço.</description>
+        <staminaCost>0.25</staminaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<weaponDamageFactor>.45</weaponDamageFactor>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BladeSpin</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_BladeSpin</defaultProjectile>
+            <abilityDef>TM_BladeSpin</abilityDef>
+            <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetLocations>false</canTargetLocations>
+				<canTargetSelf>true</canTargetSelf>
+            </targetParams>
+            <warmupTime>0.0</warmupTime>
+            <SecondsToRecharge>30.0</SecondsToRecharge>
+            <range>0</range>
+			<isViolent>true</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MeleeHit_Metal_Sharp</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Seismic Slash Start -->
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_AbilityLaser">
+        <thingClass>AbilityUser.Projectile_AbilityLaser</thingClass>
+		<defName>Projectile_SeismicSlash</defName>
+        <label>Corte Sísmico</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>400</speed>
+        </projectile>
+        <preFiringInitialIntensity>0</preFiringInitialIntensity>
+        <preFiringFinalIntensity>100</preFiringFinalIntensity>
+        <postFiringInitialIntensity>100</postFiringInitialIntensity>
+        <postFiringFinalIntensity>0</postFiringFinalIntensity>
+        <preFiringDuration>20</preFiringDuration>
+        <postFiringDuration>80</postFiringDuration>
+    </ThingDef>
+
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_SeismicSlash</defName>
+        <label>Corte Sísmico</label>
+        <uiIconPath>UI/seismicslash</uiIconPath>
+        <description>Aproveitando a alma sem emoção da lâmina, o bladedancer desfere um golpe que rasga o tecido do espaço ao longo de uma linha.</description>
+        <staminaCost>0.25</staminaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<weaponDamageFactor>.52</weaponDamageFactor>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SeismicSlash</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_SeismicSlash</defaultProjectile>
+            <abilityDef>TM_SeismicSlash</abilityDef>
+            <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>0.3</warmupTime>
+            <SecondsToRecharge>30.0</SecondsToRecharge>
+            <range>12</range>
+			<isViolent>true</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MeleeHit_Metal_Sharp</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Phase Strike Start -->
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+        <thingClass>AbilityUser.Projectile_Ability</thingClass>
+		<defName>Projectile_PhaseStrike</defName>
+        <label>Ataque de Fase</label>
+        <graphicData>
+			<texPath>Spells/cleave</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>400</speed>
+        </projectile>
+    </ThingDef>
+
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_PhaseStrike</defName>
+        <label>Ataque de Fase</label>
+        <uiIconPath>UI/phased</uiIconPath>
+        <description>Combina o foco da navalha do espadachim com a ponta de uma lâmina para deslizar entre a realidade, aparecendo em um local escolhido para executar um ataque violento em inimigos desavisados.
+
+Aquecimento: 0,3s
+Recarga: 25s
+Alcance: 30</description>
+        <staminaCost>0.30</staminaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<weaponDamageFactor>.4</weaponDamageFactor>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_PhaseStrike</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_PhaseStrike</defaultProjectile>
+            <abilityDef>TM_PhaseStrike</abilityDef>
+			<AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>0.3</warmupTime>
+            <SecondsToRecharge>25.0</SecondsToRecharge>
+            <range>30</range>
+			<isViolent>true</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MeleeHit_Metal_Sharp</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_PhaseStrike_I</defName>
+        <label>Ataque de Fase (I)</label>
+        <uiIconPath>UI/phased</uiIconPath>
+        <description>Combina o foco da navalha do espadachim com a ponta de uma lâmina para deslizar entre a realidade, aparecendo em um local escolhido para executar um ataque violento em inimigos desavisados.
+
+Aquecimento: .2s
+Cooldown: 23s
+Alcance: 35</description>
+        <staminaCost>0.30</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<weaponDamageFactor>.4</weaponDamageFactor>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_PhaseStrike</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_PhaseStrike</defaultProjectile>
+			<AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <abilityDef>TM_PhaseStrike_I</abilityDef>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>0.2</warmupTime>
+            <SecondsToRecharge>23.0</SecondsToRecharge>
+            <range>35</range>
+			<isViolent>true</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MeleeHit_Metal_Sharp</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_PhaseStrike_II</defName>
+        <label>Ataque de Fase (II)</label>
+        <uiIconPath>UI/phased</uiIconPath>
+        <description>Combina o foco da navalha do espadachim com a ponta de uma lâmina para deslizar entre a realidade, aparecendo em um local escolhido para executar um ataque violento em inimigos desavisados.
+
+Aquecimento: .1s
+Recarga: 21s
+Alcance: 40</description>
+        <staminaCost>0.30</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<weaponDamageFactor>.4</weaponDamageFactor>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_PhaseStrike</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_PhaseStrike</defaultProjectile>
+			<AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <abilityDef>TM_PhaseStrike_II</abilityDef>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>0.1</warmupTime>
+            <SecondsToRecharge>21.0</SecondsToRecharge>
+            <range>40</range>
+			<isViolent>true</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MeleeHit_Metal_Sharp</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_PhaseStrike_III</defName>
+        <label>Ataque de Fase (III)</label>
+        <uiIconPath>UI/phased</uiIconPath>
+        <description>Combina o foco da navalha do espadachim com a ponta de uma lâmina para deslizar entre a realidade, aparecendo em um local escolhido para executar um ataque violento em inimigos desavisados.
+
+Aquecimento: 0s
+Recarga: 20s
+Alcance: 45</description>
+        <staminaCost>0.30</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<weaponDamageFactor>.4</weaponDamageFactor>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_PhaseStrike</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_PhaseStrike</defaultProjectile>
+			<AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <abilityDef>TM_PhaseStrike_III</abilityDef>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>0.0</warmupTime>
+            <SecondsToRecharge>20.0</SecondsToRecharge>
+            <range>45</range>
+			<isViolent>true</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MeleeHit_Metal_Sharp</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+
+</Defs>

@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	    <defName>Projectile_Warlock</defName>
+        <label>projétil padrão</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Holy</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+	
+	<!-- SoulBond  -->	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SoulBond</defName>
+        <label>SoulBond</label>
+        <uiIconPath>UI/soulbond</uiIconPath>
+        <description>Demônios, ou aqueles que possuem o poder de um demônio, podem criar um vínculo de alma (contrato de alma) com outro peão que manterá (ou hospedará) o vínculo. O vínculo fornece energia da alma do hospedeiro para o demonkin, em troca, as emoções do hospedeiro são lavadas em êxtase. O vínculo de alma também cria um vínculo que permite ao demonkin viajar ou convocar o hospedeiro.
+
+O contrato de vínculo de alma pode ser cancelado a qualquer momento pelo demonkin, reutilizando a habilidade no hospedeiro atual. Criar um vínculo espiritual com outro hospedeiro cancelará todos os contratos anteriores. O contrato também terminará se uma das partes morrer ou for destruída.
+
+Súcubos e Feiticeiros formam tipos distintos de laços de alma - laços de feiticeiros são mentalmente recíprocos, enquanto os laços de succubus são de natureza física. Demonkin só pode sustentar um único vínculo; hospedeiros só podem sustentar um único vínculo de cada tipo (mental / físico).</description>
+        <manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<learnChance>1</learnChance>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SoulBond</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Warlock</defaultProjectile>
+            <abilityDef>TM_SoulBond</abilityDef>
+            <warmupTime>4</warmupTime>
+            <SecondsToRecharge>120</SecondsToRecharge>
+            <range>20</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Gong</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+	<!-- ShadowCall  -->	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ShadowCall</defName>
+        <label>Chamada Sombria</label>
+        <uiIconPath>UI/shadowcall</uiIconPath>
+        <description>Comanda a alma de um anfitrião vinculado a viajar para o seu local.</description>
+        <manaCost>0.15</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<learnChance>0</learnChance>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ShadowCall</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Warlock</defaultProjectile>
+            <abilityDef>TM_ShadowCall</abilityDef>
+            <warmupTime>0.5</warmupTime>
+            <SecondsToRecharge>60</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- ShadowStep  -->	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ShadowStep</defName>
+        <label>Passo de Sombra</label>
+        <uiIconPath>UI/shadowstep</uiIconPath>
+        <description>Passe pela sombra até o local de seu hospedeiro com ligação espiritual.</description>
+        <manaCost>0.15</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<learnChance>0</learnChance>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ShadowStep</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Warlock</defaultProjectile>
+            <abilityDef>TM_ShadowStep</abilityDef>
+            <warmupTime>.5</warmupTime>
+            <SecondsToRecharge>60</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+<!--             <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail> -->
+            <muzzleFlashScale>0</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- ShadowBolt  -->	
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_Ability</thingClass>
+	    <defName>Projectile_ShadowBolt</defName>
+        <label>Parafuso de Sombra</label>
+        <graphicData>
+			<texPath>Spells/shadowbolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_Shadow</damageDef>
+            <damageAmountBase>16</damageAmountBase>
+            <speed>35</speed>
+			<explosionRadius>2</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Name="FlyingObject_ShadowBolt">
+	   <defName>FlyingObject_ShadowBolt</defName>
+	   <thingClass>TorannMagic.FlyingObject_ShadowBolt</thingClass>
+	   <label>Parafuso de Sombra</label>
+	   <graphicData>
+			<texPath>Spells/shadowbolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	   <projectile>
+			<flyOverhead>true</flyOverhead>
+			<damageDef>TM_Shadow</damageDef>
+			<damageAmountBase>16</damageAmountBase>
+			<speed>35</speed>
+			<explosionRadius>2</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+	   </projectile>
+	</ThingDef>
+	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ShadowBolt</defName>
+        <label>Parafuso de Sombra</label>
+        <uiIconPath>UI/shadowbolt</uiIconPath>
+        <description>Lança um Shadow Bolt. Qualquer criatura apanhada em seu caminho é tocada pela sombra. Com o impacto, a energia das Sombras é liberada em uma violenta onda de escuridão.
+
+Tempo de conjuração: 2s
+Recarga: 20s
+Alcance: 40</description>
+        <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.5</learnChance>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Effect_ShadowBolt</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ShadowBolt</defaultProjectile>
+            <abilityDef>TM_ShadowBolt</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>20</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Woosh</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- ShadowBolt_I  -->	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ShadowBolt_I</defName>
+        <label>Parafuso de sombra</label>
+        <uiIconPath>UI/shadowbolt</uiIconPath>
+        <description>Lança um Shadow Bolt. Qualquer criatura apanhada em seu caminho é tocada pela sombra. Com o impacto, a energia das Sombras é liberada em uma violenta onda de escuridão.
+
+Tempo de conjuração: 1.8s
+Recarga: 18s
+Alcance: 45</description>
+		<manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Effect_ShadowBolt</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ShadowBolt</defaultProjectile>
+            <abilityDef>TM_ShadowBolt_I</abilityDef>
+            <warmupTime>1.8</warmupTime>
+            <SecondsToRecharge>18</SecondsToRecharge>
+            <range>45</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Woosh</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- ShadowBolt_II  -->	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ShadowBolt_II</defName>
+        <label>Parafuso de Sombra</label>
+        <uiIconPath>UI/shadowbolt</uiIconPath>
+        <description>Lança um Shadow Bolt. Qualquer criatura apanhada em seu caminho é tocada pela sombra. Com o impacto, a energia das Sombras é liberada em uma violenta onda de escuridão.
+
+Tempo de conjuração: 1.6s
+Recarga: 16s
+Alcance: 50</description>
+		<manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Effect_ShadowBolt</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ShadowBolt</defaultProjectile>
+            <abilityDef>TM_ShadowBolt_II</abilityDef>
+            <warmupTime>1.6</warmupTime>
+            <SecondsToRecharge>16</SecondsToRecharge>
+            <range>50</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Woosh</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- ShadowBolt_III  -->	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ShadowBolt_III</defName>
+        <label>Parafuso de Sombra</label>
+        <uiIconPath>UI/shadowbolt</uiIconPath>
+        <description>Lança um Shadow Bolt. Qualquer criatura apanhada em seu caminho é tocada pela sombra. Com o impacto, a energia das Sombras é liberada em uma violenta onda de escuridão.
+
+Tempo de conjuração: 1,5 s
+Recarga: 15s
+Alcance: 55</description>
+		<manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Effect_ShadowBolt</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ShadowBolt</defaultProjectile>
+            <abilityDef>TM_ShadowBolt_III</abilityDef>
+            <warmupTime>1.5</warmupTime>
+            <SecondsToRecharge>15</SecondsToRecharge>
+            <range>55</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Woosh</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Dominate  -->	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Dominate</defName>
+        <label>Dominar</label>
+        <uiIconPath>UI/dominate_c</uiIconPath>
+        <description>Comande a sombra para envolver seus inimigos em um pesadelo vivo que os envolverá em seus maiores medos. Inimigos próximos próximos o suficiente para testemunhar o medo em um peão dominado também podem sucumbir ao medo e permitir que a sombra domine sua própria mente.
+
+Warlocks e Succubi dominam seus inimigos de maneiras diferentes. Warlocks tentarão quebrar a mente de seus inimigos, enquanto uma succubus irá reduzir a destreza física de suas vítimas.</description>
+        <manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.4</learnChance>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Dominate</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Warlock</defaultProjectile>
+            <abilityDef>TM_Dominate</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>120</SecondsToRecharge>
+            <range>50</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Woosh</soundCast>
+			<soundCastTail>TM_Vibration</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Attraction  -->	
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Attraction</thingClass>
+	    <defName>Projectile_Attraction</defName>
+        <label>atração</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Shadow</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>5</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Attraction</defName>
+        <label>Atração</label>
+        <uiIconPath>UI/repulsion</uiIconPath>
+        <description>Cria um grande poço de sombra que atrai todos os peões próximos para seu centro. As sombras se agarrarão a qualquer criatura afetada pela atração, reduzindo drasticamente sua velocidade de movimento por um curto período de tempo.
+
+Tempo de conjuração: 3s
+Alcance: 40
+Cooldown: 60</description>
+        <manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Attraction</defaultProjectile>
+            <abilityDef>TM_Attraction</abilityDef>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>60</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Attraction_I  -->	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Attraction_I</defName>
+        <label>Atração</label>
+        <uiIconPath>UI/repulsion</uiIconPath>
+        <description>Cria um grande poço de sombra que atrai todos os peões próximos para seu centro. As sombras se agarrarão a qualquer criatura afetada pela atração, reduzindo drasticamente sua velocidade de movimento por um curto período de tempo.
+
+Tempo de conjuração: 2.6s
+Alcance: 45
+Cooldown: 55</description>
+        <manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Attraction</defaultProjectile>
+            <abilityDef>TM_Attraction</abilityDef>
+            <warmupTime>2.6</warmupTime>
+            <SecondsToRecharge>55</SecondsToRecharge>
+            <range>45</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Attraction_II  -->	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Attraction_II</defName>
+        <label>Atração</label>
+        <uiIconPath>UI/repulsion</uiIconPath>
+        <description>Cria um grande poço de sombra que atrai todos os peões próximos para seu centro. As sombras se agarrarão a qualquer criatura afetada pela atração, reduzindo drasticamente sua velocidade de movimento por um curto período de tempo.
+
+Tempo de conjuração: 2.3s
+Alcance: 50
+Cooldown: 50</description>
+        <manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Attraction</defaultProjectile>
+            <abilityDef>TM_Attraction_II</abilityDef>
+            <warmupTime>2.3</warmupTime>
+            <SecondsToRecharge>50</SecondsToRecharge>
+            <range>50</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Attraction_III  -->	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Attraction_III</defName>
+        <label>Atração</label>
+        <uiIconPath>UI/repulsion</uiIconPath>
+        <description>Cria um grande poço de sombra que atrai todos os peões próximos para seu centro. As sombras se agarrarão a qualquer criatura afetada pela atração, reduzindo drasticamente sua velocidade de movimento por um curto período de tempo.
+
+Tempo de conjuração: 2s
+Alcance: 55
+Cooldown: 45</description>
+        <manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Attraction</defaultProjectile>
+            <abilityDef>TM_Attraction_III</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>45</SecondsToRecharge>
+            <range>55</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Repulsion  -->	
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Repulsion</thingClass>
+	    <defName>Projectile_Repulsion</defName>
+        <label>repulsão</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Shadow</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>5</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Repulsion</thingClass>
+	    <defName>Projectile_Repulsion_I</defName>
+        <label>repulsão</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Shadow</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>6</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Repulsion</thingClass>
+	    <defName>Projectile_Repulsion_II</defName>
+        <label>repulsão</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Shadow</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>7</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Repulsion</thingClass>
+	    <defName>Projectile_Repulsion_III</defName>
+        <label>repulsão</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Shadow</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>8</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Repulsion</defName>
+        <label>Repulsão</label>
+        <uiIconPath>UI/repulsion</uiIconPath>
+        <description>O Warlock gera uma explosão de energia em uma célula-alvo com força suficiente para lançar criaturas próximas para longe do centro.
+
+Tempo de conjuração: 1s
+Alcance: 40
+Recarga: 30s
+Raio: 5</description>
+        <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Repulsion</defaultProjectile>
+            <abilityDef>TM_Repulsion</abilityDef>
+            <warmupTime>1</warmupTime>
+            <SecondsToRecharge>30</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Pulse</soundCast>
+			<soundCastTail>TM_SoftExplosion</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Repulsion_I  -->	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Repulsion_I</defName>
+        <label>Repulsão</label>
+        <uiIconPath>UI/repulsion</uiIconPath>
+        <description>O Warlock gera uma explosão de energia em uma célula-alvo com força suficiente para lançar criaturas próximas para longe do centro.
+
+Tempo de conjuração: 0,8 s
+Alcance: 47
+Recarga: 25s
+Raio: 6</description>
+        <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Repulsion_I</defaultProjectile>
+            <abilityDef>TM_Repulsion_I</abilityDef>
+            <warmupTime>.8</warmupTime>
+            <SecondsToRecharge>25</SecondsToRecharge>
+            <range>47</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Pulse</soundCast>
+			<soundCastTail>TM_SoftExplosion</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Repulsion_II  -->	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Repulsion_II</defName>
+        <label>Repulsão</label>
+        <uiIconPath>UI/repulsion</uiIconPath>
+        <description>O Warlock gera uma explosão de energia em uma célula-alvo com força suficiente para lançar criaturas próximas para longe do centro.
+
+Tempo de conjuração: 0,6 s
+Alcance: 54
+Recarga: 20s
+Raio: 7</description>
+        <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Repulsion_II</defaultProjectile>
+            <abilityDef>TM_Repulsion_II</abilityDef>
+            <warmupTime>.6</warmupTime>
+            <SecondsToRecharge>20</SecondsToRecharge>
+            <range>54</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Pulse</soundCast>
+			<soundCastTail>TM_SoftExplosion</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Repulsion_III  -->	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Repulsion_III</defName>
+        <label>Repulsão</label>
+        <uiIconPath>UI/repulsion</uiIconPath>
+        <description>O Warlock gera uma explosão de energia em uma célula-alvo com força suficiente para lançar criaturas próximas para longe do centro.
+
+Tempo de conjuração: 0,5 s
+Alcance: 60
+Recarga: 15s
+Raio: 8</description>
+        <manaCost>0.30</manaCost>		
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Repulsion_III</defaultProjectile>
+            <abilityDef>TM_Repulsion_III</abilityDef>
+            <warmupTime>.5</warmupTime>
+            <SecondsToRecharge>15</SecondsToRecharge>
+            <range>60</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Pulse</soundCast>
+			<soundCastTail>TM_SoftExplosion</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Scorn  -->	
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Scorn</thingClass>
+	    <defName>Projectile_Scorn</defName>
+        <label>desprezo</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Shadow</damageDef>
+            <damageAmountBase>24</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>5</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Scorn</defName>
+        <label>Desprezo</label>
+        <uiIconPath>UI/scorn</uiIconPath>
+        <description>A súcubo usa seus poderes demoníacos para se transformar parcialmente em um demônio alado, lançando-se em direção a um local distante para esmagar seus inimigos em uma torrente de fúria negra.
+
+Uma succubus manterá sua forma demoníaca parcial por um curto período após usar esta habilidade, concedendo a ela capacidades físicas aprimoradas e um escudo de danos.</description>
+        <manaCost>0.50</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnItem>SpellOf_Scorn</learnItem>
+		<learnChance>.1</learnChance>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Scorn</defaultProjectile>
+            <abilityDef>TM_Scorn</abilityDef>
+            <warmupTime>1</warmupTime>
+            <SecondsToRecharge>60</SecondsToRecharge>
+            <range>300</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Launch</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>10</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- PsychicShock  -->	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_PsychicShock</thingClass>
+	    <defName>Projectile_PsychicShock</defName>
+        <label>choque psíquico</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Shadow</damageDef>
+            <damageAmountBase>2</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>5</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_PsychicShock</defName>
+        <label>Choque psíquico</label>
+        <uiIconPath>UI/psychicshock</uiIconPath>
+        <description>O Warlock remove todas as barreiras mentais e projeta uma poderosa onda de energia psíquica. Quaisquer peões pegos na onda serão bombardeados por poderes psíquicos e serão brevemente submetidos à vontade do Warlock.
+
+O Bruxo que usará as mentes de outras pessoas para propagar a onda psíquica. O Warlock também tentará destruir a mente de qualquer inimigo tocado por energia psíquica. Ser submetido a este ataque mental desorientará os peões por um curto período e pode até mesmo desorientar o feiticeiro se ele for afetado pela energia psíquica refletida. O Choque Psíquico recebe um bônus baseado na sensibilidade psíquica do feiticeiro e pode falhar em afetar os peões com sensibilidade psíquica reduzida.</description>
+        <manaCost>0.75</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnItem>SpellOf_PsychicShock</learnItem>
+		<learnChance>.1</learnChance>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_PsychicShock</defaultProjectile>
+            <abilityDef>TM_PsychicShock</abilityDef>
+            <warmupTime>.2</warmupTime>
+            <SecondsToRecharge>240</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Pulse</soundCast>
+			<soundCastTail>TM_SoftExplosion</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- SummonDemon  -->	
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_SummonDemon</thingClass>
+	    <defName>Projectile_SummonDemon</defName>
+        <label>invocar demônio</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>Stun</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SummonDemon</defName>
+        <label>Invocar demônio</label>
+        <uiIconPath>UI/summon_demon</uiIconPath>
+        <description>Manifeste o verdadeiro poder demoníaco por meio da manipulação dos laços físicos e mentais da alma. Este poder das trevas cobra um grande tributo e seu uso só deve ser considerado em circunstâncias terríveis.
+ 
+A invocação é iniciada quando uma Súcubo ancora a oferta física e é concluída quando um Bruxo finaliza os termos do contrato demoníaco.</description>
+        <manaCost>0.20</manaCost>
+		<learnChance>0</learnChance>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SummonDemon</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Warlock</defaultProjectile>
+            <abilityDef>TM_SummonDemon</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>1200</SecondsToRecharge>
+            <range>0</range>
+            <soundCast>TM_VibrationLow</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+			<AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<ThingDef ParentName="BaseBullet" Name="FlyingObject_DemonFlight">
+	   <defName>FlyingObject_DemonFlight</defName>
+	   <thingClass>TorannMagic.FlyingObject_DemonFlight</thingClass>
+	   <label>objeto voador</label>
+	   <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	   <projectile>
+			<flyOverhead>true</flyOverhead>
+			<damageDef>Stun</damageDef>
+			<damageAmountBase>0</damageAmountBase>
+			<speed>40</speed>
+	   </projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="FlyingObject_Advanced">
+	   <defName>FlyingObject_DemonBolt</defName>
+	   <label>chamas demoníacas</label>
+	   <graphicData>
+			<texPath>Spells/meteor2</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingDef>
+
+</Defs>

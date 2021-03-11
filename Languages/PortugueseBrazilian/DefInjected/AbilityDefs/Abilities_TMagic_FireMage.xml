@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	
+	    <!-- Ray of Hope start -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	    <defName>Buff_RayofHope</defName>
+        <label>Raio de esperança</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>RayofHope</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>1000</speed>
+			<explosionRadius>18</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_RayofHope</defName>
+        <label>Fogo Interior</label>
+        <uiIconPath>UI/innerfire</uiIconPath>
+        <description>Cria uma aura de calor ao redor do lançador que reforça periodicamente o espírito de um aliado.
+
+Fogo interno: aumento Arcano que acende um fogo interno, aumentando a resistência e a resistência de um peão.
+
+Frequência de aplicação: 80-90s
+Duração: 200-223s
+Necessidades de descanso e fome: -10%
+Cura natural: + 20%
+Resistência à quebra mental: + 3%
+Resistência ao frio: + 6c
+
+Requer 40 mana para manter e reduz a regeneração de mana em 30%; lançar novamente para desativar. O lançador ganha XP cada vez que um aliado é aprimorado.</description>
+		<manaCost>0</manaCost>
+		<upkeepEnergyCost>.4</upkeepEnergyCost>
+		<upkeepRegenCost>.3</upkeepRegenCost>
+		<upkeepEfficiencyPercent>.08</upkeepEfficiencyPercent>
+		<abilityHediff>TM_InnerFire_AuraHD</abilityHediff>
+		<learnChance>.3</learnChance>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_RayofHope</abilityDef>
+            <warmupTime>6</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Message_PositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_RayofHope_I</defName>
+        <label>Fogo Interior</label>
+        <uiIconPath>UI/innerfire</uiIconPath>
+        <description>Cria uma aura de calor ao redor do lançador que reforça periodicamente o espírito de um aliado.
+
+Fogo interno: aumento Arcano que acende um fogo interno, aumentando a resistência e a resistência de um peão.
+
+Frequência de aplicação: 80-90s
+Duração: 200-223s
+Necessidades de descanso e fome: -14%
+Cura natural: + 25%
+Resistência à quebra mental: + 4%
+Resistência ao frio: + 8c
+
+Requer 40 mana para manter e reduz a regeneração de mana em 30%; lançar novamente para desativar. O lançador ganha XP cada vez que um aliado é aprimorado.</description>
+		<manaCost>0</manaCost>
+		<upkeepEnergyCost>.4</upkeepEnergyCost>
+		<upkeepRegenCost>.3</upkeepRegenCost>
+		<upkeepEfficiencyPercent>.08</upkeepEfficiencyPercent>
+		<abilityHediff>TM_InnerFire_AuraHD</abilityHediff>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Buff_RayofHope</defaultProjectile>
+            <abilityDef>TM_RayofHope_I</abilityDef>
+            <warmupTime>5</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Message_PositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_RayofHope_II</defName>
+        <label>Fogo Interior</label>
+        <uiIconPath>UI/innerfire</uiIconPath>
+        <description>Cria uma aura de calor ao redor do lançador que reforça periodicamente o espírito de um aliado.
+
+Fogo interno: aumento Arcano que acende um fogo interno, aumentando a resistência e a resistência de um peão.
+
+Frequência de aplicação: 80-90s
+Duração: 500-600s
+Necessidades de descanso e fome: -17%
+Cura natural: + 28%
+Resistência à quebra mental: + 4%
+Resistência ao frio: + 9c
+
+Requer 40 mana para manter e reduz a regeneração de mana em 30%; lançar novamente para desativar. O lançador ganha XP cada vez que um aliado é aprimorado.</description>
+		<manaCost>0</manaCost>
+		<upkeepEnergyCost>.4</upkeepEnergyCost>
+		<upkeepRegenCost>.3</upkeepRegenCost>
+		<upkeepEfficiencyPercent>.08</upkeepEfficiencyPercent>
+		<abilityHediff>TM_InnerFire_AuraHD</abilityHediff>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_RayofHope_II</abilityDef>
+            <warmupTime>4</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Message_PositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_RayofHope_III</defName>
+        <label>Fogo Interior</label>
+        <uiIconPath>UI/innerfire</uiIconPath>
+        <description>Cria uma aura de calor ao redor do lançador que reforça periodicamente o espírito de um aliado.
+
+Fogo interno: aumento Arcano que acende um fogo interno, aumentando a resistência e a resistência de um peão.
+
+Frequência de aplicação: 80-90s
+Duração: 500-600
+Necessidades de descanso e fome: -20%
+Cura natural: + 30%
+Resistência à quebra mental: + 5%
+Resistência ao frio: + 10c
+
+Requer 40 mana para manter e reduz a regeneração de mana em 30%; lançar novamente para desativar. O lançador ganha XP cada vez que um aliado é aprimorado.</description>
+		<manaCost>0</manaCost>
+		<upkeepEnergyCost>.4</upkeepEnergyCost>
+		<upkeepRegenCost>.3</upkeepRegenCost>
+		<upkeepEfficiencyPercent>.08</upkeepEfficiencyPercent>
+		<abilityHediff>TM_InnerFire_AuraHD</abilityHediff>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Buff_RayofHope</defaultProjectile>
+            <abilityDef>TM_RayofHope_III</abilityDef>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Message_PositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- Ray of Hope End -->
+
+
+		<!-- Firebolt -->
+	
+  <ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+    <defName>Projectile_Firebolt</defName>
+	<thingClass>TorannMagic.Projectile_Firebolt</thingClass>
+    <label>Firebolt</label>
+	<graphicData>
+      <texPath>Spells/firebolt</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+	  <soundExplode>TrapSpring</soundExplode>
+	  <flyOverhead>false</flyOverhead>
+      <damageDef>Firebolt</damageDef>
+      <damageAmountBase>16</damageAmountBase>
+      <speed>80</speed>
+    </projectile>
+  </ThingDef>
+  
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_Firebolt</defName>
+    <label>Firebolt</label>
+    <description>Lança um raio de magma superaquecido que danifica e pode incendiar o alvo.</description>
+	<uiIconPath>Spells/firebolt</uiIconPath>
+    <manaCost>0.15</manaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<learnChance>.6</learnChance>
+		<canCopy>true</canCopy>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>true</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Firebolt</defaultProjectile>
+		<abilityDef>TM_Firebolt</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>4</SecondsToRecharge>
+        <range>40</range>
+        <soundCast>TM_AirWoosh</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+		<isViolent>true</isViolent>
+		<burstShotCount>1</burstShotCount>
+		<AlwaysHits>true</AlwaysHits>
+		<targetParams>
+			<canTargetPawns>true</canTargetPawns>
+			<canTargetBuildings>true</canTargetBuildings>
+			<canTargetSelf>false</canTargetSelf>
+			<canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+
+  </TorannMagic.TMAbilityDef>
+	
+	<!-- Firebolt end -->
+	
+	
+    <!-- Fireball-->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Fireball</thingClass>
+	    <defName>Projectile_Fireball</defName>
+        <label>bola fogo</label>
+        <graphicData>
+			<texPath>Spells/fireball4</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>56</damageAmountBase>
+            <speed>20</speed>
+			<explosionRadius>3.6</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Fireball</defName>
+        <label>Bola fogo</label>
+        <uiIconPath>Spells/fireball4</uiIconPath>
+        <description>Lança uma bola de fogo massiva e lenta. Provoca estragos e cria uma explosão de fogo na área alvo.</description>
+        <manaCost>0.50</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Fireball</defaultProjectile>
+            <abilityDef>TM_Fireball</abilityDef>
+            <warmupTime>1.5</warmupTime>
+            <SecondsToRecharge>20.0</SecondsToRecharge>
+            <range>120</range>
+            <burstShotCount>1</burstShotCount>
+			<forcedMissRadius>8.4</forcedMissRadius>
+            <soundCast>DropPod_Leaving</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>false</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- fireball end-->
+	
+		<!-- Fire Claw -->
+	
+  <ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+   <thingClass>TorannMagic.Projectile_Fireclaw</thingClass>
+   <defName>Projectile_Fireclaw</defName>
+   <label>Garra de Fogo</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>TransparentPostLight</shaderType>
+	</graphicData>
+   <projectile>
+		<flyOverhead>true</flyOverhead>
+		<damageDef>Burn</damageDef>
+		<damageAmountBase>36</damageAmountBase>
+		<speed>200</speed>
+   </projectile>
+ </ThingDef>
+
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_Fireclaw</defName>
+    <label>Garra de Fogo</label>
+    <uiIconPath>UI/tendril</uiIconPath>
+    <description>Crie tentáculos de fogo que se espalham por seus inimigos, deixando destruição e fogo em seu rastro.</description>
+    <manaCost>0.28</manaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<learnChance>.4</learnChance>
+		<canCopy>true</canCopy>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Fireclaw</defaultProjectile>
+		<abilityDef>TM_Fireclaw</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>40</range>
+		<isViolent>true</isViolent>
+        <soundCast>ThrowGrenade</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+         <isPrimary>false</isPrimary>
+		 <targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>true</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ 	<!-- fire claw end -->
+
+	<!-- Firestorm -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+	    <thingClass>TorannMagic.Projectile_Firestorm</thingClass>
+        <defName>Projectile_Firestorm</defName>
+        <label>Tempestade de fogo</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+			<soundExplode>Explosion_Flame</soundExplode>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>16</damageAmountBase>
+			<explosionRadius>5</explosionRadius>
+            <speed>9999</speed>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Firestorm</defName>
+        <label>Tempestade de fogo</label>
+        <uiIconPath>UI/firestorm</uiIconPath>
+        <description>Evoca toda a fúria do fogo elemental em uma tempestade de meteoros de morte e destruição.</description>
+        <manaCost>0.70</manaCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<learnItem>SpellOf_Firestorm</learnItem>
+		<learnChance>.08</learnChance>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+            <tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+            <tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+            <tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+            <tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Firestorm</defaultProjectile>
+            <abilityDef>TM_Firestorm</abilityDef>
+            <warmupTime>2.0</warmupTime>
+            <SecondsToRecharge>120.0</SecondsToRecharge>
+            <range>60</range>
+            <forcedMissRadius>50</forcedMissRadius>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>15</ticksBetweenBurstShots>
+            <isPrimary>true</isPrimary>
+            <soundCast>DropPod_Leaving</soundCast>
+            <soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>100</muzzleFlashScale>
+            <AlwaysHits>true</AlwaysHits>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- firestorm end-->
+
+
+</Defs>

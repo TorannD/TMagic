@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+<!-- Summon Minion Start-->
+   <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_SummonMinion</thingClass>
+	    <defName>Projectile_SummonMinion</defName>
+        <label>convocar lacaio</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>200</speed>
+        </projectile>
+    </ThingDef>
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_SummonMinion</defName>
+    <label>Convocar Minion</label>
+    <uiIconPath>PawnKind/minion_south</uiIconPath>
+    <description>Convoca lacaios para ajudar nas tarefas diárias.</description>
+    <manaCost>0.40</manaCost>
+	<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnItem>SpellOf_SummonMinion</learnItem>
+		<learnChance>.3</learnChance>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_SummonMinion</defaultProjectile>
+		<abilityDef>TM_SummonMinion</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>25</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+   <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_DismissMinion</defName>
+    <label>Dispensar Minion</label>
+    <uiIconPath>UI/dismissminion</uiIconPath>
+    <description>Dispensa um lacaio convocado.</description>
+    <manaCost>0.0</manaCost>
+	<shouldInitialize>false</shouldInitialize>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_DismissMinion</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>TM_Paladin_Heal</defaultProjectile>
+		<abilityDef>TM_DismissMinion</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>4</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>0</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>true</canTargetSelf>
+		 <canTargetLocations>false</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+<!-- Summon minion end-->
+
+<!-- Summon pylon Start-->
+   <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_SummonPylon</thingClass>
+	    <defName>Projectile_SummonPylon</defName>
+        <label>convocar poste de defesa</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>200</speed>
+        </projectile>
+    </ThingDef>
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_SummonPylon</defName>
+    <label>Convocar pilar de defesa</label>
+    <uiIconPath>UI/defense_pylon</uiIconPath>
+    <description>Evoca e manifesta energia mágica para formar uma torre de defesa automatizada que está amarrada a um local físico. A torre canaliza a corrente arcana para um ponto focal que emite rajadas de energia bruta. Quando a corda que prende a torre ao mundo físico se dissipa, a torre se dissolverá sem causar danos de volta em energia mágica. Se a torre for destruída, esse evento pode ser mais destrutivo.</description>
+    <manaCost>0.34</manaCost>
+	<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.5</learnChance>
+		<canCopy>true</canCopy>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_SummonPylon</defaultProjectile>
+		<abilityDef>TM_SummonPylon</abilityDef>
+        <warmupTime>2</warmupTime>
+        <SecondsToRecharge>20</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>70</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+<!-- Summon pylon end-->
+
+<!-- Summon explosive Start-->
+   <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_SummonExplosive</thingClass>
+	    <defName>Projectile_SummonExplosive</defName>
+        <label>convocar armadilha explosiva</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>200</speed>
+        </projectile>
+    </ThingDef>
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_SummonExplosive</defName>
+    <label>Invocar explosivo</label>
+    <uiIconPath>UI/ManaMine</uiIconPath>
+    <description>Cria uma mina com mana comprimido e bruto e a amarra em um local físico. A mina se dissolverá de maneira inofensiva se a energia que está segurando a mina acabar.</description>
+    <manaCost>0.24</manaCost>
+	<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.5</learnChance>
+		<canCopy>true</canCopy>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_SummonExplosive</defaultProjectile>
+		<abilityDef>TM_SummonExplosive</abilityDef>
+        <warmupTime>2</warmupTime>
+        <SecondsToRecharge>20</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>60</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>10</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+<!-- Summon explosive end-->
+
+<!-- Summon Elemental Start-->
+   <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_SummonElemental</thingClass>
+	    <defName>Projectile_SummonElemental</defName>
+        <label>convocar elemental</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>200</speed>
+        </projectile>
+    </ThingDef>
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_SummonElemental</defName>
+    <label>Convocar Elemental</label>
+    <uiIconPath>UI/Elemental</uiIconPath>
+    <description>Evoca um monstruoso elemental de um plano de poder para esmagar seus inimigos. Esses seres defenderão um local e imediatamente enfrentarão um inimigo se houver algum por perto. No entanto, se não houver inimigos, eles tendem a se entediar rapidamente e se desviarão de sua posição invocada. Eles não farão tarefas servis como "puxar" ou "limpar", visto que são tarefas de seres inferiores. Devido ao poder da convocação, o elemental só pode existir neste reino por um curto período de tempo. O tipo de elemental é aleatório.</description>
+    <manaCost>0.55</manaCost>
+	<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_SummonElemental</defaultProjectile>
+		<abilityDef>TM_SummonElemental</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>150</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>50</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+<!-- Summon elemental end-->
+
+<!-- Summon Poppi Start-->
+   <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_SummonPoppi</thingClass>
+	    <defName>Projectile_SummonPoppi</defName>
+        <label>convocar poppi</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>200</speed>
+			<explosionRadius>4</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_SummonPoppi</defName>
+    <label>Convocar Poppi</label>
+    <uiIconPath>UI/poppihorde</uiIconPath>
+    <description>Convocar um pacote de poppi vicioso direto dos portões da insanidade. Este pacote de poppi é raivoso e vai avidamente rasgar em formações inimigas.</description>
+    <manaCost>0.60</manaCost>
+	<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<learnItem>SpellOf_SummonPoppi</learnItem>
+		<learnChance>.06</learnChance>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_SummonPoppi</defaultProjectile>
+		<abilityDef>TM_SummonPoppi</abilityDef>
+        <warmupTime>3</warmupTime>
+        <SecondsToRecharge>120</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>45</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+
+</Defs>

@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+ <!-- Chi -->
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_Chi</defName>
+    <label>Ch'i</label>
+    <uiIconPath>UI/ChiBurst</uiIconPath>
+    <description>Ch'i, ou espírito, é a força vital que reside em todas as coisas vivas. Os monges cultivam e utilizam essa força para realizar sua arte. Equilibrar o ritmo e o fluxo do Ch'i leva tempo e geralmente é obtido por meio de meditação dedicada.</description>
+    <staminaCost>0.00</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
+	<abilityHediff>TM_ChiHD</abilityHediff>
+	<childAbilities>
+		<li>TM_ChiBurst</li>
+	</childAbilities>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_Chi</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+        <warmupTime>0.0</warmupTime>
+        <SecondsToRecharge>0.0</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>10</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+   
+     <!-- Chi Burst -->
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_ChiBurst</defName>
+    <label>Explosão de ch'i</label>
+    <uiIconPath>UI/ChiBurst</uiIconPath>
+    <description>Projeta uma enorme quantidade de ch'i em uma área-alvo, sobrecarregando e interrompendo a energia de todos os peões dentro da área de efeito.
+
+Ch'i Burst interromperá as habilidades do guerreiro e do mago e causará danos com base na quantidade de energia interrompida. Isso afeta o chi, o mana, a magia do sangue, a resistência, o ódio e a energia psiônica.
+
+Tem pouca chance de perturbar o estado mental de qualquer peão. Pode ser resistido.</description>
+    <chiCost>0.50</chiCost>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_ChiBurst</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_ChiBurst</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+        <warmupTime>2</warmupTime>
+        <SecondsToRecharge>120</SecondsToRecharge>
+        <range>40</range>
+        <soundCast>TM_Gong</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+		<TargetAoEProperties>
+			<targetClass>Pawn</targetClass>
+			<showRangeOnSelect>true</showRangeOnSelect>
+			<friendlyFire>true</friendlyFire>
+			<startsFromCaster>false</startsFromCaster>
+			<maxTargets>10</maxTargets>
+			<range>4</range>
+		</TargetAoEProperties>
+		<targetParams>
+			<canTargetPawns>true</canTargetPawns>
+			<canTargetBuildings>false</canTargetBuildings>
+			<canTargetSelf>true</canTargetSelf>
+			<canTargetLocations>true</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+     <!-- Mind Over Body -->
+  
+  <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_MindOverBody</defName>
+    <label>Mente Acima do Corpo</label>
+    <uiIconPath>UI/bodytraining</uiIconPath>
+    <description>O condicionamento mental que aumenta o controle do monge sobre suas capacidades físicas e melhora a resiliência ao estresse físico e mental. A mitigação de danos é reduzida pelo peso (em kg) da armadura usada.
+
+Mente Acima do Corpo é um buff passivo que melhora a consciência, movimento, manipulação, chance de acerto corpo a corpo, chance de esquiva, penetração de armadura, quebra mental e limiares de dor.</description>
+    <staminaCost>0.00</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
+	<abilityHediff>TM_MindOverBodyHD</abilityHediff>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_MindOverBody</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+        <warmupTime>0.0</warmupTime>
+        <SecondsToRecharge>60</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+	
+	 <!-- Meditate -->
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_Meditate</defName>
+    <label>Meditar</label>
+    <uiIconPath>UI/meditate</uiIconPath>
+    <description>A meditação restaura a força vital do monge e é um componente vital para a manutenção de um forte nível de Ch'i.
+
+Todas as doenças físicas ou mentais devem ser eliminadas antes que a meditação possa gerar Ch'i. Se o monge estiver sob tensão (feridas, doenças, mau humor, vícios em drogas), a meditação concentrará o Ch'i em um esforço para remover a aflição. As aflições só podem ser eliminadas durante o estado de meditação.</description>
+    <staminaCost>0.00</staminaCost>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_Meditate</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_Meditate</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+        <warmupTime>0.0</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>10</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+  <!-- Tiger Strike -->
+  
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_TigerStrike</defName>
+    <label>Tiger Strike</label>
+    <description>Um ataque corpo a corpo que desfere vários golpes rápidos contra um único oponente. Deve estar dentro do alcance corpo a corpo e desarmado para realizar este ataque.
+
+Habilidade ativada (12 chi): fornece 4 ataques em rápida sucessão. Tiger Strike pode ser treinado para adicionar ataques adicionais que podem atordoar, drenar energia ou desferir um ataque de precisão que destrói órgãos vitais.
+
+Habilidade passiva (8 resistência): desferir vários golpes contra um oponente; Os ataques podem ser de qualquer tipo (físico, atordoante, drenado, vital) que seja treinado. Tiger Strike tem uma chance de desencadear em qualquer ataque normal ou em si mesmo.</description>
+	<uiIconPath>UI/tigerstrike</uiIconPath>
+    <chiCost>0.12</chiCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<canCopy>true</canCopy>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_TigerStrike</verbClass>
+			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>true</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+		<abilityDef>TM_TigerStrike</abilityDef>
+        <warmupTime>.25</warmupTime>
+        <SecondsToRecharge>20</SecondsToRecharge>
+        <range>1.42</range>
+        <soundCast>MeleeHit_Wood</soundCast>
+        <muzzleFlashScale>0</muzzleFlashScale>
+        <isPrimary>true</isPrimary>
+		<isViolent>true</isViolent>
+		<burstShotCount>10</burstShotCount>
+		<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+		<targetParams>
+			<canTargetPawns>true</canTargetPawns>
+			<canTargetBuildings>false</canTargetBuildings>
+			<canTargetSelf>false</canTargetSelf>
+			<canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+  <!-- Dragon Strike -->
+	 
+	 <ThingDef ParentName="BaseBullet" Name="FlyingObject_DragonStrike">
+	   <defName>FlyingObject_DragonStrike</defName>
+	   <thingClass>TorannMagic.FlyingObject_DragonStrike</thingClass>
+	   <label>ataque de dragão</label>
+	   <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	   <projectile>
+			<flyOverhead>true</flyOverhead>
+			<damageDef>TM_Shadow</damageDef>
+			<damageAmountBase>0</damageAmountBase>
+			<speed>40</speed>
+	   </projectile>
+	</ThingDef>
+	 
+  <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+   <defName>Projectile_DragonStrike</defName>
+   <thingClass>AbilityUser.Projectile_Ability</thingClass>
+   <label>ataque de dragão</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+   </graphicData>
+   <projectile>
+		<flyOverhead>true</flyOverhead>
+		<damageDef>TM_Shadow</damageDef>
+		<damageAmountBase>0</damageAmountBase>
+		<speed>40</speed>
+   </projectile>
+ </ThingDef>
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_DragonStrike</defName>
+    <label>Dragon Strike</label>
+    <uiIconPath>UI/dragonstrike</uiIconPath>
+    <description>Um ataque em salto que permite ao monge se aproximar rapidamente de um oponente.
+
+Habilidade ativada (8 chi): salta no ar e desfere um poderoso chute voador contra um oponente distante. Quanto mais perto um oponente estiver, mais dano Dragon Strike causa. Se um oponente estiver a menos de 5 células, esse ataque também derrubará o alvo.
+
+Habilidade passiva (10 resistência): executa um chute circular que atinge vários oponentes. Dragon Strike tem uma chance de desencadear qualquer ataque normal quando vários inimigos estão perto do alvo.</description>
+<!--    <thingClass>ThingWithComps</thingClass> -->
+    <chiCost>0.08</chiCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<canCopy>true</canCopy>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Effect_DragonStrike</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_DragonStrike</abilityDef>
+		<isViolent>true</isViolent>
+        <defaultProjectile>Projectile_DragonStrike</defaultProjectile>
+        <warmupTime>.25</warmupTime>
+        <SecondsToRecharge>6</SecondsToRecharge>
+        <range>20</range>
+        <soundCast>TM_AirWoosh</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>false</canTargetSelf>
+		  <canTargetLocations>true</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+  <!-- Thunder Strike -->
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+        <thingClass>TorannMagic.Projectile_ThunderStrike</thingClass>
+		<defName>Projectile_ThunderStrike</defName>
+        <label>golpe de trovão</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_ThunderStrike</defName>
+        <label>Thunder Strike</label>
+        <uiIconPath>UI/thunderstrike</uiIconPath>
+        <description>Sobrecarga um ataque com ch'i suficiente para gerar relâmpagos.</description>
+        <chiCost>0.25</chiCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ThunderStrike</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ThunderStrike</defaultProjectile>
+            <abilityDef>TM_ThunderStrike</abilityDef>
+            <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>0.25</warmupTime>
+            <SecondsToRecharge>30.0</SecondsToRecharge>
+            <range>10</range>
+			<isViolent>true</isViolent>
+			<canCastInMelee>true</canCastInMelee>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MeleeHit_Metal_Sharp</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+</Defs>

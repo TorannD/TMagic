@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	    <defName>Projectile_Geomancer</defName>
+        <label>projétil padrão</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Holy</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+	
+	<!-- Stoneskin -->	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Stoneskin</defName>
+        <label>Pele de pedra</label>
+        <uiIconPath>UI/stoneskin</uiIconPath>
+        <description>Aplica pele rochosa ao peão alvo. Cada carga de pele rochosa absorve um único ataque, independentemente de quão poderoso ou fraco seja o ataque. Stoneskin é uma defesa sem substância, o que significa que as medidas defensivas que ele emprega não são físicas e não interferem nas capacidades de combate de seu protegido.
+
+Pele de pedra requer uma reserva constante de mana para manter, cada aplicação reduzirá o mana máximo do lançador em 15. O lançador só pode manter um número limitado de ocorrências de pele de pedra, independentemente de quanta mana o lançador tenha disponível.
+
+Aplicar pele rochosa em um alvo que já possui pele rochosa removerá todas as cargas de pele rochosa do alvo e dissipará o feitiço (devolvendo as reservas de mana ao lançador).</description>
+        <manaCost>0.15</manaCost>
+		<upkeepEnergyCost>.15</upkeepEnergyCost>
+		<upkeepEfficiencyPercent>.13</upkeepEfficiencyPercent>
+		<learnChance>.4</learnChance>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Stoneskin</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Geomancer</defaultProjectile>
+            <abilityDef>TM_Stoneskin</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>120</SecondsToRecharge>
+            <range>20</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>1</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_DispelStoneskin</defName>
+    <label>Dispel Stoneskin</label>
+    <uiIconPath>UI/dispelstoneskin</uiIconPath>
+    <description>Dissipa todas as ocorrências de pele rochosa mantidas por este peão.</description>
+    <manaCost>0.0</manaCost>
+	<shouldInitialize>false</shouldInitialize>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_DispelStoneskin</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>TM_Paladin_Heal</defaultProjectile>
+		<abilityDef>TM_DispelStoneskin</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>0</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>true</canTargetSelf>
+		 <canTargetLocations>false</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+	
+	<!-- Encase -->
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Encase</thingClass>
+	    <defName>Projectile_Encase</defName>
+        <label>envolver projétil</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Holy</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>3</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Encase</thingClass>
+	    <defName>Projectile_Encase_I</defName>
+        <label>envolver projétil</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Holy</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>4</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Encase</thingClass>
+	    <defName>Projectile_Encase_II</defName>
+        <label>envolver projétil</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Holy</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>5</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Encase</thingClass>
+	    <defName>Projectile_Encase_III</defName>
+        <label>envolver projétil</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Holy</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>6</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Encase</defName>
+        <label>Encase</label>
+        <uiIconPath>UI/encase</uiIconPath>
+        <description>Envolve uma área alvo em um anel de pedra, eficaz para isolar seções do campo de batalha.
+
+Raio: 3
+Alcance: 50
+Tempo de conjuração: 1,5 s</description>
+        <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.6</learnChance>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Encase</defaultProjectile>
+            <abilityDef>TM_Encase</abilityDef>
+            <warmupTime>1.5</warmupTime>
+            <SecondsToRecharge>240</SecondsToRecharge>
+            <range>50</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Gong</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+				<canTargetItems>true</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Encase_I</defName>
+        <label>Encase I</label>
+        <uiIconPath>UI/encase</uiIconPath>
+        <description>Envolve uma área alvo em um anel de pedra, eficaz para isolar seções do campo de batalha.
+
+Raio: 4
+Alcance: 55
+Tempo de conjuração: 1,3 s</description>
+        <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Encase_I</defaultProjectile>
+            <abilityDef>TM_Encase_I</abilityDef>
+            <warmupTime>1.3</warmupTime>
+            <SecondsToRecharge>240</SecondsToRecharge>
+            <range>55</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Gong</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+				<canTargetItems>true</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Encase_II</defName>
+        <label>Encase II</label>
+        <uiIconPath>UI/encase</uiIconPath>
+        <description>Envolve uma área alvo em um anel de pedra, eficaz para isolar seções do campo de batalha.
+
+Raio: 5
+Alcance: 60
+Tempo de conjuração: 1.1s</description>
+        <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Encase_II</defaultProjectile>
+            <abilityDef>TM_Encase_II</abilityDef>
+            <warmupTime>1.1</warmupTime>
+            <SecondsToRecharge>240</SecondsToRecharge>
+            <range>60</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Gong</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+				<canTargetItems>true</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Encase_III</defName>
+        <label>Encase III</label>
+        <uiIconPath>UI/encase</uiIconPath>
+        <description>Envolve uma área alvo em um anel de pedra, eficaz para isolar seções do campo de batalha.
+
+Raio: 6
+Alcance: 65
+Tempo de elenco: 1.0s</description>
+        <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Encase_III</defaultProjectile>
+            <abilityDef>TM_Encase_III</abilityDef>
+            <warmupTime>1</warmupTime>
+            <SecondsToRecharge>240</SecondsToRecharge>
+            <range>65</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Gong</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+				<canTargetItems>true</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Earth Sprites-->	
+	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_EarthSprites</defName>
+        <label>Sprites da Terra</label>
+        <uiIconPath>UI/earthsprite</uiIconPath>
+        <description>Chama espíritos da terra para transformar o terreno. Sprites aparecem como manchas de luz e podem facilmente passar despercebidos pelos desatentos, mas eles são trabalhadores diligentes, capazes de quebrar rocha ou pedra em seu componente básico ou aumentar a riqueza e a fertilidade do solo.
+
+Uma vez convocados, eles continuarão a trabalhar no terreno, até mesmo se movendo para áreas próximas, até serem dispensados ​​pelo geomante. Os sprites da Terra só entendem as instruções básicas e se moverão aleatoriamente para uma nova área para continuar seu trabalho; se nenhuma área próxima precisar de trabalho, a invocação terminará. Se os sprites da terra forem convocados para uma área chamada "sprites da terra", eles só se moverão para as células próximas dentro dessa área.
+
+Em troca de seus esforços, os espíritos da terra esperam um suprimento constante e substancial de mana. Se o geomante não atender a essa solicitação, os espíritos da terra desaparecerão. Cada geomante só pode solicitar a ajuda de um único sprite da terra, independentemente de quanta mana eles tenham.</description>
+        <manaCost>0.60</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_EarthSprites</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Geomancer</defaultProjectile>
+            <abilityDef>TM_EarthSprites</abilityDef>
+            <warmupTime>5</warmupTime>
+            <SecondsToRecharge>600</SecondsToRecharge>
+            <range>20</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>false</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_DismissEarthSprites</defName>
+    <label>Dispensar Earth Sprites</label>
+    <uiIconPath>UI/dismissearthsprite</uiIconPath>
+    <description>Dispensa um sprite da terra ativo.</description>
+    <manaCost>0.0</manaCost>
+	<shouldInitialize>false</shouldInitialize>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_DismissEarthSprites</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>TM_Paladin_Heal</defaultProjectile>
+		<abilityDef>TM_DismissEarthSprites</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>4</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>0</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>true</canTargetSelf>
+		 <canTargetLocations>false</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+
+	<!-- Earthern Hammer -->	
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_EarthernHammer</thingClass>
+	    <defName>Projectile_EarthernHammer</defName>
+        <label>martelo de barro</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_Holy</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>4</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_EarthernHammer</defName>
+        <label>Martelo de Terra</label>
+        <uiIconPath>UI/earthernhammer</uiIconPath>
+        <description>O geomante manipula as leis da gravidade para catapultar pedras maciças da terra ao redor. A quantidade de energia gravitacional invertida é finita; as pedras superficiais próximas requerem o mínimo de energia, enquanto as pedras subterrâneas requerem significativamente mais.
+
+A primeira, e cada terceira pedra depois, sempre será subterrânea, a menos que haja energia gravitacional insuficiente, caso em que o geomante tentará usar a energia restante jogando pedras próximas. A mudança extrema na gravidade desorientará temporariamente o geomancer.</description>
+        <manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.5</learnChance>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_EarthernHammer</defaultProjectile>
+            <abilityDef>TM_EarthernHammer</abilityDef>
+            <warmupTime>1</warmupTime>
+            <SecondsToRecharge>120</SecondsToRecharge>
+            <range>70</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>true</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Sentinel -->	
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Sentinel</thingClass>
+	    <defName>Projectile_Sentinel</defName>
+        <label>projétil sentinela</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Holy</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Sentinel</defName>
+        <label>Sentinela</label>
+        <uiIconPath>PawnKind/gargoyle_south</uiIconPath>
+        <description>Cria uma sentinela de pedra para defender uma área. As sentinelas permanecerão dormentes até que um inimigo esteja ao alcance, então eles se libertarão de sua prisão de pedra para defender seu terreno.
+
+Usar esta habilidade em uma sentinela dormente dispensará a sentinela. Cada sentinela reduz o MP máximo em 20.
+
+* Nota estética: as sentinelas sempre ficarão de costas para o lançador.</description>
+		<manaCost>0.20</manaCost>
+		<upkeepEnergyCost>.15</upkeepEnergyCost>
+		<upkeepEfficiencyPercent>.15</upkeepEfficiencyPercent>
+		<learnChance>.3</learnChance>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Sentinel</defaultProjectile>
+            <abilityDef>TM_Sentinel</abilityDef>
+            <warmupTime>5</warmupTime>
+            <SecondsToRecharge>120</SecondsToRecharge>
+            <range>30</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>8</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>false</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_ShatterSentinel</defName>
+    <label>Shatter Sentinel</label>
+    <uiIconPath>UI/shattersentinel</uiIconPath>
+    <description>Todas as sentinelas mantidas por este peão são destruídas em uma erupção violenta.</description>
+    <manaCost>0.0</manaCost>
+	<shouldInitialize>false</shouldInitialize>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_ShatterSentinel</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>TM_Paladin_Heal</defaultProjectile>
+		<abilityDef>TM_ShatterSentinel</abilityDef>
+        <warmupTime>2</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>0</range>
+		<isViolent>false</isViolent>
+        <soundCast>TM_Gong</soundCast>
+        <muzzleFlashScale>10</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>true</canTargetSelf>
+		 <canTargetLocations>false</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+	
+	<!-- Meteor -->	
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Meteor</defName>
+        <label>Meteoro</label>
+        <uiIconPath>UI/meteorite</uiIconPath>
+        <description>Coleta rochas, poeira e detritos da atmosfera e do espaço e os transforma em um meteorito. O geomante direciona sua descida para enterrar um local alvo.
+
+O núcleo do meteorito é sempre composto de material valioso.
+
+Raio: 2
+Tempo de conjuração: 5s</description>
+        <manaCost>0.90</manaCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<learnItem>SpellOf_Meteor</learnItem>
+		<learnChance>.06</learnChance>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Meteor</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Geomancer</defaultProjectile>
+            <abilityDef>TM_Meteor</abilityDef>
+            <warmupTime>5</warmupTime>
+            <SecondsToRecharge>600</SecondsToRecharge>
+            <range>80</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <range>2</range>
+            </TargetAoEProperties>
+			<targetParams>
+				<canTargetItems>true</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Meteor_I</defName>
+        <label>Meteoro I</label>
+        <uiIconPath>UI/meteorite</uiIconPath>
+        <description>Coleta rochas, poeira e detritos da atmosfera e do espaço e os transforma em um meteorito. O geomante direciona sua descida para enterrar um local alvo.
+
+O núcleo do meteorito é sempre composto de material valioso.
+
+Raio: 3
+Tempo de elenco: 4.6s</description>
+        <manaCost>0.90</manaCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<learnItem>SpellOf_Meteor</learnItem>
+		<learnChance>.06</learnChance>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Meteor</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Geomancer</defaultProjectile>
+            <abilityDef>TM_Meteor_I</abilityDef>
+            <warmupTime>4.6</warmupTime>
+            <SecondsToRecharge>600</SecondsToRecharge>
+            <range>80</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <range>3</range>
+            </TargetAoEProperties>
+			<targetParams>
+				<canTargetItems>true</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Meteor_II</defName>
+        <label>Meteoro II</label>
+        <uiIconPath>UI/meteorite</uiIconPath>
+        <description>Coleta rochas, poeira e detritos da atmosfera e do espaço e os transforma em um meteorito. O geomante direciona sua descida para enterrar um local alvo.
+
+O núcleo do meteorito é sempre composto de material valioso.
+
+Raio: 4
+Tempo de conjuração: 4,2 s</description>
+        <manaCost>0.90</manaCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<learnItem>SpellOf_Meteor</learnItem>
+		<learnChance>.06</learnChance>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Meteor</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Geomancer</defaultProjectile>
+            <abilityDef>TM_Meteor_II</abilityDef>
+            <warmupTime>4.2</warmupTime>
+            <SecondsToRecharge>600</SecondsToRecharge>
+            <range>80</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <range>4</range>
+            </TargetAoEProperties>
+			<targetParams>
+				<canTargetItems>true</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Meteor_III</defName>
+        <label>Meteoro III</label>
+        <uiIconPath>UI/meteorite</uiIconPath>
+        <description>Coleta rochas, poeira e detritos da atmosfera e do espaço e os transforma em um meteorito. O geomante direciona sua descida para enterrar um local alvo.
+
+O núcleo do meteorito é sempre composto de material valioso.
+
+Raio: 5
+Tempo de conjuração: 3,8 s</description>
+        <manaCost>0.90</manaCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<learnItem>SpellOf_Meteor</learnItem>
+		<learnChance>.06</learnChance>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Meteor</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Geomancer</defaultProjectile>
+            <abilityDef>TM_Meteor_III</abilityDef>
+            <warmupTime>3.8</warmupTime>
+            <SecondsToRecharge>600</SecondsToRecharge>
+            <range>80</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <range>5</range>
+            </TargetAoEProperties>
+			<targetParams>
+				<canTargetItems>true</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+</Defs>

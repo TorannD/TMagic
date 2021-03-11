@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	
+	<!-- poison  -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Poison</thingClass>
+	    <defName>Projectile_Poison</defName>
+        <label>Poção</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Poison</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Poison</defName>
+        <label>Poção</label>
+        <uiIconPath>UI/poison</uiIconPath>
+        <description>Toxina de ação rápida que penetra na corrente sanguínea alvo. Quanto mais o alvo se move, mais letal se torna o veneno. O veneno é ineficaz contra mecanóides.</description>
+        <manaCost>0.15</manaCost>
+		<efficiencyReductionPercent>.10</efficiencyReductionPercent>
+		<learnChance>.6</learnChance>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Poison</defaultProjectile>
+            <abilityDef>TM_Poison</abilityDef>
+            <warmupTime>1</warmupTime>
+            <SecondsToRecharge>20</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- poison end-->
+	
+		<!-- soothe animal  -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	    <defName>Projectile_SootheAnimal</defName>
+        <label>animal sedutor</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Poison</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SootheAnimal</defName>
+        <label>Beguile Animal</label>
+        <uiIconPath>UI/beguile_animal</uiIconPath>
+        <description>Usando o domínio sobre a natureza, o druida pode dominar o estado emocional dos animais. Essa habilidade tem dupla finalidade - se o animal estiver em um estado calmo, isso incitará a fera a uma fúria de caçador de homens; se o animal já estiver enfurecido, isso acalmará a fera. Não funcionará em animais que pertencem a uma facção.
+
+Alcance: 65
+Recarga: 80s
+Metas máximas: 4
+Tamanho AoE: 7</description>
+        <manaCost>0.35</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<learnChance>.5</learnChance>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SootheAnimal</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_SootheAnimal</defaultProjectile>
+            <abilityDef>TM_SootheAnimal</abilityDef>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>80</SecondsToRecharge>
+            <range>65</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>false</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>4</maxTargets>
+                <range>7</range>
+            </TargetAoEProperties>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SootheAnimal_I</defName>
+        <label>Beguile Animal (I)</label>
+        <uiIconPath>UI/beguile_animal</uiIconPath>
+        <description>Usando o domínio sobre a natureza, o druida pode dominar o estado emocional dos animais. Essa habilidade tem dupla finalidade - se o animal estiver em um estado calmo, isso incitará a fera a uma fúria de caçador de homens; se o animal já estiver enfurecido, isso acalmará a fera. Não funcionará em animais que pertencem a uma facção.
+
+Alcance: 70
+Recarga: 75s
+Metas máximas: 6
+Tamanho AoE: 8</description>
+		<manaCost>0.35</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SootheAnimal</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_SootheAnimal</defaultProjectile>
+            <abilityDef>TM_SootheAnimal_I</abilityDef>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>75</SecondsToRecharge>
+            <range>70</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>false</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>6</maxTargets>
+                <range>8</range>
+            </TargetAoEProperties>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SootheAnimal_II</defName>
+        <label>Beguile Animal (II)</label>
+		<uiIconPath>UI/beguile_animal</uiIconPath>
+        <description>Usando o domínio sobre a natureza, o druida pode dominar o estado emocional dos animais. Essa habilidade tem dupla finalidade - se o animal estiver em um estado calmo, isso incitará a fera a uma fúria de caçador de homens; se o animal já estiver enfurecido, isso acalmará a fera. Não funcionará em animais que pertencem a uma facção.
+
+Alcance: 75
+Recarga: 68s
+Metas máximas: 7
+Tamanho AoE: 9</description>
+		<manaCost>0.35</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SootheAnimal</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_SootheAnimal</defaultProjectile>
+            <abilityDef>TM_SootheAnimal_II</abilityDef>
+            <warmupTime>2.5</warmupTime>
+            <SecondsToRecharge>68</SecondsToRecharge>
+            <range>75</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>false</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>7</maxTargets>
+                <range>9</range>
+            </TargetAoEProperties>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SootheAnimal_III</defName>
+        <label>Beguile Animal (III)</label>
+        <uiIconPath>UI/beguile_animal</uiIconPath>
+        <description>Usando o domínio sobre a natureza, o druida pode dominar o estado emocional dos animais. Essa habilidade tem dupla finalidade - se o animal estiver em um estado calmo, isso incitará a fera a uma fúria de caçador de homens; se o animal já estiver enfurecido, isso acalmará a fera. Não funcionará em animais que pertencem a uma facção.
+
+Alcance: 80
+Recarga: 60s
+Metas máximas: 7
+Tamanho AoE: 10</description>
+		<manaCost>0.35</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SootheAnimal</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_SootheAnimal</defaultProjectile>
+            <abilityDef>TM_SootheAnimal_III</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>60</SecondsToRecharge>
+            <range>80</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>false</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>7</maxTargets>
+                <range>10</range>
+            </TargetAoEProperties>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- soothe animal end-->
+	
+		<!-- regenerate  -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	    <defName>Projectile_Regenerate</defName>
+        <label>regenerado</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Poison</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Regenerate</defName>
+        <label>Regenerado</label>
+        <uiIconPath>UI/Regen</uiIconPath>
+        <description>A regeneração atua como um curativo natural ao longo do tempo e irá restaurar até mesmo feridas graves com a aplicação contínua. A regeneração de base restaura 4 pontos de vida para 1 ferimento a cada 5 segundos. Cura apenas lesões físicas e não restaura ou cura partes do corpo destruídas.</description>
+        <manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.07</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Regenerate</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Regenerate</defaultProjectile>
+            <abilityDef>TM_Regenerate</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>40</SecondsToRecharge>
+            <range>30</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- Regenerate end-->
+	
+		<!-- cure disease  -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	    <defName>Projectile_CureDisease</defName>
+        <label>curar doença</label>
+        <graphicData>
+			<texPath>Spells/poison</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Poison</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_CureDisease</defName>
+        <label>Curar doença</label>
+        <uiIconPath>UI/curedisease</uiIconPath>
+        <description>Potencial para curar a maioria das doenças e infecções.</description>
+        <manaCost>0.45</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<learnChance>.35</learnChance>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_CureDisease</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_CureDisease</defaultProjectile>
+            <abilityDef>TM_CureDisease</abilityDef>
+            <warmupTime>5</warmupTime>
+            <SecondsToRecharge>60</SecondsToRecharge>
+            <range>15</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- cure disease end-->
+	
+		<!-- regrow limb -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	    <defName>Projectile_RegrowLimb</defName>
+        <label>membro regenerado</label>
+        <graphicData>
+			<texPath>Spells/poison</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Poison</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_RegrowLimb</defName>
+        <label>Rebrota</label>
+        <uiIconPath>UI/regrowlimb</uiIconPath>
+        <description>Cria a Semente da Vida necessária para regenerar partes do corpo. As cirurgias de regeneração só aparecerão como uma opção quando todos os componentes da regeneração estiverem dentro das zonas de recursos: 1x Semente da Vida, poções de mana e remédio e, em seguida, selecione a parte do corpo a crescer na guia de cirurgia do paciente. Certifique-se de que este druida (ou outro com esta magia) realize a cirurgia e que o druida tenha 90 mana ou mais no momento em que a cirurgia for realizada.</description>
+        <manaCost>0.10</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnItem>SpellOf_RegrowLimb</learnItem>
+		<learnChance>.05</learnChance>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_RegrowLimb</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_RegrowLimb</defaultProjectile>
+            <abilityDef>TM_RegrowLimb</abilityDef>
+            <warmupTime>1</warmupTime>
+            <SecondsToRecharge>600</SecondsToRecharge>
+            <range>8</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>false</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- Regrow limb end-->
+
+</Defs>

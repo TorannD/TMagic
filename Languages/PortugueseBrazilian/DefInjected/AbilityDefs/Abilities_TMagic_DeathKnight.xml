@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+ <!-- shroud -->
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_Shroud</defName>
+    <label>Mortalha das Trevas</label>
+    <uiIconPath>UI/shroud</uiIconPath>
+    <description>O Sudário das Trevas é um manto de malícia tangível e medo que consome energia próxima.
+
+O Sudário tem muitas funções diferentes e é um componente crucial do treinamento do Cavaleiro da Morte. Acima de tudo, a capa fornece um bônus defensivo contra todos os tipos de dano e aumenta ligeiramente o dano da arma.
+
+Também é capaz de se solidificar e retaliar contra um ataque usando dano espiritual.
+
+Por último, mas não menos importante, o Sudário é capaz de anular projéteis perto do cavaleiro da morte, consumindo-os no vazio. Projéteis lançados a menos de 6 células de distância nunca serão anulados.
+
+Todas essas funções são aprimoradas conforme os níveis de ódio aumentam e devem ter um nível suficiente de ódio para funcionar.</description>
+    <staminaCost>0.00</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_Shroud</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+        <warmupTime>0.0</warmupTime>
+        <SecondsToRecharge>0.0</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>10</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+   
+     <!-- wave of fear -->
+  
+  <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+   <defName>Projectile_WaveOfFear</defName>
+   <thingClass>TorannMagic.Projectile_WaveOfFear</thingClass>
+   <label>Onda de medo</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+   </graphicData>
+   <projectile>
+		<flyOverhead>true</flyOverhead>
+		<damageDef>TM_Heal_I</damageDef>
+		<damageAmountBase>0</damageAmountBase>
+		<speed>999</speed>
+   </projectile>
+ </ThingDef>
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_WaveOfFear</defName>
+    <label>Onda de medo</label>
+    <uiIconPath>UI/waveoffear</uiIconPath>
+    <description>Libere uma onda de medo que faz os inimigos se encolherem. Wave of Fear também aplica um debuff significativo para defesa escura / clara, movimento e diminui a velocidade de ataque.
+
+Ódio não é necessário para usar esta habilidade, mas seu alcance efetivo é bastante aumentado pelos níveis de ódio.</description>
+    <staminaCost>0.30</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<canCopy>true</canCopy>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_WaveOfFear</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_WaveOfFear</defaultProjectile>
+        <warmupTime>0.5</warmupTime>
+        <SecondsToRecharge>120</SecondsToRecharge>
+        <range>0</range>
+        <soundCast></soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+  <!-- Spite  -->	
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Spite</thingClass>
+	    <defName>Projectile_Spite</defName>
+        <label>Despeito</label>
+        <graphicData>
+			<texPath>Spells/spite</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_Spirit</damageDef>
+            <damageAmountBase>12</damageAmountBase>
+            <speed>50</speed>
+        </projectile>
+    </ThingDef>	
+	
+    <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_Spite</defName>
+        <label>Despeito</label>
+        <uiIconPath>UI/spite</uiIconPath>
+        <description>Libere o ódio controlado e projete uma onda de rancor contra um alvo. Spite deve ter ódio para ser usado.
+
+Tempo de conjuração: 1s
+Cooldown: 5s
+Alcance: 21</description>
+        <staminaCost>0.20</staminaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Spite</defaultProjectile>
+            <abilityDef>TM_Spite</abilityDef>
+            <warmupTime>1</warmupTime>
+            <SecondsToRecharge>5</SecondsToRecharge>
+            <range>21</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Woosh</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+    <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_Spite_I</defName>
+        <label>Despeito I</label>
+        <uiIconPath>UI/spite</uiIconPath>
+        <description>Libere o ódio controlado e projete uma onda de rancor contra um alvo. Spite deve ter ódio para ser usado.
+
+Tempo de conjuração: 0,8 s
+Recarga: 4s
+Alcance: 24</description>
+        <staminaCost>0.20</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Spite</defaultProjectile>
+            <abilityDef>TM_Spite_I</abilityDef>
+            <warmupTime>.8</warmupTime>
+            <SecondsToRecharge>4</SecondsToRecharge>
+            <range>24</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Woosh</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_Spite_II</defName>
+        <label>Despeito II</label>
+        <uiIconPath>UI/spite</uiIconPath>
+        <description>Libere o ódio controlado e projete uma onda de rancor contra um alvo. Spite deve ter ódio para ser usado.
+
+Tempo de conjuração: 0,6 s
+Cooldown: 3s
+Alcance: 27</description>
+        <staminaCost>0.20</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Spite</defaultProjectile>
+            <abilityDef>TM_Spite_II</abilityDef>
+            <warmupTime>.6</warmupTime>
+            <SecondsToRecharge>3</SecondsToRecharge>
+            <range>27</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Woosh</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_Spite_III</defName>
+        <label>Despeito III</label>
+        <uiIconPath>UI/spite</uiIconPath>
+        <description>Libere o ódio controlado e projete uma onda de rancor contra um alvo. Spite deve ter ódio para ser usado.
+
+Tempo de conjuração: 0,4 s
+Cooldown: 2s
+Alcance: 30</description>
+        <staminaCost>0.20</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Spite</defaultProjectile>
+            <abilityDef>TM_Spite_III</abilityDef>
+            <warmupTime>.4</warmupTime>
+            <SecondsToRecharge>2</SecondsToRecharge>
+            <range>30</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Woosh</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	 <!-- life steal -->
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_LifeSteal</defName>
+    <label>Roubo de vida</label>
+    <uiIconPath>UI/soulsteal</uiIconPath>
+    <description>Rouba o espírito dos inimigos atingidos em combate corpo a corpo para restaurar a vida e a energia para o cavaleiro da morte.</description>
+    <staminaCost>0.00</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
+	<weaponDamageFactor>.15</weaponDamageFactor>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_LifeSteal</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+        <warmupTime>0.0</warmupTime>
+        <SecondsToRecharge>0.0</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>10</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+  
+	<!-- grave blade -->
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+        <thingClass>TorannMagic.Projectile_GraveBlade</thingClass>
+		<defName>Projectile_GraveBlade</defName>
+        <label>Lâmina Coveira</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+			<explosionRadius>3</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+        <thingClass>TorannMagic.Projectile_GraveBlade</thingClass>
+		<defName>Projectile_GraveBlade_I</defName>
+        <label>Lâmina Coveira</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+			<explosionRadius>3.4</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+        <thingClass>TorannMagic.Projectile_GraveBlade</thingClass>
+		<defName>Projectile_GraveBlade_II</defName>
+        <label>Lâmina Coveira</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+			<explosionRadius>3.8</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+        <thingClass>TorannMagic.Projectile_GraveBlade</thingClass>
+		<defName>Projectile_GraveBlade_III</defName>
+        <label>Lâmina Coveira</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+			<explosionRadius>4.2</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_GraveBlade</defName>
+        <label>Lâmina Coveira</label>
+        <uiIconPath>UI/graveblade</uiIconPath>
+        <description>Lâminas espirituais atacam do túmulo.
+
+Alcance: 35
+Tempo de conjuração: 1.6s
+Raio: 3,0</description>
+        <staminaCost>0.60</staminaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_GraveBlade</defaultProjectile>
+            <abilityDef>TM_GraveBlade</abilityDef>
+			<AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>1.6</warmupTime>
+            <SecondsToRecharge>60.0</SecondsToRecharge>
+            <range>35</range>
+			<isViolent>true</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>TM_VibrationLow</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_GraveBlade_I</defName>
+        <label>Lâmina Coveira I</label>
+        <uiIconPath>UI/graveblade</uiIconPath>
+        <description>Lâminas espirituais atacam do túmulo.
+
+Alcance: 38
+Tempo de conjuração: 1.4s
+Raio: 3,4</description>
+        <staminaCost>0.60</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_GraveBlade_I</defaultProjectile>
+            <abilityDef>TM_GraveBlade_I</abilityDef>
+			<AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>1.4</warmupTime>
+            <SecondsToRecharge>55.0</SecondsToRecharge>
+            <range>38</range>
+			<isViolent>true</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>TM_VibrationLow</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_GraveBlade_II</defName>
+        <label>Lâmina Coveira II</label>
+        <uiIconPath>UI/graveblade</uiIconPath>
+        <description>Lâminas espirituais atacam do túmulo.
+
+Alcance: 41
+Tempo de conjuração: 1,2s
+Raio: 3,8</description>
+        <staminaCost>0.60</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_GraveBlade_II</defaultProjectile>
+            <abilityDef>TM_GraveBlade_II</abilityDef>
+			<AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>1.2</warmupTime>
+            <SecondsToRecharge>50.0</SecondsToRecharge>
+            <range>41</range>
+			<isViolent>true</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>TM_VibrationLow</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_GraveBlade_III</defName>
+        <label>Lâmina Coveira III</label>
+        <uiIconPath>UI/graveblade</uiIconPath>
+        <description>Lâminas espirituais atacam do túmulo.
+
+Alcance: 44
+Tempo de conjuração: 1s
+Raio: 4,2</description>
+        <staminaCost>0.60</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_GraveBlade_III</defaultProjectile>
+            <abilityDef>TM_GraveBlade_III</abilityDef>
+			<AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>1</warmupTime>
+            <SecondsToRecharge>45.0</SecondsToRecharge>
+            <range>44</range>
+			<isViolent>true</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>TM_VibrationLow</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+</Defs>

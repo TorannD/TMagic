@@ -1,0 +1,982 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+   <!-- Totems -->
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_Totems</defName>
+    <label>Muito ms</label>
+    <uiIconPath>UI/totem_icon</uiIconPath>
+    <description>Totens são uma forma de magia que ancora um espírito elemental ao mundo físico, permitindo que ele influencie objetos próximos ao totem. Essa habilidade aumenta o controle sobre todos os tipos de totens.</description>
+    <manaCost>0</manaCost>
+	<efficiencyReductionPercent>.02</efficiencyReductionPercent>
+	<learnChance>.7</learnChance>
+	<canCopy>false</canCopy>
+	<shouldInitialize>false</shouldInitialize>
+	<childAbilities>
+		<li>TM_SummonTotemLightning</li>
+		<li>TM_SummonTotemEarth</li>
+		<li>TM_SummonTotemHealing</li>
+	</childAbilities>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+		<abilityDef>TM_Totems</abilityDef>
+        <warmupTime>0</warmupTime>
+        <SecondsToRecharge>2</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>0</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>		
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ 
+<!-- Create lightning totem -->
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_SummonTotemLightning</defName>
+    <label>Totem: Relâmpago</label>
+    <uiIconPath>UI/totem_lightning_icon</uiIconPath>
+    <description>Cria um totem relâmpago no local de destino. Dura 1 hora de jogo e dispara raios elétricos em inimigos em um raio de 40m a cada 2-3 segundos.</description>
+    <manaCost>0.40</manaCost>
+	<efficiencyReductionPercent>.02</efficiencyReductionPercent>
+	<canCopy>false</canCopy>
+	<shouldInitialize>true</shouldInitialize>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SummonTotemLightning</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+		<abilityDef>TM_SummonTotemLightning</abilityDef>
+        <warmupTime>3</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>30</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ <!-- Create earth totem -->
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_SummonTotemEarth</defName>
+    <label>Totem: Terra</label>
+    <uiIconPath>UI/totem_earth_icon</uiIconPath>
+    <description>Cria um totem terrestre no local de destino. Dura 1 hora de jogo e causa tremores a cada 3-4 segundos que escalonam todos os peões em 5 células.</description>
+    <manaCost>0.35</manaCost>
+	<efficiencyReductionPercent>.02</efficiencyReductionPercent>
+	<canCopy>false</canCopy>
+	<shouldInitialize>true</shouldInitialize>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SummonTotemEarth</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+		<abilityDef>TM_SummonTotemEarth</abilityDef>
+        <warmupTime>3</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>30</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ <!-- Create healing totem -->
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_SummonTotemHealing</defName>
+    <label>Totem: Cura</label>
+    <uiIconPath>UI/totem_heal_icon</uiIconPath>
+    <description>Cria um totem de cura no local de destino. Dura 1 hora de jogo e cura peões próximos periodicamente.</description>
+    <manaCost>0.30</manaCost>
+	<efficiencyReductionPercent>.02</efficiencyReductionPercent>
+	<canCopy>false</canCopy>
+	<shouldInitialize>true</shouldInitialize>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SummonTotemHealing</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+		<abilityDef>TM_SummonTotemHealing</abilityDef>
+        <warmupTime>3</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>30</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ <!-- lightning -->
+ 
+ 	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Lightning</thingClass>
+	    <defName>Projectile_Lightning</defName>
+        <label>relâmpago</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Lightning</damageDef>
+            <damageAmountBase>16</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+ 
+ <!-- Chain Lightning -->	
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_ChainLightning</thingClass>
+	    <defName>Projectile_ChainLightning</defName>
+        <label>corrente de relâmpagos</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Lightning</damageDef>
+            <damageAmountBase>16</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ChainLightning</defName>
+        <label>Chain Lightning</label>
+        <uiIconPath>UI/chain_lightning</uiIconPath>
+        <description>Um poderoso raio que se bifurca após atingir seu primeiro alvo.</description>
+		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ChainLightning</defaultProjectile>
+            <abilityDef>TM_ChainLightning</abilityDef>
+            <warmupTime>.5</warmupTime>
+            <SecondsToRecharge>10</SecondsToRecharge>
+            <range>50</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>8</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Enrage -->
+   
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Enrage</defName>
+        <label>Enfurecer</label>
+        <uiIconPath>UI/enrage</uiIconPath>
+        <description>Coloca um feitiço em um alvo que faz com que suas emoções (Humor) se tornem combustível para a fúria da batalha. O feitiço se extinguirá assim que todas as emoções forem consumidas. Alvos hostis ficarão imediatamente furiosos se sua mente for suscetível.
+
+Um peão enfurecido ganha mais movimento e manipulação, maior resistência à dor, não pode ser escalonado e aumenta o dano corpo a corpo na porcentagem igual à gravidade do enfurecimento (bônus de dano de 20-50%).</description>
+		<manaCost>0.15</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.6</learnChance>
+		<canCopy>true</canCopy>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Enrage</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Enrage</abilityDef>
+            <warmupTime>.5</warmupTime>
+            <SecondsToRecharge>3</SecondsToRecharge>
+            <range>30</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<requiresLineOfSight>false</requiresLineOfSight>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+	<!-- Hex -->
+   
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Hex</defName>
+        <label>Hex</label>
+        <uiIconPath>UI/hex</uiIconPath>
+        <description>Hex (I) - coloca um hexágono nos peões, efeitos adicionais podem ser aplicados aos alvos enfeitiçados. Desaparece após 6 horas de jogo.
+
+Alvos máximos: 4
+Raio: 3
+Alcance: 36
+Tempo de conjuração: 1s</description>
+		<manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.6</learnChance>
+		<canCopy>false</canCopy>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Hex</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Hex</abilityDef>
+            <warmupTime>1</warmupTime>
+            <SecondsToRecharge>5</SecondsToRecharge>
+            <range>36</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>4</maxTargets>
+                <range>3</range>
+            </TargetAoEProperties>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Hex_I</defName>
+        <label>Hex</label>
+        <uiIconPath>UI/hex</uiIconPath>
+        <description>Hex (II) - coloca um hex em peões, efeitos adicionais podem ser aplicados a alvos hexed. Desaparece após 6 horas de jogo.
+
+Alvos máximos: 5
+Raio: 3
+Alcance: 40
+Tempo de conjuração: 0,8 s</description>
+		<manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>0</learnChance>
+		<canCopy>false</canCopy>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Hex</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Hex_I</abilityDef>
+            <warmupTime>.8</warmupTime>
+            <SecondsToRecharge>5</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>5</maxTargets>
+                <range>3</range>
+            </TargetAoEProperties>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Hex_II</defName>
+        <label>Hex</label>
+        <uiIconPath>UI/hex</uiIconPath>
+        <description>Hex (III) - coloca um hexágono nos peões, efeitos adicionais podem ser aplicados aos alvos enfeitiçados. Desaparece após 6 horas de jogo.
+
+Alvos máximos: 5
+Raio: 4
+Alcance: 43
+Tempo de conjuração: 0,7 s</description>
+		<manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>0</learnChance>
+		<canCopy>false</canCopy>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Hex</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Hex_II</abilityDef>
+            <warmupTime>.7</warmupTime>
+            <SecondsToRecharge>5</SecondsToRecharge>
+            <range>43</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>5</maxTargets>
+                <range>4</range>
+            </TargetAoEProperties>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Hex_III</defName>
+        <label>Hex</label>
+        <uiIconPath>UI/hex</uiIconPath>
+        <description>Hex (IV) - coloca um hexágono nos peões, efeitos adicionais podem ser aplicados aos alvos enfeitiçados. Desaparece após 6 horas de jogo.
+
+Alvos máximos: 6
+Raio: 4
+Alcance: 45
+Tempo de conjuração: 0,6 s</description>
+		<manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>0</learnChance>
+		<canCopy>false</canCopy>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Hex</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Hex_III</abilityDef>
+            <warmupTime>.6</warmupTime>
+            <SecondsToRecharge>5</SecondsToRecharge>
+            <range>45</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>6</maxTargets>
+                <range>4</range>
+            </TargetAoEProperties>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Hex_Pain</defName>
+        <label>Dor (Hex)</label>
+        <uiIconPath>UI/hex_pain</uiIconPath>
+        <description>Todos os peões enfeitiçados sofrem dor extrema.</description>
+		<manaCost>0.12</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>0</learnChance>
+		<shouldInitialize>false</shouldInitialize>
+		<canCopy>false</canCopy>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Hex_Pain</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Hex_Pain</abilityDef>
+            <warmupTime>.5</warmupTime>
+            <SecondsToRecharge>5</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>5</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>true</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Hex_CriticalFail</defName>
+        <label>Falha Crítica (Hex)</label>
+        <uiIconPath>UI/hex_criticalfail</uiIconPath>
+        <description>Coloca uma maldição de curta duração em todos os alvos enfeitiçados que causa muita má sorte.</description>
+		<manaCost>0.15</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>0</learnChance>
+		<shouldInitialize>false</shouldInitialize>
+		<canCopy>false</canCopy>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Hex_CriticalFail</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Hex_CriticalFail</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>30</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>10</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Hex_MentalAssault</defName>
+        <label>Ataque Mental (Hex)</label>
+        <uiIconPath>UI/hex_mentalassault</uiIconPath>
+        <description>Faz com que todos os alvos enfeitiçados experimentem uma onda dramática e, potencialmente, avassaladora de emoções.</description>
+		<manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>0</learnChance>
+		<shouldInitialize>false</shouldInitialize>
+		<canCopy>false</canCopy>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Hex_MentalAssault</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Hex_MentalAssault</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>60</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>10</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	
+	 <!-- Spirit Wolves  -->	
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_Ability</thingClass>
+	    <defName>Projectile_SpiritWolves</defName>
+        <label>lobos espirituais</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_BurningLight</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>3</explosionRadius>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_Ability</thingClass>
+	    <defName>Projectile_SpiritWolves_I</defName>
+        <label>lobos espirituais</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_BurningLight</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>3.5</explosionRadius>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_Ability</thingClass>
+	    <defName>Projectile_SpiritWolves_II</defName>
+        <label>spirit wolves</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_BurningLight</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>4</explosionRadius>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_Ability</thingClass>
+	    <defName>Projectile_SpiritWolves_III</defName>
+        <label>lobos espirituais</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_BurningLight</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>4</explosionRadius>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Name="FlyingObject_SpiritWolves">
+	   <defName>FlyingObject_SpiritWolves</defName>
+	   <thingClass>TorannMagic.FlyingObject_SpiritWolves</thingClass>
+	   <label>lobos espirituais</label>
+	   <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	   <projectile>
+			<flyOverhead>true</flyOverhead>
+			<damageDef>TM_BurningLight</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<speed>26</speed>
+	   </projectile>
+	</ThingDef>
+	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SpiritWolves</defName>
+        <label>Lobos espirituais</label>
+        <uiIconPath>UI/spiritwolf</uiIconPath>
+        <description>Manifesta uma matilha de lobos espirituais. Os lobos espirituais aplicam dano espiritual que ignora a armadura e atordoa.
+
+Alcance: 50
+Tempo de conjuração: 3s
+Cooldown: 120s</description>
+        <manaCost>0.45</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SummonSpiritWolves</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_SpiritWolves</defaultProjectile>
+            <abilityDef>TM_SpiritWolves</abilityDef>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>120</SecondsToRecharge>
+            <range>50</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_WolfHowl</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SpiritWolves_I</defName>
+        <label>Lobos espirituais (I)</label>
+        <uiIconPath>UI/spiritwolf</uiIconPath>
+        <description>Manifesta uma matilha de lobos espirituais. Os lobos espirituais aplicam dano espiritual que ignora a armadura e atordoa.
+
+Alcance: 55
+Tempo de conjuração: 2.7s
+Cooldown: 110s</description>
+        <manaCost>0.45</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SummonSpiritWolves</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_SpiritWolves_I</defaultProjectile>
+            <abilityDef>TM_SpiritWolves_I</abilityDef>
+            <warmupTime>2.7</warmupTime>
+            <SecondsToRecharge>110</SecondsToRecharge>
+            <range>55</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_WolfHowl</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SpiritWolves_II</defName>
+        <label>Lobos espirituais (II)</label>
+        <uiIconPath>UI/spiritwolf</uiIconPath>
+        <description>Manifesta uma matilha de lobos espirituais. Os lobos espirituais aplicam dano espiritual que ignora a armadura e atordoa.
+
+Alcance: 60
+Tempo de conjuração: 2,5 s
+Cooldown: 100s</description>
+        <manaCost>0.45</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SummonSpiritWolves</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_SpiritWolves_II</defaultProjectile>
+            <abilityDef>TM_SpiritWolves_II</abilityDef>
+            <warmupTime>2.5</warmupTime>
+            <SecondsToRecharge>100</SecondsToRecharge>
+            <range>60</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_WolfHowl</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SpiritWolves_III</defName>
+        <label>Lobos espirituais (III)</label>
+        <uiIconPath>UI/spiritwolf</uiIconPath>
+        <description>Manifesta uma matilha de lobos espirituais. Os lobos espirituais aplicam dano espiritual que ignora a armadura e atordoa.
+
+Alcance: 65
+Tempo de conjuração: 2,4 s
+Tempo de espera: 90s</description>
+        <manaCost>0.45</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SummonSpiritWolves</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_SpiritWolves_III</defaultProjectile>
+            <abilityDef>TM_SpiritWolves_III</abilityDef>
+            <warmupTime>2.3</warmupTime>
+            <SecondsToRecharge>90</SecondsToRecharge>
+            <range>65</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_WolfHowl</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- 
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SpiritWolves_III</defName>
+        <label>Spirit Wolves (III)</label>
+        <uiIconPath>UI/spiritwolf</uiIconPath>
+        <description>Manifests a charging pack of spirit wolves. Spirit wolves apply spirit damage which ignores armor and stuns; once trained spirit damage can also be used to hex enemies. Spirit wolves are able to distinguish friend from foe
+		
+Range: 65
+Cast time: 2.4s
+Cooldown: 90s</description>
+        <manaCost>0.45</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Effect_SpiritWolves</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_SpiritWolves_III</defaultProjectile>
+            <abilityDef>TM_SpiritWolves_III</abilityDef>
+            <warmupTime>2.3</warmupTime>
+            <SecondsToRecharge>90</SecondsToRecharge>
+            <range>65</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_WolfHowl</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef> -->
+	
+	<!-- Guardian Spirit -->	
+	
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_GuardianSpirit</defName>
+        <label>Espírito Guardião</label>
+        <uiIconPath>UI/spiritanimals</uiIconPath>
+        <description>Convoca um espírito guardião. Os espíritos guardiões se manifestam como animais poderosos com forças e habilidades únicas.
+
+Spirit Bear - representa defesa e fortaleza; irá emitir um rugido desafiador contra qualquer um que pense em ignorar esta besta perigosa
+
+Spirit Mongoose - representa astúcia e agilidade; capaz de deslizar pelo reino espiritual para desferir um ataque letal e oculto
+
+Spirit Crow - representa magia e discernimento; colocará um feitiço nos inimigos e aumentará a sabedoria de seu protegido
+
+Uma vez determinado, um tipo de espírito guardião permanece o mesmo, no entanto, isso pode ser alterado à força usando um pergaminho de ligação de espírito.</description>
+		<manaCost>0.40</manaCost>
+		<upkeepEnergyCost>.40</upkeepEnergyCost>
+		<upkeepRegenCost>.40</upkeepRegenCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<upkeepEfficiencyPercent>.06</upkeepEfficiencyPercent>
+		<learnChance>.05</learnChance>
+		<canCopy>false</canCopy>
+		<learnItem>SpellOf_GuardianSpirit</learnItem>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SummonGuardianSpirit</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_GuardianSpirit</abilityDef>
+            <warmupTime>5</warmupTime>
+            <SecondsToRecharge>120</SecondsToRecharge>
+            <range>30</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>8</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>false</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_DismissGuardianSpirit</defName>
+    <label>Dispensar Espírito Guardião</label>
+    <uiIconPath>UI/dismiss_spiritanimals</uiIconPath>
+    <description>Libera o espírito guardião para retornar ao reino espiritual.</description>
+    <manaCost>0.0</manaCost>
+	<shouldInitialize>false</shouldInitialize>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_DismissGuardianSpirit</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+		<abilityDef>TM_DismissGuardianSpirit</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>60</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>0</range>
+		<isViolent>false</isViolent>
+        <soundCast>TM_Gong</soundCast>
+        <muzzleFlashScale>10</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>true</canTargetSelf>
+		 <canTargetLocations>false</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+
+</Defs>
