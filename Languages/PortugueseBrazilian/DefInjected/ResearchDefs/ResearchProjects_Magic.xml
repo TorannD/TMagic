@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!--========================= Research into magic ===================================-->
+	
+	<ResearchProjectDef>
+		<defName>TM_ArcaneConstruction</defName>
+		<label>instalações misteriosas</label>
+		<tab>TMagic</tab>
+		<description>Abre pesquisas em várias instalações e bancadas que permitiram a criação de itens e efeitos mágicos exclusivos.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>5.0</researchViewX>
+		<researchViewY>0.0</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_ArcaneFundamentals</defName>
+		<label>fundamentos misteriosos</label>
+		<tab>TMagic</tab>
+		<description>Pesquisa básica sobre como o poder arcano está ligado ao reino físico e a outros magos.</description>
+		<baseCost>300</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>5.0</researchViewX>
+		<researchViewY>1.0</researchViewY>
+		<prerequisites>
+			<li>TM_ArcaneConstruction</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_MagicCircle</defName>
+		<label>Círculo Mágico</label>
+		<tab>TMagic</tab>
+		<description>Pesquisa avançada sobre a geometria e simetria das linhas ley que permite aos usuários de magia combinar sua energia para criar efeitos incríveis.</description>
+		<baseCost>2000</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>5.0</researchViewX>
+		<researchViewY>2.0</researchViewY>
+		<prerequisites>
+			<li>TM_ArcaneFundamentals</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>TM_Portals</defName>
+		<label>portais</label>
+		<tab>TMagic</tab>
+		<description>Permite a construção de um portal - um artefato poderoso que permite a viagem instantânea entre as colônias. \ N \ nRequer um Mago Arcano treinado em Gateways para ser ativado.</description>
+		<baseCost>2000</baseCost>
+		<techLevel>Medieval</techLevel>
+		<researchViewX>6.0</researchViewX>
+		<researchViewY>0.0</researchViewY>
+		<prerequisites>
+			<li>TM_ArcaneConstruction</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_ManaStorage</defName>
+		<label>onde armazenamento</label>
+		<tab>TMagic</tab>
+		<description>Desenvolve maneiras de armazenar mana.</description>
+		<baseCost>1000</baseCost>
+		<techLevel>Medieval</techLevel>
+		<researchViewX>6.0</researchViewX>
+		<researchViewY>1.0</researchViewY>
+		<prerequisites>
+			<li>TM_ArcaneConstruction</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_PlantCultivation</defName>
+		<label>cultivo</label>
+		<tab>TMagic</tab>
+		<description>Invista em pesquisas em botânica para obter uma compreensão de como cultivar plantas com propriedades relevantes para a magia e usar seus recursos para complementar ou alimentar as artes arcanas.</description>
+		<baseCost>1000</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>0.0</researchViewX>
+		<researchViewY>0.0</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_ArcaneForging</defName>
+		<label>Arcane Forge</label>
+		<tab>TMagic</tab>
+		<description>Desenvolva os meios de usar o poder arcano para criar vários itens e equipamentos. A conclusão desta pesquisa também revelará como fazer Manaweave, um material único que aumenta o poder arcano.</description>
+		<baseCost>1500</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>4.0</researchViewX>
+		<researchViewY>1.0</researchViewY>
+		<prerequisites>
+			<li>TM_ArcaneConstruction</li>
+			<li>TM_ArcaneCrafting</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_ForgeReplication</defName>
+		<label>Replicação Forge</label>
+		<tab>TMagic</tab>
+		<description>Aprimora a Forja Arcana com uma técnica que permite extrair o design de qualquer item fabricável e duplicá-lo na forja.</description>
+		<baseCost>3000</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>4.0</researchViewX>
+		<researchViewY>2.0</researchViewY>
+		<prerequisites>
+			<li>TM_ArcaneForging</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_Enchanting</defName>
+		<label>encantador</label>
+		<tab>TMagic</tab>
+		<description>Permite a construção da bancada de lapidação e a confecção de joias encantadoras de nível I.</description>
+		<baseCost>1500</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<prerequisites>
+			<li>TM_MagicyteRefining</li>
+		</prerequisites>
+		<researchViewX>1.0</researchViewX>
+		<researchViewY>0.0</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_AdvancedEnchanting</defName>
+		<label>encantamento avançado</label>
+		<tab>TMagic</tab>
+		<description>Permite a fabricação de joias encantadoras de nível II.</description>
+		<baseCost>1000</baseCost>
+		<techLevel>Medieval</techLevel>
+		<researchViewX>1.0</researchViewX>
+		<researchViewY>1.0</researchViewY>
+		<prerequisites>
+			<li>TM_Enchanting</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_ExpertEnchanting</defName>
+		<label>especialista em encantamento</label>
+		<tab>TMagic</tab>
+		<description>Permite a criação de joias encantadoras de nível III.</description>
+		<baseCost>1000</baseCost>
+		<techLevel>Medieval</techLevel>
+		<researchViewX>1.0</researchViewX>
+		<researchViewY>2.0</researchViewY>
+		<prerequisites>
+			<li>TM_AdvancedEnchanting</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_MagicyteRefining</defName>
+		<label>refinamento de magicy</label>
+		<tab>TMagic</tab>
+		<description>Pesquisa experimental que identifica maneiras de usar magicyte para criar itens mágicos. Desenvolve uma receita para criar poções de mana no laboratório de drogas.</description>
+		<baseCost>800</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>2.0</researchViewX>
+		<researchViewY>0.0</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_MagicScribing</defName>
+		<label>rabiscando</label>
+		<tab>TMagic</tab>
+		<description>Desenvolva o conhecimento para misturar tinta com magicito em pó e aplique-o por meio de uma impressora especialmente projetada, capaz de reproduzir pergaminhos e livros que podem conter o poder de compreensão mágica.</description>
+		<baseCost>1500</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>2.0</researchViewX>
+		<researchViewY>1.0</researchViewY>
+		<prerequisites>
+			<li>TM_MagicyteRefining</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_AdvancedScribing</defName>
+		<label>escrita avançada</label>
+		<tab>TMagic</tab>
+		<description>Permite o uso de material de alta qualidade para desenvolver livros e pergaminhos mais poderosos.</description>
+		<baseCost>1000</baseCost>
+		<techLevel>Medieval</techLevel>
+		<researchViewX>2.0</researchViewX>
+		<researchViewY>2.0</researchViewY>
+		<prerequisites>
+			<li>TM_MagicScribing</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_MasterScribing</defName>
+		<label>mestre escriba</label>
+		<tab>TMagic</tab>
+		<description>Permite a escrita de feitiços mestres.</description>
+		<baseCost>1000</baseCost>
+		<techLevel>Medieval</techLevel>
+		<researchViewX>2.0</researchViewX>
+		<researchViewY>3.0</researchViewY>
+		<prerequisites>
+			<li>TM_AdvancedScribing</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_ArcaneCrafting</defName>
+		<label>artesanato arcano</label>
+		<tab>TMagic</tab>
+		<description>O primeiro passo para entender a ligação entre o arcano e o físico. Permite a construção de joias poderosas de insights e equipamentos mágicos.</description>
+		<baseCost>1000</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>3.0</researchViewX>
+		<researchViewY>0.0</researchViewY>
+		<prerequisites>
+			<li>TM_MagicyteRefining</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_ArcaneApparel</defName>
+		<label>equipamento mágico</label>
+		<tab>TMagic</tab>
+		<description>Aplica conhecimento de feitiços e artesanato arcano para aprender como recriar equipamentos com propriedades mágicas mais poderosas.</description>
+		<baseCost>1500</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>3.0</researchViewX>
+		<researchViewY>1.0</researchViewY>
+		<prerequisites>
+			<li>TM_ArcaneCrafting</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_ArcaneArtifacts</defName>
+		<label>artefatos misteriosos</label>
+		<tab>TMagic</tab>
+		<description>Permite a recriação de artefatos arcanos por meio de extensa pesquisa combinando o conhecimento de encantamentos, designs antigos, runas e rumores.</description>
+		<baseCost>1000</baseCost>
+		<techLevel>Medieval</techLevel>
+		<researchViewX>3.0</researchViewX>
+		<researchViewY>2.0</researchViewY>
+		<prerequisites>
+			<li>TM_ArcaneApparel</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+</Defs>

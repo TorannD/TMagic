@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  
+    <!--=============== Manaweave ====================-->
+  
+  <ThingDef ParentName="MagicResourceBase_Textile">
+    <defName>TM_Manaweave</defName>
+    <label>manaweave</label>
+    <description>Manaweave é um tecido fundido com magia e meticulosamente imbuído de símbolos misteriosos. Manaweave herda muitas das propriedades físicas do tecido, mas adquire uma resposta reativa adicional à força física. O que torna o tecido único é sua capacidade de atuar como um condutor de mana que potencializa os efeitos dos encantamentos e naturalmente garante proteção contra a luz e a magia negra.
+
+Extremamente difícil e desgastante de criar, apenas um mago talentoso e experiente pode fazer este material.</description>
+    <graphicData>
+      <texPath>Items/manaweave</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+	  <color>(120,0,250)</color>
+    </graphicData>
+	<stackLimit>75</stackLimit>
+	<statBases>
+	  <Beauty>2</Beauty>
+	  <MaxHitPoints>150</MaxHitPoints>
+      <MarketValue>9</MarketValue>
+	  <SellPriceFactor>.4</SellPriceFactor>
+      <Mass>0.07</Mass>
+      <Flammability>.6</Flammability>
+      <DeteriorationRate>1</DeteriorationRate>
+	  <StuffPower_Armor_Sharp>1.15</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>0.45</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>1.40</StuffPower_Armor_Heat>
+	  <StuffPower_Armor_Harmony>0.45</StuffPower_Armor_Harmony>
+      <StuffPower_Insulation_Cold>20</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>22</StuffPower_Insulation_Heat>
+    </statBases>
+	<stuffProps>
+      <categories>
+        <li>Fabric</li>
+      </categories>
+      <commonality>0.0175</commonality>
+      <color>(120,0,250)</color>
+      <statFactors>
+        <Flammability>0.6</Flammability>
+        <MaxHitPoints>1.8</MaxHitPoints>
+		<WorkToMake>1.4</WorkToMake>
+		<Beauty>2</Beauty>
+      </statFactors>
+    </stuffProps>
+	<tradeTags>
+	  <li>RawArcane</li>
+    </tradeTags>
+	<comps>
+		<li Class="TorannMagic.Enchantment.CompProperties_EnchantedStuff">
+			<isEnchanted>true</isEnchanted>
+			<enchantmentBonusMultiplier>1.2</enchantmentBonusMultiplier>
+		</li>
+	</comps>
+  </ThingDef>
+  
+    <!--=============== Arcalleum ====================-->
+  
+  <ThingDef ParentName="MagicResourceBase_Resource">
+    <defName>TM_Arcalleum</defName>
+    <label>arcalleum</label>
+    <description>Uma liga metálica composta por aço, jade, prata e magicyte. A sua composição única confere propriedades místicas que aumentam a elasticidade e cria reverberações de qualquer energia mágica transferida através dele. A elasticidade da liga o torna uma escolha excelente para proteção contra contundentes, mas é inferior ao padrão para uso em armas brancas. Arcalleum é difícil de criar e requer uma forja capaz de liquefazer e combinar todos os ingredientes da liga.
+
+Enquanto arcalluem é procurado por suas propriedades defensivas aprimoradas, ele também é apreciado por lutadores e magos por seu poder de anular o resfriamento de qualquer habilidade. Cada kg de arcalleum usado aumenta a chance de o resfriamento da habilidade ser anulado após o uso em 1% (50% no máximo).</description>
+    <graphicData>
+      <texPath>Items/arcalleum</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+	  <color>(0,70,100)</color>
+	  <drawSize>.8</drawSize>
+    </graphicData>
+	<stackLimit>75</stackLimit>
+	<statBases>
+	  <Beauty>2</Beauty>
+      <MarketValue>13</MarketValue>
+	  <SellPriceFactor>.4</SellPriceFactor>
+      <Mass>0.6</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+	  <StuffPower_Armor_Sharp>.94</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>1.42</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>1.01</StuffPower_Armor_Heat>
+	  <StuffPower_Armor_Harmony>0.36</StuffPower_Armor_Harmony>
+      <StuffPower_Insulation_Cold>8</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>6</StuffPower_Insulation_Heat>
+	  <SharpDamageMultiplier>.9</SharpDamageMultiplier>
+      <BluntDamageMultiplier>1.15</BluntDamageMultiplier>
+    </statBases>
+	<stuffProps>
+      <categories>
+        <li>Metallic</li>
+      </categories>
+      <commonality>0.02</commonality>
+	  <constructEffect>ConstructMetal</constructEffect>
+      <color>(0,70,100)</color>
+	  <soundImpactStuff>BulletImpact_Metal</soundImpactStuff>
+      <soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+      <soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+      <statFactors>
+        <Flammability>0.1</Flammability>
+        <MaxHitPoints>4</MaxHitPoints>
+		<WorkToMake>4.5</WorkToMake>
+		<WorkToBuild>4.5</WorkToBuild>
+		<MeleeWeapon_CooldownMultiplier>0.95</MeleeWeapon_CooldownMultiplier>
+		<Beauty>2</Beauty>
+      </statFactors>
+    </stuffProps>
+	<deepCommonality>.25</deepCommonality>
+    <deepCountPerPortion>4</deepCountPerPortion>
+    <deepLumpSizeRange>
+      <min>2</min>
+      <max>4</max>
+    </deepLumpSizeRange>
+	<tradeTags>
+	  <li>RawArcane</li>
+    </tradeTags>
+	<comps>
+      <li>
+        <compClass>CompColorable</compClass>
+      </li>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedStuff">
+		<isEnchanted>true</isEnchanted>
+		<arcalleumCooldownPerMass>1</arcalleumCooldownPerMass>
+	  </li>
+    </comps>
+    <colorGeneratorInTraderStock Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>1</weight>
+          <only>(0.0,0.275,0.392,1)</only>
+        </li>
+        <li>
+          <weight>1</weight>
+          <only>(0.792,0.592,0.043,1)</only>
+        </li>
+		<li>
+          <weight>1</weight>
+          <only>(0.0,0.259,0.129,1)</only>
+        </li>
+      </options>
+    </colorGeneratorInTraderStock>
+  </ThingDef>
+  
+  <!--=============== Demonhide ====================-->
+  
+  <ThingDef ParentName="MagicResourceBase_Leather">
+    <defName>TM_Demonhide</defName>
+    <label>demônio</label>
+    <description>A pele de um demônio. Este material é incrivelmente resistente com uma malha de material microporosa capaz de difundir rapidamente o calor e amortecer os golpes de impacto melhor do que a maioria dos não-metais. O sangue de um demônio é resistente à magia e o couro feito da pele de um demônio absorve parte dessa resistência. Quaisquer encantamentos esculpidos em pele de demônio são aumentados naturalmente. Existem apenas duas desvantagens neste material - a primeira é que ele só pode ser adquirido da carcaça de um demônio, o que o torna raro e caro; a segunda é que ele é um isolante terrível.</description>
+    <graphicData>
+      <texPath>Items/demonhide</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+	  <color>(96,25,0)</color>
+    </graphicData>
+	<stackLimit>75</stackLimit>
+	<statBases>
+	  <Beauty>-4</Beauty>
+	  <MaxHitPoints>300</MaxHitPoints>
+      <MarketValue>16</MarketValue>
+	  <SellPriceFactor>.65</SellPriceFactor>
+      <Mass>0.15</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>.1</DeteriorationRate>
+	  <StuffPower_Armor_Sharp>1.54</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>0.52</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>1.4</StuffPower_Armor_Heat>
+	  <StuffPower_Armor_Harmony>0.26</StuffPower_Armor_Harmony>
+      <StuffPower_Insulation_Cold>-8</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>36</StuffPower_Insulation_Heat>
+    </statBases>
+	<stuffProps>
+      <categories>
+        <li>Leathery</li>
+      </categories>
+      <commonality>0.0155</commonality>
+      <color>(96,25,0)</color>
+      <statFactors>
+        <Flammability>0.1</Flammability>
+        <MaxHitPoints>2.2</MaxHitPoints>
+		<WorkToMake>1.6</WorkToMake>
+		<Beauty>-4</Beauty>
+      </statFactors>
+    </stuffProps>
+	<tradeTags>
+	  <li>RawArcane</li>
+    </tradeTags>
+	<comps>
+		<li Class="TorannMagic.Enchantment.CompProperties_EnchantedStuff">
+			<isEnchanted>true</isEnchanted>
+			<enchantmentBonusMultiplier>1.1</enchantmentBonusMultiplier>
+		</li>
+	</comps>
+  </ThingDef>
+  
+<!--=============== Demon Scale ====================-->
+  
+  <ThingDef ParentName="MagicResourceBase_Resource">
+    <defName>TM_Demonscale</defName>
+    <label>escala demoníaca</label>
+    <description>Retiradas do corpo de um demônio, essas escamas oferecem uma defesa leve e versátil contra todas as formas de ataque. A escala de demônio se destaca como uma barreira natural para a magia e é um excelente inibidor de calor e fogo; um guerreiro com armadura suficiente fabricada em escala de demônio pode até se tornar imune a todos, exceto ao fogo mais intenso. A escama de demônio pode ser fundida e as armas forjadas com esse metal refinado são excelentes armas de lâmina. Os encantamentos gravados em equipamentos de escala demoníaca são aumentados naturalmente.</description>
+    <graphicData>
+      <texPath>Items/demonscale</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+	  <color>(102,46,0)</color>
+	  <drawSize>1</drawSize>
+    </graphicData>
+	<stackLimit>75</stackLimit>
+	<statBases>
+	  <Beauty>-4</Beauty>
+      <MarketValue>18</MarketValue>
+	  <SellPriceFactor>.4</SellPriceFactor>
+      <Mass>0.22</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+	  <StuffPower_Armor_Sharp>1.15</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>.92</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>1.55</StuffPower_Armor_Heat>
+	  <StuffPower_Armor_Harmony>0.41</StuffPower_Armor_Harmony>
+      <StuffPower_Insulation_Cold>-4</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>4</StuffPower_Insulation_Heat>
+	  <SharpDamageMultiplier>1.2</SharpDamageMultiplier>
+      <BluntDamageMultiplier>.75</BluntDamageMultiplier>
+	  <MeleeWeapon_CooldownMultiplier>0.85</MeleeWeapon_CooldownMultiplier>
+    </statBases>
+	<stuffProps>
+      <categories>
+        <li>Metallic</li>
+      </categories>
+      <commonality>0.02</commonality>
+	  <constructEffect>ConstructMetal</constructEffect>
+      <color>(102,46,0)</color>
+	  <soundImpactStuff>BulletImpact_Metal</soundImpactStuff>
+      <soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+      <soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+      <statFactors>
+        <Flammability>0.1</Flammability>
+        <MaxHitPoints>4</MaxHitPoints>
+		<WorkToMake>6</WorkToMake>
+		<WorkToBuild>6</WorkToBuild>
+		<MeleeWeapon_CooldownMultiplier>0.85</MeleeWeapon_CooldownMultiplier>
+		<Beauty>-4</Beauty>
+      </statFactors>
+    </stuffProps>
+	<deepCommonality>0</deepCommonality>
+    <deepCountPerPortion>0</deepCountPerPortion>
+	<tradeTags>
+	  <li>RawArcane</li>
+    </tradeTags>
+	<comps>
+      <li>
+        <compClass>CompColorable</compClass>
+      </li>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedStuff">
+		<isEnchanted>true</isEnchanted>
+		<enchantmentBonusMultiplier>1.1</enchantmentBonusMultiplier>
+		<appliedHediff>TM_HediffEnchantment_fireImmunity</appliedHediff>
+		<applyHediffAtCount>3</applyHediffAtCount>
+		<severityPerCount>.2</severityPerCount>
+		<apparelOnly>true</apparelOnly>
+	  </li>
+    </comps>
+    <colorGeneratorInTraderStock Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>1</weight>
+          <only>(0.4,0.18,0,1)</only>
+        </li>
+      </options>
+    </colorGeneratorInTraderStock>
+  </ThingDef>
+
+</Defs>

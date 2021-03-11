@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThoughtDef Name="TM_Memory" Abstract="True">
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stackedEffectMultiplier>.75</stackedEffectMultiplier>
+    <stackLimit>3</stackLimit>
+  </ThoughtDef>
+  
+  <ThoughtDef Name="TM_MemoryOrder" Abstract="True">
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stackedEffectMultiplier>.8</stackedEffectMultiplier>
+    <stackLimit>8</stackLimit>
+  </ThoughtDef>
+  
+  <!--=================== ah, the memories ===================-->
+
+  <ThoughtDef ParentName="TM_MemoryOrder">
+    <defName>TM_TakingOrdersTD</defName>
+    <durationDays>.6</durationDays>
+    <stages>
+      <li>
+        <label>recebendo ordens</label>
+        <!-- generic penalty -->
+        <description>Outro peão me deu ordens. Isso pode se tornar irritante.</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+	  </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="TM_Memory">
+    <defName>RangerSoldBondedPet</defName>
+    <durationDays>10</durationDays>
+    <stages>
+      <li>
+        <label>vendeu animal ligado</label>
+        <!-- generic penalty -->
+        <description>Eu permiti que meu companheiro animal fosse vendido como escravo. Não serei perdoado em breve pelo reino animal. (ligação animal desativada enquanto este efeito de humor está ativo)</description>
+        <baseMoodEffect>-24</baseMoodEffect>
+      </li>
+	  </stages>
+  </ThoughtDef>
+  
+    <ThoughtDef ParentName="TM_Memory">
+    <defName>RangerPetDied</defName>
+    <durationDays>3</durationDays>
+	<nullifyingTraits>
+	  <li>Psychopath</li>
+	</nullifyingTraits>
+    <stages>
+      <li>
+        <label>animal ligado morreu</label>
+        <!-- generic penalty -->
+        <description>Meu fiel companheiro animal morreu. Parece que perdi um pedaço de mim.</description>
+        <baseMoodEffect>-16</baseMoodEffect>
+      </li>
+	  </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="TM_Memory">
+    <defName>Polymorphed</defName>
+    <durationDays>3</durationDays>
+	<nullifyingTraits>
+	  <li>Enchanter</li>
+	  <li>Transhumanist</li>
+	</nullifyingTraits>
+    <stages>
+      <li>
+        <label>polimorfo contra vontade</label>
+        <!-- generic penalty -->
+        <description>Fui polimórfico e forçado a existir no corpo de um animal, cuja desumanização.</description>
+        <baseMoodEffect>-18</baseMoodEffect>
+      </li>	  
+	  </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="TM_Memory">
+    <defName>Polymorphed_Transhumanist</defName>
+    <durationDays>3</durationDays>
+	<nullifyingTraits>
+	  <li>Enchanter</li>
+	</nullifyingTraits>
+    <stages>
+	  <li>
+        <label>polimorfo!</label>
+        <!-- generic penalty -->
+        <description>Fui transformado em um animal selvagem - e foi INCRÍVEL!.</description>
+        <baseMoodEffect>22</baseMoodEffect>
+      </li>
+	  </stages>
+  </ThoughtDef>
+
+  <ThoughtDef ParentName="TM_Memory">
+    <defName>WarlockEmpathy</defName>
+    <durationDays>1</durationDays>
+	<stackLimit>1</stackLimit>
+	<stackedEffectMultiplier>1</stackedEffectMultiplier>
+	<nullifyingTraits>
+	  <li>Lich</li>
+	  <li>Undead</li>
+	</nullifyingTraits>
+    <stages>
+      <li>
+        <label>Empatia</label>
+        <!-- generic penalty -->
+        <description>Eu posso sentir as emoções das pessoas ao meu redor.</description>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="TM_Memory">
+    <defName>PsychicEmpathy</defName>
+    <durationDays>1</durationDays>
+	<stackLimit>1</stackLimit>
+	<stackedEffectMultiplier>1</stackedEffectMultiplier>
+	<nullifyingTraits>
+	  <li>Lich</li>
+	  <li>Undead</li>
+	</nullifyingTraits>
+    <stages>
+      <li>
+        <label>Empatia</label>
+        <!-- generic penalty -->
+        <description>Eu não posso explicar porque estou sentindo essas emoções fortes.</description>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  	<ThoughtDef>
+		<defName>TM_MemoryWipe</defName>
+		<durationDays>2</durationDays>
+		<stackLimit>5</stackLimit>
+		<stages>
+			<li>
+				<label>ardósia limpa</label>
+				<description>Não me lembro dos últimos dias, talvez seja melhor assim.</description>
+				<baseMoodEffect>25</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+	
+  <ThoughtDef>
+    <defName>AteMysteryMeatDirect</defName>
+		<showBubble>true</showBubble>
+		<icon>Things/Mote/ThoughtSymbol/Food</icon>
+		<durationDays>.1</durationDays>
+    <stages>
+      <li>
+        <label>comeu carne de minion</label>
+        <description>Comi uma carne nojenta e misteriosa de um lacaio morto. Estava misturado com lama e outras coisas em decomposição que não consegui identificar. Isso era uma unha? Bruto.</description>
+        <baseMoodEffect>0</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+	<ThoughtDef>
+		<defName>AteMysteryMeatAsIngredient</defName>
+		<showBubble>true</showBubble>
+		<icon>Things/Mote/ThoughtSymbol/Food</icon>
+		<durationDays>.1</durationDays>
+		<stages>
+			<li>
+				<label>comeu carne de minion cozida</label>
+				<description>Eu comi uma refeição cozida com carne de minion. Nenhuma quantidade de tempero ou especiarias poderia evitar a impressão de que eu estava comendo algo nojento.</description>
+				<baseMoodEffect>0</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+	
+	<ThoughtDef>
+		<thoughtClass>Thought_Memory</thoughtClass>
+		<defName>TM_PhantomLimb</defName>
+		<durationDays>7</durationDays>
+		<stackLimit>10</stackLimit>
+		<stackedEffectMultiplier>.8</stackedEffectMultiplier>
+		<stages>
+			<li>
+				<label>membro fantasma</label>
+				<description>Essas partes do corpo são realmente minhas? Eu me sinto como um convidado em meu próprio corpo.</description>
+				<baseMoodEffect>-15</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+	
+   <ThoughtDef>
+    <defName>TM_PleasantDreamsTD</defName>
+    <durationDays>.8</durationDays>
+    <stackLimit>1</stackLimit>
+    <nullifyingTraits>
+      <li>Psychopath</li>
+    </nullifyingTraits>
+    <stages>
+      <li>
+        <label>bons sonhos</label>
+        <description>Meus sonhos estão cheios de memórias e eventos que me fazem feliz.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+    <ThoughtDef>
+    <defName>TM_BrightDayTD</defName>
+    <durationDays>.75</durationDays>
+	<stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>dia iluminado</label>
+        <description>Um espírito de luz iluminou meu dia.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+	  </stages>
+  </ThoughtDef>
+  
+</Defs>

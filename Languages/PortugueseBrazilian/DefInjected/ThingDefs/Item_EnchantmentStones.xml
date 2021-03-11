@@ -1,0 +1,494 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--=============== Enchanting Gems ====================-->
+
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_maxMP_minor</defName>
+    <label>Jóia Arcana Menor de Propriedade</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Olhar para a pedra dá ao observador uma estranha sensação de vertigem, como se estivesse olhando para um poço sem fundo. Esta gema pode ser usada para imbuir um item com potencial mágico, aumentando em 5% a energia máxima de qualquer mago ou guerreiro usando o item.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/arcane_minor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>170</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_maxMP</defName>
+    <label>Jóia Arcana de Propriedade</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Olhar para a pedra dá ao observador uma estranha sensação de vertigem, como se estivesse olhando para um poço sem fundo. Esta gema pode ser usada para imbuir um item com potencial mágico, aumentando em 10% a energia máxima de qualquer mago ou guerreiro usando o item.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/arcane</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>390</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_maxMP_major</defName>
+    <label>Grande Jóia Arcana de Propriedade</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Olhar para a pedra dá ao observador uma estranha sensação de vertigem, como se estivesse olhando para um poço sem fundo. Esta gema pode ser usada para imbuir um item com potencial mágico, aumentando em 15% a energia máxima de qualquer mago ou guerreiro usando o item.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/arcane_major</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>955</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+   <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_mpRegenRate_minor</defName>
+    <label>Gema Arcana Menor da Regeneração</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Esta gema pode ser usada para imbuir um item, aumentando a taxa de regeneração de energia de qualquer mago ou guerreiro usando o item em 5%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/ice_minor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>170</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_mpRegenRate</defName>
+    <label>Jóia Arcana da Regeneração</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Esta gema pode ser usada para imbuir um item, aumentando em 10% a taxa de regeneração de energia de qualquer mago ou guerreiro usando o item.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/ice</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>390</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_mpRegenRate_major</defName>
+    <label>Gema Arcana Principal da Regeneração</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Esta gema pode ser usada para imbuir um item, aumentando em 15% a taxa de regeneração de energia de qualquer mago ou guerreiro usando o item.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/ice_major</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>955</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_mpCost_minor</defName>
+    <label>Jóia Arcana Menor de Conservação</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Quando imbuída em um item, esta gema diminui o custo de energia de qualquer feitiço em 3%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/naturestone_minor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>170</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_mpCost</defName>
+    <label>Jóia Arcana da Conservação</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Quando imbuída em um item, esta gema diminui o custo de energia de qualquer feitiço em 5%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/naturestone</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>390</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_mpCost_major</defName>
+    <label>Grande Jóia Arcana da Conservação</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Quando imbuída em um item, esta gema diminui o custo de energia de qualquer feitiço em 7%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/naturestone_major</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>955</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_coolDown_minor</defName>
+    <label>Jóia Arcana Menor de Aceleração</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Quando imbuída em um item, esta gema diminui o tempo de espera de qualquer habilidade em 3%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/lightning_minor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>170</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_coolDown</defName>
+    <label>Jóia Arcana da Aceleração</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Quando imbuída em um item, esta gema diminui o tempo de espera de qualquer habilidade em 5%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/lightning</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>390</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_coolDown_major</defName>
+    <label>Grande joia arcana da aceleração</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Quando imbuída em um item, esta gema diminui o tempo de espera de qualquer habilidade em 7%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/lightning_major</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>955</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_xpGain_minor</defName>
+    <label>Jóia Arcana Menor da Aprendizagem</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Quando imbuída em um item, esta gema auxilia o usuário, armazenando um mimetismo residual da habilidade, permitindo ao usuário uma introspecção adicional e aumentando o XP ganho em 5%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/bloodgem_minor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>170</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_xpGain</defName>
+    <label>Jóia Arcana da Aprendizagem</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Quando imbuída em um item, esta gema auxilia o usuário, armazenando um mimetismo residual da habilidade, permitindo ao usuário uma introspecção adicional e aumentando o XP ganho em 10%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/bloodgem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>390</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_xpGain_major</defName>
+    <label>Grande Jóia Arcana da Aprendizagem</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Quando imbuída em um item, esta gema auxilia o usuário, armazenando um mimetismo residual da habilidade, permitindo ao usuário uma introspecção adicional e aumentando o XP ganho em 15%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/bloodgem_major</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>955</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_arcaneRes_minor</defName>
+    <label>Gema Arcana Menor de Resistência</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Quando imbuída em um item, esta gema cria uma barreira que repele a energia arcana ativa, reduzindo o dano recebido de fontes misteriosas em 10%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/ice_magicyte_small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>170</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_arcaneRes</defName>
+    <label>Jóia Arcana da Resistência</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Quando imbuída em um item, esta gema cria uma barreira que repele a energia arcana ativa, reduzindo o dano recebido de fontes misteriosas em 20%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/ice_magicyte</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>390</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_arcaneRes_major</defName>
+    <label>Gema Arcana Principal da Resistência</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Quando imbuída em um item, esta gema cria uma barreira que repele a energia arcana ativa, reduzindo o dano recebido de fontes misteriosas em 30%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/ice_magicyte_large</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>955</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+    
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_arcaneDmg_minor</defName>
+    <label>Gema de Força Arcana Menor</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Quando imbuído em um item, este encantamento aumenta a força de um ataque, aumentando a produção de dano em 4%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/fire_magicyte_small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>170</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_arcaneDmg</defName>
+    <label>Jóia Arcana da Força</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Quando imbuído em um item, este encantamento aumenta a força de um ataque, aumentando a produção de dano em 8%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/fire_magicyte</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>390</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_arcaneDmg_major</defName>
+    <label>Grande Jóia Arcana da Força</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Quando imbuído em um item, este encantamento aumenta a força de um ataque, aumentando a produção de dano em 12%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/fire_magicyte_large</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>955</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_wonder_minor</defName>
+    <label>Gema Arcana Menor da Maravilha</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Esta joia zumbe com um poder intenso. Esta gema pode ser usada para imbuir um item com potencial mágico, concedendo bônus menores a todas as categorias de encantamento.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/wonderstone_minor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>1190</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_wonder</defName>
+    <label>Jóia Arcana da Maravilha</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Esta joia zumbe com um poder intenso. Esta gema pode ser usada para imbuir um item com potencial mágico, concedendo bônus moderados a todas as categorias de encantamento.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/wonderstone</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>2650</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>TM_EStone_wonder_major</defName>
+    <label>Grande Jóia Arcana da Maravilha</label>
+    <description>Uma pedra mágica que pode ser usada por um mago para encantar um item com energia mágica. Esta joia zumbe com um poder intenso. Esta gema pode ser usada para imbuir um item com potencial mágico, concedendo bônus maiores a todas as categorias de encantamento.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/wonderstone_major</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>50</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>6550</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  
+    <!--=============== Raw Magicyte ====================-->
+  
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>RawMagicyte</defName>
+	<thingCategories>
+      <li>TM_MagicItems</li>
+    </thingCategories>
+    <label>mágico não refinado</label>
+	<tradeTags>
+	  <li>RawArcane</li>
+    </tradeTags>
+    <description>Uma pedra que parece envolver-se em uma superfície opaca e vítrea, como se um poder misterioso se ocultasse no centro da pedra. Aparentemente composta da mesma pedra da qual foi cortada, esta pedra bastante comum brilha ligeiramente, mesmo no escuro, e emite uma assinatura de energia que os magos podem detectar ao tocar a pedra.
+
+Raw Magicyte pode ser refinado para fazer uma variedade de joias encantadoras na mesa de lapidação.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/magicyte_raw</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+<!-- 	<deepCommonality>0.1</deepCommonality> -->
+	<statBases>
+	  <Beauty>4</Beauty>
+      <MarketValue>5</MarketValue>
+      <Mass>0.1</Mass>
+    </statBases>
+<!-- 	<stuffProps>
+	  <commonality>0.05</commonality>
+	</stuffProps> -->
+  </ThingDef>
+  
+      <!--=============== Bone Dust ====================-->
+  
+<!--     <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>RawMagicyte</defName>
+	<thingCategories>
+      <li>TM_MagicItems</li>
+    </thingCategories>
+    <label>unrefined magicyte</label>
+	<tradeTags>
+	  <li>RawArcane</li>
+    </tradeTags>
+    <description>A stone that seems to wrap itself in a dull, glassy surface, as if a mysterious power has cloaked itself in the center of the stone. Seemingly composed of the same stone it was cut from, this fairly unremarkable stone shimmers slightly, even in the dark, and it emits an energy signature that mages can detect when touching the stone.
+	
+Raw Magicyte can be refined to make a variety of enchanting gems at the gemcutting table.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/magicyte_raw</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+	<statBases>
+	  <Beauty>4</Beauty>
+      <MarketValue>5</MarketValue>
+      <Mass>0.1</Mass>
+    </statBases>
+  </ThingDef> -->
+
+</Defs>
