@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- ============= Gemcutting ============= -->
+
+  <WorkGiverDef>
+    <defName>DoBillsGemcutting</defName>
+    <label>fazer contas na mesa de lapidação</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Crafting</workType>
+    <priorityInType>110</priorityInType>
+    <fixedBillGiverDefs>
+      <li>TableGemcutting</li>
+    </fixedBillGiverDefs>
+    <verb>construir</verb>
+    <gerund>lapidação</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+  
+    <!-- ============= Printing ============= -->
+	
+  <WorkGiverDef>
+    <defName>DoBillsPrintingPress</defName>
+    <label>fazer contas na mesa de impressão</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Crafting</workType>
+    <priorityInType>109</priorityInType>
+    <fixedBillGiverDefs>
+      <li>TableMagicPrinter</li>
+    </fixedBillGiverDefs>
+    <verb>construir</verb>
+    <gerund>construindo</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+  
+      <!-- ============= Bard Entertain ============= -->
+	
+  <WorkGiverDef>
+    <defName>DoEntertain</defName>
+    <label>entreter o colono</label>
+    <giverClass>TorannMagic.WorkGiver_DoEntertain</giverClass>
+    <workType>Warden</workType>
+    <verb>entreter</verb>
+    <gerund>entretendo</gerund>
+    <requiredCapacities>
+      <li>Talking</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+  
+        <!-- ============= Commander Motivate ============= -->
+	
+  <WorkGiverDef>
+    <defName>DoCommanderMotivate</defName>
+    <label>peão motivador</label>
+    <giverClass>TorannMagic.WorkGiver_DoCommanderMotivate</giverClass>
+    <workType>Warden</workType>
+    <verb>motivar</verb>
+    <gerund>motivando</gerund>
+    <requiredCapacities>
+      <li>Talking</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+  
+     <!-- ============= Magic Work Related ============= -->
+
+  <WorkGiverDef>
+    <defName>ChargeStructure</defName>
+    <label>carregar objeto arcano</label>
+    <giverClass>TorannMagic.WorkGiver_ChargeArcaneObject</giverClass>
+    <workType>TM_Magic</workType>
+	<priorityInType>105</priorityInType>
+    <verb>carregar objeto arcano</verb>
+    <gerund>carregando objeto arcano</gerund>
+    <requiredCapacities>
+      <li>MagicManipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+	
+  <WorkGiverDef>
+    <defName>DoBillsArcaneForge</defName>
+    <label>magia de trabalho</label>
+    <giverClass>TorannMagic.WorkGiver_DoMagicBill</giverClass>
+    <workType>TM_Magic</workType>
+    <priorityInType>119</priorityInType>
+    <fixedBillGiverDefs>
+      <li>TableArcaneForge</li>
+	  <li>TableMagicCircle</li>
+	  <li>TableSmallMagicCircle</li>
+    </fixedBillGiverDefs>
+    <verb>magia de trabalho</verb>
+    <gerund>trabalhando com magia</gerund>
+    <requiredCapacities>
+      <li>MagicManipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+
+</Defs>
