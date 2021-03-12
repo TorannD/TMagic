@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Portals.label>Magia - Portais</TM_Portals.label>
+
+	<TM_Portals.helptext>1. Apenas um mago Arcano treinado em magia de portal pode ativar um portal.
+ uma. A opção de ativar um portal só aparece quando o mago Arcano tem mana suficiente (70%) para a ativação.
+ b. Apenas um mapa ocupado ativamente por colonos pode ser selecionado.
+ 
+2. Uma vez ativado, qualquer mago pode carregar o portal; um portal deve ser cobrado para ser usado, mas qualquer peão pode usá-lo.
+ uma. Apenas um peão por vez pode usar o portal; cada peão drena o portal em 5% de sua energia máxima.
+ c. Todos os itens são transmitidos simultaneamente; o custo para transferir itens por meio de um portal é de 10% de sua energia máxima.
+
+3. Somente magos podem transferir itens ou desativar um portal. Um portal deve ser desativado antes de ser reativado com um novo destino.
+</TM_Portals.helptext>
+
+	<TM_Enchanting.label>Magia - Encantando</TM_Enchanting.label>
+
+	<TM_Enchanting.helptext>Encantador oferece aos magos a habilidade de imbuir armas e armaduras com aprimoramentos. Existem algumas coisas que você deve saber sobre encantamento:
+
+1. Somente magos podem encantar! O processo de encantamento requer mana, então os peões mundanos serão incapazes de equipar pedras encantadoras.
+ 
+2. Para encantar um item, sua colônia deve cumprir os seguintes pré-requisitos:
+ uma. Sua colônia deve ter uma bancada de lapidação de gemas, pesquise Encantamento no menu de pesquisa na guia Mágica.
+ b. Reúna magia crua; ele pode ser encontrado em qualquer pedra lavrável, cada ataque de mineração tem uma chance de descobrir magicyte bruto.
+ c. Crie pedras encantadoras na bancada de lapidação.
+ 
+3. Depois de criar uma joia encantada de sua escolha, você precisará de um mago para realizar o encantamento.
+ uma. Com um mago selecionado, clique com o botão direito na joia encantadora e selecione a opção de equipar a joia para encantamento
+ b. Quando o mago estiver segurando a gema, clique com o botão direito em qualquer arma ou aparelho que esteja no chão e escolha encantar. O mago que está realizando o encantamento não pode ser recrutado.
+</TM_Enchanting.helptext>
+
+	<TM_EnchantingII.label>Magia - Encantando II</TM_EnchantingII.label>
+
+	<TM_EnchantingII.helptext>Encantando: Parte II
+
+4. Os encantamentos são permanentes e cada item pode conter um encantamento de cada tipo. Novos encantamentos do mesmo tipo substituirão os existentes
+encantamento. Encantar um item não aumenta o valor do item. Encantar um item consome a pedra preciosa encantadora. Há
+atualmente não há como extrair um encantamento de um item.
+
+5. Magicyte bruto (e pedras preciosas refinadas) também podem ser adquiridos de fornecedores selecionados. O processo de mineração profunda, infelizmente, filtra
+a chance de adquirir magicyte bruto desta maneira. Os usuários da "pedreira" podem adicionar magicyte aos minerais extraídos, o valor recomendado é de 0,4%
+ 
+6. Se você deseja soltar uma pedra encantada, selecione o mago segurando a gema encantadora, clique com o botão direito em qualquer quadrado aberto e selecione a opção do menu
+para soltar a gema.
+
+7. Os encantamentos de itens podem ser vistos em equipamentos individuais, selecionando o item no chão e usando a guia "Encantado". Os Encantamentos coletivos
+afetando um único peão pode ser visto na guia de saúde e um resumo dos encantamentos será exibido na guia de equipamento de um peão.		
+</TM_EnchantingII.helptext>
+
+</LanguageData>

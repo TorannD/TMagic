@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Artifact_TraitThief.label>Devorar alma</TM_Artifact_TraitThief.label>
+
+	<TM_Artifact_TraitThief.description>Roube as características de outro peão.</TM_Artifact_TraitThief.description>
+
+	<TM_Artifact_TraitInfuse.label>Infundir Alma</TM_Artifact_TraitInfuse.label>
+
+	<TM_Artifact_TraitInfuse.description>Infundir características seladas em um peão semelhante ao humano.</TM_Artifact_TraitInfuse.description>
+
+</LanguageData>

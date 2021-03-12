@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Demon_Body.label>baú chapeado</Demon_Body.label>
+
+	<Demon_Spine.label>espinha blindada</Demon_Spine.label>
+
+	<Demon_Abdomen.label>abdômen</Demon_Abdomen.label>
+
+	<Demon_Chest.label>baú chapeado</Demon_Chest.label>
+
+	<Demon_Heart.label>coração demoníaco</Demon_Heart.label>
+
+	<Demon_Heart_Hidden.label>coração sombra</Demon_Heart_Hidden.label>
+
+	<Demon_RibCage.label>Caixa torácica</Demon_RibCage.label>
+
+	<Demon_LeftLung.label>pulmão esquerdo</Demon_LeftLung.label>
+
+	<Demon_RightLung.label>pulmão direito</Demon_RightLung.label>
+
+	<Demon_Head.label>cabeça</Demon_Head.label>
+
+	<Demon_Neck.label>pescoço</Demon_Neck.label>
+
+	<Demon_DeathMask.label>máscara mortuária blindada</Demon_DeathMask.label>
+
+	<Demon_Skull.label>caveira blindada</Demon_Skull.label>
+
+	<Demon_Brain.label>cérebro</Demon_Brain.label>
+
+	<Demon_Horn1.label>chifre do lado esquerdo</Demon_Horn1.label>
+
+	<Demon_Horn2.label>chifre superior esquerdo</Demon_Horn2.label>
+
+	<Demon_Horn3.label>chifre superior direito</Demon_Horn3.label>
+
+	<Demon_Horn4.label>chifre do lado direito</Demon_Horn4.label>
+
+	<Demon_SightSensor.label>visão interior</Demon_SightSensor.label>
+
+	<Demon_SixthSense.label>sentido interno</Demon_SixthSense.label>
+
+	<Demon_Mandible.label>mandíbulas</Demon_Mandible.label>
+
+	<Demon_LeftWing.label>ASA esquerda</Demon_LeftWing.label>
+
+	<Demon_RightWing.label>ASA direita</Demon_RightWing.label>
+
+	<Demon_LeftArm.label>braço esquerdo</Demon_LeftArm.label>
+
+	<Demon_RightArm.label>braço direito</Demon_RightArm.label>
+
+	<Demon_LeftLeg.label>perna esquerda</Demon_LeftLeg.label>
+
+	<Demon_RightLeg.label>perna direita</Demon_RightLeg.label>
+
+</LanguageData>

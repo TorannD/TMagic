@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Ele_Body.label>corpo</Ele_Body.label>
+
+	<Ele_Head.label>cabeça</Ele_Head.label>
+
+	<Ele_Skull.label>crânio</Ele_Skull.label>
+
+	<Ele_Brain.label>cérebro</Ele_Brain.label>
+
+	<Ele_Heart.label>coração</Ele_Heart.label>
+
+	<Ele_LeftArm.label>braço esquerdo</Ele_LeftArm.label>
+
+	<Ele_RightArm.label>braço direito</Ele_RightArm.label>
+
+	<Ele_Horn.label>buzina</Ele_Horn.label>
+
+	<Ele_Eye.label>olho</Ele_Eye.label>
+
+	<Ele_LeftEar.label>orelha esquerda</Ele_LeftEar.label>
+
+	<Ele_RightEar.label>orelha direita</Ele_RightEar.label>
+
+	<Ele_Jaw.label>mandíbula</Ele_Jaw.label>
+
+	<Ele_Neck.label>pescoço</Ele_Neck.label>
+
+	<Ele_Spine.label>coluna vertebral</Ele_Spine.label>
+
+	<Ele_Abdomen.label>abdômen</Ele_Abdomen.label>
+
+	<Ele_Chest.label>peito</Ele_Chest.label>
+
+	<Ele_Base.label>base de movimento elementar</Ele_Base.label>
+
+</LanguageData>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<ManaDrain.label>onde drenar</ManaDrain.label>
+
+	<ManaDrain.description>O alinhamento celestial do planeta está causando uma diminuição no mana. Todas as criaturas sintonizadas com poderes mágicos perderão lentamente o poder.</ManaDrain.description>
+
+	<ManaDrain.endmessage>A magia está voltando ao normal.</ManaDrain.endmessage>
+
+	<ManaDrain.lettertext>O alinhamento celestial do planeta está mudando, causando uma diminuição no mana.\n\nTodas as criaturas sintonizadas com poderes mágicos perderão mana lentamente.\n\nAs criaturas podem ficar fisicamente doentes se não tiverem mana restante.</ManaDrain.lettertext>
+
+	<ManaSurge.label>onde está a onda</ManaSurge.label>
+
+	<ManaSurge.description>O alinhamento celestial do planeta está causando uma onda de mana. Todas as criaturas sintonizadas com poderes mágicos ganharão mana em uma taxa aumentada.</ManaSurge.description>
+
+	<ManaSurge.endmessage>A magia está voltando ao normal.</ManaSurge.endmessage>
+
+	<ManaSurge.lettertext>O alinhamento celestial do planeta mudou, causando uma onda de mana. Todas as criaturas sintonizadas com poderes mágicos ganharão mana em uma taxa aumentada.</ManaSurge.lettertext>
+
+	<ElementalAssault.label>agressão elementar</ElementalAssault.label>
+
+	<ElementalAssault.description>Elementais hostis criaram uma brecha em seu mundo e estão se preparando para enviar equipes de assalto pela fenda!\n\nFendas causam caos na atmosfera conforme a energia vaza pela fenda para o seu mundo. Os seguintes efeitos ocorrem para cada elemento da fenda:\n\nFissura do fogo: chuvas de meteoros e ondas de calor.\n Fenda da Terra: fumaça tóxica e faz com que os animais fiquem furiosos\n Fenda do gelo: tempestades de granizo e rápido declínio da temperatura\n Fenda do ar: tempestades com raios</ElementalAssault.description>
+
+	<ElementalAssault.endmessage>A fenda foi fechada.</ElementalAssault.endmessage>
+
+	<ElementalAssault.lettertext>Elementais hostis criaram uma brecha em seu mundo e estão se preparando para enviar equipes de assalto pela fenda!\n\nFendas causam caos na atmosfera conforme a energia vaza pela fenda para o seu mundo. Os seguintes efeitos ocorrem para cada elemento da fenda:\n\nFissura do fogo: chuvas de meteoros e ondas de calor.\n Fenda da Terra: gases tóxicos e faz com que os animais fiquem furiosos\nFenda do gelo: tempestades de granizo e rápido declínio da temperatura\nFenda do ar: tempestades com raios\n\nDestrua a fenda para acabar com este pesadelo!</ElementalAssault.lettertext>
+
+	<WanderingLich.label>Lich errante</WanderingLich.label>
+
+	<WanderingLich.description>Um antigo lich vagou pela área e está se preparando para atacar sua colônia.\n\nLichs são criaturas poderosas por si mesmas, mas sua verdadeira força reside em sua capacidade de criar mortos-vivos animados a partir dos cadáveres dos mortos.\n\nEste lich é um ser antigo que despreza toda a vida, e seu alegre bando de seres vivos até agora resistiu a ser extinto. Ele tentará ativamente encerrar sua história de sobrevivência criando uma horda de mortos-vivos para dominar suas defesas.\n\nO lich criará periodicamente novos guerreiros esqueletos para atacar a colônia; permitir que o lich complete um ritual perto de um cadáver exposto aumentará a chance de gigantes esqueletos serem criados. No final das contas, o lich atacará a própria colônia, se ondas de mortos-vivos forem incapazes de completar a tarefa primeiro.</WanderingLich.description>
+
+	<WanderingLich.endmessage>O assalto do lich está acabando.</WanderingLich.endmessage>
+
+	<WanderingLich.lettertext>Um antigo lich vagou pela área e está se preparando para atacar sua colônia.\n\nLichs são criaturas poderosas por si mesmas, mas sua verdadeira força reside em sua capacidade de criar mortos-vivos animados a partir dos cadáveres dos mortos.\n\nEste lich é um ser antigo que despreza toda a vida, e seu alegre bando de seres vivos até agora resistiu a ser extinto. Ele tentará ativamente encerrar sua história de sobrevivência criando uma horda de mortos-vivos para dominar suas defesas.\n\nO lich criará periodicamente novos guerreiros esqueletos para atacar a colônia; permitir que o lich complete um ritual perto de um cadáver exposto aumentará a chance de gigantes esqueletos serem criados. No final das contas, o lich atacará a própria colônia, se ondas de mortos-vivos forem incapazes de completar a tarefa primeiro.</WanderingLich.lettertext>
+
+	<DarkClouds.label>nuvens escuras</DarkClouds.label>
+
+	<DarkClouds.description>Uma sombra de mau presságio foi lançada sobre a terra; há uma presença sinistra na sombra escura dessas nuvens que amaldiçoa os vivos.</DarkClouds.description>
+
+	<DarkClouds.endmessage>As nuvens escuras estão se dispersando.</DarkClouds.endmessage>
+
+	<DarkClouds.lettertext>Uma sombra de mau presságio foi lançada sobre a terra; há uma presença sinistra na sombra escura dessas nuvens que amaldiçoa os vivos.</DarkClouds.lettertext>
+
+	<DarkThunderstorm.label>Tempestade violenta</DarkThunderstorm.label>
+
+	<DarkThunderstorm.description>Existe uma energia maliciosa escondida dentro dessas nuvens escuras.</DarkThunderstorm.description>
+
+	<DarkThunderstorm.endmessage>A violenta tempestade está diminuindo.</DarkThunderstorm.endmessage>
+
+	<TargetedPredatorInsanity.label>insanidade de predador</TargetedPredatorInsanity.label>
+
+	<TargetedPredatorInsanity.description>Um pulso psíquico enfurece predadores próximos ... e os empurra para humanos agressivos.</TargetedPredatorInsanity.description>
+
+	<TargetedPredatorInsanity.endmessage>O pulso do predador desaparece.</TargetedPredatorInsanity.endmessage>
+
+	<TargetedPredatorInsanity.lettertext>Você enfureceu todos os predadores próximos e os concentrou em seus inimigos. Esteja avisado, os animais enfurecidos continuarão a caçar mesmo depois que seus inimigos forem embora.</TargetedPredatorInsanity.lettertext>
+
+	<DivineBlessing.label>benção divina</DivineBlessing.label>
+
+	<DivineBlessing.description>Um poder superior responde ao seu pedido de misericórdia.</DivineBlessing.description>
+
+	<DivineBlessing.endmessage>A presença benevolente desaparece.</DivineBlessing.endmessage>
+
+	<DivineBlessing.lettertext>Seu pedido de misericórdia foi respondido por um poder superior. Várias bênçãos foram concedidas para contestar as doenças existentes.</DivineBlessing.lettertext>
+
+	<DemonAssault.label>ataque de demônio</DemonAssault.label>
+
+	<DemonAssault.description>O fim está próximo - demônios violentos estão atacando sua colônia!\nComo um arauto da desgraça iminente, fogo e cinzas começaram a cair dos céus.\n\nEstes seres infernais têm uma variedade de ataques e táticas desafiadoras.\nNo entanto, os demônios estão incapaz de permanecer neste reino por longos períodos e será forçado a retornar ao seu plano infernal em cerca de 3 horas. Derrote ou sobreviva a este pesadelo.\nHá muito pouco tempo para se preparar.\n\nBoa sorte!</DemonAssault.description>
+
+	<DemonAssault.endmessage>Os demônios voltaram ao seu plano infernal.</DemonAssault.endmessage>
+
+	<DemonAssault.lettertext>O fim está próximo - demônios violentos estão atacando sua colônia!\nComo um arauto da desgraça iminente, fogo e cinzas começaram a cair dos céus.\n\nEstes seres infernais têm uma variedade de ataques e táticas desafiadoras.\nNo entanto, os demônios estão incapaz de permanecer neste reino por longos períodos e será forçado a retornar ao seu plano infernal em cerca de 3 horas. Derrote ou sobreviva a este pesadelo.\nHá muito pouco tempo para se preparar.\n\nBoa sorte!</DemonAssault.lettertext>
+
+</LanguageData>
