@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_MakeManaweave.label>manaweave</TM_MakeManaweave.label>
+
+	<TM_MakeManaweave.description>Weave mana, magicyte, and cloth into manaweave</TM_MakeManaweave.description>
+
+	<TM_MakeManaweave.jobstring>weaving mana</TM_MakeManaweave.jobstring>
+
+	<TM_MakeArcalleum.label>arcalleum</TM_MakeArcalleum.label>
+
+	<TM_MakeArcalleum.description>Meld steel, jade, silver and magicyte into arcalleum alloy</TM_MakeArcalleum.description>
+
+	<TM_MakeArcalleum.jobstring>smelting arcalleum</TM_MakeArcalleum.jobstring>
+
+</LanguageData>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Travel.label>travel</TM_Travel.label>
+
+	<TM_Travel.description>Travel is how much time a creature has spent away from a colony. It can be filled by sending the creature on a caravan.</TM_Travel.description>
+
+</LanguageData>

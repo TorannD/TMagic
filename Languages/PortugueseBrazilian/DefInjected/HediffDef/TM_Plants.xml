@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_SyrriumAddiction.label>vício de sírio</TM_SyrriumAddiction.label>
+
+	<TM_SyrriumAddiction.description>O desejo de sentir os efeitos do sírio tornou-se uma necessidade.</TM_SyrriumAddiction.description>
+
+	<TM_SyrriumAddiction.stages.1.label>cancelamento</TM_SyrriumAddiction.stages.1.label>
+
+	<TM_SyrriumTolerance.label>tolerância de sírio</TM_SyrriumTolerance.label>
+
+	<TM_SyrriumTolerance.description>Ajuste natural para normalizar os efeitos do consumo de pomanassyrrium condensado.</TM_SyrriumTolerance.description>
+
+	<TM_PomanaSenseHD.label>pomada sem</TM_PomanaSenseHD.label>
+
+	<TM_PomanaSenseHD.description>Relaxamento e sentidos aguçados por consumir pomana crua.</TM_PomanaSenseHD.description>
+
+	<TM_SyrriumSenseHD.label>sentido de sírio</TM_SyrriumSenseHD.label>
+
+	<TM_SyrriumSenseHD.description>Sentidos aguçados resultantes do consumo de pomanassyrrium condensado.</TM_SyrriumSenseHD.description>
+
+</LanguageData>

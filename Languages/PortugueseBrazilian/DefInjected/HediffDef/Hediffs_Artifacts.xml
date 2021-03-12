@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_ArtifactRenewalHD.label>Renovação</TM_ArtifactRenewalHD.label>
+
+	<TM_ArtifactRenewalHD.description>Melhora a qualidade do sono.</TM_ArtifactRenewalHD.description>
+
+	<TM_Artifact_PsionicBoostHD.label>Impulso Psiônico</TM_Artifact_PsionicBoostHD.label>
+
+	<TM_Artifact_PsionicBoostHD.description>Aumenta a energia psiônica máxima disponível para um psiônico.</TM_Artifact_PsionicBoostHD.description>
+
+	<TM_ArtifactBlockHD.label>Bloqueando</TM_ArtifactBlockHD.label>
+
+	<TM_ArtifactBlockHD.description>Bloqueia ataques físicos; evita danos de ataques bloqueados com sucesso.</TM_ArtifactBlockHD.description>
+
+	<TM_ArtifactHealthHD.label>Saúde melhorada</TM_ArtifactHealthHD.label>
+
+	<TM_ArtifactHealthHD.description>Aumenta a cura natural.</TM_ArtifactHealthHD.description>
+
+	<TM_ArtifactPathfindingHD.label>Encontrando o caminho</TM_ArtifactPathfindingHD.label>
+
+	<TM_ArtifactPathfindingHD.description>Um talismã que estranhamente determina um caminho fácil através de qualquer obstáculo; ignora a penalidade de movimento para obstáculos e terreno.</TM_ArtifactPathfindingHD.description>
+
+	<TM_ArtifactStrengthHD.label>Força da Pedra</TM_ArtifactStrengthHD.label>
+
+	<TM_ArtifactStrengthHD.description>Um encantamento que aumenta a manipulação.</TM_ArtifactStrengthHD.description>
+
+	<TM_Artifact_HateBoostHD.label>Boost de ódio</TM_Artifact_HateBoostHD.label>
+
+	<TM_Artifact_HateBoostHD.description>Aumenta o ódio máximo disponível para um cavaleiro da morte.</TM_Artifact_HateBoostHD.description>
+
+	<TM_ArtifactCatEyesHD.label>Visão Escura</TM_ArtifactCatEyesHD.label>
+
+	<TM_ArtifactCatEyesHD.description>Melhora a visão e concede menor visão noturna.</TM_ArtifactCatEyesHD.description>
+
+	<TM_ArtifactMendingHD.label>Melhor</TM_ArtifactMendingHD.label>
+
+	<TM_ArtifactMendingHD.description>Conserta e conserta roupas e armas equipadas.</TM_ArtifactMendingHD.description>
+
+	<TM_ArtifactDeflectHD.label>Bloqueio Deflectivo</TM_ArtifactDeflectHD.label>
+
+	<TM_ArtifactDeflectHD.description>Bloqueia ataques e pode desviar projéteis para inimigos próximos; evita danos de um ataque desviado com sucesso.</TM_ArtifactDeflectHD.description>
+
+	<TM_ArtifactArcaneRecoveryHD.label>Recuperação Arcana</TM_ArtifactArcaneRecoveryHD.label>
+
+	<TM_ArtifactArcaneRecoveryHD.description>Aumenta a taxa de recuperação de Fraqueza Arcana; não reduz a quantidade de Fraqueza Arcana adquirida.</TM_ArtifactArcaneRecoveryHD.description>
+
+	<TM_Artifact_BloodBoostHD.label>Blood Boost</TM_Artifact_BloodBoostHD.label>
+
+	<TM_Artifact_BloodBoostHD.description>Aumenta o máximo de magia de sangue disponível para um mago de sangue.</TM_Artifact_BloodBoostHD.description>
+
+	<TM_ArtifactMindHD.label>Mind Ward</TM_ArtifactMindHD.label>
+
+	<TM_ArtifactMindHD.description>Um talismã único que ajuda um peão a compartimentar suas emoções para se recuperar rapidamente de um colapso mental.</TM_ArtifactMindHD.description>
+
+	<TM_TraitInfusionHD.label>Infusão de traço</TM_TraitInfusionHD.label>
+
+	<TM_TraitInfusionHD.description>Um peão ganhou características por meio de infusão mágica; isso afetará seu senso de identidade.</TM_TraitInfusionHD.description>
+
+</LanguageData>

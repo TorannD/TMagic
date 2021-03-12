@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_LesserElemental_Lifestage.label>lesser elemental</TM_LesserElemental_Lifestage.label>
+
+	<TM_Elemental_Lifestage.label>elemental</TM_Elemental_Lifestage.label>
+
+	<TM_GreaterElemental_Lifestage.label>greater elemental</TM_GreaterElemental_Lifestage.label>
+
+	<TM_Minion_Lifestage.label>minion</TM_Minion_Lifestage.label>
+
+	<TM_GreaterMinion_Lifestage.label>greater minion</TM_GreaterMinion_Lifestage.label>
+
+	<TM_Demon_Lifestage.label>demon</TM_Demon_Lifestage.label>
+
+	<TM_LesserDemon_Lifestage.label>lesser demon</TM_LesserDemon_Lifestage.label>
+
+	<TM_LesserSentinel_Lifestage.label>lesser sentinel</TM_LesserSentinel_Lifestage.label>
+
+	<TM_Sentinel_Lifestage.label>sentinel</TM_Sentinel_Lifestage.label>
+
+	<TM_GreaterSentinel_Lifestage.label>greater sentinel</TM_GreaterSentinel_Lifestage.label>
+
+	<TM_Skeleton_Lifestage.label>skeleton</TM_Skeleton_Lifestage.label>
+
+	<TM_GiantSkeleton_Lifestage.label>giant skeleton</TM_GiantSkeleton_Lifestage.label>
+
+	<TM_SkeletonLich_Lifestage.label>skeleton lich</TM_SkeletonLich_Lifestage.label>
+
+</LanguageData>

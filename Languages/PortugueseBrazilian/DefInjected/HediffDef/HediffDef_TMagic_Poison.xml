@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Poison_HD.label>Poção</TM_Poison_HD.label>
+
+	<TM_Poison_HD.description>Danos causados ​​por veneno.</TM_Poison_HD.description>
+
+	<TM_Poison_HD.comps.0.labeltendedwell>enfaixado</TM_Poison_HD.comps.0.labeltendedwell>
+
+	<TM_Poison_HD.comps.0.labeltendedwellinner>suturado</TM_Poison_HD.comps.0.labeltendedwellinner>
+
+	<TM_Poison_HD.comps.0.labelsolidtendedwell>definir</TM_Poison_HD.comps.0.labelsolidtendedwell>
+
+	<TM_Poison_HD.injuryprops.destroyedlabel>murcha</TM_Poison_HD.injuryprops.destroyedlabel>
+
+	<TM_Poison_HD.injuryprops.destroyedoutlabel>murcha</TM_Poison_HD.injuryprops.destroyedoutlabel>
+
+	<TM_Poisoned_HD.label>Envenenado</TM_Poisoned_HD.label>
+
+	<TM_Poisoned_HD.description>Efeitos colaterais do veneno.</TM_Poisoned_HD.description>
+
+	<TM_Poisoned_HD.stages.0.label>menor</TM_Poisoned_HD.stages.0.label>
+
+	<TM_Poisoned_HD.stages.1.label>moderado</TM_Poisoned_HD.stages.1.label>
+
+	<TM_Poisoned_HD.stages.2.label>principal</TM_Poisoned_HD.stages.2.label>
+
+</LanguageData>

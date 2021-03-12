@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_ArcaneWeakness.label>fraqueza arcana</TM_ArcaneWeakness.label>
+
+	<TM_ArcaneWeakness.description>Fraqueza Arcana é um subproduto do lançamento de habilidades mágicas. Habilidades menores com um custo de mana menor que 25 não incorrerão em Fraqueza Arcana. A quantidade de Fraqueza Arcana que afetará um mago é relativa ao custo de mana da habilidade.</TM_ArcaneWeakness.description>
+
+	<TM_ArcaneWeakness.stages.0.label>enfraquecido</TM_ArcaneWeakness.stages.0.label>
+
+	<TM_ArcaneWeakness.stages.1.label>drenado</TM_ArcaneWeakness.stages.1.label>
+
+	<TM_ArcaneWeakness.stages.2.label>gravemente doente</TM_ArcaneWeakness.stages.2.label>
+
+	<TM_ArcaneWeakness.stages.3.label>catatônico</TM_ArcaneWeakness.stages.3.label>
+
+	<TM_ArcaneWeakness.stages.4.label>perto da morte</TM_ArcaneWeakness.stages.4.label>
+
+</LanguageData>

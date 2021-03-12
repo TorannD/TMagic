@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_ProvisionerAuraHD.label>Commissions Aura</TM_ProvisionerAuraHD.label>
+
+	<TM_ProvisionerAuraHD.description>Melhora a disponibilidade de provisões para peões próximos.</TM_ProvisionerAuraHD.description>
+
+	<TM_TaskMasterAuraHD.label>Aura do mestre de tarefas</TM_TaskMasterAuraHD.label>
+
+	<TM_TaskMasterAuraHD.description>Gerencia as tarefas e prioridades dos peões próximos, aumentando a diligência, mas reduzindo o humor.</TM_TaskMasterAuraHD.description>
+
+	<TM_CommanderAuraHD.label>Ordem Aura</TM_CommanderAuraHD.label>
+
+	<TM_CommanderAuraHD.description>Inspira peões próximos com carisma e liderança.</TM_CommanderAuraHD.description>
+
+	<TM_StayAlertHD.label>Alerta</TM_StayAlertHD.label>
+
+	<TM_StayAlertHD.description>Recebeu um pedido para revigorar os níveis de alerta.</TM_StayAlertHD.description>
+
+	<TM_MoveOutHD.label>Double Time</TM_MoveOutHD.label>
+
+	<TM_MoveOutHD.description>Recebeu um pedido para agir rapidamente.</TM_MoveOutHD.description>
+
+	<TM_MoveOutHD.stages.0.label>Recuperando</TM_MoveOutHD.stages.0.label>
+
+	<TM_HoldTheLineHD.label>Postura defensiva</TM_HoldTheLineHD.label>
+
+	<TM_HoldTheLineHD.description>Recebeu ordem para manter posição e lutar bravamente.</TM_HoldTheLineHD.description>
+
+	<TM_HTLShieldHD.label>Escudo HTL</TM_HTLShieldHD.label>
+
+	<TM_HTLShieldHD.description>Maior fortaleza por receber a ordem de manter a linha.</TM_HTLShieldHD.description>
+
+	<TM_CommanderHD.label>Emocionalmente inspirado (I)</TM_CommanderHD.label>
+
+	<TM_CommanderHD.description>Inspirado por um comandante.</TM_CommanderHD.description>
+
+	<TM_CommanderHD.stages.0.label>Comandante</TM_CommanderHD.stages.0.label>
+
+	<TM_CommanderHD_I.label>Emocionalmente inspirado (II)</TM_CommanderHD_I.label>
+
+	<TM_CommanderHD_I.description>Inspirado por um comandante.</TM_CommanderHD_I.description>
+
+	<TM_CommanderHD_II.label>Emocionalmente inspirado (III)</TM_CommanderHD_II.label>
+
+	<TM_CommanderHD_II.description>Inspirado por um comandante.</TM_CommanderHD_II.description>
+
+	<TM_CommanderHD_III.label>Emocionalmente inspirado (IV)</TM_CommanderHD_III.label>
+
+	<TM_CommanderHD_III.description>Inspirado por um comandante.</TM_CommanderHD_III.description>
+
+	<TM_ProvisionerHD.label>Provisões</TM_ProvisionerHD.label>
+
+	<TM_ProvisionerHD.description>Suprimentos e informações adquiridos de um comandante.</TM_ProvisionerHD.description>
+
+	<TM_ProvisionerHD.stages.0.label>I</TM_ProvisionerHD.stages.0.label>
+
+	<TM_ProvisionerHD.stages.1.label>II</TM_ProvisionerHD.stages.1.label>
+
+	<TM_ProvisionerHD.stages.2.label>III</TM_ProvisionerHD.stages.2.label>
+
+	<TM_ProvisionerHD.stages.3.label>IV</TM_ProvisionerHD.stages.3.label>
+
+	<TM_TaskMasterHD.label>Mestre de Tarefas</TM_TaskMasterHD.label>
+
+	<TM_TaskMasterHD.description>Tarefas e prioridades são controladas por um comandante.</TM_TaskMasterHD.description>
+
+	<TM_TaskMasterHD.stages.0.label>I</TM_TaskMasterHD.stages.0.label>
+
+	<TM_TaskMasterHD.stages.1.label>II</TM_TaskMasterHD.stages.1.label>
+
+	<TM_TaskMasterHD.stages.2.label>III</TM_TaskMasterHD.stages.2.label>
+
+	<TM_TaskMasterHD.stages.3.label>IV</TM_TaskMasterHD.stages.3.label>
+
+</LanguageData>

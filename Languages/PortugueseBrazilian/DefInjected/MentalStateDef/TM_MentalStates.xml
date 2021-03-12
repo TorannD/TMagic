@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_WanderPsychotic.label>wandering in psychosis</TM_WanderPsychotic.label>
+
+	<TM_WanderPsychotic.recoverymessage>{0} is no longer wandering in a psychotic state.</TM_WanderPsychotic.recoverymessage>
+
+	<TM_WanderPsychotic.baseinspectline>Mental state: Psychotic wandering</TM_WanderPsychotic.baseinspectline>
+
+	<TM_WanderSad.label>sad wandering</TM_WanderSad.label>
+
+	<TM_WanderSad.recoverymessage>{0} is no longer wandering in sadness.</TM_WanderSad.recoverymessage>
+
+	<TM_WanderSad.baseinspectline>Mental state: Sad wandering</TM_WanderSad.baseinspectline>
+
+	<TM_Berserk.label>berserk</TM_Berserk.label>
+
+	<TM_Berserk.recoverymessage>{0}'s berserk rage has come to an end.</TM_Berserk.recoverymessage>
+
+	<TM_Berserk.baseinspectline>Mental state: Berserk</TM_Berserk.baseinspectline>
+
+	<TM_PanicFlee.label>panic fleeing</TM_PanicFlee.label>
+
+	<TM_PanicFlee.baseinspectline>Mental state: Fleeing in panic</TM_PanicFlee.baseinspectline>
+
+	<TM_WanderConfused.label>confused wandering</TM_WanderConfused.label>
+
+	<TM_WanderConfused.recoverymessage>{0} is no longer confused.</TM_WanderConfused.recoverymessage>
+
+	<TM_WanderConfused.baseinspectline>Mental state: Confused and wandering</TM_WanderConfused.baseinspectline>
+
+</LanguageData>

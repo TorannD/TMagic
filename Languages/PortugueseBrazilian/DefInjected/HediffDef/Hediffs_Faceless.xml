@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_DisguiseHD.label>Decepção</TM_DisguiseHD.label>
+
+	<TM_DisguiseHD.description>Envolto em um disfarce inteligente para enganar os oponentes.</TM_DisguiseHD.description>
+
+	<TM_DisguiseHD.stages.0.label>I</TM_DisguiseHD.stages.0.label>
+
+	<TM_DisguiseHD_I.label>Decepção</TM_DisguiseHD_I.label>
+
+	<TM_DisguiseHD_I.description>Envolto em um disfarce inteligente para enganar os oponentes.</TM_DisguiseHD_I.description>
+
+	<TM_DisguiseHD_I.stages.0.label>II</TM_DisguiseHD_I.stages.0.label>
+
+	<TM_DisguiseHD_II.label>Decepção</TM_DisguiseHD_II.label>
+
+	<TM_DisguiseHD_II.description>Envolto em um disfarce inteligente para enganar os oponentes.</TM_DisguiseHD_II.description>
+
+	<TM_DisguiseHD_II.stages.0.label>III</TM_DisguiseHD_II.stages.0.label>
+
+	<TM_DisguiseHD_III.label>Decepção</TM_DisguiseHD_III.label>
+
+	<TM_DisguiseHD_III.description>Envolto em um disfarce inteligente para enganar os oponentes.</TM_DisguiseHD_III.description>
+
+	<TM_DisguiseHD_III.stages.0.label>IV</TM_DisguiseHD_III.stages.0.label>
+
+	<TM_ReversalHD.label>Postura de Reversão</TM_ReversalHD.label>
+
+	<TM_ReversalHD.description>Volte a energia de ataque para o atacante.</TM_ReversalHD.description>
+
+	<TM_ReversalHD.stages.0.label>I</TM_ReversalHD.stages.0.label>
+
+	<TM_PossessionHD.label>Possuído</TM_PossessionHD.label>
+
+	<TM_PossessionHD.description>As ações estão sendo influenciadas por um mestre do engano.</TM_PossessionHD.description>
+
+	<TM_PossessionHD.stages.0.label>I</TM_PossessionHD.stages.0.label>
+
+	<TM_PossessionHD_I.label>Possuído</TM_PossessionHD_I.label>
+
+	<TM_PossessionHD_I.description>As ações estão sendo influenciadas por um mestre do engano.</TM_PossessionHD_I.description>
+
+	<TM_PossessionHD_I.stages.0.label>II</TM_PossessionHD_I.stages.0.label>
+
+	<TM_PossessionHD_II.label>Possuído</TM_PossessionHD_II.label>
+
+	<TM_PossessionHD_II.description>As ações estão sendo influenciadas por um mestre do engano.</TM_PossessionHD_II.description>
+
+	<TM_PossessionHD_II.stages.0.label>III</TM_PossessionHD_II.stages.0.label>
+
+	<TM_PossessionHD_III.label>Possuído</TM_PossessionHD_III.label>
+
+	<TM_PossessionHD_III.description>As ações estão sendo influenciadas por um mestre do engano.</TM_PossessionHD_III.description>
+
+	<TM_PossessionHD_III.stages.0.label>IV</TM_PossessionHD_III.stages.0.label>
+
+	<TM_CoOpPossessionHD.label>Possuído</TM_CoOpPossessionHD.label>
+
+	<TM_CoOpPossessionHD.description>As ações estão sendo influenciadas por um mestre do engano.</TM_CoOpPossessionHD.description>
+
+	<TM_CoOpPossessionHD.stages.0.label>I</TM_CoOpPossessionHD.stages.0.label>
+
+	<TM_CoOpPossessionHD_I.label>Possuído</TM_CoOpPossessionHD_I.label>
+
+	<TM_CoOpPossessionHD_I.description>As ações estão sendo influenciadas por um mestre do engano.</TM_CoOpPossessionHD_I.description>
+
+	<TM_CoOpPossessionHD_I.stages.0.label>II</TM_CoOpPossessionHD_I.stages.0.label>
+
+	<TM_CoOpPossessionHD_II.label>Possuído</TM_CoOpPossessionHD_II.label>
+
+	<TM_CoOpPossessionHD_II.description>As ações estão sendo influenciadas por um mestre do engano.</TM_CoOpPossessionHD_II.description>
+
+	<TM_CoOpPossessionHD_II.stages.0.label>III</TM_CoOpPossessionHD_II.stages.0.label>
+
+	<TM_CoOpPossessionHD_III.label>Possuído</TM_CoOpPossessionHD_III.label>
+
+	<TM_CoOpPossessionHD_III.description>As ações estão sendo influenciadas por um mestre do engano.</TM_CoOpPossessionHD_III.description>
+
+	<TM_CoOpPossessionHD_III.stages.0.label>IV</TM_CoOpPossessionHD_III.stages.0.label>
+
+	<TM_DisorientedVomit.label>desorientado</TM_DisorientedVomit.label>
+
+	<TM_DisorientedVomit.description>Desorientado após trocar de posição com outro peão.</TM_DisorientedVomit.description>
+
+	<TM_DisorientedVomit.stages.0.label>I</TM_DisorientedVomit.stages.0.label>
+
+</LanguageData>

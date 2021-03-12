@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_SkeletonLich.label>skeleton lich</TM_SkeletonLich.label>
+
+	<TM_SkeletonLich.lifestages.0.label>skeleton lich</TM_SkeletonLich.lifestages.0.label>
+
+	<TM_GiantSkeleton.label>giant skeleton</TM_GiantSkeleton.label>
+
+	<TM_GiantSkeleton.lifestages.0.label>giant skeleton</TM_GiantSkeleton.lifestages.0.label>
+
+	<TM_Skeleton.label>skeleton</TM_Skeleton.label>
+
+	<TM_Skeleton.lifestages.0.label>skeleton</TM_Skeleton.lifestages.0.label>
+
+</LanguageData>

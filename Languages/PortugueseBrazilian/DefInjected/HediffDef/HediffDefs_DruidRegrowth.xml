@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_StomachRegrowth.label>Regrown estômago</TM_StomachRegrowth.label>
+
+	<TM_StomachRegrowth.description>O mágico entrelaçamento da natureza e da carne fará com que esta parte do corpo volte a crescer ao longo de vários dias.</TM_StomachRegrowth.description>
+
+	<TM_StomachRegrowth.stages.0.label>formando</TM_StomachRegrowth.stages.0.label>
+
+	<TM_StomachRegrowth.stages.1.label>em desenvolvimento</TM_StomachRegrowth.stages.1.label>
+
+	<TM_StomachRegrowth.stages.2.label>crescer novamente</TM_StomachRegrowth.stages.2.label>
+
+	<TM_ToeRegrowth.label>Toe Regrown</TM_ToeRegrowth.label>
+
+	<TM_ToeRegrowth.description>O mágico entrelaçamento da natureza e da carne fará com que esta parte do corpo volte a crescer ao longo de vários dias.</TM_ToeRegrowth.description>
+
+	<TM_ToeRegrowth.stages.0.label>esboço do dedo do pé</TM_ToeRegrowth.stages.0.label>
+
+	<TM_ToeRegrowth.stages.1.label>crescer novamente</TM_ToeRegrowth.stages.1.label>
+
+	<TM_FingerRegrowth.label>Dedo Regrown</TM_FingerRegrowth.label>
+
+	<TM_FingerRegrowth.description>O mágico entrelaçamento da natureza e da carne fará com que esta parte do corpo volte a crescer ao longo de vários dias.</TM_FingerRegrowth.description>
+
+	<TM_FingerRegrowth.stages.0.label>esboço de dedo</TM_FingerRegrowth.stages.0.label>
+
+	<TM_FingerRegrowth.stages.1.label>crescer novamente</TM_FingerRegrowth.stages.1.label>
+
+	<TM_LiverRegrowth.label>Fígado Regrido</TM_LiverRegrowth.label>
+
+	<TM_LiverRegrowth.description>O mágico entrelaçamento da natureza e da carne fará com que esta parte do corpo volte a crescer ao longo de vários dias.</TM_LiverRegrowth.description>
+
+	<TM_LiverRegrowth.stages.0.label>formando</TM_LiverRegrowth.stages.0.label>
+
+	<TM_LiverRegrowth.stages.1.label>em desenvolvimento</TM_LiverRegrowth.stages.1.label>
+
+	<TM_LiverRegrowth.stages.2.label>crescer novamente</TM_LiverRegrowth.stages.2.label>
+
+	<TM_LiverRegrowth.stages.3.label>melhorada</TM_LiverRegrowth.stages.3.label>
+
+	<TM_SpineRegrowth.label>Relatório de coluna</TM_SpineRegrowth.label>
+
+	<TM_SpineRegrowth.description>O mágico entrelaçamento da natureza e da carne se fundirá para formar uma espinha dorsal poderosa em vários dias.</TM_SpineRegrowth.description>
+
+	<TM_SpineRegrowth.stages.0.label>formando</TM_SpineRegrowth.stages.0.label>
+
+	<TM_SpineRegrowth.stages.1.label>novo crescimento</TM_SpineRegrowth.stages.1.label>
+
+	<TM_SpineRegrowth.stages.2.label>Mensagem</TM_SpineRegrowth.stages.2.label>
+
+	<TM_SpineRegrowth.stages.3.label>entrelaçado</TM_SpineRegrowth.stages.3.label>
+
+	<TM_ArmRegrowth.label>Braço Regrown</TM_ArmRegrowth.label>
+
+	<TM_ArmRegrowth.description>O mágico entrelaçamento da natureza e da carne fará com que esta parte do corpo volte a crescer ao longo de vários dias.</TM_ArmRegrowth.description>
+
+	<TM_ArmRegrowth.comps.1.tools.0.label>braço regenerado</TM_ArmRegrowth.comps.1.tools.0.label>
+
+	<TM_ArmRegrowth.stages.0.label>toco</TM_ArmRegrowth.stages.0.label>
+
+	<TM_ArmRegrowth.stages.1.label>jovem</TM_ArmRegrowth.stages.1.label>
+
+	<TM_ArmRegrowth.stages.2.label>crescer novamente</TM_ArmRegrowth.stages.2.label>
+
+	<TM_ArmRegrowth.stages.3.label>selvagem</TM_ArmRegrowth.stages.3.label>
+
+	<TM_HandRegrowth.label>Mão Regrown</TM_HandRegrowth.label>
+
+	<TM_HandRegrowth.description>O mágico entrelaçamento da natureza e da carne fará com que esta parte do corpo volte a crescer ao longo de vários dias.</TM_HandRegrowth.description>
+
+	<TM_HandRegrowth.comps.1.tools.0.label>mão regenerada</TM_HandRegrowth.comps.1.tools.0.label>
+
+	<TM_HandRegrowth.stages.0.label>toco</TM_HandRegrowth.stages.0.label>
+
+	<TM_HandRegrowth.stages.1.label>jovem</TM_HandRegrowth.stages.1.label>
+
+	<TM_HandRegrowth.stages.2.label>crescer novamente</TM_HandRegrowth.stages.2.label>
+
+	<TM_HandRegrowth.stages.3.label>selvagem</TM_HandRegrowth.stages.3.label>
+
+	<TM_LegRegrowth.label>Perna Regrown</TM_LegRegrowth.label>
+
+	<TM_LegRegrowth.description>O mágico entrelaçamento da natureza e da carne fará com que esta parte do corpo volte a crescer ao longo de vários dias.</TM_LegRegrowth.description>
+
+	<TM_LegRegrowth.stages.0.label>toco</TM_LegRegrowth.stages.0.label>
+
+	<TM_LegRegrowth.stages.1.label>jovem</TM_LegRegrowth.stages.1.label>
+
+	<TM_LegRegrowth.stages.2.label>crescer novamente</TM_LegRegrowth.stages.2.label>
+
+	<TM_LegRegrowth.stages.3.label>selvagem</TM_LegRegrowth.stages.3.label>
+
+	<TM_EarRegrowth.label>Orelha Regrown</TM_EarRegrowth.label>
+
+	<TM_EarRegrowth.description>O mágico entrelaçamento da natureza e da carne fará com que esta parte do corpo volte a crescer ao longo de vários dias.</TM_EarRegrowth.description>
+
+	<TM_EarRegrowth.stages.0.label>formando</TM_EarRegrowth.stages.0.label>
+
+	<TM_EarRegrowth.stages.1.label>em desenvolvimento</TM_EarRegrowth.stages.1.label>
+
+	<TM_EarRegrowth.stages.2.label>crescer novamente</TM_EarRegrowth.stages.2.label>
+
+	<TM_EarRegrowth.stages.3.label>melhorada</TM_EarRegrowth.stages.3.label>
+
+	<TM_HeartRegrowth.label>Heart of the Wild</TM_HeartRegrowth.label>
+
+	<TM_HeartRegrowth.description>O mágico entrelaçamento da natureza e da carne vai crescer novamente ou melhorar um coração ao longo de vários dias.</TM_HeartRegrowth.description>
+
+	<TM_HeartRegrowth.stages.0.label>reformando</TM_HeartRegrowth.stages.0.label>
+
+	<TM_HeartRegrowth.stages.1.label>novo desenvolvimento</TM_HeartRegrowth.stages.1.label>
+
+	<TM_HeartRegrowth.stages.2.label>Mensagem</TM_HeartRegrowth.stages.2.label>
+
+	<TM_HeartRegrowth.stages.3.label>entrelaçado</TM_HeartRegrowth.stages.3.label>
+
+	<TM_HeartRegrowth.stages.4.label>coração da selva</TM_HeartRegrowth.stages.4.label>
+
+	<TM_EyeRegrowth.label>Olho Regrown</TM_EyeRegrowth.label>
+
+	<TM_EyeRegrowth.description>O mágico entrelaçamento da natureza e da carne fará com que este olho volte a crescer ao longo de vários dias.</TM_EyeRegrowth.description>
+
+	<TM_EyeRegrowth.stages.0.label>leitoso</TM_EyeRegrowth.stages.0.label>
+
+	<TM_EyeRegrowth.stages.1.label>nebuloso</TM_EyeRegrowth.stages.1.label>
+
+	<TM_EyeRegrowth.stages.2.label>crescer novamente</TM_EyeRegrowth.stages.2.label>
+
+	<TM_EyeRegrowth.stages.3.label>melhorada</TM_EyeRegrowth.stages.3.label>
+
+	<TM_FootRegrowth.label>Pé Regrown</TM_FootRegrowth.label>
+
+	<TM_FootRegrowth.description>O mágico entrelaçamento da natureza e da carne fará com que esta parte do corpo volte a crescer ao longo de vários dias.</TM_FootRegrowth.description>
+
+	<TM_FootRegrowth.stages.0.label>toco</TM_FootRegrowth.stages.0.label>
+
+	<TM_FootRegrowth.stages.1.label>jovem</TM_FootRegrowth.stages.1.label>
+
+	<TM_FootRegrowth.stages.2.label>crescer novamente</TM_FootRegrowth.stages.2.label>
+
+	<TM_FootRegrowth.stages.3.label>selvagem</TM_FootRegrowth.stages.3.label>
+
+	<TM_LungRegrowth.label>Regrown Lung</TM_LungRegrowth.label>
+
+	<TM_LungRegrowth.description>O mágico entrelaçamento da natureza e da carne fará com que esta parte do corpo volte a crescer ao longo de vários dias.</TM_LungRegrowth.description>
+
+	<TM_LungRegrowth.stages.0.label>formando</TM_LungRegrowth.stages.0.label>
+
+	<TM_LungRegrowth.stages.1.label>em desenvolvimento</TM_LungRegrowth.stages.1.label>
+
+	<TM_LungRegrowth.stages.2.label>crescer novamente</TM_LungRegrowth.stages.2.label>
+
+	<TM_LungRegrowth.stages.3.label>melhorada</TM_LungRegrowth.stages.3.label>
+
+	<TM_JawRegrowth.label>Mandíbula Regrown</TM_JawRegrowth.label>
+
+	<TM_JawRegrowth.description>O mágico entrelaçamento da natureza e da carne fará com que esta parte do corpo volte a crescer ao longo de vários dias.</TM_JawRegrowth.description>
+
+	<TM_JawRegrowth.stages.0.label>formando</TM_JawRegrowth.stages.0.label>
+
+	<TM_JawRegrowth.stages.1.label>em desenvolvimento</TM_JawRegrowth.stages.1.label>
+
+	<TM_JawRegrowth.stages.2.label>crescer novamente</TM_JawRegrowth.stages.2.label>
+
+	<TM_JawRegrowth.stages.3.label>melhorada</TM_JawRegrowth.stages.3.label>
+
+	<TM_StandardRegrowth.label>Pedir Regrown</TM_StandardRegrowth.label>
+
+	<TM_StandardRegrowth.description>O mágico entrelaçamento da natureza e da carne fará com que esta parte do corpo volte a crescer ao longo de vários dias.</TM_StandardRegrowth.description>
+
+	<TM_StandardRegrowth.stages.0.label>crescer novamente</TM_StandardRegrowth.stages.0.label>
+
+	<TM_StandardRegrowth.stages.1.label>formando</TM_StandardRegrowth.stages.1.label>
+
+	<TM_StandardRegrowth.stages.2.label>toco</TM_StandardRegrowth.stages.2.label>
+
+	<TM_KidneyRegrowth.label>Rim Regrown</TM_KidneyRegrowth.label>
+
+	<TM_KidneyRegrowth.description>O mágico entrelaçamento da natureza e da carne fará com que esta parte do corpo volte a crescer ao longo de vários dias.</TM_KidneyRegrowth.description>
+
+	<TM_KidneyRegrowth.stages.0.label>formando</TM_KidneyRegrowth.stages.0.label>
+
+	<TM_KidneyRegrowth.stages.1.label>em desenvolvimento</TM_KidneyRegrowth.stages.1.label>
+
+	<TM_KidneyRegrowth.stages.2.label>crescer novamente</TM_KidneyRegrowth.stages.2.label>
+
+	<TM_KidneyRegrowth.stages.3.label>melhorada</TM_KidneyRegrowth.stages.3.label>
+
+</LanguageData>

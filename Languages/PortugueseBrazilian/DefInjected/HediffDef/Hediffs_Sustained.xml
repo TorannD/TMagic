@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_HediffGearRepair.label>Gear Repair</TM_HediffGearRepair.label>
+
+	<TM_HediffGearRepair.description>Maintenance and care of equipment.</TM_HediffGearRepair.description>
+
+	<TM_HediffGearRepair.stages.0.label>I</TM_HediffGearRepair.stages.0.label>
+
+	<TM_HediffInnerHealing.label>Inner Healing</TM_HediffInnerHealing.label>
+
+	<TM_HediffInnerHealing.description>Improves natural healing.</TM_HediffInnerHealing.description>
+
+	<TM_HediffInnerHealing.stages.0.label>I</TM_HediffInnerHealing.stages.0.label>
+
+	<TM_HediffHeavyBlow.label>Heavy Blow</TM_HediffHeavyBlow.label>
+
+	<TM_HediffHeavyBlow.description>Increases damage dealt with each physical strike.</TM_HediffHeavyBlow.description>
+
+	<TM_HediffHeavyBlow.stages.0.label>I</TM_HediffHeavyBlow.stages.0.label>
+
+	<TM_HediffHeavyBlow.stages.1.label>II</TM_HediffHeavyBlow.stages.1.label>
+
+	<TM_HediffHeavyBlow.stages.2.label>III</TM_HediffHeavyBlow.stages.2.label>
+
+	<TM_HediffHeavyBlow.stages.3.label>IV</TM_HediffHeavyBlow.stages.3.label>
+
+	<TM_HediffStrongBack.label>Strong Back</TM_HediffStrongBack.label>
+
+	<TM_HediffStrongBack.description>Increases carrying capacity by 40 and inventory capacity by 50%.</TM_HediffStrongBack.description>
+
+	<TM_HediffStrongBack.stages.0.label>I</TM_HediffStrongBack.stages.0.label>
+
+	<TM_HediffStrongBack.stages.1.label>II</TM_HediffStrongBack.stages.1.label>
+
+	<TM_HediffStrongBack.stages.2.label>III</TM_HediffStrongBack.stages.2.label>
+
+	<TM_HediffThickSkin.label>Thick Skin</TM_HediffThickSkin.label>
+
+	<TM_HediffThickSkin.description>Hardens skin, making it tougher.</TM_HediffThickSkin.description>
+
+	<TM_HediffThickSkin.stages.0.label>I</TM_HediffThickSkin.stages.0.label>
+
+	<TM_HediffThickSkin.stages.1.label>II</TM_HediffThickSkin.stages.1.label>
+
+	<TM_HediffThickSkin.stages.2.label>III</TM_HediffThickSkin.stages.2.label>
+
+	<TM_HediffThickSkin.stages.3.label>IV</TM_HediffThickSkin.stages.3.label>
+
+	<TM_HediffFightersFocus.label>Fighters Focus</TM_HediffFightersFocus.label>
+
+	<TM_HediffFightersFocus.description>Mental focus for fighters.</TM_HediffFightersFocus.description>
+
+	<TM_HediffFightersFocus.stages.0.label>I</TM_HediffFightersFocus.stages.0.label>
+
+	<TM_HediffFightersFocus.stages.1.label>II</TM_HediffFightersFocus.stages.1.label>
+
+	<TM_HediffSprint.label>Sprint</TM_HediffSprint.label>
+
+	<TM_HediffSprint.description>Move faster.</TM_HediffSprint.description>
+
+	<TM_HediffSprint.stages.0.label>I</TM_HediffSprint.stages.0.label>
+
+	<TM_HediffSprint.stages.1.label>II</TM_HediffSprint.stages.1.label>
+
+	<TM_HediffSprint.stages.2.label>III</TM_HediffSprint.stages.2.label>
+
+	<TM_HediffSprint.stages.3.label>IV</TM_HediffSprint.stages.3.label>
+
+	<TM_BurningFuryHD.label>Burning Fury</TM_BurningFuryHD.label>
+
+	<TM_BurningFuryHD.description>Emits a shield of raw energy that both deflects attacks and inflicts harm on nearby enemies.</TM_BurningFuryHD.description>
+
+	<TM_BurningFuryHD.stages.0.label>I</TM_BurningFuryHD.stages.0.label>
+
+</LanguageData>

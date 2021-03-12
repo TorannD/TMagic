@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Tranquilizer_HD.label>Sedado</TM_Tranquilizer_HD.label>
+
+	<TM_Tranquilizer_HD.description>Efeitos de um tranquilizante.</TM_Tranquilizer_HD.description>
+
+	<TM_Tranquilizer_HD.stages.0.label>Retardado</TM_Tranquilizer_HD.stages.0.label>
+
+	<TM_Tranquilizer_HD.stages.1.label>Sedado</TM_Tranquilizer_HD.stages.1.label>
+
+	<TM_Tranquilizer_HD.stages.2.label>Paralítico</TM_Tranquilizer_HD.stages.2.label>
+
+	<TM_Slow_HD.label>Retardado</TM_Slow_HD.label>
+
+	<TM_Slow_HD.description>Efeitos de uma habilidade que reduz a agilidade física e mental.</TM_Slow_HD.description>
+
+	<TM_Slow_HD.stages.0.label>menor</TM_Slow_HD.stages.0.label>
+
+	<TM_Slow_HD.stages.1.label>principal</TM_Slow_HD.stages.1.label>
+
+	<TM_Slow_HD.stages.2.label>extremo</TM_Slow_HD.stages.2.label>
+
+</LanguageData>

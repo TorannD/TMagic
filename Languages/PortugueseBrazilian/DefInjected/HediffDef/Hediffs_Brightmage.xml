@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_LightCapacitanceHD.label>Poder de luz</TM_LightCapacitanceHD.label>
+
+	<TM_LightCapacitanceHD.description>A quantidade de energia de luz armazenada disponível para um mago - atua como um catalisador para magia de luz.</TM_LightCapacitanceHD.description>
+
+	<TM_LightBurstHD.label>Flash ofuscante</TM_LightBurstHD.label>
+
+	<TM_LightBurstHD.description>Dor, cegueira e desorientação por causa da luz intensa que afeta os órgãos sensoriais. Os peões desorientados são incapazes de distinguir os inimigos dos aliados.</TM_LightBurstHD.description>
+
+	<TM_LightBurstHD.stages.0.label>visão turva</TM_LightBurstHD.stages.0.label>
+
+	<TM_LightBurstHD.stages.1.label>cego</TM_LightBurstHD.stages.1.label>
+
+	<TM_LightBurstHD.stages.2.label>desorientado</TM_LightBurstHD.stages.2.label>
+
+</LanguageData>

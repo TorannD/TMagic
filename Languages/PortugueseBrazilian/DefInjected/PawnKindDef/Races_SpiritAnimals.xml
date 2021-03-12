@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_SpiritBear.label>spirit bear</TM_SpiritBear.label>
+
+	<TM_SpiritMongoose.label>spirit mongoose</TM_SpiritMongoose.label>
+
+	<TM_SpiritCrow.label>spirit crow</TM_SpiritCrow.label>
+
+	<TM_SpiritCrow.lifestages.0.label>flight1</TM_SpiritCrow.lifestages.0.label>
+
+	<TM_SpiritCrow.lifestages.1.label>flight2</TM_SpiritCrow.lifestages.1.label>
+
+	<TM_SpiritCrow.lifestages.2.label>crow chick</TM_SpiritCrow.lifestages.2.label>
+
+	<TM_SpiritCrow.lifestages.3.label>crow fledgling</TM_SpiritCrow.lifestages.3.label>
+
+</LanguageData>

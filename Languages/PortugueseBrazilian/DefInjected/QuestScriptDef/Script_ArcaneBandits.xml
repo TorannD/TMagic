@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_OpportunitySite_ArcaneBandits.questnamerules.rulesstrings.0>questName->[asker_nameDef]'s Arcane Bandits</TM_OpportunitySite_ArcaneBandits.questnamerules.rulesstrings.0>
+
+	<TM_OpportunitySite_ArcaneBandits.questnamerules.rulesstrings.1>questName->Arcane Bandit Camp of [enemyFaction_pawnsPlural]</TM_OpportunitySite_ArcaneBandits.questnamerules.rulesstrings.1>
+
+	<TM_OpportunitySite_ArcaneBandits.questnamerules.rulesstrings.2>questName->The Arcane Bandit Camp</TM_OpportunitySite_ArcaneBandits.questnamerules.rulesstrings.2>
+
+	<TM_OpportunitySite_ArcaneBandits.questnamerules.rulesstrings.3>questName->The Arcane Raider Camp</TM_OpportunitySite_ArcaneBandits.questnamerules.rulesstrings.3>
+
+	<TM_OpportunitySite_ArcaneBandits.questnamerules.rulesstrings.4>questName->Destroy the Arcane Bandits</TM_OpportunitySite_ArcaneBandits.questnamerules.rulesstrings.4>
+
+	<TM_OpportunitySite_ArcaneBandits.questnamerules.rulesstrings.5>questName->Helping [asker_nameDef] Protect Magical Artifacts</TM_OpportunitySite_ArcaneBandits.questnamerules.rulesstrings.5>
+
+	<TM_OpportunitySite_ArcaneBandits.questdescriptionrules.rulesstrings.0>questDescription->[asker_nameFull], [asker_faction_leaderTitle] of [asker_faction_name], has sent us a message. Apparently, [siteFaction_pawnsPlural] have set up a nearby outpost and are threatening to attack the village unless the [asker_faction_name] village turns over their artifacts. The camp is controlled by [siteFaction_name].
+\n[asker_nameDef] is asking us to eliminate these vile hooligans, which means destroying them or chasing them from their outpost. [asker_label] says that [sitePart0_description].
+\nIf we succeed [asker_label] will send us some of the artifacts; [allRewardsDescriptions]</TM_OpportunitySite_ArcaneBandits.questdescriptionrules.rulesstrings.0>
+
+	<TM_OpportunitySite_ArcaneBandits.root.nodes.11.node.nodes.0.label>Quest expired: [resolvedQuestName]</TM_OpportunitySite_ArcaneBandits.root.nodes.11.node.nodes.0.label>
+
+	<TM_OpportunitySite_ArcaneBandits.root.nodes.11.node.nodes.0.text>The arcane bandits successfully pilfered the arcane artifacts from [asker_faction_name]. [asker_label] is displeased with you.</TM_OpportunitySite_ArcaneBandits.root.nodes.11.node.nodes.0.text>
+
+	<TM_OpportunitySite_ArcaneBandits.root.nodes.12.node.nodes.0.label>Quest failed: [resolvedQuestName]</TM_OpportunitySite_ArcaneBandits.root.nodes.12.node.nodes.0.label>
+
+	<TM_OpportunitySite_ArcaneBandits.root.nodes.12.node.nodes.0.text>After your botched assault, the arcane bandits immediately attacked and stole several artifacts. [asker_label] is disappointed in you.</TM_OpportunitySite_ArcaneBandits.root.nodes.12.node.nodes.0.text>
+
+</LanguageData>

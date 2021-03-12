@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<JobDriver_RemoveEnchantingGem.reportstring>unequipping TargetA from enchantment</JobDriver_RemoveEnchantingGem.reportstring>
+
+	<JobDriver_AddEnchantingGem.reportstring>equipping TargetA for enchanting</JobDriver_AddEnchantingGem.reportstring>
+
+	<JobDriver_EnchantItem.reportstring>enchanting TargetA</JobDriver_EnchantItem.reportstring>
+
+</LanguageData>
