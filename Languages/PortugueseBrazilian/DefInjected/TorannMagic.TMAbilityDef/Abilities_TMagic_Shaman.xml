@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_SummonTotemHealing.label>Totem: Healing</TM_SummonTotemHealing.label>
+
+	<TM_SummonTotemHealing.description>Creates a healing totem at the target location. Lasts 1 game hour and periodically heals nearby pawns.</TM_SummonTotemHealing.description>
+
+	<TM_SpiritWolves_II.label>Spirit Wolves (II)</TM_SpiritWolves_II.label>
+
+	<TM_SpiritWolves_II.description>Manifests a pack of spirit wolves. Spirit wolves apply spirit damage which ignores armor and stuns.
+
+Range: 60
+Cast time: 2.5s
+Cooldown: 100s</TM_SpiritWolves_II.description>
+
+	<TM_Totems.label>Totems</TM_Totems.label>
+
+	<TM_Totems.description>Totems are a form of magic that anchors an elemental spirit to the physical world allowing it to influence objects near the totem. This ability increases control over all types of totems.</TM_Totems.description>
+
+	<TM_DismissGuardianSpirit.label>Dismiss Guardian Spirit</TM_DismissGuardianSpirit.label>
+
+	<TM_DismissGuardianSpirit.description>Releases the guardian spirit to return to the spirit realm.</TM_DismissGuardianSpirit.description>
+
+	<TM_SpiritWolves.label>Spirit Wolves</TM_SpiritWolves.label>
+
+	<TM_SpiritWolves.description>Manifests a pack of spirit wolves. Spirit wolves apply spirit damage which ignores armor and stuns.
+
+Range: 50
+Cast time: 3s
+Cooldown: 120s</TM_SpiritWolves.description>
+
+	<TM_SpiritWolves_III.label>Spirit Wolves (III)</TM_SpiritWolves_III.label>
+
+	<TM_SpiritWolves_III.description>Manifests a pack of spirit wolves. Spirit wolves apply spirit damage which ignores armor and stuns.
+		
+Range: 65
+Cast time: 2.4s
+Cooldown: 90s</TM_SpiritWolves_III.description>
+
+	<TM_Enrage.label>Enrage</TM_Enrage.label>
+
+	<TM_Enrage.description>Places a hex on a target that causes their emotions (Mood) to become fuel for battle rage. The hex will burn itself out once all emotions have been consumed. Hostile targets will immediately become berserk if their mind is susceptible.
+
+An enraged pawn gains increased movement and manipulation, increased pain resistance, cannot be staggered, and increases melee damage by the percent equal to the severity of enrage (20-50% damage bonus).</TM_Enrage.description>
+
+	<TM_ChainLightning.label>Chain Lightning</TM_ChainLightning.label>
+
+	<TM_ChainLightning.description>A powerful bolt of lightning that forks after striking its first target.</TM_ChainLightning.description>
+
+	<TM_SummonTotemEarth.label>Totem: Earth</TM_SummonTotemEarth.label>
+
+	<TM_SummonTotemEarth.description>Creates an earth totem at the target location. Lasts 1 game hour and causes tremors every 3-4 seconds that stagger all pawns within 5 cells.</TM_SummonTotemEarth.description>
+
+	<TM_SummonTotemLightning.label>Totem: Lightning</TM_SummonTotemLightning.label>
+
+	<TM_SummonTotemLightning.description>Creates a lightning totem at the target location. Lasts 1 game hr and discharges electrical bolts at enemies within 40m every 2-3 seconds.</TM_SummonTotemLightning.description>
+
+	<TM_Hex_I.label>Hex</TM_Hex_I.label>
+
+	<TM_Hex_I.description>Hex (II) - places a hex on pawns, additional effects may be applied to hexed targets. Wears off after 6 game hours.
+
+Max targets: 5
+Radius: 3
+Range: 40
+Cast time: .8s</TM_Hex_I.description>
+
+	<TM_SpiritWolves_I.label>Spirit Wolves (I)</TM_SpiritWolves_I.label>
+
+	<TM_SpiritWolves_I.description>Manifests a pack of spirit wolves. Spirit wolves apply spirit damage which ignores armor and stuns.
+
+Range: 55
+Cast time: 2.7s
+Cooldown: 110s</TM_SpiritWolves_I.description>
+
+	<TM_Hex.label>Hex</TM_Hex.label>
+
+	<TM_Hex.description>Hex (I) - places a hex on pawns, additional effects may be applied to hexed targets. Wears off after 6 game hours.
+
+Max targets: 4
+Radius: 3
+Range: 36
+Cast time: 1s</TM_Hex.description>
+
+	<TM_Hex_MentalAssault.label>Mental Assault (Hex)</TM_Hex_MentalAssault.label>
+
+	<TM_Hex_MentalAssault.description>Causes all hexed targets to experience a dramatic and, potentially, overwhelming surge of emotions.</TM_Hex_MentalAssault.description>
+
+	<TM_Hex_CriticalFail.label>Critical Fail (Hex)</TM_Hex_CriticalFail.label>
+
+	<TM_Hex_CriticalFail.description>Places a short lived curse on all hexed targets that causes extremely bad luck.</TM_Hex_CriticalFail.description>
+
+	<TM_GuardianSpirit.label>Guardian Spirit</TM_GuardianSpirit.label>
+
+	<TM_GuardianSpirit.description>Summons a guardian spirit. Guardian spirits manifest as powerful animals with unique strengths and abilities.
+
+Spirit Bear - represents defense and fortitude; will issue a challenging roar against any that think to ignore this dangerous beast
+
+Spirit Mongoose - represents cunning and agility; able to slip through the spirit realm to deliver a lethal, hidden attack
+
+Spirit Crow - represents magic and insight; will place a hex on enemies and enhances the wisdom of its ward
+		
+Once determined, a guardian spirit type remains the same, however, this can be forcibly changed using a scroll of spirit binding.</TM_GuardianSpirit.description>
+
+	<TM_Hex_Pain.label>Pain (Hex)</TM_Hex_Pain.label>
+
+	<TM_Hex_Pain.description>All hexed pawns suffer extreme pain.</TM_Hex_Pain.description>
+
+	<TM_Hex_II.label>Hex</TM_Hex_II.label>
+
+	<TM_Hex_II.description>Hex (III) - places a hex on pawns, additional effects may be applied to hexed targets. Wears off after 6 game hours.
+
+Max targets: 5
+Radius: 4
+Range: 43
+Cast time: .7s</TM_Hex_II.description>
+
+	<TM_Hex_III.label>Hex</TM_Hex_III.label>
+
+	<TM_Hex_III.description>Hex (IV) - places a hex on pawns, additional effects may be applied to hexed targets. Wears off after 6 game hours.
+
+Max targets: 6
+Radius: 4
+Range: 45
+Cast time: .6s</TM_Hex_III.description>
+
+</LanguageData>

@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_EnchantedAura.label>Enchanted Aura</TM_EnchantedAura.label>
+
+	<TM_EnchantedAura.description>Radiates a charming aura that disarms social barriers and improves social interaction and opinions. This spell is sustained and reduces max mp by 20 and mana regeneration by 30%.
+	
+Using this ability while the enchantment is active will dispel the enchantment. Only one enchantment type may be active at a given time.</TM_EnchantedAura.description>
+
+	<TM_Polymorph_I.label>Polymorph (I)</TM_Polymorph_I.label>
+
+	<TM_Polymorph_I.description>Transforms pawns in the target area into random beasts. The polymorphed creature will still retain enough of its original self to recognize, and be enraged by, its predicament. Allies can be controlled (drafted), but will still exhibit 'animal' behavior without a specific task.
+		
+Allies may be polymorphed, but most will be upset by the altercation. Enchanters cannot use this method to polymorph themselves.
+
+Use of polymorph on a creature already affected by polymorph will end the existing polymorph enchantment. The polymorph enchantment is broken if the polymorph creature dies.
+
+When a target is polymorphed, their new form does not retain any pre-existing injuries, however, when they return to their original form they will have all their original injuries in addition to any injuries sustained while polymorphed.
+
+Max targets: 5
+Radius: 3
+Range: 38
+Cast time: 2.8s</TM_Polymorph_I.description>
+
+	<TM_Transmutate.label>Transmutate</TM_Transmutate.label>
+
+	<TM_Transmutate.description>Transmutates one material into another material of equal or greater value. The amount of new material created from the old material is based on the value of the old material; some material will be consumed in the conversion process.
+
+This ability only works on raw resources (silver, steel, furs, cloth, etc) and bricks by default, but can be upgraded to transmutate other material.
+
+Check skill descriptions for additional details.</TM_Transmutate.description>
+
+	<TM_Shapeshift.label>Shapeshift</TM_Shapeshift.label>
+
+	<TM_Shapeshift.description>Shapeshift into a random creature. The enchanter will retain their sense of self and will retain control of their actions. Damage suffered while shape shifted will be transferred in equal proportions to the enchanter after returning to their original form.
+	
+Shapeshifting is not without minor side effects; shapeshifting into an animal will cause the enchanter to inherit instincts and behavior of the animal, if they haven't been given specific instructions, they will wander or do other random tasks an animal would normally do.</TM_Shapeshift.description>
+
+	<TM_EnchantedBody.label>Enchanted Body</TM_EnchantedBody.label>
+
+	<TM_EnchantedBody.description>Grows extra limbs to improve manipulation and increases fighting speed. This enchantment tends to make the enchanter look quite horrifying and can alarm other pawns. This spell is sustained and reduces max mp by 20 and mana regeneration by 30%.
+	
+Using this ability while the enchantment is active will dispel the enchantment. Only one enchantment type may be active at a given time.
+
+*All Enchanted Body skills apply to Enchanted Aura</TM_EnchantedBody.description>
+
+	<TM_EnchantWeapon.label>Enchant Weapon</TM_EnchantWeapon.label>
+
+	<TM_EnchantWeapon.description>Enchant a melee weapon equipped by a target pawn. Enchanted weapons gain elemental properties. 
+
+Fire enchantment deals additional burn damage and may set the target on fire
+Ice enchantment reduces the efficiency of the struck bodypart
+Lightning enchantment may stun the enemy.
+Dark enchantment may blind the enemy.
+		
+Enchanted weapons require an allotment of mana equal to the casting cost to sustain. The number of weapon enchantments is limited only by the enchanter mana capacity.
+
+The enchantment will only remain active as long as the pawn holds the enchanted weapon. If it is dropped or swapped for another weapon, the enchantment will disperse. Weapon enchantments only affect melee weapons.</TM_EnchantWeapon.description>
+
+	<TM_ShapeshiftDW.label>Shapeshift: Dire Wolf</TM_ShapeshiftDW.label>
+
+	<TM_ShapeshiftDW.description>Shapeshift into a dire wolf. The enchanter will retain their sense of self and remain in control of most of their actions. Damage suffered while shape shifted will be transferred in equal proportions to the enchanter after returning to their original form.
+	
+Shapeshifting is not without minor side effects; shapeshifting into an animal will cause the enchanter to inherit instincts and behavior of the animal, if they haven't been given specific instructions, they will wander or do other random tasks an animal would normally do.
+	
+Dire wolves are unique animals with a special connection to magic. While in dire wolf form, enchanters can exert small quantities of magic to allow the dire wolf to briefly phase in and out of reality.</TM_ShapeshiftDW.description>
+
+	<TM_Polymorph.label>Polymorph</TM_Polymorph.label>
+
+	<TM_Polymorph.description>Transforms pawns in the target area into random beasts. The polymorphed creature will still retain enough of its original self to recognize, and be enraged by, its predicament. Allies can be controlled (drafted), but will still exhibit 'animal' behavior without a specific task.
+		
+Allies may be polymorphed, but most will be upset by the altercation. Enchanters cannot use this method to polymorph themselves.
+
+Use of polymorph on a creature already affected by polymorph will end the existing polymorph enchantment. The polymorph enchantment is broken if the polymorph creature dies.
+
+When a target is polymorphed, their new form does not retain any pre-existing injuries, however, when they return to their original form they will have all their original injuries in addition to any injuries sustained while polymorphed.
+
+Max targets: 4
+Radius: 3
+Range: 36
+Cast time: 3s</TM_Polymorph.description>
+
+	<TM_EnchanterStone.label>Enchanter's Stone</TM_EnchanterStone.label>
+
+	<TM_EnchanterStone.description>Creates an artifact out of raw material and imbues it with magical properties. An enchanter can have as many artifacts as they wish, but each artifact reduces max MP by 20.
+	
+The benefits of the artifact are granted to the pawn that has the item equipped. Artifacts have unique equipment slots.
+
+This ability is used on raw resources such as stone chunks, steel, or silver - see skill descriptions for a full list of resources that can be used to create an enchanter's stone.</TM_EnchanterStone.description>
+
+	<TM_DismissEnchanterStones.label>Dismiss Enchanter Stone</TM_DismissEnchanterStones.label>
+
+	<TM_DismissEnchanterStones.description>Destroys the oldest enchanter's stone</TM_DismissEnchanterStones.description>
+
+	<TM_Polymorph_II.label>Polymorph (II)</TM_Polymorph_II.label>
+
+	<TM_Polymorph_II.description>Transforms pawns in the target area into random beasts. The polymorphed creature will still retain enough of its original self to recognize, and be enraged by, its predicament. Allies can be controlled (drafted), but will still exhibit 'animal' behavior without a specific task.
+		
+Allies may be polymorphed, but most will be upset by the altercation. Enchanters cannot use this method to polymorph themselves.
+
+Use of polymorph on a creature already affected by polymorph will end the existing polymorph enchantment. The polymorph enchantment is broken if the polymorph creature dies.
+
+When a target is polymorphed, their new form does not retain any pre-existing injuries, however, when they return to their original form they will have all their original injuries in addition to any injuries sustained while polymorphed.
+
+Max targets: 5
+Radius: 4
+Range: 40
+Cast time: 2.6s</TM_Polymorph_II.description>
+
+	<TM_Polymorph_III.label>Polymorph</TM_Polymorph_III.label>
+
+	<TM_Polymorph_III.description>Transforms pawns in the target area into random beasts. The polymorphed creature will still retain enough of its original self to recognize, and be enraged by, its predicament. Allies can be controlled (drafted), but will still exhibit 'animal' behavior without a specific task.
+		
+Allies may be polymorphed, but most will be upset by the altercation. Enchanters cannot use this method to polymorph themselves.
+
+Use of polymorph on a creature already affected by polymorph will end the existing polymorph enchantment. The polymorph enchantment is broken if the polymorph creature dies.
+
+When a target is polymorphed, their new form does not retain any pre-existing injuries, however, when they return to their original form they will have all their original injuries in addition to any injuries sustained while polymorphed.
+
+Max targets: 6
+Radius: 4
+Range: 42
+Cast time: 2.4s</TM_Polymorph_III.description>
+
+	<TM_DispelEnchantWeapon.label>Dispel Weapon Enchantment</TM_DispelEnchantWeapon.label>
+
+	<TM_DispelEnchantWeapon.description>Removes all weapon enchantments maintained by this enchanter.</TM_DispelEnchantWeapon.description>
+
+</LanguageData>

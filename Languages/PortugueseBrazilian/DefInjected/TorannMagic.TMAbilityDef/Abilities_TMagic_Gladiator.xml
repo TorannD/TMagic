@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Grapple.label>Grapple</TM_Grapple.label>
+
+	<TM_Grapple.description>Forcefully hooks and yanks an opponent to the Gladiator, followed by a violent leg sweep, knocking the opponent down.
+		
+Casting time: 1s
+Range: 15</TM_Grapple.description>
+
+	<TM_Grapple_II.label>Grapple</TM_Grapple_II.label>
+
+	<TM_Grapple_II.description>Forcefully hooks and yanks an opponent to the Gladiator, followed by a violent leg sweep, knocking the opponent down.
+		
+Casting time: .4s
+Range: 20</TM_Grapple_II.description>
+
+	<TM_Sprint.label>Sprint</TM_Sprint.label>
+
+	<TM_Sprint.description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30 Stamina to sustain and reduces stamina regen by 20%.</TM_Sprint.description>
+
+	<TM_Grapple_III.label>Grapple</TM_Grapple_III.label>
+
+	<TM_Grapple_III.description>Forcefully hooks and yanks an opponent to the Gladiator, followed by a violent leg sweep, knocking the opponent down.
+		
+Casting time: .2s
+Range: 23</TM_Grapple_III.description>
+
+	<TM_Sprint_I.label>Sprint</TM_Sprint_I.label>
+
+	<TM_Sprint_I.description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30 Stamina to sustain and reduces stamina regen by 20%.</TM_Sprint_I.description>
+
+	<TM_Sprint_III.label>Sprint</TM_Sprint_III.label>
+
+	<TM_Sprint_III.description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30 Stamina to sustain and reduces stamina regen by 20%.</TM_Sprint_III.description>
+
+	<TM_Sprint_II.label>Sprint</TM_Sprint_II.label>
+
+	<TM_Sprint_II.description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30 Stamina to sustain and reduces stamina regen by 20%.</TM_Sprint_II.description>
+
+	<TM_Grapple_I.label>Grapple</TM_Grapple_I.label>
+
+	<TM_Grapple_I.description>Forcefully hooks and yanks an opponent to the Gladiator, followed by a violent leg sweep, knocking the opponent down.
+Casting time: .6s
+Range: 17</TM_Grapple_I.description>
+
+	<TM_Fortitude.label>Fortitude</TM_Fortitude.label>
+
+	<TM_Fortitude.description>Mitigates a set amount of damage each hit.
+Base mitigation: 5</TM_Fortitude.description>
+
+	<TM_Whirlwind.description>The Gladiator launches into a frenzied attack, dancing forward in a furious whirlwind of steel and death.</TM_Whirlwind.description>
+
+	<TM_Cleave.description>Executes a powerful, sweeping blow that can strike multiple enemies adjacent to the target. As long as the gladiator has enough stamina, this ability works automatically whenever the gladiator performs a melee attack. Cleave chance is calculated from weapon mass - heavier weapons are more likely to cleave.</TM_Cleave.description>
+
+</LanguageData>

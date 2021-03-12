@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_DisablingShot_II.label>Disabling Shot (II)</TM_DisablingShot_II.label>
+
+	<TM_DisablingShot_II.description>A shot that aims to disable the opponent rather than kill. The sniper fires non-lethal rounds that release a jolt of electricity, briefly paralyzing the target for several seconds. Armored targets are unaffected.
+	
+Range: 25
+Firing Delay: 2.1s
+Recharge 41s</TM_DisablingShot_II.description>
+
+	<TM_SniperFocus.label>Sniper Training</TM_SniperFocus.label>
+
+	<TM_SniperFocus.description>Training that improves technique and status as sniper. Each level will change the trait of the sniper to reflect their skill level.
+	
+Ranks:
+Sharpshooter: Speed +0.1c/s, Aiming Delay -10%, Shooting Acc. +2%, Research and work speed -10%, tame and train animal -10%
+Sniper: Speed +0.15c/s, Aiming Delay -15%, Shooting Acc. +4%, Research and work speed -13%, tame and train animal -13%
+Master Sniper: Speed +0.2c/s, Aiming Delay -22%, Shooting Acc. +6%, Research and work speed -15%, tame and train animal -15%
+Legendary Sniper: Speed +0.25c/s, Aiming Delay -30%, Shooting Acc. +8%, Research and work speed -16%, tame and train animal -16%</TM_SniperFocus.description>
+
+	<TM_DisablingShot_III.label>Disabling Shot (III)</TM_DisablingShot_III.label>
+
+	<TM_DisablingShot_III.description>A shot that aims to disable the opponent rather than kill. The sniper fires non-lethal rounds that release a jolt of electricity, briefly paralyzing the target for several seconds. Armored targets are unaffected.
+	
+Range: 27
+Firing Delay: 2s
+Recharge 40s</TM_DisablingShot_III.description>
+
+	<TM_DisablingShot.description>A shot that aims to disable the opponent rather than kill. The sniper fires non-lethal rounds that release a jolt of electricity, briefly paralyzing the target for several seconds. Armored targets are unaffected.
+	
+Range: 20
+Firing Delay: 2.5s
+Recharge 45s</TM_DisablingShot.description>
+
+	<TM_Headshot.description>A lethal shot that targets a vital bodypart like the head or heart. Effective on non-humanoids and humanoids alike. Headshot success chance is reduced against targets with thick armor protecting their vital organs.</TM_Headshot.description>
+
+	<TM_ShadowSlayer.label>Shadow Slayer</TM_ShadowSlayer.label>
+
+	<TM_ShadowSlayer.description>A trained sniper is an expert at stealth and positioning, and knows the right time and place to strike. 
+
+The shadow slayer cloaking field is a long duration form of invisibility. Unlike normal cloaking technology, this stealth field relies heavily on a form of predictive cloaking that rapidly wears off when the user performs rapid or violent actions (such as firing a weapon).</TM_ShadowSlayer.description>
+
+	<TM_AntiArmor.label>Anti-Armor</TM_AntiArmor.label>
+
+	<TM_AntiArmor.description>The sniper carries anti armor rounds for those special occasions. When this ammunition shatters, it releases nanites that will shred any armor they make contact with. Relatively ineffective against soft targets but does extra damage to armored targets, as long as the resistance on impact activates the nanites. Armored targets may be any mechanoid or a target with a Sharp armor rating above 100%.</TM_AntiArmor.description>
+
+	<TM_DisablingShot_I.label>Disabling Shot (I)</TM_DisablingShot_I.label>
+
+	<TM_DisablingShot_I.description>A shot that aims to disable the opponent rather than kill. The sniper fires non-lethal rounds that release a jolt of electricity, briefly paralyzing the target for several seconds. Armored targets are unaffected.
+	
+Range: 22
+Firing Delay: 2.3s
+Recharge 43s</TM_DisablingShot_I.description>
+
+</LanguageData>

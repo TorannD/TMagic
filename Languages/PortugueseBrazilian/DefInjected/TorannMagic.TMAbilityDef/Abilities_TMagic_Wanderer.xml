@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_WandererCraft.label>The Wanderer</TM_WandererCraft.label>
+
+	<TM_WandererCraft.description>Increase attributes through hard work and creativity. See skills for more details.</TM_WandererCraft.description>
+
+	<TM_Cantrips.label>Cantrips</TM_Cantrips.label>
+
+	<TM_Cantrips.description>Wandering mages do not have class specific abilities, instead, they excel at general spells or cantrips. 
+	
+Cantrips are discarded by most mages as mere conveniences which require no additional skill training, but the wanderer takes another approach. By investing time and effort into understanding cantrips, the wanderer is able to improve almost all general abilities in utility, power, and efficiency. 
+
+See skills for more details.</TM_Cantrips.description>
+
+</LanguageData>

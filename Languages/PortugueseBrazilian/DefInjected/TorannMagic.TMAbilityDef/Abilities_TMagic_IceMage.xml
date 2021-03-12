@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Blizzard.label>Blizzard</TM_Blizzard.label>
+
+	<TM_Blizzard.description>Calls forth a deadly blizzard to bury your enemies in ice.</TM_Blizzard.description>
+
+	<TM_Icebolt.label>Icebolt</TM_Icebolt.label>
+
+	<TM_Icebolt.description>Launches a bolt of ice specially created to shatter into glass-like shards upon impact, causing damage and severe bleeding.</TM_Icebolt.description>
+
+	<TM_Soothe_I.label>Soothing Breeze</TM_Soothe_I.label>
+
+	<TM_Soothe_I.description>Creates a soothing aura around the caster that periodically buffs an ally.
+		
+Soothing Breeze: Arcane augmentation that assists the worker, reducing pain and fatigue and increasing focus.
+	
+Application Frequency: 	80-90s	
+Duration:	200-223s
+Consciousness: 	+12%
+Mood increase:	+3
+Rest and pain: 	-12%
+
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</TM_Soothe_I.description>
+
+	<TM_Soothe_II.label>Soothing Breeze</TM_Soothe_II.label>
+
+	<TM_Soothe_II.description>Creates a soothing aura around the caster that periodically buffs an ally.
+		
+Soothing Breeze: Arcane augmentation that assists the worker, reducing pain and fatigue and increasing focus
+	
+Application Frequency: 	80-90s	
+Duration:	500-600s
+Consciousness 	+14%
+Mood increase:	+4
+Rest and pain: 	-14%
+
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</TM_Soothe_II.description>
+
+	<TM_Snowball.label>Snowball</TM_Snowball.label>
+
+	<TM_Snowball.description>Launch a massive ball of ice and snow that damages and freezes a large area upon impact.</TM_Snowball.description>
+
+	<TM_Soothe.label>Soothing Breeze</TM_Soothe.label>
+
+	<TM_Soothe.description>Creates a soothing aura around the caster that periodically buffs an ally.
+		
+Soothing Breeze: Arcane augmentation that assists the worker, reducing pain and fatigue and increasing focus.
+	
+Application Frequency: 	80-90s	
+Duration:	200-223s
+Consciousness:	+10%
+Mood increase:	+2
+Rest and pain: 	-10%
+
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</TM_Soothe.description>
+
+	<TM_Rainmaker.label>Rainmaker</TM_Rainmaker.label>
+
+	<TM_Rainmaker.description>Alters the conditions in the atmosphere causing it to rain. If it's already raining, this ability will stop the rain.</TM_Rainmaker.description>
+
+	<TM_FrostRay.label>Frost Ray</TM_FrostRay.label>
+
+	<TM_FrostRay.description>Rapidly extending ray of super cooled particles that damages and freezes targets.
+		
+Recharge time: 15s
+Range: 28
+Shots: 1</TM_FrostRay.description>
+
+	<TM_Soothe_III.label>Soothing Breeze</TM_Soothe_III.label>
+
+	<TM_Soothe_III.description>Creates a soothing aura around the caster that periodically buffs an ally.
+		
+Soothing Breeze: Arcane augmentation that assists the worker, reducing pain and fatigue and increasing focus
+	
+Application Frequency: 	80-90s	
+Duration:	500-600s
+Consciousness: 	+15%
+Mood increase:	+5
+Rest and pain:	-15%
+
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</TM_Soothe_III.description>
+
+	<TM_FrostRay_III.label>Frost Ray</TM_FrostRay_III.label>
+
+	<TM_FrostRay_III.description>Rapidly extending ray of super cooled particles that damages and freezes targets.
+		
+Recharge time: 10s
+Range: 34
+Shots: 3</TM_FrostRay_III.description>
+
+	<TM_FrostRay_I.label>Frost Ray</TM_FrostRay_I.label>
+
+	<TM_FrostRay_I.description>Rapidly extending ray of super cooled particles that damages and freezes targets.
+		
+Recharge time: 12s
+Range: 30
+Shots: 1</TM_FrostRay_I.description>
+
+	<TM_FrostRay_II.label>Frost Ray</TM_FrostRay_II.label>
+
+	<TM_FrostRay_II.description>Rapidly extending ray of super cooled particles that damages and freezes targets.
+		
+Recharge time: 10s
+Range: 32
+Shots: 2</TM_FrostRay_II.description>
+
+</LanguageData>

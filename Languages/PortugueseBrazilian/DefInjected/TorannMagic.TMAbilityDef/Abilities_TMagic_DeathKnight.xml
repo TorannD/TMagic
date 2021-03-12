@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_LifeSteal.label>Life Steal</TM_LifeSteal.label>
+
+	<TM_LifeSteal.description>Leach spirit from enemies struck in melee combat to restore life and energy to the death knight.</TM_LifeSteal.description>
+
+	<TM_Spite_III.label>Spite III</TM_Spite_III.label>
+
+	<TM_Spite_III.description>Release harnessed hatred and project a wave of spite at a target. Spite must have hate to be used.
+		
+Cast time: .4s
+Cooldown : 2s
+Range: 30</TM_Spite_III.description>
+
+	<TM_GraveBlade_II.label>Grave Blade II</TM_GraveBlade_II.label>
+
+	<TM_GraveBlade_II.description>Spirit blades strike from the grave.
+
+Range: 41
+Cast time: 1.2s
+Radius: 3.8</TM_GraveBlade_II.description>
+
+	<TM_GraveBlade_I.label>Grave Blade I</TM_GraveBlade_I.label>
+
+	<TM_GraveBlade_I.description>Spirit blades strike from the grave.
+
+Range: 38
+Cast time: 1.4s
+Radius: 3.4</TM_GraveBlade_I.description>
+
+	<TM_Spite.label>Spite</TM_Spite.label>
+
+	<TM_Spite.description>Release harnessed hatred and project a wave of spite at a target. Spite must have hate to be used.
+		
+Cast time: 1s
+Cooldown : 5s
+Range: 21</TM_Spite.description>
+
+	<TM_WaveOfFear.label>Wave of Fear</TM_WaveOfFear.label>
+
+	<TM_WaveOfFear.description>Release a wave of fear that sends enemies cowering. Wave of Fear also applies a significant debuff to dark/light defense, movement, and slows attack speeds.
+	
+Hate is not required to use this ability, but it's effective range is greatly increased by hate levels.</TM_WaveOfFear.description>
+
+	<TM_Spite_I.label>Spite I</TM_Spite_I.label>
+
+	<TM_Spite_I.description>Release harnessed hatred and project a wave of spite at a target.  Spite must have hate to be used.
+		
+Cast time: .8s
+Cooldown : 4s
+Range: 24</TM_Spite_I.description>
+
+	<TM_Spite_II.label>Spite II</TM_Spite_II.label>
+
+	<TM_Spite_II.description>Release harnessed hatred and project a wave of spite at a target. Spite must have hate to be used.
+		
+Cast time: .6s
+Cooldown : 3s
+Range: 27</TM_Spite_II.description>
+
+	<TM_Shroud.label>Shroud of Darkness</TM_Shroud.label>
+
+	<TM_Shroud.description>The Shroud of Darkness is a cloak of tangible malice and fear that consumes nearby energy.
+	
+The Shroud has many different functions and is a crucial component of the death knight's training. Foremost, the cloak provides a defensive bonus against all damage types and slightly increases weapon damage.
+
+It's also able to solidify and retaliate against an attack using spirit damage.
+
+Last, but not least, the Shroud is able to nullify projectiles near the death knight by consuming them in a void.  Projectiles launched from less than 6 cells away will never be nullified.
+
+All of these functions are enhanced as hate levels grow and must have a sufficient level of hate to function at all.</TM_Shroud.description>
+
+	<TM_GraveBlade_III.label>Grave Blade III</TM_GraveBlade_III.label>
+
+	<TM_GraveBlade_III.description>Spirit blades strike from the grave.
+
+Range: 44
+Cast time: 1s
+Radius: 4.2</TM_GraveBlade_III.description>
+
+	<TM_GraveBlade.label>Grave Blade</TM_GraveBlade.label>
+
+	<TM_GraveBlade.description>Spirit blades strike from the grave.
+
+Range: 35
+Cast time: 1.6s
+Radius: 3.0</TM_GraveBlade.description>
+
+</LanguageData>

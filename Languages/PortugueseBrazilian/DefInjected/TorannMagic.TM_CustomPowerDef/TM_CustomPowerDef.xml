@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Explosion.custompower.skills.0.label>TM_Explosion_pwr</TM_Explosion.custompower.skills.0.label>
+
+	<TM_Explosion.custompower.skills.0.description>TM_Explosion_pwr_desc</TM_Explosion.custompower.skills.0.description>
+
+	<TM_Explosion.custompower.skills.1.label>TM_Explosion_eff</TM_Explosion.custompower.skills.1.label>
+
+	<TM_Explosion.custompower.skills.1.description>TM_Explosion_eff_desc</TM_Explosion.custompower.skills.1.description>
+
+	<TM_Explosion.custompower.skills.2.label>TM_Explosion_ver</TM_Explosion.custompower.skills.2.label>
+
+	<TM_Explosion.custompower.skills.2.description>TM_Explosion_ver_desc</TM_Explosion.custompower.skills.2.description>
+
+	<TM_Taunt.custompower.skills.0.label>TM_Taunt_pwr</TM_Taunt.custompower.skills.0.label>
+
+	<TM_Taunt.custompower.skills.0.description>TM_Taunt_pwr_desc</TM_Taunt.custompower.skills.0.description>
+
+	<TM_Taunt.custompower.skills.1.label>TM_Taunt_eff</TM_Taunt.custompower.skills.1.label>
+
+	<TM_Taunt.custompower.skills.1.description>TM_Taunt_eff_desc</TM_Taunt.custompower.skills.1.description>
+
+	<TM_Taunt.custompower.skills.2.label>TM_Taunt_ver</TM_Taunt.custompower.skills.2.label>
+
+	<TM_Taunt.custompower.skills.2.description>TM_Taunt_ver_desc</TM_Taunt.custompower.skills.2.description>
+
+	<TM_MedicalSupply.custompower.skills.0.label>TM_MedicalSupply_ver</TM_MedicalSupply.custompower.skills.0.label>
+
+	<TM_MedicalSupply.custompower.skills.0.description>TM_MedicalSupply_ver_desc</TM_MedicalSupply.custompower.skills.0.description>
+
+	<TM_Discord.custompower.skills.0.label>TM_Discord_eff</TM_Discord.custompower.skills.0.label>
+
+	<TM_Discord.custompower.skills.0.description>TM_Discord_eff_desc</TM_Discord.custompower.skills.0.description>
+
+	<TM_ShieldOther.custompower.skills.0.label>TM_Shield_eff</TM_ShieldOther.custompower.skills.0.label>
+
+	<TM_ShieldOther.custompower.skills.0.description>TM_Shield_eff_desc</TM_ShieldOther.custompower.skills.0.description>
+
+	<TM_Medigel.custompower.skills.0.label>TM_Medigel_eff</TM_Medigel.custompower.skills.0.label>
+
+	<TM_Medigel.custompower.skills.0.description>TM_Medigel_eff_desc</TM_Medigel.custompower.skills.0.description>
+
+	<TM_CombatDrugs.custompower.skills.0.label>TM_CombatDrugs_pwr</TM_CombatDrugs.custompower.skills.0.label>
+
+	<TM_CombatDrugs.custompower.skills.0.description>TM_CombatDrugs_pwr_desc</TM_CombatDrugs.custompower.skills.0.description>
+
+	<TM_CombatDrugs.custompower.skills.1.label>TM_CombatDrugs_ver</TM_CombatDrugs.custompower.skills.1.label>
+
+	<TM_CombatDrugs.custompower.skills.1.description>TM_CombatDrugs_ver_desc</TM_CombatDrugs.custompower.skills.1.description>
+
+</LanguageData>

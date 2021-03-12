@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Emergency.label>Emergency</TM_Emergency.label>
+
+	<TM_Emergency.description>The Field Medic rushes to aid their patients.
+
+The Field Medic gains increased base movement speed, tending speed and tending quality as well as reduced pain for a 30 seconds.</TM_Emergency.description>
+
+	<TM_Medigel.label>Medigel</TM_Medigel.label>
+
+	<TM_Medigel.description>Applies a healing gel to the wounds of a target that speeds recovery and fights infection. Wounds will be healed slowly over time. Medigel slightly reduces the pain of wounds.</TM_Medigel.description>
+
+	<TM_CombatDrugs.label>Combat Drugs</TM_CombatDrugs.label>
+
+	<TM_CombatDrugs.description>Gives combat drugs to an ally
+
+The Field Medic throws a syringe of improvised combat drugs to an ally.
+The effects are always positive but may vary.</TM_CombatDrugs.description>
+
+	<TM_MedicalSupply.label>Resupply</TM_MedicalSupply.label>
+
+	<TM_MedicalSupply.description>Resupply the Field Medic's medical supplies.
+
+The Field Medic will use one item from target stockpile and convert it into personal medical supplies he can use to fuel his abilities.
+
+The amount of supply gained is equal to 20 times the medical potency of the item squared:
+medicine - 20 medical supplies
+herbal medicine - 4.9 medical supplies
+glitterworld medicine - 51.2 medical supplies
+
+The Field Medic can train to convert his equipment back into common medicine</TM_MedicalSupply.description>
+
+</LanguageData>

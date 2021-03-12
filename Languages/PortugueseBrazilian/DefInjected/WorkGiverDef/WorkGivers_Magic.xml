@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<DoBillsGemcutting.label>do bills at gemcutting table</DoBillsGemcutting.label>
+
+	<DoBillsGemcutting.verb>craft</DoBillsGemcutting.verb>
+
+	<DoBillsGemcutting.gerund>gemcutting</DoBillsGemcutting.gerund>
+
+	<DoBillsPrintingPress.label>do bills at printing table</DoBillsPrintingPress.label>
+
+	<DoBillsPrintingPress.verb>craft</DoBillsPrintingPress.verb>
+
+	<DoBillsPrintingPress.gerund>printing</DoBillsPrintingPress.gerund>
+
+	<DoEntertain.label>entertain colonist</DoEntertain.label>
+
+	<DoEntertain.verb>entertain</DoEntertain.verb>
+
+	<DoEntertain.gerund>entertaining</DoEntertain.gerund>
+
+	<DoCommanderMotivate.label>motivating pawn</DoCommanderMotivate.label>
+
+	<DoCommanderMotivate.verb>motivate</DoCommanderMotivate.verb>
+
+	<DoCommanderMotivate.gerund>motivating</DoCommanderMotivate.gerund>
+
+	<ChargeStructure.label>charge arcane object</ChargeStructure.label>
+
+	<ChargeStructure.verb>charge arcane object</ChargeStructure.verb>
+
+	<ChargeStructure.gerund>charging arcane object</ChargeStructure.gerund>
+
+	<DoBillsArcaneForge.label>work magic</DoBillsArcaneForge.label>
+
+	<DoBillsArcaneForge.verb>work magic</DoBillsArcaneForge.verb>
+
+	<DoBillsArcaneForge.gerund>working magic</DoBillsArcaneForge.gerund>
+
+</LanguageData>

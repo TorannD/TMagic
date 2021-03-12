@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_ArcaneBarrier.label>arcane barrier</TM_ArcaneBarrier.label>
+
+	<TM_ArcaneBarrier.description>An impassable wall made from solidified arcane power. Provides protection or creates an impassable barrier.</TM_ArcaneBarrier.description>
+
+	<TM_PoisonTrap.label>Poison Trap</TM_PoisonTrap.label>
+
+	<TM_PoisonTrap.description>A trap created from sticks and twine, it blends seamlessly with the terrain to the untrained eye, but is scented to be an unmistakable warning to animals. Particles of druidic poison are discharged into the air when a victim triggers the trap. The poison is toxic and serves to both injure and disable the victim.</TM_PoisonTrap.description>
+
+</LanguageData>

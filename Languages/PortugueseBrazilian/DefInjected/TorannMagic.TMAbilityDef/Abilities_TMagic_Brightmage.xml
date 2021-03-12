@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Sunfire_III.label>Sunfire (III)</TM_Sunfire_III.label>
+
+	<TM_Sunfire_III.description>The target area is laced with burning slashes of light. This ability is empowered by stored light.
+
+Cast time: 2.2s
+Range: 65
+Cooldown: 45s
+Radius: 8
+Count: 16</TM_Sunfire_III.description>
+
+	<TM_Sunfire_I.label>Sunfire (I)</TM_Sunfire_I.label>
+
+	<TM_Sunfire_I.description>The target area is laced with burning slashes of light. This ability is empowered by stored light.
+
+Cast time: 2.7s
+Range: 55
+Cooldown: 55s
+Radius: 6
+Count: 14</TM_Sunfire_I.description>
+
+	<TM_Refraction.label>Refraction</TM_Refraction.label>
+
+	<TM_Refraction.description>Creates a wall of light that affects projectiles as they pass through the wall. Enemy projectiles may be offset from their intended targets. Friendly projectiles may use a portion of the light energy to create a mirrored reflection of the projectile. The wall will last about 25 seconds or until it runs out of energy. This ability is empowered by stored light.</TM_Refraction.description>
+
+	<TM_LightBurst.label>Light Burst</TM_LightBurst.label>
+
+	<TM_LightBurst.description>Creates flashes of light that blind and disorient pawns caught in the blast. Disoriented pawns will be unable to distinguish between friend and foe and may fire on nearby friendly pawns. This ability is empowered by stored light.</TM_LightBurst.description>
+
+	<TM_LightSkip.label>Light Skip</TM_LightSkip.label>
+
+	<TM_LightSkip.description>The caster rides a wave of light for near-instant travel. Neither the caster's position or target's position can be roofed.</TM_LightSkip.description>
+
+	<TM_Sunfire.label>Sunfire</TM_Sunfire.label>
+
+	<TM_Sunfire.description>The target area is laced with burning slashes of light. This ability is empowered by stored light.
+
+Cast time: 3s
+Range: 50
+Cooldown: 60s
+Radius: 5
+Count: 13</TM_Sunfire.description>
+
+	<TM_SoL_Equalize.label>Equalize</TM_SoL_Equalize.label>
+
+	<TM_SoL_Equalize.description>Equalizes the light energy between the Spirit of Light and caster.</TM_SoL_Equalize.description>
+
+	<TM_LightSkipMass.label>Mass Light Skip</TM_LightSkipMass.label>
+
+	<TM_LightSkipMass.description>The caster and all allies in a 5 cell radius rides waves of light for near-instant travel. Pawns under a roof will not be transported.</TM_LightSkipMass.description>
+
+	<TM_SpiritOfLight.label>Spirit Of Light</TM_SpiritOfLight.label>
+
+	<TM_SpiritOfLight.description>Summons a Spirit of Light that aids and protects the caster. This ability requires 60 mana to sustain and reduces mana regeneration by 75%. Use this ability again to dismiss the spirit. The SoL is able to store light energy and uses light energy to perform actions.
+		
+The Spirit of Light works autonomously to aid the caster and will perform the following actions:
+o Deflects attacks
+o Cauterizes wounds of downed pawns
+o Attacks enemies (only when drafted)
+o Improve mood of nearby allies
+o Create a burst of joy
+o Protects the caster's dreams</TM_SpiritOfLight.description>
+
+	<TM_SoL_CreateLight.label>Create Light</TM_SoL_CreateLight.label>
+
+	<TM_SoL_CreateLight.description>Directs the Spirit of Light to create light at an area. This reduces the Spirit's light regeneration by 70%. Use this ability again at any location to dismiss the light.</TM_SoL_CreateLight.description>
+
+	<TM_LightLance.label>Light Lance</TM_LightLance.label>
+
+	<TM_LightLance.description>Focus light into an intense beam that burns everything along its path. This ability is empowered by stored light.</TM_LightLance.description>
+
+	<TM_Sunfire_II.label>Sunfire (II)</TM_Sunfire_II.label>
+
+	<TM_Sunfire_II.description>The target area is laced with burning slashes of light. This ability is empowered by stored light.
+
+Cast time: 2.4s
+Range: 60
+Cooldown: 50s
+Radius: 7
+Count: 15</TM_Sunfire_II.description>
+
+	<TM_LightSkipGlobal.label>Global Light Skip</TM_LightSkipGlobal.label>
+
+	<TM_LightSkipGlobal.description>The caster and all allies in a 5 cell radius rides waves of light for near-instant travel. Pawns under a roof will not be transported.</TM_LightSkipGlobal.description>
+
+</LanguageData>
