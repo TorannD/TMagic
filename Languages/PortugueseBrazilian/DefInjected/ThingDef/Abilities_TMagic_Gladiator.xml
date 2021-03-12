@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Projectile_Whirlwind.label>Whirlwind</Projectile_Whirlwind.label>
+
+	<TM_Gladiator_Sprint.label>Sprint</TM_Gladiator_Sprint.label>
+
+	<FlyingObject_Whirlwind.label>flying object</FlyingObject_Whirlwind.label>
+
+	<Projectile_Cleave.label>Cleave</Projectile_Cleave.label>
+
+	<TM_Gladiator_Fortitude.label>Fortitude</TM_Gladiator_Fortitude.label>
+
+	<Projectile_Grapple.label>Grappling Hook</Projectile_Grapple.label>
+
+</LanguageData>

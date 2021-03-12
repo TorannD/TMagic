@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<ArmorRating_Alignment.label>Armor - Harmony</ArmorRating_Alignment.label>
+
+	<ArmorRating_Alignment.description>Protection from alignment based attacks such as holy, shadow, or death magic.</ArmorRating_Alignment.description>
+
+	<StuffPower_Armor_Harmony.label>Armor - Harmony</StuffPower_Armor_Harmony.label>
+
+	<StuffPower_Armor_Harmony.description>Protection from alignment based attacks such as holy, shadow, or death magic.</StuffPower_Armor_Harmony.description>
+
+</LanguageData>

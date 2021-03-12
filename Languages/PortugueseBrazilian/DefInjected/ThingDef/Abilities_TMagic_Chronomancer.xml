@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<FlyingObject_TimeDelay.label>time bubble</FlyingObject_TimeDelay.label>
+
+	<Projectile_ChronostaticField_II.label>time bubble</Projectile_ChronostaticField_II.label>
+
+	<Projectile_ChronostaticField.label>time bubble</Projectile_ChronostaticField.label>
+
+	<Projectile_ChronostaticField_I.label>time bubble</Projectile_ChronostaticField_I.label>
+
+	<Projectile_ChronostaticField_III.label>time bubble</Projectile_ChronostaticField_III.label>
+
+	<Projectile_AccelerateTime.label>accelerate time</Projectile_AccelerateTime.label>
+
+</LanguageData>

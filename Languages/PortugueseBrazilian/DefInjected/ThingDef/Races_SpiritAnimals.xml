@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_SpiritMongooseR.label>spirit mongoose</TM_SpiritMongooseR.label>
+
+	<TM_SpiritMongooseR.description>The mongoose spirit animal is clever and adaptable. It represents an insatiable curiosity about the world around them while possessing the wherewithal to know to look before they leap. The mongoose uses their cunning and agility to quickly deliver lethal strikes against an enemy or swiftly deliver resources. The mongoose is also the most playful of spirit animals.</TM_SpiritMongooseR.description>
+
+	<TM_SpiritMongooseR.tools.0.label>left claw</TM_SpiritMongooseR.tools.0.label>
+
+	<TM_SpiritMongooseR.tools.1.label>right claw</TM_SpiritMongooseR.tools.1.label>
+
+	<TM_SpiritMongooseR.tools.3.label>head</TM_SpiritMongooseR.tools.3.label>
+
+	<TM_SpiritCrowR.label>spirit crow</TM_SpiritCrowR.label>
+
+	<TM_SpiritCrowR.description>The crow is a spirit animal associated with life mysteries and magic. The spirit crow provides insight and means of supporting intentions. It is also a sign of fortune, though not always good fortune. If the crow has chosen you as your spirit or totem animal, it supports you in developing the power of sight, transformation, and connection with magic and will assist in these endeavors.</TM_SpiritCrowR.description>
+
+	<TM_SpiritCrowR.tools.0.label>claws</TM_SpiritCrowR.tools.0.label>
+
+	<TM_SpiritCrowR.tools.1.label>beak</TM_SpiritCrowR.tools.1.label>
+
+	<TM_SpiritCrowR.tools.2.label>head</TM_SpiritCrowR.tools.2.label>
+
+	<TM_SpiritBearR.label>spirit bear</TM_SpiritBearR.label>
+
+	<TM_SpiritBearR.description>The spirit bear is emblematic of stability and strength. This animal has been admired throughout time as a powerful inspiration for those who need courage to stand up against adversity. The spirit bear is a powerful guide to support physical strength and constitution and will actively protect its young.</TM_SpiritBearR.description>
+
+	<TM_SpiritBearR.tools.0.label>left paw</TM_SpiritBearR.tools.0.label>
+
+	<TM_SpiritBearR.tools.1.label>right paw</TM_SpiritBearR.tools.1.label>
+
+	<TM_SpiritBearR.tools.2.label>mauled</TM_SpiritBearR.tools.2.label>
+
+	<TM_SpiritBearR.tools.3.label>head</TM_SpiritBearR.tools.3.label>
+
+</LanguageData>

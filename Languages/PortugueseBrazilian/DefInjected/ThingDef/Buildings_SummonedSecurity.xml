@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_TechnoTurret_Base_RL.label>Mark-IV</TM_TechnoTurret_Base_RL.label>
+
+	<TM_TechnoTurret_Base_RL.description>The Mark-IV is a deployable turret that provides the firepower of a heavy weapon system. It uses miniaturization to allow the user to easily transport the system when not in use. The key component of the Mark-IV is the matter converter that uses raw energy to repair and resupply the turret when in a miniaturized state, allowing a nominal energy to matter conversion. However, even using plasteel and hyperweave to strengthen the weapon system, the material was simply unable to withstand the pressure placed on it during the conversion process and was high susceptible to breakdown and component failure.
+	
+Technomancers have since adapted the system and use their control over arcane energy to provide the turret with ammunition while deployed and energy for repairs and the miniaturization process.
+
+Due to its weight, the Mark-IV cannot be moved while deployed.</TM_TechnoTurret_Base_RL.description>
+
+	<DefensePylon_III.label>magical defense pylon (III)</DefensePylon_III.label>
+
+	<DefensePylon_III.description>A magical defense pylon. Created by materializing magical energy to form a base, and then channeling arcane current into a focal point that emits bursts of raw energy.</DefensePylon_III.description>
+
+	<Launcher_DefensePylon_III.label>energy focus point</Launcher_DefensePylon_III.label>
+
+	<Launcher_DefensePylon_III.description>Focal point of an arcane defense pylon, capable of collecting and emitting bursts of raw magical energy.</Launcher_DefensePylon_III.description>
+
+	<TM_Trap_Lightning.label>Lightning Trap</TM_Trap_Lightning.label>
+
+	<TM_Trap_Lightning.description>A trap created by containing elemental lightning inside an arcane barrier; it releases it's bottled energy whenever an enemy disturbs a nearby arcane strand.</TM_Trap_Lightning.description>
+
+	<Launcher_DefensePylon.label>energy focus point</Launcher_DefensePylon.label>
+
+	<Launcher_DefensePylon.description>Focal point of an arcane defense pylon, capable of collecting and emitting bursts of raw magical energy.</Launcher_DefensePylon.description>
+
+	<TM_ManaMine_III.label>Mana Mine</TM_ManaMine_III.label>
+
+	<TM_ManaMine_III.description>A powerful explosive created by compressing mana and matter. Tendrils of psychic power extend from the mine; when a victim disturbs the psychic strand, it collapses the containment field and detonates the mine.  4.7m explosive radius.</TM_ManaMine_III.description>
+
+	<Bullet_DefensePylon.label>focused magical energy</Bullet_DefensePylon.label>
+
+	<FlyingObject_60mmMortar.label>60mm mortar</FlyingObject_60mmMortar.label>
+
+	<DefensePylon_II.label>magical defense pylon (II)</DefensePylon_II.label>
+
+	<DefensePylon_II.description>A magical defense pylon. Created by materializing magical energy to form a base, and then channeling arcane current into a focal point that emits bursts of raw energy.</DefensePylon_II.description>
+
+	<TM_ManaMine_I.label>Mana Mine</TM_ManaMine_I.label>
+
+	<TM_ManaMine_I.description>A powerful explosive created by compressing mana and matter. Tendrils of psychic power extend from the mine; when a victim disturbs the psychic strand, it collapses the containment field and detonates the mine.  2.9m explosive radius.</TM_ManaMine_I.description>
+
+	<FlyingObject_RocketSmall.label>small rocket</FlyingObject_RocketSmall.label>
+
+	<TM_TechnoTurret_Base.label>Mark-IV</TM_TechnoTurret_Base.label>
+
+	<TM_TechnoTurret_Base.description>The Mark-IV is a deployable turret that provides the firepower of a heavy weapon system. It uses miniaturization to allow the user to easily transport the system when not in use. The key component of the Mark-IV is the matter converter that uses raw energy to repair and resupply the turret when in a miniaturized state, allowing a nominal energy to matter conversion. However, even using plasteel and hyperweave to strengthen the weapon system, the material was simply unable to withstand the pressure placed on it during the conversion process and was high susceptible to breakdown and component failure.
+	
+Technomancers have since adapted the system and use their control over arcane energy to provide the turret with ammunition while deployed and energy for repairs and the miniaturization process.
+
+Due to its weight, the Mark-IV cannot be moved while deployed.</TM_TechnoTurret_Base.description>
+
+	<DefensePylon.label>magical defense pylon</DefensePylon.label>
+
+	<DefensePylon.description>A magical defense pylon. Created by materializing magical energy to form a base, and then channeling arcane current into a focal point that emits bursts of raw energy.</DefensePylon.description>
+
+	<Bullet_Shell_TechnoTurretExplosive.label>HE shell</Bullet_Shell_TechnoTurretExplosive.label>
+
+	<Bullet_Mark-IV.label>Mark-IV round</Bullet_Mark-IV.label>
+
+	<TM_EarthTotem.label>Earth Totem</TM_EarthTotem.label>
+
+	<TM_EarthTotem.description>A shamanic totem decorated with symmetric carvings and exudes a sense of solidarity. The totem's connection to the earth allows it to cause seismic waves that stagger nearby enemies.</TM_EarthTotem.description>
+
+	<TM_TechnoTurret_Base_RL_MTR.label>Mark-IV</TM_TechnoTurret_Base_RL_MTR.label>
+
+	<TM_TechnoTurret_Base_RL_MTR.description>The Mark-IV is a deployable turret that provides the firepower of a heavy weapon system. It uses miniaturization to allow the user to easily transport the system when not in use. The key component of the Mark-IV is the matter converter that uses raw energy to repair and resupply the turret when in a miniaturized state, allowing a nominal energy to matter conversion. However, even using plasteel and hyperweave to strengthen the weapon system, the material was simply unable to withstand the pressure placed on it during the conversion process and was high susceptible to breakdown and component failure.
+	
+Technomancers have since adapted the system and use their control over arcane energy to provide the turret with ammunition while deployed and energy for repairs and the miniaturization process.
+
+Due to its weight, the Mark-IV cannot be moved while deployed.</TM_TechnoTurret_Base_RL_MTR.description>
+
+	<TM_HealingTotem.label>Healing Totem</TM_HealingTotem.label>
+
+	<TM_HealingTotem.description>A shamanic totem decorated with flowing, complimentary shapes. The healing totem is able to attract friendly spirits who will restore vigor and health to nearby allies.</TM_HealingTotem.description>
+
+	<TM_ArcaneBarrier.label>arcane barrier</TM_ArcaneBarrier.label>
+
+	<TM_ArcaneBarrier.description>An impassable wall made from solidified arcane power. Provides protection or creates an impassable barrier.</TM_ArcaneBarrier.description>
+
+	<TM_LightningTotem.label>Lightning Totem</TM_LightningTotem.label>
+
+	<TM_LightningTotem.description>A shamanic totem decorated with elaborate, eccentric carvings and crackling with elemental lightning.</TM_LightningTotem.description>
+
+	<Launcher_DefensePylon_II.label>energy focus point</Launcher_DefensePylon_II.label>
+
+	<Launcher_DefensePylon_II.description>Focal point of an arcane defense pylon, capable of collecting and emitting bursts of raw magical energy.</Launcher_DefensePylon_II.description>
+
+	<DefensePylon_I.label>magical defense pylon (I)</DefensePylon_I.label>
+
+	<DefensePylon_I.description>A magical defense pylon. Created by materializing magical energy to form a base, and then channeling arcane current into a focal point that emits bursts of raw energy.</DefensePylon_I.description>
+
+	<TM_60mmMortar_Base.label>60mm Mortar Tube</TM_60mmMortar_Base.label>
+
+	<TM_60mmMortar_Base.description>60mm Mortar is a personally transportable and deployable indirect fire system. Due to the weight of the system, the shells are typically distributed for transport. The system is intended for indirect fire and only amateurs attempt to use the system for direct lay as it is both inaccurate and exposes the mortar-man. 
+	
+	The range and firepower of the system are limited compared to stationary systems due the containment capacity of the mortar tube and the blast cartridge.</TM_60mmMortar_Base.description>
+
+	<Gun_Mark-IV.label>Mark-IV weapon system</Gun_Mark-IV.label>
+
+	<Gun_Mark-IV.description>Mark-IV weapon system barrel and firing controls.</Gun_Mark-IV.description>
+
+	<TM_ManaMine_II.label>Mana Mine</TM_ManaMine_II.label>
+
+	<TM_ManaMine_II.description>A powerful explosive created by compressing mana and matter. Tendrils of psychic power extend from the mine; when a victim disturbs the psychic strand, it collapses the containment field and detonates the mine.  3.8m explosive radius.</TM_ManaMine_II.description>
+
+	<Launcher_DefensePylon_I.label>energy focus point</Launcher_DefensePylon_I.label>
+
+	<Launcher_DefensePylon_I.description>Focal point of an arcane defense pylon, capable of collecting and emitting bursts of raw magical energy.</Launcher_DefensePylon_I.description>
+
+	<TM_PoisonTrap.label>Poison Trap</TM_PoisonTrap.label>
+
+	<TM_PoisonTrap.description>A trap created from sticks and twine, it blends seamlessly with the terrain to the untrained eye, but is scented to be an unmistakable warning to animals. Particles of druidic poison are discharged into the air when a victim triggers the trap. The poison is toxic and serves to both injure and disable the victim.</TM_PoisonTrap.description>
+
+</LanguageData>

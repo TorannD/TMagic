@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Undead.stages.0.label>undead</TM_Undead.stages.0.label>
+
+	<TM_Necromancer.stages.0.label>necromancer</TM_Necromancer.stages.0.label>
+
+	<TM_OpinionOfBoundless.stages.0.label>boundless arrogance</TM_OpinionOfBoundless.stages.0.label>
+
+	<TM_Lich.stages.0.label>lich</TM_Lich.stages.0.label>
+
+	<TM_HolierThanThou.stages.0.label>Self-righteous mage</TM_HolierThanThou.stages.0.label>
+
+	<TM_FemaleOpinionOfSuccubus.stages.0.label>Envious of succubus</TM_FemaleOpinionOfSuccubus.stages.0.label>
+
+	<TM_FemaleOpinionOfSuccubus.stages.0.description>Everyone pays attention to her because of her looks, doesn't anything else matter?</TM_FemaleOpinionOfSuccubus.stages.0.description>
+
+	<TM_FemaleOpinionOfSuccubus.stages.1.label>Unnatural beauty</TM_FemaleOpinionOfSuccubus.stages.1.label>
+
+	<TM_FemaleOpinionOfSuccubus.stages.1.description>She has an air of attraction that I'll never have... and I hate her for it.</TM_FemaleOpinionOfSuccubus.stages.1.description>
+
+	<TM_MaleOpinionOfSuccubus.stages.0.label>Illusion of beauty</TM_MaleOpinionOfSuccubus.stages.0.label>
+
+	<TM_MaleOpinionOfSuccubus.stages.0.description>Experience in the arts of combat reveal the lie in her form and movement, but sometimes it's easier to just accept the deception</TM_MaleOpinionOfSuccubus.stages.0.description>
+
+	<TM_MaleOpinionOfSuccubus.stages.1.label>Devilishly attractive</TM_MaleOpinionOfSuccubus.stages.1.label>
+
+	<TM_MaleOpinionOfSuccubus.stages.1.description>I can tell she uses demonic powers to make herself more attractive, but that knowledge does little to diminish the effect</TM_MaleOpinionOfSuccubus.stages.1.description>
+
+	<TM_MaleOpinionOfSuccubus.stages.2.label>Alluring</TM_MaleOpinionOfSuccubus.stages.2.label>
+
+	<TM_MaleOpinionOfSuccubus.stages.2.description>There's something about her that is undeniably and overwhelmingly attractive</TM_MaleOpinionOfSuccubus.stages.2.description>
+
+	<Thought_EnchantedAura.stages.0.label>charming</Thought_EnchantedAura.stages.0.label>
+
+	<Thought_EnchantedAura.stages.0.description>Has a charming presence.</Thought_EnchantedAura.stages.0.description>
+
+	<Thought_EnchantedAura.stages.1.label>enchanting</Thought_EnchantedAura.stages.1.label>
+
+	<Thought_EnchantedAura.stages.1.description>Has an enchanting aura.</Thought_EnchantedAura.stages.1.description>
+
+	<Thought_EnchantedAura.stages.2.label>powerful allure</Thought_EnchantedAura.stages.2.label>
+
+	<Thought_EnchantedAura.stages.2.description>Has a powerful allure.</Thought_EnchantedAura.stages.2.description>
+
+	<Thought_EnchantedAura.stages.3.label>positively glamorous</Thought_EnchantedAura.stages.3.label>
+
+	<Thought_EnchantedAura.stages.3.description>Is positively glamorous.</Thought_EnchantedAura.stages.3.description>
+
+	<Thought_EnchantedBody.stages.0.label>third arm</Thought_EnchantedBody.stages.0.label>
+
+	<Thought_EnchantedBody.stages.0.description>Has a third arm... it's uncomfortable to look at and unnatural.</Thought_EnchantedBody.stages.0.description>
+
+	<Thought_EnchantedBody.stages.1.label>four arms</Thought_EnchantedBody.stages.1.label>
+
+	<Thought_EnchantedBody.stages.1.description>I don't care if those extra arms are magical, it's freakish.</Thought_EnchantedBody.stages.1.description>
+
+	<Thought_EnchantedBody.stages.2.label>strange growth</Thought_EnchantedBody.stages.2.label>
+
+	<Thought_EnchantedBody.stages.2.description>It goes beyond reason to simply start sprouting extra body parts; it seems like that third eye is always staring at me.</Thought_EnchantedBody.stages.2.description>
+
+	<Thought_EnchantedBody.stages.3.label>mutant</Thought_EnchantedBody.stages.3.label>
+
+	<Thought_EnchantedBody.stages.3.description>What's next, another head? This has gone too far.</Thought_EnchantedBody.stages.3.description>
+
+	<Thought_EnchantedBody.stages.4.label>admiring transhumanist</Thought_EnchantedBody.stages.4.label>
+
+	<Thought_EnchantedBody.stages.4.description>To be able to morph yourself into whatever you wish - what an amazing ability!</Thought_EnchantedBody.stages.4.description>
+
+	<Thought_EnchantedBody.stages.5.label>hateful body purist</Thought_EnchantedBody.stages.5.label>
+
+	<Thought_EnchantedBody.stages.5.description>What a freak, I think -it- is gross.</Thought_EnchantedBody.stages.5.description>
+
+	<Thought_ObservedUndead.stages.0.label>observed undead</Thought_ObservedUndead.stages.0.label>
+
+	<Thought_ObservedUndead.stages.0.description>I hate being next to the undead. I can't help but think... will that happen to me when I die?</Thought_ObservedUndead.stages.0.description>
+
+	<Thought_WearingDemonhide.stages.0.label>demonhide {0}</Thought_WearingDemonhide.stages.0.label>
+
+	<Thought_WearingDemonhide.stages.0.description>Wearing apparel made with demonhide makes me feel more confident.</Thought_WearingDemonhide.stages.0.description>
+
+	<Thought_WearingDemonhide.stages.1.label>demonhide {0} (+1)</Thought_WearingDemonhide.stages.1.label>
+
+	<Thought_WearingDemonhide.stages.1.description>Demonhide clothing is a symbol of my elite status.</Thought_WearingDemonhide.stages.1.description>
+
+	<Thought_WearingDemonhide.stages.2.label>demonhide {0} (+2)</Thought_WearingDemonhide.stages.2.label>
+
+	<Thought_WearingDemonhide.stages.2.description>I'm clothed in the hide of a demon; my status and safety is guaranteed.</Thought_WearingDemonhide.stages.2.description>
+
+</LanguageData>

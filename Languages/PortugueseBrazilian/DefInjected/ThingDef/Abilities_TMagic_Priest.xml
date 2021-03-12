@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Projectile_Resurrection.label>resurrection</Projectile_Resurrection.label>
+
+	<TM_Projectile_HealingCircle.label>healing circle</TM_Projectile_HealingCircle.label>
+
+	<TM_Projectile_HealingCircle_I.label>healing circle</TM_Projectile_HealingCircle_I.label>
+
+	<TM_Projectile_HealingCircle_III.label>healing circle</TM_Projectile_HealingCircle_III.label>
+
+	<TM_Projectile_Priest.label>priest projectile</TM_Projectile_Priest.label>
+
+	<TM_Projectile_HealingCircle_II.label>healing circle</TM_Projectile_HealingCircle_II.label>
+
+</LanguageData>

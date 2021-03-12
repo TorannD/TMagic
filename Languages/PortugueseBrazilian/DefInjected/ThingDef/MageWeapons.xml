@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_LightningWand.label>Wand of Lightning</TM_LightningWand.label>
+
+	<TM_LightningWand.description>A wand able to slowly convert nearby arcane energy into elemental lightning. Wands are used as focusing tools to harness innate power more than as a weapon itself.
+
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +5%
+Energy Regen: +5%
+Damage Boost: +15%</TM_LightningWand.description>
+
+	<TM_LightningWand.tools.0.label>wand</TM_LightningWand.tools.0.label>
+
+	<Projectile_ElephantBow.label>Elephant bow bolt</Projectile_ElephantBow.label>
+
+	<TM_ThrumboAxe.label>thrumbo axe</TM_ThrumboAxe.label>
+
+	<TM_ThrumboAxe.description>An axe crafted using thrumbo horns that are fused together with a clasp made from magicyte. This clasp stores arcane potential and transfers it as physical force when the axe is swung, allowing it to deliver mighty blows capable of cleaving through multiple opponents. The shaft is also etched with magical runes to augment the wielder's power.
+		
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +10%
+Damage Boost: +20%
+Arcane Resistance: +30%
+Cleaving Strike</TM_ThrumboAxe.description>
+
+	<TM_ThrumboAxe.tools.0.label>handle</TM_ThrumboAxe.tools.0.label>
+
+	<TM_ThrumboAxe.tools.1.label>cleave</TM_ThrumboAxe.tools.1.label>
+
+	<TM_ThrumboAxe.tools.2.label>horns</TM_ThrumboAxe.tools.2.label>
+
+	<Seer_FireRing.label>Ring of Elemental Fire</Seer_FireRing.label>
+
+	<Seer_FireRing.description>An ancient artifact bound to the wielder allowing elemental currents to flow through the host. If the host is separated from the ring, the contract binding it to this realm is nullified, destroying the artifact.</Seer_FireRing.description>
+
+	<Seer_FireRing.tools.0.label>elemental fist</Seer_FireRing.tools.0.label>
+
+	<TM_ThrumBow.label>Thrum Bow</TM_ThrumBow.label>
+
+	<TM_ThrumBow.description>A bow shaped from the horn of a Thrumbo. The horn is hallowed out to decrease the weight and softened by soaking it in a magicyte compound that adds a surprising suppleness to the horn. The bow is further enhanced with embedded enchantments and arcane engravings that travel the length of the bow. The bow is said to be almost sentient, able to determine the intended target through a mental link with the wielder. Arrows fired from this bow almost always hit their intended target. This effect does have a tendency to delude the users own capability, however.
+
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +20%
+Energy Regen: +10%
+Damage Boost: +20%
+Ability Cooldown: -10%
+Class XP Gain: -20%</TM_ThrumBow.description>
+
+	<TM_ThrumBow.tools.0.label>limb</TM_ThrumBow.tools.0.label>
+
+	<Projectile_SeerRing_Fire.label>elemental fire</Projectile_SeerRing_Fire.label>
+
+	<TM_ElephantBow.label>Elephant Bow</TM_ElephantBow.label>
+
+	<TM_ElephantBow.description>A bow shaped from elephant tusks. The tusks are hallowed out to decrease rigidity and reduce weight and softened by soaking it in a magicyte compound that increases suppleness. The elephant bow offers significant improvements in range and accuracy for distant targets over the greatbow, though it is slightly more difficult to handle.
+	
+The elephant bow is engraved with minor enchantments and is a preferred weapon by many experienced rangers and hunters.
+
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +5%
+Energy Regen: +5%
+Damage Boost: +10%
+Ability Cooldown: -10%</TM_ElephantBow.description>
+
+	<TM_ElephantBow.tools.0.label>limb</TM_ElephantBow.tools.0.label>
+
+	<TM_IceWand.label>Wand of Ice</TM_IceWand.label>
+
+	<TM_IceWand.description>A wand able to slowly convert nearby arcane energy into elemental ice. Wands are used as focusing tools to harness innate power more than as a weapon itself.
+	
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +5%
+Energy Regen: +5%
+Damage Boost: +15%</TM_IceWand.description>
+
+	<TM_IceWand.tools.0.label>wand</TM_IceWand.tools.0.label>
+
+	<TM_ElephantTusk.label>elephant tusk</TM_ElephantTusk.label>
+
+	<TM_ElephantTusk.description>This elephant tusk has been fashioned into a long knife useful in close combat for both piercing and slashing attacks. The hilt is wrapped in leather to and has a small counter-balance to improve handling, and the light weight of the blade allow for quick attacks. However, the low weight and softer blade make it a poor choice against a heavily armored opponent.</TM_ElephantTusk.description>
+
+	<TM_ElephantTusk.tools.0.label>handle</TM_ElephantTusk.tools.0.label>
+
+	<TM_ElephantTusk.tools.1.label>point</TM_ElephantTusk.tools.1.label>
+
+	<TM_ElephantTusk.tools.2.label>edge</TM_ElephantTusk.tools.2.label>
+
+	<Projectile_ThrumArrow.label>Thrum bow bolt</Projectile_ThrumArrow.label>
+
+	<TM_DefenderStaff.label>Staff of the Defender</TM_DefenderStaff.label>
+
+	<TM_DefenderStaff.description>A staff crafted from an ancient design bearing a palpable aura of wisdom. This staff is able to tap into the spirit realm and allow the wielder to communicate with their ancestral spirits who can manifest their power in the form of a physical barrier. The energy to perform this action comes from the spirits themselves and does not draw energy from the user, though the spirits require time to rest between requests.
+
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +30%
+Energy Regen: +20%
+Arcane Resistance: +20%
+
+Augmentation adds ability: Arcane Barrier</TM_DefenderStaff.description>
+
+	<TM_DefenderStaff.tools.0.label>rod</TM_DefenderStaff.tools.0.label>
+
+	<TM_DefenderStaff.tools.1.label>staff head</TM_DefenderStaff.tools.1.label>
+
+	<Projectile_FireWand.label>fire wand</Projectile_FireWand.label>
+
+	<TM_Ruunbled.label>Ruunbled</TM_Ruunbled.label>
+
+	<TM_Ruunbled.description>This a massive blade is etched in intricate runes from hilt to tip. It is forged in a material unknown to you, with a razor sharp edge and weighing only a fraction of what the size infers. Despite its size, the weapon is easy to handle, and practically hums with power. You can only fathom the origins of this weapon - perhaps crafted in ancient technologies that were lost to time or fabricated with some mysterious power. The only hint is small word written in a stylish script and imprinted into the hilt with the name "Ruunbled." You are not sure if this is a manufacturing company, the name of its maker, or the name of the blade itself. Whichever it is, there is no doubt that this weapon represents the pinnacle of its class.
+		
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Ability Cooldown: -20%
+Energy Costs: -20%
+Damage Boost: +25%
+Arcane Resistance: +25%
+Haste on hit (20%)
+Deflection (30%)
+Cleaving Strike</TM_Ruunbled.description>
+
+	<TM_Ruunbled.tools.0.label>pommel</TM_Ruunbled.tools.0.label>
+
+	<TM_Ruunbled.tools.1.label>stab</TM_Ruunbled.tools.1.label>
+
+	<TM_Ruunbled.tools.2.label>edge</TM_Ruunbled.tools.2.label>
+
+	<TM_BlazingPowerStaff.label>Staff of Blazing Power</TM_BlazingPowerStaff.label>
+
+	<TM_BlazingPowerStaff.description>A staff that creates a mental link with the wielder to harness focused energy that can be used to launch a stream of blazing projectiles or create a hardened barrier around the wielder that can deflect projectiles. Mages gain tremendous boosts to magical spells while wielding this staff but to a mundane pawn it is nothing but a blunt weapon.
+
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +20%
+Energy Regen: +10%
+Damage Boost: +40%</TM_BlazingPowerStaff.description>
+
+	<TM_BlazingPowerStaff.tools.0.label>rod</TM_BlazingPowerStaff.tools.0.label>
+
+	<TM_BlazingPowerStaff.tools.1.label>staff head</TM_BlazingPowerStaff.tools.1.label>
+
+	<TM_DemonFang.label>demon's fang</TM_DemonFang.label>
+
+	<TM_DemonFang.description>A deadly short blade that can inflict nightshade toxin. The Demon's Fang is light-weight with quick attacks and will benefit from the type of material used in it's crafting. However, the raw damage of this weapon is lower than other high-tier weapons. Due to the nature of it's crafting, it does benefit from several hefty enchantments that will augment it's user's skills.
+		
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Energy Costs: -10%
+Ability Cooldown: -15%
+Damage Boost: +25%
+Nightshade Toxin on hit (20%)</TM_DemonFang.description>
+
+	<TM_DemonFang.tools.0.label>stab</TM_DemonFang.tools.0.label>
+
+	<TM_DemonFang.tools.1.label>edge</TM_DemonFang.tools.1.label>
+
+	<Projectile_LightningWand.label>lightning wand</Projectile_LightningWand.label>
+
+	<Laser_SeerRing_Lightning.label>elemental lightning</Laser_SeerRing_Lightning.label>
+
+	<Projectile_SeerRing_Ice.label>elemental ice</Projectile_SeerRing_Ice.label>
+
+	<Projectile_IceWand.label>ice wand</Projectile_IceWand.label>
+
+	<Seer_LightningRing.label>Ring of Elemental Lightning</Seer_LightningRing.label>
+
+	<Seer_LightningRing.description>An ancient artifact bound to the wielder allowing elemental currents to flow through the host. If the host is separated from the ring, the contract binding it to this realm is nullified, destroying the artifact.</Seer_LightningRing.description>
+
+	<Seer_LightningRing.tools.0.label>elemental fist</Seer_LightningRing.tools.0.label>
+
+	<TM_ElephantSpear.label>elephant spear</TM_ElephantSpear.label>
+
+	<TM_ElephantSpear.description>The elephant spear is crafted using the tusks of an elephant, and is typically a status symbol reserved for head hunters or leaders of a tribe. The shaft is engraved with minor enchantments, further boosting the combat abilities of the user.
+		
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +10%
+Damage Boost: +10%
+Arcane Resistance: +20%</TM_ElephantSpear.description>
+
+	<TM_ElephantSpear.tools.0.label>shaft</TM_ElephantSpear.tools.0.label>
+
+	<TM_ElephantSpear.tools.1.label>point</TM_ElephantSpear.tools.1.label>
+
+	<TM_ElephantSpear.tools.2.label>slash</TM_ElephantSpear.tools.2.label>
+
+	<Projectile_BlazingPower.label>blazing power</Projectile_BlazingPower.label>
+
+	<Seer_IceRing.label>Ring of Elemental Ice</Seer_IceRing.label>
+
+	<Seer_IceRing.description>An ancient artifact bound to the wielder allowing elemental currents to flow through the host. If the host is separated from the ring, the contract binding it to this realm is nullified, destroying the artifact.</Seer_IceRing.description>
+
+	<Seer_IceRing.tools.0.label>elemental fist</Seer_IceRing.tools.0.label>
+
+	<TM_ThrumboSaber.label>thrumbo saber</TM_ThrumboSaber.label>
+
+	<TM_ThrumboSaber.description>A razor sharp blade forged from the horn of a thrumbo and infused with arcane energy. The thrumbo saber is lighter than metal blades and it's edge can cut through all but the thickest armor. Many masters of the blade favor this weapon as it is designed for speed and lethality. Further enchantments may also quicken the users, doubling their attack rate for a short period.
+		
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Ability Cooldown: -10%
+Damage Boost: +10%
+Haste on hit (25%)</TM_ThrumboSaber.description>
+
+	<TM_ThrumboSaber.tools.0.label>pommel</TM_ThrumboSaber.tools.0.label>
+
+	<TM_ThrumboSaber.tools.1.label>stab</TM_ThrumboSaber.tools.1.label>
+
+	<TM_ThrumboSaber.tools.2.label>edge</TM_ThrumboSaber.tools.2.label>
+
+	<TM_FireWand.label>Wand of Fire</TM_FireWand.label>
+
+	<TM_FireWand.description>A wand able to slowly convert nearby arcane energy into elemental fire. Wands are used as focusing tools to harness innate power more than as a weapon itself.
+	
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +5%
+Energy Regen: +5%
+Damage Boost: +15%</TM_FireWand.description>
+
+	<TM_FireWand.tools.0.label>wand</TM_FireWand.tools.0.label>
+
+</LanguageData>

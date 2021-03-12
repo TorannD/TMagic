@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_SentinelR.label>Sentinel</TM_SentinelR.label>
+
+	<TM_SentinelR.description>This once inanimate stone is now viciously defending its terrain. Limbs that once seemed fused together as the same stone are now mobile... and tearing through earth and flesh alike.</TM_SentinelR.description>
+
+	<TM_SentinelR.tools.0.label>claws</TM_SentinelR.tools.0.label>
+
+	<TM_SentinelR.tools.1.label>teeth</TM_SentinelR.tools.1.label>
+
+	<TM_Greater_SentinelR.label>Greater Sentinel</TM_Greater_SentinelR.label>
+
+	<TM_Greater_SentinelR.description>This once inanimate stone is now viciously defending its terrain. Limbs that once seemed fused together as the same stone are now mobile... and tearing through earth and flesh alike.</TM_Greater_SentinelR.description>
+
+	<TM_Greater_SentinelR.tools.0.label>claws</TM_Greater_SentinelR.tools.0.label>
+
+	<TM_Greater_SentinelR.tools.1.label>teeth</TM_Greater_SentinelR.tools.1.label>
+
+	<TM_Lesser_SentinelR.label>Lesser Sentinel</TM_Lesser_SentinelR.label>
+
+	<TM_Lesser_SentinelR.description>This once inanimate stone is now viciously defending its terrain. Limbs that once seemed fused together as the same stone are now mobile... and tearing through earth and flesh alike.</TM_Lesser_SentinelR.description>
+
+	<TM_Lesser_SentinelR.tools.0.label>claws</TM_Lesser_SentinelR.tools.0.label>
+
+	<TM_Lesser_SentinelR.tools.1.label>teeth</TM_Lesser_SentinelR.tools.1.label>
+
+	<TM_Sentinel.label>sentinel</TM_Sentinel.label>
+
+</LanguageData>

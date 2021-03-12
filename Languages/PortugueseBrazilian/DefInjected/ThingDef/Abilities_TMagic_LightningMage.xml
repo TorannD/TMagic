@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Projectile_LightningCloud.label>Lightning Cloud</Projectile_LightningCloud.label>
+
+	<Projectile_EyeOfTheStorm.label>Eye of the Storm</Projectile_EyeOfTheStorm.label>
+
+	<Buff_AMP.label>AMP</Buff_AMP.label>
+
+	<Projectile_LightningStorm.label>Lightning Storm</Projectile_LightningStorm.label>
+
+	<FlyingObject_EyeOfTheStorm.label>flying object</FlyingObject_EyeOfTheStorm.label>
+
+	<Laser_LightningBolt.label>Lightning Bolt</Laser_LightningBolt.label>
+
+</LanguageData>

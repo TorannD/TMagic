@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Projectile_ValiantCharge.label>Whirlwind</Projectile_ValiantCharge.label>
+
+	<TM_Paladin_Heal.label>Heal</TM_Paladin_Heal.label>
+
+	<TM_Paladin_Shield.label>Shield</TM_Paladin_Shield.label>
+
+	<Projectile_HolyWrath.label>holy wrath</Projectile_HolyWrath.label>
+
+	<FlyingObject_ValiantCharge.label>flying object</FlyingObject_ValiantCharge.label>
+
+	<TM_Paladin_Overwhelm.label>Overwhelm</TM_Paladin_Overwhelm.label>
+
+</LanguageData>

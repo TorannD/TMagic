@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_LesserDemonR.label>Lesser Demon</TM_LesserDemonR.label>
+
+	<TM_LesserDemonR.description>Released from the pits of hell, this lesser demon will unleash its unfettered malice upon any and all beings in its path. There is no reasoning or subjugating the demon; destroy it or be destroyed.</TM_LesserDemonR.description>
+
+	<TM_LesserDemonR.tools.0.label>left claw</TM_LesserDemonR.tools.0.label>
+
+	<TM_LesserDemonR.tools.1.label>right claw</TM_LesserDemonR.tools.1.label>
+
+	<TM_LesserDemonR.tools.2.label>hoof</TM_LesserDemonR.tools.2.label>
+
+	<TM_DemonR.label>Demon</TM_DemonR.label>
+
+	<TM_DemonR.description>Released from the pits of hell, this demon will unleash its unfettered malice upon any and all beings in its path. There is no reasoning or subjugating the demon; destroy it or be destroyed.</TM_DemonR.description>
+
+	<TM_DemonR.tools.0.label>left claw</TM_DemonR.tools.0.label>
+
+	<TM_DemonR.tools.1.label>right claw</TM_DemonR.tools.1.label>
+
+	<TM_DemonR.tools.2.label>hoof</TM_DemonR.tools.2.label>
+
+</LanguageData>

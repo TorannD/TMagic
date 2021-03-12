@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_GiantSkeletonR.label>Giant skeleton</TM_GiantSkeletonR.label>
+
+	<TM_GiantSkeletonR.description>An enormous skeleton; this abomination was either created from the bones of a giant creature or by combining the bones of lesser creatures. This skeleton is animated by necromancy and embodied by a vengeful spirit that has wandered the world for ages - long enough to develop a simple, single-minded hate for life.</TM_GiantSkeletonR.description>
+
+	<TM_GiantSkeletonR.tools.0.label>left fist</TM_GiantSkeletonR.tools.0.label>
+
+	<TM_GiantSkeletonR.tools.1.label>right fist</TM_GiantSkeletonR.tools.1.label>
+
+	<TM_GiantSkeletonR.tools.2.label>teeth</TM_GiantSkeletonR.tools.2.label>
+
+	<TM_SkeletonR.label>Skeleton</TM_SkeletonR.label>
+
+	<TM_SkeletonR.description>Physical husks of creatures raised through the power of necromancy; their sole instinct is to obey their master and destroy all life.</TM_SkeletonR.description>
+
+	<TM_SkeletonR.tools.0.label>left fist</TM_SkeletonR.tools.0.label>
+
+	<TM_SkeletonR.tools.1.label>right fist</TM_SkeletonR.tools.1.label>
+
+	<TM_SkeletonR.tools.2.label>teeth</TM_SkeletonR.tools.2.label>
+
+	<TM_SkeletonLichR.label>skeleton lich</TM_SkeletonLichR.label>
+
+	<TM_SkeletonLichR.description>The withered and faded bones of an ancient lich embodied by the spirit of malevolence and hatred; whoever, or whatever, this being once was is no more; its sole purpose is to destroy all life and replace it with undeath.</TM_SkeletonLichR.description>
+
+	<TM_SkeletonLichR.tools.0.label>left hand</TM_SkeletonLichR.tools.0.label>
+
+	<TM_SkeletonLichR.tools.1.label>right hand</TM_SkeletonLichR.tools.1.label>
+
+	<TM_SkeletonLichR.tools.2.label>death stare</TM_SkeletonLichR.tools.2.label>
+
+</LanguageData>

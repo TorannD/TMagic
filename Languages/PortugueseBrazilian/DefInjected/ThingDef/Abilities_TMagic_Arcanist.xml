@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Buff_Shadow.label>Shadow</Buff_Shadow.label>
+
+	<MovingObject.label>moving object</MovingObject.label>
+
+	<TM_SummonedPawn.label>flying object</TM_SummonedPawn.label>
+
+	<Projectile_Teleport.label>Teleport</Projectile_Teleport.label>
+
+	<Projectile_FoldReality.label>fold reality</Projectile_FoldReality.label>
+
+	<Projectile_MagicMissile.label>Magic Missile</Projectile_MagicMissile.label>
+
+	<Projectile_Summon.label>Summon</Projectile_Summon.label>
+
+	<Projectile_Blink.label>Blink</Projectile_Blink.label>
+
+</LanguageData>

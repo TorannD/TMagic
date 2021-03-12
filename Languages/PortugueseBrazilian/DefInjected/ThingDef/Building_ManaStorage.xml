@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_ArcaneCapacitor.label>Arcane Capacitor</TM_ArcaneCapacitor.label>
+
+	<TM_ArcaneCapacitor.description>The Arcane Capacitor is able to store mana as a form of potential energy that mages can draw upon at a later time. Mages assigned to magic tasks will charge the battery until it reaches its set fill level. A mage will only perform this task if their mana level is above 90% of their maximum.
+
+The arcane capacitor will discharge mana to any undrafted pawn in range if the mana ratio of the capacitor is greater than 250% of the mage. Drafted mages will forcibly draw mana from the capacitor until the capacitor is empty or the mage has 90% or more mana.
+
+Some mana is lost during the discharging process.
+Efficiency: 71%</TM_ArcaneCapacitor.description>
+
+	<TM_DimensionalManaPocket.label>Dimensional Mana Pocket</TM_DimensionalManaPocket.label>
+
+	<TM_DimensionalManaPocket.description>The dimensional mana pocket stores a tremendous amount of mana and has a large distribution coverage area but is slower than the arcane capacitor to redistribute mana when it's needed
+	
+Mages assigned to magic tasks will store mana in the dimensional pocket until it reaches its set fill level. A mage will only perform this task if their mana level is above 90% of their maximum.
+
+The dimensional pocket will discharge mana to any undrafted pawn in range if their mana is below 40% and to any drafted mage with mana lower than 80%.
+
+Some mana is lost during both the charging and discharging process.
+Efficiency: 80%</TM_DimensionalManaPocket.description>
+
+</LanguageData>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<FlyingObject_Advanced.label>flying object that does lots of stuff</FlyingObject_Advanced.label>
+
+	<Projectile_Default.label>default</Projectile_Default.label>
+
+	<FlyingObject_SpinningBone.label>flying object that spins</FlyingObject_SpinningBone.label>
+
+	<FlyingObject_Spinning.label>flying object that spins</FlyingObject_Spinning.label>
+
+</LanguageData>

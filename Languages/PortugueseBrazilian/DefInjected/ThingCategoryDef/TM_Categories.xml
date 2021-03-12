@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_MagicItems.label>Magic Items</TM_MagicItems.label>
+
+	<TM_SkillBooks.label>skill books</TM_SkillBooks.label>
+
+	<TM_Scrolls.label>scrolls</TM_Scrolls.label>
+
+	<TM_Magicyte.label>refined magicyte</TM_Magicyte.label>
+
+	<TM_MagicEquipment.label>magic equipment</TM_MagicEquipment.label>
+
+	<TM_MagicArtifacts.label>magic artifacts</TM_MagicArtifacts.label>
+
+	<TM_MagicApparel.label>magic apparel</TM_MagicApparel.label>
+
+	<TM_MagicWeapons.label>magic weapons</TM_MagicWeapons.label>
+
+	<TM_MagicWeaponsMelee.label>melee</TM_MagicWeaponsMelee.label>
+
+	<TM_MagicWeaponsRanged.label>ranged</TM_MagicWeaponsRanged.label>
+
+	<TM_MagicWeaponsFoci.label>magic foci</TM_MagicWeaponsFoci.label>
+
+</LanguageData>

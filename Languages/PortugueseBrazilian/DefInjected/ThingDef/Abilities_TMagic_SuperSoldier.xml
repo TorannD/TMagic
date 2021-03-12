@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Projectile_Buckshot.label>buckshot pellet</Projectile_Buckshot.label>
+
+	<TM_ShotgunSpec_Base0.label>shotgun spec weapon</TM_ShotgunSpec_Base0.label>
+
+	<TM_ShotgunSpec_Base0.description>A shotgun in the hands of a specialist.</TM_ShotgunSpec_Base0.description>
+
+	<TM_ShotgunSpec_Base0.tools.0.label>weapon smash</TM_ShotgunSpec_Base0.tools.0.label>
+
+	<Projectile_Mk203GL.label>Grenade</Projectile_Mk203GL.label>
+
+	<TM_RifleSpec_Base0.label>rifle spec weapon</TM_RifleSpec_Base0.label>
+
+	<TM_RifleSpec_Base0.description>A rifle in the hands of a specialist.</TM_RifleSpec_Base0.description>
+
+	<TM_RifleSpec_Base0.tools.0.label>rifle stock</TM_RifleSpec_Base0.tools.0.label>
+
+	<TM_PistolSpec_Base0.label>pistol spec weapon</TM_PistolSpec_Base0.label>
+
+	<TM_PistolSpec_Base0.description>A pistol in the hands of a specialist.</TM_PistolSpec_Base0.description>
+
+	<TM_PistolSpec_Base0.tools.0.label>pistol whip</TM_PistolSpec_Base0.tools.0.label>
+
+	<Projectile_BreachingCharge.label>breaching charge</Projectile_BreachingCharge.label>
+
+</LanguageData>

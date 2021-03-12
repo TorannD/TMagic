@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_MinionR.label>minion</TM_MinionR.label>
+
+	<TM_MinionR.description>Minions are mischievous, lazy, cruel cowards that come from a miserable plane of existence.  They appear as a floating meatball with a giant eye.  They have stubby, little arms a mouth that seems transfixed in a nasty smile, and two or three horns.
+It's not clear how they float, though one can only assume it has something to do with the hot, putrid stench that follows them everywhere.
+Their usefulness is open for debate; they possess little in terms of combat ability and would sooner flee than fight.  They -can- do simple tasks such as hauling and cleaning (though they seem to have a different definition of "clean").  However, it seems more likely to find them lounging near the television or smoking a joint (or both) than doing anything productive.
+They can be summoned by gullible... er, trained mages, and, in return for giving them a break from their "pit fiend of a boss," they are willing to "help out" around the place.
+Occasionally, they express the desire to hit things and can (usually) be convinced to hit some nearby rocks.
+If things get too tough for them or they get bored, they'll flee back to wherever they came.</TM_MinionR.description>
+
+	<TM_MinionR.tools.0.label>horns</TM_MinionR.tools.0.label>
+
+	<TM_MinionR.tools.1.label>bite</TM_MinionR.tools.1.label>
+
+	<TM_GreaterMinionR.label>greater minion</TM_GreaterMinionR.label>
+
+	<TM_GreaterMinionR.description>Minions are mischievous, lazy, cruel cowards that come from a miserable plane of existence.  They appear as a floating meatball with a giant eye.  They have stubby, little arms a mouth that seems transfixed in a nasty smile, and two or three horns.
+It's not clear how they float, though one can only assume it has something to do with the hot, putrid stench that follows them everywhere.
+Their usefulness is open for debate; they possess little in terms of combat ability and would sooner flee than fight.  They -can- do simple tasks such as hauling and cleaning (though they seem to have a different definition of "clean"). However, it seems more likely to find them lounging near the television or smoking a joint (or both) than doing anything productive.
+They can be summoned by gullible... er, trained mages, and, in return for giving them a break from their "pit fiend of a boss," they are willing to "help out" around the place.
+Occasionally, they express the desire to hit things and can (usually) be convinced to hit some nearby rocks.
+If things get too tough for them or they get bored, they'll flee back to wherever they came.</TM_GreaterMinionR.description>
+
+	<TM_GreaterMinionR.tools.0.label>horns</TM_GreaterMinionR.tools.0.label>
+
+	<TM_GreaterMinionR.tools.1.label>bite</TM_GreaterMinionR.tools.1.label>
+
+</LanguageData>

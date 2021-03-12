@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Projectile_Scorn.label>scorn</Projectile_Scorn.label>
+
+	<Projectile_PsychicShock.label>psychic shock</Projectile_PsychicShock.label>
+
+	<Projectile_Attraction.label>attraction</Projectile_Attraction.label>
+
+	<FlyingObject_DemonBolt.label>demon flames</FlyingObject_DemonBolt.label>
+
+	<Projectile_SummonDemon.label>summon demon</Projectile_SummonDemon.label>
+
+	<Projectile_Warlock.label>default projectile</Projectile_Warlock.label>
+
+	<Projectile_Repulsion_III.label>repulsion</Projectile_Repulsion_III.label>
+
+	<Projectile_Repulsion.label>repulsion</Projectile_Repulsion.label>
+
+	<Projectile_Repulsion_II.label>repulsion</Projectile_Repulsion_II.label>
+
+	<Projectile_Repulsion_I.label>repulsion</Projectile_Repulsion_I.label>
+
+	<FlyingObject_DemonFlight.label>flying object</FlyingObject_DemonFlight.label>
+
+	<FlyingObject_ShadowBolt.label>shadow bolt</FlyingObject_ShadowBolt.label>
+
+	<Projectile_ShadowBolt.label>shadow bolt</Projectile_ShadowBolt.label>
+
+</LanguageData>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Projectile_CureDisease.label>cure disease</Projectile_CureDisease.label>
+
+	<Projectile_RegrowLimb.label>regrow limb</Projectile_RegrowLimb.label>
+
+	<Projectile_Regenerate.label>regenerate</Projectile_Regenerate.label>
+
+	<Projectile_SootheAnimal.label>beguile animal</Projectile_SootheAnimal.label>
+
+	<Projectile_Poison.label>poison</Projectile_Poison.label>
+
+</LanguageData>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_MagicLoreTD.stages.0.label>gained arcane knowledge</TM_MagicLoreTD.stages.0.label>
+
+	<TM_MagicLoreTD.stages.0.description>I've been enlightened by words from a powerful mage, now I just have to apply this knowledge...</TM_MagicLoreTD.stages.0.description>
+
+	<TM_MightLoreTD.stages.0.label>gained combat experience</TM_MightLoreTD.stages.0.label>
+
+	<TM_MightLoreTD.stages.0.description>A more experienced fighter has taught me how to improve my combat techniques.</TM_MightLoreTD.stages.0.description>
+
+	<TM_EntertainedTD.stages.0.label>entertained</TM_EntertainedTD.stages.0.label>
+
+	<TM_EntertainedTD.stages.0.description>This place isn't so bad; there are people here that make me forget about my worries and laugh a little.</TM_EntertainedTD.stages.0.description>
+
+	<TM_EntertainedAuraTD.stages.0.label>social entertainment</TM_EntertainedAuraTD.stages.0.label>
+
+	<TM_EntertainedAuraTD.stages.0.description>I had a really fun time talking with others.</TM_EntertainedAuraTD.stages.0.description>
+
+	<TM_EntertainerAuraTD.stages.0.label>social interaction</TM_EntertainerAuraTD.stages.0.label>
+
+	<TM_EntertainerAuraTD.stages.0.description>I really like interacting with the people around here, it makes me happy to bring a little joy to others.</TM_EntertainerAuraTD.stages.0.description>
+
+</LanguageData>

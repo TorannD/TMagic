@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_TechnoWeapon_Base0.label>techno weapon</TM_TechnoWeapon_Base0.label>
+
+	<TM_TechnoWeapon_Base0.description>A weapon modified by a technomancer</TM_TechnoWeapon_Base0.description>
+
+	<TM_TechnoWeapon_Base0.tools.0.label>weapon smash</TM_TechnoWeapon_Base0.tools.0.label>
+
+	<Projectile_OrbitalStrike_III.label>orbital strike</Projectile_OrbitalStrike_III.label>
+
+	<Projectile_TM_BitTechLaser.label>tech micro laser</Projectile_TM_BitTechLaser.label>
+
+	<Projectile_OrbitalStrike_I.label>orbital strike</Projectile_OrbitalStrike_I.label>
+
+	<Projectile_Sabotage.label>sabotage projectile</Projectile_Sabotage.label>
+
+	<Bullet_ES_Ice.label>elemental shot - ice</Bullet_ES_Ice.label>
+
+	<Projectile_OrbitalStrike.label>orbital strike</Projectile_OrbitalStrike.label>
+
+	<Projectile_TechnoTurret.label>Mark-IV projectile</Projectile_TechnoTurret.label>
+
+	<Projectile_TMFragGrenade.label>mini frag grenade</Projectile_TMFragGrenade.label>
+
+	<Bullet_ES_Lit.label>elemental shot - lightning</Bullet_ES_Lit.label>
+
+	<Projectile_OrbitalStrike_II.label>orbital strike</Projectile_OrbitalStrike_II.label>
+
+	<Bullet_ES_Fire.label>elemental shot - fire</Bullet_ES_Fire.label>
+
+	<Projectile_TMEMPGrenade.label>mini frag grenade</Projectile_TMEMPGrenade.label>
+
+</LanguageData>

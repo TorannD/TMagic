@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<ManaPotionHigh.stages.0.label>mana surge</ManaPotionHigh.stages.0.label>
+
+	<ManaPotionHigh.stages.0.description>This power... it's overwhelming. I feel the power of the cosmos at my fingertips, but it's turning my bones to ash.</ManaPotionHigh.stages.0.description>
+
+	<ManaPotionWithdrawal.stages.1.label>mana withdrawal</ManaPotionWithdrawal.stages.1.label>
+
+	<ManaPotionWithdrawal.stages.1.description>Ugh... everything is a blur. I can't seem to focus or control my body, I feel separated from reality. I need to feel mana flowing into my soul.</ManaPotionWithdrawal.stages.1.description>
+
+</LanguageData>

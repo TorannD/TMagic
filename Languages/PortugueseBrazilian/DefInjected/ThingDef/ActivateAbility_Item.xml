@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Artifact_ClassExtraction.comps.3.uselabel>Use shard of extraction</TM_Artifact_ClassExtraction.comps.3.uselabel>
+
+	<TM_Artifact_ClassExtraction.label>Shard of Spirit Extraction</TM_Artifact_ClassExtraction.label>
+
+	<TM_Artifact_ClassExtraction.description>This mysterious shard is capable of extracting the martial or arcane talents of a pawn and converting it to essence. The shard is destroyed after use.
+	
+*Note: this item completely removes a pawn's class and any associated abilities and skills. The pawn may learn another class following a spirit extraction.</TM_Artifact_ClassExtraction.description>
+
+	<TM_MagicArtifact_MightEssence.label>Essence of Might</TM_MagicArtifact_MightEssence.label>
+
+	<TM_MagicArtifact_MightEssence.description>The essence of raw, martial skill. Absorbing the essence grants martial experience.</TM_MagicArtifact_MightEssence.description>
+
+	<TM_MagicArtifact_MightEssence.comps.0.uselabel>Use essence of might</TM_MagicArtifact_MightEssence.comps.0.uselabel>
+
+	<TM_MagicArtifact_MagicEssence.label>Essence of Magic</TM_MagicArtifact_MagicEssence.label>
+
+	<TM_MagicArtifact_MagicEssence.description>The essence of raw, magical skill. Absorbing the essence grants arcane experience.</TM_MagicArtifact_MagicEssence.description>
+
+	<TM_MagicArtifact_MagicEssence.comps.0.uselabel>Use essence of magic</TM_MagicArtifact_MagicEssence.comps.0.uselabel>
+
+	<MagicArtifact_RerollSpiritBond.label>Scroll of Spirit Binding</MagicArtifact_RerollSpiritBond.label>
+
+	<MagicArtifact_RerollSpiritBond.description>This scroll may be used to change the shaman's spirit animal. The new bond will randomly select a new spirit type to bond.</MagicArtifact_RerollSpiritBond.description>
+
+	<MagicArtifact_RerollSpiritBond.comps.2.uselabel>Use</MagicArtifact_RerollSpiritBond.comps.2.uselabel>
+
+</LanguageData>
