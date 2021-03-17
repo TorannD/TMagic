@@ -972,6 +972,7 @@ namespace TorannMagic
         public static TMAbilityDef TM_MechaniteReprogramming;
         public static HediffDef TM_ReprogrammedSenMechanites_HD;
         public static HediffDef TM_ReprogrammedFibMechanites_HD;
+        public static HediffDef TM_ReprogrammedLymMechanites_HD;
         public static TMAbilityDef TM_ArcaneBolt;
         public static TMAbilityDef TM_LightningTrap;
         public static JobDef JobDriver_PlaceLightningTrap;

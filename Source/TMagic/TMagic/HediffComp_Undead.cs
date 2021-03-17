@@ -5,6 +5,8 @@ using RimWorld;
 using AbilityUser;
 using Verse;
 using UnityEngine;
+using System.Reflection;
+using HarmonyLib;
 
 namespace TorannMagic
 {
@@ -249,8 +251,22 @@ namespace TorannMagic
                             {
                                 pawn.health.RemoveHediff(rec);
                             }
+                            if(rec.def.defName.Contains("Pregnant") || rec.def.defName == "DrugOverdose")
+                            {
+                                pawn.health.RemoveHediff(rec);
+                            }
                         }
-                    }                        
+                    }
+                    CompHatcher cp_h = this.Pawn.TryGetComp<CompHatcher>();
+                    if(cp_h != null)
+                    {
+                        Traverse.Create(root: cp_h).Field(name: "gestateProgress").SetValue(0);
+                    }
+                    CompMilkable cp_m = this.Pawn.TryGetComp<CompMilkable>();
+                    if(cp_m != null)
+                    {
+                        Traverse.Create(root: cp_m).Field(name: "fullness").SetValue(0);
+                    }
                 }
             }
             

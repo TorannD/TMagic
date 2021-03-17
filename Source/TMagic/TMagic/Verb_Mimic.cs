@@ -108,6 +108,7 @@ namespace TorannMagic
                                 }
                                 mightComp.RemovePawnAbility(mightComp.mimicAbility);
                             }
+                            TM_Action.ClearSustainedMagicHediffs(magicComp);
                             mightComp.mimicAbility = tempAbility;
                             mightComp.AddPawnAbility(tempAbility);
                         }
@@ -150,6 +151,7 @@ namespace TorannMagic
                             {                                
                                 magicComp.RemovePawnAbility(magicComp.mimicAbility);
                             }
+                            TM_Action.ClearSustainedMagicHediffs(magicComp);
                             mightComp.mimicAbility = tempAbility;
                             mightComp.AddPawnAbility(tempAbility);
                         }

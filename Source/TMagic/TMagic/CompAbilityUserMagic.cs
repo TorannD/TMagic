@@ -5902,27 +5902,34 @@ namespace TorannMagic
 
                                         List<string> afflictionList = new List<string>();
                                         afflictionList.Clear();
-                                        afflictionList.Add("Infection");
-                                        afflictionList.Add("WoundInfection");
-                                        afflictionList.Add("Flu");
-                                        if (ver.level >= 1)
+                                        foreach (TMDefs.TM_CategoryHediff chd in HediffCategoryList.Named("TM_Category_Hediffs").diseases)
                                         {
-                                            afflictionList.Add("GutWorms");
-                                            afflictionList.Add("Malaria");
-                                            afflictionList.Add("FoodPoisoning");
+                                            if (chd.requiredSkillName == "TM_CureDisease_ver" && chd.requiredSkillLevel <= ver.level)
+                                            {
+                                                afflictionList.Add(chd.hediffDefname);
+                                            }
                                         }
-                                        if (ver.level >= 2)
-                                        {
-                                            afflictionList.Add("SleepingSickness");
-                                            afflictionList.Add("MuscleParasites");
-                                            afflictionList.Add("Scaria");
-                                        }
-                                        if (ver.level >= 3)
-                                        {
-                                            afflictionList.Add("Plague");
-                                            afflictionList.Add("Animal_Plague");
-                                            afflictionList.Add("BloodRot");
-                                        }
+                                        //afflictionList.Add("Infection");
+                                        //afflictionList.Add("WoundInfection");
+                                        //afflictionList.Add("Flu");
+                                        //if (ver.level >= 1)
+                                        //{
+                                        //    afflictionList.Add("GutWorms");
+                                        //    afflictionList.Add("Malaria");
+                                        //    afflictionList.Add("FoodPoisoning");
+                                        //}
+                                        //if (ver.level >= 2)
+                                        //{
+                                        //    afflictionList.Add("SleepingSickness");
+                                        //    afflictionList.Add("MuscleParasites");
+                                        //    afflictionList.Add("Scaria");
+                                        //}
+                                        //if (ver.level >= 3)
+                                        //{
+                                        //    afflictionList.Add("Plague");
+                                        //    afflictionList.Add("Animal_Plague");
+                                        //    afflictionList.Add("BloodRot");
+                                        //}
                                         AutoCast.CureSpell.Evaluate(this, TorannMagicDefOf.TM_CureDisease, ability, magicPower, afflictionList, out castSuccess);
                                         if (castSuccess) goto AutoCastExit;
                                     }
@@ -6012,46 +6019,60 @@ namespace TorannMagic
                                             if (castSuccess) goto AutoCastExit;
                                             List<string> afflictionList = new List<string>();
                                             afflictionList.Clear();
-                                            afflictionList.Add("Cataract");
-                                            afflictionList.Add("HearingLoss");
-                                            afflictionList.Add("ToxicBuildup");
-                                            if (ver.level >= 1)
+                                            foreach(TMDefs.TM_CategoryHediff chd in HediffCategoryList.Named("TM_Category_Hediffs").ailments)
                                             {
-                                                afflictionList.Add("Blindness");
-                                                afflictionList.Add("Asthma");
-                                                afflictionList.Add("Cirrhosis");
-                                                afflictionList.Add("ChemicalDamageModerate");
+                                                if(chd.requiredSkillName == "TM_Purify_ver" && chd.requiredSkillLevel <= ver.level)
+                                                {
+                                                    afflictionList.Add(chd.hediffDefname);
+                                                }
                                             }
-                                            if (ver.level >= 2)
-                                            {
-                                                afflictionList.Add("Frail");
-                                                afflictionList.Add("BadBack");
-                                                afflictionList.Add("Carcinoma");
-                                                afflictionList.Add("ChemicalDamageSevere");
-                                            }
-                                            if (ver.level >= 3)
-                                            {
-                                                afflictionList.Add("Alzheimers");
-                                                afflictionList.Add("Dementia");
-                                                afflictionList.Add("HeartArteryBlockage");
-                                                afflictionList.Add("PsychicShock");
-                                                afflictionList.Add("CatatonicBreakdown");
-                                                afflictionList.Add("Abasia");
-                                            }
+                                            //afflictionList.Add("Cataract");
+                                            //afflictionList.Add("HearingLoss");
+                                            //afflictionList.Add("ToxicBuildup");
+                                            //if (ver.level >= 1)
+                                            //{
+                                            //    afflictionList.Add("Blindness");
+                                            //    afflictionList.Add("Asthma");
+                                            //    afflictionList.Add("Cirrhosis");
+                                            //    afflictionList.Add("ChemicalDamageModerate");
+                                            //}
+                                            //if (ver.level >= 2)
+                                            //{
+                                            //    afflictionList.Add("Frail");
+                                            //    afflictionList.Add("BadBack");
+                                            //    afflictionList.Add("Carcinoma");
+                                            //    afflictionList.Add("ChemicalDamageSevere");
+                                            //}
+                                            //if (ver.level >= 3)
+                                            //{
+                                            //    afflictionList.Add("Alzheimers");
+                                            //    afflictionList.Add("Dementia");
+                                            //    afflictionList.Add("HeartArteryBlockage");
+                                            //    afflictionList.Add("PsychicShock");
+                                            //    afflictionList.Add("CatatonicBreakdown");
+                                            //    afflictionList.Add("Abasia");
+                                            //}
                                             AutoCast.CureSpell.Evaluate(this, TorannMagicDefOf.TM_Purify, ability, magicPower, afflictionList, out castSuccess);
                                             if (castSuccess) goto AutoCastExit;
                                             List<string> addictionList = new List<string>();
                                             addictionList.Clear();
-                                            addictionList.Add("Alcohol");
-                                            addictionList.Add("Smokeleaf");
-                                            if (ver.level >= 1)
+                                            //addictionList.Add("Alcohol");
+                                            //addictionList.Add("Smokeleaf");
+                                            //if (ver.level >= 1)
+                                            //{
+                                            //    addictionList.Add("GoJuice");
+                                            //    addictionList.Add("WakeUp");
+                                            //}
+                                            //if (ver.level >= 2)
+                                            //{
+                                            //    addictionList.Add("Psychite");
+                                            //}
+                                            foreach (TMDefs.TM_CategoryHediff chd in HediffCategoryList.Named("TM_Category_Hediffs").addictions)
                                             {
-                                                addictionList.Add("GoJuice");
-                                                addictionList.Add("WakeUp");
-                                            }
-                                            if (ver.level >= 2)
-                                            {
-                                                addictionList.Add("Psychite");
+                                                if (chd.requiredSkillName == "TM_Purify_ver" && chd.requiredSkillLevel <= ver.level)
+                                                {
+                                                    addictionList.Add(chd.hediffDefname);
+                                                }
                                             }
                                             if (ver.level >= 3)
                                             {
@@ -6106,8 +6127,12 @@ namespace TorannMagic
                             PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_MechaniteReprogramming);
                             List<string> afflictionList = new List<string>();
                             afflictionList.Clear();
-                            afflictionList.Add("SensoryMechanites");
-                            afflictionList.Add("FibrousMechanites");
+                            foreach (TMDefs.TM_CategoryHediff chd in HediffCategoryList.Named("TM_Category_Hediffs").mechanites)
+                            {
+                                afflictionList.Add(chd.hediffDefname);                                
+                            }
+                            //afflictionList.Add("SensoryMechanites");
+                            //afflictionList.Add("FibrousMechanites");
                             AutoCast.CureSpell.Evaluate(this, TorannMagicDefOf.TM_MechaniteReprogramming, ability, magicPower, afflictionList, out castSuccess);
                             if (castSuccess) goto AutoCastExit;
                         }

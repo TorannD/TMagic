@@ -318,6 +318,94 @@ namespace TorannMagic
             return shotguns;
         }
 
+        public static List<HediffDef> AilmentList()
+        {
+            List<HediffDef> ailments = new List<HediffDef>();
+            ailments.Clear();
+            IEnumerable<HediffDef> enumerable = from def in DefDatabase<HediffDef>.AllDefs
+                                               where (true)
+                                               select def;
+            List<TMDefs.TM_CategoryHediff> ailmentList = HediffCategoryList.Named("TM_Category_Hediffs").ailments;
+            foreach (HediffDef current in enumerable)
+            {
+                for (int i = 0; i < ailmentList.Count; i++)
+                {
+                    if (current.defName == ailmentList[i].hediffDefname || (ailmentList[i].containsDefnameString && current.defName.Contains(ailmentList[i].hediffDefname)) || ailmentList[i].ToString() == "*")
+                    {
+                        //Log.Message("adding shotgun def " + current.defName);
+                        ailments.AddDistinct(current);
+                    }
+                }
+            }
+            return ailments;
+        }
+
+        public static List<HediffDef> AddictionList()
+        {
+            List<HediffDef> addictions = new List<HediffDef>();
+            addictions.Clear();
+            IEnumerable<HediffDef> enumerable = from def in DefDatabase<HediffDef>.AllDefs
+                                                where (true)
+                                                select def;
+            List<TMDefs.TM_CategoryHediff> addictionList = HediffCategoryList.Named("TM_Category_Hediffs").addictions;
+            foreach (HediffDef current in enumerable)
+            {
+                for (int i = 0; i < addictionList.Count; i++)
+                {
+                    if (current.defName == addictionList[i].hediffDefname || (addictionList[i].containsDefnameString && current.defName.Contains(addictionList[i].hediffDefname)) || addictionList[i].ToString() == "*")
+                    {
+                        //Log.Message("adding shotgun def " + current.defName);
+                        addictions.AddDistinct(current);
+                    }
+                }
+            }
+            return addictions;
+        }
+
+        public static List<HediffDef> MechaniteList()
+        {
+            List<HediffDef> mechanites = new List<HediffDef>();
+            mechanites.Clear();
+            IEnumerable<HediffDef> enumerable = from def in DefDatabase<HediffDef>.AllDefs
+                                                where (true)
+                                                select def;
+            List<TMDefs.TM_CategoryHediff> mechaniteList = HediffCategoryList.Named("TM_Category_Hediffs").mechanites;
+            foreach (HediffDef current in enumerable)
+            {
+                for (int i = 0; i < mechaniteList.Count; i++)
+                {
+                    if (current.defName == mechaniteList[i].hediffDefname || (mechaniteList[i].containsDefnameString && current.defName.Contains(mechaniteList[i].hediffDefname)) || mechaniteList[i].ToString() == "*")
+                    {
+                        //Log.Message("adding shotgun def " + current.defName);
+                        mechanites.AddDistinct(current);
+                    }
+                }
+            }
+            return mechanites;
+        }
+
+        public static List<HediffDef> DiseaseList()
+        {
+            List<HediffDef> diseases = new List<HediffDef>();
+            diseases.Clear();
+            IEnumerable<HediffDef> enumerable = from def in DefDatabase<HediffDef>.AllDefs
+                                                where (true)
+                                                select def;
+            List<TMDefs.TM_CategoryHediff> diseaseList = HediffCategoryList.Named("TM_Category_Hediffs").diseases;
+            foreach (HediffDef current in enumerable)
+            {
+                for (int i = 0; i < diseaseList.Count; i++)
+                {
+                    if (current.defName == diseaseList[i].hediffDefname || (diseaseList[i].containsDefnameString && current.defName.Contains(diseaseList[i].hediffDefname)) || diseaseList[i].ToString() == "*")
+                    {
+                        //Log.Message("adding shotgun def " + current.defName);
+                        diseases.AddDistinct(current);
+                    }
+                }
+            }
+            return diseases;
+        }
+
         public static IEnumerable<TM_CustomPowerDef> CustomFighterPowerDefs()
         {
             IEnumerable<TM_CustomPowerDef> enumerable = from def in DefDatabase<TM_CustomPowerDef>.AllDefs

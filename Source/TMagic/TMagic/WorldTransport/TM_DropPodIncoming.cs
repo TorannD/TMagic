@@ -55,6 +55,7 @@ namespace TorannMagic.WorldTransport
             }
             MoteMaker.ThrowLightningGlow(base.Position.ToVector3Shifted(), base.Map, 2f);
             GenClamor.DoClamor(this, 15f, ClamorDefOf.Impact);
+            ModOptions.Constants.SetPawnInFlight(false);
             base.Impact();
         }
 

@@ -62,7 +62,8 @@
     <recipeMaker>
 <!-- 	  <researchPrerequisite>GoJuiceProduction</researchPrerequisite> -->
       <recipeUsers>
-        <li>DrugLab</li>
+		<li>ElectricStove</li>
+		<li>FueledStove</li>
       </recipeUsers>
 	  <skillRequirements>
         <Intellectual>6</Intellectual>
@@ -70,9 +71,9 @@
       </skillRequirements>
     </recipeMaker>
     <costList>
-      <SmokeleafLeaves>2</SmokeleafLeaves>
-      <PsychoidLeaves>2</PsychoidLeaves>
-	  <GoJuice>1</GoJuice>
+      <SmokeleafLeaves>1</SmokeleafLeaves>
+      <PsychoidLeaves>1</PsychoidLeaves>
+	  <TM_Syrrium>1</TM_Syrrium>
 <!-- 	  <Ambrosia>1</Ambrosia> -->
     </costList>
     <comps>
@@ -167,7 +168,7 @@
         <severityPerDay>-0.025</severityPerDay>
       </li>
       <li Class="HediffCompProperties_DrugEffectFactor">
-        <chemical>GoJuice</chemical>
+        <chemical>TM_SyrriumChemical</chemical>
       </li>
     </comps>
 		<hediffGivers>

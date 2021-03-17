@@ -35,7 +35,7 @@ namespace TorannMagic
                 gEff = comp.MagicData.MagicPowerSkill_global_eff.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_eff_pwr").level;
                 gSpirit = comp.MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr").level;
 
-                ClearSustainedMagicHediffs(comp);                
+                TM_Action.ClearSustainedMagicHediffs(comp);                
                 TM_Calc.AssignChaosMagicPowers(comp);
 
                 if(effVal >= 3)
@@ -75,32 +75,6 @@ namespace TorannMagic
 
             this.burstShotsLeft = 0;
             return result;
-        }
-
-        public void ClearSustainedMagicHediffs(CompAbilityUserMagic comp)
-        {
-            if(comp != null)
-            {
-                Pawn p = comp.Pawn;
-                if(p != null && p.health != null && p.health.hediffSet != null)
-                {
-                    List<Hediff> recList = new List<Hediff>();
-                    recList.Clear();
-                    List<Hediff> hds = p.health.hediffSet.GetHediffs<Hediff>().ToList();
-                    if (hds != null && hds.Count > 0)
-                    {
-                        for (int i = 0; i < hds.Count; i++)
-                        {
-                            if (hds[i].def == TorannMagicDefOf.TM_RayOfHope_AuraHD || hds[i].def == TorannMagicDefOf.TM_SoothingBreeze_AuraHD || hds[i].def == TorannMagicDefOf.TM_Shadow_AuraHD || hds[i].def == TorannMagicDefOf.TM_InnerFire_AuraHD ||
-                                hds[i].def == TorannMagicDefOf.TM_TechnoBitHD || hds[i].def == TorannMagicDefOf.TM_EnchantedAuraHD || hds[i].def == TorannMagicDefOf.TM_EnchantedBodyHD || 
-                                hds[i].def == TorannMagicDefOf.TM_PredictionHD || hds[i].def == TorannMagicDefOf.TM_SDSoulBondPhysicalHD || hds[i].def == TorannMagicDefOf.TM_WDSoulBondMentalHD)                                
-                            {
-                                p.health.RemoveHediff(hds[i]);
-                            }
-                        }
-                    }
-                }
-            }
         }  
         
         public void ClearSpellRemnants(CompAbilityUserMagic comp)

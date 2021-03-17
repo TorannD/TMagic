@@ -31,6 +31,7 @@ namespace TorannMagic.WorldTransport
 
         protected override void LeaveMap()
         {
+            ModOptions.Constants.SetPawnInFlight(true);
             if (alreadyLeft)
             {
                 base.LeaveMap();

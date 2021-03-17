@@ -4155,13 +4155,10 @@ Produces 400Wd adjusted by ability power.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
-		<costList>
+	<costList>
 		<RawMagicyte>125</RawMagicyte>
+		<Cloth>50</Cloth>
 	</costList>
-	<costStuffCount>80</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
 	<recipeMaker>		    
 		<workAmount>3000</workAmount>
 		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
@@ -4206,11 +4203,8 @@ Produces 400Wd adjusted by ability power.</description>
     </comps>
 		<costList>
 		<RawMagicyte>125</RawMagicyte>
+		<DevilstrandCloth>40</DevilstrandCloth>
 	</costList>
-	<costStuffCount>80</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
 	<recipeMaker>		    
 		<workAmount>3000</workAmount>
 		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
@@ -4256,11 +4250,8 @@ Produces 400Wd adjusted by ability power.</description>
     </comps>
 		<costList>
 		<RawMagicyte>95</RawMagicyte>
+		<Cloth>80</Cloth>
 	</costList>
-	<costStuffCount>80</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
 	<recipeMaker>		    
 		<workAmount>3000</workAmount>
 		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
@@ -4307,11 +4298,8 @@ Produces 400Wd adjusted by ability power.</description>
     </comps>
 		<costList>
 		<RawMagicyte>120</RawMagicyte>
+		<Cloth>80</Cloth>
 	</costList>
-	<costStuffCount>80</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
 	<recipeMaker>		    
 		<workAmount>3000</workAmount>
 		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
@@ -4357,11 +4345,8 @@ Produces 400Wd adjusted by ability power.</description>
     </comps>
 		<costList>
 		<RawMagicyte>125</RawMagicyte>
+		<Cloth>80</Cloth>
 	</costList>
-	<costStuffCount>80</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
 	<recipeMaker>		    
 		<workAmount>3000</workAmount>
 		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
@@ -4407,11 +4392,8 @@ Produces 400Wd adjusted by ability power.</description>
     </comps>
 		<costList>
 		<RawMagicyte>90</RawMagicyte>
+		<Cloth>80</Cloth>
 	</costList>
-	<costStuffCount>80</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
 	<recipeMaker>		    
 		<workAmount>3000</workAmount>
 		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
@@ -4456,11 +4438,8 @@ Produces 400Wd adjusted by ability power.</description>
     </comps>
 		<costList>
 		<RawMagicyte>150</RawMagicyte>
+		<DevilstrandCloth>80</DevilstrandCloth>
 	</costList>
-	<costStuffCount>110</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
 	<recipeMaker>		    
 		<workAmount>5000</workAmount>
 		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
@@ -4505,11 +4484,8 @@ Produces 400Wd adjusted by ability power.</description>
     </comps>
 		<costList>
 		<RawMagicyte>130</RawMagicyte>
+		<Cloth>80</Cloth>
 	</costList>
-	<costStuffCount>80</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
 	<recipeMaker>		    
 		<workAmount>3000</workAmount>
 		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
@@ -4555,11 +4531,8 @@ Produces 400Wd adjusted by ability power.</description>
     </comps>
 	<costList>
 		<RawMagicyte>80</RawMagicyte>
+		<Cloth>80</Cloth>
 	</costList>
-	<costStuffCount>80</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
 	<recipeMaker>		    
 		<workAmount>3000</workAmount>
 		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
@@ -4606,11 +4579,8 @@ Produces 400Wd adjusted by ability power.</description>
     </comps>
 		<costList>
 		<RawMagicyte>100</RawMagicyte>
+		<Cloth>80</Cloth>
 	</costList>
-	<costStuffCount>80</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
 	<recipeMaker>		    
 		<workAmount>3000</workAmount>
 		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
@@ -4655,11 +4625,8 @@ Produces 400Wd adjusted by ability power.</description>
     </comps>
 		<costList>
 		<RawMagicyte>160</RawMagicyte>
+		<DevilstrandCloth>50</DevilstrandCloth>
 	</costList>
-	<costStuffCount>100</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
 	<recipeMaker>		    
 		<workAmount>3500</workAmount>
 		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
@@ -4704,11 +4671,8 @@ Produces 400Wd adjusted by ability power.</description>
     </comps>
 		<costList>
 		<RawMagicyte>110</RawMagicyte>
+		<Cloth>80</Cloth>
 	</costList>
-	<costStuffCount>80</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
 	<recipeMaker>		    
 		<workAmount>3000</workAmount>
 		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
@@ -4754,11 +4718,8 @@ Produces 400Wd adjusted by ability power.</description>
     </comps>
 		<costList>
 		<RawMagicyte>70</RawMagicyte>
+		<Cloth>80</Cloth>
 	</costList>
-	<costStuffCount>80</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
 	<recipeMaker>		    
 		<workAmount>3000</workAmount>
 		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>

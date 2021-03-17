@@ -25,7 +25,7 @@ namespace TorannMagic
                 {
                     if (Rand.Chance(TM_Calc.GetSpellSuccessChance(caster, hitPawn, true)))
                     {
-                        if (compHitPawn.IsMagicUser)
+                        if (compHitPawn != null && compHitPawn.IsMagicUser)
                         {
                             MagicPowerSkill regen = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
                             float manaDrained = compHitPawn.Mana.CurLevel;
@@ -52,7 +52,7 @@ namespace TorannMagic
                                 TM_MoteMaker.ThrowSiphonMote(hitPawn.Position.ToVector3(), hitPawn.Map, 1f);
                             }
                         }
-                        else
+                        else if(hitPawn.health != null && hitPawn.health.hediffSet != null && hitPawn.Map != null)
                         {
                             float sev = Rand.Range(0, 10) * compCaster.arcaneDmg;
                             HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_AntiManipulation, sev);
@@ -72,7 +72,7 @@ namespace TorannMagic
                 }
                 else
                 {
-                    if (compHitPawn.IsMagicUser)
+                    if (compHitPawn != null && compHitPawn.IsMagicUser)
                     {
                         MagicPowerSkill regen = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
                         float manaDrained = compHitPawn.Mana.CurLevel;
@@ -98,7 +98,7 @@ namespace TorannMagic
                             TM_MoteMaker.ThrowManaPuff(caster.Position.ToVector3(), caster.Map, 1f);
                         }
                     }
-                    else
+                    else if(hitPawn.health != null && hitPawn.health.hediffSet != null)
                     {
                         float sev = Rand.Range(0, 10) * compCaster.arcaneDmg;
                         HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_AntiManipulation, sev);

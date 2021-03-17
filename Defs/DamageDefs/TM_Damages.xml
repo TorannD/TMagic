@@ -1091,7 +1091,7 @@
 	
    <DamageDef ParentName="Bomb">
     <defName>TM_PersonnelBombDD</defName>
-	<defaultDamage>35</defaultDamage>
+	<defaultDamage>20</defaultDamage>
     <minDamageToFragment>10</minDamageToFragment>
     <defaultStoppingPower>0.7</defaultStoppingPower>
     <defaultArmorPenetration>0.25</defaultArmorPenetration>

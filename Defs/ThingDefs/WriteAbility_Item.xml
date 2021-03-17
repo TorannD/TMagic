@@ -56,13 +56,9 @@ Magically Gifted pawns can journal their theories and experiments in this book a
 			</li>
 		</comps>
 		<rotatable>false</rotatable>
-		<costStuffCount>20</costStuffCount>
-		<stuffCategories>
-			<li>Leathery</li>
-		</stuffCategories>
 		<costList>
 			<RawMagicyte>250</RawMagicyte>
-			<Cloth>80</Cloth>
+			<Cloth>100</Cloth>
 		</costList>
 		<recipeMaker>		    
 			<workAmount>2500</workAmount>
@@ -110,13 +106,9 @@ Gifted pawns can journal their theories and experiments in this book and learn t
 			</li>
 		</comps>
 		<rotatable>false</rotatable>
-		<costStuffCount>50</costStuffCount>
-		<stuffCategories>
-			<li>Leathery</li>
-		</stuffCategories>
 		<costList>
 			<RawMagicyte>400</RawMagicyte>
-			<DevilstrandCloth>80</DevilstrandCloth>
+			<DevilstrandCloth>100</DevilstrandCloth>
 		</costList>
 		<recipeMaker>
 			<workAmount>3500</workAmount>
@@ -167,13 +159,9 @@ Physically adept pawns can journal their research and training in this book to d
 			</li>
 		</comps>
 		<rotatable>false</rotatable>
-		<costStuffCount>100</costStuffCount>
-		<stuffCategories>
-			<li>Leathery</li>
-		</stuffCategories>
 		<costList>
 			<RawMagicyte>350</RawMagicyte>
-			<DevilstrandCloth>50</DevilstrandCloth>
+			<DevilstrandCloth>80</DevilstrandCloth>
 		</costList>
 		<recipeMaker>
 			<workAmount>3000</workAmount>

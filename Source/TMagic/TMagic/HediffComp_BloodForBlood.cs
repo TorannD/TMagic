@@ -144,13 +144,13 @@ namespace TorannMagic
             HediffDef bloodType = TM_Calc.GetBloodLossTypeDef(this.Pawn.health.hediffSet.hediffs);
             if (bloodType != null)
             {
-                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named(bloodType.ToString()), .04f * bloodLoss);
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named(bloodType.ToString()), (.04f * bloodLoss)/Mathf.Clamp(this.Pawn.BodySize,.25f, 4f));
             }
             bloodType = null;
             bloodType = TM_Calc.GetBloodLossTypeDef(this.linkedPawn.health.hediffSet.hediffs);
             if (bloodType != null)
             {
-                HealthUtility.AdjustSeverity(this.linkedPawn, HediffDef.Named(bloodType.ToString()), -(.03f * bloodLoss));
+                HealthUtility.AdjustSeverity(this.linkedPawn, HediffDef.Named(bloodType.ToString()), -((.03f * bloodLoss)/Mathf.Clamp(this.linkedPawn.BodySize, .25f, 4f)));
             }
         }
 

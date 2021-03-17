@@ -76,11 +76,11 @@ namespace TorannMagic
                 {
                     HealthUtility.AdjustSeverity(base.Pawn, this.Def, -0.3f);
                     this.lastRegen = this.age;
-                    Pawn pawn = base.Pawn as Pawn;
+                    Pawn pawn = this.Pawn;
 
                     TM_MoteMaker.ThrowRegenMote(pawn.DrawPos, pawn.Map, 1f);
-                    bool flag = !TM_Calc.IsUndead(pawn);
-                    if (flag)
+                    bool flag = TM_Calc.IsUndead(pawn);
+                    if (!flag)
                     {
                         ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                         int num = 1; // + ver.level;

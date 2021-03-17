@@ -63,7 +63,7 @@ namespace TorannMagic
                                 }
                                 bool flag_SL = false;
                                 if (undeadPawn.def.defName == "SL_Runner" || undeadPawn.def.defName == "SL_Peon" || undeadPawn.def.defName == "SL_Archer" || undeadPawn.def.defName == "SL_Hero")
-                                {                                    
+                                {
                                     PawnGenerationRequest pgr = new PawnGenerationRequest(PawnKindDef.Named("Tribesperson"), pawn.Faction, PawnGenerationContext.NonPlayer, -1, true, false, false, false, false, true, 0, false, false, false, false, false, false, false, false, 0, null, 0);
                                     Pawn newUndeadPawn = PawnGenerator.GeneratePawn(pgr);
                                     GenSpawn.Spawn(newUndeadPawn, corpse.Position, corpse.Map, WipeMode.Vanish);
@@ -72,7 +72,7 @@ namespace TorannMagic
                                     rotStage = 1f;
                                     flag_SL = true;
                                     undeadPawn = newUndeadPawn;
-                                }                                                              
+                                }
                                 if (!undeadPawn.def.defName.Contains("ROM_") && undeadPawn.RaceProps.IsFlesh && (undeadPawn.Dead || flag_SL) && undeadPawn.def.thingClass.FullName != "TorannMagic.TMPawnSummoned")
                                 {
                                     bool wasVampire = false;
@@ -90,7 +90,7 @@ namespace TorannMagic
                                     }
 
                                     if (!wasVampire)
-                                    {                                        
+                                    {
                                         undeadPawn.SetFaction(pawn.Faction);
                                         if (undeadPawn.Dead)
                                         {
@@ -103,7 +103,7 @@ namespace TorannMagic
                                             RemoveHediffsAddictionsAndPermanentInjuries(undeadPawn);
                                             HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, -4f);
                                             HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, .5f + ver.level);
-                                            undeadPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_UndeadAnimalHD).TryGetComp<HediffComp_Undead>().linkedPawn = pawn;                                            
+                                            undeadPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_UndeadAnimalHD).TryGetComp<HediffComp_Undead>().linkedPawn = pawn;
                                             HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), -2f);
                                             HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), rotStage);
 
@@ -149,7 +149,7 @@ namespace TorannMagic
                                             undeadPawn.playerSettings.medCare = MedicalCareCategory.NoMeds;
                                             undeadPawn.def.tradeability = Tradeability.None;
                                         }
-                                        else if(undeadPawn.story != null && undeadPawn.story.traits != null && undeadPawn.needs != null && undeadPawn.playerSettings != null)
+                                        else if (undeadPawn.story != null && undeadPawn.story.traits != null && undeadPawn.needs != null && undeadPawn.playerSettings != null)
                                         {
 
                                             CompAbilityUserMagic compMagic = undeadPawn.GetComp<CompAbilityUserMagic>();
@@ -181,7 +181,7 @@ namespace TorannMagic
                                             undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Psychopath"), 0, false));
                                             undeadPawn.needs.AddOrRemoveNeedsAsAppropriate();
                                             RemoveClassHediff(undeadPawn);
-                                            if(undeadPawn.health.hediffSet.HasHediff(HediffDef.Named("DeathAcidifier")))
+                                            if (undeadPawn.health.hediffSet.HasHediff(HediffDef.Named("DeathAcidifier")))
                                             {
                                                 Hediff hd = undeadPawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("DeathAcidifier"));
                                                 undeadPawn.health.RemoveHediff(hd);
@@ -211,6 +211,15 @@ namespace TorannMagic
                                     {
                                         Messages.Message("Vampiric powers have prevented undead reanimation of " + undeadPawn.LabelShort, MessageTypeDefOf.RejectInput);
                                     }
+                                }
+                            }
+                            else if (corpseThing is Pawn)
+                            {
+                                Pawn undeadPawn = corpseThing as Pawn;
+                                if(undeadPawn != pawn && !TM_Calc.IsNecromancer(undeadPawn) && TM_Calc.IsUndead(corpseThing as Pawn))
+                                {
+                                    RemoveHediffsAddictionsAndPermanentInjuries(undeadPawn);
+                                    TM_MoteMaker.ThrowPoisonMote(curCell.ToVector3Shifted(), map, .6f);
                                 }
                             }
                         }
@@ -364,7 +373,10 @@ namespace TorannMagic
                     Hediff hd = enumerator.Current;
                     if(hd.IsPermanent() || (hd.IsTended() || hd.TendableNow()) || (hd.source == null && hd.sourceBodyPartGroup == null))
                     {
-                        removeList.Add(hd);
+                        if (hd.def != TorannMagicDefOf.TM_UndeadHD && hd.def != TorannMagicDefOf.TM_UndeadStageHD && hd.def != TorannMagicDefOf.TM_UndeadAnimalHD)
+                        {
+                            removeList.Add(hd);
+                        }
                     }
                 }
             }

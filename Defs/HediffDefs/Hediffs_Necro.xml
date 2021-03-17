@@ -45,7 +45,7 @@
         <label>II</label>
         <minSeverity>1</minSeverity>	
 		<restFallFactor>0</restFallFactor>
-		<hungerRateFactor>0</hungerRateFactor>
+		<hungerRateFactor>.1</hungerRateFactor>
         <capMods>
           <li>
             <capacity>Moving</capacity>
@@ -72,7 +72,7 @@
         <label>III</label>
         <minSeverity>2</minSeverity>	
 		<restFallFactor>0</restFallFactor>
-		<hungerRateFactor>0</hungerRateFactor>
+		<hungerRateFactor>.1</hungerRateFactor>
         <capMods>
           <li>
             <capacity>Moving</capacity>
@@ -99,7 +99,7 @@
         <label>IV</label>
         <minSeverity>3</minSeverity>	
 		<restFallFactor>0</restFallFactor>
-		<hungerRateFactor>0</hungerRateFactor>
+		<hungerRateFactor>.1</hungerRateFactor>		
         <capMods>
           <li>
             <capacity>Moving</capacity>

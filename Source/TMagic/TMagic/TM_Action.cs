@@ -3180,5 +3180,35 @@ namespace TorannMagic
             }
             return oldResult;
         }
+
+        public static void ClearSustainedMagicHediffs(CompAbilityUserMagic comp)
+        {
+            if (comp != null)
+            {
+                Pawn p = comp.Pawn;
+                if (p != null && p.health != null && p.health.hediffSet != null)
+                {
+                    List<Hediff> recList = new List<Hediff>();
+                    recList.Clear();
+                    List<Hediff> hds = p.health.hediffSet.GetHediffs<Hediff>().ToList();
+                    if (hds != null && hds.Count > 0)
+                    {
+                        for (int i = 0; i < hds.Count; i++)
+                        {
+                            if (hds[i].def == TorannMagicDefOf.TM_RayOfHope_AuraHD || hds[i].def == TorannMagicDefOf.TM_SoothingBreeze_AuraHD || hds[i].def == TorannMagicDefOf.TM_Shadow_AuraHD || hds[i].def == TorannMagicDefOf.TM_InnerFire_AuraHD ||
+                                hds[i].def == TorannMagicDefOf.TM_TechnoBitHD || hds[i].def == TorannMagicDefOf.TM_EnchantedAuraHD || hds[i].def == TorannMagicDefOf.TM_EnchantedBodyHD ||
+                                hds[i].def == TorannMagicDefOf.TM_PredictionHD || hds[i].def == TorannMagicDefOf.TM_SDSoulBondPhysicalHD || hds[i].def == TorannMagicDefOf.TM_WDSoulBondMentalHD)
+                            {
+                                recList.Add(hds[i]);
+                            }
+                        }
+                        for (int i = 0; i < recList.Count; i++)
+                        {
+                            p.health.RemoveHediff(recList[i]);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

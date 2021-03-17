@@ -168,6 +168,7 @@
     <Compile Include="Thoughts\ThoughtWorker_TM_WearingDemonhide.cs" />
     <Compile Include="TMDefs\TM_Autocast.cs" />
     <Compile Include="TMDefs\TM_AutocastCondition.cs" />
+    <Compile Include="TMDefs\TM_CategoryHediff.cs" />
     <Compile Include="TMDefs\TM_CustomSkill.cs" />
     <Compile Include="TMDefs\TM_CustomPower.cs" />
     <Compile Include="TM_AutocastConditionDef.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="Verb_Taunt.cs" />
     <Compile Include="Verb_ShieldOther.cs" />
     <Compile Include="Verb_ShadowSlayerCloak.cs" />
+    <Compile Include="HediffCategoryList.cs" />
     <Compile Include="WorldTransport\TM_DelayedDestroyMap.cs" />
     <Compile Include="WorldTransport\TM_ActiveDropPod.cs" />
     <Compile Include="WorldTransport\TM_DropPodIncoming.cs" />

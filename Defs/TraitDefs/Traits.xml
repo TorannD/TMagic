@@ -112,6 +112,9 @@
 				<NegotiationAbility>-0.7</NegotiationAbility>
 				<WorkSpeedGlobal>-0.50</WorkSpeedGlobal>
 			</statOffsets>
+			<statFactors>
+				<ForagedNutritionPerDay>0</ForagedNutritionPerDay>
+			</statFactors>
 		  </li>
 		</degreeDatas>	
 		<conflictingTraits>
@@ -773,6 +776,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 				<NegotiationAbility>-.5</NegotiationAbility>
 				<WorkSpeedGlobal>-.75</WorkSpeedGlobal>
 			</statOffsets>
+			<statFactors>
+				<ForagedNutritionPerDay>0</ForagedNutritionPerDay>
+			</statFactors>
 			<skillGains>
 			  <li>
 				<key>Intellectual</key>

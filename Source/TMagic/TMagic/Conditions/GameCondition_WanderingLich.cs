@@ -131,7 +131,7 @@ namespace TorannMagic.Conditions
         private void SetEventParameters()
         {
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            float mult = Rand.Range(2f, 4f) + settingsRef.wanderingLichChallenge + Find.Storyteller.difficulty.difficulty;
+            float mult = Rand.Range(2f, 4f) + settingsRef.wanderingLichChallenge + Find.Storyteller.difficulty.threatScale;
             this.nextEventTick = Find.TickManager.TicksGame + 200;
             this.ticksBetweenEvents = Mathf.RoundToInt((float)this.Duration / mult);
         }

@@ -1347,7 +1347,7 @@
 	<description>Fibrous mechanites reprogrammed to cause less stress on the host.</description>
     <stages>
       <li>
-        <label>mechanite augmentation (physical)</label>
+        <label>(fibrous)</label>
         <restFallFactorOffset>0.2</restFallFactorOffset>
 		<painOffset>0.1</painOffset>
         <capMods>
@@ -1367,7 +1367,7 @@
       </li>
       <li>
         <minSeverity>0.5</minSeverity>
-        <label>mechanite augmentation (physical)</label>
+        <label>(fibrous)</label>
         <painOffset>0.2</painOffset>
         <restFallFactorOffset>0.4</restFallFactorOffset>
         <capMods>
@@ -1395,7 +1395,7 @@
     <stages>
       <li>
         <painOffset>0.1</painOffset>
-        <label>mechanite augmentation (sensory)</label>
+        <label>(sensory)</label>
         <restFallFactorOffset>0.2</restFallFactorOffset>
         <capMods>
           <li>
@@ -1418,7 +1418,7 @@
       </li>
       <li>
         <minSeverity>0.5</minSeverity>
-        <label>mechanite augmentation (sensory)</label>
+        <label>(sensory)</label>
         <painOffset>0.2</painOffset>
         <restFallFactorOffset>0.4</restFallFactorOffset>
         <capMods>
@@ -1438,6 +1438,53 @@
             <capacity>Manipulation</capacity>
             <offset>0.3</offset>
           </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="TM_ReprogrammedMechanitesBase">
+    <defName>TM_ReprogrammedLymMechanites_HD</defName>
+    <label>reprogrammed lymphatic mechanites</label>
+	<description>Lymphatic mechanites reprogrammed to cause less stress on the host.</description>
+    <stages>
+      <li>
+        <painOffset>0.1</painOffset>
+        <label>(lymphatic)</label>
+        <restFallFactorOffset>0.2</restFallFactorOffset>
+        <capMods>
+			<li>
+				<capacity>BloodFiltration</capacity>
+				<offset>0.5</offset>
+			</li>
+			<li>
+				<capacity>BloodPumping</capacity>
+				<offset>0.5</offset>
+			</li>
+			<li>
+				<capacity>Metabolism</capacity>
+				<offset>0.5</offset>
+			</li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.5</minSeverity>
+        <label>(lymphatic)</label>
+        <painOffset>0.2</painOffset>
+        <restFallFactorOffset>0.4</restFallFactorOffset>
+        <capMods>
+			<li>
+				<capacity>BloodFiltration</capacity>
+				<offset>0.5</offset>
+			</li>
+			<li>
+				<capacity>BloodPumping</capacity>
+				<offset>0.5</offset>
+			</li>
+			<li>
+				<capacity>Metabolism</capacity>
+				<offset>0.5</offset>
+			</li>
         </capMods>
       </li>
     </stages>

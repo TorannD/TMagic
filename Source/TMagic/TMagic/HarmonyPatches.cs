@@ -1864,8 +1864,6 @@ namespace TorannMagic
 
         public static void PowerCompTick_Overdrive_Postfix(CompPowerPlant __instance)
         {
-            float DesiredPowerOutput = Traverse.Create(root: __instance).Field(name: "DesiredPowerOutput").GetValue<float>();
-
             Thing overdriveThing = __instance.parent;
             if (overdriveThing != null && __instance.PowerOn && __instance.powerOutputInt != 0)
             {               
