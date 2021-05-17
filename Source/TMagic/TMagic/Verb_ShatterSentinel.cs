@@ -1,4 +1,3 @@
-﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
@@ -13,15 +12,15 @@ namespace TorannMagic
     {
         protected override bool TryCastShot()
         {
-            Pawn caster = base.CasterPawn;
             Pawn pawn = this.currentTarget.Thing as Pawn;
 
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-            if(comp.IsMagicUser)
+            if (comp.IsMagicUser)
             {
-                if(comp.summonedSentinels.Count > 0)
+                if (comp.summonedSentinels.Count > 0)
                 {
-                    for(int i =0; i < comp.summonedSentinels.Count; i++)
+                    var toRemove = new HashSet<Thing>();
+                    for (int i = 0; i < comp.summonedSentinels.Count; i++)
                     {
                         Thing sentinel = comp.summonedSentinels[i];
                         if (!sentinel.DestroyedOrNull())
@@ -33,15 +32,11 @@ namespace TorannMagic
                                 sentinel.Destroy(DestroyMode.Vanish);
                             }
                         }
-                        else
-                        {
-                            comp.summonedSentinels.Remove(comp.summonedSentinels[i]);
-                        }
-                    }
-                }
-                else
-                {
 
+                        toRemove.Add(sentinel);
+                    }
+
+                    comp.summonedSentinels.RemoveAll(toRemove.Contains);
                 }
             }
             return true;
@@ -50,42 +45,42 @@ namespace TorannMagic
         private void ShatterSentinel(Thing sentinel, Map map)
         {
             float radius = 4f;
-            Vector3 center = sentinel.DrawPos;            
+            Vector3 center = sentinel.DrawPos;
 
-            List<IntVec3> damageRing = GenRadial.RadialCellsAround(sentinel.Position, radius, true).ToList();
-            List<IntVec3> outsideRing = GenRadial.RadialCellsAround(sentinel.Position, radius, false).Except(GenRadial.RadialCellsAround(sentinel.Position, radius - 1, true)).ToList();
-            for (int i = 0; i < damageRing.Count; i++)
+            IEnumerable<IntVec3> damageRing = GenRadial.RadialCellsAround(sentinel.Position, radius, true);
+            IEnumerable<IntVec3> outsideRing = GenRadial.RadialCellsAround(sentinel.Position, radius, false).Except(GenRadial.RadialCellsAround(sentinel.Position, radius - 1, true));
+            foreach (var location in damageRing)
             {
-                List<Thing> allThings = damageRing[i].GetThingList(map);
+                List<Thing> allThings = location.GetThingList(map);
                 for (int j = 0; j < allThings.Count; j++)
                 {
-                    if (allThings[j] is Pawn)
+                    var thing = allThings[j];
+                    if (thing is Pawn)
                     {
-                        Pawn p = allThings[j] as Pawn;
+                        Pawn p = thing as Pawn;
                         TM_Action.DamageEntities(p, p.health.hediffSet.GetRandomNotMissingPart(DamageDefOf.Blunt, BodyPartHeight.Undefined, BodyPartDepth.Outside, null), Rand.Range(14, 22), DamageDefOf.Blunt, this.CasterPawn);
                     }
-                    else if (allThings[j] is Building)
+                    else if (thing is Building)
                     {
-                        TM_Action.DamageEntities(allThings[j], null, Rand.Range(56, 88), DamageDefOf.Blunt, this.CasterPawn);
+                        TM_Action.DamageEntities(thing, null, Rand.Range(56, 88), DamageDefOf.Blunt, this.CasterPawn);
                     }
                     else
                     {
                         if (Rand.Chance(.1f))
                         {
-                            GenPlace.TryPlaceThing(ThingMaker.MakeThing(ThingDefOf.Filth_RubbleRock), damageRing[i], map, ThingPlaceMode.Near);
+                            GenPlace.TryPlaceThing(ThingMaker.MakeThing(ThingDefOf.Filth_RubbleRock), location, map, ThingPlaceMode.Near);
                         }
                     }
                 }
             }
-            for (int i = 0; i < outsideRing.Count; i++)
+            foreach (var outerLoc in outsideRing)
             {
-                IntVec3 intVec = outsideRing[i];
-                if (intVec.IsValid && intVec.InBounds(map))
+                if (outerLoc.IsValid && outerLoc.InBounds(map))
                 {
-                    Vector3 moteDirection = TM_Calc.GetVector(sentinel.DrawPos.ToIntVec3(), intVec);
+                    Vector3 moteDirection = TM_Calc.GetVector(sentinel.DrawPos.ToIntVec3(), outerLoc);
                     TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Rubble"), sentinel.DrawPos, map, Rand.Range(.3f, .6f), .2f, .02f, .05f, Rand.Range(-100, 100), Rand.Range(8f, 13f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
                     TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, sentinel.DrawPos, map, Rand.Range(.9f, 1.2f), .3f, .02f, Rand.Range(.25f, .4f), Rand.Range(-100, 100), Rand.Range(5f, 8f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
-                    GenExplosion.DoExplosion(intVec, map, .4f, DamageDefOf.Blunt, this.CasterPawn, 0, 0, SoundDefOf.Pawn_Melee_Punch_HitBuilding, null, null, null, ThingDefOf.Filth_RubbleRock, .4f, 1, false, null, 0f, 1, 0, false);
+                    GenExplosion.DoExplosion(outerLoc, map, .4f, DamageDefOf.Blunt, this.CasterPawn, 0, 0, SoundDefOf.Pawn_Melee_Punch_HitBuilding, null, null, null, ThingDefOf.Filth_RubbleRock, .4f, 1, false, null, 0f, 1, 0, false);
                     //MoteMaker.ThrowSmoke(intVec.ToVector3Shifted(), base.Map, Rand.Range(.6f, 1f));
                 }
             }
