@@ -595,7 +595,7 @@ namespace TorannMagic
             });
         }
 
-        public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1f, bool drawArrows = true, bool doTooltip = true)
+        public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1f, bool drawArrows = true, bool doTooltip = true, Rect? rectForTooltip = default(Rect?))
         {
             bool flag = rect.height > 70f;
             if (flag)
@@ -604,12 +604,15 @@ namespace TorannMagic
                 rect.height = 70f;
                 rect.y += num;
             }
-            bool flag2 = Mouse.IsOver(rect);
-            if (flag2)
+            Rect rect2 = rectForTooltip ?? rect;
+            if (Mouse.IsOver(rect2))
             {
-                Widgets.DrawHighlight(rect);
+                Widgets.DrawHighlight(rect2);
             }
-            TooltipHandler.TipRegion(rect, new TipSignal(() => this.GetTipString(), rect.GetHashCode()));
+            if (doTooltip && Mouse.IsOver(rect2))
+            {
+                TooltipHandler.TipRegion(rect2, new TipSignal(() => GetTipString(), rect2.GetHashCode()));
+            }
             float num2 = 14f;
             float num3 = num2 + 15f;
             bool flag3 = rect.height < 50f;
@@ -619,8 +622,8 @@ namespace TorannMagic
             }
             Text.Font = ((rect.height <= 55f) ? GameFont.Tiny : GameFont.Small);
             Text.Anchor = TextAnchor.LowerLeft;
-            Rect rect2 = new Rect(rect.x + num3 + rect.width * 0.1f, rect.y, rect.width - num3 - rect.width * 0.1f, rect.height / 2f);
-            Widgets.Label(rect2, base.LabelCap);
+            Rect _rect2 = new Rect(rect.x + num3 + rect.width * 0.1f, rect.y, rect.width - num3 - rect.width * 0.1f, rect.height / 2f);
+            Widgets.Label(_rect2, base.LabelCap);
             GUI.color = Color.magenta;
             Text.Anchor = TextAnchor.UpperLeft;
             Rect rect3 = new Rect(rect.x, rect.y + rect.height / 2f, rect.width, rect.height / 2f);

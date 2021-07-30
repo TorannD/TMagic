@@ -81,7 +81,7 @@ namespace TorannMagic
         {
             List<FloatMenuOption> list = new List<FloatMenuOption>();
             CompAbilityUserMagic comp = myPawn.GetComp<CompAbilityUserMagic>();
-            if (!myPawn.CanReach(this, PathEndMode.InteractionCell, Danger.Some, false, TraverseMode.ByPawn))
+            if (!myPawn.CanReach(this, PathEndMode.InteractionCell, Danger.Some, false, false, TraverseMode.ByPawn))
             {
                 list.Add(new FloatMenuOption("CannotUseNoPath".Translate(), null, MenuOptionPriority.Default, null, null, 0f, null, null));
             }

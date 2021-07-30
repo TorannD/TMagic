@@ -43,7 +43,7 @@ namespace TorannMagic
             {
                 if (spawned)
                 {
-                    MoteMaker.ThrowHeatGlow(base.Pawn.DrawPos.ToIntVec3(), base.Pawn.Map, 2f);
+                    FleckMaker.ThrowHeatGlow(base.Pawn.DrawPos.ToIntVec3(), base.Pawn.Map, 2f);
                 }
                 List<Pawn> mapPawns = this.Pawn.Map.mapPawns.AllPawnsSpawned;
                 for (int i = 0; i < mapPawns.Count(); i++)
@@ -141,7 +141,7 @@ namespace TorannMagic
                     {
                         if (this.Pawn.Map != null)
                         {
-                            MoteMaker.ThrowSmoke(this.Pawn.DrawPos, this.Pawn.Map, 1f);
+                            FleckMaker.ThrowSmoke(this.Pawn.DrawPos, this.Pawn.Map, 1f);
                             TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Ghost, this.Pawn.DrawPos, this.Pawn.Map, 1.3f, .25f, .1f, .45f, 0, Rand.Range(1f, 2f), 0, 0);
                         }
                         this.Pawn.Destroy(DestroyMode.Vanish);                        

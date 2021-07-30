@@ -73,7 +73,7 @@ namespace TorannMagic
             {
                 this.lastStrikeLarge = this.age;
                 SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Blizzard_Large, impactPos, map);
-                MoteMaker.ThrowSmoke(impactPos.ToVector3(), map, 5f);
+                FleckMaker.ThrowSmoke(impactPos.ToVector3(), map, 5f);
                 ticksTillSnow[snowCount] = TorannMagicDefOf.TM_Blizzard_Large.skyfaller.ticksToImpactRange.RandomInRange+4;
                 snowPos[snowCount] = impactPos;
                 snowCount++;
@@ -83,7 +83,7 @@ namespace TorannMagic
             {
                 this.lastStrikeTiny = this.age;
                 SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Blizzard_Tiny, impactPos, map);
-                MoteMaker.ThrowSmoke(impactPos.ToVector3(), map, 1f);
+                FleckMaker.ThrowSmoke(impactPos.ToVector3(), map, 1f);
                 ticksTillSnow[snowCount] = TorannMagicDefOf.TM_Blizzard_Tiny.skyfaller.ticksToImpactRange.RandomInRange +2;
                 snowPos[snowCount] = impactPos;
                 snowCount++;
@@ -93,7 +93,7 @@ namespace TorannMagic
             {
                 this.lastStrikeSmall = this.age;
                 SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Blizzard_Small, impactPos, map);
-                MoteMaker.ThrowSmoke(impactPos.ToVector3(), map, 3f);
+                FleckMaker.ThrowSmoke(impactPos.ToVector3(), map, 3f);
                 ticksTillSnow[snowCount] = TorannMagicDefOf.TM_Blizzard_Small.skyfaller.ticksToImpactRange.RandomInRange+2;
                 snowPos[snowCount] = impactPos;
                 snowCount++;
@@ -104,7 +104,7 @@ namespace TorannMagic
                 if (ticksTillSnow[i] == 0)
                 {
                     AddSnowRadial(snowPos[i], map, 2f, 2f);
-                    MoteMaker.ThrowSmoke(snowPos[i].ToVector3(), map, 4f);                
+                    FleckMaker.ThrowSmoke(snowPos[i].ToVector3(), map, 4f);                
                     ticksTillSnow[i]--;
                 }
                 else

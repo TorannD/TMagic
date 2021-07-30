@@ -48,7 +48,7 @@ namespace TorannMagic
                                     bool flag5 = current.CanHealNaturally() && !current.IsPermanent() && current.TendableNow();
                                     if (flag5)
                                     {
-                                        current.Tended(Rand.Range(0,0.4f) + (.1f * verVal));
+                                        current.Tended(Rand.Range(0,0.4f) + (.1f * verVal), 1f);
                                         num--;
                                         num2--;
                                     }

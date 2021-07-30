@@ -84,7 +84,7 @@ namespace TorannMagic
             if (spawned)
             {
                 this.parent.Severity = 90f;
-                MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 1f);
+                FleckMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 1f);
                 DetermineHDRank();
             }
         }
@@ -223,7 +223,7 @@ namespace TorannMagic
                                 //    float launchAngle = (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(this.Pawn.Position, ltiTarget.Cell)).ToAngleFlat();
                                 //    for (int m = 0; m < 4; m++)
                                 //    {
-                                //        TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, comp.bitPosition, this.Pawn.Map, Rand.Range(.4f, .7f), Rand.Range(.2f, .3f), .05f, Rand.Range(.4f, .6f), Rand.Range(-20, 20), Rand.Range(3f, 5f), launchAngle += Rand.Range(-25, 25), Rand.Range(0, 360));
+                                //        TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, comp.bitPosition, this.Pawn.Map, Rand.Range(.4f, .7f), Rand.Range(.2f, .3f), .05f, Rand.Range(.4f, .6f), Rand.Range(-20, 20), Rand.Range(3f, 5f), launchAngle += Rand.Range(-25, 25), Rand.Range(0, 360));
                                 //    }
                                 //    SoundInfo info = SoundInfo.InMap(new TargetInfo(this.Pawn.Position, this.Pawn.Map, false), MaintenanceType.None);
                                 //    info.pitchFactor = 2f;
@@ -240,7 +240,7 @@ namespace TorannMagic
                                 //    float launchAngle = (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(this.Pawn.Position, ltiTarget.Cell)).ToAngleFlat();
                                 //    for (int m = 0; m < 4; m++)
                                 //    {
-                                //        TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, comp.bitPosition, this.Pawn.Map, Rand.Range(.4f, .7f), Rand.Range(.2f, .3f), .05f, Rand.Range(.4f, .6f), Rand.Range(-20, 20), Rand.Range(3f, 5f), launchAngle += Rand.Range(-25, 25), Rand.Range(0, 360));
+                                //        TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, comp.bitPosition, this.Pawn.Map, Rand.Range(.4f, .7f), Rand.Range(.2f, .3f), .05f, Rand.Range(.4f, .6f), Rand.Range(-20, 20), Rand.Range(3f, 5f), launchAngle += Rand.Range(-25, 25), Rand.Range(0, 360));
                                 //    }
                                 //    SoundInfo info = SoundInfo.InMap(new TargetInfo(this.Pawn.Position, this.Pawn.Map, false), MaintenanceType.None);
                                 //    info.pitchFactor = 1.4f;
@@ -260,11 +260,11 @@ namespace TorannMagic
                                 
                                 if (rndTargetCell == targetThing.Position)
                                 {
-                                    p.Launch(this.Pawn, comp.bitPosition, targetThing, targetThing, ProjectileHitFlags.IntendedTarget, null, null);
+                                    p.Launch(this.Pawn, comp.bitPosition, targetThing, targetThing, ProjectileHitFlags.IntendedTarget, false, null, null);
                                 }
                                 else
                                 {
-                                    p.Launch(this.Pawn, comp.bitPosition, ltiTarget, targetThing, ProjectileHitFlags.All, null, null);
+                                    p.Launch(this.Pawn, comp.bitPosition, ltiTarget, targetThing, ProjectileHitFlags.All, false, null, null);
                                 }
                                 this.nextBitGrenade = 3 + Find.TickManager.TicksGame;
                                 this.bitGrenadeCount--;

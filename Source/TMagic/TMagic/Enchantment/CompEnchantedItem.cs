@@ -168,10 +168,19 @@ namespace TorannMagic.Enchantment
 
         private void InitializeAbilities(Apparel abilityApparel)
         {
-            if (abilityApparel != null && abilityApparel.Wearer != null)
+            if (abilityApparel != null && abilityApparel.Wearer != null && MagicAbilities != null && MagicAbilities.Count > 0)
             {
-                AbilityUserMod.Notify_ApparelRemoved_PostFix(abilityApparel.Wearer.apparel, abilityApparel);
-                AbilityUserMod.Notify_ApparelAdded_PostFix(abilityApparel.Wearer.apparel, abilityApparel);
+                CompAbilityUser comp = abilityApparel.TryGetComp<CompAbilityUser>();
+                if (comp != null)
+                {
+                    foreach (AbilityUser.AbilityDef abilityDef in MagicAbilities)
+                    {
+                        comp.RemoveApparelAbility(abilityDef);
+                        comp.AddApparelAbility(abilityDef);
+                    }
+                }
+                //AbilityUserMod.Notify_ApparelRemoved_PostFix(abilityApparel.Wearer.apparel, abilityApparel);
+                //AbilityUserMod.Notify_ApparelAdded_PostFix(abilityApparel.Wearer.apparel, abilityApparel);
                 this.abilitiesInitialized = true;
             }
         }

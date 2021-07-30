@@ -210,7 +210,7 @@ namespace TorannMagic
                 int num = Find.WorldGrid.TraversalDistanceBetween(tile, target.Tile);
                 if (num > MaxLaunchDistance)
                 {
-                    GUI.color = ColoredText.RedReadable;
+                    GUI.color = ColorLibrary.RedReadable;
                     return "TM_UnableToTravel".Translate();
                 }
                 IEnumerable<FloatMenuOption> transportPodsFloatMenuOptionsAt = GetTransportPodsFloatMenuOptionsAt(target.Tile, target);
@@ -222,7 +222,7 @@ namespace TorannMagic
                 {
                     if (transportPodsFloatMenuOptionsAt.First().Disabled)
                     {
-                        GUI.color = ColoredText.RedReadable;
+                        GUI.color = ColorLibrary.RedReadable;
                     }
                     return transportPodsFloatMenuOptionsAt.First().Label;
                 }

@@ -134,7 +134,7 @@ namespace TorannMagic
                 {
                     if (Find.TickManager.TicksGame % 6 == 0)
                     {
-                        MoteMaker.ThrowDustPuff(base.Position, caster.Map, Rand.Range(.6f, .9f));
+                        FleckMaker.ThrowDustPuff(base.Position, caster.Map, Rand.Range(.6f, .9f));
                     }
                 }
                 else

@@ -108,9 +108,9 @@ namespace TorannMagic
         {
             if (pawn != null)
             {
-                MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 1f);
+                FleckMaker.Static(pawn.TrueCenter(), pawn.Map, FleckDefOf.ExplosionFlash, 1f);
                 SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
-                MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
+                FleckMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
             }
             //flyingThing.ThingID += Rand.Range(0, 214).ToString();
             this.initialized = false;
@@ -225,7 +225,7 @@ namespace TorannMagic
 
         public void CleanGraphics(Thing filth)
         {
-            TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_MicroSparks, this.ExactPosition, this.Map, Rand.Range(.3f, .5f), .6f, .2f, .4f, Rand.Range(-400, -100), .3f, Rand.Range(0,360), Rand.Range(0, 360));
+            TM_FleckMaker.ThrowGenericFleck(FleckDefOf.MicroSparks, this.ExactPosition, this.Map, Rand.Range(.3f, .5f), .6f, .2f, .4f, Rand.Range(-400, -100), .3f, Rand.Range(0,360), Rand.Range(0, 360));
             Vector3 angle = TM_Calc.GetVector(filth.DrawPos, this.ExactPosition);
             TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_ThickDust, filth.DrawPos, this.Map, Rand.Range(.4f, .6f), .1f, .05f, .25f, -200, 2, (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), Rand.Range(0,360));
         }
@@ -273,7 +273,7 @@ namespace TorannMagic
                     rndVec.x += Rand.Range(-1f, 1f);
                     rndVec.z += Rand.Range(-1f, 1f);
                     Vector3 angle = TM_Calc.GetVector(rndVec, this.ExactPosition);
-                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, rndVec, this.Map, Rand.Range(.8f, 1.5f), .1f, .05f, .15f, -300, 2, (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), Rand.Range(0, 360));
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, rndVec, this.Map, Rand.Range(.8f, 1.5f), .1f, .05f, .15f, -300, 2, (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), Rand.Range(0, 360));
                 }
                 if(this.searchDelay < 0)
                 {

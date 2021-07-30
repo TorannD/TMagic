@@ -121,9 +121,9 @@ namespace TorannMagic
                 Vector3 loc = this.strikeLoc.ToVector3Shifted();
                 for (int i = 0; i < 4; i++)
                 {
-                    MoteMaker.ThrowSmoke(loc, this.map, 1.3f);
-                    MoteMaker.ThrowMicroSparks(loc, this.map);
-                    MoteMaker.ThrowLightningGlow(loc, this.map, 1.2f);
+                    FleckMaker.ThrowSmoke(loc, this.map, 1.3f);
+                    FleckMaker.ThrowMicroSparks(loc, this.map);
+                    FleckMaker.ThrowLightningGlow(loc, this.map, 1.2f);
                 }
             }
             SoundInfo info = SoundInfo.InMap(new TargetInfo(this.strikeLoc, this.map, false), MaintenanceType.None);

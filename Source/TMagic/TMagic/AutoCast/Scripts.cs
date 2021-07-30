@@ -97,7 +97,7 @@ namespace TorannMagic.AutoCast
                     {
                         IntVec3 phaseToCell = caster.Position + (directionToTarget * abilitydef.MainVerb.range).ToIntVec3();
                         //Log.Message("doing partial blink to cell " + blinkToCell);
-                        //MoteMaker.ThrowHeatGlow(blinkToCell, caster.Map, 1f);
+                        //FleckMaker.ThrowHeatGlow(blinkToCell, caster.Map, 1f);
                         bool canReach = false;
                         bool isCloser = false;
                         try
@@ -149,7 +149,7 @@ namespace TorannMagic.AutoCast
 
             for (int i = 0; i < 3; i++)
             {
-                TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
+                TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
                 TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Enchanting, caster.DrawPos, caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
             }
 
@@ -174,7 +174,7 @@ namespace TorannMagic.AutoCast
             }
             for (int i = 0; i < 3; i++)
             {
-                TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, targetCell.ToVector3Shifted(), caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
+                TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, targetCell.ToVector3Shifted(), caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
                 TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Enchanting, targetCell.ToVector3Shifted(), caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
             }
         }
@@ -208,7 +208,7 @@ namespace TorannMagic.AutoCast
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Enchanting, caster.DrawPos, caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
                 }
                 caster.ClearReservationsForJob(caster.CurJob);
@@ -230,7 +230,7 @@ namespace TorannMagic.AutoCast
                 }
                 for (int i = 0; i < 3; i++)
                 {
-                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Enchanting, caster.DrawPos, caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
                 }
 
@@ -567,7 +567,7 @@ namespace TorannMagic.AutoCast
                     if (abilitydef == TorannMagicDefOf.TM_ThunderStrike && distanceToTarget < 1.5f)
                     {
                         jobTarget = jobTarget.Cell + (TM_Calc.GetVector(caster.Position, jobTarget.Cell) * 2f).ToIntVec3();
-                        MoteMaker.ThrowHeatGlow(jobTarget.Cell, caster.Map, 1f);
+                        FleckMaker.ThrowHeatGlow(jobTarget.Cell, caster.Map, 1f);
                     }
                     Job job = ability.GetJob(AbilityContext.AI, jobTarget);
                     job.endIfCantShootTargetFromCurPos = true;
@@ -1142,7 +1142,7 @@ namespace TorannMagic.AutoCast
                     {
                         IntVec3 blinkToCell = caster.Position + (directionToTarget * abilitydef.MainVerb.range).ToIntVec3();
                         //Log.Message("doing partial blink to cell " + blinkToCell);
-                        //MoteMaker.ThrowHeatGlow(blinkToCell, caster.Map, 1f);
+                        //FleckMaker.ThrowHeatGlow(blinkToCell, caster.Map, 1f);
                         bool canReach = false;
                         bool isCloser = false;
                         if (blinkToCell.Walkable(caster.Map))
@@ -1209,7 +1209,7 @@ namespace TorannMagic.AutoCast
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Casting, caster.DrawPos, caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
                 }
 
@@ -1246,7 +1246,7 @@ namespace TorannMagic.AutoCast
                 }
                 for (int i = 0; i < 3; i++)
                 {
-                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, targetCell.ToVector3Shifted(), caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, targetCell.ToVector3Shifted(), caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Casting, targetCell.ToVector3Shifted(), caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
                 }
 
@@ -1334,7 +1334,7 @@ namespace TorannMagic.AutoCast
                     {
                         IntVec3 blinkToCell = caster.Position + (directionToTarget * maxDistance).ToIntVec3();
                         //Log.Message("doing partial blink to cell " + blinkToCell);
-                        //MoteMaker.ThrowHeatGlow(blinkToCell, caster.Map, 1f);
+                        //FleckMaker.ThrowHeatGlow(blinkToCell, caster.Map, 1f);
                         if (blinkToCell.IsValid && blinkToCell.InBounds(caster.Map) && blinkToCell.Walkable(caster.Map) && !blinkToCell.Fogged(caster.Map) && ((blinkToCell - caster.Position).LengthHorizontal < distanceToTarget))
                         {
                             DoBlink(caster, blinkToCell, carriedThing);
@@ -1393,7 +1393,7 @@ namespace TorannMagic.AutoCast
                 }
                 for (int i = 0; i < 3; i++)
                 {
-                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .2f, .1f, .5f, 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);                    
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .2f, .1f, .5f, 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);                    
                 }
                 TM_MoteMaker.ThrowGenericMote(moteThrown, caster.DrawPos, caster.Map, 1.4f, .1f, 0f, .4f, 0, 5f, (Quaternion.AngleAxis(90, Vector3.up) * moteVector).ToAngleFlat(), 0);
                 bool drafted = caster.drafter.Drafted;
@@ -1415,7 +1415,7 @@ namespace TorannMagic.AutoCast
                 }
                 for (int i = 0; i < 3; i++)
                 {
-                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, targetCell.ToVector3Shifted(), caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, targetCell.ToVector3Shifted(), caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
                     //TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Casting, caster.DrawPos, caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
                 }
                 Vector3 drawPos = targetCell.ToVector3Shifted() + (-2 * moteVector);

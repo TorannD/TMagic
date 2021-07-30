@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Verse;
 using AlienRace;
 using RimWorld;
@@ -20,7 +19,7 @@ namespace TorannMagic.ModCheck
                 ThingDef_AlienRace alienDef = thingDef as ThingDef_AlienRace;
                 if (alienDef != null && alienDef.alienRace != null && alienDef.alienRace.raceRestriction != null && alienDef.alienRace.raceRestriction.traitList != null)
                 {
-                    if(alienDef.alienRace.raceRestriction.traitList.Contains(td))
+                    if (alienDef.alienRace.raceRestriction.traitList.Contains(td))
                     {
                         traitIsAllowed = false;
                     }
@@ -60,6 +59,6 @@ namespace TorannMagic.ModCheck
 
             //Log.Message("trait " + traitString + " is allowed: " + traitIsAllowed);
             return traitIsAllowed;
-        }        
+        }
     }
 }

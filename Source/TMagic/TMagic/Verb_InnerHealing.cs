@@ -37,7 +37,7 @@ namespace TorannMagic
                 else
                 {
                     HealthUtility.AdjustSeverity(pawn, HediffDef.Named("TM_HediffInnerHealing"), .5f );
-                    MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, 1f);
+                    FleckMaker.ThrowDustPuff(pawn.Position, pawn.Map, 1f);
                 }
             }
             return true;

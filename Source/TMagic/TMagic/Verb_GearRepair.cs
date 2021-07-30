@@ -36,7 +36,7 @@ namespace TorannMagic
                 else
                 {
                     HealthUtility.AdjustSeverity(caster, HediffDef.Named("TM_HediffGearRepair"), .5f);
-                    MoteMaker.ThrowDustPuff(caster.Position, caster.Map, 1f);
+                    FleckMaker.ThrowDustPuff(caster.Position, caster.Map, 1f);
                 }
             }
             return true;

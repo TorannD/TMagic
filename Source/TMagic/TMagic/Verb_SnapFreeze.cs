@@ -119,14 +119,14 @@ namespace TorannMagic
                 {
                     cellList[i] = cellList[i].ClampInsideMap(map);
                     SnowUtility.AddSnowRadial(cellList[i], map, 2.4f, Rand.Range(.08f, .13f));
-                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_AirPuff, cellList[i].ToVector3Shifted(), map, 2.5f, .05f, .05f, Rand.Range(2f, 3f), Rand.Range(-60, 60), .5f, -70, Rand.Range(0, 360));
+                    TM_FleckMaker.ThrowGenericFleck(FleckDefOf.AirPuff, cellList[i].ToVector3Shifted(), map, 2.5f, .05f, .05f, Rand.Range(2f, 3f), Rand.Range(-60, 60), .5f, -70, Rand.Range(0, 360));
                 }
                 List<IntVec3> windList = GenRadial.RadialCellsAround(this.currentTarget.Cell, this.UseAbilityProps.TargetAoEProperties.range+1, true).Except(cellList).ToList();
                 for(int i = 0; i < windList.Count; i++)
                 {
                     windList[i] = windList[i].ClampInsideMap(map);
                     Vector3 angle = TM_Calc.GetVector(windList[i], this.currentTarget.Cell);
-                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_AirPuff, windList[i].ToVector3Shifted(), map, Rand.Range(1.2f, 2f), .45f, Rand.Range(0f, .25f), .5f, -200, Rand.Range(3, 5), (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), Rand.Range(0, 360));
+                    TM_FleckMaker.ThrowGenericFleck(FleckDefOf.AirPuff, windList[i].ToVector3Shifted(), map, Rand.Range(1.2f, 2f), .45f, Rand.Range(0f, .25f), .5f, -200, Rand.Range(3, 5), (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), Rand.Range(0, 360));
                 }
             }
 

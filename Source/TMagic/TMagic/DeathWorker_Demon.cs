@@ -12,9 +12,9 @@ namespace TorannMagic
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    MoteMaker.ThrowSmoke(corpse.DrawPos, corpse.Map, Rand.Range(.5f, 1.1f));
+                    FleckMaker.ThrowSmoke(corpse.DrawPos, corpse.Map, Rand.Range(.5f, 1.1f));
                 }
-                MoteMaker.ThrowHeatGlow(corpse.Position, corpse.Map, 1f);
+                FleckMaker.ThrowHeatGlow(corpse.Position, corpse.Map, 1f);
                 corpse.Map.weatherManager.eventHandler.AddEvent(new TM_WeatherEvent_MeshFlash(corpse.Map, corpse.Position, TM_MatPool.blackLightning));
             }
         }

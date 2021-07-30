@@ -38,7 +38,7 @@ namespace TorannMagic
             
             if (spawned)
             {
-                MoteMaker.ThrowLightningGlow(base.Pawn.DrawPos, base.Pawn.Map, 1f);
+                FleckMaker.ThrowLightningGlow(base.Pawn.DrawPos, base.Pawn.Map, 1f);
                 if (this.Def.defName == "TM_Regeneration_III")
                 {
                     hediffPwr = 3;

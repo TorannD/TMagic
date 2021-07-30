@@ -426,14 +426,14 @@ namespace TorannMagic
             if (shouldDraw && IsMagicUser)
             {
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                if (settingsRef.AIFriendlyMarking && base.AbilityUser.IsColonist && this.IsMagicUser)
+                if (settingsRef.AIFriendlyMarking && base.Pawn.IsColonist && this.IsMagicUser)
                 {
                     if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                     {
                         DrawMageMark();
                     }
                 }
-                if (settingsRef.AIMarking && !base.AbilityUser.IsColonist && this.IsMagicUser)
+                if (settingsRef.AIMarking && !base.Pawn.IsColonist && this.IsMagicUser)
                 {
                     if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                     {
@@ -494,7 +494,7 @@ namespace TorannMagic
                 this.bitOffset += .001f;
             }
 
-            this.bitPosition = this.AbilityUser.Drawer.DrawPos;
+            this.bitPosition = this.Pawn.Drawer.DrawPos;
             this.bitPosition.x -= .5f + Rand.Range(-.01f, .01f);
             this.bitPosition.z += this.bitOffset;
             this.bitPosition.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
@@ -512,7 +512,7 @@ namespace TorannMagic
                 float num = Mathf.Lerp(1.2f, 1.55f, 1f);
                 Vector3 lightPos = Vector3.zero;
 
-                lightPos = this.AbilityUser.Drawer.DrawPos;
+                lightPos = this.Pawn.Drawer.DrawPos;
                 lightPos.x -= .5f;
                 lightPos.z += .6f;
 
@@ -529,7 +529,7 @@ namespace TorannMagic
         public void DrawMageMark()
         {
             float num = Mathf.Lerp(1.2f, 1.55f, 1f);
-            Vector3 vector = this.AbilityUser.Drawer.DrawPos;
+            Vector3 vector = this.Pawn.Drawer.DrawPos;
             vector.x = vector.x + .45f;
             vector.z = vector.z + .45f;
             vector.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
@@ -552,75 +552,75 @@ namespace TorannMagic
             }
             else
             {
-                if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
+                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.fireMarkMat, 0);
                 }
-                else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.iceMarkMat, 0);
                 }
-                else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn))
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.lightningMarkMat, 0);
                 }
-                else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.arcanistMarkMat, 0);
                 }
-                else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin))
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.paladinMarkMat, 0);
                 }
-                else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner))
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.summonerMarkMat, 0);
                 }
-                else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid))
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Druid))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.druidMarkMat, 0);
                 }
-                else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.necroMarkMat, 0);
                 }
-                else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest))
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Priest))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.priestMarkMat, 0);
                 }
-                else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.bardMarkMat, 0);
                 }
-                else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Succubus) || this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Warlock))
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.demonkinMarkMat, 0);
                 }
-                else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.earthMarkMat, 0);
                 }
-                else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.technoMarkMat, 0);
                 }
-                else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.BloodMage))
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.bloodmageMarkMat, 0);
                 }
-                else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.enchanterMarkMat, 0);
                 }
-                else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.chronomancerMarkMat, 0);
                 }
-                else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.chaosMarkMat, 0);
                 }
-                else if (TM_Calc.IsWanderer(this.AbilityUser))
+                else if (TM_Calc.IsWanderer(this.Pawn))
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.wandererMarkMat, 0);
                 }
@@ -635,7 +635,7 @@ namespace TorannMagic
         public void DrawEnchantMark()
         {
             float num = Mathf.Lerp(1.2f, 1.55f, 1f);
-            Vector3 vector = this.AbilityUser.Drawer.DrawPos;
+            Vector3 vector = this.Pawn.Drawer.DrawPos;
             vector.x = vector.x + .45f;
             vector.z = vector.z + .45f;
             vector.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
@@ -1788,10 +1788,10 @@ namespace TorannMagic
 
         public override void CompTick()
         {
-            bool flag = base.AbilityUser != null;
+            bool flag = base.Pawn != null;
             if (flag)
             {
-                bool spawned = base.AbilityUser.Spawned;
+                bool spawned = base.Pawn.Spawned;
                 if (spawned)
                 {
                     bool isMagicUser = this.IsMagicUser && !this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) && !this.Pawn.IsWildMan();
@@ -1993,7 +1993,7 @@ namespace TorannMagic
                     }
                 }
             }
-            if (IsInitialized)
+            if (Initialized)
             {
                 //custom code
             }
@@ -2041,13 +2041,13 @@ namespace TorannMagic
 
         public void PostInitializeTick()
         {
-            bool flag = base.AbilityUser != null;
+            bool flag = base.Pawn != null;
             if (flag)
             {
-                bool spawned = base.AbilityUser.Spawned;
+                bool spawned = base.Pawn.Spawned;
                 if (spawned)
                 {
-                    bool flag2 = base.AbilityUser.story != null;
+                    bool flag2 = base.Pawn.story != null;
                     if (flag2)
                     {
                         this.firstTick = true;
@@ -2065,11 +2065,11 @@ namespace TorannMagic
         {
             get
             {
-                bool flag = base.AbilityUser != null;
+                bool flag = base.Pawn != null;
                 bool result;
                 if (flag)
                 {
-                    bool flag3 = base.AbilityUser.story != null;
+                    bool flag3 = base.Pawn.story != null;
                     if (flag3)
                     {
                         if (this.customClass != null)
@@ -2078,7 +2078,7 @@ namespace TorannMagic
                         }
                         if (this.customClass == null && this.customIndex == -2)
                         {
-                            this.customIndex = TM_ClassUtility.IsCustomClassIndex(this.AbilityUser.story.traits.allTraits);
+                            this.customIndex = TM_ClassUtility.IsCustomClassIndex(this.Pawn.story.traits.allTraits);
                             if (this.customIndex >= 0)
                             {
                                 if (!TM_ClassUtility.CustomClasses()[this.customIndex].isMage)
@@ -2093,16 +2093,16 @@ namespace TorannMagic
                                 }
                             }
                         }
-                        bool flag4 = base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Enchanter) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.BloodMage) ||
-                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Geomancer) ||
-                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Warlock) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Succubus) ||
-                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire) ||
-                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn) ||
-                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin) ||
-                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid) ||
-                            (base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich)) ||
-                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) ||
-                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Chronomancer) || TM_Calc.IsWanderer(base.AbilityUser) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.ChaosMage);
+                        bool flag4 = base.Pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter) || base.Pawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage) ||
+                            base.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || base.Pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer) ||
+                            base.Pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock) || base.Pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus) ||
+                            base.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) || base.Pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) ||
+                            base.Pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || base.Pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) ||
+                            base.Pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || base.Pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin) ||
+                            base.Pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner) || base.Pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) ||
+                            (base.Pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || base.Pawn.story.traits.HasTrait(TorannMagicDefOf.Lich)) ||
+                            base.Pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || base.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) ||
+                            base.Pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer) || TM_Calc.IsWanderer(base.Pawn) || base.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage);
                         if (flag4)
                         {
                             return true;
@@ -2264,9 +2264,9 @@ namespace TorannMagic
         {
             get
             {
-                if (!this.AbilityUser.DestroyedOrNull() && !this.AbilityUser.Dead)
+                if (!this.Pawn.DestroyedOrNull() && !this.Pawn.Dead)
                 {
-                    return base.AbilityUser.needs.TryGetNeed<Need_Mana>();
+                    return base.Pawn.needs.TryGetNeed<Need_Mana>();
                 }
                 return null;
             }
@@ -2344,7 +2344,7 @@ namespace TorannMagic
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             float hardModeMasterChance = .35f;
             float masterChance = .05f;
-            Pawn abilityUser = base.AbilityUser;
+            Pawn abilityUser = base.Pawn;
             bool flag2;
             if (abilityUser != null && abilityUser.story != null && abilityUser.story.traits != null)
             {
@@ -3409,7 +3409,7 @@ namespace TorannMagic
 
         public void InitializeSpell()
         {
-            Pawn abilityUser = base.AbilityUser;
+            Pawn abilityUser = base.Pawn;
             if (this.IsMagicUser)
             {
                 if (this.customClass != null)
@@ -3905,7 +3905,7 @@ namespace TorannMagic
 
         public void RemovePowers(bool clearStandalone = true)
         {
-            Pawn abilityUser = base.AbilityUser;
+            Pawn abilityUser = base.Pawn;
             if (this.magicPowersInitialized == true && MagicData != null)
             {
                 bool flag2 = true;
@@ -3930,7 +3930,7 @@ namespace TorannMagic
                     }
                 }
                 //flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire);
-                if (TM_Calc.IsWanderer(this.AbilityUser))
+                if (TM_Calc.IsWanderer(this.Pawn))
                 {
                     this.spell_ArcaneBolt = false;
                     this.RemovePawnAbility(TorannMagicDefOf.TM_ArcaneBolt);
@@ -4409,7 +4409,7 @@ namespace TorannMagic
 
         public void RemoveTraits()
         {
-            List<Trait> traits = this.AbilityUser.story.traits.allTraits;
+            List<Trait> traits = this.Pawn.story.traits.allTraits;
             for (int i = 0; i < traits.Count; i++)
             {
                 if (traits[i].def == TorannMagicDefOf.InnerFire || traits[i].def == TorannMagicDefOf.HeartOfFrost || traits[i].def == TorannMagicDefOf.StormBorn || traits[i].def == TorannMagicDefOf.Arcanist || traits[i].def == TorannMagicDefOf.Paladin ||
@@ -4423,7 +4423,7 @@ namespace TorannMagic
                 }
                 if (this.customClass != null)
                 {
-                    traits.Remove(this.AbilityUser.story.traits.GetTrait(this.customClass.classTrait));
+                    traits.Remove(this.Pawn.story.traits.GetTrait(this.customClass.classTrait));
                     this.customClass = null;
                     this.customIndex = -2;
                 }
@@ -4450,7 +4450,7 @@ namespace TorannMagic
             this.RemoveTMagicHediffs();
             this.RemoveTraits();
             this.magicData = null;
-            base.IsInitialized = false;
+            base.Initialized = false;
         }
 
         public int MagicAttributeEffeciencyLevel(string attributeName)
@@ -5350,7 +5350,7 @@ namespace TorannMagic
 
         public override void PostPreApplyDamage(DamageInfo dinfo, out bool absorbed)
         {
-            Pawn abilityUser = base.AbilityUser;
+            Pawn abilityUser = base.Pawn;
 
             List<Hediff> list = new List<Hediff>();
             List<Hediff> arg_32_0 = list;
@@ -5400,15 +5400,15 @@ namespace TorannMagic
                     if (current.def == TorannMagicDefOf.TM_HediffInvulnerable)
                     {
                         absorbed = true;
-                        MoteMaker.MakeStaticMote(AbilityUser.Position, AbilityUser.Map, ThingDefOf.Mote_ExplosionFlash, 10);
+                        FleckMaker.Static(Pawn.Position, Pawn.Map, FleckDefOf.ExplosionFlash, 10);
                         dinfo.SetAmount(0);
                         return;
                     }                    
                     if (current.def == TorannMagicDefOf.TM_HediffEnchantment_phantomShift && Rand.Chance(.2f))
                     {
                         absorbed = true;
-                        MoteMaker.MakeStaticMote(AbilityUser.Position, AbilityUser.Map, ThingDefOf.Mote_ExplosionFlash, 8);
-                        MoteMaker.ThrowSmoke(abilityUser.Position.ToVector3Shifted(), abilityUser.Map, 1.2f);
+                        FleckMaker.Static(Pawn.Position, Pawn.Map, FleckDefOf.ExplosionFlash, 8);
+                        FleckMaker.ThrowSmoke(abilityUser.Position.ToVector3Shifted(), abilityUser.Map, 1.2f);
                         dinfo.SetAmount(0);
                         return;
                     }                    
@@ -5566,11 +5566,11 @@ namespace TorannMagic
         private void BreakShield(Pawn pawn)
         {
             SoundDefOf.EnergyShield_Broken.PlayOneShot(new TargetInfo(pawn.Position, pawn.Map, false));
-            MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
+            FleckMaker.Static(pawn.TrueCenter(), pawn.Map, FleckDefOf.ExplosionFlash, 12f);
             for (int i = 0; i < 6; i++)
             {
                 Vector3 loc = pawn.TrueCenter() + Vector3Utility.HorizontalVectorFromAngle((float)Rand.Range(0, 360)) * Rand.Range(0.3f, 0.6f);
-                MoteMaker.ThrowDustPuff(loc, pawn.Map, Rand.Range(0.8f, 1.2f));
+                FleckMaker.ThrowDustPuff(loc, pawn.Map, Rand.Range(0.8f, 1.2f));
             }
         }
 
@@ -5589,7 +5589,7 @@ namespace TorannMagic
                         {
                             this.Mana.CurLevel -= .025f;
                             this.MagicUserXP += 4;
-                            MoteMaker.ThrowSmoke(forge.DrawPos, forge.Map, Rand.Range(.8f, 1.2f));
+                            FleckMaker.ThrowSmoke(forge.DrawPos, forge.Map, Rand.Range(.8f, 1.2f));
                         }
                         else
                         {
@@ -7267,7 +7267,7 @@ namespace TorannMagic
                 rndPos.x += Rand.Range(-.4f, .4f);
                 rndPos.z += Rand.Range(-.4f, .4f);
                 TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_SparkFlash"), rndPos, this.overdriveBuilding.Map, Rand.Range(.6f, .8f), .1f, .05f, .05f, 0, 0, 0, Rand.Range(0, 360));
-                MoteMaker.ThrowSmoke(rndPos, this.overdriveBuilding.Map, Rand.Range(.8f, 1.2f));
+                FleckMaker.ThrowSmoke(rndPos, this.overdriveBuilding.Map, Rand.Range(.8f, 1.2f));
                 rndPos = this.overdriveBuilding.DrawPos;
                 rndPos.x += Rand.Range(-.4f, .4f);
                 rndPos.z += Rand.Range(-.4f, .4f);
@@ -7581,7 +7581,7 @@ namespace TorannMagic
             bool flag = this.Mana == null;
             if (flag)
             {
-                Hediff firstHediffOfDef = base.AbilityUser.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_MagicUserHD, false);
+                Hediff firstHediffOfDef = base.Pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_MagicUserHD, false);
                 bool flag2 = firstHediffOfDef != null;
                 if (flag2)
                 {
@@ -7589,9 +7589,9 @@ namespace TorannMagic
                 }
                 else
                 {
-                    Hediff hediff = HediffMaker.MakeHediff(TorannMagicDefOf.TM_MagicUserHD, base.AbilityUser, null);
+                    Hediff hediff = HediffMaker.MakeHediff(TorannMagicDefOf.TM_MagicUserHD, base.Pawn, null);
                     hediff.Severity = 1f;
-                    base.AbilityUser.health.AddHediff(hediff, null, null);
+                    base.Pawn.health.AddHediff(hediff, null, null);
                 }
             }
         }
@@ -7607,8 +7607,8 @@ namespace TorannMagic
         {
             if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
-                InspectTabBase inspectTabsx = base.AbilityUser.GetInspectTabs().FirstOrDefault((InspectTabBase x) => x.labelKey == "TM_TabMagic");
-                IEnumerable<InspectTabBase> inspectTabs = base.AbilityUser.GetInspectTabs();
+                InspectTabBase inspectTabsx = base.Pawn.GetInspectTabs().FirstOrDefault((InspectTabBase x) => x.labelKey == "TM_TabMagic");
+                IEnumerable<InspectTabBase> inspectTabs = base.Pawn.GetInspectTabs();
                 bool flag = inspectTabs != null && inspectTabs.Count<InspectTabBase>() > 0;
                 if (flag)
                 {
@@ -7616,7 +7616,7 @@ namespace TorannMagic
                     {
                         try
                         {
-                            base.AbilityUser.def.inspectorTabsResolved.Add(InspectTabManager.GetSharedInstance(typeof(ITab_Pawn_Magic)));
+                            base.Pawn.def.inspectorTabsResolved.Add(InspectTabManager.GetSharedInstance(typeof(ITab_Pawn_Magic)));
                         }
                         catch (Exception ex)
                         {
@@ -7711,7 +7711,7 @@ namespace TorannMagic
                         bitDrawPos.z += .45f;
                         for (int i = 0; i < 4; i++)
                         {
-                            MoteMaker.ThrowSmoke(bitDrawPos, this.Pawn.Map, Rand.Range(.6f, .8f));
+                            FleckMaker.ThrowSmoke(bitDrawPos, this.Pawn.Map, Rand.Range(.6f, .8f));
                         }
                     }
                 }
@@ -7813,7 +7813,7 @@ namespace TorannMagic
                             {
                                 traits.Remove(traits[i]);
                                 this.Pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Bard, bardtraining_pwr.level, false));
-                                MoteMaker.ThrowHeatGlow(this.Pawn.Position, this.Pawn.Map, 2);
+                                FleckMaker.ThrowHeatGlow(this.Pawn.Position, this.Pawn.Map, 2);
                             }
                         }
                     }
@@ -8454,7 +8454,7 @@ namespace TorannMagic
             bool flag11 = Scribe.mode == LoadSaveMode.PostLoadInit;
             if (flag11)
             {
-                Pawn abilityUser = base.AbilityUser;
+                Pawn abilityUser = base.Pawn;
                 int index = TM_ClassUtility.IsCustomClassIndex(abilityUser.story.traits.allTraits);
                 if (index >= 0)
                 {                    

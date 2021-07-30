@@ -47,10 +47,10 @@ namespace TorannMagic
 				IntVec3 randomCell = cellRect.RandomCell;
 				this.IceExplosion(pwrVal, randomCell, map, (float)verVal * 0.4f);
 				Vector3 loc = randomCell.ToVector3Shifted();
-				MoteMaker.ThrowSmoke(loc, map, 4.2f);
-				MoteMaker.ThrowSmoke(loc, map, 0.6f * (float)pwrVal);
-				MoteMaker.ThrowAirPuffUp(loc, map);
-				MoteMaker.ThrowDustPuff(loc, map, 1.0f * (float)pwrVal);
+				FleckMaker.ThrowSmoke(loc, map, 4.2f);
+				FleckMaker.ThrowSmoke(loc, map, 0.6f * (float)pwrVal);
+				FleckMaker.ThrowAirPuffUp(loc, map);
+				FleckMaker.ThrowDustPuff(loc, map, 1.0f * (float)pwrVal);
 				AddSnowRadial(randomCell, map, this.def.projectile.explosionRadius, (this.def.projectile.explosionRadius / 2 )+ (0.7f * (float)verVal));
 			}
 			AddSnowRadial(base.Position, map, this.def.projectile.explosionRadius + (0.7f * (float)pwrVal), this.def.projectile.explosionRadius + (0.7f * (float)verVal));
@@ -59,8 +59,8 @@ namespace TorannMagic
 		protected void IceExplosion(int pwr, IntVec3 pos, Map map, float radius)
 		{
 			ThingDef def = this.def;
-			Explosion(pwr, pos, map, radius, TMDamageDefOf.DamageDefOf.Snowball, this.launcher, SoundDefOf.Crunch, def, this.equipmentDef, ThingDefOf.Mote_Smoke, 1.2f, 1, false, null, 0f, 1);
-            Explosion(pwr, pos, map, radius, DamageDefOf.Extinguish, this.launcher, this.def.projectile.soundExplode, def, this.equipmentDef, ThingDefOf.Mote_WaterSplash, 1.8f, 1, false, null, 0f, 1);
+			Explosion(pwr, pos, map, radius, TMDamageDefOf.DamageDefOf.Snowball, this.launcher, SoundDefOf.Crunch, def, this.equipmentDef, ThingDefOf.Gas_Smoke, 1.2f, 1, false, null, 0f, 1);
+            Explosion(pwr, pos, map, radius, DamageDefOf.Extinguish, this.launcher, this.def.projectile.soundExplode, def, this.equipmentDef, null, 1.8f, 1, false, null, 0f, 1);
         }
 
 		public void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)

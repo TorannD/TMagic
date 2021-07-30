@@ -1299,5 +1299,8 @@ namespace TorannMagic
         public static ThingCategoryDef TM_Magicyte;
         public static ThingCategoryDef TM_MagicArtifacts;
         public static ThingCategoryDef TM_MagicEquipment;
+
+        //HistoryEventDefs
+        public static HistoryEventDef TM_OffensiveMagic;
     }
 }

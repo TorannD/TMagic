@@ -132,9 +132,9 @@ namespace TorannMagic
                 this.sacrificedPawn.DeSpawn();                
                 SingleSpawnLoop(spawnThing, centerCell, map);
 
-                MoteMaker.ThrowSmoke(centerCell.ToVector3(), map, 2);
-                MoteMaker.ThrowMicroSparks(centerCell.ToVector3(), map);
-                MoteMaker.ThrowHeatGlow(centerCell, map, 2);
+                FleckMaker.ThrowSmoke(centerCell.ToVector3(), map, 2);
+                FleckMaker.ThrowMicroSparks(centerCell.ToVector3(), map);
+                FleckMaker.ThrowHeatGlow(centerCell, map, 2);
 
                 SoundInfo info = SoundInfo.InMap(new TargetInfo(centerCell, map, false), MaintenanceType.None);
                 info.pitchFactor = 1.3f;

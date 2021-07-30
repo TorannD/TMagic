@@ -104,9 +104,9 @@ namespace TorannMagic
         {
             if (pawn != null)
             {
-                MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
+                FleckMaker.Static(pawn.TrueCenter(), pawn.Map, FleckDefOf.ExplosionFlash, 12f);
                 SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
-                MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
+                FleckMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
             }
             if(distanceToTarget > 12)
             {
@@ -180,7 +180,7 @@ namespace TorannMagic
                 base.Position = this.ExactPosition.ToIntVec3();
                 if(Find.TickManager.TicksGame % 2 == 0)
                 {
-                    MoteMaker.ThrowDustPuff(base.Position, base.Map, Rand.Range(0.8f, 1.2f));
+                    FleckMaker.ThrowDustPuff(base.Position, base.Map, Rand.Range(0.8f, 1.2f));
                 }               
          
                 //if(Find.TickManager.TicksGame % 10 == 0 && this.assignedTarget != null)

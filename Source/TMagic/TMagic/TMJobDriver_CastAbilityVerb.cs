@@ -38,7 +38,7 @@ namespace TorannMagic
             {
                 //if (!base.GetActor().IsFighting() ? true : !verb.UseAbilityProps.canCastInMelee && !this.job.endIfCantShootTargetFromCurPos)
                 //{
-                    Toil toil = Toils_Combat.GotoCastPosition(TargetIndex.A, false);
+                    Toil toil = Toils_Combat.GotoCastPosition(TargetIndex.A);
                     yield return toil;
                     //toil = null;
                 //}

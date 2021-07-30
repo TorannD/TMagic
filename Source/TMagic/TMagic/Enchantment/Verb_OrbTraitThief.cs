@@ -104,13 +104,13 @@ namespace TorannMagic.Enchantment
                                         {
                                             victim.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk);
                                             int relationChange = Rand.RangeInclusive(-30, -20);
-                                            this.CasterPawn.Faction.TryAffectGoodwillWith(victim.Faction, relationChange, true, true, "offensive use of magic", null);
+                                            this.CasterPawn.Faction.TryAffectGoodwillWith(victim.Faction, relationChange, true, true, TorannMagicDefOf.TM_OffensiveMagic, null);
                                         }
                                         else
                                         {
                                             victim.Kill(null, null);
                                             int relationChange = Rand.RangeInclusive(-50, -30);
-                                            this.CasterPawn.Faction.TryAffectGoodwillWith(victim.Faction, relationChange, true, true, "offensive use of magic", null);
+                                            this.CasterPawn.Faction.TryAffectGoodwillWith(victim.Faction, relationChange, true, true, TorannMagicDefOf.TM_OffensiveMagic, null);
                                         }
                                     }
                                 }
@@ -168,14 +168,14 @@ namespace TorannMagic.Enchantment
         public void Effects(IntVec3 position)
         {
             Vector3 rndPos = position.ToVector3Shifted();
-            MoteMaker.ThrowHeatGlow(position, this.CasterPawn.Map, 1f);
+            FleckMaker.ThrowHeatGlow(position, this.CasterPawn.Map, 1f);
             for (int i = 0; i < 3; i++)
             {
                 rndPos.x += Rand.Range(-.5f, .5f);
                 rndPos.z += Rand.Range(-.5f, .5f);
                 rndPos.y += Rand.Range(.3f, 1.3f);
-                MoteMaker.ThrowSmoke(rndPos, this.CasterPawn.Map, Rand.Range(.7f, 1.1f));
-                MoteMaker.ThrowLightningGlow(position.ToVector3Shifted(), this.CasterPawn.Map, 1.4f);
+                FleckMaker.ThrowSmoke(rndPos, this.CasterPawn.Map, Rand.Range(.7f, 1.1f));
+                FleckMaker.ThrowLightningGlow(position.ToVector3Shifted(), this.CasterPawn.Map, 1.4f);
             }
         }
 

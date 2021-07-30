@@ -130,9 +130,9 @@ namespace TorannMagic
                                 polymorphedPawn.GetComp<CompPolymorph>().Temporary = false;
                             }
 
-                            MoteMaker.ThrowSmoke(newPawn.DrawPos, newPawn.Map, 2);
-                            MoteMaker.ThrowMicroSparks(newPawn.DrawPos, newPawn.Map);
-                            MoteMaker.ThrowHeatGlow(newPawn.Position, newPawn.Map, 2);
+                            FleckMaker.ThrowSmoke(newPawn.DrawPos, newPawn.Map, 2);
+                            FleckMaker.ThrowMicroSparks(newPawn.DrawPos, newPawn.Map);
+                            FleckMaker.ThrowHeatGlow(newPawn.Position, newPawn.Map, 2);
                             
                             newPawn.DeSpawn();
                             if (polymorphedPawn.IsColonist && !base.CasterPawn.IsColonist)

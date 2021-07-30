@@ -42,7 +42,7 @@ namespace TorannMagic
             if (spawned)
             {
                 this.maxSev = Mathf.RoundToInt(this.parent.Severity);
-                //MoteMaker.ThrowHeatGlow(base.Pawn.DrawPos.ToIntVec3(), base.Pawn.Map, 2f);
+                //FleckMaker.ThrowHeatGlow(base.Pawn.DrawPos.ToIntVec3(), base.Pawn.Map, 2f);
             }            
         }
 
@@ -87,7 +87,7 @@ namespace TorannMagic
             SoundInfo info = SoundInfo.InMap(new TargetInfo(this.Pawn.Position, this.Pawn.Map, false), MaintenanceType.None);
             info.pitchFactor = .7f;
             SoundDefOf.EnergyShield_Broken.PlayOneShot(info);
-            MoteMaker.ThrowLightningGlow(this.Pawn.DrawPos, this.Pawn.Map, 1.5f);
+            FleckMaker.ThrowLightningGlow(this.Pawn.DrawPos, this.Pawn.Map, 1.5f);
             base.CompPostPostRemoved();
         }
     }

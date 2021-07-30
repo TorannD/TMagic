@@ -82,7 +82,7 @@ namespace TorannMagic
                         {
                             if (comp.bondedSpirit.Map != null)
                             {
-                                MoteMaker.ThrowSmoke(comp.bondedSpirit.DrawPos, comp.bondedSpirit.Map, 1f);
+                                FleckMaker.ThrowSmoke(comp.bondedSpirit.DrawPos, comp.bondedSpirit.Map, 1f);
                                 TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Ghost, comp.bondedSpirit.DrawPos, comp.bondedSpirit.Map, 1.3f, .25f, .1f, .45f, 0, Rand.Range(1f, 2f), 0, 0);
                             }                            
                             comp.bondedSpirit.Destroy(DestroyMode.Vanish);
@@ -108,7 +108,7 @@ namespace TorannMagic
                             rndPos.x += Rand.Range(-.5f, .5f);
                             rndPos.z += Rand.Range(-.5f, .5f);
                             TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Healing_Small, rndPos, map, Rand.Range(.6f, .8f), .1f, .05f, .05f, 0, 0, 0, Rand.Range(0, 360));
-                            MoteMaker.ThrowSmoke(rndPos, map, Rand.Range(.8f, 1.2f));
+                            FleckMaker.ThrowSmoke(rndPos, map, Rand.Range(.8f, 1.2f));
                         }
                     }
                     catch

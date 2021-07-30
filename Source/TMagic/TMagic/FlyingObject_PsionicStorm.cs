@@ -128,8 +128,8 @@ namespace TorannMagic
         {
             if (pawn != null)
             {
-                MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
-                MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
+                FleckMaker.Static(pawn.TrueCenter(), pawn.Map, FleckDefOf.ExplosionFlash, 12f);
+                FleckMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
                 this.curvePoints = new List<Vector3>();
                 this.curvePoints.Clear();
                 this.targetCells = new List<IntVec3>();
@@ -252,7 +252,7 @@ namespace TorannMagic
             else
             {
                 base.Position = this.ExactPosition.ToIntVec3();
-                MoteMaker.ThrowDustPuff(base.Position, base.Map, Rand.Range(0.8f, 1.2f));
+                FleckMaker.ThrowDustPuff(base.Position, base.Map, Rand.Range(0.8f, 1.2f));
                 bool flag2 = this.ticksToImpact <= 0;
                 if (flag2)
                 {
@@ -384,7 +384,7 @@ namespace TorannMagic
                 {
                     SoundStarter.PlayOneShot(expr_C8, new TargetInfo(this.ExactPosition.ToIntVec3(), this.Map, false));
                 }
-                projectile_AbilityBase.Launch(this.pawn, TorannMagicDefOf.TM_PsionicBlast, drawPos, launchTarget, ProjectileHitFlags.All, null, null, null, null);
+                projectile_AbilityBase.Launch(this.pawn, TorannMagicDefOf.TM_PsionicBlast, drawPos, launchTarget, ProjectileHitFlags.All, false, null, null, null, null);
         }
 
         private void ImpactSomething()

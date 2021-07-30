@@ -152,7 +152,7 @@ namespace TorannMagic
         {
             if (c != default(IntVec3) && c.IsValid && c.InBounds(this.Map))
             {
-                MoteMaker.ThrowLightningGlow(c.ToVector3Shifted(), this.Map, 1f);
+                FleckMaker.ThrowLightningGlow(c.ToVector3Shifted(), this.Map, 1f);
                 List<Thing> thingList = c.GetThingList(this.Map);
                 if (thingList != null && thingList.Count > 0)
                 {

@@ -68,7 +68,7 @@ namespace TorannMagic
                         spawnThing.def = TorannMagicDefOf.TM_Poppi;
                         spawnThing.kindDef = PawnKindDef.Named("TM_Poppi");
 
-                        MoteMaker.ThrowSmoke(centerCell.ToVector3(), map, 1+pwrVal);
+                        FleckMaker.ThrowSmoke(centerCell.ToVector3(), map, 1+pwrVal);
                         SingleSpawnLoop(spawnThing, centerCell, map);
                     }
                     else

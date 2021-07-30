@@ -13,7 +13,7 @@ namespace TorannMagic
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    MoteMaker.ThrowSmoke(corpse.DrawPos, corpse.Map, Rand.Range(.5f, 1.1f));
+                    FleckMaker.ThrowSmoke(corpse.DrawPos, corpse.Map, Rand.Range(.5f, 1.1f));
                 }
                 TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Ghost, corpse.DrawPos, corpse.Map, 1.3f, .25f, .1f, .45f, 0, Rand.Range(1f, 2f), 0, 0);
             }

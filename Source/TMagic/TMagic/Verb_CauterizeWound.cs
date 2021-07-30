@@ -74,7 +74,7 @@ namespace TorannMagic
                                 else
                                 {
                                     //current.Tended(1, 1);
-                                    current.Tended_NewTemp(1f, 1f);
+                                    current.Tended(1f, 1f);
                                     TM_MoteMaker.ThrowFlames(pawn.DrawPos, pawn.Map, Rand.Range(.1f, .4f));
                                 }                                
                             }                           

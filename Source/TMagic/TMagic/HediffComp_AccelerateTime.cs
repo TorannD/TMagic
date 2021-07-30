@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using HarmonyLib;
-using System.Reflection;
 
 
 namespace TorannMagic
@@ -52,7 +51,7 @@ namespace TorannMagic
             bool spawned = base.Pawn.Spawned;
             if (spawned && base.Pawn.Map != null)
             {
-                MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
+                FleckMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
             }
             this.currentAge = base.Pawn.ageTracker.AgeBiologicalYears;
             this.tickEffect = Mathf.RoundToInt(this.durationTicks / 25);

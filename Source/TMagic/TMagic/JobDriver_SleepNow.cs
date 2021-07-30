@@ -79,11 +79,11 @@ namespace TorannMagic
                 {
                     if (curDriver.asleep)
                     {
-                        MoteMaker.ThrowMetaIcon(actor.Position, actor.Map, ThingDefOf.Mote_SleepZ);
+                        FleckMaker.ThrowMetaIcon(actor.Position, actor.Map, FleckDefOf.SleepZ);
                     }
                     if (actor.health.hediffSet.GetNaturallyHealingInjuredParts().Any<BodyPartRecord>())
                     {
-                        MoteMaker.ThrowMetaIcon(actor.Position, actor.Map, ThingDefOf.Mote_HealingCross);
+                        FleckMaker.ThrowMetaIcon(actor.Position, actor.Map, FleckDefOf.HealingCross);
                     }
                 }
             };

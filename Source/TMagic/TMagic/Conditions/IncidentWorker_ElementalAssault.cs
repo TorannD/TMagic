@@ -24,7 +24,7 @@ namespace TorannMagic.Conditions
                 {
                     if (lichFaction[i].def.defName == "TM_ElementalFaction")
                     {
-                        Faction.OfPlayer.TrySetRelationKind(lichFaction[i], FactionRelationKind.Hostile, false, null, null);
+                        Faction.OfPlayer.TryAffectGoodwillWith(lichFaction[i], -200, false, false, null, null);
                         factionFlag = true;
                     }
                 }

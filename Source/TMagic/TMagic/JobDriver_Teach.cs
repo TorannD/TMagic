@@ -193,8 +193,8 @@ namespace TorannMagic
                     Vector3 rndPos = drawPos;
                     rndPos.x += Rand.Range(-1f, 1f);
                     rndPos.z += Rand.Range(-1f, 1f);
-                    ThingDef mote = ThingDefOf.Mote_MicroSparks;
-                    TM_MoteMaker.ThrowGenericMote(mote, rndPos, this.pawn.Map, Rand.Range(.6f, .9f), 0.4f, .1f, .8f, 0, Rand.Range(1, 1.5f), direction, direction);
+                    FleckDef mote = FleckDefOf.MicroSparks;
+                    TM_FleckMaker.ThrowGenericFleck(mote, rndPos, this.pawn.Map, Rand.Range(.6f, .9f), 0.4f, .1f, .8f, 0, Rand.Range(1, 1.5f), direction, direction);
                     SoundInfo info = SoundInfo.InMap(new TargetInfo(this.pawn.Position, this.pawn.Map, false), MaintenanceType.None);
                     info.pitchFactor = .75f;
                     info.volumeFactor = 1.2f;
@@ -209,7 +209,7 @@ namespace TorannMagic
                     Vector3 rndPos = drawPos;
                     rndPos.x += Rand.Range(-2f, 2f);
                     rndPos.z += Rand.Range(-2f, 2f);
-                    ThingDef mote = ThingDefOf.Mote_Smoke;
+                    ThingDef mote = ThingDefOf.Gas_Smoke;
                     TM_MoteMaker.ThrowGenericMote(mote, rndPos, this.pawn.Map, Rand.Range(1f, 1.4f), 0.7f, .2f, .9f, Rand.Range(0, 200), Rand.Range(.3f, .6f), direction, direction);
                     SoundInfo info = SoundInfo.InMap(new TargetInfo(this.pawn.Position, this.pawn.Map, false), MaintenanceType.None);
                     info.pitchFactor = 1.4f;

@@ -62,7 +62,7 @@ namespace TorannMagic
         public void ApplyShield(Pawn pawn)
         {
             ApplyHediffs(pawn);
-            MoteMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1.5f);
+            FleckMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1.5f);
             TM_Action.DisplayShield(pawn, 5f);
         }
 

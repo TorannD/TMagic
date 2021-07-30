@@ -36,7 +36,7 @@ namespace TorannMagic
                 else
                 {
                     HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_BurningFuryHD, 1f);
-                    MoteMaker.ThrowSmoke(pawn.DrawPos, pawn.Map, 1f);
+                    FleckMaker.ThrowSmoke(pawn.DrawPos, pawn.Map, 1f);
                 }
             }
             return true;

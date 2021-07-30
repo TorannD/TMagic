@@ -99,9 +99,9 @@ namespace TorannMagic
                         spawnThing.kindDef = PawnKindDef.Named("TM_GreaterMinion");
                         SingleSpawnLoop(spawnThing, centerCell, map);                        
                     }
-                    MoteMaker.ThrowSmoke(centerCell.ToVector3(), map, 2 + pwrVal);
-                    MoteMaker.ThrowMicroSparks(centerCell.ToVector3(), map);
-                    MoteMaker.ThrowHeatGlow(centerCell, map, 2 + pwrVal);
+                    FleckMaker.ThrowSmoke(centerCell.ToVector3(), map, 2 + pwrVal);
+                    FleckMaker.ThrowMicroSparks(centerCell.ToVector3(), map);
+                    FleckMaker.ThrowHeatGlow(centerCell, map, 2 + pwrVal);
                 }
                 else
                 {
@@ -113,9 +113,9 @@ namespace TorannMagic
                         SingleSpawnLoop(spawnThing, centerCell, map);
 
                     }
-                    MoteMaker.ThrowSmoke(centerCell.ToVector3(), map, 1 + pwrVal);
-                    MoteMaker.ThrowMicroSparks(centerCell.ToVector3(), map);
-                    MoteMaker.ThrowHeatGlow(centerCell, map, 1 + pwrVal);
+                    FleckMaker.ThrowSmoke(centerCell.ToVector3(), map, 1 + pwrVal);
+                    FleckMaker.ThrowMicroSparks(centerCell.ToVector3(), map);
+                    FleckMaker.ThrowHeatGlow(centerCell, map, 1 + pwrVal);
                 }
 
                 SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
@@ -159,8 +159,8 @@ namespace TorannMagic
                             Thing dismissMinion = comp.summonedMinions[0];
                             if (dismissMinion != null && dismissMinion.Position.IsValid)
                             {
-                                MoteMaker.ThrowSmoke(dismissMinion.Position.ToVector3(), base.Map, 1);
-                                MoteMaker.ThrowHeatGlow(dismissMinion.Position, base.Map, 1);
+                                FleckMaker.ThrowSmoke(dismissMinion.Position.ToVector3(), base.Map, 1);
+                                FleckMaker.ThrowHeatGlow(dismissMinion.Position, base.Map, 1);
                             }
                             comp.summonedMinions.Remove(comp.summonedMinions[0]);
                             if (!dismissMinion.Destroyed)

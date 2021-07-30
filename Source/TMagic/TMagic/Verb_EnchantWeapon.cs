@@ -88,7 +88,7 @@ namespace TorannMagic
             {
                 hediff = TorannMagicDefOf.TM_WeaponEnchantment_FireHD;                
                 TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Heat"), pawn.DrawPos, pawn.Map, 1f, .2f, .1f, .8f, Rand.Range(-30, 30), .3f, Rand.Range(-30, 30), Rand.Range(0, 360));
-                MoteMaker.ThrowFireGlow(pawn.Position, pawn.Map, 1f);
+                FleckMaker.ThrowFireGlow(pawn.Position.ToVector3Shifted(), pawn.Map, 1f);
             }
             else if (rnd < .5f)
             {
@@ -98,8 +98,8 @@ namespace TorannMagic
             else if (rnd < .75f)
             {
                 hediff = TorannMagicDefOf.TM_WeaponEnchantment_LitHD;
-                MoteMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1f);
-                MoteMaker.ThrowSmoke(pawn.DrawPos, pawn.Map, 1f);
+                FleckMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1f);
+                FleckMaker.ThrowSmoke(pawn.DrawPos, pawn.Map, 1f);
             }
             else
             {

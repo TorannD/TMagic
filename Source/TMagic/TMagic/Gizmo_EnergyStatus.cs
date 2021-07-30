@@ -34,7 +34,7 @@ namespace TorannMagic
             return 100f;            
         }
 
-        public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth)
+        public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth, GizmoRenderParms parms)
         {
             if (!pawn.DestroyedOrNull() && !pawn.Dead)
             {
@@ -127,6 +127,10 @@ namespace TorannMagic
                 if (barCount > 0 && ((isFighter && compMight.Stamina != null) || (isMage && compMagic.Mana != null) || (isEnchantedItem && iComp.NecroticEnergy > 0)))
                 {
                     Rect overRect = new Rect(topLeft.x + 2, topLeft.y, this.GetWidth(100), 75); //overall rect size (shell)
+                    if (parms.highLight)
+                    {
+                        QuickSearchWidget.DrawStrongHighlight(overRect.ExpandedBy(12f));
+                    }
                     Find.WindowStack.ImmediateWindow(984698, overRect, WindowLayer.GameUI, delegate
                     {
                         barHeight = (((75 - (2* contractionAmount)) - (2*initialShift) - (barSpacing * (barCount - 1))) / (barCount));

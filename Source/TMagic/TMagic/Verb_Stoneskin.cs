@@ -95,7 +95,7 @@ namespace TorannMagic
                         SoundInfo info = SoundInfo.InMap(new TargetInfo(pawn.Position, pawn.Map, false), MaintenanceType.None);
                         info.pitchFactor = .7f;
                         SoundDefOf.EnergyShield_Broken.PlayOneShot(info);
-                        MoteMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1.5f);
+                        FleckMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1.5f);
                     }
                 }
                 else
@@ -121,7 +121,7 @@ namespace TorannMagic
                     SoundInfo info = SoundInfo.InMap(new TargetInfo(pawn.Position, pawn.Map, false), MaintenanceType.None);
                     info.pitchFactor = .7f;
                     SoundDefOf.EnergyShield_Reset.PlayOneShot(info);
-                    MoteMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1.5f);
+                    FleckMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1.5f);
                     Effecter stoneskinEffecter = TorannMagicDefOf.TM_Stoneskin_Effecter.Spawn();
                     stoneskinEffecter.def.offsetTowardsTarget = FloatRange.Zero;
                     stoneskinEffecter.Trigger(new TargetInfo(pawn.Position, pawn.Map, false), new TargetInfo(pawn.Position, pawn.Map, false));

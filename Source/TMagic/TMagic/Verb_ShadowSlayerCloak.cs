@@ -39,7 +39,7 @@ namespace TorannMagic
                     Vector3 rndPos = caster.DrawPos;
                     rndPos.x += Rand.Range(-.5f, .5f);
                     rndPos.z += Rand.Range(-.5f, .5f);
-                    MoteMaker.ThrowSmoke(rndPos, caster.Map, Rand.Range(.6f, 1.2f));
+                    FleckMaker.ThrowSmoke(rndPos, caster.Map, Rand.Range(.6f, 1.2f));
                 }
             }
             return true;

@@ -4,9 +4,9 @@ E:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic
 E:\Programs\Steam\steamapps\common\RimWorld\Mods\TMagic\Assemblies\TorannMagic.dll
 E:\Programs\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic\TMagic\obj\Debug\TorannMagic.dll
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TMagic\Assemblies\TorannMagic.dll
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic\TMagic\obj\Debug\TorannMagic.csprojAssemblyReference.cache
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic\TMagic\obj\Debug\TorannMagic.csproj.CoreCompileInputs.cache
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic\TMagic\obj\Debug\TorannMagic.csproj.CopyComplete
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic\TMagic\obj\Debug\TorannMagic.dll
 E:\Programs\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic\TMagic\obj\Debug\TorannMagic.csproj.CoreCompileInputs.cache
 E:\Programs\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic\TMagic\obj\Debug\TorannMagic.csprojAssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\workshop\content\294100\1899474310\1.3\Assemblies\TorannMagic.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic\TMagic\obj\Debug\TorannMagic.csproj.CopyComplete

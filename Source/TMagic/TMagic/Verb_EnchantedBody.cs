@@ -31,14 +31,14 @@ namespace TorannMagic
                 {
                     comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedAura).AutoCast = false;
                     pawn.health.RemoveHediff(pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_EnchantedAuraHD, false));
-                    MoteMaker.ThrowHeatGlow(pawn.Position, pawn.Map, 1f);
+                    FleckMaker.ThrowHeatGlow(pawn.Position, pawn.Map, 1f);
                 }
 
                 if(pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnchantedBodyHD))
                 {
                     comp.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedBody).AutoCast = false;
                     pawn.health.RemoveHediff(pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_EnchantedBodyHD, false));
-                    MoteMaker.ThrowHeatGlow(pawn.Position, pawn.Map, 1f);
+                    FleckMaker.ThrowHeatGlow(pawn.Position, pawn.Map, 1f);
                 }
                 else
                 {
@@ -48,9 +48,9 @@ namespace TorannMagic
                         HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_EnchantedBodyHD, .5f + pwrVal);
                         for (int i = 0; i < 3; i++)
                         {
-                            MoteMaker.ThrowSmoke(pawn.DrawPos, pawn.Map, Rand.Range(.6f, .8f));
+                            FleckMaker.ThrowSmoke(pawn.DrawPos, pawn.Map, Rand.Range(.6f, .8f));
                         }
-                        MoteMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1f);
+                        FleckMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1f);
                     }
                     else
                     {

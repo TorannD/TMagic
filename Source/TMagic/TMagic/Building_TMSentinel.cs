@@ -71,7 +71,7 @@ namespace TorannMagic
 
                     for (int m = 0; m < 5; m++)
                     {
-                        TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, base.Position.ToVector3Shifted(), this.Map, Rand.Range(.5f, .8f), Rand.Range(.8f, 1.3f), .05f, Rand.Range(1f, 1.5f), Rand.Range(-20, 20), Rand.Range(1f, 2f), Rand.Range(0, 360), Rand.Range(0, 360));
+                        TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, base.Position.ToVector3Shifted(), this.Map, Rand.Range(.5f, .8f), Rand.Range(.8f, 1.3f), .05f, Rand.Range(1f, 1.5f), Rand.Range(-20, 20), Rand.Range(1f, 2f), Rand.Range(0, 360), Rand.Range(0, 360));
                     }
                     initialized = true;
                 }                

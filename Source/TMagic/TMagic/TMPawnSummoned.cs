@@ -104,8 +104,8 @@ namespace TorannMagic
                     if (this.Downed && !this.Destroyed && this != null && this.Faction == Faction.OfPlayer)
                     {
                         Messages.Message("MinionFled".Translate(), MessageTypeDefOf.NeutralEvent);
-                        MoteMaker.ThrowSmoke(this.Position.ToVector3(), base.Map, 1);
-                        MoteMaker.ThrowHeatGlow(this.Position, base.Map, 1);
+                        FleckMaker.ThrowSmoke(this.Position.ToVector3(), base.Map, 1);
+                        FleckMaker.ThrowHeatGlow(this.Position, base.Map, 1);
                         if (CompSummoner != null)
                         {
                             CompSummoner.summonedMinions.Remove(this);
@@ -187,7 +187,7 @@ namespace TorannMagic
                 {
                     if (base.Map != null)
                     {
-                        MoteMaker.ThrowSmoke(this.Position.ToVector3(), base.Map, 3); 
+                        FleckMaker.ThrowSmoke(this.Position.ToVector3(), base.Map, 3); 
                     }
                     else
                     {
@@ -211,8 +211,8 @@ namespace TorannMagic
                 {
                     if(base.Map != null)
                     {
-                        MoteMaker.ThrowSmoke(this.DrawPos, base.Map, Rand.Range(1f, 3f));
-                        MoteMaker.ThrowSmoke(this.DrawPos, base.Map, Rand.Range(1f, 2f));
+                        FleckMaker.ThrowSmoke(this.DrawPos, base.Map, Rand.Range(1f, 3f));
+                        FleckMaker.ThrowSmoke(this.DrawPos, base.Map, Rand.Range(1f, 2f));
                         TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Ghost, this.DrawPos, base.Map, 1f, .25f, 0f, .25f, 0, Rand.Range(1f, 2f), 0, 0);
                     }
                     else

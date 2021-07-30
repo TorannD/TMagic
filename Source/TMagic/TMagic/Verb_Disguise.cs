@@ -40,7 +40,7 @@ namespace TorannMagic
                 }
                 for(int i =0; i < 4; i++)
                 {
-                    MoteMaker.ThrowDustPuff(caster.Position, caster.Map, Rand.Range(.6f, 1f));
+                    FleckMaker.ThrowDustPuff(caster.Position, caster.Map, Rand.Range(.6f, 1f));
                 }
             }
             return true;

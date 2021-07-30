@@ -241,7 +241,7 @@ namespace TorannMagic
         //    CellRect cellRect = this.OccupiedRect();
         //    for (int j = 0; j < cellRect.Area * this.def.skyfaller.motesPerCell; j++)
         //    {
-        //        MoteMaker.ThrowDustPuff(cellRect.RandomVector3, base.Map, .1f);
+        //        FleckMaker.ThrowDustPuff(cellRect.RandomVector3, base.Map, .1f);
         //    }
         //    if (this.def.skyfaller.MakesShrapnel)
         //    {

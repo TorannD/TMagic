@@ -26,7 +26,7 @@ namespace TorannMagic
                     {
                         traits.Remove(traits[i]);
                         this.CasterPawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Sniper, pwr.level, false));
-                        MoteMaker.ThrowHeatGlow(base.CasterPawn.Position, map, 2);
+                        FleckMaker.ThrowHeatGlow(base.CasterPawn.Position, map, 2);
                     }
                 }
             }

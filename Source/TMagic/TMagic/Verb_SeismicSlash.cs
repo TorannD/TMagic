@@ -147,12 +147,12 @@ namespace TorannMagic
                     {
                         TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Cleave"), strikeVec, this.CasterPawn.Map, .6f + (.05f * i), .05f, .04f + (.03f * i), .15f, -10000, 30, angle, angle);
                     }
-                    //MoteMaker.ThrowTornadoDustPuff(strikeVec, map, .6f, Color.white);
+                    //FleckMaker.ThrowTornadoDustPuff(strikeVec, map, .6f, Color.white);
                     for (int j = 0; j < 2+(2*verVal); j++)
                     {
                         IntVec3 searchCell = strikeVec.ToIntVec3() + GenAdj.AdjacentCells8WayRandomized()[j];
                         TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_DirectionalDirt"), searchCell.ToVector3Shifted(), this.CasterPawn.Map, .1f + (.04f * i), .05f, .04f, .28f, 0, 4f - (.2f * i), angle, angle);
-                        //MoteMaker.ThrowTornadoDustPuff(searchCell.ToVector3(), map, .4f, Color.gray);
+                        //FleckMaker.ThrowTornadoDustPuff(searchCell.ToVector3(), map, .4f, Color.gray);
                         victim = searchCell.GetFirstPawn(map);
                         if (victim != null && victim.Faction != base.CasterPawn.Faction)
                         {

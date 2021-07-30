@@ -49,7 +49,7 @@ namespace TorannMagic
                     if (age > duration)
                     {
                         this.pawn.interactions.TryInteractWith(entertaineePawn, TorannMagicDefOf.TM_EntertainID);
-                        MoteMaker.ThrowMicroSparks(this.pawn.DrawPos, this.pawn.Map);
+                        FleckMaker.ThrowMicroSparks(this.pawn.DrawPos, this.pawn.Map);
                         this.EndJobWith(JobCondition.Succeeded);
                         comp.nextEntertainTick = Find.TickManager.TicksGame + 2000;
                         age = 0;

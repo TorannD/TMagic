@@ -74,7 +74,7 @@ namespace TorannMagic.Enchantment
             bool spawned = base.Pawn.Spawned;
             if (spawned)
             {
-                //MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
+                //FleckMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
             }
         }
 

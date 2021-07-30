@@ -109,10 +109,10 @@ namespace TorannMagic
                                 }
                             }
                         }
-                        TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_LightningGlow, newPawn.DrawPos, newPawn.Map, .4f, .3f, .1f, .1f, 0, 0f, 0f, 0f);
-                        TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_LightningGlow, newPawn.DrawPos, newPawn.Map, .7f, .2f, .1f, .1f, 0, 0f, 0f, 0f);
-                        TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_LightningGlow, newPawn.DrawPos, newPawn.Map, 1.1f, .1f, .1f, .1f, 0, 0f, 0f, 0f);
-                        TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_ShotFlash, newPawn.DrawPos, newPawn.Map, .4f, .3f, .1f, .1f, 0, 0f, 0f, 0f);
+                        TM_FleckMaker.ThrowGenericFleck(FleckDefOf.LightningGlow, newPawn.DrawPos, newPawn.Map, .4f, .3f, .1f, .1f, 0, 0f, 0f, 0f);
+                        TM_FleckMaker.ThrowGenericFleck(FleckDefOf.LightningGlow, newPawn.DrawPos, newPawn.Map, .7f, .2f, .1f, .1f, 0, 0f, 0f, 0f);
+                        TM_FleckMaker.ThrowGenericFleck(FleckDefOf.LightningGlow, newPawn.DrawPos, newPawn.Map, 1.1f, .1f, .1f, .1f, 0, 0f, 0f, 0f);
+                        TM_FleckMaker.ThrowGenericFleck(FleckDefOf.ShotFlash, newPawn.DrawPos, newPawn.Map, .4f, .3f, .1f, .1f, 0, 0f, 0f, 0f);
                     }
                     else
                     {

@@ -44,14 +44,12 @@ namespace TorannMagic.Weapon
                 if (flag3)
                 {
                     this.PostImpactEffects(this.launcher as Pawn, hitTarget);
-                    MoteMaker.ThrowMicroSparks(this.destination, base.Map);
-                    MoteMaker.MakeStaticMote(this.destination, base.Map, ThingDefOf.Mote_ShotHit_Dirt, 1f);
+                    FleckMaker.ThrowMicroSparks(this.destination, base.Map);
                 }
             }
             else
             {
-                MoteMaker.MakeStaticMote(this.ExactPosition, base.Map, ThingDefOf.Mote_ShotHit_Dirt, 1f);
-                MoteMaker.ThrowMicroSparks(this.ExactPosition, base.Map);
+                FleckMaker.ThrowMicroSparks(this.ExactPosition, base.Map);
             }
             for (int i = 0; i <= 1; i++)
             {
@@ -70,7 +68,7 @@ namespace TorannMagic.Weapon
         protected void StaticExplosion(IntVec3 pos, Map map, float radius)
         {
             ThingDef def = this.def;
-            Explosion(pos, map, radius, DamageDefOf.Stun, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_MicroSparks, 0.4f, 1, false, null, 0f, 1);
+            Explosion(pos, map, radius, DamageDefOf.Stun, this.launcher, null, def, this.equipmentDef, ThingDefOf.Spark, 0.4f, 1, false, null, 0f, 1);
 
         }
 

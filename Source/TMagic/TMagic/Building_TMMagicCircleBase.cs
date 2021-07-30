@@ -380,7 +380,7 @@ namespace TorannMagic
                     Vector3 rndPos = GetCircleCenter.ToVector3Shifted();
                     rndPos.x += Rand.Range(-3, 3);
                     rndPos.z += Rand.Range(-3, 3);
-                    MoteMaker.ThrowSmoke(rndPos, this.Map, Rand.Range(.8f, 1.5f));
+                    FleckMaker.ThrowSmoke(rndPos, this.Map, Rand.Range(.8f, 1.5f));
                     this.circleRotation = Mathf.Max(this.circleRotation - 2, 8);
                     this.nextCircleEffect = Find.TickManager.TicksGame + Mathf.Clamp(this.circleRotation, 8, 300);
                 }

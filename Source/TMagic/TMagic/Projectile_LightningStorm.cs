@@ -106,7 +106,7 @@ namespace TorannMagic
             SoundDef exp = TorannMagicDefOf.TM_FireBombSD;
             Explosion(pwr, pos, map, radius, DamageDefOf.EMP, this.launcher, exp, def, this.equipmentDef, ThingDefOf.Spark, 4.4f, 1, false, null, 0f, 1);
             Explosion(pwr, pos, map, radius, DamageDefOf.Stun, this.launcher, exp, def, this.equipmentDef, ThingDefOf.Mote_Stun, 1.4f, 1, false, null, 0f, 1);
-            Explosion(pwr, pos, map, radius, DamageDefOf.Bomb, this.launcher, exp, def, this.equipmentDef, ThingDefOf.Mote_Smoke, 0.4f, 1, false, null, 0f, 1);
+            Explosion(pwr, pos, map, radius, DamageDefOf.Bomb, this.launcher, exp, def, this.equipmentDef, ThingDefOf.Gas_Smoke, 0.4f, 1, false, null, 0f, 1);
         }
 
 		public void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)

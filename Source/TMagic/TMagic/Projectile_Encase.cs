@@ -127,10 +127,12 @@ namespace TorannMagic
                     //if (wallPositions[k].IsValid && wallPositions[k].InBounds(caster.Map) && !wallPositions[k].Fogged(caster.Map) && !wallPositions[k].InNoZoneEdgeArea(caster.Map))
                     {
                         if (wall[k].terrain.defName == "Marsh" || wall[k].terrain.defName == "WaterShallow" || wall[k].terrain.defName == "WaterMovingShallow" || wall[k].terrain.defName == "WaterOceanShallow" || wall[k].terrain.defName == "WaterMovingChestDeep")
-                        {
-                            MoteSplash moteSplash = (MoteSplash)ThingMaker.MakeThing(ThingDefOf.Mote_WaterSplash, null);
-                            moteSplash.Initialize(wallPositions[k].ToVector3Shifted(), 8f, 1f);
-                            GenSpawn.Spawn(moteSplash, wallPositions[k], map, WipeMode.Vanish);
+                        { 
+                            
+                            //MoteSplash moteSplash = (MoteSplash)ThingMaker.MakeThing(ThingDefOf.Mote_WaterSplash, null);
+                            FleckMaker.WaterSplash(wallPositions[k].ToVector3Shifted(), map, 1f, 1f);
+                            //moteSplash.Initialize(wallPositions[k].ToVector3Shifted(), 8f, 1f);
+                            //GenSpawn.Spawn(moteSplash, wallPositions[k], map, WipeMode.Vanish);
                         }
                         List<Thing> cellList = new List<Thing>();
                         bool hasWall = false;

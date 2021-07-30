@@ -35,7 +35,7 @@ namespace TorannMagic
                     dinfo.SetAngle(direction);
                     dinfo.SetAmount(Rand.Range(.8f, 1.2f) * num * .6f);
                     cleaveVictim.TakeDamage(dinfo);
-                    MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), target.Thing.Map);
+                    FleckMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), target.Thing.Map);
                     TM_MoteMaker.ThrowCrossStrike(cleaveVictim.Position.ToVector3Shifted(), cleaveVictim.Map, 1f);
                     TM_MoteMaker.ThrowBloodSquirt(cleaveVictim.Position.ToVector3Shifted(), cleaveVictim.Map, 1f);
                 }

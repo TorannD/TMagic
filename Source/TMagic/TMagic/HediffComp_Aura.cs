@@ -77,8 +77,8 @@ namespace TorannMagic
                         {
                             HealthUtility.AdjustSeverity(pawn, this.hediffDef, 1f);
                             this.nextApplyTick = Find.TickManager.TicksGame + Rand.Range(4800, 5600);
-                            MoteMaker.ThrowSmoke(pawn.DrawPos, pawn.Map, 1f);
-                            MoteMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, .8f);
+                            FleckMaker.ThrowSmoke(pawn.DrawPos, pawn.Map, 1f);
+                            FleckMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, .8f);
                             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                             {
                                 CompAbilityUserMight comp = this.Pawn.GetComp<CompAbilityUserMight>();

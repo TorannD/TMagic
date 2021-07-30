@@ -120,9 +120,9 @@ namespace TorannMagic
                                         break;
                                 }
                                 initialized = true;
-                                MoteMaker.ThrowSmoke(caster.DrawPos, caster.Map, 1f);
-                                MoteMaker.ThrowSmoke(caster.DrawPos, caster.Map, 1.2f);
-                                MoteMaker.ThrowHeatGlow(caster.Position, caster.Map, .8f);
+                                FleckMaker.ThrowSmoke(caster.DrawPos, caster.Map, 1f);
+                                FleckMaker.ThrowSmoke(caster.DrawPos, caster.Map, 1.2f);
+                                FleckMaker.ThrowHeatGlow(caster.Position, caster.Map, .8f);
                                 if (!caster.IsColonist)
                                 {
                                     Lord lord = caster.GetLord();
@@ -184,9 +184,9 @@ namespace TorannMagic
                                     break;
                             }
                             initialized = true;
-                            MoteMaker.ThrowSmoke(caster.DrawPos, caster.Map, 1f);
-                            MoteMaker.ThrowSmoke(caster.DrawPos, caster.Map, 1.2f);
-                            MoteMaker.ThrowHeatGlow(caster.Position, caster.Map, .8f);
+                            FleckMaker.ThrowSmoke(caster.DrawPos, caster.Map, 1f);
+                            FleckMaker.ThrowSmoke(caster.DrawPos, caster.Map, 1.2f);
+                            FleckMaker.ThrowHeatGlow(caster.Position, caster.Map, .8f);
                             caster.DeSpawn();
                         }
                     }
@@ -243,7 +243,8 @@ namespace TorannMagic
                     {
                         if ((hitPawn.Downed || hitPawn.Dead) && !pFaction.HostileTo(caster.Faction) && pFaction != this.caster.Faction)
                         {
-                            pFaction.TrySetRelationKind(this.caster.Faction, FactionRelationKind.Hostile, true, null);
+                            //pFaction.TrySetRelationKind(this.caster.Faction, FactionRelationKind.Hostile, true, null);
+                            pFaction.TryAffectGoodwillWith(this.caster.Faction, -100, true, true, TorannMagicDefOf.TM_OffensiveMagic, hitPawn);
                         }
                         bool flag2 = caster.Spawned;
                         if (!flag2)
@@ -271,7 +272,7 @@ namespace TorannMagic
                         {
                             if(prisoner)
                             {
-                                hitPawn.guest.SetGuestStatus(this.caster.Faction, true);
+                                hitPawn.guest.SetGuestStatus(this.caster.Faction, GuestStatus.Guest);
                             }
                             else
                             {
@@ -286,7 +287,8 @@ namespace TorannMagic
                         int tempInvCount = hitPawn.inventory.innerContainer.Count + hitPawn.apparel.WornApparelCount + weaponCount;
                         if (tempInvCount < this.inventoryCount && !pFaction.HostileTo(caster.Faction) && pFaction != this.caster.Faction)
                         {
-                            pFaction.TrySetRelationKind(this.caster.Faction, FactionRelationKind.Hostile, true, null);
+                            pFaction.TryAffectGoodwillWith(this.caster.Faction, -200, true, true, null, null);
+
                             Find.LetterStack.ReceiveLetter("LetterLabelPossessedCaughtStealing".Translate(), "TM_PossessedCaughtStealing".Translate(
                                 hitPawn.Faction,
                                 hitPawn.LabelShort

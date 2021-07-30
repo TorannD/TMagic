@@ -56,7 +56,7 @@ namespace TorannMagic
                                                 oldbond.LabelShort,
                                                 pawn.LabelShort
                                             ), MessageTypeDefOf.NeutralEvent);
-                        MoteMaker.MakeInteractionBubble(oldbond, pawn, InteractionDefOf.Nuzzle.interactionMote, InteractionDefOf.Nuzzle.Symbol);
+                        MoteMaker.MakeInteractionBubble(oldbond, pawn, InteractionDefOf.Nuzzle.interactionMote, InteractionDefOf.Nuzzle.GetSymbol());
                         oldbond.health.RemoveHediff(animalBondHD);
                         DefMap<TrainableDef, int> steps = Traverse.Create(root: oldbond.training).Field(name: "steps").GetValue<DefMap<TrainableDef, int>>();
                         steps[TrainableDefOf.Tameness] = 1;
@@ -72,7 +72,7 @@ namespace TorannMagic
                                                 oldbond.LabelShort,
                                                 pawn.LabelShort
                                             ), MessageTypeDefOf.NeutralEvent);
-                        MoteMaker.ThrowSmoke(oldbond.DrawPos, oldbond.Map, 3f);
+                        FleckMaker.ThrowSmoke(oldbond.DrawPos, oldbond.Map, 3f);
                         oldbond.Destroy();
                     }
                 }
@@ -108,7 +108,7 @@ namespace TorannMagic
                                             ), MessageTypeDefOf.NeutralEvent);
                                             if (oldbond.Map != null)
                                             {
-                                                MoteMaker.ThrowSmoke(oldbond.DrawPos, oldbond.Map, 3f);
+                                                FleckMaker.ThrowSmoke(oldbond.DrawPos, oldbond.Map, 3f);
                                             }
                                             else
                                             {
@@ -122,7 +122,7 @@ namespace TorannMagic
                                 HealthUtility.AdjustSeverity(animal, TorannMagicDefOf.TM_RangerBondHD, -4f);
                                 HealthUtility.AdjustSeverity(animal, TorannMagicDefOf.TM_RangerBondHD, .5f + ver.level);
                                 comp.bondedPet = animal;
-                                MoteMaker.MakeInteractionBubble(animal, pawn, InteractionDefOf.Nuzzle.interactionMote, InteractionDefOf.Nuzzle.Symbol);
+                                MoteMaker.MakeInteractionBubble(animal, pawn, InteractionDefOf.Nuzzle.interactionMote, InteractionDefOf.Nuzzle.GetSymbol());
                                 TM_Action.TrainAnimalFull(animal, pawn);                           
                             }
                             else

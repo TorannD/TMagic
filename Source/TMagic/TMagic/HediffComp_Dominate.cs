@@ -68,7 +68,7 @@ namespace TorannMagic
 
             if (spawned)
             {
-                MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 1f);
+                FleckMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 1f);
                 if (this.Def.defName == "TM_SDDominateHD_III" || this.Def.defName == "TM_WDDominateHD_III")
                 {
                     hediffPwr = 3;

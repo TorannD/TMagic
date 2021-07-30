@@ -15,7 +15,7 @@ namespace TorannMagic
             Projectile newProjectile = (Projectile)GenSpawn.Spawn(projectileToCopy, launcher.Position, launcher.Map, WipeMode.Vanish);
             if (newProjectile != null && newProjectile is Projectile)
             {
-                newProjectile.Launch(launcher, target, intendedTarget, hitFlags, equipment);
+                newProjectile.Launch(launcher, target, intendedTarget, hitFlags, false, equipment);
             }            
         }
 
@@ -24,7 +24,7 @@ namespace TorannMagic
             Projectile newProjectile = (Projectile)GenSpawn.Spawn(projectileToCopy, fromPosition, map, WipeMode.Vanish);
             if (newProjectile != null && newProjectile is Projectile)
             {
-                newProjectile.Launch(launcher, target, intendedTarget, hitFlags, equipment);
+                newProjectile.Launch(launcher, target, intendedTarget, hitFlags, false, equipment);
             }            
         }
 
@@ -33,7 +33,7 @@ namespace TorannMagic
             if (projectileToCopy != null && projectileToCopy is Projectile)
             {
                 Projectile newProjectile = (Projectile)GenSpawn.Spawn(projectileToCopy, launcher.Position, launcher.Map, WipeMode.Vanish);
-                newProjectile.Launch(launcher, target, intendedTarget, hitFlags, equipment);
+                newProjectile.Launch(launcher, target, intendedTarget, hitFlags, false, equipment);
             }
         }
 
@@ -42,7 +42,7 @@ namespace TorannMagic
             if (projectileToCopy != null && projectileToCopy is Projectile)
             {
                 Projectile newProjectile = (Projectile)GenSpawn.Spawn(projectileToCopy, fromPosition, launcher.Map, WipeMode.Vanish);
-                newProjectile.Launch(launcher, target, intendedTarget, hitFlags, equipment);
+                newProjectile.Launch(launcher, target, intendedTarget, hitFlags, false, equipment);
             }
         }
     }

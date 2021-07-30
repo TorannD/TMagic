@@ -21,7 +21,7 @@ namespace TorannMagic
                 {
                     for (int i = 0; i < filthList.Count; i++)
                     {
-                        if (!filthList[i].Position.IsForbidden(pawn) && pawn.CanReserve(filthList[i], 1, -1, ReservationLayerDefOf.Floor, false) && pawn.CanReach(filthList[i], PathEndMode.Touch, Danger.Deadly, false, TraverseMode.ByPawn))
+                        if (!filthList[i].Position.IsForbidden(pawn) && pawn.CanReserve(filthList[i], 1, -1, ReservationLayerDefOf.Floor, false) && pawn.CanReach(filthList[i], PathEndMode.Touch, Danger.Deadly, false, false, TraverseMode.ByPawn))
                         {
                             Thing thing = filthList[i];                            
                             if(closestThing != null && thing != null && (thing.Position - pawn.Position).LengthHorizontal < (closestThing.Position - pawn.Position).LengthHorizontal)

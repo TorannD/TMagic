@@ -103,8 +103,8 @@ namespace TorannMagic
         {
             if (pawn != null)
             {
-                MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
-                MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
+                FleckMaker.Static(pawn.TrueCenter(), pawn.Map, FleckDefOf.ExplosionFlash, 12f);
+                FleckMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
             }
             this.boltOrigin = new List<IntVec3>();
             this.boltPosition = new List<Vector3>();
@@ -280,7 +280,7 @@ namespace TorannMagic
                         //{
                         //    this.pawn.Map.weatherManager.eventHandler.AddEvent(new TM_MapMesh(this.pawn.Map, TM_MatPool.multiForkLightning, this.orbPosition.ToIntVec3(), this.boltPosition[i].ToIntVec3(), 1f, AltitudeLayer.MoteOverhead, 6, 25, 10));
                         //}
-                        MoteMaker.ThrowHeatGlow(this.boltPosition[i].ToIntVec3(), this.pawn.Map, 1f);
+                        FleckMaker.ThrowHeatGlow(this.boltPosition[i].ToIntVec3(), this.pawn.Map, 1f);
                         //else if (rnd == 3)
                         //{
                         //    this.pawn.Map.weatherManager.eventHandler.AddEvent(new TM_MapMesh(this.pawn.Map, TM_MatPool.doubleForkLightning, this.orbPosition.ToIntVec3(), this.boltPosition[i].ToIntVec3(), 2f, AltitudeLayer.MoteOverhead, 6, 25, 10));
@@ -326,7 +326,7 @@ namespace TorannMagic
         {
             effectVec.x += Rand.Range(-0.4f, 0.4f);
             effectVec.z += Rand.Range(-0.4f, 0.4f);
-            MoteMaker.ThrowLightningGlow(effectVec, map, Rand.Range(.6f, .9f));
+            FleckMaker.ThrowLightningGlow(effectVec, map, Rand.Range(.6f, .9f));
         }
 
         public override void Draw()

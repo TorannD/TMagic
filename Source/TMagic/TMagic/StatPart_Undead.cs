@@ -16,7 +16,7 @@ namespace TorannMagic
             if (req.HasThing && req.Thing is Pawn)
             {
                 Pawn reqPawn = req.Thing as Pawn;
-                if(reqPawn != null && TM_Calc.IsUndeadNotVamp(reqPawn))
+                if (reqPawn != null && TM_Calc.IsUndeadNotVamp(reqPawn))
                 {
                     val *= 0f;
                 }

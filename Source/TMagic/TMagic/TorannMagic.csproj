@@ -17,7 +17,7 @@
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Assemblies\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\..\workshop\content\294100\1899474310\1.3\Assemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -41,15 +41,15 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AbilityUser">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2195729899\1.2\Assemblies\AbilityUser.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\932008009\1.3\Assemblies\AbilityUser.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AbilityUserAI">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2195729899\1.2\Assemblies\AbilityUserAI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\932008009\1.3\Assemblies\AbilityUserAI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AlienRace">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\839005762\1.2\Assemblies\AlienRace.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\839005762\1.3\Assemblies\AlienRace.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
@@ -57,35 +57,15 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="CompDeflector">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2195729899\1.2\Assemblies\CompDeflector.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DualWield">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\1628211313\Assemblies\DualWield.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="GiddyUpCore">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\1216999901\Assemblies\GiddyUpCore.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="HarmonyMod">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2009463077\Current\Assemblies\HarmonyMod.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\932008009\1.3\Assemblies\CompDeflector.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="HugsLib">
       <HintPath>..\..\..\..\..\..\..\workshop\content\294100\818773962\Assemblies\HugsLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="PrisonLabor">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\1899474310\1.2\Assemblies\PrisonLabor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="PrisonLaborOld">
-      <HintPath>..\..\..\..\..\dlls\PrisonLaborOld.dll</HintPath>
-    </Reference>
     <Reference Include="SimpleSidearms">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\927155256\v1.2\Assemblies\SimpleSidearms.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\927155256\v1.3\Assemblies\SimpleSidearms.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -173,6 +153,7 @@
     <Compile Include="TMDefs\TM_CustomPower.cs" />
     <Compile Include="TM_AutocastConditionDef.cs" />
     <Compile Include="TM_CustomPowerDef.cs" />
+    <Compile Include="TM_FleckMaker.cs" />
     <Compile Include="TM_WeatherEvent_MeshGeneric.cs" />
     <Compile Include="Verb_Discord.cs" />
     <Compile Include="Verb_SummonSpiritWolves.cs" />

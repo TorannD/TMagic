@@ -178,7 +178,7 @@ namespace TorannMagic
             for (int i = 0; i < targets.Count(); i++)
             {
                 curCell = targets.ToArray<IntVec3>()[i];
-                MoteMaker.ThrowDustPuff(curCell, map, .2f);
+                FleckMaker.ThrowDustPuff(curCell, map, .2f);
                 if (curCell.InBounds(map) && curCell.IsValid)
                 {
                     victim = curCell.GetFirstPawn(map);

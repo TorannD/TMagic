@@ -186,7 +186,7 @@ namespace TorannMagic
         {
             List<FloatMenuOption> list = new List<FloatMenuOption>();
             CompAbilityUserMagic comp = myPawn.GetComp<CompAbilityUserMagic>();
-            if (!myPawn.CanReach(this, PathEndMode.InteractionCell, Danger.Some, false, TraverseMode.ByPawn))
+            if (!myPawn.CanReach(this, PathEndMode.InteractionCell, Danger.Some, false, false, TraverseMode.ByPawn))
             {
                 list.Add(new FloatMenuOption("CannotUseNoPath".Translate(), null, MenuOptionPriority.Default, null, null, 0f, null, null));
             }
@@ -366,12 +366,12 @@ namespace TorannMagic
 
         private void PortalPawn(Pawn pawn)
         {
-            MoteMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1f);
+            FleckMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1f);
             TM_MoteMaker.ThrowCastingMote(pawn.DrawPos, pawn.Map, Rand.Range(1.2f, 2f));
             pawn.DeSpawn();
             GenSpawn.Spawn(pawn, this.PortalDestinationPosition, this.PortalDestinationMap);
             TM_MoteMaker.ThrowCastingMote(pawn.DrawPos, pawn.Map, Rand.Range(1.2f, 2f));
-            MoteMaker.ThrowHeatGlow(pawn.Position, pawn.Map, 1.6f);
+            FleckMaker.ThrowHeatGlow(pawn.Position, pawn.Map, 1.6f);
         }
     }
 }

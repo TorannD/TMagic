@@ -30,7 +30,7 @@ namespace TorannMagic
             bool spawned = base.Pawn.Spawned;
             if (spawned && base.Pawn.Map != null)
             {
-                MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
+                FleckMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
             }
         }
 

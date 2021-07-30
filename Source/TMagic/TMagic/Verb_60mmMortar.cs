@@ -47,7 +47,7 @@ namespace TorannMagic
                             rndPos.x += Rand.Range(-.5f, .5f);
                             rndPos.z += Rand.Range(-.5f, .5f);
                             TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_SparkFlash"), rndPos, map, Rand.Range(.6f, .8f), .1f, .05f, .05f, 0, 0, 0, Rand.Range(0, 360));
-                            MoteMaker.ThrowSmoke(rndPos, map, Rand.Range(.8f, 1.2f));
+                            FleckMaker.ThrowSmoke(rndPos, map, Rand.Range(.8f, 1.2f));
                         }
                     }
                             catch

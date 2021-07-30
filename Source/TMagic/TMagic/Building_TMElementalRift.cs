@@ -82,9 +82,9 @@ namespace TorannMagic
                 BeginAssaultCondition();
                 SpawnCycle();
                 ModOptions.SettingsRef settings = new ModOptions.SettingsRef();
-                if (Find.Storyteller.difficulty.difficulty != 0)
+                if (Find.Storyteller.difficulty.threatScale != 0)
                 {
-                    this.STDMultiplier = (float)(Find.Storyteller.difficulty.difficulty / 20f);
+                    this.STDMultiplier = (float)(Find.Storyteller.difficulty.threatScale / 20f);
                 }
                 if(settings.riftChallenge < 2f)
                 {
@@ -114,7 +114,7 @@ namespace TorannMagic
                 {
                     rndVec.x += Rand.Range(-5, 5);
                     rndVec.z += Rand.Range(-5, 5);
-                    MoteMaker.ThrowSmoke(rndVec, this.Map, Rand.Range(.6f, 1.2f));
+                    FleckMaker.ThrowSmoke(rndVec, this.Map, Rand.Range(.6f, 1.2f));
                 }
                 else if (this.rnd < 4) //fire
                 {
@@ -132,7 +132,7 @@ namespace TorannMagic
                 {
                     rndVec.x += Rand.Range(-2f, 2f);
                     rndVec.z += Rand.Range(-2f, 2f);
-                    MoteMaker.ThrowLightningGlow(rndVec, this.Map, Rand.Range(.6f, .8f));
+                    FleckMaker.ThrowLightningGlow(rndVec, this.Map, Rand.Range(.6f, .8f));
                 }
 
             }
@@ -406,24 +406,24 @@ namespace TorannMagic
                     {
                         if (Rand.Chance(geChance))
                         {
-                            MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1f);
-                            MoteMaker.ThrowMicroSparks(curCell.ToVector3(), this.Map);
+                            FleckMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1f);
+                            FleckMaker.ThrowMicroSparks(curCell.ToVector3(), this.Map);
                             SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                             rogueElemental.def = TorannMagicDefOf.TM_GreaterEarth_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_GreaterEarth_Elemental");
                         }
                         else if (Rand.Chance(eChance))
                         {
-                            MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1f);
-                            MoteMaker.ThrowMicroSparks(curCell.ToVector3(), this.Map);
+                            FleckMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1f);
+                            FleckMaker.ThrowMicroSparks(curCell.ToVector3(), this.Map);
                             SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                             rogueElemental.def = TorannMagicDefOf.TM_Earth_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_Earth_Elemental");
                         }
                         else if (Rand.Chance(leChance))
                         {
-                            MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1f);
-                            MoteMaker.ThrowMicroSparks(curCell.ToVector3(), this.Map);
+                            FleckMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1f);
+                            FleckMaker.ThrowMicroSparks(curCell.ToVector3(), this.Map);
                             SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                             rogueElemental.def = TorannMagicDefOf.TM_LesserEarth_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_LesserEarth_Elemental");
@@ -438,28 +438,28 @@ namespace TorannMagic
 
                         if (Rand.Chance(geChance))
                         {
-                            MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1);
-                            MoteMaker.ThrowMicroSparks(curCell.ToVector3(), this.Map);
-                            MoteMaker.ThrowFireGlow(curCell, this.Map, 1);
-                            MoteMaker.ThrowHeatGlow(curCell, this.Map, 1);
+                            FleckMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1);
+                            FleckMaker.ThrowMicroSparks(curCell.ToVector3(), this.Map);
+                            FleckMaker.ThrowFireGlow(curCell.ToVector3Shifted(), this.Map, 1);
+                            FleckMaker.ThrowHeatGlow(curCell, this.Map, 1);
                             rogueElemental.def = TorannMagicDefOf.TM_GreaterFire_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_GreaterFire_Elemental");
                         }
                         else if (Rand.Chance(eChance))
                         {
-                            MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1);
-                            MoteMaker.ThrowMicroSparks(curCell.ToVector3(), this.Map);
-                            MoteMaker.ThrowFireGlow(curCell, this.Map, 1);
-                            MoteMaker.ThrowHeatGlow(curCell, this.Map, 1);
+                            FleckMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1);
+                            FleckMaker.ThrowMicroSparks(curCell.ToVector3(), this.Map);
+                            FleckMaker.ThrowFireGlow(curCell.ToVector3Shifted(), this.Map, 1);
+                            FleckMaker.ThrowHeatGlow(curCell, this.Map, 1);
                             rogueElemental.def = TorannMagicDefOf.TM_Fire_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_Fire_Elemental");
                         }
                         else if (Rand.Chance(leChance))
                         {
-                            MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1);
-                            MoteMaker.ThrowMicroSparks(curCell.ToVector3(), this.Map);
-                            MoteMaker.ThrowFireGlow(curCell, this.Map, 1);
-                            MoteMaker.ThrowHeatGlow(curCell, this.Map, 1);
+                            FleckMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1);
+                            FleckMaker.ThrowMicroSparks(curCell.ToVector3(), this.Map);
+                            FleckMaker.ThrowFireGlow(curCell.ToVector3Shifted(), this.Map, 1);
+                            FleckMaker.ThrowHeatGlow(curCell, this.Map, 1);
                             rogueElemental.def = TorannMagicDefOf.TM_LesserFire_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_LesserFire_Elemental");
                         }
@@ -474,31 +474,31 @@ namespace TorannMagic
 
                         if (Rand.Chance(geChance))
                         {
-                            MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1);
+                            FleckMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1);
                             SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
-                            MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
-                            MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
-                            MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
+                            FleckMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
+                            FleckMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
+                            FleckMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
                             rogueElemental.def = TorannMagicDefOf.TM_GreaterWater_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_GreaterWater_Elemental");
                         }
                         else if (Rand.Chance(eChance))
                         {
-                            MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1);
+                            FleckMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1);
                             SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
-                            MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
-                            MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
-                            MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
+                            FleckMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
+                            FleckMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
+                            FleckMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
                             rogueElemental.def = TorannMagicDefOf.TM_Water_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_Water_Elemental");
                         }
                         else if (Rand.Chance(leChance))
                         {
-                            MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1);
+                            FleckMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1);
                             SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
-                            MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
-                            MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
-                            MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
+                            FleckMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
+                            FleckMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
+                            FleckMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
                             rogueElemental.def = TorannMagicDefOf.TM_LesserWater_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_LesserWater_Elemental");
                         }
@@ -515,25 +515,25 @@ namespace TorannMagic
                         {
                             rogueElemental.def = TorannMagicDefOf.TM_GreaterWind_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_GreaterWind_Elemental");
-                            MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1 + 1 * 2);
+                            FleckMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1 + 1 * 2);
                             SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
-                            MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.white);
+                            FleckMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.white);
                         }
                         else if (Rand.Chance(eChance))
                         {
                             rogueElemental.def = TorannMagicDefOf.TM_Wind_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_Wind_Elemental");
-                            MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1 + 1 * 2);
+                            FleckMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1 + 1 * 2);
                             SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
-                            MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.white);
+                            FleckMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.white);
                         }
                         else if (Rand.Chance(leChance))
                         {
                             rogueElemental.def = TorannMagicDefOf.TM_LesserWind_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_LesserWind_Elemental");
-                            MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1 + 1 * 2);
+                            FleckMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1 + 1 * 2);
                             SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
-                            MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.white);
+                            FleckMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.white);
                         }
                         else
                         {
@@ -575,7 +575,7 @@ namespace TorannMagic
                         {
                             Log.Message("elemental faction was null or not hostile - fixing");
                             newPawn.SetFaction(faction, null);
-                            faction.TrySetRelationKind(Faction.OfPlayer, FactionRelationKind.Hostile, false, null);
+                            faction.TryAffectGoodwillWith(Faction.OfPlayer, -200, false, false, null, null);
                         }
                         GenSpawn.Spawn(newPawn, position, this.Map);
                         if (newPawn.Faction != null && newPawn.Faction != Faction.OfPlayer)

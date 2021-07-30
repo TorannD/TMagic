@@ -37,7 +37,7 @@ namespace TorannMagic.Weapon
         protected void Shrapnel(int pwr, IntVec3 pos, Map map, float radius)
         {
             ThingDef def = this.def;
-            Explosion(pwr, pos, map, radius, TMDamageDefOf.DamageDefOf.Iceshard, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_Smoke, 0.4f, 1, false, null, 0f, 1);
+            Explosion(pwr, pos, map, radius, TMDamageDefOf.DamageDefOf.Iceshard, this.launcher, null, def, this.equipmentDef, ThingDefOf.Gas_Smoke, 0.4f, 1, false, null, 0f, 1);
 
         }
 

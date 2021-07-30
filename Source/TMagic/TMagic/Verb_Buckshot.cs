@@ -17,7 +17,7 @@ namespace TorannMagic
             shotcount = GetShotCount(pawn);
 
             Vector3 drawPos = pawn.DrawPos + (TM_Calc.GetVector(pawn.Position, this.currentTarget.Cell) * .5f);
-            MoteMaker.ThrowSmoke(drawPos, pawn.Map, Rand.Range(.6f, .8f));
+            FleckMaker.ThrowSmoke(drawPos, pawn.Map, Rand.Range(.6f, .8f));
             for (int i = 0; i < shotcount; i++)
             {
                 IntVec3 targetVariation = this.currentTarget.Cell;

@@ -5,7 +5,6 @@ using RimWorld;
 using AbilityUser;
 using Verse;
 using UnityEngine;
-using System.Reflection;
 using HarmonyLib;
 
 namespace TorannMagic
@@ -56,7 +55,7 @@ namespace TorannMagic
             bool spawned = base.Pawn.Spawned;
             if (spawned)
             {
-                //MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
+                //FleckMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
             }            
         }
 

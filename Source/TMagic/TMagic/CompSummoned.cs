@@ -195,8 +195,8 @@ namespace TorannMagic
                 //    this.effecter.Cleanup();
                 //}     
 
-                MoteMaker.ThrowSmoke(this.parent.Position.ToVector3(), this.parent.Map, 1);
-                MoteMaker.ThrowHeatGlow(this.parent.Position, this.parent.Map, 1);
+                FleckMaker.ThrowSmoke(this.parent.Position.ToVector3(), this.parent.Map, 1);
+                FleckMaker.ThrowHeatGlow(this.parent.Position, this.parent.Map, 1);
                 
                 if (parent.def.defName.Contains("TM_ManaMine"))
                 {

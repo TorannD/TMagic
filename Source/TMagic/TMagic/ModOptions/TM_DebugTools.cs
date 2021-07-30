@@ -11,7 +11,6 @@ using RimWorld.SketchGen;
 using UnityEngine;
 using Verse;
 using Verse.AI;
-using System.Reflection;
 using HarmonyLib;
 
 namespace TorannMagic.ModOptions

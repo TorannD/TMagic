@@ -79,7 +79,7 @@ namespace TorannMagic
         private void Initialize()
         {
             this.parent.Severity = 90f;
-            MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 1f);
+            FleckMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 1f);
             DeterminePsionicHD();            
         }
 

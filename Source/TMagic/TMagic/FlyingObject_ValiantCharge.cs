@@ -131,9 +131,9 @@ namespace TorannMagic
         {
             if (pawn != null)
             {
-                MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
+                FleckMaker.Static(pawn.TrueCenter(), pawn.Map, FleckDefOf.ExplosionFlash, 12f);
                 SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
-                MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
+                FleckMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
                 expCell1 = this.DestinationCell;
                 expCell2 = this.DestinationCell;
                 XProb(this.DestinationCell, this.origin);
@@ -213,7 +213,7 @@ namespace TorannMagic
             else
             {
                 base.Position = this.ExactPosition.ToIntVec3();
-                MoteMaker.ThrowDustPuff(base.Position, base.Map, Rand.Range(0.8f, 1.2f));
+                FleckMaker.ThrowDustPuff(base.Position, base.Map, Rand.Range(0.8f, 1.2f));
                 bool flag2 = this.ticksToImpact <= 0;
                 if (flag2)
                 {
@@ -374,14 +374,14 @@ namespace TorannMagic
                 {
                     this.FireExplosion(3, 3, base.Position, base.Map, (1.2f + (float)(3 * .8f)));
                 }
-                MoteMaker.ThrowSmoke(pawn.Position.ToVector3(), base.Map, (0.8f + (float)(verVal * .8f)));
+                FleckMaker.ThrowSmoke(pawn.Position.ToVector3(), base.Map, (0.8f + (float)(verVal * .8f)));
 
                 for (int i = 0; i < (2 + verVal); i++)
                 {
                     expCell1 = GetNewPos(expCell1, this.origin.x <= this.DestinationCell.x, this.origin.z <= this.DestinationCell.z, false, 0, 0, xProb, 1 - xProb);
-                    MoteMaker.ThrowSmoke(expCell1.ToVector3(), base.Map, 1.6f);
+                    FleckMaker.ThrowSmoke(expCell1.ToVector3(), base.Map, 1.6f);
                     expCell2 = GetNewPos(expCell2, this.origin.x <= this.DestinationCell.x, this.origin.z <= this.DestinationCell.z, false, 0, 0, 1 - xProb, xProb);
-                    MoteMaker.ThrowSmoke(expCell2.ToVector3(), base.Map, 1.6f);
+                    FleckMaker.ThrowSmoke(expCell2.ToVector3(), base.Map, 1.6f);
                 }
                 for (int i = 0; i < (4 + (3 * verVal)); i++)
                 {
@@ -426,14 +426,14 @@ namespace TorannMagic
         {
             ThingDef def = this.def;
 
-            Explosion(pwr, pos, map, radius, TMDamageDefOf.DamageDefOf.TM_Holy, this.pawn, null, def, ThingDefOf.Explosion, ThingDefOf.Mote_ExplosionFlash, 0.3f, 1, false, null, 0f, 1);
+            Explosion(pwr, pos, map, radius, TMDamageDefOf.DamageDefOf.TM_Holy, this.pawn, null, def, ThingDefOf.Explosion, null, 0.3f, 1, false, null, 0f, 1);
 
             if (ver >= 2)
             {
                 int stunProb = Rand.Range(1, 10);
                 if (stunProb > (4 + ver))
                 {
-                    Explosion(pwr, pos, map, radius, DamageDefOf.Stun, this.pawn, null, def, ThingDefOf.Explosion, ThingDefOf.Mote_ExplosionFlash, 0.3f, 1, false, null, 0f, 1);
+                    Explosion(pwr, pos, map, radius, DamageDefOf.Stun, this.pawn, null, def, ThingDefOf.Explosion, null, 0.3f, 1, false, null, 0f, 1);
                 }
             }
             

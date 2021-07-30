@@ -107,7 +107,7 @@ namespace TorannMagic
         {
             if (pawn != null)
             {
-                MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
+                FleckMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
             }
 
             this.direction = TM_Calc.GetVector(this.origin.ToIntVec3(), this.destination.ToIntVec3());
@@ -181,7 +181,7 @@ namespace TorannMagic
                 base.Position = this.ExactPosition.ToIntVec3();
                 if(Find.TickManager.TicksGame % 3 == 0)
                 {
-                    MoteMaker.ThrowDustPuff(base.Position, base.Map, Rand.Range(0.6f, .8f));
+                    FleckMaker.ThrowDustPuff(base.Position, base.Map, Rand.Range(0.6f, .8f));
                 }               
                 
                 bool flag2 = this.ticksToImpact <= 0;
@@ -370,11 +370,11 @@ namespace TorannMagic
                         {
                             bool wallFlag90neg = false;
                             IntVec3 wallCheck = (center + (Quaternion.AngleAxis(-90, Vector3.up) * this.direction)).ToIntVec3();
-                            MoteMaker.ThrowMicroSparks(wallCheck.ToVector3Shifted(), base.Map);
+                            FleckMaker.ThrowMicroSparks(wallCheck.ToVector3Shifted(), base.Map);
                             wallFlag90neg = wallCheck.Walkable(base.Map);
 
                             wallCheck = (center + (Quaternion.AngleAxis(90, Vector3.up) * this.direction)).ToIntVec3();
-                            MoteMaker.ThrowMicroSparks(wallCheck.ToVector3Shifted(), base.Map);
+                            FleckMaker.ThrowMicroSparks(wallCheck.ToVector3Shifted(), base.Map);
                             bool wallFlag90 = wallCheck.Walkable(base.Map);
 
                             if ((!wallFlag90 && !wallFlag90neg) || (wallFlag90 && wallFlag90neg))
@@ -424,9 +424,9 @@ namespace TorannMagic
                             {
                                 Vector3 moteDirection = TM_Calc.GetVector(this.ExactPosition.ToIntVec3(), intVec);
                                 TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Rubble"), this.ExactPosition, base.Map, Rand.Range(.3f, .6f), .2f, .02f, .05f, Rand.Range(-100, 100), Rand.Range(8f, 13f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
-                                TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, this.ExactPosition, base.Map, Rand.Range(.9f, 1.2f), .3f, .02f, Rand.Range(.25f, .4f), Rand.Range(-100, 100), Rand.Range(5f, 8f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
+                                TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, this.ExactPosition, base.Map, Rand.Range(.9f, 1.2f), .3f, .02f, Rand.Range(.25f, .4f), Rand.Range(-100, 100), Rand.Range(5f, 8f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
                                 GenExplosion.DoExplosion(intVec, base.Map, .4f, DamageDefOf.Blunt, pawn, 0, 0, SoundDefOf.Pawn_Melee_Punch_HitBuilding, null, null, null, ThingDefOf.Filth_RubbleRock, .25f, 1, false, null, 0f, 1, 0, false);
-                                //MoteMaker.ThrowSmoke(intVec.ToVector3Shifted(), base.Map, Rand.Range(.6f, 1f));
+                                //FleckMaker.ThrowSmoke(intVec.ToVector3Shifted(), base.Map, Rand.Range(.6f, 1f));
                             }
                         }
                         //damageEntities(this.flyingThing, 305, DamageDefOf.Blunt);
@@ -441,11 +441,11 @@ namespace TorannMagic
                         {
                             bool wallFlag90neg = false;
                             IntVec3 wallCheck = (center + (Quaternion.AngleAxis(-90, Vector3.up) * this.direction)).ToIntVec3();
-                            MoteMaker.ThrowMicroSparks(wallCheck.ToVector3Shifted(), base.Map);
+                            FleckMaker.ThrowMicroSparks(wallCheck.ToVector3Shifted(), base.Map);
                             wallFlag90neg = wallCheck.Walkable(base.Map);
 
                             wallCheck = (center + (Quaternion.AngleAxis(90, Vector3.up) * this.direction)).ToIntVec3();
-                            MoteMaker.ThrowMicroSparks(wallCheck.ToVector3Shifted(), base.Map);
+                            FleckMaker.ThrowMicroSparks(wallCheck.ToVector3Shifted(), base.Map);
                             bool wallFlag90 = wallCheck.Walkable(base.Map);
 
                             if ((!wallFlag90 && !wallFlag90neg) || (wallFlag90 && wallFlag90neg))
@@ -510,7 +510,7 @@ namespace TorannMagic
                                 TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_BloodSquirt, this.ExactPosition, base.Map, Rand.Range(.3f, .6f), .2f, .02f, .05f, Rand.Range(-100, 100), Rand.Range(4f, 13f), (Quaternion.AngleAxis(Rand.Range(60, 120), Vector3.up) * moteDirection).ToAngleFlat(), 0);
                                 TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_BloodMist, this.ExactPosition, base.Map, Rand.Range(.9f, 1.2f), .3f, .02f, Rand.Range(.25f, .4f), Rand.Range(-100, 100), Rand.Range(5f, 8f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
                                 GenExplosion.DoExplosion(intVec, base.Map, .4f, DamageDefOf.Blunt, pawn, 0, 0, SoundDefOf.Pawn_Melee_Punch_HitBuilding, null, null, null, filth.def, .08f, 1, false, null, 0f, 1, 0, false);
-                                //MoteMaker.ThrowSmoke(intVec.ToVector3Shifted(), base.Map, Rand.Range(.6f, 1f));
+                                //FleckMaker.ThrowSmoke(intVec.ToVector3Shifted(), base.Map, Rand.Range(.6f, 1f));
                             }
                         }
                         //damageEntities(this.flyingThing, 305, DamageDefOf.Blunt);
@@ -525,11 +525,11 @@ namespace TorannMagic
                     {
                         bool wallFlag90neg = false;
                         IntVec3 wallCheck = (center + (Quaternion.AngleAxis(-90, Vector3.up) * this.direction)).ToIntVec3();
-                        MoteMaker.ThrowMicroSparks(wallCheck.ToVector3Shifted(), base.Map);
+                        FleckMaker.ThrowMicroSparks(wallCheck.ToVector3Shifted(), base.Map);
                         wallFlag90neg = wallCheck.Walkable(base.Map);
 
                         wallCheck = (center + (Quaternion.AngleAxis(90, Vector3.up) * this.direction)).ToIntVec3();
-                        MoteMaker.ThrowMicroSparks(wallCheck.ToVector3Shifted(), base.Map);
+                        FleckMaker.ThrowMicroSparks(wallCheck.ToVector3Shifted(), base.Map);
                         bool wallFlag90 = wallCheck.Walkable(base.Map);
 
                         if ((!wallFlag90 && !wallFlag90neg) || (wallFlag90 && wallFlag90neg))
@@ -579,9 +579,9 @@ namespace TorannMagic
                         {
                             Vector3 moteDirection = TM_Calc.GetVector(this.ExactPosition.ToIntVec3(), intVec);
                             TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Rubble"), this.ExactPosition, base.Map, Rand.Range(.3f, .6f), .2f, .02f, .05f, Rand.Range(-100, 100), Rand.Range(8f, 13f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
-                            TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, this.ExactPosition, base.Map, Rand.Range(.9f, 1.2f), .3f, .02f, Rand.Range(.25f, .4f), Rand.Range(-100, 100), Rand.Range(5f, 8f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
+                            TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, this.ExactPosition, base.Map, Rand.Range(.9f, 1.2f), .3f, .02f, Rand.Range(.25f, .4f), Rand.Range(-100, 100), Rand.Range(5f, 8f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
                             GenExplosion.DoExplosion(intVec, base.Map, .4f, DamageDefOf.Blunt, pawn, 0, 0, SoundDefOf.Pawn_Melee_Punch_HitBuilding, null, null, null, null, .4f, 1, false, null, 0f, 1, 0, false);
-                            //MoteMaker.ThrowSmoke(intVec.ToVector3Shifted(), base.Map, Rand.Range(.6f, 1f));
+                            //FleckMaker.ThrowSmoke(intVec.ToVector3Shifted(), base.Map, Rand.Range(.6f, 1f));
                         }
                     }
                 }

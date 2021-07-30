@@ -228,7 +228,7 @@ namespace TorannMagic
                                     if (victim.mindState != null && victim.RaceProps != null && victim.RaceProps.Humanlike)
                                     {
                                         victim.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk, "cursed", true, false, null);
-                                        MoteMaker.ThrowMicroSparks(victim.DrawPos, victim.Map);
+                                        FleckMaker.ThrowMicroSparks(victim.DrawPos, victim.Map);
                                         MoteMaker.ThrowText(victim.DrawPos, victim.Map, "Berserk", -1);
                                     }
 
@@ -582,7 +582,7 @@ namespace TorannMagic
 
                     if (Find.TickManager.TicksGame % 4 == 0)
                     {
-                        ThingDef rndMote = ThingDefOf.Mote_Smoke;
+                        ThingDef rndMote = ThingDefOf.Gas_Smoke;
                         TM_MoteMaker.ThrowGenericMote(rndMote, MoteDrawPos, this.Pawn.Map, Rand.Range(.4f, .5f), .1f, 0f, Rand.Range(.5f, .6f), Rand.Range(-40, 40), Rand.Range(.2f, .3f), Rand.Range(-95, -110), Rand.Range(0, 360));
                         TM_MoteMaker.ThrowGenericMote(rndMote, MoteDrawPos, this.Pawn.Map, Rand.Range(.4f, .5f), .1f, 0f, Rand.Range(.5f, .6f), Rand.Range(-40, 40), Rand.Range(.2f, .3f), Rand.Range(90, 110), Rand.Range(0, 360));
                     }

@@ -29,8 +29,8 @@ namespace TorannMagic
                 //{
                 //    if (!placedThing.Destroyed && placedThing != null)
                 //    {
-                //        MoteMaker.ThrowSmoke(placedThing.Position.ToVector3(), base.Map, 1);
-                //        MoteMaker.ThrowHeatGlow(placedThing.Position, base.Map, 1);
+                //        FleckMaker.ThrowSmoke(placedThing.Position.ToVector3(), base.Map, 1);
+                //        FleckMaker.ThrowHeatGlow(placedThing.Position, base.Map, 1);
                 //        placedThing.Destroy();
                 //        Messages.Message("PylonDeSpawn".Translate(), MessageTypeDefOf.SilentInput);
                 //    }

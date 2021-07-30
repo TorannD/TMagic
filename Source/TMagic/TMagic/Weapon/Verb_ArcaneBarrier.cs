@@ -62,7 +62,7 @@ namespace TorannMagic.Weapon
             tempPod.spawnCount = 1;
 
             SingleSpawnLoop(tempPod, this.currentTarget.Cell, this.CasterPawn.Map);
-            MoteMaker.ThrowHeatGlow(this.currentTarget.Cell, map, 1f);
+            FleckMaker.ThrowHeatGlow(this.currentTarget.Cell, map, 1f);
 
             for (int i = 0; i < 5; i++)
             {
@@ -80,7 +80,7 @@ namespace TorannMagic.Weapon
                     if (flag)
                     {
                         SingleSpawnLoop(tempPod, currentPosR, this.CasterPawn.Map);
-                        MoteMaker.ThrowHeatGlow(currentPosR, map, .6f);
+                        FleckMaker.ThrowHeatGlow(currentPosR, map, .6f);
                     }
                 }
                 currentPosL = GetNewPos(currentPosL, this.currentTarget.Cell.x <= destinationLPos.x, this.currentTarget.Cell.z <= destinationLPos.z, false, 0, 0, xProbL, 1 - xProbL);
@@ -97,7 +97,7 @@ namespace TorannMagic.Weapon
                     if (flag)
                     { 
                         SingleSpawnLoop(tempPod, currentPosL, this.CasterPawn.Map);
-                        MoteMaker.ThrowHeatGlow(currentPosL, map, .6f);
+                        FleckMaker.ThrowHeatGlow(currentPosL, map, .6f);
                     }
                 }
             }

@@ -86,7 +86,7 @@ namespace TorannMagic
 
         public MagicAbility(CompAbilityUser abilityUser) : base(abilityUser)
 		{
-            this.abilityUser = (abilityUser as CompAbilityUserMagic);
+            this.AbilityUser = (abilityUser as CompAbilityUserMagic);
         }
 
         public MagicAbility(Pawn user, AbilityUser.AbilityDef pdef) : base(user, pdef)
@@ -391,7 +391,7 @@ namespace TorannMagic
                 List<Apparel> wornApparel = base.Pawn.apparel.WornApparel;
                 for (int i = 0; i < wornApparel.Count; i++)
                 {
-                    if (!wornApparel[i].AllowVerbCast(base.Pawn.Position, base.Pawn.Map, base.abilityUser.Pawn.TargetCurrentlyAimingAt, this.Verb) &&
+                    if (!wornApparel[i].AllowVerbCast(this.Verb) &&
                         (this.magicDef.defName == "TM_LightningCloud" || this.magicDef.defName == "Laser_LightningBolt" || this.magicDef.defName == "TM_LightningStorm" || this.magicDef.defName == "TM_EyeOfTheStorm" ||
                         this.magicDef.defName.Contains("Laser_FrostRay") || this.magicDef.defName == "TM_Blizzard" || this.magicDef.defName == "TM_Snowball" || this.magicDef.defName == "TM_Icebolt" ||
                         this.magicDef.defName == "TM_Firestorm" || this.magicDef.defName == "TM_Fireball" || this.magicDef.defName == "TM_Fireclaw" || this.magicDef.defName == "TM_Firebolt" ||
@@ -423,7 +423,7 @@ namespace TorannMagic
 
         public new Command_PawnAbility GetGizmo()
         {
-            Command_PawnAbility command_PawnAbility = new Command_PawnAbility(abilityUser, this, CooldownTicksLeft)
+            Command_PawnAbility command_PawnAbility = new Command_PawnAbility(AbilityUser, this, CooldownTicksLeft)
             {
                 verb = Verb,
                 defaultLabel = this.magicDef.LabelCap,
@@ -437,9 +437,9 @@ namespace TorannMagic
             stringBuilder = null;
             command_PawnAbility.targetingParams = magicDef.MainVerb.targetParams;
             command_PawnAbility.icon = magicDef.uiIcon;
-            command_PawnAbility.action = delegate (Thing target)
+            command_PawnAbility.action = delegate (LocalTargetInfo target)
             {
-                LocalTargetInfo target2 = GenCollection.FirstOrFallback<LocalTargetInfo>(GenUI.TargetsAt_NewTemp(UI.MouseMapPosition(), Verb.verbProps.targetParams, false, null), target);
+                LocalTargetInfo target2 = GenCollection.FirstOrFallback<LocalTargetInfo>(GenUI.TargetsAt(UI.MouseMapPosition(), Verb.verbProps.targetParams, false, null), target);
                 TryCastAbility(AbilityContext.Player, target2);
             };
             string reason = "";

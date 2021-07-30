@@ -62,19 +62,19 @@ namespace TorannMagic
             ThingDef def = this.def;
             if (verVal == 0)
             {
-                Explosion(pos, map, radius, DamageDefOf.Flame, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_ExplosionFlash, 0.3f, 1, false, null, 0f, 1);
+                Explosion(pos, map, radius, DamageDefOf.Flame, this.launcher, null, def, this.equipmentDef, null, 0.3f, 1, false, null, 0f, 1);
             }
             else if (verVal == 1)
             {
-                Explosion(pos, map, radius, TMDamageDefOf.DamageDefOf.TM_Fireball_I, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_ExplosionFlash, 0.5f, 1, false, null, 0f, 1);
+                Explosion(pos, map, radius, TMDamageDefOf.DamageDefOf.TM_Fireball_I, this.launcher, null, def, this.equipmentDef, null, 0.5f, 1, false, null, 0f, 1);
             }
             else if (verVal == 2)
             {
-                Explosion(pos, map, radius, TMDamageDefOf.DamageDefOf.TM_Fireball_II, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_ExplosionFlash, 0.8f, 1, false, null, 0f, 1);
+                Explosion(pos, map, radius, TMDamageDefOf.DamageDefOf.TM_Fireball_II, this.launcher, null, def, this.equipmentDef, null, 0.8f, 1, false, null, 0f, 1);
             }
             else if (verVal == 3)
             {
-                Explosion(pos, map, radius, TMDamageDefOf.DamageDefOf.TM_Fireball_III, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_ExplosionFlash, 1.1f, 1, false, null, 0f, 1);
+                Explosion(pos, map, radius, TMDamageDefOf.DamageDefOf.TM_Fireball_III, this.launcher, null, def, this.equipmentDef, null, 1.1f, 1, false, null, 0f, 1);
             }
             else
             {
@@ -84,7 +84,7 @@ namespace TorannMagic
 
 		public void Explosion(IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
 		{
-            
+            FleckMaker.Static(center, map, FleckDefOf.ExplosionFlash, 1f);
             System.Random rnd = new System.Random();
 			int modDamAmountRand = (int)GenMath.RoundRandom(rnd.Next(6, projectile.projectile.GetDamageAmount(1,null) / 2));
             modDamAmountRand = Mathf.RoundToInt(modDamAmountRand * this.arcaneDmg);

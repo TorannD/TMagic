@@ -148,7 +148,7 @@ namespace TorannMagic
                                     {
                                         rec.Severity = 0.01f;
                                         MoteMaker.ThrowText(pawn.DrawPos, pawn.Map, "Tended Blood Rot", -1f);
-                                        rec.Tended_NewTemp(1f, 1f);
+                                        rec.Tended(1f, 1f);
                                         TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3(), pawn.Map, 1.5f);
                                         return false;
                                     }

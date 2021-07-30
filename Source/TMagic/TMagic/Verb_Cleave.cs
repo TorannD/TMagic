@@ -122,10 +122,10 @@ namespace TorannMagic
                         if (rnd < (ver * 15))
                         {
                             target.TakeDamage(dinfo);
-                            MoteMaker.ThrowMicroSparks(target.Position.ToVector3(), map);
+                            FleckMaker.ThrowMicroSparks(target.Position.ToVector3(), map);
                         }
                         target.TakeDamage(dinfo);
-                        MoteMaker.ThrowMicroSparks(target.Position.ToVector3(), map);
+                        FleckMaker.ThrowMicroSparks(target.Position.ToVector3(), map);
                         for (int i = 0; i < 8; i++)
                         {
                             IntVec3 intVec = target.PositionHeld + GenAdj.AdjacentCells[i];
@@ -134,12 +134,12 @@ namespace TorannMagic
                             if (cleaveVictim != null && cleaveVictim.Faction != caster.Faction && cleaveVictim.HostileTo(caster.Faction))
                             {
                                 cleaveVictim.TakeDamage(dinfo);
-                                MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);
+                                FleckMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);
                                 rnd = GenMath.RoundRandom(random.Next(0, 100));
                                 if (rnd < (ver * 15))
                                 {
                                     cleaveVictim.TakeDamage(dinfo);
-                                    MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);
+                                    FleckMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);
                                 }
                                 DrawCleaving(cleaveVictim, caster, 10);
                             }

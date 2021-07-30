@@ -137,7 +137,7 @@ namespace TorannMagic
                     Vector3 rndPos = pawn.DrawPos;
                     rndPos.x += Rand.Range(-.75f, .75f);
                     rndPos.z += Rand.Range(-.75f, .75f);
-                    MoteMaker.MakeStaticMote(rndPos, pawn.Map, ThingDefOf.Mote_FireGlow, 1f);
+                    FleckMaker.Static(rndPos, pawn.Map, FleckDefOf.FireGlow, 1f);
                 }
             }            
             flyingThing.ThingID += Rand.Range(0, 214).ToString();            

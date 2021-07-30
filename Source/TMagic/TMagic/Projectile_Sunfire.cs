@@ -193,7 +193,7 @@ namespace TorannMagic
                         {
                             sfBeamsStep[i]--;
                             SunfireDamage(sfBeams[i].ToIntVec3());
-                            TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_DustPuff, sfBeams[i], this.Map, .4f, .2f, .1f, .2f, Rand.Range(-100, 100), 2f, Rand.Range(0, 360), 0);
+                            TM_FleckMaker.ThrowGenericFleck(FleckDefOf.DustPuff, sfBeams[i], this.Map, .4f, .2f, .1f, .2f, Rand.Range(-100, 100), 2f, Rand.Range(0, 360), 0);
                             sfBeams[i] += sfBeamsROM[i];
                             sfBeamsROM[i] += (sfBeamsCurve[i] * (20f - sfBeamsStep[i]));
                         }

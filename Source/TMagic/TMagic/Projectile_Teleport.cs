@@ -232,7 +232,7 @@ namespace TorannMagic
         protected void PortalCollapse(IntVec3 pos, Map map, float radius)
         {
             ThingDef def = this.def;
-            Explosion(pos, map, radius, DamageDefOf.Bomb, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_Smoke, 0.4f, 1, false, null, 0f, 1);
+            Explosion(pos, map, radius, DamageDefOf.Bomb, this.launcher, null, def, this.equipmentDef, ThingDefOf.Gas_Smoke, 0.4f, 1, false, null, 0f, 1);
 
         }
 

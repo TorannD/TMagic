@@ -154,8 +154,8 @@ namespace TorannMagic
                             {
                                 if (targetThing is Pawn)
                                 {
-                                    MoteMaker.ThrowLightningGlow(targetThing.DrawPos, targetThing.Map, 1f);
-                                    MoteMaker.ThrowHeatGlow(targetThing.Position, targetThing.Map, 1f);
+                                    FleckMaker.ThrowLightningGlow(targetThing.DrawPos, targetThing.Map, 1f);
+                                    FleckMaker.ThrowHeatGlow(targetThing.Position, targetThing.Map, 1f);
                                     targetThing.DeSpawn();
                                     GenSpawn.Spawn(targetThing, this.CasterPawn.Position, this.CasterPawn.Map);
                                     transportedItemCount++;
@@ -163,8 +163,8 @@ namespace TorannMagic
                                 }
                                 else if (targetThing != null && targetThing.def.EverHaulable)
                                 {
-                                    MoteMaker.ThrowLightningGlow(targetThing.DrawPos, targetThing.Map, .6f);
-                                    MoteMaker.ThrowHeatGlow(targetThing.Position, targetThing.Map, 1f);
+                                    FleckMaker.ThrowLightningGlow(targetThing.DrawPos, targetThing.Map, .6f);
+                                    FleckMaker.ThrowHeatGlow(targetThing.Position, targetThing.Map, 1f);
                                     targetThing.DeSpawn();
                                     GenPlace.TryPlaceThing(targetThing, this.CasterPawn.Position, this.CasterPawn.Map, ThingPlaceMode.Near, null);
                                     transportedItemCount++;
@@ -173,7 +173,7 @@ namespace TorannMagic
                             }
                         }                        
                     }
-                    MoteMaker.ThrowSmoke(curCell.ToVector3Shifted(), map, .6f);                   
+                    FleckMaker.ThrowSmoke(curCell.ToVector3Shifted(), map, .6f);                   
                 }
             }
         }

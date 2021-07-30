@@ -69,9 +69,9 @@ namespace TorannMagic
                         polymorphedPawn.GetComp<CompPolymorph>().Temporary = false;
                     }
 
-                    MoteMaker.ThrowSmoke(polymorphedPawn.DrawPos, caster.Map, 2);
-                    MoteMaker.ThrowMicroSparks(polymorphedPawn.DrawPos, caster.Map);
-                    MoteMaker.ThrowHeatGlow(polymorphedPawn.Position, caster.Map, 2);
+                    FleckMaker.ThrowSmoke(polymorphedPawn.DrawPos, caster.Map, 2);
+                    FleckMaker.ThrowMicroSparks(polymorphedPawn.DrawPos, caster.Map);
+                    FleckMaker.ThrowHeatGlow(polymorphedPawn.Position, caster.Map, 2);
                     //caster.DeSpawn();
 
                     HealthUtility.AdjustSeverity(polymorphedPawn, HediffDef.Named("TM_ShapeshiftHD"), .5f + (1f * pwrVal));

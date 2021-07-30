@@ -119,7 +119,7 @@ namespace TorannMagic
                 {
                     Vector3 startPos = outerRing.RandomElement().ToVector3Shifted();
                     Vector3 direction = TM_Calc.GetVector(startPos, strikePos.ToVector3Shifted());
-                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, startPos, this.Map, .8f, .3f, .05f, .6f, 0, 12f, (Quaternion.AngleAxis(90, Vector3.up) * direction).ToAngleFlat(), 0);
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, startPos, this.Map, .8f, .3f, .05f, .6f, 0, 12f, (Quaternion.AngleAxis(90, Vector3.up) * direction).ToAngleFlat(), 0);
                 }
             }
             else if(this.age <= (int)(this.duration * .6f))

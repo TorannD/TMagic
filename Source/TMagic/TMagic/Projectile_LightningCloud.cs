@@ -113,16 +113,16 @@ namespace TorannMagic
                     bool rand2 = Rand.Range(0, 100) < 16;
                     if (rand1)
                     {
-                        MoteMaker.ThrowSmoke(loc2, map, radius);
+                        FleckMaker.ThrowSmoke(loc2, map, radius);
                         SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                     }
                     if (rand2)
                     {
-                        MoteMaker.ThrowSmoke(loc, map, 4f);
+                        FleckMaker.ThrowSmoke(loc, map, 4f);
                     }
 
-                    MoteMaker.ThrowMicroSparks(loc, map);
-                    MoteMaker.ThrowLightningGlow(loc, map, 2f);
+                    FleckMaker.ThrowMicroSparks(loc, map);
+                    FleckMaker.ThrowLightningGlow(loc, map, 2f);
 
                     strikeInt++;
                     this.lastStrike = this.age;
@@ -161,7 +161,7 @@ namespace TorannMagic
             ThingDef def = this.def;
             Explosion(pos, map, radius, DamageDefOf.EMP, this.launcher, null, def, this.equipmentDef, ThingDefOf.Spark, 3f, 1, false, null, 0f, 1);
             Explosion(pos, map, radius, DamageDefOf.Stun, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_Stun, 2f, 1, false, null, 0f, 1);
-            Explosion(pos, map, radius, TMDamageDefOf.DamageDefOf.TM_LightningCloud, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_Smoke, 0.4f, 1, false, null, 0f, 1);
+            Explosion(pos, map, radius, TMDamageDefOf.DamageDefOf.TM_LightningCloud, this.launcher, null, def, this.equipmentDef, ThingDefOf.Gas_Smoke, 0.4f, 1, false, null, 0f, 1);
 
         }
 

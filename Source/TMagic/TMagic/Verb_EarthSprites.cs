@@ -136,10 +136,10 @@ namespace TorannMagic
                 if (cell.InBounds(this.CasterPawn.Map) && bldg == null && terrain == terrainDef)
                 {
                     this.CasterPawn.Map.terrainGrid.SetTerrain(cell, TerrainDef.Named("Gravel"));
-                    MoteMaker.ThrowSmoke(cell.ToVector3Shifted(), this.CasterPawn.Map, Rand.Range(.8f, 1.2f));
+                    FleckMaker.ThrowSmoke(cell.ToVector3Shifted(), this.CasterPawn.Map, Rand.Range(.8f, 1.2f));
                     Vector3 moteDirection = TM_Calc.GetVector(center, cell);
                     TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Rubble"), cell.ToVector3Shifted(), this.CasterPawn.Map, Rand.Range(.3f, .6f), .2f, .02f, .05f, Rand.Range(-100, 100), Rand.Range(2f, 4f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
-                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, cell.ToVector3Shifted(), this.CasterPawn.Map, Rand.Range(.9f, 1.2f), .3f, .02f, Rand.Range(.25f, .4f), Rand.Range(-100, 100), Rand.Range(2f, 4f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, cell.ToVector3Shifted(), this.CasterPawn.Map, Rand.Range(.9f, 1.2f), .3f, .02f, Rand.Range(.25f, .4f), Rand.Range(-100, 100), Rand.Range(2f, 4f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
                 }
                 bldg = null;
             }

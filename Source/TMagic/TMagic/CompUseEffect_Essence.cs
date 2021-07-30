@@ -29,8 +29,8 @@ namespace TorannMagic
                     {
                         Log.Message("might essence granted 0 experience");
                     }
-                    MoteMaker.ThrowSmoke(this.parent.DrawPos, this.parent.Map, Rand.Range(.5f, .8f));
-                    MoteMaker.ThrowHeatGlow(this.parent.Position, this.parent.Map, .8f);
+                    FleckMaker.ThrowSmoke(this.parent.DrawPos, this.parent.Map, Rand.Range(.5f, .8f));
+                    FleckMaker.ThrowHeatGlow(this.parent.Position, this.parent.Map, .8f);
                     TM_Action.TransmutateEffects(user.Position, user);
                     TargetInfo ti = new TargetInfo(this.parent.Position, this.parent.Map, false);
                     TM_MoteMaker.MakeOverlay(ti, TorannMagicDefOf.TM_Mote_PsycastAreaEffect, user.Map, Vector3.zero, .1f, 0f, .05f, .4f, .2f, 1f);
@@ -50,8 +50,8 @@ namespace TorannMagic
                     {
                         Log.Message("magic essence granted 0 experience");
                     }
-                    MoteMaker.ThrowSmoke(this.parent.DrawPos, this.parent.Map, Rand.Range(.5f, .8f));
-                    MoteMaker.ThrowHeatGlow(this.parent.Position, this.parent.Map, .8f);
+                    FleckMaker.ThrowSmoke(this.parent.DrawPos, this.parent.Map, Rand.Range(.5f, .8f));
+                    FleckMaker.ThrowHeatGlow(this.parent.Position, this.parent.Map, .8f);
                     TM_Action.TransmutateEffects(user.Position, user);
                     TargetInfo ti = new TargetInfo(this.parent.Position, this.parent.Map, false);
                     TM_MoteMaker.MakeOverlay(ti, TorannMagicDefOf.TM_Mote_PsycastAreaEffect, user.Map, Vector3.zero, .1f, 0f, .05f, .4f, .2f, 1f);

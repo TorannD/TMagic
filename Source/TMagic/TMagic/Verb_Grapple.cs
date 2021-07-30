@@ -100,8 +100,12 @@ namespace TorannMagic
                 {
                     if (!victim.IsColonist && !victim.IsPrisoner && !victim.Faction.HostileTo(this.CasterPawn.Faction) && victim.Faction != null && victim.RaceProps.Humanlike)
                     {
-                        Faction faction = victim.Faction;
-                        faction.TrySetRelationKind(this.CasterPawn.Faction, FactionRelationKind.Ally, false, null);
+                        //Faction faction = victim.Faction;
+                        //faction.TrySetRelationKind(this.CasterPawn.Faction, FactionRelationKind.Ally, false, null);
+                        //FactionRelation fr = new FactionRelation();
+                        //fr.baseGoodwill = -100;
+                        //fr.kind = FactionRelationKind.Hostile;
+                        //faction.SetRelation(fr);
                     }
                 }                
                 

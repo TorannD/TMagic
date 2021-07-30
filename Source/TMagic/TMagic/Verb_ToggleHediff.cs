@@ -33,8 +33,8 @@ namespace TorannMagic
                         HealthUtility.AdjustSeverity(caster, hdDef, hdDef.initialSeverity);
                         if (caster.Map != null)
                         {
-                            MoteMaker.ThrowLightningGlow(caster.DrawPos, caster.Map, 1f);
-                            MoteMaker.ThrowDustPuff(caster.Position, caster.Map, 1f);
+                            FleckMaker.ThrowLightningGlow(caster.DrawPos, caster.Map, 1f);
+                            FleckMaker.ThrowDustPuff(caster.Position, caster.Map, 1f);
                         }
                     }
 

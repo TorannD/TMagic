@@ -110,9 +110,9 @@ namespace TorannMagic
         {
             if (pawn != null)
             {
-                MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
+                FleckMaker.Static(pawn.TrueCenter(), pawn.Map, FleckDefOf.ExplosionFlash, 12f);
                 SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
-                MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
+                FleckMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
                 weaponDmg = GetWeaponDmg(pawn);
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 if (!pawn.IsColonist && settingsRef.AIHardMode)
@@ -172,7 +172,7 @@ namespace TorannMagic
             else
             {
                 base.Position = this.ExactPosition.ToIntVec3();
-                MoteMaker.ThrowDustPuff(base.Position, base.Map, Rand.Range(0.8f, 1.2f));
+                FleckMaker.ThrowDustPuff(base.Position, base.Map, Rand.Range(0.8f, 1.2f));
                 if (Find.TickManager.TicksGame % 2 == 0)
                 {
                     DoWhirlwindDamage();
@@ -225,7 +225,7 @@ namespace TorannMagic
                             if (cleaveVictim != null && cleaveVictim.Faction != pawn.Faction)
                             {
                                 cleaveVictim.TakeDamage(dinfo);
-                                MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), base.Map);
+                                FleckMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), base.Map);
                                 CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
                                 verVal = TM_Calc.GetMightSkillLevel(pawn, comp.MightData.MightPowerSkill_Whirlwind, "TM_Whirlwind", "_ver", true);
                                 //MightPowerSkill ver = comp.MightData.MightPowerSkill_Whirlwind.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Whirlwind_ver");
@@ -241,7 +241,7 @@ namespace TorannMagic
                                 if (rnd < (verVal * 5))
                                 {
                                     cleaveVictim.TakeDamage(dinfo2);
-                                    MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), base.Map);
+                                    FleckMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), base.Map);
                                 }
                             }
                         }

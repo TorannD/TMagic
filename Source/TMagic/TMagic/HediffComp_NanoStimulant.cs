@@ -113,7 +113,7 @@ namespace TorannMagic
                                             }
                                             if(Rand.Chance(.4f + (.02f * hediffPwr)))
                                             {
-                                                current.Tended(Rand.Range(.4f + (.02f * this.hediffPwr), .5f + (.03f * this.hediffPwr)));
+                                                current.Tended(Rand.Range(.4f + (.02f * this.hediffPwr), .5f + (.03f * this.hediffPwr)), 1f);
                                             }
                                             num--;
                                             num2--;

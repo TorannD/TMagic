@@ -34,12 +34,12 @@ namespace TorannMagic
                     if (terrain.defName == "Sand" || terrain.defName == "Gravel")
                     {
                         map.terrainGrid.SetTerrain(curCell, TerrainDef.Named("Soil"));
-                        MoteMaker.ThrowDustPuff(curCell, map, .75f);
+                        FleckMaker.ThrowDustPuff(curCell, map, .75f);
                     }
                     else if (terrain.defName == "SoftSand")
                     {
                         map.terrainGrid.SetTerrain(curCell, TerrainDef.Named("Sand"));
-                        MoteMaker.ThrowDustPuff(curCell, map, .75f);
+                        FleckMaker.ThrowDustPuff(curCell, map, .75f);
                     }
                     else
                     {

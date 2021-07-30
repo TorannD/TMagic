@@ -87,7 +87,7 @@ namespace TorannMagic
             if (spawned)
             {
                 SoundDefOf.EnergyShield_Reset.PlayOneShot(new TargetInfo(base.Pawn.Position, base.Pawn.Map, false));
-                MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
+                FleckMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
             }
             this.energy = 0.5f; //lasts for x * 600 ticks; 3000ticks = 50s
         }
@@ -217,11 +217,11 @@ namespace TorannMagic
             if (!broken)
             {
                 SoundDefOf.EnergyShield_Broken.PlayOneShot(new TargetInfo(base.Pawn.Position, base.Pawn.Map, false));
-                MoteMaker.MakeStaticMote(base.Pawn.TrueCenter(), base.Pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
+                FleckMaker.Static(base.Pawn.TrueCenter(), base.Pawn.Map, FleckDefOf.ExplosionFlash, 12f);
                 for (int i = 0; i < 6; i++)
                 {
                     Vector3 loc = base.Pawn.TrueCenter() + Vector3Utility.HorizontalVectorFromAngle((float)Rand.Range(0, 360)) * Rand.Range(0.3f, 0.6f);
-                    MoteMaker.ThrowDustPuff(loc, base.Pawn.Map, Rand.Range(0.8f, 1.2f));
+                    FleckMaker.ThrowDustPuff(loc, base.Pawn.Map, Rand.Range(0.8f, 1.2f));
                 }
                 this.energy = 0f;
                 broken = true;

@@ -36,7 +36,7 @@ namespace TorannMagic
             bool spawned = base.Pawn.Spawned;
             if (spawned)
             {
-                MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 1f);
+                FleckMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 1f);
                 if (base.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD) || base.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_I) || base.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_II) || base.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_III))
                 {
                     this.hasPossess = true;

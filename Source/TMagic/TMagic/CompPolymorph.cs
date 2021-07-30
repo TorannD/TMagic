@@ -392,14 +392,14 @@ namespace TorannMagic
         public void TransmutateEffects(IntVec3 position)
         {
             Vector3 rndPos = position.ToVector3Shifted();
-            MoteMaker.ThrowHeatGlow(position, this.ParentPawn.Map, 1f);
+            FleckMaker.ThrowHeatGlow(position, this.ParentPawn.Map, 1f);
             for (int i = 0; i < 6; i++)
             {
                 rndPos.x += Rand.Range(-.5f, .5f);
                 rndPos.z += Rand.Range(-.5f, .5f);
                 rndPos.y += Rand.Range(.3f, 1.3f);
-                MoteMaker.ThrowSmoke(rndPos, this.ParentPawn.Map, Rand.Range(.7f, 1.1f));
-                MoteMaker.ThrowLightningGlow(position.ToVector3Shifted(), this.ParentPawn.Map, 1.4f);
+                FleckMaker.ThrowSmoke(rndPos, this.ParentPawn.Map, Rand.Range(.7f, 1.1f));
+                FleckMaker.ThrowLightningGlow(position.ToVector3Shifted(), this.ParentPawn.Map, 1.4f);
             }
         }
 

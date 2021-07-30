@@ -184,7 +184,7 @@ namespace TorannMagic
         {
             if (c != default(IntVec3) && c.IsValid && c.InBounds(this.Map))
             {
-                MoteMaker.ThrowLightningGlow(c.ToVector3Shifted(), this.Map, 1f);
+                FleckMaker.ThrowLightningGlow(c.ToVector3Shifted(), this.Map, 1f);
                 List<Thing> thingList = c.GetThingList(this.Map);
                 if (thingList != null && thingList.Count > 0)
                 {
@@ -226,7 +226,7 @@ namespace TorannMagic
 
         public Thing GetTargetAroundCell(IntVec3 cell, float radius)
         {
-            MoteMaker.ThrowLightningGlow(cell.ToVector3Shifted(), this.Map, 1f);
+            FleckMaker.ThrowLightningGlow(cell.ToVector3Shifted(), this.Map, 1f);
             List<Thing> ts = (from thing in this.Map.listerThings.AllThings
                                                where ((thing is Building || thing is Pawn) && (thing.Position - cell).LengthHorizontal <= radius && !chainedThings.Contains(thing))
                                                select thing).ToList();            

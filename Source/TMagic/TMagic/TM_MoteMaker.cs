@@ -338,9 +338,7 @@ namespace TorannMagic
             moteThrown.def.mote.fadeInTime = fadeIn;
             moteThrown.def.mote.fadeOutTime = fadeOut;
 
-            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
-            
-
+            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);           
         }
 
         public static void ThrowRegenMote(Vector3 loc, Map map, float scale)

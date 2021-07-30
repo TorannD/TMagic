@@ -28,7 +28,7 @@ namespace TorannMagic
                     {
                         traits.Remove(traits[i]);
                         this.CasterPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Ranger"), pwr.level, false));
-                        MoteMaker.ThrowHeatGlow(base.CasterPawn.Position, map, 2);
+                        FleckMaker.ThrowHeatGlow(base.CasterPawn.Position, map, 2);
                     }
                 }
             }

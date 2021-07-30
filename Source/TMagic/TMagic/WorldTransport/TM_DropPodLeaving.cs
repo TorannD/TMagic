@@ -12,7 +12,7 @@ using Verse.AI.Group;
 namespace TorannMagic.WorldTransport
 {
     [StaticConstructorOnStartup]
-    public class TM_DropPodLeaving : DropPodLeaving
+    public class TM_DropPodLeaving : FlyShipLeaving
     {
         public IntVec3 arrivalCell = default(IntVec3);
         public bool draftFlag = false;
@@ -59,7 +59,7 @@ namespace TorannMagic.WorldTransport
                 travelingTransportPods.destinationTile = destinationTile;
                 travelingTransportPods.arrivalAction = arrivalAction;
                 travelingTransportPods.destinationCell = arrivalCell;
-                if(this.def == TorannMagicDefOf.TM_LightPodLeaving)
+                if (this.def == TorannMagicDefOf.TM_LightPodLeaving)
                 {
                     travelingTransportPods.TravelSpeed = .025f;
                     travelingTransportPods.draftFlag = this.draftFlag;
@@ -83,13 +83,13 @@ namespace TorannMagic.WorldTransport
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
-            startingPos = this.DrawPos;            
+            startingPos = this.DrawPos;
             base.SpawnSetup(map, respawningAfterLoad);
         }
 
         public override void Tick()
         {
-            if(ticksToImpact == maxTicks)
+            if (ticksToImpact == maxTicks)
             {
                 LeaveMap();
             }

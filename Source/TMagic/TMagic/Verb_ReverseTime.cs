@@ -275,13 +275,13 @@ namespace TorannMagic
         public void TransmutateEffects(IntVec3 position, int intensity)
         {
             Vector3 rndPos = position.ToVector3Shifted();
-            MoteMaker.ThrowHeatGlow(position, this.CasterPawn.Map, 1f);
+            FleckMaker.ThrowHeatGlow(position, this.CasterPawn.Map, 1f);
             for (int i = 0; i < intensity; i++)
             {
                 rndPos.x += Rand.Range(-.5f, .5f);
                 rndPos.z += Rand.Range(-.5f, .5f);
                 rndPos.y += Rand.Range(.3f, 1.3f);
-                MoteMaker.ThrowSmoke(rndPos, this.CasterPawn.Map, Rand.Range(.7f, 1.1f));
+                FleckMaker.ThrowSmoke(rndPos, this.CasterPawn.Map, Rand.Range(.7f, 1.1f));
                 TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Shadow, position.ToVector3(), this.CasterPawn.Map, Rand.Range(.8f, 1.2f), .1f, .1f, .4f, Rand.RangeInclusive((int)-4, (int)4) * 100, Rand.Range(0, 1), Rand.Range(0, 360), Rand.Range(0, 360));
             }
         }

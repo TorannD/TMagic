@@ -93,7 +93,7 @@ namespace TorannMagic
                                         if (victim.mindState != null && victim.RaceProps != null && victim.RaceProps.Humanlike)
                                         {
                                             victim.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk, "cursed", true, false, null);
-                                            MoteMaker.ThrowMicroSparks(victim.DrawPos, victim.Map);
+                                            FleckMaker.ThrowMicroSparks(victim.DrawPos, victim.Map);
                                             MoteMaker.ThrowText(victim.DrawPos, victim.Map, "Berserk", -1);
                                         }
 

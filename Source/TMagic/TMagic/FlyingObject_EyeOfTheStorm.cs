@@ -125,9 +125,9 @@ namespace TorannMagic
         {
             if (pawn != null)
             {
-                MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
+                FleckMaker.Static(pawn.TrueCenter(), pawn.Map, FleckDefOf.ExplosionFlash, 12f);
                 SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
-                MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
+                FleckMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
             }
             flyingThing.ThingID += Rand.Range(0, 214).ToString();
             this.initialized = false;
@@ -219,7 +219,7 @@ namespace TorannMagic
             float zOffset = verVal * Rand.Range(-0.6f, 0.6f);
             orbVec.x += xOffset;
             orbVec.z += zOffset;
-            MoteMaker.ThrowLightningGlow(orbVec, map, 0.5f + (0.15f * (float)verVal));
+            FleckMaker.ThrowLightningGlow(orbVec, map, 0.5f + (0.15f * (float)verVal));
             float num = Mathf.Lerp(1.2f, 1.55f, 5f);            
             vector.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
             float angle = (float)Rand.Range(0, 360);

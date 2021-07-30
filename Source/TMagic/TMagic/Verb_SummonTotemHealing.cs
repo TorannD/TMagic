@@ -76,8 +76,8 @@ namespace TorannMagic
                         Vector3 rndPos = this.totem.DrawPos;
                         rndPos.x += Rand.Range(-.5f, .5f);
                         rndPos.z += Rand.Range(-.5f, .5f);
-                        TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_DustPuffThick, rndPos, map, Rand.Range(.6f, 1f), .1f, .05f, .05f, 0, 0, 0, Rand.Range(0, 360));
-                        MoteMaker.ThrowSmoke(rndPos, map, Rand.Range(.8f, 1.2f));
+                        TM_FleckMaker.ThrowGenericFleck(FleckDefOf.DustPuffThick, rndPos, map, Rand.Range(.6f, 1f), .1f, .05f, .05f, 0, 0, 0, Rand.Range(0, 360));
+                        FleckMaker.ThrowSmoke(rndPos, map, Rand.Range(.8f, 1.2f));
                     }
                 }
                 catch

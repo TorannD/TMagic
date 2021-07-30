@@ -48,7 +48,7 @@ namespace TorannMagic
             
             if (spawned)
             {
-                MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 1f);
+                FleckMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 1f);
                 if (this.Def.defName == "TM_OverdriveHD_III")
                 {
                     hediffPwr = 3;
@@ -100,7 +100,7 @@ namespace TorannMagic
                     rndPos.x += Rand.Range(-.2f, .2f);
                     rndPos.z += Rand.Range(-.2f, .2f);
                     TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_SparkFlash"), rndPos, pawn.Map, Rand.Range(.6f, .8f), .1f, .05f, .05f, 0, 0, 0, Rand.Range(0, 360));
-                    MoteMaker.ThrowSmoke(rndPos, pawn.Map, Rand.Range(.8f, 1.2f));
+                    FleckMaker.ThrowSmoke(rndPos, pawn.Map, Rand.Range(.8f, 1.2f));
                     rndPos = pawn.DrawPos;
                     rndPos.x += Rand.Range(-.2f, .2f);
                     rndPos.z += Rand.Range(-.2f, .2f);

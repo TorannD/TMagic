@@ -11,10 +11,10 @@ namespace TorannMagic
         {
             for (int i = 0; i < 3; i++)
             {
-                MoteMaker.ThrowSmoke(corpse.DrawPos, corpse.Map, Rand.Range(.5f, 1.1f));
+                FleckMaker.ThrowSmoke(corpse.DrawPos, corpse.Map, Rand.Range(.5f, 1.1f));
             }
             TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Ghost, corpse.DrawPos, corpse.Map, 1f, .25f, 0f, .25f, 0, Rand.Range(2f, 3f), 0, 0);
-            //MoteMaker.ThrowHeatGlow(corpse.Position, corpse.Map, 1f);
+            //FleckMaker.ThrowHeatGlow(corpse.Position, corpse.Map, 1f);
             List<Thing> rewards = new List<Thing>();
             Thing arcalleum = ThingMaker.MakeThing(TorannMagicDefOf.TM_Arcalleum, null);
             if (corpse.Faction != Faction.OfPlayer)

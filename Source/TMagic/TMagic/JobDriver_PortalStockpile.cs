@@ -42,13 +42,13 @@ namespace TorannMagic
                     Thing stockpileThing = current.GetFirstItem(base.Map);
                     if (stockpileThing != null)
                     {
-                        MoteMaker.ThrowHeatGlow(stockpileThing.Position, stockpileThing.Map, 1f);
-                        MoteMaker.ThrowLightningGlow(stockpileThing.Position.ToVector3Shifted(), stockpileThing.Map, 1f);
+                        FleckMaker.ThrowHeatGlow(stockpileThing.Position, stockpileThing.Map, 1f);
+                        FleckMaker.ThrowLightningGlow(stockpileThing.Position.ToVector3Shifted(), stockpileThing.Map, 1f);
                         stockpileThing.DeSpawn();
                         GenPlace.TryPlaceThing(stockpileThing, portalBldg.PortalDestinationPosition, portalBldg.PortalDestinationMap, ThingPlaceMode.Near, null);
                         stockpileThing.SetForbidden(true, false);
                         stockpileThing.SetForbidden(false, false);
-                        MoteMaker.ThrowLightningGlow(stockpileThing.Position.ToVector3Shifted(), stockpileThing.Map, 1f);
+                        FleckMaker.ThrowLightningGlow(stockpileThing.Position.ToVector3Shifted(), stockpileThing.Map, 1f);
 
                     }
                     List<Thing> thingList;
@@ -67,13 +67,13 @@ namespace TorannMagic
                                 {
                                     if (!portalAnimal.RaceProps.Humanlike && portalAnimal.RaceProps.Animal && portalAnimal.Faction != null && portalAnimal.Faction == Faction.OfPlayer)
                                     {
-                                        MoteMaker.ThrowHeatGlow(current, portalBldg.Map, 1f);
-                                        MoteMaker.ThrowLightningGlow(portalAnimal.DrawPos, portalAnimal.Map, 1f);
+                                        FleckMaker.ThrowHeatGlow(current, portalBldg.Map, 1f);
+                                        FleckMaker.ThrowLightningGlow(portalAnimal.DrawPos, portalAnimal.Map, 1f);
                                         portalAnimal.jobs.ClearQueuedJobs();
                                         portalAnimal.DeSpawn();
                                         GenPlace.TryPlaceThing(portalAnimal, portalBldg.PortalDestinationPosition, portalBldg.PortalDestinationMap, ThingPlaceMode.Near);
                                         //GenSpawn.Spawn(portalAnimal, portalBldg.PortalDestinationPosition, portalBldg.PortalDestinationMap);
-                                        MoteMaker.ThrowLightningGlow(portalAnimal.DrawPos, portalAnimal.Map, 1f);
+                                        FleckMaker.ThrowLightningGlow(portalAnimal.DrawPos, portalAnimal.Map, 1f);
                                     }
                                 }
                             }

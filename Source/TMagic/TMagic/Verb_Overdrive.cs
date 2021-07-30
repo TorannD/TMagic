@@ -118,7 +118,7 @@ namespace TorannMagic
         public void ApplyOverdriveHD(Pawn pawn)
         {
             ApplyHediffs(pawn);
-            MoteMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1.5f);
+            FleckMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1.5f);
             TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_PowerWave"), pawn.DrawPos, pawn.Map, .6f, .3f, 0, .3f, Rand.Range(-500, 500), 0, 0, Rand.Range(0, 360));
         }
 

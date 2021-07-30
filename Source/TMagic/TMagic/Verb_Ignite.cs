@@ -126,7 +126,7 @@ namespace TorannMagic
                     if(cellList[i].GetSnowDepth(map) > 0f)
                     {
                         map.snowGrid.SetDepth(cellList[i], 0f);
-                        MoteMaker.ThrowSmoke(cellList[i].ToVector3Shifted(), map, Rand.Range(.8f, 1.6f));
+                        FleckMaker.ThrowSmoke(cellList[i].ToVector3Shifted(), map, Rand.Range(.8f, 1.6f));
                         Thing smoke = ThingMaker.MakeThing(ThingDefOf.Gas_Smoke, null);
                         GenSpawn.Spawn(smoke, cellList[i], map, WipeMode.Vanish);
                     }
@@ -135,7 +135,7 @@ namespace TorannMagic
                         Thing smoke = ThingMaker.MakeThing(ThingDefOf.Gas_Smoke, null);
                         GenSpawn.Spawn(smoke, cellList[i], map, WipeMode.Vanish);
                     }
-                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_AirPuff, cellList[i].ToVector3Shifted(), map, 2.5f, .05f, .05f, Rand.Range(2f,3f), Rand.Range(-60, 60), .5f, -70, Rand.Range(0, 360));
+                    TM_FleckMaker.ThrowGenericFleck(FleckDefOf.AirPuff, cellList[i].ToVector3Shifted(), map, 2.5f, .05f, .05f, Rand.Range(2f,3f), Rand.Range(-60, 60), .5f, -70, Rand.Range(0, 360));
                 }
             }
 

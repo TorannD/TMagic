@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Verse;
 using RimWorld;
-using GiddyUpCore;
-using GiddyUpCore.Storage;
+//using GiddyUpCore;
+//using GiddyUpCore.Storage;
 
 namespace TorannMagic.ModCheck
 {
@@ -13,11 +12,11 @@ namespace TorannMagic.ModCheck
     {
         public static void ForceDismount(Pawn pawn)
         {
-            ExtendedPawnData epd = Base.Instance.GetExtendedDataStorage().GetExtendedDataFor(pawn);
-            if (epd != null && epd.mount != null)
-            {
-                epd.mount.jobs.EndCurrentJob(Verse.AI.JobCondition.InterruptForced, true);
-            }
+            //ExtendedPawnData epd = Base.Instance.GetExtendedDataStorage().GetExtendedDataFor(pawn);
+            //if (epd != null && epd.mount != null)
+            //{
+            //    epd.mount.jobs.EndCurrentJob(Verse.AI.JobCondition.InterruptForced, true);
+            //}
         }
 
         public static bool IsMount(Pawn pawn)
@@ -32,11 +31,11 @@ namespace TorannMagic.ModCheck
         public static Pawn GetMount(Pawn rider)
         {
             Pawn mount = null;
-            ExtendedPawnData epd = Base.Instance.GetExtendedDataStorage().GetExtendedDataFor(rider);            
-            if (epd != null && epd.mount != null && epd.mount.CurJobDef.defName == "Mounted")
-            {
-                mount = epd.mount;
-            }
+            //ExtendedPawnData epd = Base.Instance.GetExtendedDataStorage().GetExtendedDataFor(rider);
+            //if (epd != null && epd.mount != null && epd.mount.CurJobDef.defName == "Mounted")
+            //{
+            //    mount = epd.mount;
+            //}
             return mount;
         }
     }

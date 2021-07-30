@@ -68,7 +68,7 @@ namespace TorannMagic
                         {
                             newPawn.mindState.mentalStateHandler.Reset();
                             newPawn.jobs.StopAll();
-                            MoteMaker.ThrowMicroSparks(newPawn.Position.ToVector3().normalized, newPawn.Map);
+                            FleckMaker.ThrowMicroSparks(newPawn.Position.ToVector3().normalized, newPawn.Map);
                             float sev = Rand.Range(pwrVal, 2 * pwrVal);
                             HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_AntiManipulation, sev);
                             sev = Rand.Range(pwrVal, 2 * pwrVal);
@@ -96,7 +96,7 @@ namespace TorannMagic
                             HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_Breathing, sev);
                             sev = Rand.Range(pwrVal, 2 * pwrVal);
                             HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_Sight, sev);
-                            MoteMaker.ThrowMicroSparks(newPawn.Position.ToVector3().normalized, newPawn.Map);
+                            FleckMaker.ThrowMicroSparks(newPawn.Position.ToVector3().normalized, newPawn.Map);
                             if (pwrVal > 0)
                             {
                                 TM_MoteMaker.ThrowManaPuff(newPawn.Position.ToVector3(), newPawn.Map, 1f);

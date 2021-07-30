@@ -106,7 +106,7 @@ namespace TorannMagic
                     {
                         zflag = true;
                     }
-                    MoteMaker.ThrowDustPuff(newPos, pawn.Map, Rand.Range(0.8f, 1.2f));
+                    FleckMaker.ThrowDustPuff(newPos, pawn.Map, Rand.Range(0.8f, 1.2f));
                     newPos = GetNewPos(pawn.Position, pawn.Position.x <= target.x, pawn.Position.z <= target.z, false, 0, 0, xProb, 1 - xProb);
                     Log.Message("new pos is " + newPos);
                     pawn.SetPositionDirect(newPos);
@@ -135,7 +135,7 @@ namespace TorannMagic
                 zflag = false;
                 xflag = false;
                 SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
-                MoteMaker.ThrowSmoke(pawn.Position.ToVector3(), map, 1.2f);
+                FleckMaker.ThrowSmoke(pawn.Position.ToVector3(), map, 1.2f);
                 DoWhirlwindDamage(pawn);
                 DrawCleaving(pawn, 10);
 
@@ -190,7 +190,7 @@ namespace TorannMagic
                             if (cleaveVictim != null && cleaveVictim.Faction != caster.Faction)
                             {
                                 cleaveVictim.TakeDamage(dinfo);
-                                MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);
+                                FleckMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);
                                 CompAbilityUserMight comp = caster.GetComp<CompAbilityUserMight>();
                                 MightPowerSkill ver = comp.MightData.MightPowerSkill_Whirlwind.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Whirlwind_ver");
                                 DamageInfo dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Whirlwind, weaponDmg, 0, (float)-1, caster, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
@@ -199,7 +199,7 @@ namespace TorannMagic
                                 if (rnd < (ver.level * 5))
                                 {
                                     cleaveVictim.TakeDamage(dinfo2);
-                                    MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);
+                                    FleckMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);
                                 }
                             }
                         }
@@ -265,9 +265,9 @@ namespace TorannMagic
                 {
                     newPos = pawn.Position;
                     originPos = pawn.Position;
-                    MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
+                    FleckMaker.Static(pawn.TrueCenter(), pawn.Map, FleckDefOf.ExplosionFlash, 12f);
                     SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
-                    MoteMaker.ThrowDustPuff(originPos, pawn.Map, Rand.Range(1.2f, 1.8f));
+                    FleckMaker.ThrowDustPuff(originPos, pawn.Map, Rand.Range(1.2f, 1.8f));
                     XProb(target, pawn);
                     xProbOrigin = xProb;
                     weaponDmg = GetWeaponDmg(pawn);

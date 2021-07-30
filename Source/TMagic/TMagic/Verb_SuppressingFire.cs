@@ -28,7 +28,7 @@ namespace TorannMagic
                 }
 
                 Vector3 drawPos = pawn.DrawPos + (TM_Calc.GetVector(pawn.Position, targetVariation) * .5f);
-                MoteMaker.ThrowSmoke(drawPos, pawn.Map, Rand.Range(.4f, .7f));
+                FleckMaker.ThrowSmoke(drawPos, pawn.Map, Rand.Range(.4f, .7f));
                 TM_CopyAndLaunchProjectile.CopyAndLaunchThing(pawn.equipment.Primary.def.Verbs.FirstOrDefault().defaultProjectile, pawn, targetVariation, targetVariation, ProjectileHitFlags.All, pawn.equipment.Primary);
                 shotcount--;
                 if (shotcount <= 0)

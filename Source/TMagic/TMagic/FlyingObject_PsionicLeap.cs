@@ -105,9 +105,9 @@ namespace TorannMagic
         {
             if (pawn != null)
             {
-                MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
+                FleckMaker.Static(pawn.TrueCenter(), pawn.Map, FleckDefOf.ExplosionFlash, 12f);
                 SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
-                MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
+                FleckMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
                 TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_PsiCurrent"), this.ExactPosition, this.Map, Rand.Range(.3f, .5f), .1f, 0f, .1f, 0, 4f, this.trueAngle, this.trueAngle);
                 TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_PsiCurrent"), this.ExactPosition, this.Map, Rand.Range(.5f, .6f), .1f, .04f, .1f, 0, 7f, this.trueAngle, this.trueAngle);
                 TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_PsiCurrent"), this.ExactPosition, this.Map, Rand.Range(.7f, .8f), .1f, .08f, .1f, 0, 10f, this.trueAngle, this.trueAngle);
@@ -181,7 +181,7 @@ namespace TorannMagic
             else
             {
                 base.Position = this.ExactPosition.ToIntVec3();
-                MoteMaker.ThrowDustPuff(base.Position, base.Map, Rand.Range(0.8f, 1.2f));
+                FleckMaker.ThrowDustPuff(base.Position, base.Map, Rand.Range(0.8f, 1.2f));
                 bool flag2 = this.ticksToImpact <= 0;
                 if (flag2)
                 {

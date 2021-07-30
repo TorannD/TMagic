@@ -476,9 +476,9 @@ namespace TorannMagic
         {
             if (pawn != null)
             {
-                MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 1f);
+                FleckMaker.Static(pawn.TrueCenter(), pawn.Map, FleckDefOf.ExplosionFlash, 1f);
                 SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
-                MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
+                FleckMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
                 UpdateSoLPower();
                 this.glower = new CompGlower();
                 gProps.glowColor = new ColorInt(255, 255, 180, 1);
@@ -582,9 +582,9 @@ namespace TorannMagic
                 }            
                 if(this.delayCount == 10)
                 {
-                    MoteMaker.ThrowLightningGlow(this.ExactPosition, this.Map, 1f);
-                    MoteMaker.ThrowLightningGlow(this.ExactPosition, this.Map, .7f);
-                    MoteMaker.ThrowLightningGlow(this.ExactPosition, this.Map, .4f);
+                    FleckMaker.ThrowLightningGlow(this.ExactPosition, this.Map, 1f);
+                    FleckMaker.ThrowLightningGlow(this.ExactPosition, this.Map, .7f);
+                    FleckMaker.ThrowLightningGlow(this.ExactPosition, this.Map, .4f);
                 }
             }
             else if(this.shouldDismiss)
@@ -983,9 +983,9 @@ namespace TorannMagic
             base.Position = pawn.Position;
             this.origin = GetCasterOffset_Exact;
             Action_Hover(out destTarget);
-            MoteMaker.ThrowLightningGlow(GetCasterOffset_Exact, pawn.Map, .7f);
-            MoteMaker.ThrowLightningGlow(this.ExactPosition, this.Map, 1f);
-            MoteMaker.ThrowLightningGlow(this.ExactPosition, this.Map, .4f);
+            FleckMaker.ThrowLightningGlow(GetCasterOffset_Exact, pawn.Map, .7f);
+            FleckMaker.ThrowLightningGlow(this.ExactPosition, this.Map, 1f);
+            FleckMaker.ThrowLightningGlow(this.ExactPosition, this.Map, .4f);
         }
 
         public void Action_Hover(out Vector3 destTarget)
@@ -1165,7 +1165,7 @@ namespace TorannMagic
                 if (hi != null)
                 {
                     float tendQuality = Rand.Range(.3f, .6f) * LightPotency;
-                    hi.Tended(tendQuality);
+                    hi.Tended(tendQuality, 1f);
                 }
                 else
                 {

@@ -67,14 +67,14 @@ namespace TorannMagic
                 if (flag3)
                 {
                     this.PostImpactEffects(this.launcher as Pawn, hitTarget);
-                    MoteMaker.ThrowMicroSparks(this.destination, base.Map);
-                    MoteMaker.MakeStaticMote(this.destination, base.Map, ThingDefOf.Mote_ShotHit_Dirt, 1f);
+                    FleckMaker.ThrowMicroSparks(this.destination, base.Map);
+                    FleckMaker.Static(this.destination, base.Map, FleckDefOf.ShotHit_Dirt, 1f);
                 }
             }
             else
             {
-                MoteMaker.MakeStaticMote(this.ExactPosition, base.Map, ThingDefOf.Mote_ShotHit_Dirt, 1f);
-                MoteMaker.ThrowMicroSparks(this.ExactPosition, base.Map);
+                FleckMaker.Static(this.ExactPosition, base.Map, FleckDefOf.ShotHit_Dirt, 1f);
+                FleckMaker.ThrowMicroSparks(this.ExactPosition, base.Map);
             }
             for (int i = 0; i <= verVal; i++)
             {
@@ -93,8 +93,8 @@ namespace TorannMagic
         protected void StaticExplosion(IntVec3 pos, Map map, float radius)
         {
             ThingDef def = this.def;
-            Explosion(pos, map, radius, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_MicroSparks, 0.4f, 1, false, null, 0f, 1);
-            Explosion(pos, map, radius, DamageDefOf.Stun, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_MicroSparks, 0.4f, 1, false, null, 0f, 1);
+            Explosion(pos, map, radius, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, null, def, this.equipmentDef, null, 0.4f, 1, false, null, 0f, 1);
+            Explosion(pos, map, radius, DamageDefOf.Stun, this.launcher, null, def, this.equipmentDef, null, 0.4f, 1, false, null, 0f, 1);
 
         }
 

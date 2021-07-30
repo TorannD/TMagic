@@ -77,7 +77,7 @@ namespace TorannMagic
             SoundInfo info = SoundInfo.InMap(new TargetInfo(pawn.Position, pawn.Map, false), MaintenanceType.None);
             info.pitchFactor = .7f;
             SoundDefOf.EnergyShield_Reset.PlayOneShot(info);
-            MoteMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1.5f);
+            FleckMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1.5f);
             TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_TechnoShield, pawn.DrawPos, pawn.Map, .3f, .2f, 0, .2f, Rand.Range(-500, 500), 0, 0, Rand.Range(0, 360));
             TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_TechnoShield, pawn.DrawPos, pawn.Map, .6f, .2f, .1f, .1f, Rand.Range(-500, 500), 0, 0, Rand.Range(0, 360));
             TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_TechnoShield, pawn.DrawPos, pawn.Map, 1f, .2f, .2f, .05f, Rand.Range(-500, 500), 0, 0, Rand.Range(0, 360));

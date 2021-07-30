@@ -26,8 +26,8 @@ namespace TorannMagic
                         float val = (comp.SoL.LightEnergy +hdlc.LightEnergy)/2f;
                         comp.SoL.LightEnergy = val;
                         hdlc.LightEnergy = val;
-                        MoteMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1.2f);
-                        MoteMaker.ThrowLightningGlow(comp.SoL.DrawPos, comp.SoL.Map, 1.2f);
+                        FleckMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1.2f);
+                        FleckMaker.ThrowLightningGlow(comp.SoL.DrawPos, comp.SoL.Map, 1.2f);
                     }
                 }
             }

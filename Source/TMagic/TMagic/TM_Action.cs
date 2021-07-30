@@ -601,10 +601,10 @@ namespace TorannMagic
                         if (rnd < (ver * 15))
                         {
                             target.TakeDamage(dinfo);
-                            MoteMaker.ThrowMicroSparks(target.Position.ToVector3(), map);
+                            FleckMaker.ThrowMicroSparks(target.Position.ToVector3(), map);
                         }
                         target.TakeDamage(dinfo);
-                        MoteMaker.ThrowMicroSparks(target.Position.ToVector3(), map);
+                        FleckMaker.ThrowMicroSparks(target.Position.ToVector3(), map);
                         for (int i = 0; i < 8; i++)
                         {
                             IntVec3 intVec = target.PositionHeld + GenAdj.AdjacentCells[i];
@@ -613,13 +613,13 @@ namespace TorannMagic
                             if (cleaveVictim != null && cleaveVictim.Faction != caster.Faction && cleaveVictim.HostileTo(caster.Faction))
                             {
                                 cleaveVictim.TakeDamage(dinfo);
-                                MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);
+                                FleckMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);
                                 multiplePawns = true;
                                 rnd = GenMath.RoundRandom(random.Next(0, 100));
                                 if (rnd < (ver * 15))
                                 {
                                     cleaveVictim.TakeDamage(dinfo);
-                                    MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);
+                                    FleckMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);
                                 }
                             }
                         }
@@ -1127,7 +1127,7 @@ namespace TorannMagic
             {
 
             }
-            MoteMaker.ThrowSmoke(pawn.DrawPos, pawn.Map, 1.4f);
+            FleckMaker.ThrowSmoke(pawn.DrawPos, pawn.Map, 1.4f);
             TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_AlterFate, pawn.DrawPos, pawn.Map, 1.6f, .2f, .1f, .8f, -500, 0, 0, Rand.Range(0, 360));
             Effecter RecallFromEffect = TorannMagicDefOf.TM_RecallFromED.Spawn();
             RecallFromEffect.Trigger(new TargetInfo(pawn), new TargetInfo(pawn));
@@ -1315,7 +1315,7 @@ namespace TorannMagic
                     }
                     if (!flagList)
                     {
-                        Faction f = FactionGenerator.NewGeneratedFaction(fDef);
+                        Faction f = FactionGenerator.NewGeneratedFaction(new FactionGeneratorParms(fDef));
                         Find.FactionManager.Add(f);
                         //foreach (Map map in Find.Maps)
                         //{
@@ -1331,7 +1331,7 @@ namespace TorannMagic
                         }
                         else
                         {
-                            f.TryAffectGoodwillWith(Faction.OfPlayerSilentFail, fDef.startingGoodwill.RandomInRange, false, false, null, null);
+                            f.TryAffectGoodwillWith(Faction.OfPlayerSilentFail, 0, false, false, null, null);
                         }
                     }
                 }
@@ -1369,14 +1369,14 @@ namespace TorannMagic
         public static void TransmutateEffects(IntVec3 position, Pawn p)
         {
             Vector3 rndPos = position.ToVector3Shifted();
-            MoteMaker.ThrowHeatGlow(position, p.Map, 1f);
+            FleckMaker.ThrowHeatGlow(position, p.Map, 1f);
             for (int i = 0; i < 6; i++)
             {
                 rndPos.x += Rand.Range(-.5f, .5f);
                 rndPos.z += Rand.Range(-.5f, .5f);
                 rndPos.y += Rand.Range(.3f, 1.3f);
-                MoteMaker.ThrowSmoke(rndPos, p.Map, Rand.Range(.7f, 1.1f));
-                MoteMaker.ThrowLightningGlow(position.ToVector3Shifted(), p.Map, 1.4f);
+                FleckMaker.ThrowSmoke(rndPos, p.Map, Rand.Range(.7f, 1.1f));
+                FleckMaker.ThrowLightningGlow(position.ToVector3Shifted(), p.Map, 1.4f);
             }
         }
 
@@ -1388,7 +1388,7 @@ namespace TorannMagic
             {
                 float angle = Rand.Range(-30, 30);
                 TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_ExclamationRed, rndPos, p.Map, .4f, .6f, .05f, .25f, Rand.Range(-20, 20), 1f, angle, angle);
-                MoteMaker.ThrowLightningGlow(p.DrawPos, p.Map, .8f);
+                FleckMaker.ThrowLightningGlow(p.DrawPos, p.Map, .8f);
             }
             SoundInfo info = SoundInfo.InMap(new TargetInfo(p.Position, p.Map, false), MaintenanceType.None);
             info.pitchFactor = .6f;
@@ -1545,8 +1545,8 @@ namespace TorannMagic
                             for (int i = 0; i < 6; i++)
                             {
                                 TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Flowers, p.DrawPos, p.Map, Rand.Range(.3f, 1f), Rand.Range(1f, 1.5f), .1f, Rand.Range(.2f, .5f), Rand.Range(-100, 100), Rand.Range(1, 3), angle, Rand.Range(0, 360));
-                                MoteMaker.ThrowLightningGlow(p.DrawPos, p.Map, Rand.Range(.5f, 1f));
-                                TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, p.DrawPos, p.Map, Rand.Range(.5f, 1f), 3f, .1f, Rand.Range(.5f, 1f), Rand.Range(-20, 20), Rand.Range(.5f, .8f), angle, Rand.Range(0, 360));
+                                FleckMaker.ThrowLightningGlow(p.DrawPos, p.Map, Rand.Range(.5f, 1f));
+                                TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, p.DrawPos, p.Map, Rand.Range(.5f, 1f), 3f, .1f, Rand.Range(.5f, 1f), Rand.Range(-20, 20), Rand.Range(.5f, .8f), angle, Rand.Range(0, 360));
                             }
                         }
                         else
@@ -1555,8 +1555,8 @@ namespace TorannMagic
                             {
                                 float angle = Rand.Range(0, 360);
                                 TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Flowers, p.DrawPos, p.Map, Rand.Range(.3f, 1f), Rand.Range(1f, 1.5f), .1f, Rand.Range(.2f, .5f), Rand.Range(-100, 100), Rand.Range(1, 3), angle, Rand.Range(0, 360));
-                                MoteMaker.ThrowLightningGlow(p.DrawPos, p.Map, Rand.Range(.5f, 1f));
-                                TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, p.DrawPos, p.Map, Rand.Range(.5f, 1f), 3f, .1f, Rand.Range(.5f, 1f), Rand.Range(-20, 20), Rand.Range(.5f, .8f), angle, Rand.Range(0, 360));
+                                FleckMaker.ThrowLightningGlow(p.DrawPos, p.Map, Rand.Range(.5f, 1f));
+                                TM_MoteMaker.ThrowGenericMote(ThingDefOf.Gas_Smoke, p.DrawPos, p.Map, Rand.Range(.5f, 1f), 3f, .1f, Rand.Range(.5f, 1f), Rand.Range(-20, 20), Rand.Range(.5f, .8f), angle, Rand.Range(0, 360));
                             }
                         }
                         surgeText = "Flowers";
@@ -1635,7 +1635,7 @@ namespace TorannMagic
                     if (thingList[i].def == ThingDefOf.Fire)
                     {
                         //Log.Message("removing fire at " + position);
-                        MoteMaker.ThrowHeatGlow(position, map, .6f);
+                        FleckMaker.ThrowHeatGlow(position, map, .6f);
                         thingList[i].Destroy(DestroyMode.Vanish);
                         i--;
                     }
@@ -1655,11 +1655,11 @@ namespace TorannMagic
             impactAngleVect = Vector3Utility.HorizontalVectorFromAngle(angle);
             Vector3 loc = shieldedPawn.TrueCenter() + impactAngleVect.RotatedBy(180f) * 0.5f;
             float num = Mathf.Min(10f, 2f + amount / 10f);
-            MoteMaker.MakeStaticMote(loc, shieldedPawn.Map, ThingDefOf.Mote_ExplosionFlash, num);
+            FleckMaker.Static(loc, shieldedPawn.Map, FleckDefOf.ExplosionFlash, num);
             int num2 = (int)num;
             for (int i = 0; i < num2; i++)
             {
-                MoteMaker.ThrowDustPuff(loc, shieldedPawn.Map, Rand.Range(0.8f, 1.2f));
+                FleckMaker.ThrowDustPuff(loc, shieldedPawn.Map, Rand.Range(0.8f, 1.2f));
                 DrawShieldHit(shieldedPawn, amount, impactAngleVect);
             }
         }

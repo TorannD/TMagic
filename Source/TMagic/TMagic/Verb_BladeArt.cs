@@ -26,8 +26,8 @@ namespace TorannMagic
                         HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_BladeArtHD, 4);
                     }
 
-                    MoteMaker.ThrowHeatGlow(pawn.Position, map, 1.5f);
-                    MoteMaker.ThrowAirPuffUp(pawn.Position.ToVector3(), map);
+                    FleckMaker.ThrowHeatGlow(pawn.Position, map, 1.5f);
+                    FleckMaker.ThrowAirPuffUp(pawn.Position.ToVector3(), map);
                 }
                 else
                 {

@@ -45,7 +45,7 @@ namespace TorannMagic
                 else
                 {
                     HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_HediffSprint, .5f + pwrVal);
-                    MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, 1f);
+                    FleckMaker.ThrowDustPuff(pawn.Position, pawn.Map, 1f);
                 }
             }
             return true;

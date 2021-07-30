@@ -22,13 +22,17 @@ namespace TorannMagic
             return 75f;            
         }
 
-        public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth)
+        public override GizmoResult GizmoOnGUI(Vector2 topLeft, float maxWidth, GizmoRenderParms parms)
         {
             if (!pawn.DestroyedOrNull() && !pawn.Dead && itemComp != null)
             {
 
-                    Rect overRect = new Rect(topLeft.x + 2, topLeft.y, this.GetWidth(75), 75); //overall rect size (shell)
-                    Find.WindowStack.ImmediateWindow(984798, overRect, WindowLayer.GameUI, delegate
+                Rect overRect = new Rect(topLeft.x + 2, topLeft.y, this.GetWidth(75), 75); //overall rect size (shell)
+                if (parms.highLight)
+                {
+                    QuickSearchWidget.DrawStrongHighlight(overRect.ExpandedBy(12f));
+                }
+                Find.WindowStack.ImmediateWindow(984798, overRect, WindowLayer.GameUI, delegate
                     {
                         int barHeight = ((75 - 5));
                         Rect rect = overRect.AtZero().ContractedBy(6f); //inner, smaller rect

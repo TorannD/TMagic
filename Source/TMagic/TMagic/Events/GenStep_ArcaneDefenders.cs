@@ -19,7 +19,7 @@ namespace TorannMagic
         public override void Generate(Map map, GenStepParams parms)
         {
             IntVec3 intVec;
-            if (RCellFinder.TryFindRandomCellNearTheCenterOfTheMapWith((IntVec3 x) => GenGrid.Standable(x, map) && !GridsUtility.Fogged(x, map) && GridsUtility.GetRoom(x, map, (RegionType)6).CellCount >= 4, map, out intVec))
+            if (RCellFinder.TryFindRandomCellNearTheCenterOfTheMapWith((IntVec3 x) => GenGrid.Standable(x, map) && !GridsUtility.Fogged(x, map) && GridsUtility.GetRoom(x, map).CellCount >= 4, map, out intVec))
             {
                 float num = this.pointsRange.RandomInRange;
                 List<Pawn> list = new List<Pawn>();

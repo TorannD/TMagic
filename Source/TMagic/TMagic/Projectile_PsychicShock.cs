@@ -217,7 +217,7 @@ namespace TorannMagic
             if (!victim.IsColonist && !victim.IsPrisoner && victim.Faction != null && !victim.Faction.HostileTo(pawn.Faction))
             {
                 Faction faction = victim.Faction;
-                faction.TrySetRelationKind(pawn.Faction, FactionRelationKind.Hostile, false, null);
+                faction.TryAffectGoodwillWith(pawn.Faction, -100, true, true, TorannMagicDefOf.TM_OffensiveMagic, victim);
             }
         }
     }
