@@ -146,7 +146,7 @@ namespace TorannMagic
                     for (int i = 0; i < needs.Count; i++)
                     {
                         if (needs[i].def == NeedDefOf.Food || needs[i].def == NeedDefOf.Joy || needs[i].def == NeedDefOf.Rest || needs[i].def.defName == "Mood" || needs[i].def.defName == "Beauty" ||
-                            needs[i].def.defName == "Comfort" || needs[i].def.defName == "Outdoors" || needs[i].def.defName == "RoomSize")
+                            needs[i].def.defName == "Comfort" || needs[i].def.defName == "Outdoors" || needs[i].def.defName == "RoomSize" || needs[i].def.defName == "Bladder" || needs[i].def.defName == "Hygiene")
                         {
                             needs[i].CurLevel = needs[i].MaxLevel;
                         }
