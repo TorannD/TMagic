@@ -13,15 +13,15 @@ namespace TorannMagic
     {
         protected override bool TryCastShot()
         {
-            Pawn caster = base.CasterPawn;
             Pawn pawn = this.currentTarget.Thing as Pawn;
 
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-            if(comp.IsMagicUser)
+            if (comp.IsMagicUser)
             {
-                if(comp.summonedSentinels.Count > 0)
+                if (comp.summonedSentinels.Count > 0)
                 {
-                    for(int i =0; i < comp.summonedSentinels.Count; i++)
+                    var toRemove = new HashSet<Thing>();
+                    for (int i = 0; i < comp.summonedSentinels.Count; i++)
                     {
                         Thing sentinel = comp.summonedSentinels[i];
                         if (!sentinel.DestroyedOrNull())
@@ -33,15 +33,11 @@ namespace TorannMagic
                                 sentinel.Destroy(DestroyMode.Vanish);
                             }
                         }
-                        else
-                        {
-                            comp.summonedSentinels.Remove(comp.summonedSentinels[i]);
-                        }
-                    }
-                }
-                else
-                {
 
+                        toRemove.Add(sentinel);
+                    }
+
+                    comp.summonedSentinels.RemoveAll(toRemove.Contains);
                 }
             }
             return true;
