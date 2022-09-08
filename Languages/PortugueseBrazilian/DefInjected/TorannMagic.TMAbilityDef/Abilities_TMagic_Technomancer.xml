@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_TechnoBit.label>Techno-Bit</TM_TechnoBit.label>
+
+	<TM_TechnoBit.description>The techno-bit is a small, autonomous orb that assists the technomancer in many tasks and provides the technomancer with additional support capabilities. The techno-bit assist can be toggled and will not perform any task while disabled.
+	
+Undrafted: the techno-bit assists in crafting, mining and construction tasks. It will also repair nearby buildings, androids, and mechanoids.
+
+Drafted: uses an internal focus-LED to fire micro lasers at the technomancers target. Performs accelerated repairs to nearby robotic pawns or buildings.</TM_TechnoBit.description>
+
+	<TM_TechnoWeapon.label>Engineer Weapon</TM_TechnoWeapon.label>
+
+	<TM_TechnoWeapon.description>The technomancer applies their knowledge of engineering and magic to create a modified version of an existing weapon.  This weapon is molded out of raw mana and physically anchored to the technomancer as an extension of their body.
+Because of this, the weapon will disintegrate if separated from the technomancer.  This weapon will be automatically equipped by the technomancer once created.
+
+Weapon specialists also have access to modified ammunition and nano stimulants for improved combat capabilities.
+
+To create a techno weapon: target a weapon on the ground. Targeted weapon must be ranged, with an industrial or higher tech level, and use standard firing action.</TM_TechnoWeapon.description>
+
+	<TM_OrbitalStrike_III.label>Orbital Strike III</TM_OrbitalStrike_III.label>
+
+	<TM_OrbitalStrike_III.description>Hack into a network of orbital bombardment satellites and enter a target designation. By using random, arcane signatures to mask their activity, technomancers can continually manipulate advanced systems without being positively identified and locked out.
+		
+Range: 100
+Warmup: 1.6s
+Radius: 5.6</TM_OrbitalStrike_III.description>
+
+	<TM_TechnoTurret.label>Mark-IV Turret</TM_TechnoTurret.label>
+
+	<TM_TechnoTurret.description>Deploys and establishes a neural link to the Mark-IV turret. The Mark-IV is remotely controlled by the caster. After the turret is deployed,any activity or movement by the caster will break the neural link and miniaturize the Mark-IV weapon system. Rockets and mortars consume mana per shot.
+
+The Mark-IV will automatically miniaturize itself when it takes critical damage and can cause neural feedback to the technomancer manning the system.</TM_TechnoTurret.description>
+
+	<TM_Overdrive.label>Overdrive</TM_Overdrive.label>
+
+	<TM_Overdrive.description>Overdrive the targeted mechanical, electrical, or AI system with fabricated nanites that pushes the system beyond its limits. Overdrive will cause damage to the system periodically.
+
+Can be applied to: power generators, turrets, robots, androids, and mechanoids.</TM_Overdrive.description>
+
+	<TM_Sabotage.label>Sabotage</TM_Sabotage.label>
+
+	<TM_Sabotage.description>Sabotage overrides the targets mechanical failsafes, logic functions, and any other exploitable system within a small area. The effects of sabotage can range from reduced mechanical performance, temporary shutdown, self destruction, catastrophic failure and even loss of ability to determine friend from foe.
+
+Can be applied to: batteries, power generators, turrets, robots, androids, and mechanoids.</TM_Sabotage.description>
+
+	<TM_OrbitalStrike.label>Orbital Strike</TM_OrbitalStrike.label>
+
+	<TM_OrbitalStrike.description>Hack into a network of orbital bombardment satellites and enter a target designation. By using random, arcane signatures to mask their activity, technomancers can continually manipulate advanced systems without being positively identified and locked out.
+		
+Range: 70
+Warmup: 3s
+Radius: 2.5</TM_OrbitalStrike.description>
+
+	<TM_OrbitalStrike_II.label>Orbital Strike II</TM_OrbitalStrike_II.label>
+
+	<TM_OrbitalStrike_II.description>Hack into a network of orbital bombardment satellites and enter a target designation. By using random, arcane signatures to mask their activity, technomancers can continually manipulate advanced systems without being positively identified and locked out.
+		
+Range: 90
+Warmup: 1.8s
+Radius: 5.0</TM_OrbitalStrike_II.description>
+
+	<TM_NanoStimulant.label>Nano Stimulant</TM_NanoStimulant.label>
+
+	<TM_NanoStimulant.description>An injection of nanites that temporarily enhances the combat capabilities of the user. This stimulant is specially synthesized by the technomancer for their own unique biological and genetic makeup. It isn't chemically addictive, but is harmful for any other pawn. 
+
+The nanites are fueled by mana and energy within the body and will rapidly cause fatigue. 
+
+When the nanites burn out, they will form platelets to cauterize and stop bleeding and even heal small wounds. Use of nano stimulants will accelerate any active disease or infection.</TM_NanoStimulant.description>
+
+	<TM_OrbitalStrike_I.label>Orbital Strike I</TM_OrbitalStrike_I.label>
+
+	<TM_OrbitalStrike_I.description>Hack into a network of orbital bombardment satellites and enter a target designation. By using random, arcane signatures to mask their activity, technomancers can continually manipulate advanced systems without being positively identified and locked out.
+		
+Range: 80
+Warmup: 2.1s
+Radius: 4.2</TM_OrbitalStrike_I.description>
+
+	<TM_TechnoShield.label>Kinetic Shield</TM_TechnoShield.label>
+
+	<TM_TechnoShield.description>Surrounds the target in a kinetic field that repels inbound projectiles. The kinetic shield is able to deflect projectiles depending on their kinetic energy, heavier projectiles are more difficult to deflect and will penetrate low powered shields. 
+		
+The amount of kinetic energy involved in a deflection is determined by the amount of damage that would be caused by the projectile.</TM_TechnoShield.description>
+
+</LanguageData>

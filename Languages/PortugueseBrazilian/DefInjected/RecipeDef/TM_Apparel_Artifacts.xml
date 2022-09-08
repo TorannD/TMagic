@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<AdministerOrbOfTheEternal.label>administer orb of the eternal</AdministerOrbOfTheEternal.label>
+
+	<AdministerOrbOfTheEternal.description>Applies the power of the Orb of the Eternal. This is a single use infusion of magical energy that will heal wounds, restore limbs, and cure diseases. The healing energy will target and heal the single worst health condition affecting someone at any given time.</AdministerOrbOfTheEternal.description>
+
+	<AdministerOrbOfTheEternal.jobstring>Using Orb of the Eternal.</AdministerOrbOfTheEternal.jobstring>
+
+</LanguageData>

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_ArcaneConstruction.label>arcane facilities</TM_ArcaneConstruction.label>
+
+	<TM_ArcaneConstruction.description>Opens research into various facilities and workbenches that enabled the creation of unique magical items and effects.</TM_ArcaneConstruction.description>
+
+	<TM_ArcaneFundamentals.label>arcane fundamentals</TM_ArcaneFundamentals.label>
+
+	<TM_ArcaneFundamentals.description>Basic research on how arcane power is linked to the physical realm and to other mages.</TM_ArcaneFundamentals.description>
+
+	<TM_MagicCircle.label>Magic Circle</TM_MagicCircle.label>
+
+	<TM_MagicCircle.description>Advanced research on the geometry and symmetry of ley lines that enables magic users to combine their energy to create incredible effects.</TM_MagicCircle.description>
+
+	<TM_Portals.description>Allows the construction of a portal - a powerful artifact that enables instant travel between colonies.\n\nRequires an Arcane Mage trained in Gateways to activate.</TM_Portals.description>
+
+	<TM_ManaStorage.label>mana storage</TM_ManaStorage.label>
+
+	<TM_ManaStorage.description>Develops ways to store mana.</TM_ManaStorage.description>
+
+	<TM_PlantCultivation.label>cultivation</TM_PlantCultivation.label>
+
+	<TM_PlantCultivation.description>Invest research into botany to gain an understanding of how to cultivate plants with properties relevant to magic and use their resources to supplement or fuel the arcane arts.</TM_PlantCultivation.description>
+
+	<TM_ArcaneForging.label>Arcane Forge</TM_ArcaneForging.label>
+
+	<TM_ArcaneForging.description>Develop the means of using arcane power to craft various items and equipment. Completion of this research will also reveal how to make Manaweave, a unique material that enhances arcane power.</TM_ArcaneForging.description>
+
+	<TM_ForgeReplication.label>Forge Replication</TM_ForgeReplication.label>
+
+	<TM_ForgeReplication.description>Enhances the Arcane Forge with a technique that allows it to extract the design from any craftable item and duplicate it at the forge.</TM_ForgeReplication.description>
+
+	<TM_Enchanting.description>Enables construction of the gemcutting bench and the crafting of tier I enchanting gems.</TM_Enchanting.description>
+
+	<TM_AdvancedEnchanting.label>advanced enchanting</TM_AdvancedEnchanting.label>
+
+	<TM_AdvancedEnchanting.description>Enables crafting to tier II enchanting gems.</TM_AdvancedEnchanting.description>
+
+	<TM_ExpertEnchanting.label>expert enchanting</TM_ExpertEnchanting.label>
+
+	<TM_ExpertEnchanting.description>Enables crafting of tier III enchanting gems.</TM_ExpertEnchanting.description>
+
+	<TM_MagicyteRefining.label>magicyte refining</TM_MagicyteRefining.label>
+
+	<TM_MagicyteRefining.description>Experimental research that identifies ways to use magicyte to create magical items. Develops a recipe to create mana potions at the drug lab.</TM_MagicyteRefining.description>
+
+	<TM_MagicScribing.label>scribing</TM_MagicScribing.label>
+
+	<TM_MagicScribing.description>Develop the knowledge to mix ink with powdered magicyte and apply it through specially design press capable of reproducing scrolls and books that can contain the power of magic comprehension.</TM_MagicScribing.description>
+
+	<TM_AdvancedScribing.label>advanced scribing</TM_AdvancedScribing.label>
+
+	<TM_AdvancedScribing.description>Allows the use of higher quality material to develop more powerful books and scrolls.</TM_AdvancedScribing.description>
+
+	<TM_MasterScribing.label>master scribing</TM_MasterScribing.label>
+
+	<TM_MasterScribing.description>Allows the scribing of master spells.</TM_MasterScribing.description>
+
+	<TM_ArcaneCrafting.label>arcane crafting</TM_ArcaneCrafting.label>
+
+	<TM_ArcaneCrafting.description>The first step in understanding the link between the arcane and physical. Enables construction of powerful gems of insight and magical equipment.</TM_ArcaneCrafting.description>
+
+	<TM_ArcaneApparel.label>magical equipment</TM_ArcaneApparel.label>
+
+	<TM_ArcaneApparel.description>Applies knowledge of arcane crafting and enchantments to learn how to recreate equipment with more powerful magical properties.</TM_ArcaneApparel.description>
+
+	<TM_ArcaneArtifacts.label>arcane artifacts</TM_ArcaneArtifacts.label>
+
+	<TM_ArcaneArtifacts.description>Enables the recreation of arcane artifacts through extensive research combining knowledge of enchantments, ancient designs, runes, and rumors.</TM_ArcaneArtifacts.description>
+
+</LanguageData>

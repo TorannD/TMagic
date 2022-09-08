@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Dire_WolfR.label>dire wolf</TM_Dire_WolfR.label>
+
+	<TM_Dire_WolfR.description>Dire wolves roam the north in great packs and fear neither man nor megasloth. A savage predator armed with razor sharp teeth and a coat like steel thread, dire wolves are as fierce as any known creature. They are often tied to mythical lore and are said to possess a unique link to arcane powers.</TM_Dire_WolfR.description>
+
+	<TM_Dire_WolfR.tools.0.label>left claw</TM_Dire_WolfR.tools.0.label>
+
+	<TM_Dire_WolfR.tools.1.label>right claw</TM_Dire_WolfR.tools.1.label>
+
+	<TM_Dire_WolfR.tools.3.label>head</TM_Dire_WolfR.tools.3.label>
+
+</LanguageData>

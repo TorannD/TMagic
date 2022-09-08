@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_SpiritWolfR.label>spirit wolf</TM_SpiritWolfR.label>
+
+	<TM_SpiritWolfR.description>Spirit wolves coalesce in the physical realm at the behest of a powerful shaman. Wolves are a dangerous mammal alone but are a force to be feared when hunting in a pack. The spirit wolf will fade back into the ether after a brief period or if it is defeated.</TM_SpiritWolfR.description>
+
+	<TM_SpiritWolfR.tools.0.label>left claw</TM_SpiritWolfR.tools.0.label>
+
+	<TM_SpiritWolfR.tools.1.label>right claw</TM_SpiritWolfR.tools.1.label>
+
+	<TM_SpiritWolfR.tools.3.label>head</TM_SpiritWolfR.tools.3.label>
+
+</LanguageData>

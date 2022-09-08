@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<SoulBondPhysical.stages.0.label>bliss (physical)</SoulBondPhysical.stages.0.label>
+
+	<SoulBondPhysical.stages.0.description>My pain is gone. I'm floating in a sea of euphoria.</SoulBondPhysical.stages.0.description>
+
+	<SoulBondMental.stages.0.label>bliss (mental)</SoulBondMental.stages.0.label>
+
+	<SoulBondMental.stages.0.description>My worries and concerns have been washed away. Things that used to concern me are now little more than distractions that float away in a haze of dreams and reality.</SoulBondMental.stages.0.description>
+
+	<VitalityDrainTD.stages.0.label>Vitality Drain</VitalityDrainTD.stages.0.label>
+
+	<VitalityDrainTD.stages.0.description>That succubus was amazing - my worries are a dull memory and I feel relaxed, even a little lethargic.</VitalityDrainTD.stages.0.description>
+
+</LanguageData>

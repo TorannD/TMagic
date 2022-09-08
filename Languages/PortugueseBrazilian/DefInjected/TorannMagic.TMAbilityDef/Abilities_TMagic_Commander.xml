@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_MoveOut_II.label>Move Out!</TM_MoveOut_II.label>
+
+	<TM_MoveOut_II.description>Issues the command for all nearby pawns to move out. Affected pawns will instantly gain increased movement and cannot be staggered or stunned. Pawns suffer reduced movement at the end of the command to recover their energy.
+
+Cooldown: 100s
+Max Targets: 14
+Range: 18
+
+Pawns may reject commands if the commander's social skill is below 10; a social skill of 5 would have a 50% chance to be rejected by each pawn in range.
+Commands cause a mood debuff; each command increases the severity of the debuff.
+Commands do not affect the commander.</TM_MoveOut_II.description>
+
+	<TM_HoldTheLine.label>Hold The Line!</TM_HoldTheLine.label>
+
+	<TM_HoldTheLine.description>Issues the command for all nearby pawns to hold the line. Affected pawns will gain damage resistance, pain tolerance, mental stability, and increased fire rate but will have reduced movement.
+
+Cooldown: 200s
+Max Targets: 7
+Range: 10
+
+Pawns may reject commands if the commander's social skill is below 10; a social skill of 5 would have a 50% chance to be rejected by each pawn in range.
+Commands cause a mood debuff; each command increases the severity of the debuff.
+Commands do not affect the commander.</TM_HoldTheLine.description>
+
+	<TM_CommanderAura.label>Commander</TM_CommanderAura.label>
+
+	<TM_CommanderAura.description>Use ability to toggle the Commander Aura: improves the mood of all nearby pawns but decreases their productivity. While this aura is enabled, the Commander will seek out pawns that have broken down due to mental stress and give them a motivational speech to overcome a breakdown. Pawns that overcome a mental break in this manner will not gain Catharsis. This aura requires 80 stamina to maintain.</TM_CommanderAura.description>
+
+	<TM_TaskMasterAura.label>Task Master</TM_TaskMasterAura.label>
+
+	<TM_TaskMasterAura.description>Use ability to toggle the Task Master Aura: increases work speed, eating speed, and carrying capacity but causes pawns to be less social. Pawns under the scrutiny of a Task Master will acquire a mood penalty. This aura requires 70 stamina to maintain.</TM_TaskMasterAura.description>
+
+	<TM_StayAlert_II.label>Stay Alert!</TM_StayAlert_II.label>
+
+	<TM_StayAlert_II.description>Issues the command for all nearby pawns to stay on high alert. Affected pawns will instantly gain rest and have increased sight.
+
+Cooldown: 100s
+Max Targets: 14
+Range: 18
+
+Pawns may reject commands if the commander's social skill is below 10; a social skill of 5 would have a 50% chance to be rejected by each pawn in range.
+Commands cause a mood debuff; each command increases the severity of the debuff.
+Commands do not affect the commander.</TM_StayAlert_II.description>
+
+	<TM_MoveOut_III.label>Move Out!</TM_MoveOut_III.label>
+
+	<TM_MoveOut_III.description>Issues the command for all nearby pawns to move out. Affected pawns will instantly gain increased movement and cannot be staggered or stunned. Pawns suffer reduced movement at the end of the command to recover their energy.
+
+Cooldown: 90s
+Max Targets: 15
+Range: 20
+
+Pawns may reject commands if the commander's social skill is below 10; a social skill of 5 would have a 50% chance to be rejected by each pawn in range.
+Commands cause a mood debuff; each command increases the severity of the debuff.
+Commands do not affect the commander.</TM_MoveOut_III.description>
+
+	<TM_MoveOut_I.label>Move Out!</TM_MoveOut_I.label>
+
+	<TM_MoveOut_I.description>Issues the command for all nearby pawns to move out. Affected pawns will instantly gain increased movement and cannot be staggered or stunned. Pawns suffer reduced movement at the end of the command to recover their energy.
+	
+Cooldown: 110s
+Max Targets: 12
+Range: 16
+
+Pawns may reject commands if the commander's social skill is below 10; a social skill of 5 would have a 50% chance to be rejected by each pawn in range.
+Commands cause a mood debuff; each command increases the severity of the debuff.
+Commands do not affect the commander.</TM_MoveOut_I.description>
+
+	<TM_HoldTheLine_III.label>Hold The Line!</TM_HoldTheLine_III.label>
+
+	<TM_HoldTheLine_III.description>Issues the command for all nearby pawns to hold the line. Affected pawns will gain damage resistance, pain tolerance, mental stability, and increased fire rate but will have reduced movement.
+
+Cooldown: 150s
+Max Targets: 10
+Range: 15
+
+Pawns may reject commands if the commander's social skill is below 10; a social skill of 5 would have a 50% chance to be rejected by each pawn in range.
+Commands cause a mood debuff; each command increases the severity of the debuff.
+Commands do not affect the commander.</TM_HoldTheLine_III.description>
+
+	<TM_StayAlert_I.label>Stay Alert!</TM_StayAlert_I.label>
+
+	<TM_StayAlert_I.description>Issues the command for all nearby pawns to stay on high alert. Affected pawns will instantly gain rest and have increased sight.
+	
+Cooldown: 110s
+Max Targets: 12
+Range: 16
+
+Pawns may reject commands if the commander's social skill is below 10; a social skill of 5 would have a 50% chance to be rejected by each pawn in range.
+Commands cause a mood debuff; each command increases the severity of the debuff.
+Commands do not affect the commander.</TM_StayAlert_I.description>
+
+	<TM_ProvisionerAura.label>Provisioner</TM_ProvisionerAura.label>
+
+	<TM_ProvisionerAura.description>Use ability to toggle the Provisioner Aura: improves rest and reduces hunger of nearby pawns. Can be improved to repair equipment, increase natural healing rates, and boost energy regeneration. This aura requires 60 stamina to maintain.</TM_ProvisionerAura.description>
+
+	<TM_StayAlert_III.label>Stay Alert!</TM_StayAlert_III.label>
+
+	<TM_StayAlert_III.description>Issues the command for all nearby pawns to stay on high alert. Affected pawns will instantly gain rest and have increased sight.
+
+Cooldown: 90s
+Max Targets: 15
+Range: 20
+
+Pawns may reject commands if the commander's social skill is below 10; a social skill of 5 would have a 50% chance to be rejected by each pawn in range.
+Commands cause a mood debuff; each command increases the severity of the debuff.
+Commands do not affect the commander.</TM_StayAlert_III.description>
+
+	<TM_MoveOut.label>Move Out!</TM_MoveOut.label>
+
+	<TM_MoveOut.description>Issues the command for all nearby pawns to move out. Affected pawns will instantly gain increased movement and prevents pawns from being staggered or stunned. Pawns have reduced movement at the end of the command to recover their energy.
+
+Cooldown: 120s
+Max Targets: 10
+Range: 14
+
+Pawns may reject commands if the commander's social skill is below 10; a social skill of 5 would have a 50% chance to be rejected by each pawn in range.
+Commands cause a mood debuff; each command increases the severity of the debuff.
+Commands do not affect the commander.</TM_MoveOut.description>
+
+	<TM_HoldTheLine_II.label>Hold The Line!</TM_HoldTheLine_II.label>
+
+	<TM_HoldTheLine_II.description>Issues the command for all nearby pawns to hold the line. Affected pawns will gain damage resistance, pain tolerance, mental stability, and increased fire rate but will have reduced movement.
+
+Cooldown: 160s
+Max Targets: 9
+Range: 14
+
+Pawns may reject commands if the commander's social skill is below 10; a social skill of 5 would have a 50% chance to be rejected by each pawn in range.
+Commands cause a mood debuff; each command increases the severity of the debuff.
+Commands do not affect the commander.</TM_HoldTheLine_II.description>
+
+	<TM_StayAlert.label>Stay Alert!</TM_StayAlert.label>
+
+	<TM_StayAlert.description>Issues the command for all nearby pawns to stay on high alert. Affected pawns will instantly gain rest and have increased sight. 
+
+Cooldown: 120s
+Max Targets: 10
+Range: 14
+
+Pawns may reject commands if the commander's social skill is below 10; a social skill of 5 would have a 50% chance to be rejected by each pawn in range.
+Commands cause a mood debuff; each command increases the severity of the debuff.
+Commands do not affect the commander.</TM_StayAlert.description>
+
+	<TM_HoldTheLine_I.label>Hold The Line!</TM_HoldTheLine_I.label>
+
+	<TM_HoldTheLine_I.description>Issues the command for all nearby pawns to hold the line. Affected pawns will gain damage resistance, pain tolerance, mental stability, and increased fire rate but will have reduced movement.
+
+Cooldown: 180s
+Max Targets: 8
+Range: 12
+
+Pawns may reject commands if the commander's social skill is below 10; a social skill of 5 would have a 50% chance to be rejected by each pawn in range.
+Commands cause a mood debuff; each command increases the severity of the debuff.
+Commands do not affect the commander.</TM_HoldTheLine_I.description>
+
+</LanguageData>

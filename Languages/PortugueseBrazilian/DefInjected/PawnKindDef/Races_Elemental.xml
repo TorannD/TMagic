@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_LesserEarth_Elemental.label>lesser earth elemental</TM_LesserEarth_Elemental.label>
+
+	<TM_LesserEarth_Elemental.lifestages.0.label>lesser earth elemental</TM_LesserEarth_Elemental.lifestages.0.label>
+
+	<TM_Earth_Elemental.label>earth elemental</TM_Earth_Elemental.label>
+
+	<TM_Earth_Elemental.lifestages.0.label>earth elemental</TM_Earth_Elemental.lifestages.0.label>
+
+	<TM_GreaterEarth_Elemental.label>greater earth elemental</TM_GreaterEarth_Elemental.label>
+
+	<TM_GreaterEarth_Elemental.lifestages.0.label>greater earth elemental</TM_GreaterEarth_Elemental.lifestages.0.label>
+
+	<TM_LesserFire_Elemental.label>lesser fire elemental</TM_LesserFire_Elemental.label>
+
+	<TM_LesserFire_Elemental.lifestages.0.label>lesser fire elemental</TM_LesserFire_Elemental.lifestages.0.label>
+
+	<TM_Fire_Elemental.label>fire elemental</TM_Fire_Elemental.label>
+
+	<TM_Fire_Elemental.lifestages.0.label>fire elemental</TM_Fire_Elemental.lifestages.0.label>
+
+	<TM_GreaterFire_Elemental.label>greater fire elemental</TM_GreaterFire_Elemental.label>
+
+	<TM_GreaterFire_Elemental.lifestages.0.label>greater fire elemental</TM_GreaterFire_Elemental.lifestages.0.label>
+
+	<TM_LesserWater_Elemental.label>lesser water elemental</TM_LesserWater_Elemental.label>
+
+	<TM_LesserWater_Elemental.lifestages.0.label>lesser water elemental</TM_LesserWater_Elemental.lifestages.0.label>
+
+	<TM_Water_Elemental.label>water elemental</TM_Water_Elemental.label>
+
+	<TM_Water_Elemental.lifestages.0.label>water elemental</TM_Water_Elemental.lifestages.0.label>
+
+	<TM_GreaterWater_Elemental.label>greater water elemental</TM_GreaterWater_Elemental.label>
+
+	<TM_GreaterWater_Elemental.lifestages.0.label>greater water elemental</TM_GreaterWater_Elemental.lifestages.0.label>
+
+	<TM_LesserWind_Elemental.label>lesser wind elemental</TM_LesserWind_Elemental.label>
+
+	<TM_LesserWind_Elemental.lifestages.0.label>lesser wind elemental</TM_LesserWind_Elemental.lifestages.0.label>
+
+	<TM_Wind_Elemental.label>wind elemental</TM_Wind_Elemental.label>
+
+	<TM_Wind_Elemental.lifestages.0.label>wind elemental</TM_Wind_Elemental.lifestages.0.label>
+
+	<TM_GreaterWind_Elemental.label>greater wind elemental</TM_GreaterWind_Elemental.label>
+
+	<TM_GreaterWind_Elemental.lifestages.0.label>greater wind elemental</TM_GreaterWind_Elemental.lifestages.0.label>
+
+</LanguageData>

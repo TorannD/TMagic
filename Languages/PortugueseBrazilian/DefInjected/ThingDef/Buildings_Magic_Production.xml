@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TableSmallMagicCircle.label>magic focal point</TableSmallMagicCircle.label>
+
+	<TableSmallMagicCircle.description>Arcane focal points are the byproduct of research into magical ley lines and arcane interconnectivity. The focal point allows a mage to visualize their connection to gaia and other other mages, allowing them greater interaction with nature, order, and chaos. The focal point can link the arcane power of two mages to perform powerful rituals.
+
+The type of material used in construction directly affects the quality of the magic circle.
+Stone (any): no bonuses
+Steel: no bonus
+Wood: no bonus
+Jade: success chance +15%
+Silver: refunds 15% of material cost
+Plasteel: event points +15%
+Gold: event points +10%, duration +15%, refunds 10% of material cost
+Uranium: duration and success chance +10%
+Arcalleum: success chance +10%, refunds 10% of mana cost
+
+*Admin note: the circle will fuel itself when it detects mages capable of performing the ritual. Mages can not be forced to work at the focal point, but will perform rituals when conditions are met.</TableSmallMagicCircle.description>
+
+	<TableGemcutting.label>gemcrafting table</TableGemcutting.label>
+
+	<TableGemcutting.description>A workbench used for refining enchanting stones</TableGemcutting.description>
+
+	<TableArcaneForge.label>arcane forge</TableArcaneForge.label>
+
+	<TableArcaneForge.description>The arcane forge allows a mage to wield raw arcane power to create material objects. 
+	
+Scientifically, the arcane forge might be described as a matter fabricator, though the exact mechanics have yet to be determined.  Only those possessing the ability to manipulate arcane power are able to use the arcane forge.
+
+Using the arcane forge dramatically increases crafting speed but consumes mana.  Items of quality are determined by the mage's intelligence skill and class level.</TableArcaneForge.description>
+
+	<TableMagicPrinter.label>scribing table</TableMagicPrinter.label>
+
+	<TableMagicPrinter.description>A printing press used to make books and scrolls.</TableMagicPrinter.description>
+
+	<TableMagicCircle.label>magic circle</TableMagicCircle.label>
+
+	<TableMagicCircle.description>The magic circle is a construct that amplifies magic by aligning the physical and arcane into a focal point. While it may seem simple, the circle is outlined with elaborate runes and constructed with detailed precision.
+
+Mages can use the magic circle to augment their power or combine their energy with other mages to create unique, powerful effects. The circle may accomodate up to six mages.
+
+The type of material used in construction directly affects the quality of the magic circle.
+Stone (any): no bonuses
+Steel: no bonus
+Wood: no bonus
+Jade: success chance +30%
+Silver: refunds 25% of material cost
+Plasteel: event points +15%, duration +10%
+Gold: event points +20%, duration +20%, refunds 15% of material cost
+Uranium: duration and success chance +20%
+Arcalleum: success chance +15%, refunds 25% of mana cost
+
+*Admin note: the circle will fuel itself when it detects mages capable of performing the ritual.</TableMagicCircle.description>
+
+</LanguageData>

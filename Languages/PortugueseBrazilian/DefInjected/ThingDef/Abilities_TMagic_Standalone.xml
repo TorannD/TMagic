@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Projectile_ChargeBattery.label>charge battery</Projectile_ChargeBattery.label>
+
+	<Projectile_Flight.label>flight</Projectile_Flight.label>
+
+	<Projectile_EMP.label>EMP</Projectile_EMP.label>
+
+	<Projectile_TM_SpawnThing.label>spawn magical item</Projectile_TM_SpawnThing.label>
+
+	<Projectile_Extinguish.label>extinguish</Projectile_Extinguish.label>
+
+	<Projectile_ThrowingKnife.label>Throwing Knife</Projectile_ThrowingKnife.label>
+
+	<FlyingObject_DirtDevil.label>flying object</FlyingObject_DirtDevil.label>
+
+	<Projectile_TempestStrike.label>Tempest strike</Projectile_TempestStrike.label>
+
+	<FlyingObject_Flight.label>flying object</FlyingObject_Flight.label>
+
+	<FlyingObject_LightningTrap.label>lightning</FlyingObject_LightningTrap.label>
+
+	<Projectile_DirtDevil.label>dirt devil</Projectile_DirtDevil.label>
+
+	<Projectile_FertileLands.label>fertile lands</Projectile_FertileLands.label>
+
+	<Projectile_Heater.label>spawn magic heater</Projectile_Heater.label>
+
+	<Projectile_Cooler.label>spawn magic cooler</Projectile_Cooler.label>
+
+	<Projectile_SiphonMana.label>siphon mana</Projectile_SiphonMana.label>
+
+	<Projectile_SmokeCloud.label>smoke cloud</Projectile_SmokeCloud.label>
+
+	<Projectile_ArcaneBolt.label>arcane bolt</Projectile_ArcaneBolt.label>
+
+	<Projectile_PowerNode.label>spawn arcane power node</Projectile_PowerNode.label>
+
+	<Projectile_TransferMana.label>transfer mana</Projectile_TransferMana.label>
+
+	<Projectile_DryGround.label>dry ground</Projectile_DryGround.label>
+
+	<Projectile_WetGround.label>moisturize ground</Projectile_WetGround.label>
+
+	<Projectile_BriarPatch.label>briar patch</Projectile_BriarPatch.label>
+
+	<Projectile_Sunlight.label>spawn magic light</Projectile_Sunlight.label>
+
+</LanguageData>

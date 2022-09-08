@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_LightDD.label>Claro</TM_LightDD.label>
+
+	<TM_LightDD.description>Energia destrutiva do domínio da luz.</TM_LightDD.description>
+
+	<TM_LightDD.comps.0.labeltendedwell>enfaixado</TM_LightDD.comps.0.labeltendedwell>
+
+	<TM_LightDD.comps.0.labeltendedwellinner>suturado</TM_LightDD.comps.0.labeltendedwellinner>
+
+	<TM_LightDD.comps.0.labelsolidtendedwell>definir</TM_LightDD.comps.0.labelsolidtendedwell>
+
+	<TM_LightDD.injuryprops.destroyedlabel>queimado</TM_LightDD.injuryprops.destroyedlabel>
+
+	<TM_LightDD.injuryprops.destroyedoutlabel>queimado</TM_LightDD.injuryprops.destroyedoutlabel>
+
+	<Snowball.label>bola de neve</Snowball.label>
+
+	<Snowball.description>Gelo e neve compactados.</Snowball.description>
+
+	<Snowball.comps.0.labeltendedwell>enfaixado</Snowball.comps.0.labeltendedwell>
+
+	<Snowball.comps.0.labeltendedwellinner>suturado</Snowball.comps.0.labeltendedwellinner>
+
+	<Snowball.comps.0.labelsolidtendedwell>definir</Snowball.comps.0.labelsolidtendedwell>
+
+	<Snowball.injuryprops.destroyedlabel>congelado</Snowball.injuryprops.destroyedlabel>
+
+	<Snowball.injuryprops.destroyedoutlabel>Estilhaçado</Snowball.injuryprops.destroyedoutlabel>
+
+	<FrostRay.label>geada</FrostRay.label>
+
+	<FrostRay.description>Raio de energia super-resfriado.</FrostRay.description>
+
+	<FrostRay.comps.0.labeltendedwell>enfaixado</FrostRay.comps.0.labeltendedwell>
+
+	<FrostRay.comps.0.labeltendedwellinner>suturado</FrostRay.comps.0.labeltendedwellinner>
+
+	<FrostRay.comps.0.labelsolidtendedwell>definir</FrostRay.comps.0.labelsolidtendedwell>
+
+	<FrostRay.injuryprops.destroyedlabel>congelado</FrostRay.injuryprops.destroyedlabel>
+
+	<FrostRay.injuryprops.destroyedoutlabel>Estilhaçado</FrostRay.injuryprops.destroyedoutlabel>
+
+	<TM_Lightning.label>Relâmpago</TM_Lightning.label>
+
+	<TM_Lightning.description>Um poderoso raio de eletricidade.</TM_Lightning.description>
+
+	<TM_Lightning.comps.0.labeltendedwell>enfaixado</TM_Lightning.comps.0.labeltendedwell>
+
+	<TM_Lightning.comps.0.labeltendedwellinner>suturado</TM_Lightning.comps.0.labeltendedwellinner>
+
+	<TM_Lightning.comps.0.labelsolidtendedwell>definir</TM_Lightning.comps.0.labelsolidtendedwell>
+
+	<TM_Lightning.injuryprops.destroyedlabel>derretido</TM_Lightning.injuryprops.destroyedlabel>
+
+	<TM_Lightning.injuryprops.destroyedoutlabel>queimado</TM_Lightning.injuryprops.destroyedoutlabel>
+
+	<TM_DisablingShot_HD.label>desabilitando o tiro</TM_DisablingShot_HD.label>
+
+	<TM_DisablingShot_HD.description>Um projétil projetado para desativar em vez de matar.</TM_DisablingShot_HD.description>
+
+	<TM_DisablingShot_HD.comps.0.labeltendedwell>bandaged</TM_DisablingShot_HD.comps.0.labeltendedwell>
+
+	<TM_DisablingShot_HD.comps.0.labeltendedwellinner>sutured</TM_DisablingShot_HD.comps.0.labeltendedwellinner>
+
+	<TM_DisablingShot_HD.comps.0.labelsolidtendedwell>set</TM_DisablingShot_HD.comps.0.labelsolidtendedwell>
+
+	<TM_DisablingShot_HD.injuryprops.destroyedlabel>shot off</TM_DisablingShot_HD.injuryprops.destroyedlabel>
+
+	<TM_DisablingShot_HD.injuryprops.destroyedoutlabel>shot out</TM_DisablingShot_HD.injuryprops.destroyedoutlabel>
+
+	<TM_arcaneSpectre.label>spirit cut</TM_arcaneSpectre.label>
+
+	<TM_arcaneSpectre.description>Spirit damage from a spectre.</TM_arcaneSpectre.description>
+
+	<TM_arcaneSpectre.comps.0.labeltendedwell>bandaged</TM_arcaneSpectre.comps.0.labeltendedwell>
+
+	<TM_arcaneSpectre.comps.0.labeltendedwellinner>sutured</TM_arcaneSpectre.comps.0.labeltendedwellinner>
+
+	<TM_arcaneSpectre.comps.0.labelsolidtendedwell>set</TM_arcaneSpectre.comps.0.labelsolidtendedwell>
+
+	<TM_arcaneSpectre.injuryprops.destroyedlabel>Cut off</TM_arcaneSpectre.injuryprops.destroyedlabel>
+
+	<TM_arcaneSpectre.injuryprops.destroyedoutlabel>Cut out</TM_arcaneSpectre.injuryprops.destroyedoutlabel>
+
+	<TM_GrapplingHook.label>Grappling Hook</TM_GrapplingHook.label>
+
+	<TM_GrapplingHook.description>Pulls targets close.</TM_GrapplingHook.description>
+
+	<TM_GrapplingHook.comps.0.labeltendedwell>bandaged</TM_GrapplingHook.comps.0.labeltendedwell>
+
+	<TM_GrapplingHook.comps.0.labeltendedwellinner>sutured</TM_GrapplingHook.comps.0.labeltendedwellinner>
+
+	<TM_GrapplingHook.comps.0.labelsolidtendedwell>set</TM_GrapplingHook.comps.0.labelsolidtendedwell>
+
+	<TM_GrapplingHook.injuryprops.destroyedlabel>torn off</TM_GrapplingHook.injuryprops.destroyedlabel>
+
+	<TM_GrapplingHook.injuryprops.destroyedoutlabel>torn out</TM_GrapplingHook.injuryprops.destroyedoutlabel>
+
+	<TM_BlazingPowerHD.label>Blazing Power</TM_BlazingPowerHD.label>
+
+	<TM_BlazingPowerHD.description>Arcane power directed through a focusing vessel.</TM_BlazingPowerHD.description>
+
+	<TM_BlazingPowerHD.comps.0.labeltendedwell>bandaged</TM_BlazingPowerHD.comps.0.labeltendedwell>
+
+	<TM_BlazingPowerHD.comps.0.labeltendedwellinner>sutured</TM_BlazingPowerHD.comps.0.labeltendedwellinner>
+
+	<TM_BlazingPowerHD.comps.0.labelsolidtendedwell>set</TM_BlazingPowerHD.comps.0.labelsolidtendedwell>
+
+	<TM_BlazingPowerHD.injuryprops.destroyedlabel>destroyed</TM_BlazingPowerHD.injuryprops.destroyedlabel>
+
+	<TM_BlazingPowerHD.injuryprops.destroyedoutlabel>destroyed</TM_BlazingPowerHD.injuryprops.destroyedoutlabel>
+
+	<TM_LightningCloud.label>Lightning</TM_LightningCloud.label>
+
+	<TM_LightningCloud.description>Ambient electrical discharge caused by condensing charged particles.</TM_LightningCloud.description>
+
+	<TM_LightningCloud.comps.0.labeltendedwell>bandaged</TM_LightningCloud.comps.0.labeltendedwell>
+
+	<TM_LightningCloud.comps.0.labeltendedwellinner>sutured</TM_LightningCloud.comps.0.labeltendedwellinner>
+
+	<TM_LightningCloud.comps.0.labelsolidtendedwell>set</TM_LightningCloud.comps.0.labelsolidtendedwell>
+
+	<TM_LightningCloud.injuryprops.destroyedlabel>melted</TM_LightningCloud.injuryprops.destroyedlabel>
+
+	<TM_LightningCloud.injuryprops.destroyedoutlabel>burned out</TM_LightningCloud.injuryprops.destroyedoutlabel>
+
+	<TM_BloodyCutHD.label>bloody cut</TM_BloodyCutHD.label>
+
+	<TM_BloodyCutHD.description>A deep cut that bleeds profusely.</TM_BloodyCutHD.description>
+
+	<TM_BloodyCutHD.comps.0.labeltendedwell>bandaged</TM_BloodyCutHD.comps.0.labeltendedwell>
+
+	<TM_BloodyCutHD.comps.0.labeltendedwellinner>sutured</TM_BloodyCutHD.comps.0.labeltendedwellinner>
+
+	<TM_BloodyCutHD.comps.0.labelsolidtendedwell>set</TM_BloodyCutHD.comps.0.labelsolidtendedwell>
+
+	<TM_BloodyCutHD.injuryprops.destroyedlabel>Cut off</TM_BloodyCutHD.injuryprops.destroyedlabel>
+
+	<TM_BloodyCutHD.injuryprops.destroyedoutlabel>Cut out</TM_BloodyCutHD.injuryprops.destroyedoutlabel>
+
+	<TM_Holy.label>Holy Wrath</TM_Holy.label>
+
+	<TM_Holy.description>Belief made into destructive energy.</TM_Holy.description>
+
+	<TM_Holy.comps.0.labeltendedwell>bandaged</TM_Holy.comps.0.labeltendedwell>
+
+	<TM_Holy.comps.0.labeltendedwellinner>sutured</TM_Holy.comps.0.labeltendedwellinner>
+
+	<TM_Holy.comps.0.labelsolidtendedwell>set</TM_Holy.comps.0.labelsolidtendedwell>
+
+	<TM_Holy.injuryprops.destroyedlabel>burned off</TM_Holy.injuryprops.destroyedlabel>
+
+	<TM_Holy.injuryprops.destroyedoutlabel>burned out</TM_Holy.injuryprops.destroyedoutlabel>
+
+	<Iceshard.label>iceshard</Iceshard.label>
+
+	<Iceshard.description>A projected bolt of ice formed with razor sharp edges.</Iceshard.description>
+
+	<Iceshard.comps.0.labeltendedwell>bandaged</Iceshard.comps.0.labeltendedwell>
+
+	<Iceshard.comps.0.labeltendedwellinner>sutured</Iceshard.comps.0.labeltendedwellinner>
+
+	<Iceshard.comps.0.labelsolidtendedwell>set</Iceshard.comps.0.labelsolidtendedwell>
+
+	<Iceshard.injuryprops.destroyedlabel>Shredded</Iceshard.injuryprops.destroyedlabel>
+
+	<Iceshard.injuryprops.destroyedoutlabel>Torn to shreds</Iceshard.injuryprops.destroyedoutlabel>
+
+	<TM_ManaMine.label>mana explosion</TM_ManaMine.label>
+
+	<TM_ManaMine.description>Explosive release of contained mana.</TM_ManaMine.description>
+
+	<TM_ManaMine.comps.0.labeltendedwell>bandaged</TM_ManaMine.comps.0.labeltendedwell>
+
+	<TM_ManaMine.comps.0.labeltendedwellinner>sutured</TM_ManaMine.comps.0.labeltendedwellinner>
+
+	<TM_ManaMine.comps.0.labelsolidtendedwell>set</TM_ManaMine.comps.0.labelsolidtendedwell>
+
+	<TM_ManaMine.injuryprops.destroyedlabel>blasted off</TM_ManaMine.injuryprops.destroyedlabel>
+
+	<TM_ManaMine.injuryprops.destroyedoutlabel>burned out</TM_ManaMine.injuryprops.destroyedoutlabel>
+
+	<TM_MagicMissile.label>Magic Missile</TM_MagicMissile.label>
+
+	<TM_MagicMissile.description>Arcane energy projected in small, focused bursts.</TM_MagicMissile.description>
+
+	<TM_MagicMissile.comps.0.labeltendedwell>bandaged</TM_MagicMissile.comps.0.labeltendedwell>
+
+	<TM_MagicMissile.comps.0.labeltendedwellinner>sutured</TM_MagicMissile.comps.0.labeltendedwellinner>
+
+	<TM_MagicMissile.comps.0.labelsolidtendedwell>set</TM_MagicMissile.comps.0.labelsolidtendedwell>
+
+	<TM_MagicMissile.injuryprops.destroyedlabel>sliced off</TM_MagicMissile.injuryprops.destroyedlabel>
+
+	<TM_MagicMissile.injuryprops.destroyedoutlabel>cut out</TM_MagicMissile.injuryprops.destroyedoutlabel>
+
+	<TM_ThrumboCleave.description>An attack powerful enough to shear through multiple objects.</TM_ThrumboCleave.description>
+
+	<TM_ThrumboCleave.comps.0.labeltendedwell>bandaged</TM_ThrumboCleave.comps.0.labeltendedwell>
+
+	<TM_ThrumboCleave.comps.0.labeltendedwellinner>sutured</TM_ThrumboCleave.comps.0.labeltendedwellinner>
+
+	<TM_ThrumboCleave.comps.0.labelsolidtendedwell>set</TM_ThrumboCleave.comps.0.labelsolidtendedwell>
+
+	<TM_ThrumboCleave.injuryprops.destroyedlabel>Sliced off</TM_ThrumboCleave.injuryprops.destroyedlabel>
+
+	<TM_ThrumboCleave.injuryprops.destroyedoutlabel>Sliced out</TM_ThrumboCleave.injuryprops.destroyedoutlabel>
+
+	<Blizzard.label>blizzard</Blizzard.label>
+
+	<Blizzard.description>A storm of ice and snow.</Blizzard.description>
+
+	<Blizzard.comps.0.labeltendedwell>bandaged</Blizzard.comps.0.labeltendedwell>
+
+	<Blizzard.comps.0.labeltendedwellinner>sutured</Blizzard.comps.0.labeltendedwellinner>
+
+	<Blizzard.comps.0.labelsolidtendedwell>set</Blizzard.comps.0.labelsolidtendedwell>
+
+	<Blizzard.injuryprops.destroyedlabel>frozen</Blizzard.injuryprops.destroyedlabel>
+
+	<Blizzard.injuryprops.destroyedoutlabel>shattered</Blizzard.injuryprops.destroyedoutlabel>
+
+	<TM_ChiBurnHD.label>Chi burn</TM_ChiBurnHD.label>
+
+	<TM_ChiBurnHD.description>Damage sustained from a burst of ch'i energy.</TM_ChiBurnHD.description>
+
+	<TM_ChiBurnHD.comps.0.labeltendedwell>bandaged</TM_ChiBurnHD.comps.0.labeltendedwell>
+
+	<TM_ChiBurnHD.comps.0.labeltendedwellinner>sutured</TM_ChiBurnHD.comps.0.labeltendedwellinner>
+
+	<TM_ChiBurnHD.comps.0.labelsolidtendedwell>set</TM_ChiBurnHD.comps.0.labelsolidtendedwell>
+
+	<TM_ChiBurnHD.injuryprops.destroyedlabel>burned</TM_ChiBurnHD.injuryprops.destroyedlabel>
+
+	<TM_ChiBurnHD.injuryprops.destroyedoutlabel>disintegrated</TM_ChiBurnHD.injuryprops.destroyedoutlabel>
+
+	<TM_SpiritHD.label>Spirit</TM_SpiritHD.label>
+
+	<TM_SpiritHD.description>Harmful spiritual energy.</TM_SpiritHD.description>
+
+	<TM_SpiritHD.comps.0.labeltendedwell>bandaged</TM_SpiritHD.comps.0.labeltendedwell>
+
+	<TM_SpiritHD.comps.0.labeltendedwellinner>sutured</TM_SpiritHD.comps.0.labeltendedwellinner>
+
+	<TM_SpiritHD.comps.0.labelsolidtendedwell>set</TM_SpiritHD.comps.0.labelsolidtendedwell>
+
+	<TM_SpiritHD.injuryprops.destroyedlabel>lifeless</TM_SpiritHD.injuryprops.destroyedlabel>
+
+	<TM_SpiritHD.injuryprops.destroyedoutlabel>lifeless</TM_SpiritHD.injuryprops.destroyedoutlabel>
+
+	<TM_Firebolt.label>Firebolt</TM_Firebolt.label>
+
+	<TM_Firebolt.description>Projected bolt of elemental fire.</TM_Firebolt.description>
+
+	<TM_Firebolt.comps.0.labeltendedwell>bandaged</TM_Firebolt.comps.0.labeltendedwell>
+
+	<TM_Firebolt.comps.0.labeltendedwellinner>sutured</TM_Firebolt.comps.0.labeltendedwellinner>
+
+	<TM_Firebolt.comps.0.labelsolidtendedwell>set</TM_Firebolt.comps.0.labelsolidtendedwell>
+
+	<TM_Firebolt.injuryprops.destroyedlabel>burned</TM_Firebolt.injuryprops.destroyedlabel>
+
+	<TM_Firebolt.injuryprops.destroyedoutlabel>burned out</TM_Firebolt.injuryprops.destroyedoutlabel>
+
+	<TM_DisablingBlowHD.label>disabling blow</TM_DisablingBlowHD.label>
+
+	<TM_DisablingBlowHD.description>A melee blow meant to disable rather than kill.</TM_DisablingBlowHD.description>
+
+	<TM_DisablingBlowHD.comps.0.labeltendedwell>bandaged</TM_DisablingBlowHD.comps.0.labeltendedwell>
+
+	<TM_DisablingBlowHD.comps.0.labeltendedwellinner>sutured</TM_DisablingBlowHD.comps.0.labeltendedwellinner>
+
+	<TM_DisablingBlowHD.comps.0.labelsolidtendedwell>set</TM_DisablingBlowHD.comps.0.labelsolidtendedwell>
+
+	<TM_DisablingBlowHD.injuryprops.destroyedlabel>smashed</TM_DisablingBlowHD.injuryprops.destroyedlabel>
+
+	<TM_DisablingBlowHD.injuryprops.destroyedoutlabel>crushed</TM_DisablingBlowHD.injuryprops.destroyedoutlabel>
+
+	<TM_ToxinHD.label>toxin</TM_ToxinHD.label>
+
+	<TM_ToxinHD.description>damage from toxins.</TM_ToxinHD.description>
+
+	<TM_ToxinHD.comps.0.labeltendedwell>tended</TM_ToxinHD.comps.0.labeltendedwell>
+
+	<TM_ToxinHD.comps.0.labeltendedwellinner>tended</TM_ToxinHD.comps.0.labeltendedwellinner>
+
+	<TM_ToxinHD.comps.0.labelsolidtendedwell>tended</TM_ToxinHD.comps.0.labelsolidtendedwell>
+
+	<TM_ToxinHD.injuryprops.destroyedlabel>destroyed</TM_ToxinHD.injuryprops.destroyedlabel>
+
+	<TM_ChiFistHD.label>strike</TM_ChiFistHD.label>
+
+	<TM_ChiFistHD.description>A melee strike from a monk.</TM_ChiFistHD.description>
+
+	<TM_ChiFistHD.comps.0.labeltendedwell>tended</TM_ChiFistHD.comps.0.labeltendedwell>
+
+	<TM_ChiFistHD.comps.0.labeltendedwellinner>sutured</TM_ChiFistHD.comps.0.labeltendedwellinner>
+
+	<TM_ChiFistHD.comps.0.labelsolidtendedwell>set</TM_ChiFistHD.comps.0.labelsolidtendedwell>
+
+	<TM_ChiFistHD.injuryprops.destroyedlabel>broken</TM_ChiFistHD.injuryprops.destroyedlabel>
+
+	<TM_ChiFistHD.injuryprops.destroyedoutlabel>removed</TM_ChiFistHD.injuryprops.destroyedoutlabel>
+
+	<TM_Whirlwind_Knockdown.label>Whirlwind Knockdown</TM_Whirlwind_Knockdown.label>
+
+	<TM_Whirlwind_Knockdown.description>Overwhelmed from a flurry of attacks.</TM_Whirlwind_Knockdown.description>
+
+	<TM_Whirlwind_Knockdown.comps.0.labeltendedwell>bandaged</TM_Whirlwind_Knockdown.comps.0.labeltendedwell>
+
+	<TM_Whirlwind_Knockdown.comps.0.labeltendedwellinner>sutured</TM_Whirlwind_Knockdown.comps.0.labeltendedwellinner>
+
+	<TM_Whirlwind_Knockdown.comps.0.labelsolidtendedwell>set</TM_Whirlwind_Knockdown.comps.0.labelsolidtendedwell>
+
+	<TM_Whirlwind_Knockdown.injuryprops.destroyedlabel>sliced off</TM_Whirlwind_Knockdown.injuryprops.destroyedlabel>
+
+	<TM_Whirlwind_Knockdown.injuryprops.destroyedoutlabel>cut out</TM_Whirlwind_Knockdown.injuryprops.destroyedoutlabel>
+
+	<TM_ArcaneHD.label>arcane</TM_ArcaneHD.label>
+
+	<TM_ArcaneHD.description>Destructive arcane power</TM_ArcaneHD.description>
+
+	<TM_ArcaneHD.comps.0.labeltendedwell>bandaged</TM_ArcaneHD.comps.0.labeltendedwell>
+
+	<TM_ArcaneHD.comps.0.labeltendedwellinner>sutured</TM_ArcaneHD.comps.0.labeltendedwellinner>
+
+	<TM_ArcaneHD.comps.0.labelsolidtendedwell>set</TM_ArcaneHD.comps.0.labelsolidtendedwell>
+
+	<TM_ArcaneHD.injuryprops.destroyedlabel>blasted off</TM_ArcaneHD.injuryprops.destroyedlabel>
+
+	<TM_ArcaneHD.injuryprops.destroyedoutlabel>blasted out</TM_ArcaneHD.injuryprops.destroyedoutlabel>
+
+</LanguageData>

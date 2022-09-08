@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_ChaosTraditionHD.label>Fluxo Caótico</TM_ChaosTraditionHD.label>
+
+	<TM_ChaosTraditionHD.description>Exercer o controle da realidade através da interpretação objetiva que resulta na ênfase da solidez física e mental de um Chaos Mage.</TM_ChaosTraditionHD.description>
+
+	<TM_ChaosTraditionHD.stages.0.label>I</TM_ChaosTraditionHD.stages.0.label>
+
+	<TM_ChaosTraditionHD.stages.1.label>II</TM_ChaosTraditionHD.stages.1.label>
+
+	<TM_ChaosTraditionHD.stages.2.label>III</TM_ChaosTraditionHD.stages.2.label>
+
+	<TM_ChaoticMindHD.label>Mente Caótica</TM_ChaoticMindHD.label>
+
+	<TM_ChaoticMindHD.description>Exercer o controle da realidade através da interpretação objetiva que resulta na ênfase da solidez física e mental de um Chaos Mage.</TM_ChaoticMindHD.description>
+
+	<TM_ChaoticMindHD.stages.0.label>pensamento</TM_ChaoticMindHD.stages.0.label>
+
+	<TM_ControlledChaosHD.label>Caos Controlado</TM_ControlledChaosHD.label>
+
+	<TM_ControlledChaosHD.description>Exercer o controle da realidade através da interpretação objetiva que resulta na ênfase da solidez física e mental de um Chaos Mage.</TM_ControlledChaosHD.description>
+
+	<TM_ControlledChaosHD.stages.0.label>CAOS</TM_ControlledChaosHD.stages.0.label>
+
+</LanguageData>

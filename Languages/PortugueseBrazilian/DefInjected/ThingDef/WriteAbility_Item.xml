@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<UnfinishedArcane.comps.0.uselabel>Write</UnfinishedArcane.comps.0.uselabel>
+
+	<UnfinishedArcane.label>Unfinished Torn Script</UnfinishedArcane.label>
+
+	<UnfinishedArcane.description>An arcane script ready to be filled with the secrets of unlocking magical powers...
+		
+Use a trained mage to record their arcane secrets in the book. The book can then be used to teach another, gifted pawn how to become the same class. Torn scripts will promote a gifted pawn to a magic class but will start with a random set of class abilities.
+
+Magically Gifted pawns can journal their theories and experiments in this book and learn to become a random magic class.</UnfinishedArcane.description>
+
+	<UnfinishedMartial.comps.0.uselabel>Write</UnfinishedMartial.comps.0.uselabel>
+
+	<UnfinishedMartial.label>Unfinished Martial Book</UnfinishedMartial.label>
+
+	<UnfinishedMartial.description>A book ready to be filled with the secrets of unlocking martial powers...
+
+Use a trained fighter to record their combat techniques in the book. The book can then be used to teach another pawn this combat technique.
+
+Physically adept pawns can journal their research and training in this book to develop the concepts of a random fighter class.</UnfinishedMartial.description>
+
+	<UnfinishedAdvArcane.comps.0.uselabel>Write</UnfinishedAdvArcane.comps.0.uselabel>
+
+	<UnfinishedAdvArcane.label>Unfinished Arcane Book</UnfinishedAdvArcane.label>
+
+	<UnfinishedAdvArcane.description>A arcane tome ready to be filled with the secrets of unlocking magical powers...
+		
+Use a trained mage to record their arcane secrets in the book. The book can then be used to teach another, gifted pawn how to become the same class. Arcane Tomes will promote a gifted pawn to a magic class and all class abilities except the master ability.
+
+Gifted pawns can journal their theories and experiments in this book and learn to become a random magic class.</UnfinishedAdvArcane.description>
+
+</LanguageData>

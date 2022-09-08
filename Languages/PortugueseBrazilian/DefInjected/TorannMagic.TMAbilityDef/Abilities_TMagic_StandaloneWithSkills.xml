@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Taunt.label>Taunt</TM_Taunt.label>
+
+	<TM_Taunt.description>Taunts nearby targets to attack this pawn.</TM_Taunt.description>
+
+	<TM_ShieldOther.label>Shield Other</TM_ShieldOther.label>
+
+	<TM_ShieldOther.description>Protects the target from damage for 60s or until the shield is broken.
+Absorbs up to 80 damage.
+The shield absorbs an additional .5 damage for each level of the caster.</TM_ShieldOther.description>
+
+	<TM_Explosion.label>Explosion!</TM_Explosion.label>
+
+	<TM_Explosion.description>Blackness shrouded in light, frenzied blaze clad in night, in the name of the crimson demons, let the collapse of thine origin manifest. Summon before me the root of thy power, hidden within the blossoming kingdom of demise. Explosion!</TM_Explosion.description>
+
+</LanguageData>

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_ValiantCharge.label>Valiant Charge</TM_ValiantCharge.label>
+
+	<TM_ValiantCharge.description>The Paladin is flies with the wings of an angel to fly to a distant location, shattering the ground with holy power upon landing.</TM_ValiantCharge.description>
+
+	<TM_Overwhelm.description>Holy power is unleashed from the paladin, overwhelming the physical and mental senses of any nearby creatures.</TM_Overwhelm.description>
+
+	<TM_P_RayofHope_III.label>Ray of Hope</TM_P_RayofHope_III.label>
+
+	<TM_P_RayofHope_III.description>Creates an aura of hope around the caster that periodically buffs an ally.
+		
+Ray of Hope: Arcane augmentation that assists the worker, improving their physical capacities and mood
+	
+Application Frequency: 	80-90s	
+Duration:	500-600s
+Manipulation, Moving:  +22%
+Mood increase:	+5
+
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</TM_P_RayofHope_III.description>
+
+	<TM_Shield_III.label>Shield</TM_Shield_III.label>
+
+	<TM_Shield_III.description>Protects the paladin from damage for 50s or until the shield is broken.
+Absorbs up to 150 damage.
+Reduces recharge to 25s.</TM_Shield_III.description>
+
+	<TM_P_RayofHope_II.label>Ray of Hope</TM_P_RayofHope_II.label>
+
+	<TM_P_RayofHope_II.description>Creates an aura of hope around the caster that periodically buffs an ally.
+		
+Ray of Hope: Arcane augmentation that assists the worker, improving their physical capacities and mood
+	
+Application Frequency: 80-90s	
+Duration: 500-600s
+Manipulation, Moving: +20%
+Mood increase:	+5
+
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</TM_P_RayofHope_II.description>
+
+	<TM_Shield_II.label>Shield</TM_Shield_II.label>
+
+	<TM_Shield_II.description>Protects the paladin from damage for 50s or until the shield is broken.
+Absorbs up to 135 damage.
+Reduces recharge to 27s.</TM_Shield_II.description>
+
+	<TM_P_RayofHope_I.label>Ray of Hope</TM_P_RayofHope_I.label>
+
+	<TM_P_RayofHope_I.description>Creates an aura of hope around the caster that periodically buffs an ally.
+		
+Ray of Hope: Arcane augmentation that assists the worker, improving their physical capacities and mood
+	
+Application Frequency: 	80-90s	
+Duration: 200-223s
+Manipulation, Moving: +18%
+Mood increase:	+4
+
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</TM_P_RayofHope_I.description>
+
+	<TM_Shield.label>Shield</TM_Shield.label>
+
+	<TM_Shield.description>Protects the paladin from damage for 50s or until the shield is broken.
+Absorbs up to 100 damage.</TM_Shield.description>
+
+	<TM_HolyWrath.label>Holy Wrath</TM_HolyWrath.label>
+
+	<TM_HolyWrath.description>Calls forth holy wrath upon the land.</TM_HolyWrath.description>
+
+	<TM_Heal.label>Heal</TM_Heal.label>
+
+	<TM_Heal.description>Invokes holy power to heal the wounds of a target. Base heal restores 8 health for up to 3 wounds. Cannot heal injuries of missing bodyparts.</TM_Heal.description>
+
+	<TM_P_RayofHope.label>Ray of Hope</TM_P_RayofHope.label>
+
+	<TM_P_RayofHope.description>Creates an aura of hope around the caster that periodically buffs an ally.
+		
+Ray of Hope: Arcane augmentation that assists the worker, improving their physical capacities and mood
+	
+Application Frequency: 	80-90s	
+Duration:  200-223s
+Manipulation, Moving:  +15%
+Mood increase:	+3
+
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</TM_P_RayofHope.description>
+
+	<TM_Shield_I.label>Shield</TM_Shield_I.label>
+
+	<TM_Shield_I.description>Protects the paladin from damage for 50s or until the shield is broken.
+Absorbs up to 125 damage.
+Reduces recharge to 30s.</TM_Shield_I.description>
+
+</LanguageData>

@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Artifact_OrbOfConviction.label>Orb Of Conviction</TM_Artifact_OrbOfConviction.label>
+
+	<TM_Artifact_OrbOfConviction.description>Also known as the Traitors Trinket, Orb of Insanity, and Mind Thief - the Orb of Conviction is a powerful and dangerous artifact. When filled with the conviction and magic of a caster, it can be used to press that conviction upon another.
+	
+If successful, the target will immediately join the casters faction, but will be affected by psychic shock.
+
+Only the most powerful mages can direct the power of this artifact; even then, it will exact a heavy price. The orb will implode once the spell has been cast and can only be used once.</TM_Artifact_OrbOfConviction.description>
+
+	<TM_Artifact_Magicyte.label>Ring of Knowledge</TM_Artifact_Magicyte.label>
+
+	<TM_Artifact_Magicyte.description>A ring enchanted with the essence of magicyte. This ring improves learning speed.</TM_Artifact_Magicyte.description>
+
+	<TM_Artifact_RingOfMalice.label>Ring of Malice</TM_Artifact_RingOfMalice.label>
+
+	<TM_Artifact_RingOfMalice.description>This ring gives off a dark aura and is perpetually cold to touch. The Ring of Malice increases the idle and maximum hate levels of a death knight.
+
+The Ring of Malice's power depends on the fame of its bearer and will grow with each wound taken or inflicted.</TM_Artifact_RingOfMalice.description>
+
+	<TM_Artifact_Marble.label>Mind Ward Pendant</TM_Artifact_Marble.label>
+
+	<TM_Artifact_Marble.description>A pendant enchanted with the essence of marble. This pendant improves its bearers mental state and provides a mental anchor. The pendant occasionally allows its bearer to break out of mental states.</TM_Artifact_Marble.description>
+
+	<TM_Artifact_OrbOfSouls_Full.label>Orb of Souls (filled)</TM_Artifact_OrbOfSouls_Full.label>
+
+	<TM_Artifact_OrbOfSouls_Full.description>The Orb of Souls is a powerful and dangerous artifact. This orb has absorbed traits and can be used to infuse these traits into a human-like pawn.
+
+Conflicting traits can never transfer into the target pawn. If the pawn possesses over 7 traits, then there is a 75% chance that a random, existing trait will be replaced with the trait being infused.
+
+The orb will implode and be destroyed once the traits have been released.</TM_Artifact_OrbOfSouls_Full.description>
+
+	<TM_Artifact_Iron.label>Amulet of Minor Protection</TM_Artifact_Iron.label>
+
+	<TM_Artifact_Iron.description>A pendant enchanted with the essence of iron. This pendant magically improves its wearers defenses.</TM_Artifact_Iron.description>
+
+	<TM_Artifact_Slate.label>Pendant of Mending</TM_Artifact_Slate.label>
+
+	<TM_Artifact_Slate.description>A pendant enchanted with the essence of slate. The slate pendant of mending will slowly recover the durability of all worn equipment.</TM_Artifact_Slate.description>
+
+	<TM_Artifact_Silver.label>Quicksilver Pendant</TM_Artifact_Silver.label>
+
+	<TM_Artifact_Silver.description>A pendant enchanted with silver essence. Known as a quicksilver pendant, this expensive artifact is said to grant increased agility to its wearer.</TM_Artifact_Silver.description>
+
+	<TM_Artifact_NecroticOrb.label>Necrotic Orb</TM_Artifact_NecroticOrb.label>
+
+	<TM_Artifact_NecroticOrb.description>An artifact that enhances the necrotic energy required to sustain the undead. The Necrotic Orb functions much like a battery; when equipped by a pawn that is sustaining undead, it absorbs energy from a necromancer as if it were an undead itself, however, it also reduces the total upkeep cost to sustain undead by 25%. When no energy is available from a necromancer, it will disperse energy to sustain undead.
+	
+Only one orb may be equipped by a pawn. Orbs only take affect when equipped by a pawn sustaining undead.</TM_Artifact_NecroticOrb.description>
+
+	<TM_Artifact_Sandstone.label>Charm of Rest</TM_Artifact_Sandstone.label>
+
+	<TM_Artifact_Sandstone.description>A pendant enchanted with the essence of sandstone. This pendant improves its wearers quality of rest and prevents passerby's to disturb their slumber.</TM_Artifact_Sandstone.description>
+
+	<TM_Artifact_Steel.label>Amulet of Protection</TM_Artifact_Steel.label>
+
+	<TM_Artifact_Steel.description>A pendant enchanted with the essence of steel. This pendant magically improves its wearers defenses.</TM_Artifact_Steel.description>
+
+	<TM_Artifact_BracersOfDefense.label>Bracers of Defense</TM_Artifact_BracersOfDefense.label>
+
+	<TM_Artifact_BracersOfDefense.description>Bracers crafted into hardened material that allow the wearer to block physical attacks. 40% block chance.
+
+Enchantments:
+Arcane Resistance 10%</TM_Artifact_BracersOfDefense.description>
+
+	<TM_Artifact_Granite.label>Ring of Labor</TM_Artifact_Granite.label>
+
+	<TM_Artifact_Granite.description>A ring enchanted with the essence of granite. This ring grants the bearer increased carrying capacity and manipulation.</TM_Artifact_Granite.description>
+
+	<TM_Artifact_RingOfBlood.label>Ring of Blood</TM_Artifact_RingOfBlood.label>
+
+	<TM_Artifact_RingOfBlood.description>A ring inset with a dark stone; currents of deep red and black swirl beneath its surface. This type of ring was first created by an ancient vampire to increase blood reserves and can be used by a blood mage to store blood magic.
+
+The Ring of Blood's power depends on the fame of its bearer and will grow with each human downed or killed.</TM_Artifact_RingOfBlood.description>
+
+	<TM_Artifact_BracersOfDeflection.label>Bracers of Deflection</TM_Artifact_BracersOfDeflection.label>
+
+	<TM_Artifact_BracersOfDeflection.description>Bracers crafted into reactive material that allow the wearer to block attacks and deflect projectiles. 30% block chance, all blocked attacks are deflected against enemies within 8 cells.
+
+Enchantments:
+Arcane Resistance 10%</TM_Artifact_BracersOfDeflection.description>
+
+	<TM_Artifact_RingOfEternalBlue.label>Ring of the Eternal Blue</TM_Artifact_RingOfEternalBlue.label>
+
+	<TM_Artifact_RingOfEternalBlue.description>A ring that seems to pulse with a soft blue light. This ring increases psychic sensitivity and reciprocates the psychic sensitivity of its bearer.
+
+The Ring of Eternal Blue will increase a psionic's energy proportionally with their psychic sensitivity.</TM_Artifact_RingOfEternalBlue.description>
+
+	<TM_Artifact_Wood.label>Ring of the Pathfinder</TM_Artifact_Wood.label>
+
+	<TM_Artifact_Wood.description>A ring enchanted with the essence of wood. The wearer of this ring will not be slowed by terrain and has improved foraging while in a caravan.</TM_Artifact_Wood.description>
+
+	<TM_Artifact_Medicine.label>Charm of Health</TM_Artifact_Medicine.label>
+
+	<TM_Artifact_Medicine.description>This charm improves the health of the bearer, granting improved immunity to diseases and helps wounds heal faster.</TM_Artifact_Medicine.description>
+
+	<TM_Artifact_OrbOfEternal.comps.1.uselabel>Use orb of the eternal</TM_Artifact_OrbOfEternal.comps.1.uselabel>
+
+	<TM_Artifact_OrbOfEternal.label>Orb of the Eternal</TM_Artifact_OrbOfEternal.label>
+
+	<TM_Artifact_OrbOfEternal.description>A single use infusion of magical energy prepared to heal wounds, restore limbs, and cure diseases. The healing energy will target and heal the single worst health condition affecting someone at any given time.
+
+Orbs of the Eternal have been used by mages, rulers, and the elite to prolong life. These orbs are valuable and rare due mostly to the secrecy surrounding the process of crafting an orb.</TM_Artifact_OrbOfEternal.description>
+
+	<TM_Artifact_Limestone.label>Cat Eye Pendant</TM_Artifact_Limestone.label>
+
+	<TM_Artifact_Limestone.description>A pendant enchanted with the essence of limestone. The wearer gains improved eyesight and can see in the dark. This pendant emits a soft glow.</TM_Artifact_Limestone.description>
+
+	<TM_Artifact_Jade.label>Ring of Arcane Recovery</TM_Artifact_Jade.label>
+
+	<TM_Artifact_Jade.description>A ring enchanted with the essence of jade. This ring increases the rate its wearer recovers from arcane weakness.</TM_Artifact_Jade.description>
+
+	<TM_Artifact_Gold.label>Ring of Authority</TM_Artifact_Gold.label>
+
+	<TM_Artifact_Gold.description>A ring enchanted with the essence of gold. This ring increases the wearers negotiation skills.</TM_Artifact_Gold.description>
+
+	<TM_Artifact_RingOfKeenIntellect.label>Ring of Keen Intellect</TM_Artifact_RingOfKeenIntellect.label>
+
+	<TM_Artifact_RingOfKeenIntellect.description>A ring that expands the mind and heightens mental acuity but increases mental stress.
+
+Enchantments:
+XP Gain +25%</TM_Artifact_RingOfKeenIntellect.description>
+
+	<TM_Artifact_OrbOfSouls.label>Orb of Souls (empty)</TM_Artifact_OrbOfSouls.label>
+
+	<TM_Artifact_OrbOfSouls.description>The Orb of Souls is a powerful and dangerous artifact. It requires no external power and can extract the soul of a pawn possessing traits.
+	
+If successful, the Orb of Souls will absorb all traits from the target; the target will lose the absorbed traits. The process is almost always lethal.
+
+Once filled, the Orb of Souls can be used to transfers the absorbed traits into another human-like pawn.</TM_Artifact_OrbOfSouls.description>
+
+	<TM_Artifact_BracersOfThePacifist.label>Bracers of the Pacifist</TM_Artifact_BracersOfThePacifist.label>
+
+	<TM_Artifact_BracersOfThePacifist.description>These bracers appear to be little more than thin cloth wrapped in leather, but their unremarkable appearance is belied by remarkable power. This item can only be worn by a pawn that has rejected violence.
+
+Enchantments:
+Max Energy +40%
+Energy Regen +40%
+Arcane Resistance +50%
+Arcane Recovery - decreases time to recover from arcane weakness</TM_Artifact_BracersOfThePacifist.description>
+
+</LanguageData>

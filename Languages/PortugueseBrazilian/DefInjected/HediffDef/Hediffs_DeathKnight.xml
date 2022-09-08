@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_HateHD.label>Odiar</TM_HateHD.label>
+
+	<TM_HateHD.description>É responsável pela energia e habilidades únicas utilizadas por um cavaleiro da morte.</TM_HateHD.description>
+
+	<TM_HateHD_I.label>Odiar</TM_HateHD_I.label>
+
+	<TM_HateHD_I.description>É responsável pela energia e habilidades únicas utilizadas por um cavaleiro da morte.</TM_HateHD_I.description>
+
+	<TM_HateHD_II.label>Odiar</TM_HateHD_II.label>
+
+	<TM_HateHD_II.description>É responsável pela energia e habilidades únicas utilizadas por um cavaleiro da morte.</TM_HateHD_II.description>
+
+	<TM_HateHD_III.label>Odiar</TM_HateHD_III.label>
+
+	<TM_HateHD_III.description>É responsável pela energia e habilidades únicas utilizadas por um cavaleiro da morte.</TM_HateHD_III.description>
+
+	<TM_HateHD_IV.label>Odiar</TM_HateHD_IV.label>
+
+	<TM_HateHD_IV.description>É responsável pela energia e habilidades únicas utilizadas por um cavaleiro da morte.</TM_HateHD_IV.description>
+
+	<TM_HateHD_V.label>Odiar</TM_HateHD_V.label>
+
+	<TM_HateHD_V.description>É responsável pela energia e habilidades únicas utilizadas por um cavaleiro da morte.</TM_HateHD_V.description>
+
+	<TM_WaveOfFearHD.label>Onda de medo</TM_WaveOfFearHD.label>
+
+	<TM_WaveOfFearHD.description>Afetado por um medo terrível e debilitante.</TM_WaveOfFearHD.description>
+
+	<TM_WaveOfFearHD.stages.0.label>I</TM_WaveOfFearHD.stages.0.label>
+
+	<TM_WaveOfFearHD.stages.1.label>II</TM_WaveOfFearHD.stages.1.label>
+
+	<TM_WaveOfFearHD.stages.2.label>III</TM_WaveOfFearHD.stages.2.label>
+
+	<TM_WaveOfFearHD.stages.3.label>IV</TM_WaveOfFearHD.stages.3.label>
+
+</LanguageData>

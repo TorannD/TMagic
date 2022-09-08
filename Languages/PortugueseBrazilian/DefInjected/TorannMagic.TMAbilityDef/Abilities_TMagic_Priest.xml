@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Resurrection.label>Resurrection</TM_Resurrection.label>
+
+	<TM_Resurrection.description>Resurrection restores the life of a recently deceased pawn. This places an immense demand on the Priest and resurrected pawn and both will be weak for several days while their strength recovers. Resurrection comes at a price; the resurrected pawn will forfeit up to 35% of their skills and may develop detrimental health conditions.</TM_Resurrection.description>
+
+	<TM_BestowMight_I.label>Bestow Might (I)</TM_BestowMight_I.label>
+
+	<TM_BestowMight_I.description>Blesses a single target with greatly increased physical power.
+		
+Duration: 		50-60s
+Physical capacity: 	+60%
+Physical demand: 	+60%
+Pain:		-50%</TM_BestowMight_I.description>
+
+	<TM_HealingCircle.label>Healing Circle</TM_HealingCircle.label>
+
+	<TM_HealingCircle.description>Creates a field of light that heals friendly pawns within. Base ability heals 1 wound by 10 health for each pawn healed. Cannot heal injuries of missing bodyparts.
+		
+Circle radius: 3
+Range: 30</TM_HealingCircle.description>
+
+	<TM_BestowMight_II.label>Bestow Might (II)</TM_BestowMight_II.label>
+
+	<TM_BestowMight_II.description>Blesses a single target with greatly increased physical power.
+		
+Duration: 		50-60s
+Physical capacity: 	+80%
+Physical demand: 	+70%
+Pain:		-60%</TM_BestowMight_II.description>
+
+	<TM_HealingCircle_II.label>Healing Circle (II)</TM_HealingCircle_II.label>
+
+	<TM_HealingCircle_II.description>Creates a field of light that heals friendly pawns within. Base ability heals 1 wound by 10 health for each pawn healed. Cannot heal injuries of missing bodyparts.
+		
+Circle radius: 5.5
+Range: 40</TM_HealingCircle_II.description>
+
+	<TM_BestowMight.label>Bestow Might</TM_BestowMight.label>
+
+	<TM_BestowMight.description>Blesses a single target with greatly increased physical power. 
+		
+Duration: 		30-40s
+Physical capacity: 	+40%
+Physical demand: 	+50%
+Pain:		-40%</TM_BestowMight.description>
+
+	<TM_Purify.label>Purify</TM_Purify.label>
+
+	<TM_Purify.description>Invokes holy power to purify scars on the body, mind, and soul.</TM_Purify.description>
+
+	<TM_HealingCircle_I.label>Healing Circle (I)</TM_HealingCircle_I.label>
+
+	<TM_HealingCircle_I.description>Creates a field of light that heals friendly pawns within. Base ability heals 1 wound by 10 health for each pawn healed. Cannot heal injuries of missing bodyparts.
+		
+Circle radius: 4
+Range: 35</TM_HealingCircle_I.description>
+
+	<TM_AdvancedHeal.label>Advanced Heal</TM_AdvancedHeal.label>
+
+	<TM_AdvancedHeal.description>Invokes holy power to greatly heal the wounds of a target. Base heal restores 14 health for up to 3 wounds. Will immediately seal the bleeding of wounds from missing bodyparts.</TM_AdvancedHeal.description>
+
+	<TM_HealingCircle_III.label>Healing Circle (III)</TM_HealingCircle_III.label>
+
+	<TM_HealingCircle_III.description>Creates a field of light that heals friendly pawns within. Base ability heals 1 wound by 10 health for each pawn healed. Cannot heal injuries of missing bodyparts.
+		
+Circle radius: 7
+Range: 45</TM_HealingCircle_III.description>
+
+	<TM_BestowMight_III.label>Bestow Might (III)</TM_BestowMight_III.label>
+
+	<TM_BestowMight_III.description>Blesses a single target with greatly increased physical power.
+		
+Duration: 		100-115s
+Physical capacity: 	~+100%
+Physical demand: 	+100%
+Pain:		-70%</TM_BestowMight_III.description>
+
+</LanguageData>

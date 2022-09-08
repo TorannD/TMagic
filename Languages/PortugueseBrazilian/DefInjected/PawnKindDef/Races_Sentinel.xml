@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Lesser_Sentinel.label>lesser sentinel</TM_Lesser_Sentinel.label>
+
+	<TM_Lesser_Sentinel.lifestages.0.label>lesser sentinel</TM_Lesser_Sentinel.lifestages.0.label>
+
+	<TM_Sentinel.label>sentinel</TM_Sentinel.label>
+
+	<TM_Sentinel.lifestages.0.label>sentinel</TM_Sentinel.lifestages.0.label>
+
+	<TM_Greater_Sentinel.label>greater sentinel</TM_Greater_Sentinel.label>
+
+	<TM_Greater_Sentinel.lifestages.0.label>greater sentinel</TM_Greater_Sentinel.lifestages.0.label>
+
+</LanguageData>

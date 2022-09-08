@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Minion.label>minion</TM_Minion.label>
+
+	<TM_Minion.lifestages.0.label>minion</TM_Minion.lifestages.0.label>
+
+	<TM_GreaterMinion.label>greater minion</TM_GreaterMinion.label>
+
+	<TM_GreaterMinion.lifestages.0.label>greater minion</TM_GreaterMinion.lifestages.0.label>
+
+</LanguageData>

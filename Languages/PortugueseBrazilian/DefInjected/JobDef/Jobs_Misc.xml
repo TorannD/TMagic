@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<JobDriver_DoMagicBill.reportstring>doing magic bill at TargetA.</JobDriver_DoMagicBill.reportstring>
+
+	<JobDriver_AssistMagicCircle.reportstring>preparing circle magic</JobDriver_AssistMagicCircle.reportstring>
+
+	<PlacePoisonTrap.reportstring>placing poison trap</PlacePoisonTrap.reportstring>
+
+	<JobDriver_PlaceLightningTrap.reportstring>placing lightning trap</JobDriver_PlaceLightningTrap.reportstring>
+
+	<JobDriver_SleepNow.reportstring>sleeping (lullaby)</JobDriver_SleepNow.reportstring>
+
+	<JobDriver_Entertain.reportstring>entertaining</JobDriver_Entertain.reportstring>
+
+	<JobDriver_DoFor.reportstring>preparing attack</JobDriver_DoFor.reportstring>
+
+	<JobDriver_SummonDemon.reportstring>marking sacrifice</JobDriver_SummonDemon.reportstring>
+
+	<JobDriver_PsionicBarrier.reportstring>projecting psionic barrier</JobDriver_PsionicBarrier.reportstring>
+
+	<JobDriver_TM_Teach.reportstring>training and mentoring</JobDriver_TM_Teach.reportstring>
+
+	<JobDriver_TM_GotoAndWait.reportstring>waiting at location</JobDriver_TM_GotoAndWait.reportstring>
+
+	<JobDriver_TM_Meditate.reportstring>deep meditation</JobDriver_TM_Meditate.reportstring>
+
+	<JobDriver_TM_Command.reportstring>motivating pawn</JobDriver_TM_Command.reportstring>
+
+	<JobDriver_GotoAndCast.reportstring>doing magic job</JobDriver_GotoAndCast.reportstring>
+
+	<JobDriver_Discord.reportstring>creating discord</JobDriver_Discord.reportstring>
+
+</LanguageData>

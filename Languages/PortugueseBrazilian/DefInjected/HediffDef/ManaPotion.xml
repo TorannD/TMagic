@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<ManaPotionTolerance.label>tolerância de poção de mana</ManaPotionTolerance.label>
+
+	<ManaPotionTolerance.description>Ajuste natural para normalizar os efeitos do consumo de mana líquido.</ManaPotionTolerance.description>
+
+	<ManaPotionAddiction.label>vício em poção de mana</ManaPotionAddiction.label>
+
+	<ManaPotionAddiction.description>O desejo de consumir poções de mana tornou-se uma necessidade.</ManaPotionAddiction.description>
+
+	<ManaPotionAddiction.stages.1.label>cancelamento</ManaPotionAddiction.stages.1.label>
+
+	<ManaPotionHigh.label>arcano alto</ManaPotionHigh.label>
+
+	<ManaPotionHigh.description>A consciência aumenta ao consumir mana líquido.</ManaPotionHigh.description>
+
+</LanguageData>

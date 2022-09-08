@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Iceshard.label>pedaço de gelo</Iceshard.label>
+
+	<FrostRay.label>geada</FrostRay.label>
+
+	<TM_ManaMine.label>onde a explosão</TM_ManaMine.label>
+
+	<Snowball.label>bola de neve</Snowball.label>
+
+	<TM_MagicMissile.label>Míssil Mágico</TM_MagicMissile.label>
+
+	<TM_Holy.label>Holy Wrath</TM_Holy.label>
+
+	<TM_Lightning.label>Relâmpago</TM_Lightning.label>
+
+	<TM_GrapplingHook.label>Gancho</TM_GrapplingHook.label>
+
+	<TM_LightningCloud.label>Relâmpago</TM_LightningCloud.label>
+
+</LanguageData>

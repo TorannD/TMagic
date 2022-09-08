@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Portal.label>Portal</TM_Portal.label>
+
+	<TM_Portal.description>Instant travel between two portals.</TM_Portal.description>
+
+	<TM_ElementalRift.label>Elemental rift</TM_ElementalRift.label>
+
+	<TM_ElementalRift.description>rift caused by rogue elementals.</TM_ElementalRift.description>
+
+</LanguageData>

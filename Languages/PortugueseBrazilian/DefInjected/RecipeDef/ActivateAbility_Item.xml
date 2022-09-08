@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<AdministerShardOfExtraction.label>administer shard of extraction</AdministerShardOfExtraction.label>
+
+	<AdministerShardOfExtraction.description>Extracts martial and arcane essence from a pawn. This is a single use item that will permanently remove a pawn's class and convert it into essence. Essence may be consumed to grant class experience. The shard is destroyed after the extraction process.</AdministerShardOfExtraction.description>
+
+	<AdministerShardOfExtraction.jobstring>Using Shard of Extraction</AdministerShardOfExtraction.jobstring>
+
+</LanguageData>

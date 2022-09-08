@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_ReprogrammedSenMechanites_HD.label>reprogrammed sensory mechanites</TM_ReprogrammedSenMechanites_HD.label>
+
+	<TM_ReprogrammedSenMechanites_HD.description>Sensory mechanites reprogrammed to cause less stress on the host.</TM_ReprogrammedSenMechanites_HD.description>
+
+	<TM_ReprogrammedSenMechanites_HD.stages.0.label>mechanite augmentation (sensory)</TM_ReprogrammedSenMechanites_HD.stages.0.label>
+
+	<TM_ReprogrammedSenMechanites_HD.stages.1.label>mechanite augmentation (sensory)</TM_ReprogrammedSenMechanites_HD.stages.1.label>
+
+	<TM_ReprogrammedFibMechanites_HD.label>reprogrammed fibrous mechanites</TM_ReprogrammedFibMechanites_HD.label>
+
+	<TM_ReprogrammedFibMechanites_HD.description>Fibrous mechanites reprogrammed to cause less stress on the host.</TM_ReprogrammedFibMechanites_HD.description>
+
+	<TM_ReprogrammedFibMechanites_HD.stages.0.label>mechanite augmentation (physical)</TM_ReprogrammedFibMechanites_HD.stages.0.label>
+
+	<TM_ReprogrammedFibMechanites_HD.stages.1.label>mechanite augmentation (physical)</TM_ReprogrammedFibMechanites_HD.stages.1.label>
+
+	<TM_TechnoShieldHD.label>kinetic shield</TM_TechnoShieldHD.label>
+
+	<TM_TechnoShieldHD.description>A shield that redirects kinetic energy; the shield can be penetrated by a projectile with sufficient force.</TM_TechnoShieldHD.description>
+
+	<TM_TechnoShieldHD_I.label>kinetic shield</TM_TechnoShieldHD_I.label>
+
+	<TM_TechnoShieldHD_I.description>A shield that redirects kinetic energy; the shield can be penetrated by a projectile with sufficient force.</TM_TechnoShieldHD_I.description>
+
+	<TM_TechnoShieldHD_II.label>kinetic shield</TM_TechnoShieldHD_II.label>
+
+	<TM_TechnoShieldHD_II.description>A shield that redirects kinetic energy; the shield can be penetrated by a projectile with sufficient force.</TM_TechnoShieldHD_II.description>
+
+	<TM_TechnoShieldHD_III.label>kinetic shield</TM_TechnoShieldHD_III.label>
+
+	<TM_TechnoShieldHD_III.description>A shield that redirects kinetic energy; the shield can be penetrated by a projectile with sufficient force.</TM_TechnoShieldHD_III.description>
+
+	<TM_TechnoBitHD.label>Techno Bit</TM_TechnoBitHD.label>
+
+	<TM_TechnoBitHD.description>A small, floating sphere that assists the Technomancer.</TM_TechnoBitHD.description>
+
+	<TM_BitAssistHD.label>bit assist</TM_BitAssistHD.label>
+
+	<TM_BitAssistHD.description>Assistance provided by the Techno Bit.</TM_BitAssistHD.description>
+
+	<TM_BitAssistHD.stages.0.label>I</TM_BitAssistHD.stages.0.label>
+
+	<TM_BitAssistHD.stages.1.label>II</TM_BitAssistHD.stages.1.label>
+
+	<TM_BitAssistHD.stages.2.label>III</TM_BitAssistHD.stages.2.label>
+
+	<TM_BitAssistHD.stages.3.label>IV</TM_BitAssistHD.stages.3.label>
+
+	<TM_BitAssistHD.stages.4.label>V</TM_BitAssistHD.stages.4.label>
+
+	<TM_BitAssistHD.stages.5.label>VI</TM_BitAssistHD.stages.5.label>
+
+	<TM_BitAssistHD.stages.6.label>VII</TM_BitAssistHD.stages.6.label>
+
+	<TM_BitAssistHD.stages.7.label>VIII</TM_BitAssistHD.stages.7.label>
+
+	<TM_BitAssistHD.stages.8.label>IX</TM_BitAssistHD.stages.8.label>
+
+	<TM_BitAssistHD.stages.9.label>X</TM_BitAssistHD.stages.9.label>
+
+	<TM_BitAssistHD.stages.10.label>XI</TM_BitAssistHD.stages.10.label>
+
+	<TM_BitAssistHD.stages.11.label>XII</TM_BitAssistHD.stages.11.label>
+
+	<TM_BitAssistHD.stages.12.label>XIII</TM_BitAssistHD.stages.12.label>
+
+	<TM_BitAssistHD.stages.13.label>XIV</TM_BitAssistHD.stages.13.label>
+
+	<TM_BitAssistHD.stages.14.label>XV</TM_BitAssistHD.stages.14.label>
+
+	<TM_NanoStimulantWithdrawalHD.label>stim withdrawal</TM_NanoStimulantWithdrawalHD.label>
+
+	<TM_NanoStimulantWithdrawalHD.description>Withdrawal after the effects of the nano stim wear off.</TM_NanoStimulantWithdrawalHD.description>
+
+	<TM_OverdriveHD.label>overdrive</TM_OverdriveHD.label>
+
+	<TM_OverdriveHD.description>Overclocked electronics and machinery are performing at hazardous rates.</TM_OverdriveHD.description>
+
+	<TM_OverdriveHD.stages.0.label>I</TM_OverdriveHD.stages.0.label>
+
+	<TM_OverdriveHD.stages.1.label>II</TM_OverdriveHD.stages.1.label>
+
+	<TM_OverdriveHD.stages.2.label>III</TM_OverdriveHD.stages.2.label>
+
+	<TM_OverdriveHD.stages.3.label>IV</TM_OverdriveHD.stages.3.label>
+
+	<TM_OverdriveHD_I.label>overdrive</TM_OverdriveHD_I.label>
+
+	<TM_OverdriveHD_I.description>Overclocked electronics and machinery are performing at hazardous rates.</TM_OverdriveHD_I.description>
+
+	<TM_OverdriveHD_I.stages.0.label>I</TM_OverdriveHD_I.stages.0.label>
+
+	<TM_OverdriveHD_I.stages.1.label>II</TM_OverdriveHD_I.stages.1.label>
+
+	<TM_OverdriveHD_I.stages.2.label>III</TM_OverdriveHD_I.stages.2.label>
+
+	<TM_OverdriveHD_I.stages.3.label>IV</TM_OverdriveHD_I.stages.3.label>
+
+	<TM_OverdriveHD_II.label>overdrive</TM_OverdriveHD_II.label>
+
+	<TM_OverdriveHD_II.description>Overclocked electronics and machinery are performing at hazardous rates.</TM_OverdriveHD_II.description>
+
+	<TM_OverdriveHD_II.stages.0.label>I</TM_OverdriveHD_II.stages.0.label>
+
+	<TM_OverdriveHD_II.stages.1.label>II</TM_OverdriveHD_II.stages.1.label>
+
+	<TM_OverdriveHD_II.stages.2.label>III</TM_OverdriveHD_II.stages.2.label>
+
+	<TM_OverdriveHD_II.stages.3.label>IV</TM_OverdriveHD_II.stages.3.label>
+
+	<TM_OverdriveHD_III.label>overdrive</TM_OverdriveHD_III.label>
+
+	<TM_OverdriveHD_III.description>Overclocked electronics and machinery are performing at hazardous rates.</TM_OverdriveHD_III.description>
+
+	<TM_OverdriveHD_III.stages.0.label>I</TM_OverdriveHD_III.stages.0.label>
+
+	<TM_OverdriveHD_III.stages.1.label>II</TM_OverdriveHD_III.stages.1.label>
+
+	<TM_OverdriveHD_III.stages.2.label>III</TM_OverdriveHD_III.stages.2.label>
+
+	<TM_OverdriveHD_III.stages.3.label>IV</TM_OverdriveHD_III.stages.3.label>
+
+	<TM_NanoStimulantHD.label>nano stimulant</TM_NanoStimulantHD.label>
+
+	<TM_NanoStimulantHD.description>Combat enhancing stimulant; followed by a brief withdrawal period.</TM_NanoStimulantHD.description>
+
+	<TM_NanoStimulantHD.stages.0.label>I</TM_NanoStimulantHD.stages.0.label>
+
+	<TM_NanoStimulantHD.stages.1.label>II</TM_NanoStimulantHD.stages.1.label>
+
+	<TM_NanoStimulantHD.stages.2.label>III</TM_NanoStimulantHD.stages.2.label>
+
+	<TM_NanoStimulantHD.stages.3.label>IV</TM_NanoStimulantHD.stages.3.label>
+
+	<TM_NanoStimulantHD.stages.4.label>V</TM_NanoStimulantHD.stages.4.label>
+
+	<TM_NanoStimulantHD.stages.5.label>VI</TM_NanoStimulantHD.stages.5.label>
+
+	<TM_NanoStimulantHD.stages.6.label>VII</TM_NanoStimulantHD.stages.6.label>
+
+	<TM_NanoStimulantHD.stages.7.label>VIII</TM_NanoStimulantHD.stages.7.label>
+
+	<TM_NanoStimulantHD.stages.8.label>IX</TM_NanoStimulantHD.stages.8.label>
+
+	<TM_NanoStimulantHD.stages.9.label>X</TM_NanoStimulantHD.stages.9.label>
+
+	<TM_NanoStimulantHD.stages.10.label>XI</TM_NanoStimulantHD.stages.10.label>
+
+	<TM_NanoStimulantHD.stages.11.label>XII</TM_NanoStimulantHD.stages.11.label>
+
+	<TM_NanoStimulantHD.stages.12.label>XIII</TM_NanoStimulantHD.stages.12.label>
+
+	<TM_NanoStimulantHD.stages.13.label>XIV</TM_NanoStimulantHD.stages.13.label>
+
+	<TM_NanoStimulantHD.stages.14.label>XV</TM_NanoStimulantHD.stages.14.label>
+
+</LanguageData>

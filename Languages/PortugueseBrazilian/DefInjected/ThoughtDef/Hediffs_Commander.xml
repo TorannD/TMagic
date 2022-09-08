@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_CommanderTD.stages.0.label>Charismatic pawn</TM_CommanderTD.stages.0.label>
+
+	<TM_CommanderTD.stages.0.description>I've been emotionally charged! I'm not sure what, but good things are bound to happen around such a charismatic commander.</TM_CommanderTD.stages.0.description>
+
+	<TM_CommanderTD_I.stages.0.label>Charismatic commander</TM_CommanderTD_I.stages.0.label>
+
+	<TM_CommanderTD_I.stages.0.description>I've been emotionally charged! Good things are bound to happen around such a charismatic commander, though it's not exactly clear how.</TM_CommanderTD_I.stages.0.description>
+
+	<TM_CommanderTD_II.stages.0.label>Charismatic leader</TM_CommanderTD_II.stages.0.label>
+
+	<TM_CommanderTD_II.stages.0.description>I've been emotionally charged! Good things are bound to happen around such a charismatic leader.</TM_CommanderTD_II.stages.0.description>
+
+	<TM_CommanderTD_III.stages.0.label>Charismatic visionary</TM_CommanderTD_III.stages.0.label>
+
+	<TM_CommanderTD_III.stages.0.description>I've been emotionally charged! Good things are bound to happen around such a charismatic visionary.</TM_CommanderTD_III.stages.0.description>
+
+	<TM_TaskMasterTD.stages.0.label>Task master</TM_TaskMasterTD.stages.0.label>
+
+	<TM_TaskMasterTD.stages.0.description>Every aspect of my life has become micro-managed; I barely have time to eat a decent meal.</TM_TaskMasterTD.stages.0.description>
+
+</LanguageData>

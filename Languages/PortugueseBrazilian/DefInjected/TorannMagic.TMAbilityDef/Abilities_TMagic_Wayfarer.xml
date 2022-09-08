@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_WayfarerCraft.label>The Wayfarer</TM_WayfarerCraft.label>
+
+	<TM_WayfarerCraft.description>Increase attributes through training and hard work. See skills for more details.</TM_WayfarerCraft.description>
+
+	<TM_FieldTraining.label>Combat Training</TM_FieldTraining.label>
+
+	<TM_FieldTraining.description>Wayfarers do not have class specific abilities, instead, they excel at general combat. 
+
+General combat techniques are discarded by most fighters as supplementary skills which require no additional skill training. The wayfarer takes another approach; by investing time and effort into understanding these combat skills, the wayfarer is able to improve almost all general abilities in utility, power, and efficiency. 
+
+See skills for more details.</TM_FieldTraining.description>
+
+</LanguageData>

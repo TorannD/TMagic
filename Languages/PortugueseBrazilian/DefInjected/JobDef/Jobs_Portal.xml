@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<PortalDestination.reportstring>assigning portal destination.</PortalDestination.reportstring>
+
+	<UsePortal.reportstring>using portal.</UsePortal.reportstring>
+
+	<DeactivatePortal.reportstring>deactivating portal.</DeactivatePortal.reportstring>
+
+	<ChargePortal.reportstring>charging portal.</ChargePortal.reportstring>
+
+	<PortalStockpile.reportstring>sending items through portal.</PortalStockpile.reportstring>
+
+</LanguageData>

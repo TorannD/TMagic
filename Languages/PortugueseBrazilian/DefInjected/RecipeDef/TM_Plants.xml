@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_ExtractSyrrium.label>extract syrrium</TM_ExtractSyrrium.label>
+
+	<TM_ExtractSyrrium.description>Boils pomanasyrrium until the syrrium can be siphoned from the pomana mash.</TM_ExtractSyrrium.description>
+
+	<TM_ExtractSyrrium.jobstring>Extracting syrrium.</TM_ExtractSyrrium.jobstring>
+
+</LanguageData>

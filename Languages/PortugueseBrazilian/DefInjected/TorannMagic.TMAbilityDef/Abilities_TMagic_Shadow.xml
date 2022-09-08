@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_VeilOfShadows.label>Veil of Shadows</TM_VeilOfShadows.label>
+
+	<TM_VeilOfShadows.description>Throw a concoction that cloaks the caster and surrounding area in smoke and shadows. Caster gains Cloak of Shadows (invisibility). The shadow cloud will prevent targeting from automated system and reduces the accuracy of ranged attacks by 60%.</TM_VeilOfShadows.description>
+
+	<TM_ShadowStrike.label>Shadow Strike</TM_ShadowStrike.label>
+
+	<TM_ShadowStrike.description>Instantly moves the attacker behind the target and delivers a devastating, single target attack. The attacker gains 5s of haste. The attacker will return to the location they initiated the attack after 5 seconds. This attack may perform critical hits for 3x damage - chance decreases as the weapon gets heavier. Ranged weapons will never deliver critical hits.</TM_ShadowStrike.description>
+
+	<TM_ShadowWalk.label>Shadow Walk</TM_ShadowWalk.label>
+
+	<TM_ShadowWalk.description>Move unseen to instantly reappear in the shadow of another pawn.</TM_ShadowWalk.description>
+
+	<TM_Nightshade.label>Nightshade</TM_Nightshade.label>
+
+	<TM_Nightshade.description>Coat your weapons or projectiles in nightshade toxin. Each attack will apply a portion of the nightshade toxin. Ranged attacks apply toxin 40% as efficiently as melee attacks. Affected victims suffer from hallucinations and shortness of breath and will take organ damage if toxicity levels become severe.
+		
+This ability requires 30 stamina to maintain and reduces stamina regeneration by 50%.</TM_Nightshade.description>
+
+</LanguageData>

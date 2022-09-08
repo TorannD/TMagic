@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Entertain.label>Entertain</TM_Entertain.label>
+
+	<TM_Entertain.description>Entertain fellow colonists using a variety of methods. This skill has two components, a passive skill and an active skill. The passive skill allows the bard to entertain other colonists in passing conversation.
+
+This command toggles the active skill on or off.
+	
+Activating the ability casts a net over the colony and allows the bard to detect troubled pawns and attempt to entertain them. The bard will gain experience points as a mage when active entertaining is successful. Keeping this ability active reduces max mana by 30. The bard performs entertainment as a type of job, and will perform entertainment based on the priority of the "Warden" work type.</TM_Entertain.description>
+
+	<TM_Inspire.label>Inspire</TM_Inspire.label>
+
+	<TM_Inspire.description>The bard inspires other nearby pawns. This ability is always active.</TM_Inspire.description>
+
+	<TM_Lullaby_II.label>Lullaby (II)</TM_Lullaby_II.label>
+
+	<TM_Lullaby_II.description>Projects an emotionally soothing wave that washes away concerns and consciousness that can put any creatures in the target area to sleep.</TM_Lullaby_II.description>
+
+	<TM_Lullaby_I.label>Lullaby (I)</TM_Lullaby_I.label>
+
+	<TM_Lullaby_I.description>Projects an emotionally soothing wave that washes away concerns and consciousness that can put any creatures in the target area to sleep.</TM_Lullaby_I.description>
+
+	<TM_Lullaby.label>Lullaby</TM_Lullaby.label>
+
+	<TM_Lullaby.description>Projects an emotionally soothing wave that washes away concerns and consciousness that can put any creatures in the target area to sleep. Does not work on mechanoids.</TM_Lullaby.description>
+
+	<TM_BattleHymn.label>Battle Hymn</TM_BattleHymn.label>
+
+	<TM_BattleHymn.description>Play a rousing battle hymn to motivate and empower nearby allies. Each verse of the hymn adds to the effect and will further bolster the combat power of allies. Every verse consumes 9% additional mana (reduced through training). 
+	
+Battle Hymn has a small chance to cause inspirations that will further boost combat abilities. 
+	
+Use the skill to activate or deactivate the ability.</TM_BattleHymn.description>
+
+	<TM_BardTraining.label>Bard Training</TM_BardTraining.label>
+
+	<TM_BardTraining.description>Hone the skills of a bard by undergoing training in performing arts, comedy, socializing, and inspiration. Each level will change the bard's trait to reflect their skill level.
+	
+Ranks:
+Entertainer: Social impact +10%, Negotiation +20%, Trade +10%,
+Pain threshold -10%, carrying capacity -10, work speed -10%
+
+Performer: Social impact +20%, Negotiation +30%, Trade +15%,
+Pain threshold -12%, carrying capacity -15, work speed -12%
+
+Minstrel: Social impact +30%, Negotiation +35%, Trade +20%,
+Pain threshold -14%, carrying capacity -18, work speed -14%
+
+Bard: Social impact +35%, Negotiation +40%, Trade +25%,
+Pain threshold -15%, carrying capacity -20, work speed -15%</TM_BardTraining.description>
+
+	<TM_Lullaby_III.label>Lullaby</TM_Lullaby_III.label>
+
+	<TM_Lullaby_III.description>Projects an emotionally soothing wave that washes away concerns and consciousness that can put any creatures in the target area to sleep.</TM_Lullaby_III.description>
+
+</LanguageData>

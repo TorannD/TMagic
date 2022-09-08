@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_SunderArmorHD.label>Sunder Armor</TM_SunderArmorHD.label>
+
+	<TM_SunderArmorHD.description>Reduz a classificação de armadura.</TM_SunderArmorHD.description>
+
+	<TM_SunderArmorHD.stages.0.label>I</TM_SunderArmorHD.stages.0.label>
+
+	<TM_SunderArmorHD.stages.1.label>II</TM_SunderArmorHD.stages.1.label>
+
+	<TM_SunderArmorHD.stages.2.label>III</TM_SunderArmorHD.stages.2.label>
+
+</LanguageData>

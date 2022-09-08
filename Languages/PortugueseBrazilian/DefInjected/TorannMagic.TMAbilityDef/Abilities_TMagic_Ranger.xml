@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_ArrowStorm_I.label>Arrow Storm (I)</TM_ArrowStorm_I.label>
+
+	<TM_ArrowStorm_I.description>Fire a volley of 6 arrows at a target.
+Range: 34</TM_ArrowStorm_I.description>
+
+	<TM_AnimalFriend.label>Animal Bond</TM_AnimalFriend.label>
+
+	<TM_AnimalFriend.description>At home in the wild, the ranger is able to form a bond with creatures of the wild. 
+		
+Rangers are only able to form a single bond and maintaining the bond reduces the ranger's max stamina by 30; making a new bond breaks an existing bond and will cause the animal with a broken bond to leave forever. Failed attempts may cause the animal to turn manhunter. When using animal bond on the bonded animal may allow the animal to remain in the colony - the chance the animal remains is based on its wildness and how long it had a bond with the ranger.
+
+The increase in physical capability applies to the animal kin only, in return, the bonded animal will assist the ranger in whatever capacity the animal is capable.
+A bond can be removed by using this ability on a bonded creature.</TM_AnimalFriend.description>
+
+	<TM_ArrowStorm_II.label>Arrow Storm (II)</TM_ArrowStorm_II.label>
+
+	<TM_ArrowStorm_II.description>Fire a rapid volley of 7 arrows at a target.
+Range: 36</TM_ArrowStorm_II.description>
+
+	<TM_RangerTraining.label>Ranger Training</TM_RangerTraining.label>
+
+	<TM_RangerTraining.description>Training that the ranger's professional skills. Each level will increase the ranger trait to reflect the skill of the ranger.
+	
+Ranks:
+Woodsman: Speed +0.15c/s, Aiming Delay -15%, Immunity Gain +20%, Comf. Temperature +-10C., Toxic Sensitivity -10%
+Tame and train animal +5%, butchering speed +5%, smelting and construction speed -10%
+
+Hunter: Speed +0.2c/s, Aiming Delay -20%, Immunity Gain +25%, Comf. Temperature +-15C., Toxic Sensitivity -15%
+Tame and train animal +8%, butchering speed +10%, smelting and construction speed -15%
+
+Scout: Speed +0.25c/s, Aiming Delay -30%, Immunity Gain +30%, Comf. Temperature +-18C., Toxic Sensitivity -20%
+Tame and train animal +10%, butchering speed +15%, smelting and construction speed -18%
+
+Ranger: Speed +0.3c/s, Aiming Delay -40%, Immunity Gain +35%, Comf. Temperature +-25C., Toxic Sensitivity -25%
+Tame and train animal +12%, butchering speed +20%, smelting and construction speed -20%</TM_RangerTraining.description>
+
+	<TM_BowTraining.label>Bow Training</TM_BowTraining.label>
+
+	<TM_BowTraining.description>Training that increases damage and accuracy when using a bow.
+	
+Level 0: Hearing and Sight +20%, +20% bow damage
+Level 1: Hearing and Sight +40%, +40% bow damage
+Level 2: Hearing and Sight +60%, Breathing +15%, +60% bow damage
+Level 3: Hearing and Sight +80%, Breathing +25%, Blood filtration +10%, +80% bow damage</TM_BowTraining.description>
+
+	<TM_ArrowStorm.description>Fire a volley of 5 arrows at a target.
+Range: 32</TM_ArrowStorm.description>
+
+	<TM_ArrowStorm_III.label>Arrow Storm (III)</TM_ArrowStorm_III.label>
+
+	<TM_ArrowStorm_III.description>Fire a rapid volley of 8 arrows at a target.
+Range: 38</TM_ArrowStorm_III.description>
+
+</LanguageData>

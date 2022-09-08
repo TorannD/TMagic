@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Projectile_Headshot.label>Headshot</Projectile_Headshot.label>
+
+	<Projectile_AntiArmor.label>Anti-Armor</Projectile_AntiArmor.label>
+
+	<Projectile_DisablingShot.label>Disabling shot</Projectile_DisablingShot.label>
+
+	<Projectile_SniperFocus.label>Sniper focus</Projectile_SniperFocus.label>
+
+</LanguageData>

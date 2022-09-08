@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_LesserWind_ElementalR.label>Lesser Wind Elemental</TM_LesserWind_ElementalR.label>
+
+	<TM_LesserWind_ElementalR.description>Air elementals are beings of living wind and possess unnatural speed and agility.  The physical manifestation of the air elemental appears to rapidly shift; sometimes a hazy smoke, other times a biting whirlwind.  The air currents seem to form an barely perceptible outline of a humanoid form.  While lesser in nature, this elemental will rain vicious, stinging attacks upon its enemies.</TM_LesserWind_ElementalR.description>
+
+	<TM_LesserWind_ElementalR.tools.0.label>left arm</TM_LesserWind_ElementalR.tools.0.label>
+
+	<TM_LesserWind_ElementalR.tools.1.label>right arm</TM_LesserWind_ElementalR.tools.1.label>
+
+	<TM_LesserWind_ElementalR.tools.2.label>horn</TM_LesserWind_ElementalR.tools.2.label>
+
+	<TM_Water_ElementalR.label>Water Elemental</TM_Water_ElementalR.label>
+
+	<TM_Water_ElementalR.description>Water elementals are creatures of living water.  They embody the spirit of unbound patience and solitude.  They appear as a swirling mass of water, sometimes seeming to take the shape of a creature or object with bits of flotsam occasionally surfacing.  They are always in motion and seem to glide or sway when moving.  The elemental before you appears almost serene, but you sense a hidden danger lurking just below the surface.</TM_Water_ElementalR.description>
+
+	<TM_Water_ElementalR.tools.0.label>left arm</TM_Water_ElementalR.tools.0.label>
+
+	<TM_Water_ElementalR.tools.1.label>right arm</TM_Water_ElementalR.tools.1.label>
+
+	<TM_Water_ElementalR.tools.2.label>horn</TM_Water_ElementalR.tools.2.label>
+
+	<TM_Fire_ElementalR.label>Fire Elemental</TM_Fire_ElementalR.label>
+
+	<TM_Fire_ElementalR.description>Fire elementals are vicious creatures of living flame.  They are quick and cruel in nature, specializing in destruction.  The fire elemental appears to be a mixture of oily and molten substances wreathed in flames and ash, its skin is almost fluid looking, as if it is constantly melting and reforming.  The creature bears what looks to be a wicked grin... enemies should be wary of playing with this fire.</TM_Fire_ElementalR.description>
+
+	<TM_Fire_ElementalR.tools.0.label>left arm</TM_Fire_ElementalR.tools.0.label>
+
+	<TM_Fire_ElementalR.tools.1.label>right arm</TM_Fire_ElementalR.tools.1.label>
+
+	<TM_Fire_ElementalR.tools.2.label>horn</TM_Fire_ElementalR.tools.2.label>
+
+	<TM_Earth_ElementalR.label>Earth Elemental</TM_Earth_ElementalR.label>
+
+	<TM_Earth_ElementalR.description>The earth elemental is a lumbering, stubborn creature made of living stone.  Its hide appears to be made out of rock and crystal with patches of mud and soil where the joints should be.  This creature is the most steadfast of all elementals, able to weather a storm of blows.  This creature puts modern tanks to shame with its invincible skin.</TM_Earth_ElementalR.description>
+
+	<TM_Earth_ElementalR.tools.0.label>left arm</TM_Earth_ElementalR.tools.0.label>
+
+	<TM_Earth_ElementalR.tools.1.label>right arm</TM_Earth_ElementalR.tools.1.label>
+
+	<TM_Earth_ElementalR.tools.2.label>horn</TM_Earth_ElementalR.tools.2.label>
+
+	<TM_GreaterFire_ElementalR.label>Greater Fire Elemental</TM_GreaterFire_ElementalR.label>
+
+	<TM_GreaterFire_ElementalR.description>Fire elementals are vicious creatures of living flame.  They are quick and cruel in nature, knowing only destruction.  The fire elemental appears to be a mixture of oily and molten substances wreathed in flames and ash.  Its skin is almost fluid looking, as if it is constantly melting and reforming.  Before you stands a prince of destruction, wearing a crown of flame upon its brow and its chest is adorned with plate of obsidian writhing in flames.  It stares at you with its single, glinting eye ready to unleash its malice.</TM_GreaterFire_ElementalR.description>
+
+	<TM_GreaterFire_ElementalR.tools.0.label>left arm</TM_GreaterFire_ElementalR.tools.0.label>
+
+	<TM_GreaterFire_ElementalR.tools.1.label>right arm</TM_GreaterFire_ElementalR.tools.1.label>
+
+	<TM_GreaterFire_ElementalR.tools.2.label>horn</TM_GreaterFire_ElementalR.tools.2.label>
+
+	<TM_LesserFire_ElementalR.label>Lesser Fire Elemental</TM_LesserFire_ElementalR.label>
+
+	<TM_LesserFire_ElementalR.description>Fire elementals are vicious creatures of living flame.  They are quick and cruel in nature, specializing in destruction.  The fire elemental appears to be a mixture of oily and molten substances wreathed in flames and ash, its skin is almost fluid looking, as if it is constantly melting and reforming.  Lesser in nature, the glint in the eyes of this being are the only warning enemies will have before being consumed in its rage.</TM_LesserFire_ElementalR.description>
+
+	<TM_LesserFire_ElementalR.tools.0.label>left arm</TM_LesserFire_ElementalR.tools.0.label>
+
+	<TM_LesserFire_ElementalR.tools.1.label>right arm</TM_LesserFire_ElementalR.tools.1.label>
+
+	<TM_LesserFire_ElementalR.tools.2.label>horn</TM_LesserFire_ElementalR.tools.2.label>
+
+	<TM_GreaterWater_ElementalR.label>Greater Water Elemental</TM_GreaterWater_ElementalR.label>
+
+	<TM_GreaterWater_ElementalR.description>Water elementals are creatures of living water.  They embody the spirit of unbound patience and solitude.  They appear as a swirling mass of water, sometimes seeming to take the shape of a creature or object with bits of flotsam occasionally surfacing.  They are always in motion and seem to glide or sway when moving.  This enormous elemental before you has whirlpools for eyes and moves like a crashing wave.</TM_GreaterWater_ElementalR.description>
+
+	<TM_GreaterWater_ElementalR.tools.0.label>left arm</TM_GreaterWater_ElementalR.tools.0.label>
+
+	<TM_GreaterWater_ElementalR.tools.1.label>right arm</TM_GreaterWater_ElementalR.tools.1.label>
+
+	<TM_GreaterWater_ElementalR.tools.2.label>horn</TM_GreaterWater_ElementalR.tools.2.label>
+
+	<TM_LesserEarth_ElementalR.label>Lesser Earth Elemental</TM_LesserEarth_ElementalR.label>
+
+	<TM_LesserEarth_ElementalR.description>The earth elemental is a lumbering, stubborn creature made of living stone.  Its hide appears to be made out of rock and crystal with patches of mud and soil where the joints should be.  This creature is the most steadfast of all elementals, able to weather a storm of blows.  While this is a lesser elemental, it still dwarfs most humanoids and possesses a remarkable ability to defend its master.</TM_LesserEarth_ElementalR.description>
+
+	<TM_LesserEarth_ElementalR.tools.0.label>left arm</TM_LesserEarth_ElementalR.tools.0.label>
+
+	<TM_LesserEarth_ElementalR.tools.1.label>right arm</TM_LesserEarth_ElementalR.tools.1.label>
+
+	<TM_LesserEarth_ElementalR.tools.2.label>horn</TM_LesserEarth_ElementalR.tools.2.label>
+
+	<TM_GreaterWind_ElementalR.label>Greater Wind Elemental</TM_GreaterWind_ElementalR.label>
+
+	<TM_GreaterWind_ElementalR.description>Air elementals are beings of living wind and possess unnatural speed and agility.  The physical manifestation of the air elemental appears to rapidly shift; sometimes a hazy smoke, other times a biting whirlwind.  The air currents seem to form an barely perceptible outline of a humanoid form.  There is no doubt that this elemental is a supreme being capable of unleashing the fury of a storm.</TM_GreaterWind_ElementalR.description>
+
+	<TM_GreaterWind_ElementalR.tools.0.label>left arm</TM_GreaterWind_ElementalR.tools.0.label>
+
+	<TM_GreaterWind_ElementalR.tools.1.label>right arm</TM_GreaterWind_ElementalR.tools.1.label>
+
+	<TM_GreaterWind_ElementalR.tools.2.label>horn</TM_GreaterWind_ElementalR.tools.2.label>
+
+	<TM_LesserWater_ElementalR.label>Lesser Water Elemental</TM_LesserWater_ElementalR.label>
+
+	<TM_LesserWater_ElementalR.description>Water elementals are creatures of living water.  They embody the spirit of unbound patience and solitude.  They appear as a swirling mass of water, sometimes seeming to take the shape of a creature or object with bits of flotsam occasionally surfacing.  They are always in motion and seem to glide or sway when moving.  The creature before you is a smaller form, but will relentlessly overcome even the strongest opponent.</TM_LesserWater_ElementalR.description>
+
+	<TM_LesserWater_ElementalR.tools.0.label>left arm</TM_LesserWater_ElementalR.tools.0.label>
+
+	<TM_LesserWater_ElementalR.tools.1.label>right arm</TM_LesserWater_ElementalR.tools.1.label>
+
+	<TM_LesserWater_ElementalR.tools.2.label>horn</TM_LesserWater_ElementalR.tools.2.label>
+
+	<TM_Wind_ElementalR.label>Wind Elemental</TM_Wind_ElementalR.label>
+
+	<TM_Wind_ElementalR.description>Air elementals are beings of living wind and possess unnatural speed and agility.  The physical manifestation of the air elemental appears to rapidly shift; sometimes a hazy smoke, other times a biting whirlwind.  The air currents seem to form an barely perceptible outline of a humanoid form.  This creature possesses the power of a storm and will not hesitate to bring it to bear on its enemies.</TM_Wind_ElementalR.description>
+
+	<TM_Wind_ElementalR.tools.0.label>left arm</TM_Wind_ElementalR.tools.0.label>
+
+	<TM_Wind_ElementalR.tools.1.label>right arm</TM_Wind_ElementalR.tools.1.label>
+
+	<TM_Wind_ElementalR.tools.2.label>horn</TM_Wind_ElementalR.tools.2.label>
+
+	<TM_GreaterEarth_ElementalR.label>Greater Earth Elemental</TM_GreaterEarth_ElementalR.label>
+
+	<TM_GreaterEarth_ElementalR.description>The earth elemental is a lumbering, stubborn monstrosity made of living stone.  Its hide appears to be made out of rock and crystal with patches of mud and soil where the joints should be. Its mouth is a cavern and there appear to be small trees or shrubs growing atop its back as if it is wearing a cloak of vegetation. This creature is the most steadfast of all elementals, able to weather a storm of blows, and this elemental is a master of its element.  The power of this creature will literally crush your foes, the only chance they have is to run.</TM_GreaterEarth_ElementalR.description>
+
+	<TM_GreaterEarth_ElementalR.tools.0.label>left arm</TM_GreaterEarth_ElementalR.tools.0.label>
+
+	<TM_GreaterEarth_ElementalR.tools.1.label>right arm</TM_GreaterEarth_ElementalR.tools.1.label>
+
+	<TM_GreaterEarth_ElementalR.tools.2.label>horn</TM_GreaterEarth_ElementalR.tools.2.label>
+
+</LanguageData>

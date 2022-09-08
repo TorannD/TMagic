@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_SkeletalFaction.label>Esquelético</TM_SkeletalFaction.label>
+
+	<TM_SkeletalFaction.description>Esqueletos e mortos-vivos criados por poder arcano.</TM_SkeletalFaction.description>
+
+	<TM_SkeletalFaction.pawnsplural>esquelético</TM_SkeletalFaction.pawnsplural>
+
+	<TM_SkeletalFaction.fixedname>Esquelético</TM_SkeletalFaction.fixedname>
+
+	<TM_ElementalFaction.label>Elementar</TM_ElementalFaction.label>
+
+	<TM_ElementalFaction.description>Espíritos elementais convocados de seus planos de poder.</TM_ElementalFaction.description>
+
+	<TM_ElementalFaction.pawnsplural>Elementais</TM_ElementalFaction.pawnsplural>
+
+	<TM_ElementalFaction.fixedname>Elementais</TM_ElementalFaction.fixedname>
+
+	<TM_SummonedFaction.label>Ser convocado</TM_SummonedFaction.label>
+
+	<TM_SummonedFaction.description>Seres convocados de outras dimensões ou planos de existência usando poder arcano.</TM_SummonedFaction.description>
+
+	<TM_SummonedFaction.pawnsplural>convocado</TM_SummonedFaction.pawnsplural>
+
+	<TM_SummonedFaction.fixedname>Convocado</TM_SummonedFaction.fixedname>
+
+</LanguageData>

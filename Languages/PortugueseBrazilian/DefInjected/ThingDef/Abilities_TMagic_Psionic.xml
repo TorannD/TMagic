@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Projectile_PsionicStorm.label>PsionicStorm</Projectile_PsionicStorm.label>
+
+	<FlyingObject_PsionicLeap.label>psionic leap</FlyingObject_PsionicLeap.label>
+
+	<FlyingObject_PsionicDash.label>psionic dash</FlyingObject_PsionicDash.label>
+
+	<Projectile_PsionicDash.label>psionic dash</Projectile_PsionicDash.label>
+
+	<TM_Psionic_Projectile.label>psionic projectile</TM_Psionic_Projectile.label>
+
+	<FlyingObject_PsionicStorm.label>psi storm</FlyingObject_PsionicStorm.label>
+
+	<TM_Projectile_PsionicBarrier.label>psionic barrier</TM_Projectile_PsionicBarrier.label>
+
+	<TM_Projectile_PsionicBlast.label>psionic blast</TM_Projectile_PsionicBlast.label>
+
+	<FlyingObject_PsiStorm.label>psi storm</FlyingObject_PsiStorm.label>
+
+</LanguageData>

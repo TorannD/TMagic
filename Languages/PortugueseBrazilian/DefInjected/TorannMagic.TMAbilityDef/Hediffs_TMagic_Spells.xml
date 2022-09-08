@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_LightningCloud.label>Lightning</TM_LightningCloud.label>
+
+	<TM_LightningCloud.description>Ambient electrical discharge caused by condensing charged particles.</TM_LightningCloud.description>
+
+	<TM_Firebolt.label>Firebolt</TM_Firebolt.label>
+
+	<TM_Firebolt.description>Projected bolt of elemental fire.</TM_Firebolt.description>
+
+	<TM_MagicMissile.label>Magic Missile</TM_MagicMissile.label>
+
+	<TM_MagicMissile.description>Arcane energy projected in small, focused bursts.</TM_MagicMissile.description>
+
+</LanguageData>

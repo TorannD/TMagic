@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Demon.label>demon</TM_Demon.label>
+
+	<TM_Demon.lifestages.0.label>demon</TM_Demon.lifestages.0.label>
+
+	<TM_LesserDemon.label>lesser demon</TM_LesserDemon.label>
+
+	<TM_LesserDemon.lifestages.0.label>demon</TM_LesserDemon.lifestages.0.label>
+
+</LanguageData>

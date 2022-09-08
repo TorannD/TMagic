@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<ArcaneForge_ElephantSpear.label>elephant spear</ArcaneForge_ElephantSpear.label>
+
+	<ArcaneForge_ElephantSpear.description>The elephant spear is crafted using the tusks of an elephant, and is typically a status symbol reserved for head hunters or leaders of a tribe. The shaft is engraved with minor enchantments, further boosting the combat abilities of the user.
+		
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +10%
+Damage Boost: +10%
+Arcane Resistance: +20%</ArcaneForge_ElephantSpear.description>
+
+	<ArcaneForge_ElephantSpear.jobstring>forging Elephant Spear</ArcaneForge_ElephantSpear.jobstring>
+
+	<ArcaneForge_ThrumboAxe.label>thrumbo axe</ArcaneForge_ThrumboAxe.label>
+
+	<ArcaneForge_ThrumboAxe.description>An axe crafted using thrumbo horns that are fused together with a clasp made from magicyte. This clasp stores arcane potential and transfers it as physical force when the axe is swung, allowing it to deliver mighty blows capable of cleaving through multiple opponents. The shaft is also etched with magical runes to augment the wielder's power.
+		
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +10%
+Damage Boost: +20%
+Arcane Resistance: +30%</ArcaneForge_ThrumboAxe.description>
+
+	<ArcaneForge_ThrumboAxe.jobstring>forging Thrumbo Axe</ArcaneForge_ThrumboAxe.jobstring>
+
+	<ArcaneForge_ThrumboSaber.label>thrumbo saber</ArcaneForge_ThrumboSaber.label>
+
+	<ArcaneForge_ThrumboSaber.description>A razor sharp blade forged from the horn of a thrumbo and infused with arcane energy. The thrumbo saber is lighter than metal blades and it's edge can cut through all but the thickest armor. Many masters of the blade favor this weapon as it is designed for speed and lethality. Further enchantments may also quicken the users, doubling their attack rate for a short period.
+		
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Ability Cooldown: -10%
+Damage Boost: +10%
+Haste on hit (25%)</ArcaneForge_ThrumboSaber.description>
+
+	<ArcaneForge_ThrumboSaber.jobstring>forging Thrumbo Saber</ArcaneForge_ThrumboSaber.jobstring>
+
+	<ArcaneForge_ElephantBow.label>elephant bow</ArcaneForge_ElephantBow.label>
+
+	<ArcaneForge_ElephantBow.description>A bow shaped from elephant tusks. The tusks are hallowed out to decrease rigidity and reduce weight and softened by soaking it in a magicyte compound that increases suppleness. The elephant bow offers significant improvements in range and accuracy for distant targets over the greatbow, though it is slightly more difficult to handle.
+	
+The elephant bow is engraved with minor enchantments and is a preferred weapon by many experienced rangers and hunters.
+
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +5%
+Energy Regen: +5%
+Damage Boost: +10%
+Ability Cooldown: -10%</ArcaneForge_ElephantBow.description>
+
+	<ArcaneForge_ElephantBow.jobstring>forging elephant bow</ArcaneForge_ElephantBow.jobstring>
+
+	<ArcaneForge_ThrumBow.label>Thrum Bow</ArcaneForge_ThrumBow.label>
+
+	<ArcaneForge_ThrumBow.description>A bow shaped from the horn of a Thrumbo. The horn is hallowed out to decrease the weight and softened by soaking it in a magicyte compound that adds a surprising suppleness to the horn. The bow is further enhanced with embedded enchantments and arcane engravings that travel the length of the bow. The bow is said to be almost sentient, able to determine the intended target through a mental link with the wielder. Arrows fired from this bow almost always hit their intended target. This effect does have a tendency to delude the users own capability, however.
+
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +20%
+Energy Regen: +10%
+Damage Boost: +20%
+Ability Cooldown: -10%
+Class XP Gain: -20%</ArcaneForge_ThrumBow.description>
+
+	<ArcaneForge_ThrumBow.jobstring>forging Thrum Bow</ArcaneForge_ThrumBow.jobstring>
+
+	<ArcaneForge_Replication.label>Forge replication</ArcaneForge_Replication.label>
+
+	<ArcaneForge_Replication.description>Storage data for details and designs of replicated objects.</ArcaneForge_Replication.description>
+
+	<ArcaneForge_Replication.jobstring>replicating</ArcaneForge_Replication.jobstring>
+
+	<ArcaneForge_Replication_Restore.label>Forge replication</ArcaneForge_Replication_Restore.label>
+
+	<ArcaneForge_Replication_Restore.description>Storage data for details and designs of replicated objects.</ArcaneForge_Replication_Restore.description>
+
+	<ArcaneForge_Replication_Restore.jobstring>replicating</ArcaneForge_Replication_Restore.jobstring>
+
+	<ArcaneForge_ChunkToMagicyte.jobstring>Infusing chunk with mana.</ArcaneForge_ChunkToMagicyte.jobstring>
+
+	<ArcaneForge_ChunkToMagicyte.label>Infuse chunk</ArcaneForge_ChunkToMagicyte.label>
+
+	<ArcaneForge_ChunkToMagicyte.description>Infuses stone chunks with mana to create magicyte</ArcaneForge_ChunkToMagicyte.description>
+
+</LanguageData>

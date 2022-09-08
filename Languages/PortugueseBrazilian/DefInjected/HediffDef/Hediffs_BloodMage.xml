@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_BloodHD.label>Blood Magic</TM_BloodHD.label>
+
+	<TM_BloodHD.description>Explica o poder do sangue de um mago de sangue.</TM_BloodHD.description>
+
+	<TM_RendHD.label>Hemorragia</TM_RendHD.label>
+
+	<TM_RendHD.description>Uma ferida horrenda causando sangramento maciço.</TM_RendHD.description>
+
+	<TM_BloodForBloodHD.label>Drenagem de Sangue</TM_BloodForBloodHD.label>
+
+	<TM_BloodForBloodHD.description>Transfere sangue deste alvo para um mago de sangue. Cura feridas no processo.</TM_BloodForBloodHD.description>
+
+	<TM_BloodShieldHD.label>Escudo de Sangue</TM_BloodShieldHD.label>
+
+	<TM_BloodShieldHD.description>Envolvido em uma bolha protetora de energia vital; a energia de cada golpe no Escudo de Sangue restaura a saúde do peão protegido.</TM_BloodShieldHD.description>
+
+</LanguageData>

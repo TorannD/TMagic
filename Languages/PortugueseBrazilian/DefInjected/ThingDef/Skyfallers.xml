@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Meteorite_III.label>meteorite</TM_Meteorite_III.label>
+
+	<TM_ScornLeaving.label>scorn leaving</TM_ScornLeaving.label>
+
+	<TM_Meteorite.label>meteorite</TM_Meteorite.label>
+
+	<TM_Blizzard_Tiny.label>blizzard(tiny)</TM_Blizzard_Tiny.label>
+
+	<TM_ArrowStorm.label>arrow storm</TM_ArrowStorm.label>
+
+	<TM_Meteorite_II.label>meteorite</TM_Meteorite_II.label>
+
+	<TM_Meteorite_I.label>meteorite</TM_Meteorite_I.label>
+
+	<TM_LightPodLeaving.label>light beam (leaving)</TM_LightPodLeaving.label>
+
+	<TM_LightPodIncoming.label>light beam (incoming)</TM_LightPodIncoming.label>
+
+	<TM_ScornIncoming.label>scorn incoming</TM_ScornIncoming.label>
+
+	<TM_ActiveLightPod.label>light pod</TM_ActiveLightPod.label>
+
+</LanguageData>

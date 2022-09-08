@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_NeedTravel.stages.0.label>trapped</TM_NeedTravel.stages.0.label>
+
+	<TM_NeedTravel.stages.0.description>I've been stuck at this place forever. I need to get away from here and see the world!</TM_NeedTravel.stages.0.description>
+
+	<TM_NeedTravel.stages.1.label>adventuring</TM_NeedTravel.stages.1.label>
+
+	<TM_NeedTravel.stages.1.description>Nothing beats being on the road and seeing new places.</TM_NeedTravel.stages.1.description>
+
+</LanguageData>

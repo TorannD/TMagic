@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_PainHD.label>Pain</TM_PainHD.label>
+
+	<TM_PainHD.description>An injury cursed with extreme pain.</TM_PainHD.description>
+
+	<TM_PainHD.comps.0.labeltendedwell>bandaged</TM_PainHD.comps.0.labeltendedwell>
+
+	<TM_PainHD.comps.0.labeltendedwellinner>sutured</TM_PainHD.comps.0.labeltendedwellinner>
+
+	<TM_PainHD.comps.0.labelsolidtendedwell>set</TM_PainHD.comps.0.labelsolidtendedwell>
+
+	<TM_PainHD.injuryprops.destroyedlabel>withered away</TM_PainHD.injuryprops.destroyedlabel>
+
+	<TM_PainHD.injuryprops.destroyedoutlabel>withered away</TM_PainHD.injuryprops.destroyedoutlabel>
+
+	<TM_EnrageHD.label>Enrage</TM_EnrageHD.label>
+
+	<TM_EnrageHD.description>Consume all positive emotions as fuel for physical power, the spell will fade once all happiness is burned off. While under this curse, a pawn is cannot be staggered, has increased pain resistance, attack speed, and melee damage.</TM_EnrageHD.description>
+
+	<TM_EnrageHD.stages.0.label>I</TM_EnrageHD.stages.0.label>
+
+	<TM_EnrageHD.stages.1.label>II</TM_EnrageHD.stages.1.label>
+
+	<TM_EnrageHD.stages.2.label>III</TM_EnrageHD.stages.2.label>
+
+	<TM_EnrageHD.stages.3.label>IV</TM_EnrageHD.stages.3.label>
+
+	<TM_EnrageHD.stages.4.label>V</TM_EnrageHD.stages.4.label>
+
+	<TM_HexHD.label>Hexed</TM_HexHD.label>
+
+	<TM_HexHD.description>Under the effects of a hex.</TM_HexHD.description>
+
+	<TM_Hex_CriticalFailHD.label>Unlucky</TM_Hex_CriticalFailHD.label>
+
+	<TM_Hex_CriticalFailHD.description>Cursed with dangerously bad luck.</TM_Hex_CriticalFailHD.description>
+
+	<TM_SpiritBondHD.label>Spirit Bond</TM_SpiritBondHD.label>
+
+	<TM_SpiritBondHD.description>Represents the bond this animal spirit shares with a shaman. Increases physical attributes and enhances healing.</TM_SpiritBondHD.description>
+
+	<TM_SpiritBondHD.stages.0.label>I</TM_SpiritBondHD.stages.0.label>
+
+	<TM_SpiritBondHD.stages.1.label>II</TM_SpiritBondHD.stages.1.label>
+
+	<TM_SpiritBondHD.stages.2.label>III</TM_SpiritBondHD.stages.2.label>
+
+	<TM_SpiritBondHD.stages.3.label>IV</TM_SpiritBondHD.stages.3.label>
+
+	<TM_CrowInsightHD.label>Crows Insight</TM_CrowInsightHD.label>
+
+	<TM_CrowInsightHD.description>Insight gained from the spirit crow - enhances research speed and psychic sensitivity.</TM_CrowInsightHD.description>
+
+	<TM_CrowInsightHD.stages.0.label>I</TM_CrowInsightHD.stages.0.label>
+
+	<TM_CrowInsightHD.stages.1.label>II</TM_CrowInsightHD.stages.1.label>
+
+	<TM_CrowInsightHD.stages.2.label>III</TM_CrowInsightHD.stages.2.label>
+
+	<TM_CrowInsightHD.stages.3.label>IV</TM_CrowInsightHD.stages.3.label>
+
+	<TM_BirdflightHD.label>flying</TM_BirdflightHD.label>
+
+	<TM_BirdflightHD.description>Increased movement while flying.</TM_BirdflightHD.description>
+
+</LanguageData>

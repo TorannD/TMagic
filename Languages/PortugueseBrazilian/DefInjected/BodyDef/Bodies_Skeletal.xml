@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Skeletal.label>esquelético</TM_Skeletal.label>
+
+	<TM_Skeletal.corepart.customlabel>Caixa torácica</TM_Skeletal.corepart.customlabel>
+
+	<TM_Skeletal.corepart.parts.1.customlabel>ossos do pescoço</TM_Skeletal.corepart.parts.1.customlabel>
+
+	<TM_Skeletal.corepart.parts.1.parts.0.customlabel>crânio</TM_Skeletal.corepart.parts.1.parts.0.customlabel>
+
+	<TM_Skeletal.corepart.parts.1.parts.0.parts.0.customlabel>mandíbula</TM_Skeletal.corepart.parts.1.parts.0.parts.0.customlabel>
+
+	<TM_Skeletal.corepart.parts.2.customlabel>ombro esquerdo</TM_Skeletal.corepart.parts.2.customlabel>
+
+	<TM_Skeletal.corepart.parts.2.parts.0.customlabel>clavícula esquerda</TM_Skeletal.corepart.parts.2.parts.0.customlabel>
+
+	<TM_Skeletal.corepart.parts.2.parts.1.customlabel>área do braço esquerdo</TM_Skeletal.corepart.parts.2.parts.1.customlabel>
+
+	<TM_Skeletal.corepart.parts.2.parts.1.parts.0.customlabel>úmero esquerdo</TM_Skeletal.corepart.parts.2.parts.1.parts.0.customlabel>
+
+	<TM_Skeletal.corepart.parts.2.parts.1.parts.1.customlabel>raio esquerdo</TM_Skeletal.corepart.parts.2.parts.1.parts.1.customlabel>
+
+	<TM_Skeletal.corepart.parts.2.parts.1.parts.2.customlabel>ossos da mão esquerda</TM_Skeletal.corepart.parts.2.parts.1.parts.2.customlabel>
+
+	<TM_Skeletal.corepart.parts.2.parts.1.parts.2.parts.0.customlabel>osso mindinho esquerdo</TM_Skeletal.corepart.parts.2.parts.1.parts.2.parts.0.customlabel>
+
+	<TM_Skeletal.corepart.parts.2.parts.1.parts.2.parts.1.customlabel>osso do dedo anular esquerdo</TM_Skeletal.corepart.parts.2.parts.1.parts.2.parts.1.customlabel>
+
+	<TM_Skeletal.corepart.parts.2.parts.1.parts.2.parts.2.customlabel>osso do dedo médio esquerdo</TM_Skeletal.corepart.parts.2.parts.1.parts.2.parts.2.customlabel>
+
+	<TM_Skeletal.corepart.parts.2.parts.1.parts.2.parts.3.customlabel>osso do dedo indicador esquerdo</TM_Skeletal.corepart.parts.2.parts.1.parts.2.parts.3.customlabel>
+
+	<TM_Skeletal.corepart.parts.2.parts.1.parts.2.parts.4.customlabel>osso do polegar esquerdo</TM_Skeletal.corepart.parts.2.parts.1.parts.2.parts.4.customlabel>
+
+	<TM_Skeletal.corepart.parts.3.customlabel>ombro direito</TM_Skeletal.corepart.parts.3.customlabel>
+
+	<TM_Skeletal.corepart.parts.3.parts.0.customlabel>clavícula direita</TM_Skeletal.corepart.parts.3.parts.0.customlabel>
+
+	<TM_Skeletal.corepart.parts.3.parts.1.customlabel>área do braço direito</TM_Skeletal.corepart.parts.3.parts.1.customlabel>
+
+	<TM_Skeletal.corepart.parts.3.parts.1.parts.0.customlabel>úmero direito</TM_Skeletal.corepart.parts.3.parts.1.parts.0.customlabel>
+
+	<TM_Skeletal.corepart.parts.3.parts.1.parts.1.customlabel>raio direito</TM_Skeletal.corepart.parts.3.parts.1.parts.1.customlabel>
+
+	<TM_Skeletal.corepart.parts.3.parts.1.parts.2.customlabel>ossos da mão direita</TM_Skeletal.corepart.parts.3.parts.1.parts.2.customlabel>
+
+	<TM_Skeletal.corepart.parts.3.parts.1.parts.2.parts.0.customlabel>osso mindinho direito</TM_Skeletal.corepart.parts.3.parts.1.parts.2.parts.0.customlabel>
+
+	<TM_Skeletal.corepart.parts.3.parts.1.parts.2.parts.1.customlabel>osso do dedo anular direito</TM_Skeletal.corepart.parts.3.parts.1.parts.2.parts.1.customlabel>
+
+	<TM_Skeletal.corepart.parts.3.parts.1.parts.2.parts.2.customlabel>osso do dedo médio direito</TM_Skeletal.corepart.parts.3.parts.1.parts.2.parts.2.customlabel>
+
+	<TM_Skeletal.corepart.parts.3.parts.1.parts.2.parts.3.customlabel>osso do dedo indicador direito</TM_Skeletal.corepart.parts.3.parts.1.parts.2.parts.3.customlabel>
+
+	<TM_Skeletal.corepart.parts.3.parts.1.parts.2.parts.4.customlabel>osso do polegar direito</TM_Skeletal.corepart.parts.3.parts.1.parts.2.parts.4.customlabel>
+
+	<TM_Skeletal.corepart.parts.4.customlabel>perna esquerda</TM_Skeletal.corepart.parts.4.customlabel>
+
+	<TM_Skeletal.corepart.parts.4.parts.0.customlabel>fémur esquerdo</TM_Skeletal.corepart.parts.4.parts.0.customlabel>
+
+	<TM_Skeletal.corepart.parts.4.parts.1.customlabel>tíbia esquerda</TM_Skeletal.corepart.parts.4.parts.1.customlabel>
+
+	<TM_Skeletal.corepart.parts.4.parts.2.customlabel>ossos do pé esquerdo</TM_Skeletal.corepart.parts.4.parts.2.customlabel>
+
+	<TM_Skeletal.corepart.parts.4.parts.2.parts.0.customlabel>osso do dedão esquerdo</TM_Skeletal.corepart.parts.4.parts.2.parts.0.customlabel>
+
+	<TM_Skeletal.corepart.parts.4.parts.2.parts.1.customlabel>osso do quarto dedo do pé esquerdo</TM_Skeletal.corepart.parts.4.parts.2.parts.1.customlabel>
+
+	<TM_Skeletal.corepart.parts.4.parts.2.parts.2.customlabel>osso do dedo médio esquerdo</TM_Skeletal.corepart.parts.4.parts.2.parts.2.customlabel>
+
+	<TM_Skeletal.corepart.parts.4.parts.2.parts.3.customlabel>osso do segundo dedo do pé esquerdo</TM_Skeletal.corepart.parts.4.parts.2.parts.3.customlabel>
+
+	<TM_Skeletal.corepart.parts.4.parts.2.parts.4.customlabel>osso dedão do pé esquerdo</TM_Skeletal.corepart.parts.4.parts.2.parts.4.customlabel>
+
+	<TM_Skeletal.corepart.parts.5.customlabel>perna direita</TM_Skeletal.corepart.parts.5.customlabel>
+
+	<TM_Skeletal.corepart.parts.5.parts.0.customlabel>fémur direito</TM_Skeletal.corepart.parts.5.parts.0.customlabel>
+
+	<TM_Skeletal.corepart.parts.5.parts.1.customlabel>tíbia direita</TM_Skeletal.corepart.parts.5.parts.1.customlabel>
+
+	<TM_Skeletal.corepart.parts.5.parts.2.customlabel>ossos do pé direito</TM_Skeletal.corepart.parts.5.parts.2.customlabel>
+
+	<TM_Skeletal.corepart.parts.5.parts.2.parts.0.customlabel>osso do dedo do pé direito</TM_Skeletal.corepart.parts.5.parts.2.parts.0.customlabel>
+
+	<TM_Skeletal.corepart.parts.5.parts.2.parts.1.customlabel>osso do quarto dedo do pé direito</TM_Skeletal.corepart.parts.5.parts.2.parts.1.customlabel>
+
+	<TM_Skeletal.corepart.parts.5.parts.2.parts.2.customlabel>osso do dedo médio direito</TM_Skeletal.corepart.parts.5.parts.2.parts.2.customlabel>
+
+	<TM_Skeletal.corepart.parts.5.parts.2.parts.3.customlabel>osso do segundo dedo do pé direito</TM_Skeletal.corepart.parts.5.parts.2.parts.3.customlabel>
+
+	<TM_Skeletal.corepart.parts.5.parts.2.parts.4.customlabel>osso dedão do pé direito</TM_Skeletal.corepart.parts.5.parts.2.parts.4.customlabel>
+
+</LanguageData>

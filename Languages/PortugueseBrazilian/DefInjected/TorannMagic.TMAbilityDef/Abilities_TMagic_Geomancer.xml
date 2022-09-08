@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Meteor.label>Meteor</TM_Meteor.label>
+
+	<TM_Meteor.description>Collects rock, dust, and debris from the atmosphere and space and forms it into a meteorite. The geomancer directs its descent to bury a target location.
+		
+The core of the meteorite is always composed of valuable material.
+
+Radius: 2
+Cast time: 5s</TM_Meteor.description>
+
+	<TM_Encase_II.label>Encase II</TM_Encase_II.label>
+
+	<TM_Encase_II.description>Encloses a target area in a ring of stone, effective at isolating sections of the battlefield.
+		
+Radius: 5
+Range: 60
+Cast time: 1.1s</TM_Encase_II.description>
+
+	<TM_EarthernHammer.label>Earthern Hammer</TM_EarthernHammer.label>
+
+	<TM_EarthernHammer.description>The geomancer manipulates the laws of gravity to catapult massive stones from the surrounding earth. The amount of gravitational energy reversed is finite; nearby surface stones require minimal energy while subterranean stones require significantly more.
+		
+The first, and every third stone after, will always be subterranean unless there is insufficient gravitational energy in which case the geomancer will attempt to use the remaining energy throwing nearby stones. The extreme shift in gravity will temporarily disorient the geomancer.</TM_EarthernHammer.description>
+
+	<TM_EarthSprites.label>Earth Sprites</TM_EarthSprites.label>
+
+	<TM_EarthSprites.description>Calls forth earth sprites to transform the terrain. Sprites appear as flecks of light and can easily be missed by the inattentive, but they are diligent workers capable of breaking rock or stone down into its base component or increase the richness and fertility of soil. 
+		
+Once summoned, they will continue to work on the terrain, even moving to nearby area's, until dismissed by the geomancer. Earth sprites only understand basic instructions and will move randomly to a new area to continue their work; if no nearby area needs work, the summoning will end. If earth sprites are summoned into an area named "earth sprites" then they will only move to nearby cells within this area.
+
+In exchange for their efforts, earth sprites expect a steady and substantial supply of mana. If the geomancer fails to meet this request, the earth sprites will fade away. Each geomancer can only request the help of a single earth sprite, regardless of how much mana they have.</TM_EarthSprites.description>
+
+	<TM_Encase.label>Encase</TM_Encase.label>
+
+	<TM_Encase.description>Encloses a target area in a ring of stone, effective at isolating sections of the battlefield.
+
+Radius: 3
+Range: 50
+Cast time: 1.5s</TM_Encase.description>
+
+	<TM_DismissEarthSprites.label>Dismiss Earth Sprites</TM_DismissEarthSprites.label>
+
+	<TM_DismissEarthSprites.description>Dismisses a active earth sprite.</TM_DismissEarthSprites.description>
+
+	<TM_DispelStoneskin.label>Dispel Stoneskin</TM_DispelStoneskin.label>
+
+	<TM_DispelStoneskin.description>Dispels all instances of stoneskin maintained by this pawn.</TM_DispelStoneskin.description>
+
+	<TM_Meteor_III.label>Meteor III</TM_Meteor_III.label>
+
+	<TM_Meteor_III.description>Collects rock, dust, and debris from the atmosphere and space and forms it into a meteorite. The geomancer directs its descent to bury a target location.
+		
+The core of the meteorite is always composed of valuable material.
+
+Radius: 5
+Cast time: 3.8s</TM_Meteor_III.description>
+
+	<TM_Encase_III.label>Encase III</TM_Encase_III.label>
+
+	<TM_Encase_III.description>Encloses a target area in a ring of stone, effective at isolating sections of the battlefield.
+		
+Radius: 6
+Range: 65
+Cast time: 1.0s</TM_Encase_III.description>
+
+	<TM_Encase_I.label>Encase I</TM_Encase_I.label>
+
+	<TM_Encase_I.description>Encloses a target area in a ring of stone, effective at isolating sections of the battlefield.
+		
+Radius: 4
+Range: 55
+Cast time: 1.3s</TM_Encase_I.description>
+
+	<TM_ShatterSentinel.label>Shatter Sentinel</TM_ShatterSentinel.label>
+
+	<TM_ShatterSentinel.description>All sentinels maintained by this pawn are shattered in a violent eruption.</TM_ShatterSentinel.description>
+
+	<TM_Stoneskin.label>Stoneskin</TM_Stoneskin.label>
+
+	<TM_Stoneskin.description>Applies stoneskin to the target pawn. Each charge of stoneskin absorbs a single attack, regardless of how powerful, or weak, the attack is. Stoneskin is an unsubstantial defense, meaning the defensive measures it employs are not physical and will not interfere with the combat capabilities of its ward.
+		
+Stoneskin requires a constant reserve of mana to maintain, each application will reduce the casters maximum mana by 15. The caster can only maintain a limited number of stoneskin instances regardless of how much mana the caster has available.
+
+Applying stoneskin to a target that already has stoneskin will remove all charges of stoneskin on the target and dissipate the spell (returning mana reserves back to the caster).</TM_Stoneskin.description>
+
+	<TM_Meteor_II.label>Meteor II</TM_Meteor_II.label>
+
+	<TM_Meteor_II.description>Collects rock, dust, and debris from the atmosphere and space and forms it into a meteorite. The geomancer directs its descent to bury a target location.
+		
+The core of the meteorite is always composed of valuable material.
+
+Radius: 4
+Cast time: 4.2s</TM_Meteor_II.description>
+
+	<TM_Meteor_I.label>Meteor I</TM_Meteor_I.label>
+
+	<TM_Meteor_I.description>Collects rock, dust, and debris from the atmosphere and space and forms it into a meteorite. The geomancer directs its descent to bury a target location.
+		
+The core of the meteorite is always composed of valuable material.
+
+Radius: 3
+Cast time: 4.6s</TM_Meteor_I.description>
+
+</LanguageData>

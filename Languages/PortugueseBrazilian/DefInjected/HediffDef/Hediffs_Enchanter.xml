@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_EnchantedBodyHD.label>Corpo encantado</TM_EnchantedBodyHD.label>
+
+	<TM_EnchantedBodyHD.description>Criação de partes do corpo encantadas para aumentar a capacidade física.</TM_EnchantedBodyHD.description>
+
+	<TM_EnchantedBodyHD.stages.0.label>Braço</TM_EnchantedBodyHD.stages.0.label>
+
+	<TM_EnchantedBodyHD.stages.1.label>Dois braços</TM_EnchantedBodyHD.stages.1.label>
+
+	<TM_EnchantedBodyHD.stages.2.label>Braços e Olhos</TM_EnchantedBodyHD.stages.2.label>
+
+	<TM_EnchantedBodyHD.stages.3.label>Braços e Olhos ++</TM_EnchantedBodyHD.stages.3.label>
+
+	<TM_EnchantedAuraHD.label>Aura encantada</TM_EnchantedAuraHD.label>
+
+	<TM_EnchantedAuraHD.description>Um aspecto encantado envolve as qualidades de realce do peão consideradas para beleza, carinho e atração.</TM_EnchantedAuraHD.description>
+
+	<TM_EnchantedAuraHD.stages.0.label>I</TM_EnchantedAuraHD.stages.0.label>
+
+	<TM_EnchantedAuraHD.stages.1.label>II</TM_EnchantedAuraHD.stages.1.label>
+
+	<TM_EnchantedAuraHD.stages.2.label>III</TM_EnchantedAuraHD.stages.2.label>
+
+	<TM_EnchantedAuraHD.stages.3.label>IV</TM_EnchantedAuraHD.stages.3.label>
+
+	<TM_ShapeshiftHD.label>Metamorfo</TM_ShapeshiftHD.label>
+
+	<TM_ShapeshiftHD.description>Melhora o poder de qualquer forma animal tomada por um metamorfo.</TM_ShapeshiftHD.description>
+
+	<TM_ShapeshiftHD.stages.0.label>I</TM_ShapeshiftHD.stages.0.label>
+
+	<TM_ShapeshiftHD.stages.1.label>II</TM_ShapeshiftHD.stages.1.label>
+
+	<TM_ShapeshiftHD.stages.2.label>III</TM_ShapeshiftHD.stages.2.label>
+
+	<TM_ShapeshiftHD.stages.3.label>IV</TM_ShapeshiftHD.stages.3.label>
+
+	<TM_WeaponEnchantment_FireHD.label>Arma encantada</TM_WeaponEnchantment_FireHD.label>
+
+	<TM_WeaponEnchantment_FireHD.description>Encanta a arma atualmente equipada com fogo elemental que pode queimar ou atear fogo a um objeto. Este encantamento terminará se a arma for desequipada ou trocada.</TM_WeaponEnchantment_FireHD.description>
+
+	<TM_WeaponEnchantment_FireHD.stages.0.label>Fogo (I)</TM_WeaponEnchantment_FireHD.stages.0.label>
+
+	<TM_WeaponEnchantment_FireHD.stages.1.label>Fogo (II)</TM_WeaponEnchantment_FireHD.stages.1.label>
+
+	<TM_WeaponEnchantment_FireHD.stages.2.label>Fogo (III)</TM_WeaponEnchantment_FireHD.stages.2.label>
+
+	<TM_WeaponEnchantment_FireHD.stages.3.label>Fogo (IV)</TM_WeaponEnchantment_FireHD.stages.3.label>
+
+	<TM_WeaponEnchantment_IceHD.label>Arma encantada</TM_WeaponEnchantment_IceHD.label>
+
+	<TM_WeaponEnchantment_IceHD.description>Encanta a arma atualmente equipada com gelo elementar que causa congelamento. Este encantamento terminará se a arma for desequipada ou trocada.</TM_WeaponEnchantment_IceHD.description>
+
+	<TM_WeaponEnchantment_IceHD.stages.0.label>Gelo (I)</TM_WeaponEnchantment_IceHD.stages.0.label>
+
+	<TM_WeaponEnchantment_IceHD.stages.1.label>Gelo (II)</TM_WeaponEnchantment_IceHD.stages.1.label>
+
+	<TM_WeaponEnchantment_IceHD.stages.2.label>Gelo (III)</TM_WeaponEnchantment_IceHD.stages.2.label>
+
+	<TM_WeaponEnchantment_IceHD.stages.3.label>Gelo (IV)</TM_WeaponEnchantment_IceHD.stages.3.label>
+
+	<TM_WeaponEnchantment_LitHD.label>Arma encantada</TM_WeaponEnchantment_LitHD.label>
+
+	<TM_WeaponEnchantment_LitHD.description>Encanta a arma atualmente equipada com um raio elemental que envia ondas de choque impressionantes através de um objeto. Este encantamento terminará se a arma for desequipada ou trocada.</TM_WeaponEnchantment_LitHD.description>
+
+	<TM_WeaponEnchantment_LitHD.stages.0.label>Atordoar (I)</TM_WeaponEnchantment_LitHD.stages.0.label>
+
+	<TM_WeaponEnchantment_LitHD.stages.1.label>Atordoar (II)</TM_WeaponEnchantment_LitHD.stages.1.label>
+
+	<TM_WeaponEnchantment_LitHD.stages.2.label>Atordoar (III)</TM_WeaponEnchantment_LitHD.stages.2.label>
+
+	<TM_WeaponEnchantment_LitHD.stages.3.label>Atordoar (IV)</TM_WeaponEnchantment_LitHD.stages.3.label>
+
+	<TM_WeaponEnchantment_DarkHD.label>Arma encantada</TM_WeaponEnchantment_DarkHD.label>
+
+	<TM_WeaponEnchantment_DarkHD.description>Encanta a arma atualmente equipada com um toque de escuridão que causa cegueira. Este encantamento terminará se a arma for desequipada ou trocada.</TM_WeaponEnchantment_DarkHD.description>
+
+	<TM_WeaponEnchantment_DarkHD.stages.0.label>Escuro (I)</TM_WeaponEnchantment_DarkHD.stages.0.label>
+
+	<TM_WeaponEnchantment_DarkHD.stages.1.label>Escuro (II)</TM_WeaponEnchantment_DarkHD.stages.1.label>
+
+	<TM_WeaponEnchantment_DarkHD.stages.2.label>Escuro (III)</TM_WeaponEnchantment_DarkHD.stages.2.label>
+
+	<TM_WeaponEnchantment_DarkHD.stages.3.label>Escuro (IV)</TM_WeaponEnchantment_DarkHD.stages.3.label>
+
+</LanguageData>

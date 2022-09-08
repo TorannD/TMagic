@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_MagicLore.label>discussed magic theories and practices</TM_MagicLore.label>
+
+	<TM_MagicLore.logrulesinitiator.rulesstrings.0>r_logentry->Mentored [RECIPIENT_nameDef] in magic.</TM_MagicLore.logrulesinitiator.rulesstrings.0>
+
+	<TM_MagicLore.logrulesrecipient.rulesstrings.0>r_logentry->Learned magic theories from [INITIATOR_nameDef].</TM_MagicLore.logrulesrecipient.rulesstrings.0>
+
+	<TM_MightLore.label>discussed combat techniques</TM_MightLore.label>
+
+	<TM_MightLore.logrulesinitiator.rulesstrings.0>r_logentry->Taught combat techniques to [RECIPIENT_nameDef].</TM_MightLore.logrulesinitiator.rulesstrings.0>
+
+	<TM_MightLore.logrulesrecipient.rulesstrings.0>r_logentry->Trained in combat by [INITIATOR_nameDef].</TM_MightLore.logrulesrecipient.rulesstrings.0>
+
+	<TM_EntertainID.label>entertained</TM_EntertainID.label>
+
+	<TM_EntertainID.logrulesinitiator.rulesstrings.0>r_logentry->Entertained [RECIPIENT_nameDef].</TM_EntertainID.logrulesinitiator.rulesstrings.0>
+
+	<TM_EntertainID.logrulesrecipient.rulesstrings.0>r_logentry->Was entertained by [INITIATOR_nameDef].</TM_EntertainID.logrulesrecipient.rulesstrings.0>
+
+	<TM_EntertainAuraID.label>entertained</TM_EntertainAuraID.label>
+
+	<TM_EntertainAuraID.logrulesinitiator.rulesstrings.0>r_logentry->Had an entertaining chat with [RECIPIENT_nameDef].</TM_EntertainAuraID.logrulesinitiator.rulesstrings.0>
+
+	<TM_EntertainAuraID.logrulesrecipient.rulesstrings.0>r_logentry->Had an entertaining chat with [INITIATOR_nameDef].</TM_EntertainAuraID.logrulesrecipient.rulesstrings.0>
+
+</LanguageData>

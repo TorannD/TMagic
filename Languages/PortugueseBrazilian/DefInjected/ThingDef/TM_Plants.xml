@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Syrrium.label>syrrium</TM_Syrrium.label>
+
+	<TM_Syrrium.description>Syrrium is distilled from pomana through a process boiling the mashed fruit which separates the syrrium from the pomana. Syrrium induces a much more intense effect than raw pomana when consumed. The chemical effects qualify the liquid as a drug and can cause mild chemical dependency, however, the its more addictive lure is when some begin to feel less capable without the drug and consume syrrium to maintain their confidence and mental balance.
+
+The claims that pomanasyrrium grant insight and clarity is disregarded by most as lore or fantasy, however, research into its chemistry has revealed that these effects are indeed real, at least for mages. The benefits of syrrium are considered the primary reason to cultivate pomanasyrrium. When properly refined, the effects of syrrium have been found to expand a mages access to mana, accelerating its ebb and flow, and decreasing the effort required when exerting arcane power. These effects will not stack with benefits gained by consuming the raw fruit.</TM_Syrrium.description>
+
+	<TM_Syrrium.ingestible.ingestcommandstring>Drink {0}</TM_Syrrium.ingestible.ingestcommandstring>
+
+	<TM_Syrrium.ingestible.ingestreportstring>Drinking {0}.</TM_Syrrium.ingestible.ingestreportstring>
+
+	<TM_Plant_Pomanasyrrium.label>pomanasyrrium bush</TM_Plant_Pomanasyrrium.label>
+
+	<TM_Plant_Pomanasyrrium.description>The pomanasyrrium plant is steeped in lore as having mythical properties to grant wisdom, insight, and clarity to those who consume its fruit.  However, it is difficult to grow and does not the level of yield found in other cultivated plants so it is not favored by growers or farmers. 
+	
+The fruit it produces, known more commonly as pomona, can be consumed raw and is quite tasty but has a low nutrient value. Like ambrosia, it causes a slight euphoric sensation and promotes a sense of mental well-being.</TM_Plant_Pomanasyrrium.description>
+
+	<TM_Plant_Paracyte.label>Paracyte thornbush</TM_Plant_Paracyte.label>
+
+	<TM_Plant_Paracyte.description>The paracyte thornbush is a genetically engineered plant that absorbs mana through a process of arcane transpiration and collects it into a chrysalis. As the plant matures, the chrysalis hardens into magicyte which can be harvested.  The rest of the plant consists of almost glass-like thorns and rigid stems. 
+	
+Paracyte is difficult to grow and only skilled herbalists are able to plant and harvest it safely, but for all it's difficulties, it has a delicate beauty and gives off an ethereal glow that reflects light along its crystalline edges.
+
+NOTE: Paracyte plants will lower mana regen for all mages on the map if the number of paracyte plants exceeds the soft cap. Check mod settings for the soft cap value. Paracyte plans have no effect on mana regen when the total count on the map is lower than the soft cap.</TM_Plant_Paracyte.description>
+
+	<TM_RawPomanasyrrium.label>pomana fruit</TM_RawPomanasyrrium.label>
+
+	<TM_RawPomanasyrrium.description>A fist sized fruit with hues ranging from sunset orange to dusky violet, pomona is primarily considered a delicacy due to its commonality and is usually enjoyed raw as a desert.  When consumed raw, it generates a mild euphoric sensation of mental well-being and has been found to open up mental pathways, expanding consciousness.</TM_RawPomanasyrrium.description>
+
+	<TM_RawPomanaMash.label>mashed pomana</TM_RawPomanaMash.label>
+
+	<TM_RawPomanaMash.description>A bitter and unappetizing byproduct when extracting syrrium from raw pomonasyrrium. This byproduct retains some nutritional value but is largely left for animal consumption or as a nutrient base for meals.</TM_RawPomanaMash.description>
+
+	<TM_Plant_Briar.label>thorny vines</TM_Plant_Briar.label>
+
+	<TM_Plant_Briar.description>A hazard of tangled, woody shoots covered in wicked thorns that slow down anyone moving over them. The thorns are razor sharp and can pierce even thick clothing.</TM_Plant_Briar.description>
+
+</LanguageData>

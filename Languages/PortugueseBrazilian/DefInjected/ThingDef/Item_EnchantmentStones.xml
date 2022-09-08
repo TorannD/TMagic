@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_EStone_maxMP_minor.label>Minor Arcane Gem of Holding</TM_EStone_maxMP_minor.label>
+
+	<TM_EStone_maxMP_minor.description>A magical stone that can be used by a mage to enchant an item with magical energy. Gazing into the stone gives the observer an eerie sense of vertigo, as if looking into a bottomless well. This gem can be used to imbue an item with magical potential, increasing the maximum energy of any mage or fighter wearing the item by 5%.</TM_EStone_maxMP_minor.description>
+
+	<RawMagicyte.label>unrefined magicyte</RawMagicyte.label>
+
+	<RawMagicyte.description>A stone that seems to wrap itself in a dull, glassy surface, as if a mysterious power has cloaked itself in the center of the stone. Seemingly composed of the same stone it was cut from, this fairly unremarkable stone shimmers slightly, even in the dark, and it emits an energy signature that mages can detect when touching the stone.
+	
+Raw Magicyte can be refined to make a variety of enchanting gems at the gemcutting table.</RawMagicyte.description>
+
+	<TM_EStone_maxMP.label>Arcane Gem of Holding</TM_EStone_maxMP.label>
+
+	<TM_EStone_maxMP.description>A magical stone that can be used by a mage to enchant an item with magical energy. Gazing into the stone gives the observer an eerie sense of vertigo, as if looking into a bottomless well. This gem can be used to imbue an item with magical potential, increasing the maximum energy of any mage or fighter wearing the item by 10%.</TM_EStone_maxMP.description>
+
+	<TM_EStone_wonder_minor.label>Minor Arcane Gem of Wonder</TM_EStone_wonder_minor.label>
+
+	<TM_EStone_wonder_minor.description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem hums with intense power. This gem can be used to imbue an item with magical potential, granting minor bonuses to all enchantment categories.</TM_EStone_wonder_minor.description>
+
+	<TM_EStone_maxMP_major.label>Major Arcane Gem of Holding</TM_EStone_maxMP_major.label>
+
+	<TM_EStone_maxMP_major.description>A magical stone that can be used by a mage to enchant an item with magical energy. Gazing into the stone gives the observer an eerie sense of vertigo, as if looking into a bottomless well. This gem can be used to imbue an item with magical potential, increasing the maximum energy of any mage or fighter wearing the item by 15%.</TM_EStone_maxMP_major.description>
+
+	<TM_EStone_coolDown_minor.label>Minor Arcane Gem of Acceleration</TM_EStone_coolDown_minor.label>
+
+	<TM_EStone_coolDown_minor.description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem decreases the cooldown timer of any ability by 3%.</TM_EStone_coolDown_minor.description>
+
+	<TM_EStone_xpGain_major.label>Major Arcane Gem of Learning</TM_EStone_xpGain_major.label>
+
+	<TM_EStone_xpGain_major.description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem assists the wearer by storing a residual mimicry of the ability, allowing the wielder additional introspection and increasing XP gained by 15%.</TM_EStone_xpGain_major.description>
+
+	<TM_EStone_wonder_major.label>Major Arcane Gem of Wonder</TM_EStone_wonder_major.label>
+
+	<TM_EStone_wonder_major.description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem hums with intense power. This gem can be used to imbue an item with magical potential, granting major bonuses to all enchantment categories.</TM_EStone_wonder_major.description>
+
+	<TM_EStone_wonder.label>Arcane Gem of Wonder</TM_EStone_wonder.label>
+
+	<TM_EStone_wonder.description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem hums with intense power. This gem can be used to imbue an item with magical potential, granting moderate bonuses to all enchantment categories.</TM_EStone_wonder.description>
+
+	<TM_EStone_arcaneDmg.label>Arcane Gem of Force</TM_EStone_arcaneDmg.label>
+
+	<TM_EStone_arcaneDmg.description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this enchantment augments the force of an attack, increasing the damage output by 8%.</TM_EStone_arcaneDmg.description>
+
+	<TM_EStone_mpRegenRate_major.label>Major Arcane Gem of Regeneration</TM_EStone_mpRegenRate_major.label>
+
+	<TM_EStone_mpRegenRate_major.description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem can be used to imbue an item, increasing the energy regeneration rate of any mage or fighter wearing the item by 15%.</TM_EStone_mpRegenRate_major.description>
+
+	<TM_EStone_xpGain.label>Arcane Gem of Learning</TM_EStone_xpGain.label>
+
+	<TM_EStone_xpGain.description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem assists the wearer by storing a residual mimicry of the ability, allowing the wielder additional introspection and increasing XP gained by 10%.</TM_EStone_xpGain.description>
+
+	<TM_EStone_coolDown.label>Arcane Gem of Acceleration</TM_EStone_coolDown.label>
+
+	<TM_EStone_coolDown.description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem decreases the cooldown timer of any ability by 5%.</TM_EStone_coolDown.description>
+
+	<TM_EStone_arcaneRes_major.label>Major Arcane Gem of Resistance</TM_EStone_arcaneRes_major.label>
+
+	<TM_EStone_arcaneRes_major.description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem creates a barrier that repels active arcane energy, reducing damage taken from arcane sources by 30%.</TM_EStone_arcaneRes_major.description>
+
+	<TM_EStone_mpCost_minor.label>Minor Arcane Gem of Conservation</TM_EStone_mpCost_minor.label>
+
+	<TM_EStone_mpCost_minor.description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem decreases the energy cost of any spell by 3%.</TM_EStone_mpCost_minor.description>
+
+	<TM_EStone_arcaneRes_minor.label>Minor Arcane Gem of Resistance</TM_EStone_arcaneRes_minor.label>
+
+	<TM_EStone_arcaneRes_minor.description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem creates a barrier that repels active arcane energy, reducing damage taken from arcane sources by 10%.</TM_EStone_arcaneRes_minor.description>
+
+	<TM_EStone_arcaneDmg_major.label>Major Arcane Gem of Force</TM_EStone_arcaneDmg_major.label>
+
+	<TM_EStone_arcaneDmg_major.description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this enchantment augments the force of an attack, increasing the damage output by 12%.</TM_EStone_arcaneDmg_major.description>
+
+	<TM_EStone_mpRegenRate.label>Arcane Gem of Regeneration</TM_EStone_mpRegenRate.label>
+
+	<TM_EStone_mpRegenRate.description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem can be used to imbue an item, increasing the energy regeneration rate of any mage or fighter wearing the item by 10%.</TM_EStone_mpRegenRate.description>
+
+	<TM_EStone_arcaneDmg_minor.label>Minor Arcane Gem of Force</TM_EStone_arcaneDmg_minor.label>
+
+	<TM_EStone_arcaneDmg_minor.description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this enchantment augments the force of an attack, increasing the damage output by 4%.</TM_EStone_arcaneDmg_minor.description>
+
+	<TM_EStone_arcaneRes.label>Arcane Gem of Resistance</TM_EStone_arcaneRes.label>
+
+	<TM_EStone_arcaneRes.description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem creates a barrier that repels active arcane energy, reducing damage taken from arcane sources by 20%.</TM_EStone_arcaneRes.description>
+
+	<TM_EStone_mpCost_major.label>Major Arcane Gem of Conservation</TM_EStone_mpCost_major.label>
+
+	<TM_EStone_mpCost_major.description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem decreases the energy cost of any spell by 7%.</TM_EStone_mpCost_major.description>
+
+	<TM_EStone_mpRegenRate_minor.label>Minor Arcane Gem of Regeneration</TM_EStone_mpRegenRate_minor.label>
+
+	<TM_EStone_mpRegenRate_minor.description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem can be used to imbue an item, increasing the energy regeneration rate of any mage or fighter wearing the item by 5%.</TM_EStone_mpRegenRate_minor.description>
+
+	<TM_EStone_mpCost.label>Arcane Gem of Conservation</TM_EStone_mpCost.label>
+
+	<TM_EStone_mpCost.description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem decreases the energy cost of any spell by 5%.</TM_EStone_mpCost.description>
+
+	<TM_EStone_xpGain_minor.label>Minor Arcane Gem of Learning</TM_EStone_xpGain_minor.label>
+
+	<TM_EStone_xpGain_minor.description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem assists the wearer by storing a residual mimicry of the ability, allowing the wielder additional introspection and increasing XP gained by 5%.</TM_EStone_xpGain_minor.description>
+
+	<TM_EStone_coolDown_major.label>Major Arcane Gem of Acceleration</TM_EStone_coolDown_major.label>
+
+	<TM_EStone_coolDown_major.description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem decreases the cooldown timer of any ability by 7%.</TM_EStone_coolDown_major.description>
+
+</LanguageData>

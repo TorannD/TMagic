@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_PhaseStrike.label>phase strike</TM_PhaseStrike.label>
+
+	<TM_DragonStrike.label>dragon strike</TM_DragonStrike.label>
+
+	<TM_Overwhelm.label>overwhelming light</TM_Overwhelm.label>
+
+	<TM_Poison.label>Poison</TM_Poison.label>
+
+	<TM_DisablingShot.label>Disabling Shot</TM_DisablingShot.label>
+
+	<TM_Headshot.label>Headshot</TM_Headshot.label>
+
+	<TM_CQC.label>CQC</TM_CQC.label>
+
+	<TM_CorpseExplosion.label>corpse explosion</TM_CorpseExplosion.label>
+
+	<TM_BreachingCharge.label>breaching charge</TM_BreachingCharge.label>
+
+	<TM_Whirlwind.label>Whirlwind</TM_Whirlwind.label>
+
+	<TM_Shadow.label>Shadow</TM_Shadow.label>
+
+	<TM_Cleave.label>Cleave</TM_Cleave.label>
+
+	<TM_TigerStrike.label>tiger strike</TM_TigerStrike.label>
+
+	<TM_DeathBolt.label>death bolt</TM_DeathBolt.label>
+
+</LanguageData>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Projectile_SummonElemental.label>summon elemental</Projectile_SummonElemental.label>
+
+	<Projectile_SummonPoppi.label>summon poppi</Projectile_SummonPoppi.label>
+
+	<Projectile_SummonMinion.label>summon minion</Projectile_SummonMinion.label>
+
+	<Projectile_SummonExplosive.label>summon explosive trap</Projectile_SummonExplosive.label>
+
+	<Projectile_SummonPylon.label>summon defense pylon</Projectile_SummonPylon.label>
+
+</LanguageData>

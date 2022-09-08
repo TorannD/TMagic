@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<ID_Introspection.label>introspection</ID_Introspection.label>
+
+	<ID_Introspection.beginletterlabel>Inspiration: introspection</ID_Introspection.beginletterlabel>
+
+	<ID_Introspection.beginletter>{0} has just been inspired. [PAWN_pronoun] will learn 2 times faster for the next 48 hours.</ID_Introspection.beginletter>
+
+	<ID_Introspection.endmessage>{0} is no longer inspired (introspection).</ID_Introspection.endmessage>
+
+	<ID_Introspection.baseinspectline>Inspired: Introspection</ID_Introspection.baseinspectline>
+
+	<ID_ManaRegen.label>mana regeneration</ID_ManaRegen.label>
+
+	<ID_ManaRegen.beginletterlabel>Inspiration: mana regen</ID_ManaRegen.beginletterlabel>
+
+	<ID_ManaRegen.beginletter>{0} has just been inspired. [PAWN_pronoun] will gain mana 2 times faster for the next 72 hours.</ID_ManaRegen.beginletter>
+
+	<ID_ManaRegen.endmessage>{0} is no longer inspired (mana regen).</ID_ManaRegen.endmessage>
+
+	<ID_ManaRegen.baseinspectline>Inspired: Mana regeneration</ID_ManaRegen.baseinspectline>
+
+	<ID_Outgoing.label>outgoing</ID_Outgoing.label>
+
+	<ID_Outgoing.beginletterlabel>Inspiration: social activity</ID_Outgoing.beginletterlabel>
+
+	<ID_Outgoing.beginletter>{0} has just been inspired. [PAWN_pronoun] will be more socially active and will be more likely to have positive social interactions for the next 24 hours.</ID_Outgoing.beginletter>
+
+	<ID_Outgoing.endmessage>{0} is no longer inspired (social activity).</ID_Outgoing.endmessage>
+
+	<ID_Outgoing.baseinspectline>Inspired: Outgoing</ID_Outgoing.baseinspectline>
+
+	<ID_MiningFrenzy.label>mining frenzy</ID_MiningFrenzy.label>
+
+	<ID_MiningFrenzy.beginletterlabel>Inspiration: mining frenzy</ID_MiningFrenzy.beginletterlabel>
+
+	<ID_MiningFrenzy.beginletter>{0} has just been inspired. [PAWN_pronoun] will mine 50% faster and yield 50% more resources during mining for the next 72 hours.</ID_MiningFrenzy.beginletter>
+
+	<ID_MiningFrenzy.endmessage>{0} is no longer inspired (mining frenzy).</ID_MiningFrenzy.endmessage>
+
+	<ID_MiningFrenzy.baseinspectline>Inspired: Mining Frenzy</ID_MiningFrenzy.baseinspectline>
+
+	<ID_FarmingFrenzy.label>farming frenzy</ID_FarmingFrenzy.label>
+
+	<ID_FarmingFrenzy.beginletterlabel>Inspiration: farming frenzy</ID_FarmingFrenzy.beginletterlabel>
+
+	<ID_FarmingFrenzy.beginletter>{0} has just been inspired. [PAWN_pronoun] will harvest crops 50% faster with 50% more yield during plant cutting jobs for the next 72 hours.</ID_FarmingFrenzy.beginletter>
+
+	<ID_FarmingFrenzy.endmessage>{0} is no longer inspired (farming frenzy).</ID_FarmingFrenzy.endmessage>
+
+	<ID_FarmingFrenzy.baseinspectline>Inspired: Farming Frenzy</ID_FarmingFrenzy.baseinspectline>
+
+	<ID_Champion.label>champion</ID_Champion.label>
+
+	<ID_Champion.beginletterlabel>Inspiration: champion</ID_Champion.beginletterlabel>
+
+	<ID_Champion.beginletter>{0} has been heroically inspired. [PAWN_pronoun] dreams of being the champion in the stories told by bards and will live up to those expectations for the next 72 hours.</ID_Champion.beginletter>
+
+	<ID_Champion.endmessage>{0} is no longer inspired (champion).</ID_Champion.endmessage>
+
+	<ID_Champion.baseinspectline>Inspired: Champion</ID_Champion.baseinspectline>
+
+	<ID_Enlightened.label>enlightened</ID_Enlightened.label>
+
+	<ID_Enlightened.beginletterlabel>Inspiration: enlightenment</ID_Enlightened.beginletterlabel>
+
+	<ID_Enlightened.beginletter>{0} has entered a period of enlightenment. [PAWN_pronoun] consciousness will be significantly expanded for the next 72 hours.</ID_Enlightened.beginletter>
+
+	<ID_Enlightened.endmessage>{0} is no longer inspired (enlightenment).</ID_Enlightened.endmessage>
+
+	<ID_Enlightened.baseinspectline>Inspired: Enlightened</ID_Enlightened.baseinspectline>
+
+</LanguageData>

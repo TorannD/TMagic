@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Transpose.label>Transpose</TM_Transpose.label>
+
+	<TM_Transpose.description>Swap places with a target pawn. The faceless and the target will be disoriented following transposition. The faceless will gain reversal for a short period.
+Cast time: .8s
+Range: 40
+Cooldown: 15</TM_Transpose.description>
+
+	<TM_Transpose_I.label>Transpose I</TM_Transpose_I.label>
+
+	<TM_Transpose_I.description>Swap places with a target pawn. The faceless and the target will be disoriented following transposition. The faceless will gain reversal for a short period.
+Cast time: .6s
+Range: 44
+Cooldown: 13</TM_Transpose_I.description>
+
+	<TM_Possess.label>Possess</TM_Possess.label>
+
+	<TM_Possess.description>Like a puppet master, the faceless applies of the mind and body to cause extreme self-doubt on a target pawn - allowing them to control their target through mental suggestion and coercion. 
+		
+Nearby enemies are unlikely to immediately detect the possession unless they see suspicious activity. If detected, neutral and friendly factions will consider aggressive actions from a possessed pawn as an act of hostility.
+
+Only creatures with a human-like mind capable of self-doubt can be possessed.</TM_Possess.description>
+
+	<TM_Reversal.label>Reversal</TM_Reversal.label>
+
+	<TM_Reversal.description>Reverses the kinetic energy of all melee and projectile attacks for a brief period. The faceless will take no damage from these attacks. Direct application and explosive attacks cannot be reversed.</TM_Reversal.description>
+
+	<TM_Transpose_II.label>Transpose II</TM_Transpose_II.label>
+
+	<TM_Transpose_II.description>Swap places with a target pawn. The faceless and the target will be disoriented following transposition. The faceless will gain reversal for a short period.
+Cast time: .4s
+Range: 47
+Cooldown: 11</TM_Transpose_II.description>
+
+	<TM_Mimic.label>Mimic</TM_Mimic.label>
+
+	<TM_Mimic.description>The faceless copies a random ability from a mage or fighter. Only one ability may be stored at a time. The ability is retained after use; reusing Mimic will replace the stored ability.</TM_Mimic.description>
+
+	<TM_Disguise.label>Deception</TM_Disguise.label>
+
+	<TM_Disguise.description>The faceless manipulates light and motion to make their form appear meaningless to any observer; on a subconscious level, any observer will cognitively dismiss the faceless as an unimportant, harmless object, essentially making the faceless invisible.
+	
+Disguise will not fool any pawn that already sees the faceless as a threat.</TM_Disguise.description>
+
+	<TM_Transpose_III.label>Transpose III</TM_Transpose_III.label>
+
+	<TM_Transpose_III.description>Swap places with a target pawn. The faceless and the target will be disoriented following transposition. The faceless will gain reversal for a short period.
+Cast time: .2s
+Range: 50
+Cooldown: 9</TM_Transpose_III.description>
+
+</LanguageData>

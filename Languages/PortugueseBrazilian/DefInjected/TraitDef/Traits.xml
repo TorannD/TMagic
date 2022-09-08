@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_ArcaneConduitTD.degreedatas.0.label>Arcane Conduit</TM_ArcaneConduitTD.degreedatas.0.label>
+
+	<TM_ArcaneConduitTD.degreedatas.0.description>[PAWN_nameDef] is abnormally receptive to the ebb and flow of mana, [PAWN_pronoun] will gain mana 40% faster than normal but [PAWN_possessive] maximum mana capacity is reduced by 20.</TM_ArcaneConduitTD.degreedatas.0.description>
+
+	<TM_ManaWellTD.degreedatas.0.label>Mana Well</TM_ManaWellTD.degreedatas.0.label>
+
+	<TM_ManaWellTD.degreedatas.0.description>[PAWN_nameDef] has an increased resistance to the ebb and flow of mana which allows [PAWN_objective] to hold an additional 40 mana, but reduces [PAWN_possessive] mana regeneration by 20%.</TM_ManaWellTD.degreedatas.0.description>
+
+	<TM_BoundlessTD.degreedatas.0.label>Boundless</TM_BoundlessTD.degreedatas.0.label>
+
+	<TM_BoundlessTD.degreedatas.0.description>[PAWN_nameDef] excels at combat arts and is able to execute combat maneuvers 40% more frequently, however, [PAWN_possessive] talent has fostered an arrogant attitude that reduces [PAWN_possessive] experience gain by 25% and causes other fighters to dislike [PAWN_objective].</TM_BoundlessTD.degreedatas.0.description>
+
+	<TM_OKWithDeath.degreedatas.0.label>Unaffected by death</TM_OKWithDeath.degreedatas.0.label>
+
+	<TM_OKWithDeath.degreedatas.0.description>[PAWN_nameDef] has accepted that death is another part of life and doesn't get upset when learning about a dead ally or seeing one of the undead.</TM_OKWithDeath.degreedatas.0.description>
+
+	<Undead.degreedatas.0.label>Undead</Undead.degreedatas.0.label>
+
+	<Undead.degreedatas.0.description>[PAWN_nameDef] has been reanimated as an undead.</Undead.degreedatas.0.description>
+
+	<TM_Gifted.degreedatas.0.label>magically gifted</TM_Gifted.degreedatas.0.label>
+
+	<TM_Gifted.degreedatas.0.description>[PAWN_nameDef] has a magical gift. [PAWN_pronoun] can harness this gift to become a mage by studying the mysterious secrets within an arcane script.</TM_Gifted.degreedatas.0.description>
+
+	<TM_Wanderer.degreedatas.0.label>Wanderer</TM_Wanderer.degreedatas.0.label>
+
+	<TM_Wanderer.degreedatas.0.description>[PAWN_nameDef] is a wanderer; an outcast, half-breed mage class frequently dubbed a hedge-mage. [PAWN_possessive] carefree personality has kept [PAWN_possessive] from developing class abilities. Instead, [PAWN_pronoun] has learned to improve on a vast number of utility abilities that allow [PAWN_objective] to adapt to any situation.
+		
+Wanderers prefer the open road and gain a mood boost for being in a caravan. Caravans with a wanderer will ignore the movement penalties of any world tile. However, their wanderlust will cause them to suffer a mood penalty for remaining at a colony for too long.</TM_Wanderer.degreedatas.0.description>
+
+	<InnerFire.degreedatas.0.label>Fire mage</InnerFire.degreedatas.0.label>
+
+	<InnerFire.degreedatas.0.description>[PAWN_nameDef] is attuned with the elements of fire.</InnerFire.degreedatas.0.description>
+
+	<HeartOfFrost.degreedatas.0.label>Ice mage</HeartOfFrost.degreedatas.0.label>
+
+	<HeartOfFrost.degreedatas.0.description>[PAWN_nameDef] is attuned with the elements of water.</HeartOfFrost.degreedatas.0.description>
+
+	<StormBorn.degreedatas.0.label>Lightning mage</StormBorn.degreedatas.0.label>
+
+	<StormBorn.degreedatas.0.description>[PAWN_nameDef] is attuned with the elements of lightning.</StormBorn.degreedatas.0.description>
+
+	<Arcanist.degreedatas.0.label>Arcane mage</Arcanist.degreedatas.0.label>
+
+	<Arcanist.degreedatas.0.description>[PAWN_nameDef] is attuned with arcane forces, interacting directly with raw arcane power to move matter and energy at will.</Arcanist.degreedatas.0.description>
+
+	<Druid.degreedatas.0.label>Druid</Druid.degreedatas.0.label>
+
+	<Druid.degreedatas.0.description>[PAWN_nameDef] is attuned with the forces of nature.</Druid.degreedatas.0.description>
+
+	<Paladin.degreedatas.0.label>Paladin</Paladin.degreedatas.0.label>
+
+	<Paladin.degreedatas.0.description>[PAWN_nameDef] has been bestowed with divine might and has sworn to uphold justice wherever [PAWN_pronoun] stands.</Paladin.degreedatas.0.description>
+
+	<Summoner.degreedatas.0.label>Summoner</Summoner.degreedatas.0.label>
+
+	<Summoner.degreedatas.0.description>[PAWN_nameDef] is able to summon beings and materialize objects from other planes of existence.</Summoner.degreedatas.0.description>
+
+	<Necromancer.degreedatas.0.label>Necromancer</Necromancer.degreedatas.0.label>
+
+	<Necromancer.degreedatas.0.description>[PAWN_nameDef] is attuned with the forces of death.</Necromancer.degreedatas.0.description>
+
+	<Lich.degreedatas.0.label>Lich</Lich.degreedatas.0.label>
+
+	<Lich.degreedatas.0.description>[PAWN_nameDef] has transformed into a lich, forsaking life in exchange for an power and an immortal existence, choosing to employ undead for menial tasks.</Lich.degreedatas.0.description>
+
+	<Priest.degreedatas.0.label>Priest</Priest.degreedatas.0.label>
+
+	<Priest.degreedatas.0.description>[PAWN_nameDef] is attuned with the forces of life and healing and has taken a vow against harming others.</Priest.degreedatas.0.description>
+
+	<TM_Bard.degreedatas.0.label>Entertainer</TM_Bard.degreedatas.0.label>
+
+	<TM_Bard.degreedatas.0.description>[PAWN_nameDef] is a natural entertainer, able to lighten the mood and lift the spirits of everyone around [PAWN_objective].</TM_Bard.degreedatas.0.description>
+
+	<TM_Bard.degreedatas.1.label>Performer</TM_Bard.degreedatas.1.label>
+
+	<TM_Bard.degreedatas.1.description>[PAWN_nameDef] is a performer; expanding on natural talent, [PAWN_pronoun] has begun to take an conscious role to improve the mood of other colonists.</TM_Bard.degreedatas.1.description>
+
+	<TM_Bard.degreedatas.2.label>Minstrel</TM_Bard.degreedatas.2.label>
+
+	<TM_Bard.degreedatas.2.description>Everyone loves being around [PAWN_nameDef]. [PAWN_pronoun] has talent, wit and skill in many forms of entertainment and is able to make a personal connection with almost everyone.</TM_Bard.degreedatas.2.description>
+
+	<TM_Bard.degreedatas.3.label>Bard</TM_Bard.degreedatas.3.label>
+
+	<TM_Bard.degreedatas.3.description>[PAWN_nameDef] is a master entertainer. Sharp wit, deft hands, and dry humor are [PAWN_possessive] weapons, and [PAWN_pronoun] is a master of all [PAWN_possessive] weapons.</TM_Bard.degreedatas.3.description>
+
+	<Succubus.degreedatas.0.label>Succubus</Succubus.degreedatas.0.label>
+
+	<Succubus.degreedatas.0.description>[PAWN_nameDef] has a strange genetic strain that grants her enhanced physical attributes. She is also extremely attractive with an exotic facial structure that captures the eye. A succubus is more likely to exploit her physical advantages and have others do her work for her. [PAWN_possessive] succubus charm has its disadvantages and can cause some to become jealous and even despise [PAWN_objective].</Succubus.degreedatas.0.description>
+
+	<Warlock.degreedatas.0.label>Warlock</Warlock.degreedatas.0.label>
+
+	<Warlock.degreedatas.0.description>[PAWN_nameDef] is a Warlock - able to manifest physical and demonic forces using his unique access to arcane power. The warlock shares the same genetic mixture as a succubus, but as a male, [PAWN_pronoun] is affected with mental enhancements that include clairvoyance and telekineses. The warlock can occasionally affect the outcome of a social interaction using their mental capabilities, regardless of how the interaction actually occurred.</Warlock.degreedatas.0.description>
+
+	<Geomancer.degreedatas.0.label>Geomancer</Geomancer.degreedatas.0.label>
+
+	<Geomancer.degreedatas.0.description>[PAWN_nameDef] is attuned with the earth and natural order, drawing power from the physical realm and intertwining it with arcane energy. [PAWN_pronoun] is capable of reinforcing physical elements, and bending them, as [PAWN_pronoun] needs.</Geomancer.degreedatas.0.description>
+
+	<Technomancer.degreedatas.0.label>Technomancer</Technomancer.degreedatas.0.label>
+
+	<Technomancer.degreedatas.0.description>[PAWN_nameDef] has learned to see magic and science as two parts of the same force and is able to use arcane power to interface directly with components of technology. [PAWN_pronoun] is capable of manipulating objects with advanced mechanics, electronics, or computing it to achieve [PAWN_possessive] goals, but has difficulty interacting with biological systems.</Technomancer.degreedatas.0.description>
+
+	<BloodMage.degreedatas.0.label>Blood Mage</BloodMage.degreedatas.0.label>
+
+	<BloodMage.degreedatas.0.description>[PAWN_nameDef] is a blood mage and has consigned to the dark art of manipulating the life blood of living things as a means of increasing [PAWN_possessive] power.\n\nAs a blood mage, [PAWN_nameDef] has learned to control the life force within and command it to [PAWN_possessive] will. [PAWN_possessive] connection to life makes it easier to associate with other living things, but doesn't appreciate effort without immediate results.</BloodMage.degreedatas.0.description>
+
+	<Enchanter.degreedatas.0.label>Enchanter</Enchanter.degreedatas.0.label>
+
+	<Enchanter.degreedatas.0.description>[PAWN_nameDef] is an enchanter, attuned to the composition of matter and materials. [PAWN_pronoun] can manipulate matter to [PAWN_possessive] will, frequently in unnatural ways, and [PAWN_possessive] powers of transmutation can be permanent when sufficient effort is applied.</Enchanter.degreedatas.0.description>
+
+	<Chronomancer.degreedatas.0.label>Chronomancer</Chronomancer.degreedatas.0.label>
+
+	<Chronomancer.degreedatas.0.description>[PAWN_nameDef] is a chronomancer. Through arcane sight, [PAWN_pronoun] is able to view reality as it once was and as it could be, and can manipulate objects between those realities.</Chronomancer.degreedatas.0.description>
+
+	<ChaosMage.degreedatas.0.label>Chaos Mage</ChaosMage.degreedatas.0.label>
+
+	<ChaosMage.degreedatas.0.description>[PAWN_nameDef] has rejected all predefined magic paths and refuses to attribute objective reality in [PAWN_possessive] search for power; there are no truths, all magic is permitted. This tradition has enabled [PAWN_nameDef] to learn any type of magic, although [PAWN_pronoun] will never master any.</ChaosMage.degreedatas.0.description>
+
+	<TM_TheShadow.degreedatas.0.label>Shadow</TM_TheShadow.degreedatas.0.label>
+
+	<TM_TheShadow.degreedatas.0.description>[PAWN_nameDef] is a half-breed demon with an affinity for shadow magic. [PAWN_pronoun] has developed [PAWN_possessive] unique talents through combat training and physical conditioning making [PAWN_objective] the perfect assassin.</TM_TheShadow.degreedatas.0.description>
+
+	<TM_Brightmage.degreedatas.0.label>Brightmage</TM_Brightmage.degreedatas.0.label>
+
+	<TM_Brightmage.degreedatas.0.description>[PAWN_nameDef] is a brightmage, able to harness the powers of light to purge evil. [PAWN_pronoun] approaches any task with an unrivaled fervor that usually places [PAWN_objective] at the forefront. Being a Brightmage introduces a dependency on the sun and light, because of this, [PAWN_nameDef] has developed an intense hatred for shadowy and dark caricatures.</TM_Brightmage.degreedatas.0.description>
+
+	<TM_Shaman.degreedatas.0.label>Shaman</TM_Shaman.degreedatas.0.label>
+
+	<TM_Shaman.degreedatas.0.description>Shamans take a more harmonious approach to arcane powers than most mages, choosing to pursue a path that works with the ebb and flow of magic to offset or enhance the natural order. [PAWN_nameDef] is kin to the spirit realm and more attuned to nature and its elements.</TM_Shaman.degreedatas.0.description>
+
+	<PhysicalProdigy.degreedatas.0.label>physically adept</PhysicalProdigy.degreedatas.0.label>
+
+	<PhysicalProdigy.degreedatas.0.description>[PAWN_nameDef] is physically adept and has potential to learn special combat forms.</PhysicalProdigy.degreedatas.0.description>
+
+	<TM_Wayfarer.degreedatas.0.label>Wayfarer</TM_Wayfarer.degreedatas.0.label>
+
+	<TM_Wayfarer.degreedatas.0.description>[PAWN_nameDef] is a wayfarer; an self-disciplined fighter that excels at tricks and dirty fighting. [PAWN_possessive] carefree personality has kept [PAWN_objective] from developing class abilities. Instead, [PAWN_pronoun] has learned to improve a vast number of utility abilities that allow [PAWN_objective] to adapt to any situation.
+
+Wayfarers prefer the open road and will gain a mood boost for being in a caravan, and any caravan with a wayfarer will travel 25% faster. However, wayfarers will suffer a mood penalty if they remain at colony for too long.</TM_Wayfarer.degreedatas.0.description>
+
+	<Gladiator.degreedatas.0.label>Gladiator</Gladiator.degreedatas.0.label>
+
+	<Gladiator.degreedatas.0.description>[PAWN_nameDef] has learned how to train the Gladiator combat style.</Gladiator.degreedatas.0.description>
+
+	<Ranger.degreedatas.0.label>Woodsman</Ranger.degreedatas.0.label>
+
+	<Ranger.degreedatas.0.description>[PAWN_nameDef] is a trained woodsman; preferring the silence and lethality of a bow and armed with field-craft and cunning, [PAWN_pronoun] is prepared to defend [PAWN_possessive] land from invaders.</Ranger.degreedatas.0.description>
+
+	<Ranger.degreedatas.1.label>Hunter</Ranger.degreedatas.1.label>
+
+	<Ranger.degreedatas.1.description>[PAWN_nameDef] is a hunter; [PAWN_pronoun] employs field-craft, cunning, and skill with a bow to defend [PAWN_possessive] land from invaders.</Ranger.degreedatas.1.description>
+
+	<Ranger.degreedatas.2.label>Scout</Ranger.degreedatas.2.label>
+
+	<Ranger.degreedatas.2.description>[PAWN_nameDef] is a scout; comfortable in the wilds, and relied upon to be the eyes and ears of a colony. [PAWN_pronoun] employs expertise in field-craft, cunning, and the bow to defend [PAWN_possessive] land from invaders.</Ranger.degreedatas.2.description>
+
+	<Ranger.degreedatas.3.label>Ranger</Ranger.degreedatas.3.label>
+
+	<Ranger.degreedatas.3.description>[PAWN_nameDef] is a ranger; master of the wilds.  [PAWN_pronoun] is a master of [PAWN_possessive] craft and defender of [PAWN_possessive] land.</Ranger.degreedatas.3.description>
+
+	<TM_Sniper.degreedatas.0.label>Sharpshooter</TM_Sniper.degreedatas.0.label>
+
+	<TM_Sniper.degreedatas.0.description>[PAWN_nameDef] has trained to become a sniper, skilled in the economy and accuracy of long range, small arms combat. Training to become a sniper has caused some colonists to be uncomfortable around [PAWN_objective], not that [PAWN_pronoun] cares.</TM_Sniper.degreedatas.0.description>
+
+	<TM_Sniper.degreedatas.1.label>Sniper</TM_Sniper.degreedatas.1.label>
+
+	<TM_Sniper.degreedatas.1.description>[PAWN_nameDef] has trained to become a sniper, skilled in the economy and accuracy of long range, small arms combat. Becoming a sniper has caused [PAWN_objective] to become distanced from other colonists and somewhat unapproachable, not that [PAWN_pronoun] cares.</TM_Sniper.degreedatas.1.description>
+
+	<TM_Sniper.degreedatas.2.label>Master Sniper</TM_Sniper.degreedatas.2.label>
+
+	<TM_Sniper.degreedatas.2.description>[PAWN_nameDef] is a master sniper, skilled in the economy and accuracy of long range, small arms combat. Being a sniper has made [PAWN_objective] avoid other colonists, not that they care.</TM_Sniper.degreedatas.2.description>
+
+	<TM_Sniper.degreedatas.3.label>Legendary Sniper</TM_Sniper.degreedatas.3.label>
+
+	<TM_Sniper.degreedatas.3.description>[PAWN_nameDef] is a legendary sniper, skilled in the economy and accuracy of long range, small arms combat.  Other colonists avoid eye contact and whisper in corners about how dangerous [PAWN_pronoun] is and that suits [PAWN_objective] just fine.</TM_Sniper.degreedatas.3.description>
+
+	<Bladedancer.degreedatas.0.label>Bladesman</Bladedancer.degreedatas.0.label>
+
+	<Bladedancer.degreedatas.0.description>[PAWN_nameDef] is training to become a master of the blade and excels at fighting in melee combat.</Bladedancer.degreedatas.0.description>
+
+	<Bladedancer.degreedatas.1.label>Blademaster</Bladedancer.degreedatas.1.label>
+
+	<Bladedancer.degreedatas.1.description>[PAWN_nameDef] has trained to become a sword master, dangerously skilled in melee combat.</Bladedancer.degreedatas.1.description>
+
+	<Bladedancer.degreedatas.2.label>Bladedancer</Bladedancer.degreedatas.2.label>
+
+	<Bladedancer.degreedatas.2.description>[PAWN_nameDef] is a blade dancer, highly skilled in melee combat.  Watching [PAWN_objective] fight is like watching a dance, every action precise and flawless as it flows from one form into another.</Bladedancer.degreedatas.2.description>
+
+	<Bladedancer.degreedatas.3.label>Legendary bladedancer</Bladedancer.degreedatas.3.label>
+
+	<Bladedancer.degreedatas.3.description>[PAWN_nameDef] has become a legend, [PAWN_possessive] skill in melee combat is is known across the world. [PAWN_possessive] skill in combat makes it look as if each movement, each strike, is merely a stitch in a tapestry that depicts [PAWN_possessive] victory.</Bladedancer.degreedatas.3.description>
+
+	<Faceless.degreedatas.0.label>Faceless</Faceless.degreedatas.0.label>
+
+	<Faceless.degreedatas.0.description>[PAWN_nameDef] is a master of disguise and imitation; able to manipulate and capture the muscle and mental actions of another and release it as their own.</Faceless.degreedatas.0.description>
+
+	<TM_Psionic.degreedatas.0.label>Psionic</TM_Psionic.degreedatas.0.label>
+
+	<TM_Psionic.degreedatas.0.description>[PAWN_nameDef] is a Psionic - able to manifest mental willpower into raw energy without the use of a psychic amplifier. [PAWN_pronoun] is able to project psionic energy but finds it easier and more efficient to apply it as an extension of [PAWN_possessive] body. For this reason, [PAWN_pronoun] prefers to be free of encumbering weapons when manifesting psionic energy.
+
+[PAWN_nameDef] has become less social since developing psionic powers, preferring to be unhindered by other pawns.
+
+*The regeneration rate of psionic energy is based on psychic sensitivity - reducing sensitivity to 0 will prevent psionic energy from regenerating.</TM_Psionic.degreedatas.0.description>
+
+	<DeathKnight.degreedatas.0.label>Death Knight</DeathKnight.degreedatas.0.label>
+
+	<DeathKnight.degreedatas.0.description>[PAWN_nameDef] is a Death Knight - harbinger of doom and a representative of the ever approaching inevitability of death and decay. [PAWN_possessive] solemn attitude makes most pawns uneasy and even fewer approve of [PAWN_possessive] methods.</DeathKnight.degreedatas.0.description>
+
+	<TM_Monk.degreedatas.0.label>Monk</TM_Monk.degreedatas.0.label>
+
+	<TM_Monk.degreedatas.0.description>[PAWN_nameDef] is a Monk, dedicated to mastering Chi - the energy that connects all life in the universe. [PAWN_pronoun] harnesses Chi to create magical effects and exceed [PAWN_possessive] physical capabilities. [PAWN_nameDef] is also able to disrupt the Chi in others, affecting their command over spells and abilities.</TM_Monk.degreedatas.0.description>
+
+	<TM_Commander.degreedatas.0.label>Commander</TM_Commander.degreedatas.0.label>
+
+	<TM_Commander.degreedatas.0.description>As a Commander, [PAWN_nameDef] exhibits a charismatic personality and stalwart presence that makes other pawns want to follow [PAWN_possessive] lead. Commander's utilize the weight of their presence to inspire nearby pawns, and when that's not enough, they can issue orders that drive their followers to victory. Because [PAWN_nameDef] is used to everyone doing [PAWN_possessive] bidding, [PAWN_pronoun] considers menial tasks beneath [PAWN_possessive] status, and is generally a lackluster worker.</TM_Commander.degreedatas.0.description>
+
+	<TM_SuperSoldier.degreedatas.0.label>Super Soldier</TM_SuperSoldier.degreedatas.0.label>
+
+	<TM_SuperSoldier.degreedatas.0.description>[PAWN_nameDef] is a highly trained Soldier, specializing in pistol, shotgun, or rifle weapons. [PAWN_possessive] weapon specialization is augmented by a standard set of combat training. Super Soldiers are trained to be aggressive and consider violence the natural solution to any argument.</TM_SuperSoldier.degreedatas.0.description>
+
+</LanguageData>

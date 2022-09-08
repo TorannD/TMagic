@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Seers.label>dobra arcana</Seers.label>
+
+	<Seers.description>Pouco se sabe sobre esta facção secreta. Eles possuem alguma tecnologia, mas não parecem depender dela. Eles trabalham com ferramentas simples e se defendem com armas de fogo.\n\nEles participam das questões práticas de comércio, confiança e sobrevivência, mas seu interesse principal não é claro.\n\nDe acordo com histórias de viajantes e informações coletadas de outras facções, eles tem conhecimento e uso de poderes e artefatos misteriosos.</Seers.description>
+
+	<Seers.pawnsplural>videntes</Seers.pawnsplural>
+
+	<Seers.leadertitle>Rei mago</Seers.leadertitle>
+
+</LanguageData>

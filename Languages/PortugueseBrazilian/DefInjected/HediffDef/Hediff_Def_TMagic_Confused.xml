@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_Confused.label>Confuso</TM_Confused.label>
+
+	<TM_Confused.description>Frequentemente faz com que um alvo fique confuso.</TM_Confused.description>
+
+	<TM_Confused.stages.0.label>Vagando confuso</TM_Confused.stages.0.label>
+
+</LanguageData>

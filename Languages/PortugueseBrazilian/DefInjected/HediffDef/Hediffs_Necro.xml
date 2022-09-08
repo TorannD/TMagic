@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_DeathMarkCurse.label>Marca da Morte</TM_DeathMarkCurse.label>
+
+	<TM_DeathMarkCurse.description>Marcado pela morte, este peão é incapaz de se concentrar no presente devido ao foco em sua morte inevitável.</TM_DeathMarkCurse.description>
+
+	<TM_DeathMarkCurse.stages.0.label>desajeitado</TM_DeathMarkCurse.stages.0.label>
+
+	<TM_DeathMarkCurse.stages.1.label>atrapalhado</TM_DeathMarkCurse.stages.1.label>
+
+	<TM_DeathMarkCurse.stages.2.label>amaldiçoado</TM_DeathMarkCurse.stages.2.label>
+
+	<TM_DeathBoltHD.label>parafuso mortal</TM_DeathBoltHD.label>
+
+	<TM_DeathBoltHD.description>Energia destrutiva que mata todas as coisas vivas.</TM_DeathBoltHD.description>
+
+	<TM_DeathBoltHD.comps.0.labeltendedwell>enfaixado</TM_DeathBoltHD.comps.0.labeltendedwell>
+
+	<TM_DeathBoltHD.comps.0.labeltendedwellinner>suturado</TM_DeathBoltHD.comps.0.labeltendedwellinner>
+
+	<TM_DeathBoltHD.comps.0.labelsolidtendedwell>definir</TM_DeathBoltHD.comps.0.labelsolidtendedwell>
+
+	<TM_DeathBoltHD.injuryprops.destroyedlabel>derreteu</TM_DeathBoltHD.injuryprops.destroyedlabel>
+
+	<TM_DeathBoltHD.injuryprops.destroyedoutlabel>derretido</TM_DeathBoltHD.injuryprops.destroyedoutlabel>
+
+	<TM_TormentHD.label>Tormento</TM_TormentHD.label>
+
+	<TM_TormentHD.description>Dor induzida por energia escura.</TM_TormentHD.description>
+
+	<TM_TormentHD.comps.0.labeltendedwell>enfaixado</TM_TormentHD.comps.0.labeltendedwell>
+
+	<TM_TormentHD.comps.0.labeltendedwellinner>suturado</TM_TormentHD.comps.0.labeltendedwellinner>
+
+	<TM_TormentHD.comps.0.labelsolidtendedwell>definir</TM_TormentHD.comps.0.labelsolidtendedwell>
+
+	<TM_TormentHD.injuryprops.destroyedlabel>derreteu</TM_TormentHD.injuryprops.destroyedlabel>
+
+	<TM_TormentHD.injuryprops.destroyedoutlabel>derretido</TM_TormentHD.injuryprops.destroyedoutlabel>
+
+	<TM_UndeadHD.label>Morto-vivo</TM_UndeadHD.label>
+
+	<TM_UndeadHD.description>Um peão animado por energia necrótica. Este peão não possui intenção própria e requer direção e energia contínuas de um necromante.</TM_UndeadHD.description>
+
+	<TM_UndeadHD.stages.0.label>I</TM_UndeadHD.stages.0.label>
+
+	<TM_UndeadHD.stages.1.label>II</TM_UndeadHD.stages.1.label>
+
+	<TM_UndeadHD.stages.2.label>III</TM_UndeadHD.stages.2.label>
+
+	<TM_UndeadHD.stages.3.label>IV</TM_UndeadHD.stages.3.label>
+
+	<TM_LichHD.label>Lich</TM_LichHD.label>
+
+	<TM_LichHD.description>Um peão que alcançou a imortalidade ao cortar sua conexão com o ciclo de vida e morte.</TM_LichHD.description>
+
+	<TM_LichHD.stages.0.label>Morto-vivo</TM_LichHD.stages.0.label>
+
+	<TM_UndeadAnimalHD.label>Morto-vivo</TM_UndeadAnimalHD.label>
+
+	<TM_UndeadAnimalHD.description>Um peão animado por energia necrótica. Este peão não possui intenção própria e requer direção e energia contínuas de um necromante.</TM_UndeadAnimalHD.description>
+
+	<TM_UndeadAnimalHD.stages.0.label>I</TM_UndeadAnimalHD.stages.0.label>
+
+	<TM_UndeadAnimalHD.stages.1.label>II</TM_UndeadAnimalHD.stages.1.label>
+
+	<TM_UndeadAnimalHD.stages.2.label>III</TM_UndeadAnimalHD.stages.2.label>
+
+	<TM_UndeadAnimalHD.stages.3.label>IV</TM_UndeadAnimalHD.stages.3.label>
+
+	<TM_DeathMarkHD.label>Marca da Morte</TM_DeathMarkHD.label>
+
+	<TM_DeathMarkHD.description>Marcado pela morte, este peão morrerá em breve e será reanimado como um morto-vivo. (não usado)</TM_DeathMarkHD.description>
+
+	<TM_Torment_HD.label>Atormentado</TM_Torment_HD.label>
+
+	<TM_Torment_HD.description>Atormentado dolorosamente por magia negra.</TM_Torment_HD.description>
+
+	<TM_Torment_HD.stages.0.label>dor</TM_Torment_HD.stages.0.label>
+
+	<TM_Torment_HD.stages.1.label>agonia</TM_Torment_HD.stages.1.label>
+
+	<TM_Torment_HD.stages.2.label>tormento</TM_Torment_HD.stages.2.label>
+
+	<TM_UndeadStageHD.label>Estágio do corpo</TM_UndeadStageHD.label>
+
+	<TM_UndeadStageHD.description>O estágio atual dos mortos-vivos.</TM_UndeadStageHD.description>
+
+	<TM_UndeadStageHD.stages.0.label>Apodrecendo</TM_UndeadStageHD.stages.0.label>
+
+	<TM_UndeadStageHD.stages.1.label>Dessecado</TM_UndeadStageHD.stages.1.label>
+
+	<TM_BrittleBonesHD.label>Ossos frágeis</TM_BrittleBonesHD.label>
+
+	<TM_BrittleBonesHD.description>Ocorre quando exposto a temperaturas extremamente baixas e faz com que os ossos e ligamentos se tornem frágeis, o que reduz os movimentos e a manipulação. Mortos-vivos com esta condição requerem 50% de mana adicional para serem mantidos.</TM_BrittleBonesHD.description>
+
+	<TM_BrittleBonesHD.stages.0.label>I</TM_BrittleBonesHD.stages.0.label>
+
+	<TM_BrittleBonesHD.stages.1.label>II</TM_BrittleBonesHD.stages.1.label>
+
+	<TM_BrittleBonesHD.stages.2.label>III</TM_BrittleBonesHD.stages.2.label>
+
+	<TM_SlaggedHD.label>Escória</TM_SlaggedHD.label>
+
+	<TM_SlaggedHD.description>Ocorre quando exposto a temperaturas extremamente altas e faz com que a matéria orgânica se decomponha e até derreta. Mortos-vivos afetados por esta condição requerem 50% a mais de mana para manter.</TM_SlaggedHD.description>
+
+	<TM_SlaggedHD.stages.0.label>I</TM_SlaggedHD.stages.0.label>
+
+	<TM_SlaggedHD.stages.1.label>II</TM_SlaggedHD.stages.1.label>
+
+	<TM_SlaggedHD.stages.2.label>III</TM_SlaggedHD.stages.2.label>
+
+</LanguageData>

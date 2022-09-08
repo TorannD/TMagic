@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<TM_PowerNode.label>Arcane power node</TM_PowerNode.label>
+
+	<TM_PowerNode.description>An arcane energy node that provides power as long as it is sustained by a mage.</TM_PowerNode.description>
+
+	<TM_Sentinel.description>This statue is made of stone and shaped to look like a terrifying creature. The statue is smaller than an average person and has the look of a rough cut and quality, though, you notice the eyes, ears, and claws seems to have finer detail.
+	
+As you drawn near the statue, an eerie glint from the eyes of the stone sentinel seems to follow you, and you get the feeling that you are being watched.</TM_Sentinel.description>
+
+	<TM_Heater.label>magical heater</TM_Heater.label>
+
+	<TM_Heater.description>An active dimensional tap into the Plane of Fire that can be used to heat confined spaces. Can also be used for various cooking or cremating tasks. Remains as long as it is sustained by a mage.</TM_Heater.description>
+
+	<TM_Cooler.label>magical cooler</TM_Cooler.label>
+
+	<TM_Cooler.description>An active dimensional tap into the Plane of Ice that can be used to cool confined spaces.</TM_Cooler.description>
+
+	<TM_Sunlight.label>sun light</TM_Sunlight.label>
+
+	<TM_Sunlight.description>A dimensional pocket emitting a continous source of light strong enough to grow crops.</TM_Sunlight.description>
+
+</LanguageData>
